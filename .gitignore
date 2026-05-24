@@ -1,0 +1,23 @@
+# ==============================================================================
+# 🛡️ Sovereign Markdown Palace v10.0 - OpSec Boundary Filter
+# ==============================================================================
+
+# Dokumen Sumber Mentah (CV Unsanitized)
+*.pdf
+*.docx
+raw-resume.txt
+backups/
+
+# Enklaf Kredential & Kunci Penyulitan Tempatan
+.env
+*.pem
+config/secrets.*
+api_keys.json
+assets/locks/*.json     # Sekat fail data PII tersulit AES-256
+
+# Pangkalan Data Memori Tempatan & Log Peranti
+.claude/
+.anthropic/
+logs/
+chroma_db/
+sqlite_cache.db
