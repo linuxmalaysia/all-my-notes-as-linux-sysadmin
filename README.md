@@ -31,6 +31,7 @@ Sila rujuk kepada folder `docs/` untuk tatacara gred pengeluaran (*production-gr
 13. [`USING-REFERENCE-FILES.md`](docs/USING-REFERENCE-FILES.md): Teknik pendedahan secara berperingkat (*Progressive Disclosure*).
 14. [`SKILL-FORMAT.md`](docs/SKILL-FORMAT.md): Spesifikasi kod YAML *Frontmatter*.
 15. [`OPENSKILLS.md`](docs/OPENSKILLS.md): Rujukan pengaktifan alat CLI `npx openskills`.
+16. [`GIT-RELEASE-WORKFLOW.md`](docs/GIT-RELEASE-WORKFLOW.md): Tatacara Git untuk pengepakan keluaran (release packaging) oleh Ejen AI.
 
 ## Integrasi Universal
 
