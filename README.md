@@ -16,6 +16,7 @@ Pembangunan senibina dan standard ejen ini merujuk secara langsung kepada sumber
 
 - [`HISTORY.md`](HISTORY.md): Menjejaki evolusi dan falsafah awal pembinaan projek ini.
 - [`CHANGELOG.md`](CHANGELOG.md): Nota keluaran (Release Notes) rasmi bagi semua versi.
+- [`NOTICE.md`](NOTICE.md): **[PENTING]** Notis atribusi perundangan, hak cipta pengarang asal, dan penafian ke atas rujukan pihak ketiga (seperti OpenSkills & AgentSkills).
 
 ## Struktur Dokumentasi (Manual)
 

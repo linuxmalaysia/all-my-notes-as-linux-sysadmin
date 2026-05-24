@@ -5,6 +5,12 @@ Semua perubahan ketara kepada projek ini akan direkodkan dalam fail ini.
 Format ini berdasarkan kepada [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), 
 dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-05-24
+
+### Added (Penambahan)
+- Fail `NOTICE.md` berserta klausa atribusi perundangan pihak ketiga bagi mengiktiraf lesen pengarang asal sumber luar (OpenSkills, AgentSkills, DSPy).
+- Seksyen penafian keselamatan pada pautan `README.md`.
+
 ## [1.0.3] - 2026-05-24
 
 ### Added (Penambahan)
