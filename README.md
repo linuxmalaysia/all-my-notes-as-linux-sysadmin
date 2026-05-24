@@ -12,6 +12,11 @@ Pembangunan senibina dan standard ejen ini merujuk secara langsung kepada sumber
 *   **Deep State of Mind**: [https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai](https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai)
 *   **MemPalace Framework**: [https://github.com/MemPalace/mempalace](https://github.com/MemPalace/mempalace)
 
+## Maklumat Projek (Project Info)
+
+- [`HISTORY.md`](HISTORY.md): Menjejaki evolusi dan falsafah awal pembinaan projek ini.
+- [`CHANGELOG.md`](CHANGELOG.md): Nota keluaran (Release Notes) rasmi bagi semua versi.
+
 ## Struktur Dokumentasi (Manual)
 
 Sila rujuk kepada folder `docs/` untuk tatacara gred pengeluaran (*production-grade*):
