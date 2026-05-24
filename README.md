@@ -9,6 +9,8 @@ Pembangunan senibina dan standard ejen ini merujuk secara langsung kepada sumber
 *   **OpenSkills (Universal Loader)**: [https://github.com/numman-ali/openskills](https://github.com/numman-ali/openskills)
 *   **Skills Directory (Marketplace)**: [https://www.skillsdirectory.com/](https://www.skillsdirectory.com/)
 *   **AgentSkills Open Standard**: [https://agentskills.io/home](https://agentskills.io/home)
+*   **Deep State of Mind**: [https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai](https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai)
+*   **MemPalace Framework**: [https://github.com/MemPalace/mempalace](https://github.com/MemPalace/mempalace)
 
 ## Struktur Dokumentasi (Manual)
 
