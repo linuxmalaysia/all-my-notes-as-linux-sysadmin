@@ -5,6 +5,11 @@ Semua perubahan ketara kepada projek ini akan direkodkan dalam fail ini.
 Format ini berdasarkan kepada [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), 
 dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-05-24
+
+### Added (Penambahan)
+- Lesen Terbuka (Open Source License) menggunakan **MIT License** bagi membolehkan repositori ini digunakan secara bebas sebagai templat gred pengeluaran.
+
 ## [1.0.2] - 2026-05-24
 
 ### Added (Penambahan)
