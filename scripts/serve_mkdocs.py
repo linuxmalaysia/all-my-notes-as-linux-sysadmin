@@ -37,7 +37,18 @@ def prepare_docs_dir(root_dir: Path, build_dir: Path):
             create_junction(src, dest)
             
     # Files to hardlink
-    files_to_link = ['README.md', 'START-HERE.md', 'llms.txt', 'llms-full.txt']
+    files_to_link = [
+        'README.md',
+        'START-HERE.md',
+        'AGENTS.md',
+        'HISTORY.md',
+        'CHANGELOG.md',
+        'LEGAL-NOTICE.md',
+        'NOTICE.md',
+        'llms.txt',
+        'llms-full.txt',
+        'llms_context.xml',
+    ]
     for f in files_to_link:
         src = root_dir / f
         dest = build_dir / f
