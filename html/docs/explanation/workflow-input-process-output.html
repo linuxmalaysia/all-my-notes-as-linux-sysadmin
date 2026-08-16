@@ -1,0 +1,1724 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Penerangan terperinci mengenai kitaran hayat data dan aliran pemprosesan pengetahuan daripada sumber mentah sehingga penerbitan rasmi.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+        <link rel="prev" href="../how-to/generate-sitemaps-seo.html">
+      
+      
+        <link rel="next" href="diataxis-architecture.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Seni Bina Aliran Kerja: Input, Proses & Output (IPO) NOSS Linux Malaysia - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#seni-bina-aliran-kerja-input-proses-output-ipo-noss-linux-malaysia" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Seni Bina Aliran Kerja: Input, Proses & Output (IPO) NOSS Linux Malaysia
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual NOSS Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Manual NOSS Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/cu01/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CU01 - Sistem Komputer & Desktop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/cu02/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CU02 - Storan & Pemayaan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/cu03/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CU03 - Pentadbiran Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/cu04/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CU04 - Automasi & Sandaran
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/cu05/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CU05 - Keselamatan & Pengerasan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/cu06/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CU06 - Troubleshooting & Sokongan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/execute-noss-content-transformation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformasi Kandungan NOSS (IPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aliran Kerja IPO (Input-Proses-Output)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="workflow-input-process-output.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aliran Kerja IPO (Input-Proses-Output)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gambaran-keseluruhan-aliran-kerja-architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Gambaran Keseluruhan Aliran Kerja (Architecture Diagram)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fasa-input-penerimaan-sumber-pengetahuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📥 1. Fasa INPUT (Penerimaan Sumber Pengetahuan)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fasa-proses-transformasi-modenisasi-jaminan-kualiti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Fasa PROSES (Transformasi, Modenisasi &amp; Jaminan Kualiti)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ 2. Fasa PROSES (Transformasi, Modenisasi &amp; Jaminan Kualiti)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langkah-21-pembersihan-ekstraksi-teks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.1: Pembersihan &amp; Ekstraksi Teks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-22-pemodenan-silibus-ke-piawaian-2026-peraturan-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.2: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-23-pemformatan-struktur-standard-okf-v01-diataxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.3: Pemformatan Struktur Standard (OKF v0.1 &amp; Diátaxis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-24-100-quality-gate-orchestration-peraturan-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.4: 100% Quality Gate Orchestration (Peraturan 12)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fasa-output-penerbitan-penyimpanan-memori" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📤 3. Fasa OUTPUT (Penerbitan &amp; Penyimpanan Memori)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📤 3. Fasa OUTPUT (Penerbitan &amp; Penyimpanan Memori)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-manual-sovereign-manual-noss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. manual/ (Sovereign Manual NOSS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-openwiki-pangkalan-rujukan-silibus-sintesis-cepat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. openwiki/ (Pangkalan Rujukan Silibus &amp; Sintesis Cepat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-html-pengedaran-tapak-web-statik-prabina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. html/ (Pengedaran Tapak Web Statik Prabina)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-agentsbrain-memori-semantik-ruang-loci-ejen-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. .agents/brain/ (Memori Semantik &amp; Ruang Loci Ejen AI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-dwi-pelantar-gitops-origin-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dwi-Pelantar GitOps (origin &amp; github)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AGENTS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gambaran-keseluruhan-aliran-kerja-architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Gambaran Keseluruhan Aliran Kerja (Architecture Diagram)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fasa-input-penerimaan-sumber-pengetahuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📥 1. Fasa INPUT (Penerimaan Sumber Pengetahuan)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fasa-proses-transformasi-modenisasi-jaminan-kualiti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. Fasa PROSES (Transformasi, Modenisasi &amp; Jaminan Kualiti)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ 2. Fasa PROSES (Transformasi, Modenisasi &amp; Jaminan Kualiti)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langkah-21-pembersihan-ekstraksi-teks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.1: Pembersihan &amp; Ekstraksi Teks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-22-pemodenan-silibus-ke-piawaian-2026-peraturan-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.2: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-23-pemformatan-struktur-standard-okf-v01-diataxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.3: Pemformatan Struktur Standard (OKF v0.1 &amp; Diátaxis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-24-100-quality-gate-orchestration-peraturan-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.4: 100% Quality Gate Orchestration (Peraturan 12)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fasa-output-penerbitan-penyimpanan-memori" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📤 3. Fasa OUTPUT (Penerbitan &amp; Penyimpanan Memori)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📤 3. Fasa OUTPUT (Penerbitan &amp; Penyimpanan Memori)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-manual-sovereign-manual-noss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. manual/ (Sovereign Manual NOSS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-openwiki-pangkalan-rujukan-silibus-sintesis-cepat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. openwiki/ (Pangkalan Rujukan Silibus &amp; Sintesis Cepat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-html-pengedaran-tapak-web-statik-prabina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. html/ (Pengedaran Tapak Web Statik Prabina)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-agentsbrain-memori-semantik-ruang-loci-ejen-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. .agents/brain/ (Memori Semantik &amp; Ruang Loci Ejen AI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-dwi-pelantar-gitops-origin-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dwi-Pelantar GitOps (origin &amp; github)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="seni-bina-aliran-kerja-input-proses-output-ipo-noss-linux-malaysia">Seni Bina Aliran Kerja: Input, Proses &amp; Output (IPO) NOSS Linux Malaysia<a class="headerlink" href="#seni-bina-aliran-kerja-input-proses-output-ipo-noss-linux-malaysia" title="Permanent link">&para;</a></h1>
+<p>Dokumen ini memperincikan keseluruhan kitaran hayat data (<em>data lifecycle</em>) dan protokol operasi standard bagi projek <strong>Linux for NOSS Malaysia</strong> di bawah kerangka <strong>Deep State of Mind (DSOM v0.1)</strong>. </p>
+<p>Projek ini beroperasi berlandaskan model tiga fasa utama: <strong>Input (Penerimaan Sumber)</strong> ➔ <strong>Proses (Transformasi, Pemodenan &amp; Pematuhan Kualiti)</strong> ➔ <strong>Output (Penerbitan Multi-Pelantar &amp; Memori Semantik)</strong>.</p>
+<hr />
+<h2 id="gambaran-keseluruhan-aliran-kerja-architecture-diagram">🗺️ Gambaran Keseluruhan Aliran Kerja (Architecture Diagram)<a class="headerlink" href="#gambaran-keseluruhan-aliran-kerja-architecture-diagram" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    subgraph INPUT ["1. INPUT (Sumber Bahan Mentah)"]
+        I1["Arkib Mentah:&lt;br&gt;&lt;code&gt;references/manual/&lt;/code&gt;&lt;br&gt;&lt;code&gt;references/noss/&lt;/code&gt;"]
+        I2["Muat Naik AI:&lt;br&gt;Google Jules / Antigravity&lt;br&gt;(Teks, PDF, DOCX)"]
+        I3["Sumber Web &amp; URL:&lt;br&gt;Dokumentasi Rasmi Linux&lt;br&gt;RFC / Kernel.org / DBP"]
+    end
+
+    subgraph PROSES ["2. PROSES (Transformasi, Modenisasi &amp; Kualiti)"]
+        P1["&lt;b&gt;Pembersihan &amp; Ekstraksi:&lt;/b&gt;&lt;br&gt;- Singkir teks berulang lapuk&lt;br&gt;- Pelihara arkib asal (Rule 17)"]
+        P2["&lt;b&gt;Pemodenan Kanonik 2026:&lt;/b&gt;&lt;br&gt;- Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10&lt;br&gt;- Pengerasan LUKS2 &amp; ISO/IEC 27001 (Rule 15)&lt;br&gt;- Standard Bahasa Melayu Baku DBP (Rule 3)"]
+        P3["&lt;b&gt;Pemformatan OKF v0.1:&lt;/b&gt;&lt;br&gt;- YAML Frontmatter + Metadata&lt;br&gt;- Sovereign Dual-License Footer (Rule 8)"]
+        P4["&lt;b&gt;100% Quality Gate:&lt;/b&gt;&lt;br&gt;- &lt;code&gt;uv run run_all_tests.py&lt;/code&gt;&lt;br&gt;- Pytest &amp; Jest (Rule 12)"]
+    end
+
+    subgraph OUTPUT ["3. OUTPUT (Penerbitan &amp; Memori)"]
+        O1["&lt;b&gt;Sovereign Manual NOSS:&lt;/b&gt;&lt;br&gt;&lt;code&gt;manual/cu01/&lt;/code&gt; hingga &lt;code&gt;cu06/&lt;/code&gt;&lt;br&gt;(Modul Amali NOSS Tahap 3)"]
+        O2["&lt;b&gt;OpenWiki Silibus:&lt;/b&gt;&lt;br&gt;&lt;code&gt;openwiki/topic-*.md&lt;/code&gt;&lt;br&gt;(Sintesis &amp; Rujukan Cepat)"]
+        O3["&lt;b&gt;Penerbitan Web Prabina:&lt;/b&gt;&lt;br&gt;&lt;code&gt;html/&lt;/code&gt; (MkDocs Material)&lt;br&gt;Pautan luar talian (&lt;code&gt;file:///&lt;/code&gt;)"]
+        O4["&lt;b&gt;DSOM Spatial Memory:&lt;/b&gt;&lt;br&gt;&lt;code&gt;.agents/brain/wings/&lt;/code&gt;&lt;br&gt;&lt;code&gt;palace_registry.md&lt;/code&gt;"]
+        O5["&lt;b&gt;Penyegerakan GitOps:&lt;/b&gt;&lt;br&gt;GitLab (&lt;code&gt;origin&lt;/code&gt;) &amp; GitHub (&lt;code&gt;github&lt;/code&gt;)&lt;br&gt;(Rule 19)"]
+    end
+
+    INPUT --&gt; PROSES
+    PROSES --&gt; OUTPUT</code></pre>
+<hr />
+<h2 id="1-fasa-input-penerimaan-sumber-pengetahuan">📥 1. Fasa INPUT (Penerimaan Sumber Pengetahuan)<a class="headerlink" href="#1-fasa-input-penerimaan-sumber-pengetahuan" title="Permanent link">&para;</a></h2>
+<p>Semua maklumat dan data mentah yang memasuki ekosistem projek ini mesti melalui salah satu saluran berikut:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Saluran Input</th>
+<th style="text-align: left;">Lokasi / Kaedah</th>
+<th style="text-align: left;">Perincian Sumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Arkib Mentah Tempatan</strong></td>
+<td style="text-align: left;"><code>references/manual/</code> &amp; <code>references/noss/</code></td>
+<td style="text-align: left;">Dokumen modul sejarah latihan IT Lab/KPM 2004, dokumen silibus NOSS JPK, dan glosari lama.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Muat Naik Sesi Ejen AI</strong></td>
+<td style="text-align: left;">Google Jules / Google Antigravity</td>
+<td style="text-align: left;">Dokumen DOCX, PDF, imej rajah atau arkib yang dimuat naik oleh pengendali manusia semasa sesi interaktif.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Penyelidikan Web &amp; URL</strong></td>
+<td style="text-align: left;"><code>read_url_content</code> / <code>search_web</code></td>
+<td style="text-align: left;">Dokumentasi rasmi kernel Linux, standard DBP, dokumentasi Ubuntu Server, AlmaLinux Wiki, dan panduan keselamatan MAMPU/CIS Benchmark.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Dasar Pemuliharaan Arkib Mentah (Perlembagaan AI - Peraturan 17):</strong>
+Fail-fail rujukan mentah di dalam <code>references/</code> <strong>TIDAK BOLEH DIPADAM</strong> semasa atau selepas transformasi ilmu. Ia kekal sebagai rekod warisan (<em>permanent archive</em>).</p>
+</blockquote>
+<hr />
+<h2 id="2-fasa-proses-transformasi-modenisasi-jaminan-kualiti">⚙️ 2. Fasa PROSES (Transformasi, Modenisasi &amp; Jaminan Kualiti)<a class="headerlink" href="#2-fasa-proses-transformasi-modenisasi-jaminan-kualiti" title="Permanent link">&para;</a></h2>
+<p>Proses pemprosesan menggabungkan automasi skrip Python <code>uv</code> dan kepakaran manusia-AI (<em>Human-AI Synergy</em>):</p>
+<h3 id="langkah-21-pembersihan-ekstraksi-teks">Langkah 2.1: Pembersihan &amp; Ekstraksi Teks<a class="headerlink" href="#langkah-21-pembersihan-ekstraksi-teks" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Menyingkirkan pengepala lama yang berulang (contoh: teks kerahsiaan KPM lama).</li>
+<li>Mengekstrak langkah amali, arahan baris perintah (<em>CLI</em>), dan rajah topologi ke dalam struktur modular.</li>
+</ul>
+<h3 id="langkah-22-pemodenan-silibus-ke-piawaian-2026-peraturan-15">Langkah 2.2: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)<a class="headerlink" href="#langkah-22-pemodenan-silibus-ke-piawaian-2026-peraturan-15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Distribusi Rujukan Rasmi:</strong></li>
+<li><strong>Desktop / Persekitaran Latihan:</strong> Ubuntu 26.04 LTS "Quetzal" (Kernel 6.14 LTS, GNOME 48).</li>
+<li><strong>Teknologi Terkini (<em>Bleeding-Edge</em>):</strong> Fedora 43.</li>
+<li><strong>Pelayan &amp; Desktop Perusahaan (<em>Enterprise</em>):</strong> AlmaLinux 10 "Purple Lion" (Kernel 6.12 LTS, GNOME 47).</li>
+<li><strong>Pengerasan Keselamatan Mandatori:</strong></li>
+<li>Penyulitan Cakera Penuh (LUKS2) dengan sokongan berbilang slot kunci (<em>multi-user key slots</em>) untuk pematuhan <strong>ISO/IEC 27001</strong> dan <strong>Pekeliling Am MAMPU</strong>.</li>
+<li><strong>Piawaian Bahasa Melayu Baku (Peraturan 3):</strong></li>
+<li>Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.</li>
+</ul>
+<h3 id="langkah-23-pemformatan-struktur-standard-okf-v01-diataxis">Langkah 2.3: Pemformatan Struktur Standard (OKF v0.1 &amp; Diátaxis)<a class="headerlink" href="#langkah-23-pemformatan-struktur-standard-okf-v01-diataxis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Setiap nod Markdown baharu mesti mempunyai <strong>OKF v0.1 YAML Frontmatter</strong>:
+  <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">knowledge-node</span><span class="w"> </span><span class="c1"># atau knowledge-index, documentation, skill</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tajuk</span><span class="nv"> </span><span class="s">Modul&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2026-08-17T00:00:00Z&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">topics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;noss-linux&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cu02&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;storage&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;lvm&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;partisi&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;amali&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Penerangan</span><span class="nv"> </span><span class="s">ringkas</span><span class="nv"> </span><span class="s">dan</span><span class="nv"> </span><span class="s">padat.&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;file:///manual/cu02/nama-fail.md&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nn">---</span>
+</span></code></pre></div></li>
+<li><strong>Struktur Penutup Wajib (Peraturan 16):</strong> Mengandungi seksyen <em>AI Prompts</em>, <em>Rujukan URL</em>, dan <em>Syor Buku Boleh Dibeli</em>.</li>
+<li><strong>Pengaki Berdaulat (Sovereign Dual-License Footer):</strong> Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.</li>
+</ul>
+<h3 id="langkah-24-100-quality-gate-orchestration-peraturan-12">Langkah 2.4: 100% Quality Gate Orchestration (Peraturan 12)<a class="headerlink" href="#langkah-24-100-quality-gate-orchestration-peraturan-12" title="Permanent link">&para;</a></h3>
+<p>Sebelum sebarang komit dibenarkan:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>run_all_tests.py
+</span></code></pre></div>
+Ujian merangkumi:
+1. <strong>Pytest:</strong> Pengesahan skema OKF, kesahan timestamp ISO8601, pautan <code>resource:</code>, padanan footer, keserasian sistem fail Windows NTFS Junction / Linux Symlink, dan integriti skrip Python.
+2. <strong>Jest (npm test):</strong> Ujian integrasi JavaScript pelayar.</p>
+<hr />
+<h2 id="3-fasa-output-penerbitan-penyimpanan-memori">📤 3. Fasa OUTPUT (Penerbitan &amp; Penyimpanan Memori)<a class="headerlink" href="#3-fasa-output-penerbitan-penyimpanan-memori" title="Permanent link">&para;</a></h2>
+<p>Hasil akhir pemprosesan diagihkan ke beberapa sasaran mengikut peranannya:</p>
+<h3 id="1-manual-sovereign-manual-noss">1. <code>manual/</code> (Sovereign Manual NOSS)<a class="headerlink" href="#1-manual-sovereign-manual-noss" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Mengandungi modul teknikal amali lengkap mengikut pecahan 6 Unit Kompetensi (CU01 hingga CU06) bagi standard NOSS Level 3:</li>
+<li><code>manual/cu01/</code>: Persediaan Sistem Komputer &amp; Desktop Linux</li>
+<li><code>manual/cu02/</code>: Pengurusan Storan &amp; Hipervisor Pemayaan</li>
+<li><code>manual/cu03/</code>: Pentadbiran Pelayan &amp; Perkhidmatan Linux</li>
+<li><code>manual/cu04/</code>: Automasi, Sandaran &amp; Pemulihan Sistem</li>
+<li><code>manual/cu05/</code>: Kawalan Keselamatan Endpoint &amp; Pengerasan</li>
+<li><code>manual/cu06/</code>: Troubleshooting, Sokongan &amp; Pengurusan RCA</li>
+</ul>
+<h3 id="2-openwiki-pangkalan-rujukan-silibus-sintesis-cepat">2. <code>openwiki/</code> (Pangkalan Rujukan Silibus &amp; Sintesis Cepat)<a class="headerlink" href="#2-openwiki-pangkalan-rujukan-silibus-sintesis-cepat" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Menyediakan pandangan makro mengikut topik silibus untuk bacaan pantas pelajar dan tenaga pengajar tanpa memuatkan perincian amali penuh.</li>
+</ul>
+<h3 id="3-html-pengedaran-tapak-web-statik-prabina">3. <code>html/</code> (Pengedaran Tapak Web Statik Prabina)<a class="headerlink" href="#3-html-pengedaran-tapak-web-statik-prabina" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Dijana melalui <code>uv run scripts/serve_mkdocs.py --build-only</code>.</li>
+<li>Menggunakan mod pautan berkait (<code>use_directory_urls: false</code>) yang membolehkan pengguna membuka laman web secara luar talian (<code>file:///</code>) tanpa memerlukan pelayan web aktif.</li>
+<li>Dijejak terus dalam Git supaya pengguna <code>git pull</code> boleh terus membacanya.</li>
+</ul>
+<h3 id="4-agentsbrain-memori-semantik-ruang-loci-ejen-ai">4. <code>.agents/brain/</code> (Memori Semantik &amp; Ruang Loci Ejen AI)<a class="headerlink" href="#4-agentsbrain-memori-semantik-ruang-loci-ejen-ai" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Spatial Memory (<code>.agents/brain/wings/</code>):</strong> Menyimpan fakta mutlak dan status kurikulum untuk mengelakkan <em>context decay</em>.</li>
+<li><strong>Palace Registry (<code>.agents/brain/palace_registry.md</code>):</strong> Peta memori lengkap ejen AI.</li>
+<li><strong>Episodic Handover:</strong> Rekod penyerahan tugas antara ejen (contohnya Google Jules ➔ Antigravity) melalui <code>task.md</code>, <code>walkthrough.md</code>, dan <code>handover_to_&lt;agent&gt;.md</code>.</li>
+</ul>
+<h3 id="5-dwi-pelantar-gitops-origin-github">5. Dwi-Pelantar GitOps (<code>origin</code> &amp; <code>github</code>)<a class="headerlink" href="#5-dwi-pelantar-gitops-origin-github" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Perubahan disimpan dalam jejak audit Git yang teliti (<code>git commit</code>) dan disegerakkan ke remote GitLab (<code>origin</code>) dan GitHub (<code>github</code>).</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

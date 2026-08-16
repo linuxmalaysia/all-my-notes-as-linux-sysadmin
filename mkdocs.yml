@@ -84,11 +84,13 @@ nav:
       - "CU05 - Keselamatan & Pengerasan": manual/cu05/index.md
       - "CU06 - Troubleshooting & Sokongan": manual/cu06/index.md
   - "Panduan Operasi (How-To)":
+      - "Transformasi Kandungan NOSS (IPO)": docs/how-to/execute-noss-content-transformation.md
       - "Penggunaan & Binaan HTML": docs/how-to/deploy-and-serve-html.md
       - "Audit Pematuhan OKF": docs/how-to/audit-and-apply-frontmatter.md
       - "Pelayan FastMCP": docs/how-to/run-fastmcp-server.md
       - "Penjanaan Peta Tapak SEO": docs/how-to/generate-sitemaps-seo.md
   - "Dokumen Tadbir Urus":
+      - "Aliran Kerja IPO (Input-Proses-Output)": docs/explanation/workflow-input-process-output.md
       - "Seni Bina Diátaxis & Web": docs/explanation/diataxis-architecture.md
       - "Sejarah Manual Asal KPM": docs/explanation/sejarah-dokumen-asal-linux-kpm.md
       - "Sejarah OSCC MAMPU": docs/explanation/sejarah-oscc-mampu-malaysia.md

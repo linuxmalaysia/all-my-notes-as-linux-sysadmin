@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-16T22:49:32Z"
+timestamp: "2026-08-16T22:55:46Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -13,7 +13,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `121`
+**Total Modules Indexed:** `122`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -121,6 +121,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`node-slide-generator`** <br> *node-slide-generator* | No description provided. | N/A |
 | **`noss-abbreviation-syncer`** <br> *noss-abbreviation-syncer* | No description provided. | N/A |
 | **`noss-cocu-docx-formatter`** <br> *noss-cocu-docx-formatter* | No description provided. | N/A |
+| **`noss-content-transformation-pipeline`** <br> *NOSS Linux Content Transformation Pipeline (IPO Protocol)* | Protokol automasi dan panduan operasi bagi ejen AI untuk memproses bahan rujukan mentah (references/), memodenkannya ke standard NOSS Linux 2026, menyuntik OKF v0.1, mengesahkan 100% Quality Gate, dan menerbitkan ke manual/, openwiki/, serta html/. | "transformation", "pipeline", "noss-linux", "dsom", "ipo" |
 | **`noss-cp-docx-formatter`** <br> *noss-cp-docx-formatter* | No description provided. | N/A |
 | **`noss-cpc-docx-formatter`** <br> *noss-cpc-docx-formatter* | No description provided. | N/A |
 | **`noss-glossary-syncer`** <br> *noss-glossary-syncer* | No description provided. | N/A |
