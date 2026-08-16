@@ -52,13 +52,17 @@ Penyediaan bahan kurikulum dan pelaksanaan projek pengkomputeran makmal sekolah 
 ## 3. Garis Masa Evolusi: Dari Makmal Sekolah ke DSOM NOSS (2004 ➔ 2026)
 
 ```mermaid
-timeline
-    title Garis Masa Evolusi Modul Manual Linux Malaysia
-    2004 : Penggubalan Modul ISL9 : Dihasilkan oleh panel BostonWeb Academy / DRB-HICOM untuk KPM berasaskan Red Hat 9.0 & GNU FDL
-    2004 - 2006 : Gelombang Latihan Lapangan : Pelaksanaan bengkel makmal sekolah & pemerkasaan komuniti oleh Harisfazillah Jamel & MOSC
-    2007 - 2015 : Era Pelan Induk OSS Sektor Awam : MAMPU melancarkan Rangka Kerja OSS Kerajaan; perluasan ke institusi latihan awam
-    2020 - 2024 : Digitalisasi & Pemetaan TVET : Jabatan Pembangunan Kemahiran (JPK) memformalkan Standard Kemahiran Pekerjaan Kebangsaan (NOSS)
-    2026 : Kelahiran Sovereign Markdown Palace : Pengarkiban sejarah 2004 & transformasi ke format DSOM moden (Ubuntu 26.04 / AlmaLinux 10 / Diátaxis)
+graph TD
+    Y2004["<b>2004: Penggubalan Modul ISL9</b><br/>Dihasilkan oleh panel BostonWeb Academy / DRB-HICOM untuk KPM (Red Hat 9.0 & GNU FDL)"]
+    Y2006["<b>2004 - 2006: Gelombang Latihan Lapangan</b><br/>Bengkel makmal sekolah & pemerkasaan komuniti oleh Harisfazillah Jamel & MOSC"]
+    Y2015["<b>2007 - 2015: Era Pelan Induk OSS Sektor Awam</b><br/>MAMPU melancarkan Rangka Kerja OSS Kerajaan & latihan sektor awam"]
+    Y2024["<b>2020 - 2024: Digitalisasi & Pemetaan TVET</b><br/>JPK memformalkan Standard Kemahiran Pekerjaan Kebangsaan (NOSS)"]
+    Y2026["<b>2026: Sovereign Markdown Palace (DSOM)</b><br/>Pengarkiban sejarah 2004 & transformasi ke Ubuntu 26.04 / AlmaLinux 10 / Diátaxis"]
+
+    Y2004 --> Y2006
+    Y2006 --> Y2015
+    Y2015 --> Y2024
+    Y2024 --> Y2026
 ```
 
 ---
