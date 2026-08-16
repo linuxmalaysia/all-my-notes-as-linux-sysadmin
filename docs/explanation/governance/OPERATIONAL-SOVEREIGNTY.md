@@ -1,4 +1,4 @@
----
+﻿---
 title: "Operational Sovereignty"
 description: "DSOM Concept document for Operational Sovereignty."
 type: "concept"
@@ -402,3 +402,7 @@ The following documents constitute the **Sovereign Document Stack** for any v6.1
 *Primary Repository: <https://gitlab.com/linuxmalaysia/skills-noss-malaysia-for-linux.git>*
 *Official Documentation: <https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/> and <https://malaysia-open-source-community.gitbook.io/deep-state-of-mind-dsom-protocol-for-my-ai>*
 *Original Manifesto: v5.x (retained intact) | v6.1 Addendum: 2026-03-10 | Palace v1.0 Addendum: 2026-04-08*
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

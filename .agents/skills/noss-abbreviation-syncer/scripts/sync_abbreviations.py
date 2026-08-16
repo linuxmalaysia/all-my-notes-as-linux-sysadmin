@@ -1,7 +1,12 @@
-import re
-import os
-import json
+"""Module operations for sync_abbreviations.py.
+
+This module provides internal functions and automation utilities for the
+sync_abbreviations.py skill/script, adhering to the DSOM architecture.
+"""
 import datetime
+import json
+import os
+import re
 
 # Define paths relative to the workspace root
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
@@ -87,9 +92,9 @@ This document contains the consolidated glossary of all institutional, standard,
     with open(V3_ABBREV_PATH, 'w', encoding='utf-8') as f:
         f.write(markdown_output)
 
-    print(f"✅ Extracted, verified, and purged 0-count acronyms.")
+    print("✅ Extracted, verified, and purged 0-count acronyms.")
     print(f"✅ Successfully synced {len(sorted_keys)} abbreviations to {V3_ABBREV_PATH}.")
-    print(f"✅ JSON dump ready for DOCX compiler.")
+    print("✅ JSON dump ready for DOCX compiler.")
 
 if __name__ == "__main__":
     run_sync()

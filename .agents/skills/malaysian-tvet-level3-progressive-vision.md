@@ -1,14 +1,12 @@
----
-name: malaysian-tvet-level3-progressive-vision
-description: >
-  Meta-governance framework redefining the persona, autonomy baseline, 
-  and industrial embedding of the Malaysian Level 3 TVET student. Mandatory 
-  validation protocol for authoring future-proof Work Activities.
-metadata:
-  version: 2.1.0
-  strategic_alignment: "National TVET Policy / Dual System Blueprint"
-  governance_protocol: DSOM v5.3 / agentskills.io
-  target_institutions: JPK / MTUN (e.g., UTEM)
+﻿---
+okf_version: 0.1
+type: documentation
+title: "malaysian-tvet-level3-progressive-vision"
+timestamp: "2026-08-16T09:21:28Z"
+topics: ["dsom", "noss-linux"]
+tags: ["documentation", "noss"]
+description: ">"
+resource: "file:///docs/malaysian-tvet-level3-progressive-vision.md"
 ---
 
 # Architectural Manifesto: Persona & Autonomy of the Malaysian Level 3 TVET Student
@@ -65,3 +63,7 @@ Before any `SKILL.md` file for all 29 Work Activities is committed into the `.ag
 1. **Does this WA contain elements of autonomy?** Yes, the apprentice must make operational decisions (e.g., *Investigate anomalies*, *Determine escalation routes*).
 2. **Is it an industrial hybrid?** Yes, procedures refer to real-world enterprise runbooks, not school drill questions.
 3. **Does it possess high economic value?** Yes, mastery of these tasks enables an 18-year-old apprentice to be directly absorbed into a premium-income job market.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

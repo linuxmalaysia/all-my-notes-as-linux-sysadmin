@@ -1,4 +1,4 @@
----
+﻿---
 title: "Git Release Workflow"
 description: "DSOM Guide document for Git Release Workflow."
 type: "guide"
@@ -71,3 +71,8 @@ Jika anda (Ejen AI) diminta untuk **mengemas kini** atau **mencipta keluaran bah
 3. Laksanakan komit menggunakan amalan *Semantic Commit*.
 4. Semak versi terkini, dan tambahkan nilai tag `git tag vX.Y.Z` dengan wajar (SemVer).
 5. Laksanakan `git archive` ke dalam folder `releases/`.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

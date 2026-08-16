@@ -1,4 +1,4 @@
----
+﻿---
 title: "Autonomous_Agent_Manifest"
 description: "DSOM Guide document for Autonomous_Agent_Manifest."
 type: "guide"
@@ -44,4 +44,4 @@ If you are unsure if a change breaks the "Clean Architecture" layers, STOP and a
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

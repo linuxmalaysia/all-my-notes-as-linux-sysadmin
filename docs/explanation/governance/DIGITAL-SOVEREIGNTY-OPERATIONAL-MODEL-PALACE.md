@@ -1,4 +1,4 @@
----
+﻿---
 title: "Digital Sovereignty Operational Model Palace"
 description: "DSOM Concept document for Digital Sovereignty Operational Model Palace."
 type: "concept"
@@ -135,3 +135,7 @@ In DSOM Protocol v6.2+, the Palace evolved from a static markdown tree (`.agent`
 
 1. **Open Knowledge Format (OKF) v0.1**: All `closet.md` files now require strict YAML frontmatter. This transforms the Palace from human-readable text into a machine-indexable database, allowing AI to instantly parse `type`, `title`, and `description` without reading the body text.
 2. **Self-Healing Agent Skills**: Automation scripts (`.sh`, `.ps1`) are fragile. Workspace v2 introduced `.agents/skills/`. Each skill is an OKF-compliant `SKILL.md` file that embeds its own operational logic. If a script is deleted, the AI reads the `SKILL.md` to rebuild it from scratch, achieving true self-recovery.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

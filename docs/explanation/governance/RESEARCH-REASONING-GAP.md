@@ -1,4 +1,4 @@
----
+﻿---
 title: "Research Reasoning Gap"
 description: "DSOM Concept document for Research Reasoning Gap."
 type: "concept"
@@ -188,3 +188,7 @@ This would close the gap entirely while maintaining full sovereignty and zero ve
 *Identified by: Harisfazillah Jamel (LinuxMalaysia) in session with Google Antigravity*
 *Inspired by and originated from: MemPalace research ([milla-jovovich/mempalace](https://github.com/milla-jovovich/mempalace))*
 *Protocol: DSOM v6.1 + Palace v1.0*
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

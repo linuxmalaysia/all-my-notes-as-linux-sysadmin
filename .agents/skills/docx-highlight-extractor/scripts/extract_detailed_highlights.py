@@ -1,10 +1,23 @@
+"""Module operations for extract_detailed_highlights.py.
+
+This module provides internal functions and automation utilities for the
+extract_detailed_highlights.py skill/script, adhering to the DSOM architecture.
+"""
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "defusedxml",
+# ]
+# ///
+
+import json
 import sys
 import zipfile
-import xml.etree.ElementTree as ET
-import json
+
+import defusedxml.ElementTree as ET
 
 if len(sys.argv) != 3:
-    print("Usage: uv run extract_detailed_highlights.py <input.docx> <output.json>")
+    print("Usage: uv run --with defusedxml extract_detailed_highlights.py <input.docx> <output.json>")
     sys.exit(1)
 
 docx_path = sys.argv[1]

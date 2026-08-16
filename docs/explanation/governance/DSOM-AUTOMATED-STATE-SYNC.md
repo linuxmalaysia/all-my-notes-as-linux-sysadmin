@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Automated State Sync"
 description: "DSOM Concept document for Dsom Automated State Sync."
 type: "concept"
@@ -34,3 +34,7 @@ This script calls an LLM (e.g. OpenAI) to review the PR diff and update `.agents
 
 - Ensure the `OPENAI_API_KEY` secret is available to the GitHub Action.
 - The state is persisted in `.agents/brain/current_state.dsom`.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

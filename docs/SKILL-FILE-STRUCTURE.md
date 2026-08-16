@@ -1,4 +1,4 @@
----
+﻿---
 title: "Skill File Structure"
 description: "DSOM Guide document for Skill File Structure."
 type: "guide"
@@ -210,3 +210,8 @@ Structure your skill to work well with git:
 - Separate logical concerns into different files
 - Keep files small for easier diffs
 - Use meaningful commit messages for skill updates
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

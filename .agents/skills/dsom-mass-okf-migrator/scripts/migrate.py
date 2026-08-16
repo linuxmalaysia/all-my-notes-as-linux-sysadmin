@@ -1,9 +1,23 @@
+"""Mass migrator script for OKF frontmatter compliance.
+
+This module recursively scans a source directory for markdown files,
+strips legacy frontmatter/footers, injects strict OKF v0.1 YAML metadata
+and the Sovereign dual-license footer, and writes the output to a destination directory.
+"""
+
 import os
 import shutil
 import sys
 from datetime import datetime
 
+
 def migrate_docs(src_dir, dst_dir):
+    """Executes the mass migration of markdown files.
+
+    Args:
+        src_dir (str): The root directory containing legacy markdown files.
+        dst_dir (str): The target directory to output compliant files.
+    """
     skip_files = ["PERSONALIZATION.md", "OKF-ADOPTION-GUIDE.md", "SKILL-FORMAT.md"]
 
     timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -12,7 +26,7 @@ def migrate_docs(src_dir, dst_dir):
     footer = f"""
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | {date_str}*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 """
 
     old_urls = [
@@ -21,6 +35,14 @@ def migrate_docs(src_dir, dst_dir):
     ]
 
     def strip_old_footer(content):
+        """Strips legacy footers from markdown content.
+
+        Args:
+            content (str): Raw markdown string.
+
+        Returns:
+            str: Markdown string with legacy footers removed.
+        """
         parts = content.split("---")
         if len(parts) >= 2:
             last_part = parts[-1]
@@ -29,6 +51,17 @@ def migrate_docs(src_dir, dst_dir):
         return content
 
     def process_markdown(src_path, dst_path, rel_path):
+        """Processes an individual markdown file for OKF compliance.
+
+        Reads the source file, updates legacy URLs, strips old footers,
+        extracts or generates descriptions, injects the new OKF frontmatter,
+        and appends the Sovereign Markdown Palace footer.
+
+        Args:
+            src_path (str): Absolute path to the source file.
+            dst_path (str): Absolute path to the target destination.
+            rel_path (str): Relative path used for the 'resource' tag.
+        """
         with open(src_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
 

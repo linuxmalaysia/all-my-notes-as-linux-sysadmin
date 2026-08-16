@@ -1,4 +1,4 @@
----
+﻿---
 title: "Evaluating Skills"
 description: "DSOM Guide document for Evaluating Skills."
 type: "guide"
@@ -311,3 +311,8 @@ Stop when you're satisfied with the results, feedback is consistently empty, or 
 <Tip>
   The [`skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) Skill automates much of this workflow — running evals, grading assertions, aggregating benchmarks, and presenting results for human review.
 </Tip>
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

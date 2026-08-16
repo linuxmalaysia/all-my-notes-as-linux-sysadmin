@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Adopt Dsom"
 description: "DSOM Guide document for Howto Adopt Dsom."
 type: "guide"
@@ -160,3 +160,7 @@ A: You skipped **Step 3**. The AI only knows what is in the `.agents/brain` file
 * [HOWTO: Migrate to Palace](HOWTO-MIGRATE-TO-PALACE.md)
 * [SOD Ritual](SOD-RITUAL.md)
 * [EOD Ritual](EOD-RITUAL.md)
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

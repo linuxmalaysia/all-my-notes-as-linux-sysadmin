@@ -1,4 +1,4 @@
----
+﻿---
 title: "Openwiki Integration Guide"
 description: "DSOM Concept document for Openwiki Integration Guide."
 type: "concept"
@@ -143,3 +143,7 @@ Requirements:
 * **OpenWiki Operational HOWTO:** [`docs/tools/HOWTO-OPENWIKI.md`](file:///docs/tools/HOWTO-OPENWIKI.md)
 * **OpenWiki Agent Skill:** [`SKILL.md`](file:///.agents/skills/openwiki-compiler/SKILL.md)
 * **DSOM Rule 27 (Native OpenWiki Emulator Mandate):** [`AGENTS.md`](file:///AGENTS.md)
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

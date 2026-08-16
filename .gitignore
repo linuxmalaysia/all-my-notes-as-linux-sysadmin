@@ -21,3 +21,18 @@ assets/locks/*.json     # Sekat fail data PII tersulit AES-256
 logs/
 chroma_db/
 sqlite_cache.db
+
+# Python / Node / MkDocs environments
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Build artifacts
+html/
+mkdocs_src/
+scratch/
+
+# Temporary files
+*.tmp

@@ -1,3 +1,8 @@
+/**
+ * @file example-generator.js
+ * @description Highly detailed JSDoc comments for example-generator.js.
+ * Provides module operations and internal functions.
+ */
 const fs = require('fs');
 const path = require('path');
 const { Document, Packer, Paragraph, Table, TableRow, AlignmentType, HeadingLevel } = require('docx');

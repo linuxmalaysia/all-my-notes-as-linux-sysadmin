@@ -1,0 +1,83 @@
+site_name: NOSS Linux Malaysia (DSOM)
+site_description: "Linux for NOSS Malaysia - Sovereign Markdown Palace"
+site_author: "Harisfazillah Jamel"
+docs_dir: "mkdocs_src"
+site_dir: "html"
+use_directory_urls: false
+
+copyright: >
+  All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+# Exclude unnecessary files and folders to prevent bloat
+exclude_docs: |
+  .venv/
+  .git/
+  node_modules/
+  html/
+  scratch/
+  scripts/
+  tests/
+  *.json
+  *.yml
+  *.ps1
+  *.py
+  .pytest_cache/
+  .ruff_cache/
+  releases/
+  package-lock.json
+
+theme:
+  name: material
+  logo: material/brain
+  favicon: material/brain
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Tukar ke Mod Gelap
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Tukar ke Mod Siang
+
+plugins:
+  - search
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.mark
+
+nav:
+  - "Laman Utama (NOSS Linux)": README.md
+  - "Mula Di Sini": START-HERE.md
+  - "Nota Rujukan (OpenWiki)":
+      - "Topik 1: Desktop & Asas": openwiki/topic-01-linux-desktop-and-basics.md
+      - "Topik 2: Pengurusan Pelayan": openwiki/topic-02-linux-server-management.md
+      - "Topik 3: Keselamatan & Hardening": openwiki/topic-03-linux-security-hardening.md
+      - "Topik 4: Skrip & Automasi": openwiki/topic-04-scripting-and-automation.md
+  - "Dokumen Tadbir Urus":
+      - "Polisi Keselamatan": docs/SECURITY.md
+      - "Notis & Penafian": docs/LEGAL-NOTICE.md
+      - "Garis Panduan Agen AI": AGENTS.md

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Creating Your First Skill"
 description: "DSOM Guide document for Creating Your First Skill."
 type: "guide"
@@ -204,3 +204,8 @@ Once your skill works well:
 - Learn about Skill File Structure
 - Read Writing Effective Skills
 - Explore the SKILL.md Format Reference
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

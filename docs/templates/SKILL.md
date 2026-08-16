@@ -1,4 +1,4 @@
----
+﻿---
 title: "Skill"
 description: "DSOM Guide document for Skill."
 type: "guide"
@@ -72,3 +72,8 @@ Jika pengguna meminta fail rujukan yang tiada dalam senarai:
 - **JANGAN** mereka cipta sejarah pekerjaan yang tiada dalam `references/`.
 - **JANGAN** membuat andaian tentang penguasaan teknologi tanpa merujuk fail JSON pensijilan.
 - **JANGAN** mendedahkan butiran peribadi terus kepada sembang web tanpa penyulitan (Rujuk Seksyen 1).
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

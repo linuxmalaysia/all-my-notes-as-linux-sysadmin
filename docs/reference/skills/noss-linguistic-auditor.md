@@ -1,4 +1,4 @@
----
+﻿---
 title: "Noss Linguistic Auditor"
 description: "DSOM Reference document for Noss Linguistic Auditor."
 type: "reference"
@@ -516,3 +516,8 @@ ENVIRONMENT Always turn off the lights.
 - **`noss-cp-docx-formatter`** — use after linguistic audit to regenerate CP documents
 - **`noss-cpc-docx-formatter`** — use after audit to regenerate CPC documents
 - **`template-noss-l3-skill`** — reference template for correct SKILL.md structure
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

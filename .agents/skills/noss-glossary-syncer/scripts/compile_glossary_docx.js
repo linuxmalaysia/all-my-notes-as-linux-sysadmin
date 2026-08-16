@@ -1,3 +1,8 @@
+/**
+ * @file compile_glossary_docx.js
+ * @description Highly detailed JSDoc comments for compile_glossary_docx.js.
+ * Provides module operations and internal functions.
+ */
 const fs = require("fs");
 const path = require("path");
 const {

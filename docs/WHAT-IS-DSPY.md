@@ -1,4 +1,4 @@
----
+﻿---
 title: "What Is Dspy"
 description: "DSOM Guide document for What Is Dspy."
 type: "guide"
@@ -193,3 +193,8 @@ They're complementary. Use Skills for developer workflows and DSPy for productio
 DSPy represents a paradigm shift from artisanal prompt crafting to systematic AI engineering. Combined with GEPA's efficient optimization, it's the foundation for building reliable LLM applications.
 
 The teams still hand-crafting prompts in 2025 are competing against people with better tools.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

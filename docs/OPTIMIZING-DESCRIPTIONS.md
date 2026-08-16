@@ -1,4 +1,4 @@
----
+﻿---
 title: "Optimizing Descriptions"
 description: "DSOM Guide document for Optimizing Descriptions."
 type: "guide"
@@ -207,3 +207,8 @@ The improved description is more specific about what the skill does (summary sta
 ## Next steps
 
 Once your skill triggers reliably, you'll want to evaluate whether it produces good outputs. See [Evaluating skill output quality](/skill-creation/evaluating-skills) for how to set up test cases, grade results, and iterate.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

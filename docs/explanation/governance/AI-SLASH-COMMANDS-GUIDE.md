@@ -1,4 +1,4 @@
----
+﻿---
 title: "Ai Slash Commands Guide"
 description: "DSOM Concept document for Ai Slash Commands Guide."
 type: "concept"
@@ -69,3 +69,7 @@ This document serves as the authoritative reference for invoking Antigravity sla
 **Sovereign Workspace Use Case:**
 - **Mass Auditing & Generation:** "Deploy a team of subagents. Have one agent draft the new architecture blueprint in `docs/governance`, while another agent simultaneously builds a Python script to validate the OKF YAML frontmatter across the repository."
 **Impact:** Massively scales concurrent read/audit/write operations across a distributed workspace using Git Worktree Isolation.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

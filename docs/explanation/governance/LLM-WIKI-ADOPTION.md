@@ -1,4 +1,4 @@
----
+﻿---
 title: "Llm Wiki Adoption"
 description: "DSOM Concept document for Llm Wiki Adoption."
 type: "concept"
@@ -78,3 +78,7 @@ If you agree with this analysis, we can immediately begin adopting the missing L
 1. **Creating the `palace-auditor` skill:** To allow me to "Lint" our knowledge base.
 2. **Creating the `dsom-knowledge-ingester` skill:** To handle the "Ingest" phase for external documents (like your NOSS integration).
 3. **Adding a "Knowledge Compounding" rule to `AGENTS.md`:** Instructing me to permanently save valuable chat analyses into the Palace.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

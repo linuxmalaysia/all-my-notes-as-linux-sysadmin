@@ -1,4 +1,4 @@
----
+﻿---
 title: "Ai Initialization Sequence"
 description: "DSOM Concept document for Ai Initialization Sequence."
 type: "concept"
@@ -57,3 +57,7 @@ When commanded to perform a complex action (like syncing a ledger, scaffolding a
 - `.agents/brain/` provides *what* state we are currently in. 
 - `docs/governance/` explains *why* we architect things a certain way. 
 - `.agents/skills/` teaches exactly *how* to execute those physical actions.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

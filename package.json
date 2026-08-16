@@ -1,0 +1,23 @@
+{
+  "name": "skills-noss",
+  "version": "1.0.0",
+  "description": "Projek ini merupakan sebuah pangkalan pengetahuan Sistem Operasi Linux yang tidak rasmi, disusun berdasarkan Standard Kemahiran Pekerjaan Kebangsaan (NOSS) Malaysia. Ia dibina di atas kerangka seni bina *exocortex* (memori luaran) yang mematuhi protokol **Deep State of Mind (DSOM) v0.1**.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}

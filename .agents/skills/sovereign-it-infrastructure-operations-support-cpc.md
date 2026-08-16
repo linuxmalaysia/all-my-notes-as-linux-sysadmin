@@ -1,4 +1,4 @@
----
+﻿---
 name: sovereign-it-infrastructure-operations-support-cpc
 description: >
   Refactored Level 3 Competency Profile Chart (CPC) Matrix. 
@@ -56,3 +56,8 @@ metadata:
 * **L3-C06-W03**: Verify backup status and perform basic recovery activities.
 * **L3-C06-W04**: Execute automation scripts and scheduled tasks.
 * **L3-C06-W05**: Maintain monitoring, backup and recovery documentation and reports.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

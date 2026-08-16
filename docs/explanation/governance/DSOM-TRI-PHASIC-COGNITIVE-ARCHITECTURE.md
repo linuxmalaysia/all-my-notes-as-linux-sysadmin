@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Tri Phasic Cognitive Architecture"
 description: "DSOM Concept document for Dsom Tri Phasic Cognitive Architecture."
 type: "concept"
@@ -147,3 +147,7 @@ The deployment of a full Tri-Phasic Mind should follow this progressive timeline
 * **SOP: Knowledge-First Discovery:** [`docs/governance/SOP-KNOWLEDGE-FIRST-DISCOVERY.md`](SOP-KNOWLEDGE-FIRST-DISCOVERY.md)
 * **AI Initialization Sequence:** [`docs/governance/AI-INITIALIZATION-SEQUENCE.md`](AI-INITIALIZATION-SEQUENCE.md)
 * **DSOM Token Performance Playbook:** [`docs/governance/DSOM-TOKEN-PERFORMANCE-PLAYBOOK.md`](DSOM-TOKEN-PERFORMANCE-PLAYBOOK.md)
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

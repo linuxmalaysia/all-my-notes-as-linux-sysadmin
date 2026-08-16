@@ -1,4 +1,4 @@
----
+﻿---
 title: "Legacy Linux"
 description: "DSOM Reference document for Legacy Linux."
 type: "reference"
@@ -60,3 +60,8 @@ operational commands and troubleshooting matrices are stored in modular referenc
 ## Level 4 Progression Pathway (Path of Knowledge)
 **Target Competency:** L4-CU06 (L4-C06-W04-helpdesk-api-integration)
 **Context Bridge:** Bridges manual ticketing and remote support tasks to API-driven incident dispatching and auto-triage.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

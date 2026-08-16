@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Build Sovereign Book"
 description: "DSOM Reference document for Howto Build Sovereign Book."
 type: "reference"
@@ -123,4 +123,4 @@ bash tools/build_sovereign_book.sh
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

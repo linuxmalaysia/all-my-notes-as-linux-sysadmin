@@ -1,4 +1,4 @@
----
+﻿---
 name: noss-wa-development-guideline
 description: >
   Operational standards, imperative syntax, level taxonomy, and quality perimeters
@@ -135,3 +135,8 @@ Every unit and activity successfully framed must be assigned a uniquely structur
 ## 🛠️ 6. Local WA Syntax Validation Automation Script (`scripts/wa-linter.py`)
 
 To ensure this document does not merely remain passive text, install the WA writing error eradication Python utility script within the `scripts/` folder, to be executed automatically before initiating a Git-Native commit.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

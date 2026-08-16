@@ -1,4 +1,4 @@
-# CP Format Reference — Annotated Structure
+﻿# CP Format Reference — Annotated Structure
 
 ## Document: CP-Level-3-Generated.docx
 
@@ -113,3 +113,8 @@ WORK ACTIVITIES (30%, bold) | WORK STEPS (35%, bold) | PERFORMANCE CRITERIA (35%
 | Non-bold override | `bold: false` in TextRun |
 | Heading | `new Paragraph({ text: "...", heading: HeadingLevel.HEADING_1 })` |
 | Page margin | `sections[0].properties.page.margin = { top:720, right:720, bottom:720, left:720 }` |
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

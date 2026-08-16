@@ -1,4 +1,4 @@
----
+﻿---
 okf_version: 0.1
 type: agent_skill
 name: tvet-element-weightage-auditor
@@ -75,3 +75,8 @@ When requested to review or generate an Element Content Weightage sheet:
 3. **Verify Gate G1:** Sum each column (OSH, SD, M&A, IT). Adjust values until every column strictly equals 100%.
 4. **Construct the NOTES block** validating Gate G2 with specific justifications.
 5. **Output the matrix** in the requested formats.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

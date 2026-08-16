@@ -1,4 +1,4 @@
----
+﻿---
 title: "Mcp_Server"
 description: "DSOM Reference document for Mcp_Server."
 type: "reference"
@@ -60,3 +60,7 @@ AI clients can execute these tools dynamically:
 - **mcp[cli]:** Model Context Protocol Python library.
 - **fastmcp:** Modern FastMCP helper wrapper.
 - **pyyaml:** YAML loader configuration parser.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

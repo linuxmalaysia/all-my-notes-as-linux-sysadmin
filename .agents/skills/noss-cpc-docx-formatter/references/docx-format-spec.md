@@ -1,4 +1,4 @@
-# CPC Format Reference — Annotated DOCX Structure
+﻿# CPC Format Reference — Annotated DOCX Structure
 
 ## Document: CPC-Level-3-Generated.docx
 
@@ -190,3 +190,8 @@ Row 6 (CU01 spacer):
 | WHITE  | `FFFFFF` | WA Titles (cols 2–5, name rows) + spacers |
 | GREY   | `EFEFEF` | Metadata label cells (Table 1 only) |
 | RED text | `FF0000` | All metadata values (Table 1 only) |
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,17 +1,24 @@
+"""Generates the OpenWiki Master Graph mapping Topics to CUs.
+
+This module reads all markdown topic files in the openwiki directory,
+extracts their metadata and mapped Competency Units (CUs), and outputs
+a Mermaid.js diagram and detailed table to openwiki/index.md.
+"""
+
 import os
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 
 OPENWIKI_DIR = "openwiki"
 OUTPUT_FILE = os.path.join(OPENWIKI_DIR, "index.md")
 
-timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-date_str = datetime.utcnow().strftime("%Y-%m-%d")
+timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 footer = f"""
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | {date_str}*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 """
 
 header = f"""---
@@ -38,6 +45,15 @@ graph TD
 """
 
 def extract_metadata(filepath):
+    """Extracts title, description, and Competency Unit (CU) from a topic file.
+
+    Args:
+        filepath (str): The absolute or relative path to the markdown file.
+
+    Returns:
+        dict: A dictionary containing 'title', 'desc', and 'cu' extracted from
+              the file's YAML frontmatter and body.
+    """
     meta = {"title": "", "desc": "", "cu": ""}
     with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
         content = f.read()
@@ -55,7 +71,7 @@ def extract_metadata(filepath):
     cu_matches = set(re.findall(r'(CU0[1-6])', body, re.IGNORECASE))
     
     if cu_matches:
-        meta['cu'] = list(cu_matches)[0].upper()
+        meta['cu'] = next(iter(cu_matches)).upper()
     else:
         # fallback from filename
         filename = os.path.basename(filepath)
@@ -66,6 +82,12 @@ def extract_metadata(filepath):
     return meta
 
 def generate_graph():
+    """Compiles the extracted topic data into a Mermaid graph and index table.
+
+    Iterates over all topic-*.md files in the openwiki directory, formats
+    the Mermaid graph nodes and relationships, builds a markdown table,
+    and writes the final assembled output to openwiki/index.md.
+    """
     topics = []
     
     for f in sorted(os.listdir(OPENWIKI_DIR)):

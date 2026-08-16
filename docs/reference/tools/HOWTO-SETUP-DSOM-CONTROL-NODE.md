@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Setup Dsom Control Node"
 description: "DSOM Reference document for Howto Setup Dsom Control Node."
 type: "reference"
@@ -124,4 +124,4 @@ The tool performs several persistent system modifications:
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Tvet Competency Weightage Auditor"
 description: "DSOM Reference document for Tvet Competency Weightage Auditor."
 type: "reference"
@@ -66,3 +66,8 @@ When requested to review a weightage sheet, execute this checklist:
 3. **If electives exist**, sum their parent weights and ensure the total is \(\le 30\%\).
 4. **Identify anomalies:** Flag any CUs or WAs with \(0\%\) weightage, non-integer values, or missing titles.
 5. **Output a clear pass/fail report** indicating the status of Gates G1 to G4.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

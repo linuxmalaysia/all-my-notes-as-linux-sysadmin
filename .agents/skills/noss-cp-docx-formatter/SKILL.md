@@ -1,4 +1,4 @@
----
+﻿---
 okf_version: 0.1
 type: agent_skill
 name: noss-cp-docx-formatter
@@ -308,3 +308,8 @@ This skill covers **CP only**. For related documents, use these companion skills
 > - Do not reference Kubernetes, Ansible, Terraform, or advanced orchestration
 > - Work Steps must be executable by an SPM-entry vocational trainee
 > - Do not introduce scripting logic beyond basic one-liner commands
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

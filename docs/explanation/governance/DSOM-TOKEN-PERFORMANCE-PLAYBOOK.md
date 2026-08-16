@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Token Performance Playbook"
 description: "DSOM Concept document for Dsom Token Performance Playbook."
 type: "concept"
@@ -223,4 +223,4 @@ Identify any `.agents/brain/` files exceeding 4,000 tokens and add them to the `
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

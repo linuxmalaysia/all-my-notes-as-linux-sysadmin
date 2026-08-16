@@ -1,4 +1,4 @@
----
+﻿---
 name: publish-to-blogger
 description: Converts a markdown artifact into a clean HTML format suitable for publishing on Blogger.com, injecting the mandatory Human-AI Synergy Statement and Repository Links.
 topics: [blogger, html, publish, markdown, blog]
@@ -37,3 +37,8 @@ Trigger this skill whenever the user asks to "prepare a blog post", "publish to 
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

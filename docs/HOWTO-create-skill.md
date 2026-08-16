@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Create Skill"
 description: "DSOM Guide document for Howto Create Skill."
 type: "guide"
@@ -516,3 +516,8 @@ Setiap mutasi fail wajib dikomit secara berasingan satu demi satu mengikut penga
 ---
 
 *Manual Spesifikasi Induk | Seni Bina Sovereign Markdown Palace v10.0 | Standard DBP Malaysia*
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

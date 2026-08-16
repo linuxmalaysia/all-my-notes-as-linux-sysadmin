@@ -1,7 +1,12 @@
+"""Module operations for inject.py.
+
+This module provides internal functions and automation utilities for the
+inject.py skill/script, adhering to the DSOM architecture.
+"""
 import os
 import sys
-import glob
 from datetime import datetime
+
 
 def get_last_modified_date(filepath):
     timestamp = os.path.getmtime(filepath)

@@ -1,6 +1,13 @@
+"""Builds the Diátaxis-compliant documentation structure.
+
+This module automates the reorganization of the docs/ directory into the
+four Diátaxis quadrants (tutorials, how-to, reference, explanation), applies
+Google OKF v0.1 YAML frontmatter, and generates required index files like
+llms.txt and SUMMARY.md.
+"""
+
 import os
 import shutil
-import re
 
 DOCS_DIR = "docs"
 SKILLS_DIR = os.path.join(".agents", "skills")
@@ -14,7 +21,13 @@ QUADRANTS = {
 }
 
 def init_quadrants():
-    for quad in QUADRANTS.keys():
+    """Initializes the four Diátaxis quadrants.
+
+    Creates the required directories (tutorials, how-to, reference, explanation)
+    and migrates non-conforming directories like 'governance' and 'tools' into
+    their appropriate quadrants.
+    """
+    for quad in QUADRANTS:
         os.makedirs(os.path.join(DOCS_DIR, quad), exist_ok=True)
     
     # Move governance and reference-architectures to explanation if they exist
@@ -32,6 +45,20 @@ def init_quadrants():
             shutil.move(src, dst)
 
 def get_yaml_template(title, description, doc_type, file_id, domain="AI", tier="L2-Operational", tags=None):
+    """Generates an OKF v0.1 compliant YAML frontmatter string.
+
+    Args:
+        title (str): The document title.
+        description (str): A brief description of the document.
+        doc_type (str): The Diátaxis quadrant type (concept, guide, reference, tutorial).
+        file_id (str): The unique file path identifier.
+        domain (str, optional): The operational domain. Defaults to "AI".
+        tier (str, optional): The context tier. Defaults to "L2-Operational".
+        tags (list, optional): List of tags. Defaults to ["dsom-protocol", "diataxis-quadrant"].
+
+    Returns:
+        str: A fully formatted YAML frontmatter string.
+    """
     tags_str = "\n".join([f'  - "{t}"' for t in (tags or ["dsom-protocol", "diataxis-quadrant"])])
     return f"""---
 title: "{title}"
@@ -51,12 +78,28 @@ layout: "default"
 """
 
 def strip_old_frontmatter(content):
+    """Strips existing YAML frontmatter from a markdown string.
+
+    Args:
+        content (str): The raw markdown content.
+
+    Returns:
+        str: The markdown content without its leading YAML block.
+    """
     parts = content.split("---")
     if len(parts) >= 3 and content.startswith("---"):
         return "---".join(parts[2:]).lstrip()
     return content
 
 def get_doc_type(filepath):
+    """Determines the Diátaxis document type based on the file path.
+
+    Args:
+        filepath (str): The path to the markdown file.
+
+    Returns:
+        str: The inferred document type ('tutorial', 'guide', 'reference', or 'concept').
+    """
     path_str = filepath.lower()
     if "tutorial" in path_str: return "tutorial"
     if "how-to" in path_str: return "guide"
@@ -65,6 +108,11 @@ def get_doc_type(filepath):
     return "guide"
 
 def process_existing_docs():
+    """Processes all existing markdown documents in the docs directory.
+
+    Replaces old frontmatter with the new strict OKF schema while preserving
+    the document body.
+    """
     for root, dirs, files in os.walk(DOCS_DIR):
         for file in files:
             if file.endswith(".md"):
@@ -84,6 +132,12 @@ def process_existing_docs():
                     f.write(new_frontmatter + "\n" + body)
 
 def generate_tool_references():
+    """Generates reference documents for all AI skills and scripts.
+
+    Iterates through the .agents/skills/ and scripts/ directories to create
+    individual markdown reference files in docs/reference/ for zero-context
+    LLM understanding.
+    """
     ref_dir = os.path.join(DOCS_DIR, "reference", "skills")
     os.makedirs(ref_dir, exist_ok=True)
     
@@ -108,7 +162,7 @@ def generate_tool_references():
     os.makedirs(script_dir, exist_ok=True)
     if os.path.exists(SCRIPTS_DIR):
         for script in os.listdir(SCRIPTS_DIR):
-            if script.endswith(".py") or script.endswith(".sh") or script.endswith(".js"):
+            if script.endswith((".py", ".sh", ".js")):
                 ref_path = os.path.join(script_dir, f"{script}.md")
                 file_id = ref_path.replace("\\", "/")
                 title = f"Script: {script}"
@@ -120,6 +174,11 @@ def generate_tool_references():
                     f.write(new_frontmatter + "\n" + body)
 
 def generate_summary():
+    """Generates the GitBook / mkdocs SUMMARY.md navigation file.
+
+    Builds a static Markdown link tree that complies with the Diátaxis
+    quadrant structure.
+    """
     summary_path = os.path.join(DOCS_DIR, "SUMMARY.md")
     content = """# Summary
 
@@ -143,6 +202,11 @@ def generate_summary():
         f.write(content)
 
 def generate_llmstxt():
+    """Generates the llms.txt index file.
+
+    Creates an optimized markdown index at the project root intended for
+    autonomous agent ingestion and navigation.
+    """
     llmstxt_path = "llms.txt"
     content = """# Project Name - DSOM AI Knowledge Base
 

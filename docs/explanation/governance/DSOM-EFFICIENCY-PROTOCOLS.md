@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Efficiency Protocols"
 description: "DSOM Concept document for Dsom Efficiency Protocols."
 type: "concept"
@@ -78,3 +78,7 @@ Explore the full Deep State of Mind (DSOM) framework and Sovereign Palace archit
 - **GitLab:** [linuxmalaysia/deep-state-of-mind-for-my-ai](https://gitlab.com/linuxmalaysia/deep-state-of-mind-for-my-ai)
 - **GitHub Pages:** [DSOM Protocol Documentation](https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/)
 - **GitBook:** [DSOM GitBook Documentation](https://malaysia-open-source-community.gitbook.io/deep-state-of-mind-dsom-protocol-for-my-ai)
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Upgrade Dsom"
 description: "DSOM Guide document for Howto Upgrade Dsom."
 type: "guide"
@@ -148,3 +148,7 @@ A: The context window might be stale. Start a **New Chat Session** and perform t
 * [SOD-RITUAL.md](SOD-RITUAL.md) — Step 1a: Ansible Palace SOD
 * [EOD-RITUAL.md](EOD-RITUAL.md) — Step 2a: Ansible Palace EOD
 * [GITOPS-AIOPS-ANSIBLE-STRATEGY.md](governance/GITOPS-AIOPS-ANSIBLE-STRATEGY.md)
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

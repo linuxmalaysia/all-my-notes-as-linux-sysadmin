@@ -1,5 +1,10 @@
-import sys
+"""Module operations for generate_detailed_md.py.
+
+This module provides internal functions and automation utilities for the
+generate_detailed_md.py skill/script, adhering to the DSOM architecture.
+"""
 import json
+import sys
 
 if len(sys.argv) != 3:
     print("Usage: uv run generate_detailed_md.py <input.json> <output.md>")

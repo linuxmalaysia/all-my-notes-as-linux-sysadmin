@@ -1,4 +1,4 @@
----
+﻿---
 title: "Ai Cognitive Twin Protocol"
 description: "DSOM Concept document for Ai Cognitive Twin Protocol."
 type: "concept"
@@ -306,3 +306,7 @@ eod-palace.yml).
 
 *Created by the DSOM Engineering Team | Template v3.0 | Aligned with DSOM Master Protocol v6.1 + Palace v1.0*
 *Last Updated: 2026-04-08 | Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)*
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

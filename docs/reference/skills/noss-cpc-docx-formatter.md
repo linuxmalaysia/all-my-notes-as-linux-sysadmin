@@ -1,4 +1,4 @@
----
+﻿---
 title: "Noss Cpc Docx Formatter"
 description: "DSOM Reference document for Noss Cpc Docx Formatter."
 type: "reference"
@@ -416,3 +416,8 @@ This skill covers **CPC only**. For related documents:
 > reflect the WA titles from the approved Level 3 profile files. Do not
 > introduce new WA titles, merge WAs, or alter codes without explicit
 > human approval from the principal maintainer.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

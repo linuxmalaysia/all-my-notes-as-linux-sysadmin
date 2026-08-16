@@ -1,4 +1,4 @@
----
+﻿---
 title: "Generate_Palace_Registry.Py"
 description: "DSOM Reference document for Generate_Palace_Registry.Py."
 type: "reference"
@@ -16,3 +16,7 @@ layout: "default"
 ---
 
 # Script: generate_palace_registry.py\n\nThis is a system script located at `scripts/generate_palace_registry.py`. Execute via `uv run` if python.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

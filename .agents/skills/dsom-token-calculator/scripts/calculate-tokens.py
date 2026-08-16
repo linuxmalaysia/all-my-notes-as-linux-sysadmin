@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+"""Module operations for calculate-tokens.py.
+
+This module provides internal functions and automation utilities for the
+calculate-tokens.py skill/script, adhering to the DSOM architecture.
+"""
 # ---
 # okf_version: 0.1
 # type: executable_script
@@ -15,6 +19,7 @@ import os
 import re
 import sys
 import time
+
 import tiktoken
 
 # Force UTF-8 stdout on Windows to handle special characters
@@ -126,7 +131,7 @@ def scan_path(target_path: str, verbose_sections: bool = False):
     if total_tokens >= GATE_THRESHOLD:
         print(f"[ACTION]  Directory total exceeds {GATE_THRESHOLD:,} tokens. Chunk reads; do NOT load directory wholesale.")
     else:
-        print(f"[ACTION]  Safe to load into active context.")
+        print("[ACTION]  Safe to load into active context.")
 
 if __name__ == "__main__":
     args = sys.argv[1:]

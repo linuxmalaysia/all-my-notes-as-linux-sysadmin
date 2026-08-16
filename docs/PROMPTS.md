@@ -1,4 +1,4 @@
----
+﻿---
 title: "Prompts"
 description: "DSOM Guide document for Prompts."
 type: "guide"
@@ -33,3 +33,8 @@ You are the Sovereign Metadata Guard. [cite_start]Your sole objective is to proc
 </CV_DATA>
 
 [cite_start]Provide the output formatted exactly under the Sovereign Markdown Palace v10.0 schema[cite: 105].
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

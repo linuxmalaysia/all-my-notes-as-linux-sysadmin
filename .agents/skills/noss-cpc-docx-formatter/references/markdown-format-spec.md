@@ -1,4 +1,4 @@
-# CPC Markdown Format Reference
+﻿# CPC Markdown Format Reference
 
 ## Purpose
 
@@ -83,3 +83,8 @@ and the expected output for the CPC in Markdown format.
 | Section codes | K62, 622 | (J), (620) — human-readable form |
 | Colours | Full colour fills | Not represented |
 | vMerge | Orange column rowspan | Not applicable |
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

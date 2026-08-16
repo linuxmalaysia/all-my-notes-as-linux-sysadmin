@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hub And Spoke Model"
 description: "DSOM Concept document for Hub And Spoke Model."
 type: "concept"
@@ -135,3 +135,7 @@ ls .agents/brain/member/
 3. **LDP Compliance:** The clear structure and command examples follow the **Linux Documentation Project** standards for technical manuals.
 
 ---
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

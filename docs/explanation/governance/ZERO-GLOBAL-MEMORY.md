@@ -1,4 +1,4 @@
----
+﻿---
 title: "Zero Global Memory"
 description: "DSOM Concept document for Zero Global Memory."
 type: "concept"
@@ -271,3 +271,7 @@ Without Zero-Global Memory, there is no mechanism to enforce any of this discipl
 | [DSOM-INGESTION-LATENCY-ARCHITECTURE.md](DSOM-INGESTION-LATENCY-ARCHITECTURE.md) | Empirical benchmarks: local OKF reads vs. remote RAG latency. |
 | [DSOM-EPISODIC-RECORD-TEMPLATE.md](../DSOM-EPISODIC-RECORD-TEMPLATE.md) | Canonical template for the session anchor serialisation format. |
 | [active_context_manifest.md](https://gitlab.com/linuxmalaysia/skills-noss-malaysia-for-linux.git/blob/main/.agents/brain/active_context_manifest.md) | OKF manifest bounding active session file scope. |
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Gitops Aiops Ansible Strategy"
 description: "DSOM Concept document for Gitops Aiops Ansible Strategy."
 type: "concept"
@@ -325,3 +325,7 @@ When starting a new project with DSOM, use this checklist to establish the three
 
 *Created by the DSOM Engineering Team | v2.0 | 2026-04-08*
 *Standard: UK English | Licensed under GPLv3*
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

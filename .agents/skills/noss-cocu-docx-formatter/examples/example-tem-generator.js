@@ -1,3 +1,8 @@
+/**
+ * @file example-tem-generator.js
+ * @description Highly detailed JSDoc comments for example-tem-generator.js.
+ * Provides module operations and internal functions.
+ */
 const fs = require('fs');
 const path = require('path');
 const { Document, Packer, Paragraph, Table, TableRow, AlignmentType, HeadingLevel, WidthType } = require('docx');

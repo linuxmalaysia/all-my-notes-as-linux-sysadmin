@@ -1,4 +1,4 @@
----
+﻿---
 title: "Sovereign Persona Template"
 description: "DSOM Guide document for Sovereign Persona Template."
 type: "guide"
@@ -82,4 +82,4 @@ description: "Core persona, linguistic DNA, and operational constraints for the 
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

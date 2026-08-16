@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Palace Sync"
 description: "DSOM Reference document for Howto Palace Sync."
 type: "reference"
@@ -118,3 +118,7 @@ The tool uses regex patterns to map files to Rooms:
 
 *Standard: DSOM For My AI Protocol v6.1 | Palace v1.0 | Harisfazillah Jamel*
 *Document Version: v1.0 | Created: 2026-04-08*
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

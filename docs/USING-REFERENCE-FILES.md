@@ -1,4 +1,4 @@
----
+﻿---
 title: "Using Reference Files"
 description: "DSOM Reference document for Using Reference Files."
 type: "reference"
@@ -248,3 +248,8 @@ Verify Claude actually reads your references when needed. If not, make the refer
 
 ### 4. Keep References Current
 When you update `SKILL.md`, check if references need updates too.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

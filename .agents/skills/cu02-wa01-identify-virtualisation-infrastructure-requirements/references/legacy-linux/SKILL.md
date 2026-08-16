@@ -1,4 +1,4 @@
----
+﻿---
 okf_version: 0.1
 type: legacy_reference_skill
 name: "[LEGACY] linux-l3-c02-w01"
@@ -54,3 +54,8 @@ operational commands and troubleshooting matrices are stored in modular referenc
 ## Level 4 Progression Pathway (Path of Knowledge)
 **Target Competency:** L4-CU02 (L4-C02-W02-ansible-vm-provisioning)
 **Context Bridge:** Bridges manual virtual machine creation to declarative, automated hypervisor provisioning via Ansible.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

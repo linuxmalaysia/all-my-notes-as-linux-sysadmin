@@ -1,4 +1,4 @@
----
+﻿---
 title: "Howto Palace Onboarding"
 description: "DSOM Guide document for Howto Palace Onboarding."
 type: "guide"
@@ -197,3 +197,7 @@ Then register it in `palace_registry.md`.
 ---
 *Document created: 2026-04-08 | Palace v1.0 | DSOM Protocol v6.1*
 *Author: Harisfazillah Jamel | Partner: Google Antigravity*
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

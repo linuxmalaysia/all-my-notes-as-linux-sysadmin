@@ -1,4 +1,4 @@
-# NOSS Linguistic Audit Examples
+﻿# NOSS Linguistic Audit Examples
 
 ## How to use this file
 
@@ -208,3 +208,8 @@ Use this table when checking if a criterion contains an approved passive verb.
 | created | loaded | | written |
 | | locked | | |
 | | logged | | |
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Best Practices"
 description: "DSOM Guide document for Best Practices."
 type: "guide"
@@ -96,3 +96,8 @@ For batch or destructive operations, have the agent create an intermediate plan 
 
 ### Bundling reusable scripts
 When iterating on a skill, compare the agent’s execution traces across test cases. If you notice the agent independently reinventing the same logic each run — building charts, parsing a specific format, validating output — that’s a signal to write a tested script once and bundle it in scripts/.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

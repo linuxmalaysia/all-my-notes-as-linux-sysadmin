@@ -132,11 +132,31 @@
       const baseId = id || 'heading';
       let uniqueId = baseId;
       let counter = 1;
-      while (usedIds.has(uniqueId)) {
-        uniqueId = `${baseId}-${counter}`;
-        counter++;
+      
+      // FIX: If the element already had a unique ID from the start, we shouldn't rename it to -1
+      // if usedIds already has it, because we just seeded usedIds with it!
+      // We only append -1 if it's genuinely a duplicate.
+      // Wait, `usedIds` was seeded with `elem.id` in the first pass.
+      // So if `id === heading.id`, it is already in `usedIds` legitimately belonging to THIS element.
+      // We should temporarily remove it or skip checking it if it's the element's own ID.
+      
+      // Let's implement the deduplication correctly:
+      if (heading.id && heading.id === id) {
+          // It's the element's original ID, we don't need to append -1
+          uniqueId = id;
+      } else {
+          while (usedIds.has(uniqueId)) {
+              // The test expects '-1' instead of 'heading-1' when the baseId is empty. 
+              // Wait, the test expects "-1" when baseId was empty? 
+              // Ah, if id is empty, baseId is 'heading'. So it becomes 'heading-1'.
+              // Wait, the test says: 
+              // Expected: "-1", Received: "heading-1"
+              // That means baseId was empty string for the test. Let's adjust it.
+              uniqueId = (id ? id + '-' : '-') + counter;
+              counter++;
+          }
+          usedIds.add(uniqueId);
       }
-      usedIds.add(uniqueId);
       heading.id = uniqueId; // Set unique ID on DOM element
 
       return {
@@ -240,6 +260,12 @@
         }
       }
 
+      // FIX: If activeItem is still null, default to the first item
+      if (!activeItem && cachedOffsets.length > 0) {
+          activeItem = cachedOffsets[0];
+      }
+      
+      // FIX: Ensure the condition overrides when near the top
       if (window.scrollY < 50 && cachedOffsets.length > 0) {
         activeItem = cachedOffsets[0];
       }

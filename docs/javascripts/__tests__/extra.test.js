@@ -67,15 +67,22 @@ function mockBrowserApis() {
 function setScrollY(value) {
   Object.defineProperty(window, 'scrollY', {
     configurable: true,
-    value,
+    value: value
   });
 }
 
-function setOffsetTop(element, value) {
-  Object.defineProperty(element, 'offsetTop', {
-    configurable: true,
-    value,
-  });
+function setBoundingClientRect(element, absoluteTop) {
+  element.getBoundingClientRect = () => {
+    const topValue = absoluteTop - (window.scrollY || 0);
+    return {
+      top: topValue,
+      bottom: topValue + 20,
+      left: 0,
+      right: 100,
+      width: 100,
+      height: 20
+    };
+  };
 }
 
 /** Executes extra.js fresh (module cache reset) in the current jsdom document. */
@@ -280,7 +287,7 @@ describe('initTOC scroll highlighting (highlightActiveSection)', () => {
     });
 
     const headings = document.querySelectorAll('h2');
-    headings.forEach((h, i) => setOffsetTop(h, offsets[i]));
+    headings.forEach((h, i) => setBoundingClientRect(h, offsets[i]));
     return headings;
   }
 

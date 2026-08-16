@@ -1,7 +1,12 @@
-import re
-import os
-import json
+"""Module operations for sync_glossary.py.
+
+This module provides internal functions and automation utilities for the
+sync_glossary.py skill/script, adhering to the DSOM architecture.
+"""
 import datetime
+import json
+import os
+import re
 
 # Define paths relative to the workspace root
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
@@ -118,7 +123,7 @@ This document provides standardized definitions for the core operational and tec
 
     print(f"Extracted {len(entries)} raw terms.")
     print(f"Purged zero-count terms. Final active glossary: {len(verified_entries)} terms.")
-    print(f"JSON dump ready for DOCX compiler.")
+    print("JSON dump ready for DOCX compiler.")
 
 if __name__ == "__main__":
     run_sync()

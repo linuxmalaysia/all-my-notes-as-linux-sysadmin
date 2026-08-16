@@ -1,4 +1,4 @@
----
+﻿---
 okf_version: 0.1
 type: agent_skill
 name: tvet-tem-auditor
@@ -75,3 +75,8 @@ When requested to review a TEM list, perform these steps:
 3. Verify that all numerical ratios conform to the standard set of values (**1:1**, **1:5**, **1:10**, **1:25**, or **AR**).
 4. Verify that general classroom fittings are excluded.
 5. Output a status report indicating if the list passes all four gates.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

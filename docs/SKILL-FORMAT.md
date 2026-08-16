@@ -1,4 +1,4 @@
----
+﻿---
 title: "Skill Format"
 description: "DSOM Guide document for Skill Format."
 type: "guide"
@@ -349,5 +349,5 @@ All OKF documents must include the official Sovereign Markdown Palace footer at 
 ```markdown
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | [DATE]*
-*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 ```

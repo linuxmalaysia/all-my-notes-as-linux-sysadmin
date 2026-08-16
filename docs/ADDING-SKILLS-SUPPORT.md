@@ -1,4 +1,4 @@
----
+﻿---
 title: "Adding Skills Support"
 description: "DSOM Guide document for Adding Skills Support."
 type: "guide"
@@ -348,3 +348,8 @@ Consider tracking which skills have been activated in the current session. If th
 This is an advanced pattern only supported by some clients. Instead of injecting skill instructions into the main conversation, the skill is run in a **separate subagent session**. The subagent receives the skill instructions, performs the task, and returns a summary of its work to the main conversation.
 
 This pattern is useful when a skill's workflow is complex enough to benefit from a dedicated, focused session.
+
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,7 +1,13 @@
+"""Module operations for apply_okf.py.
+
+This module provides internal functions and automation utilities for the
+apply_okf.py skill/script, adhering to the DSOM architecture.
+"""
+import argparse
 import os
 import re
-import argparse
 from datetime import datetime, timezone
+
 
 def get_okf_type(filepath):
     path_parts = filepath.replace('\\', '/').split('/')
