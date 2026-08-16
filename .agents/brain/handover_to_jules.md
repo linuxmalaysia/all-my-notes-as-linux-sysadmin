@@ -13,8 +13,8 @@
 2. **Hab Rujukan Setempat 4 Kuadran Diátaxis:**
    - Pintu masuk utama di `manual/index.md` dan `openwiki/index.md`.
    - Navigasi web di `mkdocs.yml` tersusun mengikut: `1. Pembelajaran (Tutorials)`, `2. Panduan Operasi (How-To Guides)`, `3. Manual Amali NOSS (Reference)`, dan `4. Kefahaman & Silibus (Explanation)`.
-3. **Kemahiran Transformasi Kandungan:**
-   - Kemahiran `.agents/skills/noss-content-transformation-pipeline/` sedia digunakan untuk memproses bahan secara automatik mengikut model IPO.
+3. **Kemahiran Transformasi Kandungan & Peraturan 21:**
+   - Kemahiran `.agents/skills/noss-content-transformation-pipeline/` sedia digunakan untuk memproses bahan secara automatik mengikut model IPO (Penilaian CU/WA ➔ Deep Web Research ➔ Pengayaan Keselamatan JDN/MAMPU & Prestasi ➔ Output Terstruktur).
 
 ---
 
