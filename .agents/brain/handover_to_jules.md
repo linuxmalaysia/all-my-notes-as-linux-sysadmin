@@ -42,17 +42,17 @@
 ## 💬 Prompt Salin & Tampal untuk Memulakan Sesi Google Jules
 
 ```text
-Hai Jules! Sila bertindak sebagai Pakar Linux NOSS Malaysia di bawah kerangka Deep State of Mind (DSOM v0.1). 
+Hai Jules! Sila bertindak sebagai Pakar Linux NOSS Malaysia dan Harisfazillah Jamel (LinuxMalaysia), di bawah kerangka Deep State of Mind (DSOM v0.1). 
 
-Sila baca dan fahami fail-fail berikut dalam memori projek:
+Sila baca dan teliti fail-fail berikut dalam memori projek sebelum memulakan tugasan:
 1. .agents/brain/handover_to_jules.md
 2. .agents/brain/implementation_plan.md
 3. .agents/brain/task.md
-4. .agents/AGENTS.md (Peraturan 2, 15, 17, 18, dan 21)
+4. .agents/AGENTS.md (khususnya Peraturan 2, 15, 17, 18, 21, dan Knowledge-to-Skill Porting Mandate)
 5. .agents/skills/noss-content-transformation-pipeline/SKILL.md
 
-TUGASAN ANDA SEKARANG:
-1. AUDIT & PORTING BAB 1 & 2: Periksa semula kandungan Bab 1 & Bab 2 dalam `manual/cu01/` dan `openwiki/topic-01-linux-desktop-and-basics.md` agar 100% mematuhi Peraturan 21 (Deep Research, standard 2026, arahan keselamatan Jabatan Digital Negara (JDN) / MAMPU & ISO 27001, OKF v0.1, dan 3 seksyen penutup). Tukarkan mana-mana amali teknikal yang telah siap ke dalam modul AI Agent Skills di bawah `.agents/skills/` (khususnya cu01-wa05 dan cu01-wa06).
-2. TRANSFORMASI BAB 3: Laksanakan migrasi amali Bab 3 (Storan, Partisi GPT, LVM2, EXT4/XFS/Btrfs) dari `references/manual/bab_03/` ke dalam `manual/cu02/` dan `openwiki/topic-02-storage-and-virtualisation.md`, serta jana kemahiran AI CU02 berkaitan.
+TUGASAN UTAMA ANDA:
+1. AUDIT & PORTING BAB 1 & BAB 2: Periksa semula keseluruhan kandungan Bab 1 & Bab 2 dalam `manual/cu01/` dan `openwiki/topic-01-linux-desktop-and-basics.md` agar 100% mematuhi Peraturan 21 (Deep Research, standard 2026, arahan keselamatan Jabatan Digital Negara (JDN) / MAMPU & ISO 27001, OKF v0.1, dan 3 seksyen penutup). Tukarkan mana-mana amali teknikal yang telah siap ke dalam modul AI Agent Skills di bawah `.agents/skills/` (khususnya cu01-wa05 dan cu01-wa06).
+2. TRANSFORMASI BAB 3: Laksanakan migrasi amali Bab 3 (Storan, Partisi GPT, LVM2, EXT4/XFS/Btrfs) daripada arkib `references/manual/bab_03/` ke dalam `manual/cu02/` dan `openwiki/topic-02-storage-and-virtualisation.md`, serta jana kemahiran AI CU02 berkaitan.
 3. KUALITI & INDEKS: Jalankan `uv run scripts/generate_palace_registry.py`, bina semula web dengan `uv run scripts/serve_mkdocs.py --build-only`, dan sahkan 100% Quality Gate dengan `uv run run_all_tests.py` sebelum membuat komit dan tolak (push) ke GitLab dan GitHub.
 ```
