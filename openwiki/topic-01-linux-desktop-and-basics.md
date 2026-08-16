@@ -28,7 +28,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 - Evolusi isirung: Linux 0.01 (1991) → Linux 6.14 LTS (2026, ~38 juta baris kod)
 - Mengapa Linux menguasai 96.4% pelayan awan dan 100% superkomputer dunia
 
-**📖 Baca Lanjut:** [palace/cu01/pengenalan-linux-dan-sejarah.md](../palace/cu01/pengenalan-linux-dan-sejarah.md)
+**📖 Baca Lanjut:** [manual/cu01/pengenalan-linux-dan-sejarah.md](../manual/cu01/pengenalan-linux-dan-sejarah.md)
 
 ### 2. Falsafah & Lesen GNU GPL
 - Perbezaan antara "perisian bebas" dan "sumber terbuka"
@@ -36,7 +36,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 - Hak pengguna di bawah perisian terbuka
 - Implikasi di Malaysia: Akta Hak Cipta 1987
 
-**📖 Baca Lanjut:** [palace/cu01/hakcipta-dan-pelesenan.md](../palace/cu01/hakcipta-dan-pelesenan.md)
+**📖 Baca Lanjut:** [manual/cu01/hakcipta-dan-pelesenan.md](../manual/cu01/hakcipta-dan-pelesenan.md)
 
 ### 3. Ekosistem Distribusi Linux 2026 (Piawaian Kanonik)
 - **Ubuntu 26.04 LTS "Quetzal"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
@@ -44,41 +44,41 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 - **Fedora 43**: Rujukan teknologi terkini (bleeding-edge workstation)
 - **Distribusi Khusus**: Kali Linux (keselamatan), Alpine Linux (kontena), Raspberry Pi OS (IoT)
 
-**📖 Baca Lanjut:** [palace/cu01/pecahan-linux-terkini.md](../palace/cu01/pecahan-linux-terkini.md)
+**📖 Baca Lanjut:** [manual/cu01/pecahan-linux-terkini.md](../manual/cu01/pecahan-linux-terkini.md)
 
 ### 4. Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI
 - Spesifikasi minimum & disyorkan (x86_64, ARM64)
 - Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
 - Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
 
-**📖 Baca Lanjut:** [palace/cu01/keperluan-perkakasan-dan-bios-uefi.md](../palace/cu01/keperluan-perkakasan-dan-bios-uefi.md)
+**📖 Baca Lanjut:** [manual/cu01/keperluan-perkakasan-dan-bios-uefi.md](../manual/cu01/keperluan-perkakasan-dan-bios-uefi.md)
 
 ### 5. Prosedur Pemasangan Sistem Operasi & Storan LVM
 - Langkah demi langkah pemasangan Ubuntu 26.04 LTS, AlmaLinux 10, dan Fedora 43
 - Skema pembahagian storan LVM (`/boot/efi`, `/`, `/var`, `/home`, `swap`)
 
-**📖 Baca Lanjut:** [palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md](../palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md)
+**📖 Baca Lanjut:** [manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md](../manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md)
 
 ### 6. Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 & MAMPU)
 - Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS
 - Pengurusan berbilang slot kunci (*multi-user key slots*) untuk pengguna dan pentadbir IT
 - Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) & Pekeliling MAMPU
 
-**📖 Baca Lanjut:** [palace/cu01/penyulitan-cakera-luks2-pejabat.md](../palace/cu01/penyulitan-cakera-luks2-pejabat.md)
+**📖 Baca Lanjut:** [manual/cu01/penyulitan-cakera-luks2-pejabat.md](../manual/cu01/penyulitan-cakera-luks2-pejabat.md)
 
 ### 7. Tugasan Pasca-Pemasangan, Pemacu Peranti & Hardening
 - Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
 - Pemasangan pemacu grafik proprietary Nvidia / AMD
 - Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
 
-**📖 Baca Lanjut:** [palace/cu01/pasca-pemasangan-dan-driver.md](../palace/cu01/pasca-pemasangan-dan-driver.md)
+**📖 Baca Lanjut:** [manual/cu01/pasca-pemasangan-dan-driver.md](../manual/cu01/pasca-pemasangan-dan-driver.md)
 
 ### 8. Soal Jawab (FAQ) & Direktori Perisian Alternatif
 - Soalan lazim pengguna baharu Linux
 - Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
 
-**📖 Baca Lanjut (FAQ):** [palace/cu01/soal-jawab-linux.md](../palace/cu01/soal-jawab-linux.md)
-**📖 Baca Lanjut (Direktori):** [palace/cu01/direktori-sumber-rujukan.md](../palace/cu01/direktori-sumber-rujukan.md)
+**📖 Baca Lanjut (FAQ):** [manual/cu01/soal-jawab-linux.md](../manual/cu01/soal-jawab-linux.md)
+**📖 Baca Lanjut (Direktori):** [manual/cu01/direktori-sumber-rujukan.md](../manual/cu01/direktori-sumber-rujukan.md)
 
 ---
 

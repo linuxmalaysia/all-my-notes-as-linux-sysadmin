@@ -76,7 +76,13 @@ nav:
       - "Topik 1: Desktop & Asas": openwiki/topic-01-linux-desktop-and-basics.md
       - "Topik 2: Pengurusan Pelayan": openwiki/topic-02-linux-server-management.md
       - "Topik 3: Keselamatan & Hardening": openwiki/topic-03-linux-security-hardening.md
-      - "Topik 4: Skrip & Automasi": openwiki/topic-04-scripting-and-automation.md
+  - "Manual NOSS Linux":
+      - "CU01 - Sistem Komputer & Desktop": manual/cu01/index.md
+      - "CU02 - Storan & Pemayaan": manual/cu02/index.md
+      - "CU03 - Pentadbiran Pelayan": manual/cu03/index.md
+      - "CU04 - Automasi & Sandaran": manual/cu04/index.md
+      - "CU05 - Keselamatan & Pengerasan": manual/cu05/index.md
+      - "CU06 - Troubleshooting & Sokongan": manual/cu06/index.md
   - "Panduan Operasi (How-To)":
       - "Penggunaan & Binaan HTML": docs/how-to/deploy-and-serve-html.md
       - "Audit Pematuhan OKF": docs/how-to/audit-and-apply-frontmatter.md

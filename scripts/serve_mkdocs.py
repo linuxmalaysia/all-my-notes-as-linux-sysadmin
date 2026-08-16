@@ -38,7 +38,7 @@ def prepare_docs_dir(root_dir: Path, build_dir: Path):
         build_dir.mkdir(parents=True)
         
     # Directories to junction
-    dirs_to_link = ['docs', 'openwiki', 'palace', '.agents', 'assets']
+    dirs_to_link = ['docs', 'openwiki', 'manual', '.agents', 'assets']
     for d in dirs_to_link:
         src = root_dir / d
         dest = build_dir / d

@@ -29,8 +29,8 @@ Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca 
 
 ## 🌟 Kenapa Linux NOSS & DSOM?
 
-- **Penyusunan Sistematik (NOSS)**: Pengetahuan Linux dipetakan terus kepada unit-unit kompetensi piawai industri.
-- **Pengurangan Token AI (DSOM)**: Penggunaan *OpenWiki* dan Loci (`palace/`) mengurangkan konteks yang perlu dimuatkan ke dalam tetingkap memori LLM.
+- **Penyusunan Sistematik (NOSS)**: Pengetahuan Linux dipetakan terus kepada unit-unit kompetensi piawai industri dalam `manual/`.
+- **Pengurangan Token AI (DSOM)**: Penggunaan *OpenWiki* dan Loci (`.agents/brain/wings/`) mengurangkan konteks yang perlu dimuatkan ke dalam tetingkap memori LLM.
 - **Tidak Bergantung kepada API Pihak Ketiga**: Semua maklumat berada dalam bentuk fail `.md` tempatan.
 - **Sovereign & Sulit**: Tiada kebergantungan kepada perkhidmatan pelayan awan untuk menyusun struktur silibus.
 

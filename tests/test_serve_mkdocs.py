@@ -217,13 +217,13 @@ class TestPrepareDocsDir:
         root_dir.mkdir()
         # Only create a subset of the expected directories.
         (root_dir / "docs").mkdir()
-        (root_dir / "palace").mkdir()
+        (root_dir / "manual").mkdir()
         build_dir = root_dir / "mkdocs_src"
 
         serve_mkdocs.prepare_docs_dir(root_dir, build_dir)
 
         assert _is_link_or_junction(build_dir / "docs")
-        assert _is_link_or_junction(build_dir / "palace")
+        assert _is_link_or_junction(build_dir / "manual")
         # Directories that were never created at the source should not
         # appear as broken links in the destination.
         assert not (build_dir / "openwiki").exists()
@@ -247,13 +247,13 @@ class TestPrepareDocsDir:
     def test_all_expected_dirs_linked_when_present(self, serve_mkdocs, tmp_path):
         root_dir = tmp_path / "root"
         root_dir.mkdir()
-        for d in ["docs", "openwiki", "palace", ".agents", "assets"]:
+        for d in ["docs", "openwiki", "manual", ".agents", "assets"]:
             (root_dir / d).mkdir()
         build_dir = root_dir / "mkdocs_src"
 
         serve_mkdocs.prepare_docs_dir(root_dir, build_dir)
 
-        for d in ["docs", "openwiki", "palace", ".agents", "assets"]:
+        for d in ["docs", "openwiki", "manual", ".agents", "assets"]:
             assert _is_link_or_junction(build_dir / d)
             assert (build_dir / d).resolve() == (root_dir / d).resolve()
 

@@ -37,7 +37,7 @@ Setelah menyelesaikan kemahiran ini, pelajar berupaya untuk:
 - Evolusi isirung dari 0.01 (1991) → 6.11 (2024)
 - Falsafah perisian bebas vs sumber terbuka (Free Software vs Open Source)
 
-**Nod Palace:** [pengenalan-linux-dan-sejarah.md](../../palace/cu01/pengenalan-linux-dan-sejarah.md)
+**Nod Palace:** [pengenalan-linux-dan-sejarah.md](../../manual/cu01/pengenalan-linux-dan-sejarah.md)
 
 ### Modul B: Lesen & Hak Cipta
 - GNU GPL v2 — Lesen isirung Linux
@@ -52,7 +52,7 @@ Setelah menyelesaikan kemahiran ini, pelajar berupaya untuk:
 - Keluarga SUSE: openSUSE Leap, Tumbleweed
 - Distribusi Khusus: Kali Linux, Alpine, Raspberry Pi OS
 
-**Nod Palace:** [pecahan-linux-terkini.md](../../palace/cu01/pecahan-linux-terkini.md)
+**Nod Palace:** [pecahan-linux-terkini.md](../../manual/cu01/pecahan-linux-terkini.md)
 
 ### Modul D: Linux dalam Konteks Malaysia
 - Dasar Sumber Terbuka Kerajaan Malaysia (OSS Policy 2001)
@@ -92,8 +92,8 @@ man linux
 
 | Nod | Pautan | Topik |
 |-----|--------|-------|
-| Sejarah Linux | [pengenalan-linux-dan-sejarah.md](../../palace/cu01/pengenalan-linux-dan-sejarah.md) | Linus, GNU, GPL |
-| Distribusi Terkini | [pecahan-linux-terkini.md](../../palace/cu01/pecahan-linux-terkini.md) | Ubuntu, Fedora, Debian |
+| Sejarah Linux | [pengenalan-linux-dan-sejarah.md](../../manual/cu01/pengenalan-linux-dan-sejarah.md) | Linus, GNU, GPL |
+| Distribusi Terkini | [pecahan-linux-terkini.md](../../manual/cu01/pecahan-linux-terkini.md) | Ubuntu, Fedora, Debian |
 | Pemasangan Desktop | [cu01-wa04](../cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) | Pemasangan OS |
 
 ---

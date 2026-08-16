@@ -71,7 +71,7 @@ Laman web dan dokumen yang dihasilkan daripada projek ini menyokong secara natif
 
 ```mermaid
 graph TD
-    MD[Fail Markdown Asal: docs/, palace/, openwiki/] --> BUILD[uv run scripts/serve_mkdocs.py --build-only]
+    MD[Fail Markdown Asal: docs/, manual/, openwiki/] --> BUILD[uv run scripts/serve_mkdocs.py --build-only]
     BUILD --> HTML[Direktori html/ Statik]
     HTML --> GHP[GitHub Pages]
     HTML --> GLP[GitLab Pages]
@@ -107,8 +107,9 @@ graph TD
 | Direktori | Peranan dalam DSOM | Kuadran Diátaxis / Fungsi |
 | :--- | :--- | :--- |
 | `docs/` | Dokumentasi rasmi projek | Mengandungi sub-direktori 4 kuadran Diátaxis (`tutorials/`, `how-to/`, `explanation/`, `reference/`). |
-| `palace/` | *Sovereign Markdown Palace* | Memori semantik nod-nod kemahiran Linux yang dipetakan mengikut Unit Kompetensi NOSS (`cu01/`, `cu02/`, dsb.). |
+| `manual/` | *Sovereign Manual NOSS* | Kandungan modul amali teknikal Linux yang dipetakan mengikut Unit Kompetensi NOSS (`cu01/` hingga `cu06/`). |
 | `openwiki/` | *Narrative Topic Indexes* | Indeks naratif utama mengikut topik silibus latihan TVET Malaysia. |
+| `.agents/brain/` | *Agent Memory & Spatial Palace* | Memori episodik (`task.md`, `walkthrough.md`) dan Memori Ruang Loci (`wings/`, `palace_registry.md`). |
 | `references/manual/` | *Raw Legacy Archive* | Arkib simpanan bahan mentah manual lama yang telah dibersihkan daripada penanda lapuk. |
 | `.agents/skills/` | *Executable AI Skills* | Kemahiran dan prosedur operasi standard untuk ejen AI melaksana tugasan autonomi. |
 | `html/` | *Static Web Output* | Hasil binaan laman web statik sedia-edar untuk pelayan web. |

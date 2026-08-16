@@ -182,7 +182,7 @@ Playbook ini menguruskan secara automatik penyalinan dokumen `html/`, pemasangan
 
 ## 6. Prosedur Mengemas Kini & Membina Semula HTML (Untuk Penulis/Penyumbang)
 
-Sekiranya anda telah menambah modul kemahiran baharu dalam `palace/`, menyunting `openwiki/`, atau mengubah dokumentasi `docs/`, bina semula folder `html/`:
+Sekiranya anda telah menambah modul kemahiran baharu dalam `manual/`, menyunting `openwiki/`, atau mengubah dokumentasi `docs/`, bina semula folder `html/`:
 
 ### A. Membina Semula HTML Statik
 ```bash

@@ -11,7 +11,7 @@ import os
 import pytest
 
 # Directories to scan
-TARGET_DIRS = ["docs/**/*.md", "openwiki/**/*.md", ".agents/skills/*/SKILL.md"]
+TARGET_DIRS = ["docs/**/*.md", "openwiki/**/*.md", "manual/**/*.md", ".agents/skills/*/SKILL.md"]
 EXCLUDED_FILES = ["README.md", "CHANGELOG.md", "HISTORY.md", "AGENTS.md", "SUMMARY.md"]
 
 def get_markdown_files():

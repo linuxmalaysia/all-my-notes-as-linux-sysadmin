@@ -41,7 +41,7 @@ Berasaskan spesifikasi rasmi [Diátaxis Framework](https://deep-state-of-mind-fo
 
 1. **Tutorials ([`docs/tutorials/`](docs/tutorials/)):** Panduan langkah demi langkah untuk pemula membina kemahiran praktikal pertama Linux.
 2. **How-To Guides ([`docs/how-to/`](docs/how-to/)):** Panduan berfokus matlamat (*problem-oriented recipes*) bagi menyelesaikan masalah dan tugasan operasi sebenar.
-3. **Reference ([`docs/reference/`](docs/reference/) & [`palace/`](palace/)):** Spesifikasi teknikal, jadual pemetaan CU/WA NOSS, dan perincian arahan tanpa naratif meleret.
+3. **Reference ([`docs/reference/`](docs/reference/) & [`manual/`](manual/)):** Modul silibus NOSS teknikal (CU01–CU06), spesifikasi teknikal, jadual pemetaan CU/WA, dan perincian arahan tanpa naratif meleret.
 4. **Explanation ([`docs/explanation/`](docs/explanation/) & [`openwiki/`](openwiki/)):** Penerangan teori, falsafah sumber terbuka (GPL), seni bina isirung, dan konteks industri.
 
 ---
