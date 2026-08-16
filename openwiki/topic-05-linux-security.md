@@ -1,14 +1,12 @@
 ---
-name: topic-05-linux-security
-description: Silibus keselamatan OS Linux (Kebenaran fail, Firewall, Polisi) dipetakan kepada NOSS CU05.
-tags:
-  - linux
-  - security
-  - cu05
-topics:
-  - Firewalls
-  - File Permissions
-  - Mandatory Access Control
+okf_version: 0.1
+type: documentation
+title: "topic-05-linux-security"
+timestamp: "2026-08-16T08:43:42Z"
+topics: ["security", "firewall", "cu05"]
+tags: ["linux", "security", "cu05"]
+description: "Silibus keselamatan OS Linux (Kebenaran fail, Firewall, Polisi) dipetakan kepada NOSS CU05."
+resource: "file:///openwiki/topic-05-linux-security.md"
 ---
 
 # Topik 5: Keselamatan Linux (CU05)
@@ -34,3 +32,7 @@ Keselamatan merangkumi sekatan pengguna, perlindungan sistem fail, dan dinding a
 Silibus ini memandu kemahiran Ejen AI berikut:
 - `cu05-wa01-perform-user-account-and-permission-audits`
 - `cu05-wa03-configure-client-firewall-profiles`
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*

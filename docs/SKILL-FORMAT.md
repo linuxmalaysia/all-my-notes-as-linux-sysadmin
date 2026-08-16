@@ -11,8 +11,14 @@ A `SKILL.md` file has two parts:
 
 ```yaml
 ---
-name: skill-name
-description: Brief description of what this skill does.
+okf_version: 0.1
+type: skill
+title: "Skill Name"
+timestamp: "2026-08-16T00:00:00Z"
+topics: ["linux", "networking"]
+tags: ["server", "security"]
+description: "Brief description of what this skill does."
+resource: "file:///SKILL.md"
 ---
 ```
 ```markdown
@@ -318,4 +324,13 @@ description that spans lines.
 description: >
   This is a long description
   that spans multiple lines.
+```
+
+## Sovereign Footer Formatting
+All OKF documents must include the official Sovereign Markdown Palace footer at the bottom of the file, reflecting the project's identity and dual-license status:
+
+```markdown
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | [DATE]*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
 ```

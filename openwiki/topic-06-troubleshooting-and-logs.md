@@ -1,15 +1,12 @@
 ---
-name: topic-06-troubleshooting-and-logs
-description: Silibus penyelesaian masalah, rangkaian, dan semakan log Linux dipetakan kepada NOSS CU06.
-tags:
-  - linux
-  - troubleshooting
-  - logs
-  - cu06
-topics:
-  - System Logs
-  - Network Troubleshooting
-  - Resource Monitoring
+okf_version: 0.1
+type: documentation
+title: "topic-06-troubleshooting-and-logs"
+timestamp: "2026-08-16T08:43:42Z"
+topics: ["troubleshooting", "logs", "cu06"]
+tags: ["linux", "troubleshooting", "logs", "cu06"]
+description: "Silibus penyelesaian masalah, rangkaian, dan semakan log Linux dipetakan kepada NOSS CU06."
+resource: "file:///openwiki/topic-06-troubleshooting-and-logs.md"
 ---
 
 # Topik 6: Penyelesaian Masalah & Log (CU06)
@@ -35,3 +32,7 @@ Topik terakhir ini memfokuskan kepada teknik merungkaikan masalah sistem (troubl
 Silibus ini memandu kemahiran Ejen AI berikut:
 - `cu06-wa02-handle-end-user-requests-and-incidents`
 - `cu06-wa07-resolve-system-anomalies-and-document-rca`
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*

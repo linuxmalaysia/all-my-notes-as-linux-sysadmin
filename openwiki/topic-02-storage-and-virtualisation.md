@@ -1,14 +1,12 @@
 ---
-name: topic-02-storage-and-virtualisation
-description: Silibus pengurusan storan dan mesin maya (KVM) Linux dipetakan kepada NOSS CU02.
-tags:
-  - linux
-  - storage
-  - virtualisation
-  - cu02
-topics:
-  - Disk Partitioning
-  - Virtual Machines
+okf_version: 0.1
+type: documentation
+title: "topic-02-storage-and-virtualisation"
+timestamp: "2026-08-16T08:43:42Z"
+topics: ["storage", "virtualisation", "cu02"]
+tags: ["linux", "storage", "virtualisation", "cu02"]
+description: "Silibus pengurusan storan dan mesin maya (KVM) Linux dipetakan kepada NOSS CU02."
+resource: "file:///openwiki/topic-02-storage-and-virtualisation.md"
 ---
 
 # Topik 2: Pengurusan Storan & Pengmayaan (CU02)
@@ -33,3 +31,7 @@ Topik ini meliputi pengurusan ruang storan keras (disk management) serta pengena
 Silibus ini adalah persediaan kepada kemahiran Ejen AI:
 - `cu02-wa02-install-type-2-hypervisor-platform`
 - `cu02-wa03-deploy-guest-virtual-machines-vm`
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*

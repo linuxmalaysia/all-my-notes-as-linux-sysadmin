@@ -1,13 +1,12 @@
 ---
-name: topic-01-linux-desktop-and-basics
-description: Silibus asas Sistem Operasi Linux (Desktop, FHS, APT/YUM) dipetakan kepada NOSS CU01.
-tags:
-  - linux
-  - desktop
-  - cu01
-topics:
-  - Operating System Fundamentals
-  - Basic Command Line
+okf_version: 0.1
+type: documentation
+title: "topic-01-linux-desktop-and-basics"
+timestamp: "2026-08-16T08:43:42Z"
+topics: ["linux-desktop", "cu01"]
+tags: ["linux", "desktop", "cu01"]
+description: "Silibus asas Sistem Operasi Linux (Desktop, FHS, APT/YUM) dipetakan kepada NOSS CU01."
+resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 ---
 
 # Topik 1: Pengenalan & Asas Meja Linux (CU01)

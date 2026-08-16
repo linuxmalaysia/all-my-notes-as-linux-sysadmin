@@ -1,14 +1,12 @@
 ---
-name: topic-03-linux-server-administration
-description: Silibus pentadbiran pelayan Linux (Apache, SSH, Samba) dipetakan kepada NOSS CU03.
-tags:
-  - linux
-  - server
-  - cu03
-topics:
-  - Web Server
-  - File Sharing
-  - Remote Access
+okf_version: 0.1
+type: documentation
+title: "topic-03-linux-server-administration"
+timestamp: "2026-08-16T08:43:42Z"
+topics: ["linux-server", "cu03"]
+tags: ["linux", "server", "cu03"]
+description: "Silibus pentadbiran pelayan Linux (Apache, SSH, Samba) dipetakan kepada NOSS CU03."
+resource: "file:///openwiki/topic-03-linux-server-administration.md"
 ---
 
 # Topik 3: Pentadbiran Pelayan Linux (CU03)
@@ -32,3 +30,7 @@ Pusat utama ekosistem Linux adalah pelayannya (Server). Topik ini menerangkan te
 Silibus ini memandu kemahiran Ejen AI berikut:
 - `cu03-wa04-perform-core-server-configurations`
 - `cu03-wa05-implement-server-roles-and-services`
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip)*
