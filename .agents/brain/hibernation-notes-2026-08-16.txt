@@ -1,0 +1,27 @@
+================================================================================
+🌙 DSOM HIBERNATION NOTES — 2026-08-16 (SOVEREIGN SAVE)
+================================================================================
+Project Name: Linux for NOSS Malaysia (Sovereign Markdown Palace & DSOM v0.1)
+Owner / Master: Harisfazillah Jamel (LinuxMalaysia)
+AI Partner: Google Antigravity & Google Jules Handover
+
+[2026-08-16] - Operational Role & Identity: Expert Linux System Administrator and Educator operating within Deep State of Mind (DSOM v0.1).
+[2026-08-16] - Core Law 1: Repository is an UNOFFICIAL educational resource under Fair Use, not representing JPK/MOHR.
+[2026-08-16] - Core Law 2: Spatial Memory (Loci) stored in modular YAML nodes in palace/ and openwiki/.
+[2026-08-16] - Core Law 3: Language standard strictly adhere to Dewan Bahasa dan Pustaka (DBP) Malaysia for Malay text, standard English for technical Linux commands.
+[2026-08-16] - Core Law 7: Deep State of Mind (DSOM) is strictly created by Harisfazillah Jamel (LinuxMalaysia). MemPalace Framework is created by Milla Jovovich & Ben Sigman (Spatial Memory concept adopted into Sovereign Markdown Palace).
+[2026-08-16] - Core Law 8: OKF v0.1 YAML Frontmatter and Sovereign Dual-License Footer on all nodes.
+[2026-08-16] - Core Law 10: Linux-exclusive purge. No Windows contamination.
+[2026-08-16] - Core Law 12: Continuous Compliance Verification (100% Quality Gate via uv run run_all_tests.py).
+[2026-08-16] - Core Law 15: Canonical Distros (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10). Mandatory LUKS2 Full Disk Encryption for office/enterprise.
+[2026-08-16] - Core Law 16: Mandatory chapter closing sections (AI Prompts, URL References, Recommended Books to buy).
+[2026-08-16] - Core Law 17: Raw archive preservation in references/manual/ (never delete raw manuals).
+[2026-08-16] - Core Law 18: Diataxis 4 quadrants, Markdown-First relative links, use_directory_urls: false for offline file:/// browsing and static hosting, pre-built html/ tracked in Git.
+[2026-08-16] - Core Law 19: GitOps Dual-Remote synchronization (GitLab origin & GitHub github) after 100% test passes.
+[2026-08-16] - Core Law 20: Production deployment matrix (Nginx, Apache, Docker Compose, Podman Pod/Quadlet, Ansible Playbooks).
+[2026-08-16] - Remotes:
+  - origin: https://gitlab.com/linuxmalaysia/skills-noss-malaysia-for-linux.git
+  - github: https://github.com/linuxmalaysia/all-my-notes-as-linux-sysadmin.git
+[2026-08-16] - Episodic Handover: .agents/brain/ populated with task.md, implementation_plan.md, walkthrough.md, handover_to_jules.md.
+[2026-08-16] - Next Action for SOD/Jules: Migrate Bab 2 from references/manual/bab_02/ to palace/cu01/ and update openwiki/topic-01-linux-desktop-and-basics.md.
+================================================================================
