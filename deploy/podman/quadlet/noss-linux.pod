@@ -1,0 +1,11 @@
+[Unit]
+Description=NOSS Linux Documentation Pod
+After=network-online.target
+
+[Pod]
+PodName=noss-linux-pod
+PublishPort=8080:80
+PublishPort=8081:81
+
+[Install]
+WantedBy=default.target

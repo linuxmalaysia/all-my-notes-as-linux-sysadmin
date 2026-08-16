@@ -1,0 +1,13 @@
+[Unit]
+Description=NOSS Linux Apache HTTPD Container
+After=network-online.target
+
+[Container]
+ContainerName=noss-apache
+Image=docker.io/library/httpd:alpine
+Pod=noss-linux.pod
+Volume=%h/skills-noss/html:/usr/local/apache2/htdocs:ro,z
+Volume=%h/skills-noss/deploy/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro,z
+
+[Install]
+WantedBy=default.target

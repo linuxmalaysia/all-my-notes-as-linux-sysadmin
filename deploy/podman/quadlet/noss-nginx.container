@@ -1,0 +1,13 @@
+[Unit]
+Description=NOSS Linux Nginx Web Server Container
+After=network-online.target
+
+[Container]
+ContainerName=noss-nginx
+Image=docker.io/library/nginx:alpine
+Pod=noss-linux.pod
+Volume=%h/skills-noss/html:/usr/share/nginx/html:ro,z
+Volume=%h/skills-noss/deploy/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro,z
+
+[Install]
+WantedBy=default.target

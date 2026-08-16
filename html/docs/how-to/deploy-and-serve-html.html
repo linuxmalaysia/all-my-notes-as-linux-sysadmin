@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Panduan langkah demi langkah cara menggunakan direktori html/ prabina secara terus selepas git pull serta prosedur mengemas kini dan membina semula laman web statik.">
+        <meta name="description" content="Panduan langkah demi langkah cara menggunakan direktori html/ prabina, melancarkan pelayan pengeluaran Nginx dan Apache menggunakan Docker Compose dan Podman Pod, serta prosedur binaan semula.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#panduan-penggunaan-pengemaskinian-tapak-web-html-statik" class="md-skip">
+        <a href="#panduan-penggunaan-kontena-pengehosan-tapak-web-html-statik" class="md-skip">
           Skip to content
         </a>
       
@@ -602,22 +602,161 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang" class="md-nav__link">
+  <a href="#2-pengehosan-kontena-docker-compose-nginx-apache" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)
+        2. Pengehosan Kontena: Docker Compose (Nginx &amp; Apache)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)">
+    <nav class="md-nav" aria-label="2. Pengehosan Kontena: Docker Compose (Nginx &amp; Apache)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-membina-semula-html-statik-production-build" class="md-nav__link">
+  <a href="#a-jalankan-nginx-lalai-pada-port-8080" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A. Membina Semula HTML Statik (Production Build)
+        A. Jalankan Nginx (Lalai pada port 8080)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-jalankan-apache-http-server-pada-port-8081" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Jalankan Apache HTTP Server (pada port 8081)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-jalankan-kedua-dua-pelayan-serentak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Jalankan Kedua-dua Pelayan Serentak
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-menghentikan-kontena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Menghentikan Kontena
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pengehosan-kontena-podman-pod-rootless-enterprise-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Pengehosan Kontena: Podman Pod (Rootless / Enterprise Linux)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Pengehosan Kontena: Podman Pod (Rootless / Enterprise Linux)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kaedah-1-menggunakan-podman-play-kube-pod-tunggal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kaedah 1: Menggunakan podman play kube (Pod Tunggal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kaedah-2-menggunakan-podman-systemd-quadlet-rootless-auto-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kaedah 2: Menggunakan Podman Systemd Quadlet (Rootless Auto-Start)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-konfigurasi-pelayan-hos-asli-bare-metal-nginx-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Konfigurasi Pelayan Hos Asli (Bare-Metal Nginx &amp; Apache)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Konfigurasi Pelayan Hos Asli (Bare-Metal Nginx &amp; Apache)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#konfigurasi-nginx-etcnginxconfdnoss-linuxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurasi Nginx (/etc/nginx/conf.d/noss-linux.conf)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfigurasi-apache-etchttpdconfdnoss-linuxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurasi Apache (/etc/httpd/conf.d/noss-linux.conf)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-membina-semula-html-statik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Membina Semula HTML Statik
       
     </span>
   </a>
@@ -641,49 +780,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-panduan-pengehosan-pelayan-pengeluaran-production-deployment" class="md-nav__link">
+  <a href="#6-pengesahan-kualiti-sebelum-komit-quality-gate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Panduan Pengehosan Pelayan Pengeluaran (Production Deployment)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Panduan Pengehosan Pelayan Pengeluaran (Production Deployment)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#konfigurasi-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Konfigurasi Nginx
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#konfigurasi-apache-http-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Konfigurasi Apache HTTP Server
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-pengesahan-kualiti-sebelum-komit-quality-gate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Pengesahan Kualiti Sebelum Komit (Quality Gate)
+        6. Pengesahan Kualiti Sebelum Komit (Quality Gate)
       
     </span>
   </a>
@@ -1106,22 +1206,161 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang" class="md-nav__link">
+  <a href="#2-pengehosan-kontena-docker-compose-nginx-apache" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)
+        2. Pengehosan Kontena: Docker Compose (Nginx &amp; Apache)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)">
+    <nav class="md-nav" aria-label="2. Pengehosan Kontena: Docker Compose (Nginx &amp; Apache)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-membina-semula-html-statik-production-build" class="md-nav__link">
+  <a href="#a-jalankan-nginx-lalai-pada-port-8080" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A. Membina Semula HTML Statik (Production Build)
+        A. Jalankan Nginx (Lalai pada port 8080)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-jalankan-apache-http-server-pada-port-8081" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Jalankan Apache HTTP Server (pada port 8081)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-jalankan-kedua-dua-pelayan-serentak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Jalankan Kedua-dua Pelayan Serentak
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-menghentikan-kontena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Menghentikan Kontena
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pengehosan-kontena-podman-pod-rootless-enterprise-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Pengehosan Kontena: Podman Pod (Rootless / Enterprise Linux)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Pengehosan Kontena: Podman Pod (Rootless / Enterprise Linux)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kaedah-1-menggunakan-podman-play-kube-pod-tunggal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kaedah 1: Menggunakan podman play kube (Pod Tunggal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kaedah-2-menggunakan-podman-systemd-quadlet-rootless-auto-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kaedah 2: Menggunakan Podman Systemd Quadlet (Rootless Auto-Start)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-konfigurasi-pelayan-hos-asli-bare-metal-nginx-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Konfigurasi Pelayan Hos Asli (Bare-Metal Nginx &amp; Apache)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Konfigurasi Pelayan Hos Asli (Bare-Metal Nginx &amp; Apache)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#konfigurasi-nginx-etcnginxconfdnoss-linuxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurasi Nginx (/etc/nginx/conf.d/noss-linux.conf)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfigurasi-apache-etchttpdconfdnoss-linuxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurasi Apache (/etc/httpd/conf.d/noss-linux.conf)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-membina-semula-html-statik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Membina Semula HTML Statik
       
     </span>
   </a>
@@ -1145,49 +1384,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-panduan-pengehosan-pelayan-pengeluaran-production-deployment" class="md-nav__link">
+  <a href="#6-pengesahan-kualiti-sebelum-komit-quality-gate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Panduan Pengehosan Pelayan Pengeluaran (Production Deployment)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Panduan Pengehosan Pelayan Pengeluaran (Production Deployment)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#konfigurasi-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Konfigurasi Nginx
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#konfigurasi-apache-http-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Konfigurasi Apache HTTP Server
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-pengesahan-kualiti-sebelum-komit-quality-gate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Pengesahan Kualiti Sebelum Komit (Quality Gate)
+        6. Pengesahan Kualiti Sebelum Komit (Quality Gate)
       
     </span>
   </a>
@@ -1211,74 +1411,125 @@
 
 
 
-<h1 id="panduan-penggunaan-pengemaskinian-tapak-web-html-statik">Panduan Penggunaan &amp; Pengemaskinian Tapak Web HTML Statik<a class="headerlink" href="#panduan-penggunaan-pengemaskinian-tapak-web-html-statik" title="Permanent link">&para;</a></h1>
-<p>Direktori <code>html/</code> di dalam repositori ini disediakan secara <strong>prabina (pre-built)</strong> dan dijejak terus di dalam Git. Ini bermakna sesiapa sahaja yang melakukan <code>git pull</code> atau <code>git clone</code> boleh terus membaca dan menggunakan laman web HTML yang lengkap serta-merta tanpa perlu memasang sebarang perisian binaan tambahan.</p>
+<h1 id="panduan-penggunaan-kontena-pengehosan-tapak-web-html-statik">Panduan Penggunaan, Kontena &amp; Pengehosan Tapak Web HTML Statik<a class="headerlink" href="#panduan-penggunaan-kontena-pengehosan-tapak-web-html-statik" title="Permanent link">&para;</a></h1>
+<p>Direktori <code>html/</code> di dalam repositori ini disediakan secara <strong>prabina (pre-built)</strong> dan dijejak terus di dalam Git. Ini bermakna sesiapa sahaja yang melakukan <code>git pull</code> atau <code>git clone</code> boleh terus membaca dan menggunakan laman web HTML yang lengkap serta-merta tanpa perlu memasang perisian pembina dokumentasi.</p>
+<p>Bagi persekitaran pengeluaran (<em>production</em>), repositori ini turut menyediakan fail konfigurasi siap guna untuk <strong>Docker Compose</strong> dan <strong>Podman Pod (Kube / Quadlet)</strong> bagi kedua-dua pelayan <strong>Nginx</strong> dan <strong>Apache HTTP Server</strong>.</p>
 <hr />
 <h2 id="1-penggunaan-terus-selepas-git-pull-tanpa-perlu-build">1. Penggunaan Terus Selepas <code>git pull</code> (Tanpa Perlu Build)<a class="headerlink" href="#1-penggunaan-terus-selepas-git-pull-tanpa-perlu-build" title="Permanent link">&para;</a></h2>
-<p>Sebaik sahaja anda memuat turun atau mengemas kini repositori ini:</p>
 <h3 id="kaedah-a-pembacaan-luar-talian-offline-local-file">Kaedah A: Pembacaan Luar Talian (Offline / Local File)<a class="headerlink" href="#kaedah-a-pembacaan-luar-talian-offline-local-file" title="Permanent link">&para;</a></h3>
-<p>Anda boleh terus membuka fail utama menggunakan pelayar web pilihan anda (Chrome, Firefox, Edge):
-- <strong>Windows File Explorer:</strong> Dwi-klik pada fail <code>html/index.html</code>.
-- <strong>Pelayar Web:</strong> Masukkan alamat <code>file:///D:/Users/LinuxMalaysia/Projects/skills-noss/html/index.html</code> (atau laluan folder tempatan anda).
-- Semua skrip CSS, JavaScript (<em>Material for MkDocs</em>), fon, dan gambar rajah Mermaid akan dimuatkan secara luar talian dengan sokongan mod siang/malam (<em>light/dark mode</em>).</p>
+<p>Anda boleh terus membuka fail utama menggunakan pelayar web (Chrome, Firefox, Edge):
+- <strong>Windows File Explorer / Linux GUI:</strong> Dwi-klik pada fail <code>html/index.html</code>.
+- <strong>Pelayar Web:</strong> Buka alamat <code>file:///laluan/ke/skills-noss/html/index.html</code>.
+- Semua CSS, JavaScript (<em>Material for MkDocs</em>), fon, dan gambar rajah Mermaid akan dimuatkan secara luar talian dengan sokongan mod siang/malam (<em>light/dark mode</em>).</p>
 <h3 id="kaedah-b-pengehosan-pantas-menggunakan-python">Kaedah B: Pengehosan Pantas Menggunakan Python<a class="headerlink" href="#kaedah-b-pengehosan-pantas-menggunakan-python" title="Permanent link">&para;</a></h3>
 <p>Jika anda ingin melayan laman web ini kepada peranti lain dalam rangkaian setempat (LAN):
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Dari direktori punca projek</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>html
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>html
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span>
 </span></code></pre></div>
-Buka pelayar web di <code>http://localhost:8080</code> atau <code>http://&lt;IP-Komputer&gt;:8080</code>.</p>
+Buka pelayar web di <code>http://localhost:8080</code>.</p>
 <hr />
-<h2 id="2-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang">2. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)<a class="headerlink" href="#2-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang" title="Permanent link">&para;</a></h2>
-<p>Sekiranya anda telah menambah nota kemahiran baharu dalam <code>palace/</code>, menyunting <code>openwiki/</code>, atau mengubah dokumentasi <code>docs/</code>, anda perlu membina semula direktori <code>html/</code>:</p>
-<h3 id="a-membina-semula-html-statik-production-build">A. Membina Semula HTML Statik (Production Build)<a class="headerlink" href="#a-membina-semula-html-statik-production-build" title="Permanent link">&para;</a></h3>
-<p>Jalankan skrip automasi Python UV:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>scripts/serve_mkdocs.py<span class="w"> </span>--build-only
+<h2 id="2-pengehosan-kontena-docker-compose-nginx-apache">2. Pengehosan Kontena: Docker Compose (Nginx &amp; Apache)<a class="headerlink" href="#2-pengehosan-kontena-docker-compose-nginx-apache" title="Permanent link">&para;</a></h2>
+<p>Fail konfigurasi <a href="../../docker-compose.yml"><code>docker-compose.yml</code></a> disediakan di direktori punca dengan konfigurasi pengeluaran bagi Nginx dan Apache:</p>
+<h3 id="a-jalankan-nginx-lalai-pada-port-8080">A. Jalankan Nginx (Lalai pada port 8080)<a class="headerlink" href="#a-jalankan-nginx-lalai-pada-port-8080" title="Permanent link">&para;</a></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>nginx
 </span></code></pre></div>
-* <strong>Apa yang berlaku:</strong> Skrip akan menyegerakkan nod memori, menghubungkan <em>junctions</em>, menjana fail HTML terkini ke dalam folder <code>html/</code>, dan menyuntik teks penafian rasmi secara automatik.</p>
+* <strong>Akses Laman Web:</strong> <code>http://localhost:8080</code>
+* <strong>Ciri-ciri Nginx:</strong> Pemampatan Gzip aktif, penimbalan aset statik (1 tahun), pengepala keselamatan (<em>Security Headers</em>), dan pengalihan 404.</p>
+<h3 id="b-jalankan-apache-http-server-pada-port-8081">B. Jalankan Apache HTTP Server (pada port 8081)<a class="headerlink" href="#b-jalankan-apache-http-server-pada-port-8081" title="Permanent link">&para;</a></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>apache
+</span></code></pre></div>
+* <strong>Akses Laman Web:</strong> <code>http://localhost:8081</code>
+* <strong>Ciri-ciri Apache:</strong> Dikonfigurasikan dengan <code>mod_deflate</code>, <code>mod_expires</code>, dan <code>mod_headers</code>.</p>
+<h3 id="c-jalankan-kedua-dua-pelayan-serentak">C. Jalankan Kedua-dua Pelayan Serentak<a class="headerlink" href="#c-jalankan-kedua-dua-pelayan-serentak" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div>
+<h3 id="d-menghentikan-kontena">D. Menghentikan Kontena<a class="headerlink" href="#d-menghentikan-kontena" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>down
+</span></code></pre></div>
+<hr />
+<h2 id="3-pengehosan-kontena-podman-pod-rootless-enterprise-linux">3. Pengehosan Kontena: Podman Pod (Rootless / Enterprise Linux)<a class="headerlink" href="#3-pengehosan-kontena-podman-pod-rootless-enterprise-linux" title="Permanent link">&para;</a></h2>
+<p>Untuk persekitaran Linux perusahaan seperti <strong>AlmaLinux 10</strong>, <strong>Fedora 43</strong>, atau <strong>RHEL 9</strong>, Podman disokong melalui format spesifikasi Kubernetes YAML dan Systemd Quadlet:</p>
+<h3 id="kaedah-1-menggunakan-podman-play-kube-pod-tunggal">Kaedah 1: Menggunakan <code>podman play kube</code> (Pod Tunggal)<a class="headerlink" href="#kaedah-1-menggunakan-podman-play-kube-pod-tunggal" title="Permanent link">&para;</a></h3>
+<p>Fail definisi Pod Kubernetes terletak di <a href="../../deploy/podman/pod-noss-linux.yml"><code>deploy/podman/pod-noss-linux.yml</code></a>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Melancarkan Podman Pod (Nginx pada port 8080, Apache pada port 8081)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>podman<span class="w"> </span>play<span class="w"> </span>kube<span class="w"> </span>deploy/podman/pod-noss-linux.yml
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. Semak status Pod dan kontena yang berjalan</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>podman<span class="w"> </span>pod<span class="w"> </span>ps
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>podman<span class="w"> </span>ps
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># 3. Menghentikan dan membuang Pod</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>podman<span class="w"> </span>play<span class="w"> </span>kube<span class="w"> </span>--down<span class="w"> </span>deploy/podman/pod-noss-linux.yml
+</span></code></pre></div>
+<h3 id="kaedah-2-menggunakan-podman-systemd-quadlet-rootless-auto-start">Kaedah 2: Menggunakan Podman Systemd Quadlet (Rootless Auto-Start)<a class="headerlink" href="#kaedah-2-menggunakan-podman-systemd-quadlet-rootless-auto-start" title="Permanent link">&para;</a></h3>
+<p>Salin fail-fail Quadlet di <code>deploy/podman/quadlet/</code> ke direktori perkhidmatan pengguna systemd:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Salin konfigurasi Quadlet ke direktori pengguna</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cp<span class="w"> </span>deploy/podman/quadlet/*<span class="w"> </span>~/.config/containers/systemd/
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Muat semula daemon systemd pengguna</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Mulakan perkhidmatan Pod NOSS Linux</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>noss-linux-pod.service
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Dayakan auto-start semasa boot</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>noss-linux-pod.service
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>loginctl<span class="w"> </span>enable-linger<span class="w"> </span><span class="nv">$USER</span>
+</span></code></pre></div>
+<hr />
+<h2 id="4-konfigurasi-pelayan-hos-asli-bare-metal-nginx-apache">4. Konfigurasi Pelayan Hos Asli (Bare-Metal Nginx &amp; Apache)<a class="headerlink" href="#4-konfigurasi-pelayan-hos-asli-bare-metal-nginx-apache" title="Permanent link">&para;</a></h2>
+<p>Jika anda memasang Nginx atau Apache terus pada sistem operasi hos (tanpa kontena):</p>
+<h3 id="konfigurasi-nginx-etcnginxconfdnoss-linuxconf">Konfigurasi Nginx (<code>/etc/nginx/conf.d/noss-linux.conf</code>)<a class="headerlink" href="#konfigurasi-nginx-etcnginxconfdnoss-linuxconf" title="Permanent link">&para;</a></h3>
+<p>Rujuk fail lengkap di <a href="../../deploy/nginx/nginx.conf"><code>deploy/nginx/nginx.conf</code></a>:
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">noss-linux.internal</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/skills-noss/html</span><span class="p">;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="kn">gzip</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="kn">gzip_types</span><span class="w"> </span><span class="s">text/plain</span><span class="w"> </span><span class="s">text/css</span><span class="w"> </span><span class="s">application/json</span><span class="w"> </span><span class="s">application/javascript</span><span class="w"> </span><span class="s">image/svg+xml</span><span class="p">;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="nv">$uri.html</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<h3 id="konfigurasi-apache-etchttpdconfdnoss-linuxconf">Konfigurasi Apache (<code>/etc/httpd/conf.d/noss-linux.conf</code>)<a class="headerlink" href="#konfigurasi-apache-etchttpdconfdnoss-linuxconf" title="Permanent link">&para;</a></h3>
+<p>Rujuk fail lengkap di <a href="../../deploy/apache/httpd.conf"><code>deploy/apache/httpd.conf</code></a>:
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>noss-linux.internal
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="s2">&quot;/var/www/skills-noss/html&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/skills-noss/html&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="nb">Options</span><span class="w"> </span>-Indexes<span class="w"> </span>+FollowSymLinks
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.html
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="nt">&lt;/Directory&gt;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nt">&lt;/VirtualHost&gt;</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="5-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang">5. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)<a class="headerlink" href="#5-prosedur-mengemas-kini-membina-semula-html-untuk-penulispenyumbang" title="Permanent link">&para;</a></h2>
+<p>Sekiranya anda telah menambah modul kemahiran baharu dalam <code>palace/</code>, menyunting <code>openwiki/</code>, atau mengubah dokumentasi <code>docs/</code>, bina semula folder <code>html/</code>:</p>
+<h3 id="a-membina-semula-html-statik">A. Membina Semula HTML Statik<a class="headerlink" href="#a-membina-semula-html-statik" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>uv<span class="w"> </span>run<span class="w"> </span>scripts/serve_mkdocs.py<span class="w"> </span>--build-only
+</span></code></pre></div>
 <h3 id="b-menjalankan-pelayan-pembangunan-interaktif-live-preview">B. Menjalankan Pelayan Pembangunan Interaktif (Live Preview)<a class="headerlink" href="#b-menjalankan-pelayan-pembangunan-interaktif-live-preview" title="Permanent link">&para;</a></h3>
-<p>Untuk melihat perubahan teks secara masa-nyata (<em>hot-reloading</em>) semasa menulis dokumen:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv<span class="w"> </span>run<span class="w"> </span>scripts/serve_mkdocs.py
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>uv<span class="w"> </span>run<span class="w"> </span>scripts/serve_mkdocs.py
 </span></code></pre></div>
 Pelayan tempatan akan dibuka secara automatik pada alamat <code>http://127.0.0.1:8000</code>.</p>
 <hr />
-<h2 id="3-panduan-pengehosan-pelayan-pengeluaran-production-deployment">3. Panduan Pengehosan Pelayan Pengeluaran (Production Deployment)<a class="headerlink" href="#3-panduan-pengehosan-pelayan-pengeluaran-production-deployment" title="Permanent link">&para;</a></h2>
-<h3 id="konfigurasi-nginx">Konfigurasi Nginx<a class="headerlink" href="#konfigurasi-nginx" title="Permanent link">&para;</a></h3>
-<p>Tambahkan blok pelayan (<em>server block</em>) berikut dalam konfigurasi Nginx anda:
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">noss-linux.internal</span><span class="p">;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/skills-noss/html</span><span class="p">;</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<h3 id="konfigurasi-apache-http-server">Konfigurasi Apache HTTP Server<a class="headerlink" href="#konfigurasi-apache-http-server" title="Permanent link">&para;</a></h3>
-<p>Tetapkan <code>DocumentRoot</code> ke dalam folder <code>html/</code>:
-<div class="language-apache highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>noss-linux.internal
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="s2">&quot;/var/www/skills-noss/html&quot;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/skills-noss/html&quot;</span><span class="nt">&gt;</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nb">Options</span><span class="w"> </span>Indexes<span class="w"> </span>FollowSymLinks
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">All</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">&lt;/Directory&gt;</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nt">&lt;/VirtualHost&gt;</span>
-</span></code></pre></div></p>
-<hr />
-<h2 id="4-pengesahan-kualiti-sebelum-komit-quality-gate">4. Pengesahan Kualiti Sebelum Komit (Quality Gate)<a class="headerlink" href="#4-pengesahan-kualiti-sebelum-komit-quality-gate" title="Permanent link">&para;</a></h2>
+<h2 id="6-pengesahan-kualiti-sebelum-komit-quality-gate">6. Pengesahan Kualiti Sebelum Komit (Quality Gate)<a class="headerlink" href="#6-pengesahan-kualiti-sebelum-komit-quality-gate" title="Permanent link">&para;</a></h2>
 <p>Berasaskan <strong>Peraturan 12 &amp; 19 Perlembagaan AI DSOM</strong>, setelah membina semula fail HTML, sentiasa jalankan suite ujian penuh dan komit perubahan:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Jalankan ujian pematuhan 100%</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>uv<span class="w"> </span>run<span class="w"> </span>run_all_tests.py
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. Rekodkan kemas kini ke dalam Git</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>git<span class="w"> </span>add<span class="w"> </span>html/<span class="w"> </span>docs/<span class="w"> </span>openwiki/<span class="w"> </span>palace/
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs(html): rebuild static site distribution files&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 1. Jalankan ujian pematuhan 100%</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>uv<span class="w"> </span>run<span class="w"> </span>run_all_tests.py
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 2. Rekodkan kemas kini ke dalam Git</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>git<span class="w"> </span>add<span class="w"> </span>-A
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs(deploy): update production deployment configs and rebuilt HTML&quot;</span>
 </span></code></pre></div></p>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
