@@ -1,7 +1,10 @@
-# Sovereign Markdown Palace AI Agents
+# Sovereign Markdown Palace: Linux NOSS Malaysia (DSOM)
 
-Projek ini merupakan sebuah kerangka seni bina *exocortex* (memori luaran) berasaskan format Reka Letak Memori Ruang (*Spatial Memory Layout* / Loci) bagi pengurusan modal kognitif dan kerjaya. Ia dikhususkan untuk penggunaan lancar bersama mana-mana ejen AI seperti Claude Code, Cursor, Windsurf, dan Aider.
+Projek ini merupakan sebuah pangkalan pengetahuan Sistem Operasi Linux yang tidak rasmi, disusun berdasarkan Standard Kemahiran Pekerjaan Kebangsaan (NOSS) Malaysia. Ia dibina di atas kerangka seni bina *exocortex* (memori luaran) yang mematuhi protokol **Deep State of Mind (DSOM) v0.1**.
 
+Susun atur spatial ini direka khusus untuk kecekapan Ejen AI (seperti Claude, Cursor, Windsurf, Jules) mengekstrak dan membaca silibus teknikal tanpa membebankan konteks memori.
+
+> **PENAFIAN PENTING**: Repositori ini adalah TIDAK RASMI dan dicipta untuk tujuan pengetahuan / pembelajaran sahaja. Ia tidak mewakili Jabatan Pembangunan Kemahiran (JPK) atau Kementerian Sumber Manusia Malaysia (MOHR). Sila rujuk `LEGAL-NOTICE.md`.
 ## Rujukan Teras (References)
 
 Pembangunan senibina dan standard ejen ini merujuk secara langsung kepada sumber-sumber utama berikut yang membina ekosistem *Agent Skills*:
@@ -14,9 +17,12 @@ Pembangunan senibina dan standard ejen ini merujuk secara langsung kepada sumber
 
 ## Maklumat Projek (Project Info)
 
+- [`START-HERE.md`](START-HERE.md): **Titik Masuk Utama (Entry Point)**. Sila baca ini dahulu.
+- [`llms.txt`](llms.txt): Peta tapak (sitemap) khusus untuk perangkak AI (AI crawler).
 - [`HISTORY.md`](HISTORY.md): Menjejaki evolusi dan falsafah awal pembinaan projek ini.
 - [`CHANGELOG.md`](CHANGELOG.md): Nota keluaran (Release Notes) rasmi bagi semua versi.
-- [`NOTICE.md`](NOTICE.md): **[PENTING]** Notis atribusi perundangan, hak cipta pengarang asal, dan penafian ke atas rujukan pihak ketiga (seperti OpenSkills & AgentSkills).
+- [`LEGAL-NOTICE.md`](LEGAL-NOTICE.md): **[PENTING]** Penafian NOSS dan ketidakrasmian kandungan.
+- [`NOTICE.md`](NOTICE.md): Hak cipta pengarang asal, dan penafian ke atas rujukan pihak ketiga (seperti DSOM, OpenSkills & AgentSkills).
 
 ## Struktur Dokumentasi (Manual)
 
