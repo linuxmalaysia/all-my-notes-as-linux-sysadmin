@@ -12,27 +12,24 @@
   - Penstrukturan navigasi web `mkdocs.yml` mengikut 4 kuadran Diátaxis rasmi.
   - Dokumentasi seni bina IPO (`docs/explanation/workflow-input-process-output.md`) dan panduan amali (`docs/how-to/execute-noss-content-transformation.md`).
   - Kemahiran Ejen AI: `noss-content-transformation-pipeline` (`.agents/skills/noss-content-transformation-pipeline/SKILL.md`).
-- [x] **Pemaktuban Peraturan 21 Perlembagaan AI:**
+- [x] **Pemaktuban Peraturan 21 Perlembagaan AI & Penjajaran JDN:**
   - Penilaian & Pemetaan Silibus CU/WA.
   - Penyelidikan Mendalam (*Deep Web Research*) untuk data terkini 2026.
-  - Pengayaan berterusan protokol keselamatan (ISO/IEC 27001, CIS Benchmarks, MAMPU) dan penalaan prestasi (`sysctl`, `tuned`, eBPF).
+  - Pengayaan berterusan protokol keselamatan (**Jabatan Digital Negara (JDN) / MAMPU**, ISO/IEC 27001, CIS Benchmarks) dan penalaan prestasi (`sysctl`, `tuned`, eBPF).
   - 100% Quality Gate tercapai (810/810 Python tests, 38/38 Jest tests).
 
 ---
 
-## 🎯 Roadmap Fasa Seterusnya: Migrasi Silibus Manual ke NOSS (manual/)
-- [x] **Bab 2 (Pemasangan & Konfigurasi Linux Desktop/Server - Selesai):**
-  - [x] 4 nod memori dimodenkan dalam `manual/cu01/` (`keperluan-perkakasan-dan-bios-uefi.md`, `prosedur-pemasangan-ubuntu-almalinux.md`, `penyulitan-cakera-luks2-pejabat.md`, `pasca-pemasangan-dan-driver.md`).
-  - [x] Kemas kini `openwiki/topic-01-linux-desktop-and-basics.md`.
-- [ ] **Bab 3 (Pengurusan Storan, Partisi & Sistem Fail Linux - SASARAN SETERUSNYA):**
+## 🎯 Roadmap Fasa Seterusnya untuk Google Jules
+- [ ] **Fasa 1: Audit & Semakan Semula Bab 1 & Bab 2 (manual/cu01/):**
+  - [ ] Sahkan pematuhan penuh Bab 1 & 2 kepada proses IPO dan Peraturan 21.
+  - [ ] Port/kemas kini modul ilmu yang telah siap kepada AI Agent Skills di `.agents/skills/` (khususnya `cu01-wa05` pemacu/aplikasi dan `cu01-wa06` rangkaian endpoint).
+- [ ] **Fasa 2: Migrasi Silibus Bab 3 (Pengurusan Storan, Partisi & Sistem Fail):**
   - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_03/` ke `manual/cu02/` (Partisi GPT/fdisk/parted, LVM2, EXT4, XFS, Btrfs).
-  - [ ] Serapkan protokol keselamatan (LUKS2 storage encryption) dan penalaan prestasi I/O (`tuned`, `sysctl`).
+  - [ ] Tukar kandungan Bab 3 kepada kemahiran AI CU02 (`cu02-wa01` hingga `cu02-wa04`).
   - [ ] Kemas kini `openwiki/topic-02-storage-and-virtualisation.md`.
-- [ ] **Bab 4 (Pentadbiran Pengguna, Hak Akses & Keselamatan Asas):**
-  - [ ] Migrasi kandungan `references/manual/bab_04/` ke `manual/cu01/` & `manual/cu05/`.
-- [ ] **Bab 5 (Pengurusan Rangkaian & Perkhidmatan Pelayan Asas):**
-  - [ ] Migrasi kandungan `references/manual/bab_05/` ke `manual/cu03/` (SSH, DNS, DHCP, Web).
-- [ ] **Bab 6 (Automasi Skrip Shell & Penyelenggaraan Sistem):**
-  - [ ] Migrasi kandungan `references/manual/bab_06/` ke `manual/cu04/` & `manual/cu06/`.
-- [ ] **Binaan Semula HTML & Ujian Kualiti (Rule 12 & 18):**
-  - [ ] Jalankan `uv run scripts/serve_mkdocs.py --build-only` dan `uv run run_all_tests.py` sebelum setiap komit.
+- [ ] **Fasa 3: Kemas Kini Indeks Palace & Quality Gate (Rule 8, 12, 18):**
+  - [ ] `uv run scripts/generate_palace_registry.py`
+  - [ ] `uv run scripts/serve_mkdocs.py --build-only`
+  - [ ] `uv run run_all_tests.py`
+  - [ ] Komit dan penolakan dwi-remote ke GitLab (`origin`) dan GitHub (`github`).

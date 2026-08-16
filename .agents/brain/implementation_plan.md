@@ -1,69 +1,60 @@
-# 📐 Pelan Pelaksanaan Google Jules: Migrasi Silibus Bab 3 (Pengurusan Storan, Partisi & Sistem Fail ke manual/cu02/)
+# 📐 Pelan Pelaksanaan Google Jules: Audit Bab 1 & 2, Penukaran Ilmu ke Agent Skills, dan Migrasi Bab 3
 
-## 1. Objektif Utama
-Memindahkan, memodenkan, menyelidik secara mendalam (*Deep Web Research*), dan memetakan kandungan arkib manual lama **Bab 3 (`references/manual/bab_03/`)** ke dalam direktori **`manual/cu02/`** dan **`openwiki/topic-02-storage-and-virtualisation.md`** berlandaskan standard **NOSS Level 3 (CU02 - Storan & Hipervisor Pemayaan)**, piawaian kanonik Linux 2026, 4 kuadran Diátaxis, dan arahan keselamatan **Jabatan Digital Negara (JDN) / MAMPU**.
-
----
-
-## 2. Garis Panduan Transformasi & Pematuhan Perlembagaan AI
-
-### A. Kitaran Mandatori Peraturan 21 (Deep Research & CU/WA Mapping)
-1. **Penilaian Silibus:** Memetakan bahan partisi, sistem fail, dan pengurusan volum kepada:
-   - `CU02-WA01`: Keperluan Infrastruktur Pemayaan & Storan.
-   - `CU02-WA02` hingga `CU02-WA04`: Pengurusan storan bare-metal, partisi, volum maya, dan sandaran fail.
-2. **Penyelidikan Mendalam (*Deep Web Research*):**
-   - Rujuk dokumentasi rasmi kernel Linux ([kernel.org](https://docs.kernel.org/)), [Ubuntu 26.04 Docs](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), [systemd.io](https://systemd.io/), dan PRPM DBP.
-   - Sahkan sintaks arahan CLI terkini (`parted`, `gdisk`, `lsblk`, `pvcreate`, `vgcreate`, `lvcreate`, `mkfs.ext4`, `mkfs.xfs`, `mkfs.btrfs`, `cryptsetup`).
-3. **Pengayaan Keselamatan & Penalaan Prestasi:**
-   - Masukkan prosedur penyulitan volum storan menggunakan **LUKS2** (ISO/IEC 27001 & JDN/MAMPU).
-   - Penalaan I/O cakera, scheduler (`bfq`/`none` untuk NVMe), dan parameter kernel `sysctl` (`vm.dirty_ratio`, `vm.dirty_background_ratio`).
-4. **Penyusunan Output Terstruktur:**
-   - Hasilkan nod modular di `manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md` dan kemas kini nod WA berkaitan di `manual/cu02/`.
-
-### B. Piawaian Edaran Linux Moden 2026 (Rule 15)
-- **Rujukan Desktop/Latihan:** Ubuntu 26.04 LTS "Quetzal" (Isirung 6.14 LTS, GNOME 48).
-- **Rujukan Bleeding-Edge:** Fedora 43.
-- **Rujukan Pelayan Perusahaan:** AlmaLinux 10 "Purple Lion" (Isirung 6.12 LTS, GNOME 47) / Rocky Linux 9.
-- *JANGAN gunakan edaran lapuk:* Red Hat 9 (era 2003), CentOS 7/8, Mandrake.
-
-### C. Pemuliharaan Arkib Mentah (Rule 17)
-- **DILARANG MEMADAM** sebarang fail di `references/manual/bab_03/`. Arkib kekal terpelihara.
-
-### D. Struktur Penutup Wajib & Footer (Rule 8 & 16)
-Setiap nod Markdown baharu mesti mematuhi skema OKF v0.1 dan ditutup dengan:
-- `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)` (Minimum 3 prompt berfokus).
-- `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)` (Pautan rasmi).
-- `## 📚 Buku Boleh Dibeli (Syor Bacaan)` (Buku Bahasa Melayu/Inggeris berkaitan).
-- Pengaki rasmi Sovereign Dual-License Footer dengan pautan Notis Perundangan.
+## 1. Objektif Utama Sesi Jules
+1. **Audit & Penyelarasan Bab 1 & Bab 2 (`manual/cu01/` & `openwiki/topic-01`):**
+   - Memeriksa semula semua nod amali Bab 1 & 2 bagi memastikan pematuhan penuh kepada Peraturan 21 (Deep Research, data 2026, arahan CLI terkini, standard **Jabatan Digital Negara (JDN) / MAMPU**, ISO/IEC 27001, OKF v0.1, dan 3 seksyen penutup).
+2. **Penukaran Pengetahuan kepada AI Agent Skills (Knowledge-to-Skill Porting):**
+   - Mana-mana modul ilmu amali yang telah lengkap di `manual/` MESTI dijadikan modul **AI Agent Skill** di bawah `.agents/skills/<skill-folder>/SKILL.md` (menggunakan kombinasi frontmatter OKF v0.1 + Antigravity/Jules schema) dan didaftarkan dalam Master Palace Registry (`uv run scripts/generate_palace_registry.py`).
+3. **Migrasi Silibus Bab 3 (`references/manual/bab_03/` ➔ `manual/cu02/`):**
+   - Melaksanakan transformasi storan, partisi GPT, LVM2, dan sistem fail EXT4/XFS/Btrfs, serta menukarkannya kepada kemahiran AI CU02.
 
 ---
 
-## 3. Langkah Operasi Langkah Demi Langkah untuk Jules
+## 2. Senarai Tindakan Terperinci untuk Jules
 
+### Fasa A: Audit & Pengukuhan Bab 1 & Bab 2 (CU01)
+1. **Semak Kandungan `manual/cu01/`:**
+   - Pastikan tiada arahan lapuk (seperti Red Hat 9 / CentOS / MBR).
+   - Pastikan panduan Penyulitan LUKS2 merujuk **Jabatan Digital Negara (JDN) / MAMPU** dan ISO/IEC 27001.
+   - Pastikan setiap nod mengandungi 3 seksyen penutup (AI Prompts, URL, Syor Buku) dan Sovereign Dual-License Footer.
+2. **Pindahkan / Kemas Kini AI Agent Skills (`.agents/skills/`):**
+   - `cu01-wa00-memahami-ekosistem-linux/SKILL.md`
+   - `cu01-wa04-install-computer-desktop-operating-systems/SKILL.md`
+   - Kemas kini `cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md` dengan arahan amali Ubuntu 26.04 (APT, Snap, Flatpak) dan AlmaLinux 10 (DNF, Flatpak).
+   - Kemas kini `cu01-wa06-configure-endpoint-network-connectivity/SKILL.md` dengan `nmcli` / `iproute2`.
+
+### Fasa B: Migrasi Silibus Bab 3 (CU02) & Penjanaan Skills
+1. **Analisis Arkib Mentah (`references/manual/bab_03/`):**
+   - Nilai dan petakan topik kepada `CU02-WA01` hingga `CU02-WA04`.
+   - Lakukan *Deep Web Research* untuk sintaks `parted`, `gdisk`, `lsblk`, `pvcreate`, `vgcreate`, `lvcreate`, `mkfs.xfs`, `mkfs.ext4`, `mkfs.btrfs`.
+2. **Tulis Nod Amali di `manual/cu02/`:**
+   - `manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md`
+   - Kemas kini fail `manual/cu02/cu02-wa01-*.md` hingga `cu02-wa04-*.md`.
+   - Pautkan ke `openwiki/topic-02-storage-and-virtualisation.md`.
+3. **Cipta / Kemas Kini Kemahiran AI CU02:**
+   - Kemas kini `.agents/skills/cu02-wa01-identify-virtualisation-infrastructure-requirements/SKILL.md`
+   - Kemas kini `.agents/skills/cu02-wa02-install-type-2-hypervisor-platform/SKILL.md`
+   - Kemas kini `.agents/skills/cu02-wa03-deploy-guest-virtual-machines-vm/SKILL.md`
+   - Kemas kini `.agents/skills/cu02-wa04-prepare-virtualisation-configuration-records/SKILL.md`
+
+### Fasa C: Verifikasi Kualiti & Indeks Palace
 ```bash
-# 1. Baca arkib mentah Bab 3
-# references/manual/bab_03/ (fdisk, partisi, filesystem, lvm, quota)
+# 1. Jana semula indeks kemahiran AI
+uv run scripts/generate_palace_registry.py
 
-# 2. Tulis nod amali moden ke manual/cu02/
-# manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md
-# Kemas kini manual/cu02/index.md
-
-# 3. Pautkan ke OpenWiki
-# openwiki/topic-02-storage-and-virtualisation.md
-
-# 4. Jana indeks suapan konteks AI
+# 2. Jana indeks suapan LLM
 uv run scripts/generate_llms_txt.py
 uv run scripts/llms_to_xml.py
 
-# 5. Bina tapak web statik HTML
+# 3. Bina laman web statik HTML
 uv run scripts/serve_mkdocs.py --build-only
 
-# 6. Jalankan Quality Gate (100% Wajib Lulus)
+# 4. Sahkan 100% Quality Gate
 uv run run_all_tests.py
 
-# 7. Komit dan tolak ke kedua-dua remote
+# 5. Komit & Segerakkan dwi-remote
 git add -A
-git commit -m "feat(manual): migrate Bab 3 storage and file systems to manual/cu02"
+git commit -m "feat(manual): audit Bab 1-2, update agent skills, and migrate Bab 3 storage"
 git push origin main
 git push github main
 ```
