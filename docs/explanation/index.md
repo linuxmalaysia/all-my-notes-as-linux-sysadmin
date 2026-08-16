@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Index"
 description: "DSOM Concept document for Index."
 type: "concept"
@@ -25,6 +25,7 @@ Explanation material focuses on **discussion, architectural context, design deci
 
 - **[OpenWiki & FastMCP Architecture](openwiki-mcp-architecture.md):** High-level design, RAG context streams, data flow, and components.
 - **[Diátaxis Framework Adoption](diataxis.md):** Architectural design decision and rationale for integrating the Diátaxis Framework into DSOM.
+- **[Seni Bina Diátaxis & Penerbitan Pelbagai Pelantar](diataxis-architecture.md):** Kerangka Diátaxis, prinsip Markdown-First, dan penerbitan ke GitHub/GitLab Pages, Read the Docs, GitBook, Nginx, dan Apache.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
