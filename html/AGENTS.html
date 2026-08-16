@@ -1117,6 +1117,7 @@
 <li><strong>Combined YAML Frontmatter:</strong> Every skill MUST use a combined OKF v0.1 and Antigravity YAML frontmatter schema (e.g., it must include <code>name</code>, <code>description</code>, <code>topics</code>, <code>tags</code>, and <code>okf_version</code>).</li>
 <li><strong>Protocol References:</strong> Agents must adhere to the standards outlined at <a href="https://antigravity.google/docs/skills">Google Antigravity Skills</a> and <a href="https://agentskills.io/home">AgentSkills.io</a>.</li>
 <li><strong>Jules Knowledge Porting:</strong> All Jules operational and domain-specific knowledge must be explicitly ported as skills so that any agent can invoke them seamlessly.</li>
+<li><strong>Episodic Handover Protocol (.agents/brain/):</strong> When handing over a session between agents (e.g., Antigravity to Jules), the departing agent MUST populate <code>.agents/brain/</code> with <code>task.md</code>, <code>implementation_plan.md</code>, <code>walkthrough.md</code>, and <code>handover_to_&lt;agent&gt;.md</code>, and provide an executive copy-paste prompt for the human operator to initiate the next agent session.</li>
 <li><strong>Standard Footer:</strong> Every SKILL.md file MUST conclude with the official DSOM AI Protocol footer.</li>
 </ul>
 <h2 id="startup-check">Startup Check<a class="headerlink" href="#startup-check" title="Permanent link">&para;</a></h2>
