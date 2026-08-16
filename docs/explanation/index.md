@@ -28,6 +28,7 @@ Explanation material focuses on **discussion, architectural context, design deci
 - **[Seni Bina Diátaxis & Penerbitan Pelbagai Pelantar](diataxis-architecture.md):** Kerangka Diátaxis, prinsip Markdown-First, dan penerbitan ke GitHub/GitLab Pages, Read the Docs, GitBook, Nginx, dan Apache.
 - **[Sejarah Dokumen Manual Asal KPM (2004–2026)](sejarah-dokumen-asal-linux-kpm.md):** Latar belakang manual pengkomputeran makmal sekolah KPM, sumbangan perintis sumber terbuka tempatan, dan evolusinya ke NOSS Linux.
 - **[Sejarah & Warisan OSCC MAMPU (2004–2020)](sejarah-oscc-mampu-malaysia.md):** Pengarkiban sejarah penubuhan Pusat Kompetensi Sumber Terbuka MAMPU dan Pelan Induk OSS Sektor Awam Malaysia.
+- **[Sejarah Persidangan Sumber Terbuka Kebangsaan: MOSC / MOSCMY (2009–2019)](sejarah-mosc-malaysia.md):** Pengarkiban persidangan tahunan terbesar komuniti sumber terbuka di Malaysia.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

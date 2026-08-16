@@ -1,5 +1,10 @@
 # Project History (Sovereign Markdown Palace)
 
+## [2026-08-16] Pengarkiban Sejarah: Malaysia Open Source Conference (MOSC / MOSCMY)
+- **Peristiwa**: Mendokumentasikan sejarah dan impak penganjuran Malaysia Open Source Conference (MOSC / MOSCMY / OSSCONF) 2009–2019 sebagai acara persidangan komuniti sumber terbuka terbesar di Malaysia.
+- **Artifak Baharu**: `docs/explanation/sejarah-mosc-malaysia.md`
+- **Objektif**: Memelihara memori digital dan kronologi persidangan yang kian lenyap dari carian laman web aktif.
+
 ## [2026-08-16] Pengarkiban Sejarah: OSCC MAMPU (2004–2020)
 - **Peristiwa**: Memulakan pendokumentasian sejarah Open Source Competency Centre (OSCC) MAMPU dan Pelan Induk OSS Sektor Awam Malaysia 2004 bagi memelihara rekod digital yang kian menghilang.
 - **Artifak Baharu**: `docs/explanation/sejarah-oscc-mampu-malaysia.md`
