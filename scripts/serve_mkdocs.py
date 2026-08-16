@@ -8,21 +8,30 @@ import shutil
 from pathlib import Path
 
 def create_junction(src: Path, dest: Path):
-    if dest.exists():
-        if dest.is_symlink() or dest.is_dir():
+    if dest.exists() or dest.is_symlink():
+        if dest.is_symlink() or dest.is_file():
+            dest.unlink()
+        elif dest.is_dir():
             try:
                 os.rmdir(dest) # os.rmdir works for junctions
             except OSError:
                 shutil.rmtree(dest)
     
-    # cmd /c mklink /J dest src
-    subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if sys.platform.startswith('win'):
+        subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    else:
+        os.symlink(src.resolve(), dest)
 
 def create_hardlink(src: Path, dest: Path):
-    if dest.exists():
+    if dest.exists() or dest.is_symlink():
         dest.unlink()
-    # cmd /c mklink /H dest src
-    subprocess.run(["cmd", "/c", "mklink", "/H", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if sys.platform.startswith('win'):
+        subprocess.run(["cmd", "/c", "mklink", "/H", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    else:
+        try:
+            os.link(src, dest)
+        except OSError:
+            os.symlink(src.resolve(), dest)
 
 def prepare_docs_dir(root_dir: Path, build_dir: Path):
     if not build_dir.exists():

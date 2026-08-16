@@ -1,11 +1,11 @@
 ---
 okf_version: 0.1
 type: documentation
-title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2024"
-timestamp: "2026-08-16T10:31:00Z"
-topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "ekosistem-linux"]
-tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora"]
-description: "Silibus komprehensif CU01 yang dikemaskini dengan fakta terkini 2024. Meliputi sejarah Linux, ekosistem distribusi semasa, falsafah perisian bebas, dan konteks Malaysia."
+title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
+timestamp: "2026-08-16T12:20:00Z"
+topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2"]
+tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2"]
+description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan prosedur pemasangan NOSS Level 3."
 resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 ---
 
@@ -13,10 +13,10 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ## Gambaran Keseluruhan (Overview)
 
-Topik ini membina asas konseptual yang kukuh sebelum pelajar menjalani latihan amali. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi terkini (2024), dan kepentingan Linux di Malaysia**. Kandungan ini dikemaskini sepenuhnya berdasarkan fakta semasa menggantikan maklumat era 2003.
+Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, serta penegasan keselamatan pasca-pemasangan**.
 
 > **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
-> Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud" (corak) → hayati "apakah makna perisian bebas untuk masa depan pengkomputeran" (prinsip universal).
+> Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
 
 ---
 
@@ -25,7 +25,7 @@ Topik ini membina asas konseptual yang kukuh sebelum pelajar menjalani latihan a
 ### 1. Sejarah & Asal-Usul Linux
 - Linus Torvalds, Universiti Helsinki, 1991: Dari hobi kepada infrastruktur global
 - Projek GNU & Richard Stallman: Falsafah 4 Kebebasan Perisian
-- Evolusi isirung: Linux 0.01 (1991) → Linux 6.11 (2024, ~36 juta baris kod)
+- Evolusi isirung: Linux 0.01 (1991) → Linux 6.14 LTS (2026, ~38 juta baris kod)
 - Mengapa Linux menguasai 96.4% pelayan awan dan 100% superkomputer dunia
 
 **📖 Baca Lanjut:** [palace/cu01/pengenalan-linux-dan-sejarah.md](../palace/cu01/pengenalan-linux-dan-sejarah.md)
@@ -38,27 +38,42 @@ Topik ini membina asas konseptual yang kukuh sebelum pelajar menjalani latihan a
 
 **📖 Baca Lanjut:** [palace/cu01/hakcipta-dan-pelesenan.md](../palace/cu01/hakcipta-dan-pelesenan.md)
 
-### 3. Ekosistem Distribusi Linux 2024
-- **Keluarga Debian**: Debian 12, Ubuntu 24.04 LTS, Linux Mint 22
-- **Keluarga Red Hat**: Fedora 41, RHEL 9.4, AlmaLinux 9, Rocky Linux 9
-- **Keluarga Arch**: Arch Linux (rolling), Manjaro
-- **Keluarga SUSE**: openSUSE Leap 15.6, Tumbleweed
-- **Distribusi Khusus**: Kali Linux (keselamatan), Alpine (kontena), Raspberry Pi OS (IoT)
+### 3. Ekosistem Distribusi Linux 2026 (Piawaian Kanonik)
+- **Ubuntu 26.04 LTS "Quetzal"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
+- **AlmaLinux 10 "Purple Lion"**: Rujukan pelayan & desktop perusahaan (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035)
+- **Fedora 43**: Rujukan teknologi terkini (bleeding-edge workstation)
+- **Distribusi Khusus**: Kali Linux (keselamatan), Alpine Linux (kontena), Raspberry Pi OS (IoT)
 
 **📖 Baca Lanjut:** [palace/cu01/pecahan-linux-terkini.md](../palace/cu01/pecahan-linux-terkini.md)
 
-### 4. Persekitaran Meja (Desktop Environments)
-- **GNOME 46** — Moden, bersih, digunakan Ubuntu & Fedora lalai
-- **KDE Plasma 6** — Sangat boleh suai, kaya ciri
-- **XFCE 4.18** — Ringan, sesuai untuk perkakasan lama
-- **LXQt** — Ultra ringan untuk peranti berkuasa rendah
+### 4. Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI
+- Spesifikasi minimum & disyorkan (x86_64, ARM64)
+- Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
+- Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
 
-### 5. Linux dalam Konteks Malaysia TVET
-- Dasar OSS MAMPU (sejak 2001)
-- Keperluan NOSS untuk Teknologi Maklumat
-- Peluang kerjaya: SysAdmin, DevOps, Keselamatan Siber, Pengkomputeran Awan
+**📖 Baca Lanjut:** [palace/cu01/keperluan-perkakasan-dan-bios-uefi.md](../palace/cu01/keperluan-perkakasan-dan-bios-uefi.md)
 
-### 6. Soal Jawab (FAQ) & Direktori Perisian Alternatif
+### 5. Prosedur Pemasangan Sistem Operasi & Storan LVM
+- Langkah demi langkah pemasangan Ubuntu 26.04 LTS, AlmaLinux 10, dan Fedora 43
+- Skema pembahagian storan LVM (`/boot/efi`, `/`, `/var`, `/home`, `swap`)
+
+**📖 Baca Lanjut:** [palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md](../palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md)
+
+### 6. Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 & MAMPU)
+- Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS
+- Pengurusan berbilang slot kunci (*multi-user key slots*) untuk pengguna dan pentadbir IT
+- Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) & Pekeliling MAMPU
+
+**📖 Baca Lanjut:** [palace/cu01/penyulitan-cakera-luks2-pejabat.md](../palace/cu01/penyulitan-cakera-luks2-pejabat.md)
+
+### 7. Tugasan Pasca-Pemasangan, Pemacu Peranti & Hardening
+- Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
+- Pemasangan pemacu grafik proprietary Nvidia / AMD
+- Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
+
+**📖 Baca Lanjut:** [palace/cu01/pasca-pemasangan-dan-driver.md](../palace/cu01/pasca-pemasangan-dan-driver.md)
+
+### 8. Soal Jawab (FAQ) & Direktori Perisian Alternatif
 - Soalan lazim pengguna baharu Linux
 - Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
 
@@ -71,29 +86,33 @@ Topik ini membina asas konseptual yang kukuh sebelum pelajar menjalani latihan a
 
 | Kod | Nama | Status |
 |-----|------|--------|
-| **CU01-WA00** | Memahami Ekosistem Linux (BAHARU) | [Lihat Skill](../.agents/skills/cu01-wa00-memahami-ekosistem-linux/SKILL.md) |
-| CU01-WA04 | Pasang Sistem Operasi Desktop | [Lihat Skill](../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) |
-| CU01-WA05 | Pasang Aplikasi & Pemacu | [Lihat Skill](../.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md) |
-| CU01-WA06 | Konfigurasi Rangkaian Endpoint | [Lihat Skill](../.agents/skills/cu01-wa06-configure-endpoint-network-connectivity/SKILL.md) |
+| **CU01-WA00** | Memahami Ekosistem Linux | [Lihat Skill](../.agents/skills/cu01-wa00-memahami-ekosistem-linux/SKILL.md) |
+| **CU01-WA04** | Pasang Sistem Operasi Desktop | [Lihat Skill](../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) |
+| **CU01-WA05** | Pasang Aplikasi & Pemacu | [Lihat Skill](../.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md) |
+| **CU01-WA06** | Konfigurasi Rangkaian Endpoint | [Lihat Skill](../.agents/skills/cu01-wa06-configure-endpoint-network-connectivity/SKILL.md) |
 
 ---
 
 ## Eksplorasi Lanjut bersama AI (AI Prompts)
 
 Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk mendalami topik ini:
-1. > "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Sistem Operasi Linux (seperti Ubuntu) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
-2. > "Senaraikan 5 perbezaan utama antara perisian Sumber Terbuka (Open Source) dan Perisian Bebas (Free Software) mengikut definisi Richard Stallman. Berikan contoh untuk setiap satu."
-3. > "Saya seorang pengguna Windows yang baru ingin beralih ke Linux untuk kegunaan pejabat. Apakah 3 distribusi Linux (selain Ubuntu) yang paling sesuai untuk saya dan mengapa?"
+1. > "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Sistem Operasi Linux (seperti Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
+2. > "Tuliskan skrip Bash ringkas untuk menyemak sama ada peranti but beroperasi dalam mod UEFI atau Legacy BIOS, dan paparkan ruang peranti storan dalam format jadual."
+3. > "Bagaimanakah penyulitan cakera penuh LUKS2 melindungi data pada komputer riba pejabat jika peranti tersebut hilang atau dicuri? Terangkan fungsi ruang kunci (key slots) LUKS2."
+4. > "Saya seorang pentadbir sistem di agensi kerajaan. Apakah senarai semak keselamatan pasca-pemasangan (hardening checklist) pertama yang wajib saya laksanakan pada AlmaLinux 10?"
 
 ---
 
 ## Bahan Bacaan Lanjut (Rujukan URL)
 
+- [Dokumentasi Rasmi Ubuntu 26.04 LTS](https://help.ubuntu.com)
+- [Dokumentasi Rasmi AlmaLinux 10](https://wiki.almalinux.org)
+- [Dokumentasi Fedora Project](https://docs.fedoraproject.org)
 - [Sejarah Lengkap Linux (Wikipedia BM)](https://ms.wikipedia.org/wiki/Linux)
 - [Projek GNU dan Maksud Perisian Bebas](https://www.gnu.org/philosophy/free-sw.ms.html) — (Tersedia dalam Bahasa Melayu)
 - [DistroWatch.com](https://distrowatch.com) — Tangga & statistik distribusi Linux terkini dunia
 - [kernel.org](https://kernel.org) — Repositori rasmi Isirung Linux
-- [MAMPU Malaysia](https://www.mampu.gov.my) — Dasar OSS (Perisian Sumber Terbuka) sektor awam Malaysia
+- [MAMPU Malaysia / HKSA](https://www.mampu.gov.my) — Dasar OSS & Pekeliling Keselamatan ICT sektor awam Malaysia
 - [The Linux Foundation](https://www.linuxfoundation.org)
 
 ---
@@ -109,7 +128,8 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
 **English (Antarabangsa):**
 1. *How Linux Works, 3rd Edition: What Every Superuser Should Know* oleh Brian Ward — Sangat disyorkan untuk memahami komponen dalaman Linux.
 2. *The Linux Command Line, 2nd Edition* oleh William Shotts — Buku asas terbaik untuk menguasai terminal (tersedia percuma secara dalam talian, atau boleh dibeli fizikal).
-3. *Just for Fun: The Story of an Accidental Revolutionary* oleh Linus Torvalds & David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.
+3. *UNIX and Linux System Administration Handbook, 5th Edition* oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin — Kitab rujukan utama pentadbir sistem profesional.
+4. *Just for Fun: The Story of an Accidental Revolutionary* oleh Linus Torvalds & David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
