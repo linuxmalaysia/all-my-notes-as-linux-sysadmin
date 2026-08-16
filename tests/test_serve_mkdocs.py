@@ -34,6 +34,15 @@ def serve_mkdocs():
     return _load_module()
 
 
+def _is_link_or_junction(path: Path) -> bool:
+    """Helper to check if a path is a symlink or junction across Windows and POSIX."""
+    if path.is_symlink():
+        return True
+    if hasattr(path, "is_junction") and path.is_junction():
+        return True
+    return False
+
+
 # ---------------------------------------------------------------------------
 # create_junction
 # ---------------------------------------------------------------------------
@@ -46,7 +55,7 @@ class TestCreateJunction:
 
         serve_mkdocs.create_junction(src, dest)
 
-        assert dest.is_symlink()
+        assert _is_link_or_junction(dest)
         assert dest.resolve() == src.resolve()
 
     def test_replaces_existing_symlink_dest(self, serve_mkdocs, tmp_path):
@@ -55,11 +64,11 @@ class TestCreateJunction:
         other = tmp_path / "other_dir"
         other.mkdir()
         dest = tmp_path / "dest_link"
-        dest.symlink_to(other)
+        serve_mkdocs.create_junction(other, dest)
 
         serve_mkdocs.create_junction(src, dest)
 
-        assert dest.is_symlink()
+        assert _is_link_or_junction(dest)
         assert dest.resolve() == src.resolve()
 
     def test_removes_existing_file_dest(self, serve_mkdocs, tmp_path):
@@ -70,7 +79,7 @@ class TestCreateJunction:
 
         serve_mkdocs.create_junction(src, dest)
 
-        assert dest.is_symlink()
+        assert _is_link_or_junction(dest)
         assert dest.resolve() == src.resolve()
 
     def test_removes_existing_empty_directory_dest(self, serve_mkdocs, tmp_path):
@@ -81,7 +90,7 @@ class TestCreateJunction:
 
         serve_mkdocs.create_junction(src, dest)
 
-        assert dest.is_symlink()
+        assert _is_link_or_junction(dest)
         assert dest.resolve() == src.resolve()
 
     def test_removes_existing_nonempty_directory_dest(self, serve_mkdocs, tmp_path):
@@ -95,7 +104,7 @@ class TestCreateJunction:
 
         serve_mkdocs.create_junction(src, dest)
 
-        assert dest.is_symlink()
+        assert _is_link_or_junction(dest)
         assert dest.resolve() == src.resolve()
 
     def test_windows_uses_mklink_junction_command(self, serve_mkdocs, tmp_path, monkeypatch):
@@ -130,7 +139,8 @@ class TestCreateHardlink:
         assert dest.exists()
         assert dest.read_text() == "hello"
         # Confirm it is actually a hardlink (same inode) on POSIX systems.
-        assert dest.stat().st_ino == src.stat().st_ino
+        if not sys.platform.startswith("win"):
+            assert dest.stat().st_ino == src.stat().st_ino
 
     def test_replaces_existing_dest(self, serve_mkdocs, tmp_path):
         src = tmp_path / "src_file.txt"
@@ -148,16 +158,18 @@ class TestCreateHardlink:
         src = tmp_path / "src_file.txt"
         src.write_text("hello")
         dest = tmp_path / "dest_file.txt"
+        monkeypatch.setattr(serve_mkdocs.sys, "platform", "linux")
 
         def raise_oserror(_src, _dest):
             raise OSError("Invalid cross-device link")
 
         monkeypatch.setattr(serve_mkdocs.os, "link", raise_oserror)
+        mock_symlink = MagicMock()
+        monkeypatch.setattr(serve_mkdocs.os, "symlink", mock_symlink)
 
         serve_mkdocs.create_hardlink(src, dest)
 
-        assert dest.is_symlink()
-        assert dest.resolve() == src.resolve()
+        mock_symlink.assert_called_once_with(src.resolve(), dest)
 
     def test_windows_uses_mklink_hardlink_command(self, serve_mkdocs, tmp_path, monkeypatch):
         src = tmp_path / "src_file.txt"
@@ -210,8 +222,8 @@ class TestPrepareDocsDir:
 
         serve_mkdocs.prepare_docs_dir(root_dir, build_dir)
 
-        assert (build_dir / "docs").is_symlink()
-        assert (build_dir / "palace").is_symlink()
+        assert _is_link_or_junction(build_dir / "docs")
+        assert _is_link_or_junction(build_dir / "palace")
         # Directories that were never created at the source should not
         # appear as broken links in the destination.
         assert not (build_dir / "openwiki").exists()
@@ -242,7 +254,7 @@ class TestPrepareDocsDir:
         serve_mkdocs.prepare_docs_dir(root_dir, build_dir)
 
         for d in ["docs", "openwiki", "palace", ".agents", "assets"]:
-            assert (build_dir / d).is_symlink()
+            assert _is_link_or_junction(build_dir / d)
             assert (build_dir / d).resolve() == (root_dir / d).resolve()
 
 
@@ -321,11 +333,11 @@ class TestMain:
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(sys, "argv", ["serve_mkdocs.py"])
         (tmp_path / "docs").mkdir()
+        mock_prepare = MagicMock()
+        monkeypatch.setattr(serve_mkdocs, "prepare_docs_dir", mock_prepare)
         fake_result = MagicMock(returncode=0)
         monkeypatch.setattr(serve_mkdocs.subprocess, "run", MagicMock(return_value=fake_result))
 
         serve_mkdocs.main()
 
-        build_dir = tmp_path / "mkdocs_src"
-        assert build_dir.is_dir()
-        assert (build_dir / "docs").is_symlink()
+        mock_prepare.assert_called_once_with(tmp_path, tmp_path / "mkdocs_src")
