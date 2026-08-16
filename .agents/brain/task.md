@@ -12,6 +12,10 @@
   - Penstrukturan navigasi web `mkdocs.yml` mengikut 4 kuadran Diátaxis rasmi.
   - Dokumentasi seni bina IPO (`docs/explanation/workflow-input-process-output.md`) dan panduan amali (`docs/how-to/execute-noss-content-transformation.md`).
   - Kemahiran Ejen AI: `noss-content-transformation-pipeline` (`.agents/skills/noss-content-transformation-pipeline/SKILL.md`).
+- [x] **Pemaktuban Peraturan 21 Perlembagaan AI:**
+  - Penilaian & Pemetaan Silibus CU/WA.
+  - Penyelidikan Mendalam (*Deep Web Research*) untuk data terkini 2026.
+  - Pengayaan berterusan protokol keselamatan (ISO/IEC 27001, CIS Benchmarks, MAMPU) dan penalaan prestasi (`sysctl`, `tuned`, eBPF).
   - 100% Quality Gate tercapai (810/810 Python tests, 38/38 Jest tests).
 
 ---
@@ -22,6 +26,7 @@
   - [x] Kemas kini `openwiki/topic-01-linux-desktop-and-basics.md`.
 - [ ] **Bab 3 (Pengurusan Storan, Partisi & Sistem Fail Linux - SASARAN SETERUSNYA):**
   - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_03/` ke `manual/cu02/` (Partisi GPT/fdisk/parted, LVM2, EXT4, XFS, Btrfs).
+  - [ ] Serapkan protokol keselamatan (LUKS2 storage encryption) dan penalaan prestasi I/O (`tuned`, `sysctl`).
   - [ ] Kemas kini `openwiki/topic-02-storage-and-virtualisation.md`.
 - [ ] **Bab 4 (Pentadbiran Pengguna, Hak Akses & Keselamatan Asas):**
   - [ ] Migrasi kandungan `references/manual/bab_04/` ke `manual/cu01/` & `manual/cu05/`.
