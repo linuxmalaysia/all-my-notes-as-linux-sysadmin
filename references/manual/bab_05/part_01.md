@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 5 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 bahkan menggugurkan akaun pengguna lain. Pemuatan aplikasi juga perlu dilakukan
 melalui pengguna ini. Biasanya akaun ini diberikan kepada pengendali sistem tersebut.
 14.1 Mengubah Kedudukan Melalui Arahan cd
@@ -28,9 +25,7 @@ root direktori dengan menggunakan arahan:
 Pada bila-bila masa, anda boleh kembali ke home direktori dengan arahan:
 # cd atau
 # cd ~
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.2 Mengetahui Kedudukan Melalui Arahan pwd
 Dengan menggunakan arahan pwd anda boleh mengetahui di mana anda berada di dalam
 sistem dan arahan itu juga membolehkan anda untuk mencetak direktori yang sedang
@@ -47,9 +42,7 @@ Arahan yang sepatutnya digunakan adalah:
 # /bin/pwd -help
 Arahan pwd di atas dilarikan pwd dari direktori /bin dan bukan pwd yang sedia ada di
 dalam shell.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.3 Penyenaraian Direktori Dengan Arahan ls
 Arahan ls merupakan salah satu program yang mempunyai penggunaan yang sangat
 tinggi. Ia boleh digunakan untuk "list out" fail-fail dan sub-direktori di dalam sistem.
@@ -59,9 +52,7 @@ menggunakan pilihan -m
 # ls -m
 Gambar Rajah 145 : Penyenaraian direktori dengan arahan “ls –m”
 Jika anda inginkan fail-fail untuk disusun secara mendatar,gunakan pilihan -x:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 # ls ±x
 Gambar Rajah 146 : Penyenaraian direktori dengan arahan “ls –x”
 Jika anda ingin menyenaraikan kesemua fail-fail dan sub-direktori di direktori semasa
@@ -75,9 +66,7 @@ menentukan direktori atau "pathname" di arahan shell. Sebagai contoh, untuk meli
 kesemua fail-fail di /usr/bin direktori, anda boleh menggunakan arahan yang berikut:
 # ls /usr/bin
 Jika anda ingin mencari hanya fail ekstensi .txt, anda boleh menggunakan arahan berikut:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 # ls *.txt
 Dari sini jika anda ingin melihat keseluruhan fail-fail di dalam sistem,anda boleh
 menggunakan ls-R. Ini akan membolehkan sistem untuk memaparkan keseluruhan isi
@@ -95,9 +84,7 @@ Untuk melihat kandungan fail-fail ringkas (short file), anda boleh menggunakan a
 seperti berikut:
 # cat test.txt
 Gambar Rajah 147 : Melihat kandungan fail dengan arahan “cat”
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Terdapat beberapa pilihan untuk menggunakan arahan cat. Untuk melihat fail-fail dalam
 turutan mengikut nombor,anda boleh menggunakan pilihan -n seperti yang ditunjukkan di
 bawah:
@@ -114,9 +101,7 @@ Selain daripada itu,anda juga boleh mencuba menggunakan arahan seperti:
 # cat test2.txt
 # cat -n test.txt >> test2.txt
 # cat -test2.txt
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.5 Membaca Fail Dengan more
 Arahan more merupakan salah satu arahan daripada keluarga Linux yang dipanggil
 "pagers". "Pagers" membolehkan anda untuk melayari fail-fail dan membacanya "screen
@@ -139,9 +124,7 @@ arahan "pager". Kelebihan less jika dibandingkan kepada more adalah seperti beri
 dengan bantuan kekunci anak panah (cursor).
 • Pengguna boleh menggemudi sebahagian daripada file dengan menyatakan
 "bookmarks", "line numbers" atau peratusan dari fail yang hendak dikemudikan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 • Arahan less tidak akan "quit" sekiranya anda sudah sampai kepada penghujung
 fail.
 • Pengguna mempunyai pilihan untuk melakukan pencarian kompleks, "pattern
@@ -165,9 +148,7 @@ Sebagai contoh, katakan anda ingin mencari program di /usr/bin direktori yang an
 guna lebih daripada 50 hari. Arahannya adalah seperti berikut:
 # find /usr/bin -type f -atime +50 -print
 Pilihan -atime yang diikuti dengan bilangan hari
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Pilihan -mtime yang diikuti dengan bilangan hari mencari fail yang telah diubah suai.
 Sebagai contoh,anda ingin mencari fail yang telah diubah suai di dalam tempoh 24 jam
 yang lalu. Arahannya adalah seperti berikut:
@@ -185,9 +166,7 @@ Windows. Untuk mencari kesemua fail yang berakhir dengan .sys di dalam "mounted
 Windows Partition" di dalam /mnt/dos direktori, anda boleh gunakan arahan yang
 berikutnya:
 # find  /mnt/dos -name *.sys -print ±xdev
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.8 Mencari Fail Sistem Dengan whereis
 Sebagai tambahan kepada arahan find, terdapat satu lagi cara untuk mencari fail-fail
 sistem secara pantas. Arahan whereis dengan pantas mencari fail-fail dan menunjukkan
@@ -208,9 +187,7 @@ Arahan locate merupakan arahan yang lebih cepat daripada whereis. Ia menggunakan
 pangkalan data yang dinamakan slocate berdasarkan inode setiap fail. Ia menjimatkan
 masa kerana ia mencari hanya satu pangkalan data sahaja. Ia akan pergi terus kepada
 pangkalan data slocate dan mencari fail yang dikehendaki.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Contoh Arahan:
 # locate *.ps
 Fail-fail akan dipaparkan di skrin. Ia berfungsi lebih pantas dari find dan whereis, tetapi
@@ -221,9 +198,7 @@ bawah. Sebelum itu anda harus "login" sebagai “root operator”.
 # updatedb
 Proses ini mungkin akan mengambil beberapa minit. Gunakan man locate untuk
 mendapatkan bantuan menggunakan locate.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.10 Mencari Fail Dengan apropos
 Arahan ini membolehkan anda untuk mencari fail yang mengandungi perkataan, di mana
 anda mungkin telah lupa nama fail ataupun lokasi fail.

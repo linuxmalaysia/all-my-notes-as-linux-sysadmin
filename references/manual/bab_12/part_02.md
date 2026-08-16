@@ -9,9 +9,7 @@ tags: [noss, dbp]
 pada itu,anda juga boleh mengeksport  dokumen anda ke format
 HTML atau PDF yang dapat dibaca oleh kebanyakan komputer dengan pelayar web (web
 browser) atau aplikasi PDF Viewer.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 177 : Penambahan file dalam program OpenOffice Writer
 21.4 OpenOffice calc
 Dari perniagaan  besar hingga ke pengguna pejabat rumah (home office), profesional
@@ -19,9 +17,7 @@ menggunakan laman lembaran (spreadsheet) untuk menyimpan rekod, mencipta carta
 perniagaan  dan memanipulasi data.OpenOffice calc adalah perisian spreadsheet di mana
 ia membenarkan pengguna memasukkan dan juga memanipulasi data dalam sel  ,  dan
 mengaturnya dalam lajur (column)  dan baris (rows).
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 178 : Skrin bagi program OpenOffice Calc
 Anda boleh menambah atau pun  mengurangkan lajur atau mereka carta berasaskan
 kumpulan sel. Anda juga boleh memasukkan data spreadsheet ke dokumen lain untuk
@@ -32,9 +28,7 @@ OpenOffice calc membenarkan anda untuk memasukkan dan memanipulasi data
 perniagaan atau persendirian. Sebagai contoh, anda boleh menyediakan belanjawan
 persendirian dengan memasukkan deskripsi data seperti Sewa, barangan runcit dan utiliti
 ke dalam lajur A dan kuantiti deskripsi tersebut ke dalam lajur B. OpenOffice calc
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 membenarkan anda untuk memasukkan data dengan cara mengklik berganda tetikus anda
 di atas sel tersebut atau menggunakan Input Line (Kekotak teks sebaris memanjang yang
 berada di atas di bar alatan (toolbar)).Anda juga boleh menjalankan perintah ilmu hisab

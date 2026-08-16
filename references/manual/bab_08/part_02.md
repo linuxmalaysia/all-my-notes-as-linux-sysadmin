@@ -9,26 +9,20 @@ tags: [noss, dbp]
 si. Pakej individu juga boleh dipilih
 daripada pakej kumpulan yang telah diinstalasikan dengan menekan butang Details dan
 menanda di mana-mana pada pakej tambahan yang belum lagi diinstalasi.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 153 : Skrin pemilihan pakej untuk diinstalasikan
 Selepas memilih pakej kumpulan dan pakej individual untuk instalasi , klik pada butang
 Update pada tetingkap utama.  Aplikasi ini akan kemudiannya mengira jumlah ruang
 cakera yang diperlukan untuk instalasi pakej seperti mana apa saja pakej kebergantungan
 dan pameran tetingkap ringkasan. Jika terdapat pakej kebergantungan , ia akan ditambah
 secara automatik kepada senarai pakej untuk instalasi.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Klik pada butang Show Details  untuk melihat senarai pakej yang akan diinstalasikan
 secara lengkap.
 Gambar Rajah 154 : Paparan kekotak dialog penyediaan pemasangan pakej
 Klik Continue untuk mulakan proses instalasi. Apabila ia selesai , mesej Update
 Complete akan muncul.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 155 : Paparan kekotak dialog bagi memberitahu progress meningkat taraf sistem
 17.3.3 Membuang Pakej
 Untuk membuang kesemua pakej yang diinstalasikan dalam kumpulan pakej , hilangkan
@@ -41,9 +35,7 @@ pakej perisian kebergantungan. Jika pakej lain bergantung kepada pakej yang tela
 butang Show Details untuk melihat senarai pakej yang akan dialihkan.
 Klik Continue untuk mulakan proses membuang pakej. Apabila ia telah selesai , mesej
 Update Complete akan muncul.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 17.4 Mengompil Kod Sumber
 Kadangkala adalah perlu untuk mengompil perisian daripada kod sumber agar dapat
 diinstalasi  ke dalam sistem. Mengompil kod sumber mungkin perlu dalam keadaan
@@ -64,9 +56,7 @@ Ia adalah mudah untuk mengompil daripada kod sumber : hanya perlu muat turun kod
 sumber (yang mana selalunya datang sebagai tarball) , melakukan modifikasi , kompilkan
 dan instalasikan secara langsung daripada kod yang telah dikompilkan. Sumber juga
 boleh dikompilkan dalam format RPM , iaitu fail RPM yang mengandungi kod sumber.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 17.4.1 Mengompil daripada Pakej ( fail sumber RPM)
 Fail sumber RPM boleh dikenali oleh sambungan .src.rpm dalam nama fail. Sebagai
 contohnya , openssh ± 3.4pl ± 2.src.rpm adalah sumber RPM manakala openssh ± 3.4pl ±

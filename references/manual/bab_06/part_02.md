@@ -12,9 +12,7 @@ Langkah 1     Penggunaan arahan “mount” untuk melampirkan cakera padat (CD-R
 kepada direktori sub dibina dalam Langkah 1:
 # mount /dev/cdrom /mnt/cdrom
 atau
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 # mount  /dev/hdb   /mnt/cdrom   (jika CD ROM anda dilampirkan ke
 sistem sebagai ‘slave drive’ pada IDE kedua, guna /dev/hdb).
 Nota: Nama alat bagi cakera padat (CD ROM) anda adalah /dev /hdb. Jika
@@ -34,14 +32,10 @@ atau
 # eject
 Nota: Butang ‘eject’ pada pemacu cakera padat (CD ROM drive) tidak akan
 mengeluarkan cakera padat jika anda tidak ‘unmounted’ CD ROM dari sistem.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 16 : Teks Editor
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada teks editor popular dan berguna
 dalam Linux. Teks editor sangat berguna terutamanya apabila anda bekerja di
@@ -50,9 +44,7 @@ Objektif:
 1. Mengenali teks editor emacs
 2. Mengenali teks editor vim
 3. Mengenali teks editor pico
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 16 MENGAPA TEKS EDITOR
 16.1 Pengenalan Teks Editor
 Mereka yang biasa dengan antara muka (interface) grafik Windows dan program moden

@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 17 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Mukadimah:
 Dalam pelajaran ini, anda akan diberi penekanan kepada pelayan web yang amat popular
 dan mendominasi 60% pasaran iaitu pelayan Apache. Apache menjadi pilihan
@@ -19,9 +16,7 @@ Objektif:
 2. Mengetahui konfigurasi asas pelayan Apache
 3. Mengetahui asas dan sejarah Apache
 4. Memulakan perkhidmatan Apache
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 25 PERKHIDMATAN WEB
 25.1 Pengenalan
 Apache merupakan pelayan web yang paling banyak dipergunakan di Internet. Program
@@ -46,9 +41,7 @@ Apache waktu itu ialah:
 • Robert S. Thau
 • Andrew Wilson
 Dengan tambahan sokongan daripada:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 • Eric Hagberg
 • Frank Peters
 • Nicolas Pioch
@@ -71,9 +64,7 @@ layanan yang cukup lengkap bagi penggunanya. Beberapa dukungan Apache :
 • CGI (Common Gateway Interface), yang paling terkenal untuk digunakan adalah
 • Perl (Practical Extraction and Report Language
 • PHP (Personal Home Page / PHP Hypertext Processor)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 217 : Pelayar web lynx mempertontonkan halaman dari Apache
 25.2 Konfigurasi
 Fail konfigurasi Apache terletak di lipatan /etc/httpd/conf/. Nama failnya adalah
@@ -89,9 +80,6 @@ httpd.conf, srm.conf dan access.conf. Namun semua binari program dalam Red Hat
 menyatukannya dalam satu fail yakni httpd.conf. Fail ini dibahagi menjadi 3 bahagian
 utama :
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 1. Global environment
 Berisi konfigurasi Apache secara umum, seperti berapa banyak pengguna dapat
 akses pada waktu yang sama.
@@ -106,9 +94,6 @@ disampaikan di sini mengacu pada file httpd.conf yang diberikan secara dasar ole
 Apache selesai pemuatan..
 Gambar Rajah 218 : Global Environment dalam fail /etc/httpd/conf/httpd.conf
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Gambar Rajah 219 : Bahagian Virtual Host dalam fail /etc/httpd/conf/httpd.conf
 25.3 Ringkasan
 Pada bahagian ini, telah dipelajari bagaimana menghidupkan Apache Versi 2.0. Selain itu
@@ -122,14 +107,9 @@ didukung olehnya, dapat dibaca di dokumentasi Apache yang disertakan dalam Red H
 Fail ini terletak di lipatan /var/lib/apache/htdocs. Dokumentasi online dapat di akses di
 http://www.apache.org/docs.
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 PANDUAN PENGAJAR
 Pelajaran 26: Perkhidmatan DNS
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran terakhir ini, anda akan diperkenalkan kepada aplikasi terpenting iaitu
 BIND yang memberikan perkhidmatan DNS. BIND yang dibangunkan oleh ISC amat
@@ -139,9 +119,7 @@ Objektif:
 2. Mengenali konsep-konsep perkhidmatan DNS
 3. Mengetahui konfigurasi asas pelayan BIND
 4. Memulakan perkhidmatan BIND
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 26 PERKHIDMATAN DNS
 26.1 Pengenalan
 Sudah menjadi tabiat manusia untuk mudah menghafal perkataan berbanding nombor.
@@ -157,13 +135,9 @@ Pada awalannya perkhidmatan ini hanya dibekalkan oleh satu fail ASCII iaitu /etc
 untuk sistem Linux dan %windir%\system32\drivers\etc\hosts untuk sistem Windows.
 Namun kini adalah mustahil untuk memetakan alamat IP dan nama domain seluruh
 Internet ke dalam satu fail sahaja.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 220 : Fail /etc/hosts
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 221 : Fail %windir%\system32\drivers\etc\hosts
 Lalu pada tahun 1984, Paul Mockapetris mengusulkan sistem penamaan domain (DNS)
 yang diterapkan dalam RFC 882  dan RFC 883.  Ia menyatakan bahawa perkhidmatan
@@ -174,9 +148,7 @@ Struktur pangkalan data DNS mirip dengan sistem fail yang ada di Linux. Jika dal
 sistem fail Linux memiliki direktori root (/)  kemudian di bawahnya ada direktori usr
 (/usr), bin (/bin) dan seterusnya, maka dalam struktur pangkalan data DNS juga memiliki
 root (.), kemudian com (com.), net (net.) dan seterusnya.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Organisasi Internet Assigned Numbers Authority (IANA) yang beroperasi di Universiti
 Southern California, merupakan badan yang dipertanggungjawabkan untuk
 mengkoordinasi pembahagian alamat IP dan perkhidmatan DNS. Mereka telah
@@ -198,9 +170,7 @@ negara Malaysia, “my” dan “.” pula digelar sebagai titik helaan (trailin
 kepada pelayan akar.
 Kini di seluruh dunia terdapat hanya 13 buah pelayan akar. Rajah 2 di bawah
 menerangkan nama, lokasi dan alamat IP kesemua pelayan akar.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Pelayan Akar Alamat IP Organisasi Lokasi
 A.ROOT-SERVERS.NET 198.41.0.4 NSF-NSI Herndon, VA
 B.ROOT-SERVERS.NET 128.9.0.107 DISA-USC Marina delRey, CA
@@ -216,9 +186,7 @@ K.ROOT-SERVERS.NET 193.0.14.129 LINX/RIPE London, England
 L.ROOT-SERVERS.NET 198.32.64.12 DISA-USA Marina delRay, CA
 M.ROOT-SERVERS.NET 202.12.27.33 WIDE Keio, Jepun
 Jadual 38 Pelayar Akar DNS
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 222 : Peta yang menunjukkan pelayan akar DNS yang diperoleh dari laman web
 www.wia.org
 26.2 Bagaimana DNS Berfungsi
@@ -228,9 +196,6 @@ atau alamat IP, sekiranya pelayan tersebut tidak mengetahuinya ia akan bertanya 
 pelayan lain. Pelayan DNS yang paling banyak digunakan di Linux adalah BIND yang
 dibangunkan oleh Internet Software Consortium (ISC).
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Andai kata anda ingin melihat laman web di http://www.upm.edu.my.. Menggunakan
 perisian pelayaran web Mozilla, maka isirung (kernel) akan melihat fail /etc/host.conf;
 berdasarkan fail tersebut, isirung (kernel) sedar ia perlu menurut turutan pencarian di fail

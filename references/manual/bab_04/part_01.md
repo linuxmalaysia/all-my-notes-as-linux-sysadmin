@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 4 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 13.4.7.1 Pemecahan Melalui fdisk
 Anda diminta menekan ALT+CTRL+F2 untuk memberikan anda pengesa shell.
 Sebahagian mungkin akan berasa kurang selesa dengan kaedah ini. Tapi percayalah
@@ -33,16 +30,12 @@ Jadual 11 : Arahan dalam perlaksanaan fdisk
 Di dalam arkitektur x86, kita dibenarkan untuk mempunyai 4 pecahan utama sahaja. Jika
 kita ingin mempunyai lebih dari nilai tersebut, kita perlu mengambil salah satu pecahan
 utama untuk menjadi pecahan lanjutan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Namun pecahan lanjutan itu juga mempunyai had maksimum untuk pecahan pendua iaitu
 hanya 12 pecahan sahaja. Pendek kata nilai pecahan maksimum yang dibenarkan ialah 3
 pecahan utama, 1 pecahan lanjutan dan 12 pecahan pendua.
 Gambar Rajah 138 : Kekotak dialog disk druid
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4.7.2 Memilih Pecahan Untuk Proses Pembentukan
 Anda dibenarkan untuk membuat pilihan pecahan mana yang anda ingin bentukkan.
 Pastikan anda tidak membentuk pecahan yang mengandungi data yang penting. Pastikan
@@ -50,43 +43,31 @@ juga anda telah menyalin dua data-data anda, kerana selepas proses ini tiada jal
 Program Anaconda akan membentuk pecahan anda kepada sistem fail Linux iaitu ext3.
 Anda boleh memilih untuk “Check for bad blocks while formatting” namun ia akan
 mengambil masa yang amat lama.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 139 : Memilih pecahan untuk proses pembentukan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4.8 Penetapan LILO
 Kemudian anda akan ditanya lokasi peletakan LILO (LInux LOader) dalam sistem anda.
 Adalah dinasihatkan anda meletakkan LILO di dalam MBR.
 Gambar Rajah 140 : Kekotak Dialog LILO
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4.9 Memilih Kumpulan Pakej
 Pada peringkat ini anda telah bersedia untuk memuatkan pakej ke dalam sistem anda.
 Kita akan teruskan proses pemuatan dengan memilih semua pakej.
 Gambar Rajah 141 : Kekotak dialog pemilihan pakej
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4.10 Memuatkan Pakej
 Anda akan dipaparkan dengan dialog di bawah. Pada ketika ini anda mungkin perlu
 memikirkan untuk mengambil sedikit makanan untuk mengalas perut. Ini adalah kerana
 ia akan mengambil masa yang agak lama untuk disiapkan.
 Bar penunjuk akan menunjukkan prestasi kemajuan pemuatan
 Gambar Rajah 142 : Kemajuan proses pemuatan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4.11 Pe mbikinan Cakera liut But
 Masukkan sekeping cakera liut 3.5” ke dalam pemacu cakera liut anda. Pastikan anda
 berbuat demikian untuk memastikan anda tidak menghadapi masalah di hari muka.
 Gambar Rajah 143 : Kekotak dialog pembikinan cakera liut but
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4.12 Pemuatan  Selesai
 Tahniah anda telah melepasi peringkat pertama dalam pengembaraan penuh cabaran ini.
 13.5 Prosedur Selepas Pemuatan
@@ -109,9 +90,7 @@ sistem. Antara program yang biasa digunakan ialah useradd dan adduser. Contohnya
 anda boleh menambah akaun pengguna iena yang mempunyai kata kunci (password)
 dengan arahan seperti di bawah:
 # adduser linux  -p passw0rd
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Anda juga boleh mengubah kata laluan akaun (account password) nama pengguna
 dengan melarikan arahan:
 # passwd <username>
@@ -128,9 +107,7 @@ melarikan arahan seperti sintaks berikut:
 Muslihat penggunanya ialah pastikan anda selalu melarikan arahan ini, walaupun
 sebenarnya arahan ini akan dijalankan secara automatik setiap hari melalui aplikasi
 “cron”.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.7 Mendapatkan Talian Bantuan (Online Help)
 Budaya suka membaca dan berbincang adalah amat penting dalam Linux. Oleh itu Linux
 telah menyediakan halaman panduan yang dipanggil man. Setiap masa jika anda
@@ -153,9 +130,7 @@ yang menyebabkan sistem tidak ditutup dengan kaedah yang betul akan menyebabkan
 kehilangan atau kerosakan data yang serius.
 Dalam sistem Linux, jika anda menekan butang CTRL+ALT+DEL serentak akan
 menyebabkan memerangkap isirung (kernel) untuk memulakan proses penutupan secara
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 selamat. Namun ada banyak kaedah lain untuk membolehkan sistem anda ditutup dengan
 selamat.
 Contohnya jika anda ingin menutup sistem dengan pantas anda boleh larikan arahan
@@ -172,14 +147,10 @@ Kesemua arahan ini akan membolehkan sistem Linux anda ditutup terus atau but sem
 Halaman man akan memberikan anda opsyen-opsyen lain yang boleh anda gunakan
 dalam sistem Linux, seperti memberikan sela masa sebelum penutupan mahupun
 memberikan amaran kepada semua pengguna sistem sebelum penutupan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 14 : Pelayaran & Konfigurasi
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada beberapa arahan asas shell.
 Keselesaan dalam menggunakan shell adalah amat penting dalam Linux kerana ia
@@ -199,9 +170,7 @@ Objektif:
 11. Mengetahui kepenggunaan arahan whatis
 12. Mengetahui kepenggunaan arahan man
 13. Mengetahui arahan asas berkenaan sistem dan kegunaannya
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14 Pelayaran Sistem Fail
 Buku ini ditulis untuk pembaca yang tidak mempunyai sebarang pengetahuan mengenai
 Linux. Tidak dinafikan dengan versi GNOME yang baru sistem Linux kini telah menjadi

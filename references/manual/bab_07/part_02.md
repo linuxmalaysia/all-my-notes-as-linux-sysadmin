@@ -6,14 +6,11 @@ tags: [noss, dbp]
 ---
 # Bab 7 - Bahagian 2
 
-
 characters
 Untuk mengganti aksara [e.g edit all temp to temp], type: ‘g/ temp/s
 /tmp/g, $s /temp/g’.
 Jadual 33 : Arahan-arahan papan kekunci untuk melaksanakan baris dalam perisian VIM
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 16.1.3 PICO
 Ini adalah ‘compact, efficient’, dan senang digunakan. Walaupun, ia akan digunakan
 untuk ‘compose’ atau hantar melalui mesej e-mel. Banyak kegunaan untuk semua yang
@@ -35,18 +32,14 @@ dan juga boleh melihat arahan yang berada di bawah:
 Untuk menghapuskan, anda boleh menggunakan Ctrl+d, dan menyimpan fail Ctrl+x.
 Manakala untuk membaca maklumat boleh menggunakan  .bashrc
 #  pico .bashrc
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Di mana sistem root, akan menentukan $EDITOR untuk semua pelanggan /etc/profile fail
 dan memasukkan baris yang sama.
 Sekarang, pico akan menentukan tetapan sistem untuk arahan Linux.
 Anda juga boleh melihat maklumat melalui pico secara muka surat. Selainnya, anda
 boleh melihat  pelayar web untuk membaca pico technical maklumat yang tersebut :
 # lynx /usr/doc/packages/pine/texh-notes/index.html
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 17 : Pemuatan & Penigkatan Pakej
 

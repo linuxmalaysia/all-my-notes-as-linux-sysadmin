@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 13 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Gambar Rajah 179 : Penambahan graf dalam program OpenOffice Calc
 Graf akan diwujudkan di dalam tetingkap lembaran (spreadsheet window). Anda boleh
 juga mengalihkan graf tersebut di mana jua di atas skrin lembaran untuk dicetak atau
@@ -18,9 +15,7 @@ dokumen OpenOffice writer atau persembahan slaid OpenOffice impress.
 Kesan visual membolehkan anda menarik perhatian penonton. OpenOffice impress
 adalah perisian bantuan paparan grafik yang membolehkan anda mencipta paparan yang
 menarik.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 21.5.1 Menggunakan OpenOffice Impress
 Untuk memulakan OpenOffice impress dari panel desktop, pilih main menu> office>
 OpenOffice impress. Untuk shell prom pula ,taipkan ooimpress.
@@ -32,9 +27,7 @@ monitor) dan kesan visual yang anda inginkan semasa dipersembahkan melalui kompu
 Gambar Rajah 180 : Skrin bagi program OpenOffice Impress
 Selepas membuat pilihan, anda boleh memilih jenis slaid yang ingin menciptakan. Anda
 boleh memilih dari  slaid tersedia (pre-formatted slaid) dari senarai atau mulakan dengan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 slaid kosong dan kemudian menciptanya .Untuk mencipta slaid baru, klik insert slaid«di
 floating toolbar , sebuah pop-up window akan dipaparkan di mana anda boleh memilih
 susun atur untuk slaid baru tersebut. Anda boleh mengadakan seberapa banyak slaid yang
@@ -44,9 +37,7 @@ Hendak menonton persembahan? Anda boleh menonton pra tonton (preview) dengan
 memilih Slide show> slide show  dari menu tarik ke bawah (pull down menu).
 Persembahan itu boleh di pra tonton secara skrin penuh, di mana anda klik untuk ke slaid
 seterusnya sehingga ke slaid akhir atau tekan ESC untuk berhenti serta merta.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 21.5.2 Menyimpan Persembahan
 Persembahan boleh disimpan dalam beberapa format. Anda boleh menyimpan dalam
 format OpenOffice impress (contohnya, failku.sxi), format Microsoft Powerpoint (*.ppt)
@@ -62,9 +53,7 @@ anda tambah pada dokumen yang ingin anda cetak, memapar di laman web atau dipaut
 ke e-mel (attachment).
 Untuk memulakan OpenOffice draw dari panel meja kerja, klik Main menu> office>
 OpenOffice draw. Di shell prom pula, taipkan oodraw.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 182 : Skrin bagi program OpenOffice Draw
 Jikalau anda biasa dengan perisian ilustrasi dan grafik yang lain (misalnya GIMP), anda
 akan dapati OpenOffice Draw mempunyai sebahagian dari fungsi tersebut.
@@ -76,14 +65,10 @@ juga membolehkan anda membuka dan mengimport imej serta  membuat perubahan
 dengan peralatan yang sedia ada.
 Setelah selesai dengan perubahan ilustrasi atau imej, anda boleh menyimpan fail dalam
 format fail asal atau eksport kerja anda ke format universal  seperti  .jpg atau  .png.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 22: Sambungan Ke Internet
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan mempelajari kaedah sambungan ke Internet menggunakan
 beberapa kaedah sambungan yang biasanya digunakan seperti modem, ISDN dan xDSL.
@@ -95,9 +80,7 @@ kaedah penetapannya
 2. Mengetahui kepenggunaan wizard disk druid
 3. Mengetahui penetapan modem
 4. Mengetahui kepenggunaan dan penetapan kppp dialer
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 22 SAMBUNGAN  KE INTERNET
 22.1 Jenis sambungan Internet
 22.1.1 Sambungan ISDN
@@ -120,18 +103,14 @@ Mula-mula anda harus  menyediakan perkakasan seperti modem luaran sama ada seria
 atau usb. Selepas itu, anda perlu memberi informasi tentang Pembekal Perkhidmatan
 Internet (ISP) yang anda gunakan, seperti maklumat nombor untuk didail , kata pengguna
 dan kata laluan (login id and password). Selepas selesai menyediakan perkakasan  dan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 mengkonfigurasi maklumat, anda boleh membuat sambungan  ke Internet untuk
 menghantar dan menerima E-mel, melayari  WWW dan juga berceloteh.
 Red Hat Linux ada menyediakan beberapa alat bantuan untuk memudahkan konfigurasi.
 Hanya dengan mengikuti langkah-langkah berikut dan anda boleh melayari web!
 22.2 Wizard Sambungan Internet
 Gambar Rajah 183 : Langkah-langkah untuk membuka program konfigurasi Internet
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 22.2.1 Internet Druid
 Di Red Hat, aplikasi Internet Druid  boleh digunakan untuk menkonfigurasi sambungan
 Internet. Tetapi anda  harus menjalankan sistem X Windows  dan mempunyai
@@ -142,9 +121,7 @@ configuration  wizard
 2. Di meja kerja KDE , pilih Main menu > System > Internet Configuration Wizard.
 3. Di Shell prom, taipkan Internet-druid (contoh di Xterm atau Terminal GNOME).
 Gambar Rajah 184 : Skrin pemilihan jenis perkakasan penyambungan Internet
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 ISP anda mungkin mempunyai konfigurasi yang lain daripada apa yang disebut di atas.
 Sebelum sambungan, periksa ISP anda untuk arahan unik yang sedia ada, termasuk
 informasi berikut:
@@ -168,9 +145,7 @@ Modem ini tidak mempunyai litar liang serial (serial port circuitry). Terdapat d
 Linux untuk modem perisian dalaman bagi beberapa model sahaja. Anda boleh ke
 http://www.linmodems.org untuk keterangan lanjut. Cuba untuk  mengelakkan daripada
 menggunakan modem perisian  di Linux.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 22.3.2 Modem Luaran
 Modem ini menggunakan liang serial. Linux akan mengesan modem jenis ini secara
 automatik dan membuat semua konfigurasi tentang perkakasan ini.
@@ -189,16 +164,12 @@ sedikit masa.
 bahana modem modem volume . Jikalau anda tidak  mengetahui nilainya, biarkan
 dalam keadaan tersedia (default). Kalau anda tidak mempunyai pendail tona  (touch-
 tone dialling), buangkan tanda pilihan (uncheck).
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 185 : Skrin pemilihan jenis modem
 4. Klik forward.
 5. Memberi maklumat tentang akaun ISP. Kalau anda tidak mengetahui, hubungilah ISP
 anda. Klik forward.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 186 : Skrin pemilihan Pemberi Perkhidmatan Internet (ISP)
 6. Di muka create dialup, klik apply.
 Selepas menambah modem, anda boleh mengubahsuai konfigurasi dengan memilih
@@ -209,9 +180,7 @@ tersebut. Tetapan (setting) lain seperti PPP, kata pengguna (login name), kata l
 (password) dan sebagainya boleh juga diubahsuai.
 Selepas peranti  ditambah, ia masih tidak aktif dan digambarkan dengan status tidak aktif
 (inactive status). Untuk mengaktifkan sambungan PPP, pilih Start Menu > System
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Settings> Network . Untuk mengaktifkan peranti, pilih peranti dari senarai peranti dan
 klik butang Activate.
 Gambar Rajah 187 : Mengaktifkan modem melalui tetingkap konfigurasi rangkaian

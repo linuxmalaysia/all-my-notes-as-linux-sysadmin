@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 3 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Oleh itu satu kaedah yang betul dan tepat ialah dengan mengumpulkan seberapa banyak
 maklumat berkenaan sistem perkakasan anda terlebih dahulu. Adalah menjadi tabiat yang
 elok jika anda membaca panduan yang diberikan oleh pembekal terlebih dahulu ataupun
@@ -33,9 +30,7 @@ menggunakan aplikasi X Windows.
 • Video
 Model pengeluar, cip video dan jumlah video RAM yang anda ada
 • Monitor
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Model pengeluar, frekuensi monitor dan nisbah kebolehan kadar segar semula
 secara melintang dan menegak. Biasanya maklumat ini dapat diperolehi dari label
 di belakang monitor anda.
@@ -62,9 +57,7 @@ Beberapa peralatan tambahan seperti alat pengimbas, CDR dan kad TV juga serasi
 dengan Linux. Namun anda tetap dinasihatkan supaya memastikan keserasiannya dengan
 Linux melalui Senarai Keserasian yang boleh diperolehi dari tapak web Red Hat. Secara
 amnya, anda perlu mempunyai ruang yang cukup untuk isirung (kernel) Linux anda dan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 perisian aplikasi yang anda ingini. Kebanyakan pengguna akan melakukan salah satu dari
 3 keadaan di bawah ini:
 1. Linux merupakan satu-satunya sistem operasi yang ada di dalam cakera anda.
@@ -88,9 +81,7 @@ dalam sistem Windows anda terlebih dahulu:
 1. Salin duakan semua data penting ke dalam media salinan yang lain.
 2. Larikan aplikasi scandisk
 3. Larikan aplikasi defragmant
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Setelah anda bersedia, anda boleh mulakan proses yang paling bahaya ini:
 1. Buat satu cakera liut but untuk sistem Windows anda.
 2. Salin semua fail di dalam /dosutils/fips/ dari CD 1 Red Hat anda kepada cakera
@@ -119,9 +110,7 @@ Periksa pilihan yang telah anda buat sekali lagi.
 proses ini.
 12. Anda akan diberikan pilihan seperti di bawah, tekan y untuk mengakhiri pilihan
 dalam proses ini.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13. Jika tiada masalah yang berlaku, anda akan memperoleh dua sekatan; satu untuk
 Windows dan satu lagi sekatan kosong yang membolehkan anda memuatkan
 Linux.
@@ -144,9 +133,7 @@ Number of FATs: 2
 Checking boot sector … OK
 Ready to write new partition scheme to disk
 Do you want to proceed (y/n)?
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13.4 Kaedah Menginstalasi
 Untuk menuju ke sesuatu destinasi yang sama kadangkala kita mempunyai pelbagai
 pilihan. Pilihan ini biasanya bergantung kepada keadaan sekeliling dan keperluan kita.
@@ -168,9 +155,7 @@ suatu perkara yang kurang kita gemari bukan?
 Kita tidak akan membincangkan dengan lebih lanjut mengenai tiga lagi mod pemuatan
 untuk kali ini, namun jadual di bawah menunjukkan perbandingan antara kaedah mod
 pemuatan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Kaedah Muat
 Cakera liut Boot
 (Bootable Floppy
@@ -196,9 +181,7 @@ pertama dan aktifkan penetapan baru tersebut.
 “boot” (reboot) komputer anda.
 5. Setelah beberapa ketika, anda akan “boot” dari pemacu cakera padat (CD-ROM)
 tersebut dan dipaparkan menu pemuatan di bawah. Sebenarnya sebaik sahaja anda
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 menghidupkan Komputer anda, BIOS akan melakukan proses yang dinamakan
 Kekuasaan Cuba Lengkap (POST), proses POST ini akan membaca semua konfigurasi
 yang telah anda tetapkan sebelum ini, maka ia akan cuba mencari rekod “boot” dari
@@ -222,9 +205,7 @@ linux text <ENTER>.
 [F1-Main]     [F2-Options]     [F3-General]     [F4-Kernel]     [F5-Rescue]
 boot:
 Gambar Rajah 132 : Kekotak Dialog Pemilihan Mod
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Konsol  Kekunci Kombo  Ulasan
 1  Ctrl + Alt + F1  Kekotak dialog pemuatan
 2  Ctrl + Alt + F2  Pengesa Shell

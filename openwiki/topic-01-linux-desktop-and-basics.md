@@ -36,6 +36,8 @@ Topik ini membina asas konseptual yang kukuh sebelum pelajar menjalani latihan a
 - Hak pengguna di bawah perisian terbuka
 - Implikasi di Malaysia: Akta Hak Cipta 1987
 
+**📖 Baca Lanjut:** [palace/cu01/hakcipta-dan-pelesenan.md](../palace/cu01/hakcipta-dan-pelesenan.md)
+
 ### 3. Ekosistem Distribusi Linux 2024
 - **Keluarga Debian**: Debian 12, Ubuntu 24.04 LTS, Linux Mint 22
 - **Keluarga Red Hat**: Fedora 41, RHEL 9.4, AlmaLinux 9, Rocky Linux 9
@@ -55,6 +57,13 @@ Topik ini membina asas konseptual yang kukuh sebelum pelajar menjalani latihan a
 - Dasar OSS MAMPU (sejak 2001)
 - Keperluan NOSS untuk Teknologi Maklumat
 - Peluang kerjaya: SysAdmin, DevOps, Keselamatan Siber, Pengkomputeran Awan
+
+### 6. Soal Jawab (FAQ) & Direktori Perisian Alternatif
+- Soalan lazim pengguna baharu Linux
+- Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
+
+**📖 Baca Lanjut (FAQ):** [palace/cu01/soal-jawab-linux.md](../palace/cu01/soal-jawab-linux.md)
+**📖 Baca Lanjut (Direktori):** [palace/cu01/direktori-sumber-rujukan.md](../palace/cu01/direktori-sumber-rujukan.md)
 
 ---
 

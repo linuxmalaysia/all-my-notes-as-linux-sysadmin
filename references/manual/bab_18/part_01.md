@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 18 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Gambar Rajah 223 : Pemetaan terus domain upm.edu.my. secara grafik
 26.3 Asas BIND
 Pembinaan BIND selaku pelayan nama sebenarnya amat mudah dan ringkas, namun
@@ -17,9 +14,7 @@ Bahkan telah terbukti bahawa antara perkhidmatan yang paling banyak kesilapan ia
 DNS. Hal ini dapat dielakkan sekiranya, anda berhati-hati dan melakukan percubaan
 acah-tanya untuk melihat respons dari pelayan anda terlebih dahulu sebelum
 meletakkannya di produksi.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Terdapat dua jenis pemetaan yang dibenarkan di BIND, yang pertama ialah Pemetaan
 Terus (Forward Mapping) dan yang kedua Pemetaan Songsang (Reverse Mapping).
 Asasnya pemetaan terus merujuk kepada pemetaan nama kepada alamat IP manakala
@@ -42,9 +37,7 @@ Skrip Pelayan:   /etc/rc.d/init.d/named
 Fail Konfogurasi Utama:  /etc/named.conf
 Fail Zon:   /var/named
 Fail Log:   /var/log/named
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 ii) Pelayan Nama (NAME SERVER)
 Pelayan nama merupakan program yang melengkapkan informasi ruang nama
 di dalam pokok domain yang mungkin mengandungi petunjuk kepada pelayan
@@ -70,9 +63,7 @@ data berkenaan sesuatu domain. Ia juga menjadi penanda
 permulaan RR. Hanya satu SOA sahaja dibenarkan di dalam
 satu zon fail.
 SYED.COM    IN      SOA    NS.SYED.COM. HOSTMASTER.SYED.COM.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 • NS, Name Server
 Rekod NS mengenal pasti pelayan autoriti untuk sesuatu
 domain.
@@ -91,9 +82,7 @@ Rekod Mail eXchange pula menunjukkan perumah yang
 sepatutnya memproses atau menerima e-mel (MTA) untuk
 sesuatu domain.
 IN      MX    10 MAIL.SYE
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 26.3.1 Jenis-jenis Konfigurasi BIND Selaku Pelayan DNS
 Utama (PRIMARY )
 Pelayan utama DNS merupakan pelayan yang memegang informasi fail zon sesuatu
@@ -113,9 +102,7 @@ DNS, 1 pelayan e-mel dan beberapa perumah lain.
 membangunkan rajah konfigurasi terlebih dahulu. Isu permohonan juga perlu
 diambil kira sekiranya kita membangunkan domain yang sah. Di Malaysia badan
 yang bertanggungjawab ialah MyNic yang terletak di Taman Teknologi Malaysia.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 8. Tambah informasi domain kedalam fail /etc/named.conf
 9. Buat fail pemetaan terus di /var/named/aljufry.forward
 10. Buat fail pemetaan songsang di /var/named/aljufry.reverse

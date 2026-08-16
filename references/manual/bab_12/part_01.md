@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 12 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Untuk mengubah tetapan pencetak diimport (imported printer’s setting).
 Anda tidak boleh mengubah tetapan (setting) secara terus. Anda harus mengatasi
 pencetak (printer) tersebut. Anda hanya boleh mengatasi tetapan pencetak (printer
@@ -27,18 +24,14 @@ Jika anda ingin menukar nama pencetak (printer), tukar nilai nama baris (Queue N
 dalam tab Names and Aliases. Klik OK untuk pergi semula ke tetingkap utama. Pencetak
 (printer) tersebut akan bertukar namanya. Klik Apply untuk menyimpan perubahan dan
 menghidupkan semula servis daemon pencetak (printer).
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 173 : Skrin petukaran nama pencetak (printer)
 Alias pencetak (printer) adalah nama pilihan lain untuk sesuatu pencetak (printer). Untuk
 menambah alias pada pencetak (printer) sedia ada, tekan tab Add pada Names And
 Aliases, masukkan nama alias nya. Klik OK lagi dan pergi semula ke tetingkap utama.
 Klik Apply untuk menyimpan alias dan hidupkan semula daemon pencetak (printer).
 Pencetak (printer) boleh mempunyai lebih dari satu alias.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 20.2.4 Jenis Queue (Queue Type)
 Gambar Rajah 174 : Skrin petukaran lokasi pencetak (printer)
 • Tab Jenis Queue (queue type) menunjukkan jenis queue yang telah anda pilih semasa
@@ -48,9 +41,7 @@ untuk kembali ke Tetingkap Utama. Klik Apply untuk menyimpan queue type  dan
 hidupkan semula daemon pencetak (printer). Berdasarkan queue mana yang dipilih
 (Local Printer, Unix Printer LPD, Window Printer SMB dsbnya), ianya akan diaparkan
 di tab queue type .
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 20.2.5 Pemandu Peranti (Driver )
 Pemacu Tab (Tab driver) menunjukkan pemacu pencetak (printer drive) mana yang
 sedang digunakan. Ini adalah senarai yang sama yang anda gunakan bila menambah
@@ -62,9 +53,7 @@ cetakkan muka surat percubaan (test page). Sebahagian driver berfungsi lebih bai
 yang lain.
 20.2.5.1 Pilihan Terdapat Di Pemandu Peranti (Driver Options)
 Gambar Rajah 175 : Skrin petukaran pilihan pemandu
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Pilihan di tab Pilihan Pemacu (Driver options) memaparkan fungsi lanjutan pencetak
 (printer). Pilihan adalah berbeza menurut pencetak (printer). Pilihlah biasa adalah
 Prerender Postscript  harus dipilih jika anda mencetak huruf yang melangkaui huruf
@@ -82,14 +71,10 @@ Di atas adalah contoh umum yang mungkin anda perlu tukarkan. Terdapat banyak lag
 pilihan yang boleh anda perbaiki untuk mempercepatkan dan menaikkan kualiti pencetak
 (printer) anda tetapi nilai tetapan tersedia (default setting) akan berfungsi dengan baik
 dalam percetakan biasa.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 21: Set Aplikasi OpenOffice
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada set aplikasi OpenOffice. Aplikasi
 yang sangat berguna ini pada mulanya dibangunkan oleh Sun Microsystems dan dikenali
@@ -102,9 +87,7 @@ Objektif:
 4. Mengenali aplikasi Calc dalam set OpenOffice
 5. Mengenali aplikasi Impress dalam set OpenOffice
 6. Mengenali aplikasi Draw dalam set OpenOffice
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 21 SET OPENOFFICE
 21.1 Set OpenOffice
 Red Hat Linux mempunyai beberapa fungsi untuk membantu pengguna untuk
@@ -123,9 +106,7 @@ OpenOffice memang senang digunakan dan membolehkan anda menguasai keseluruhan
 aplikasi dan ia akan mempamerkan perubahan secara spontan semasa anda
 menyuntingnya. Cara penyuntingan masa sebenar ini digelar “ Apa yang dilihat itu yang
 diperoleh” (“What you see is what you get”).
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 21.2 Ciri-ciri OpenOffice
 Set OpenOffice mengandungi beberapa aplikasi untuk mereka dan menyunting dokumen,
 lembaran halaman (spreadsheet), persembahan perniagaan (business presentation) dan
@@ -159,9 +140,7 @@ Jadual 36 : Jenis-jenis aplikasi OpenOffice
 Set OpenOffice mengandungi beberapa fungsi yang membolehkan anda mengendalikan
 kerja untuk pembelajaran, perniagaan dan kegunaan di rumah. Bahagian seterusnya akan
 menjelaskan bagaimana cara untuk menggunakan set OpenOffice.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 21.3 OpenOffice writer
 Menulis dokumen dengan OpenOffice adalah sama seperti pemproses perkataan yang
 pernah anda gunakan. Pemproses perkataan (word processing) adalah seperti pengedit
@@ -182,9 +161,7 @@ anda dan memuatkan dokumen itu ke ruang penyuntingan .Selain daripada itu, ada j
 butang untuk buka dokumen (open), simpan (save),cetak (print) dokumen dan juga  untuk
 memulakan dokumen yang baru di mana anda akan membuka tetingkap (window ) baru
 dengan dokumen yang kosong untuk anda menulis kandungan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 176 : Paparan tetingkap program OpenOffice Writer
 Di sebelah kiri tetingkap (window), terdapat bar alat (toolbar) dengan butang untuk
 semak ejaan (spell checking), perkataan salah dinyatakan (automatic highlighting of
@@ -193,9 +170,7 @@ Penyuntingan Mudah (convenient editing functions). Jika  anda mengarahkan tetiku
 atas butang bar alatan (toolbar), popup atau tooltip akan terpapar untuk keterangan
 tentang fungsi butang itu. Anda juga boleh mendapatkan keterangan lanjut dengan
 mengklik di help menu dan seterusnya di extended tips.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 21.3.2 Cara menggunakan OpenOffice write
 Anda boleh terus mula menaip text di ruang penyuntingan dokumen (document editing
 area) dengan menggunakan tetapan tersedia (default settings).Untuk menyimpan teks ,

@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 16 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Gambar Rajah 214 : Paparan pelayar web Mozilla
 23.6.1 Membentuk Profil Pengguna
 Jika anda biasanya menggunakan  Netscape sebagai pelayar web dan ingin mengalih ke
@@ -20,9 +17,7 @@ Browser dan memilih Mozilla, anda akan dapati penanda buku dahulu akan
 terdapat di Mozilla.
 - Klik pada Manage Profile,  yakni tempat di mana anda boleh membentuk lebih
 banyak profil akaun pengguna di Mozilla. Di sini, anda boleh membentuk profil
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 baru atau membentuk profil berdasarkan akaun anda. Fungsi ini membolehkan
 anda supaya lebih teratur dengan mengadakan akaun berbeza untuk penggunaan
 perniagaan, peribadi dan pelbagai akaun lain.
@@ -40,9 +35,7 @@ Untuk menambah profil baru atau memadam profil sedia ada, anda harus melarikan
 Mozila Profile Manager semula. Untuk melarikannya, taipkan arahan di bawah di shell
 prompt
 $ Mozilla – ProfileManager
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 23.6.2 Pelayar Web Mozilla (Web Browser)
 Selesai mengkonfigurasi profil pengguna, anda telah bersedia untuk menggunakan
 pelayar web.  Untuk mencapai Mozilla, klik pelancar Mozilla di panel atau pilih
@@ -63,9 +56,7 @@ tetingkap Mozilla . Anda boleh membuka tab dengan mengklik File > New > Navigati
 dan anda boleh menukar di antara laman dengan mengklik ke atas tab-tab laman. Untuk
 melancarkan tab baru, gunakan kekunci CTRL-T. Untuk menutup tab, plilih tab tersebut,
 klik butang kiri tetikus di atas tab dan tekan dari menu
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 23.7 NAUTILUS
 Nautilus merupakan suatu komponen teras  suasana meja kerja GNOME. Ia memudahkan
 anda untuk mengurus serta mencari fail atau pengandung (folder) atau melayari web.
@@ -87,9 +78,7 @@ setempat, dengan menggunakan teknologi komponen KDE, Konqueror juga adalah
 pelayar web fungsi penuh untuk anda melayari Internet.
 Untuk melarikan Konqueror, pilih
 Main Menu > Extras > Internet > Konqueror
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 215 : Tetingkap pelayar web Konqueror
 Pertama kali anda melarikan Konqueror, anda akan disajikan dengan skrin pengenalan Ia
 juga akan menerangkan bagaimana  hendak melayari laman web atau sistem fail
@@ -98,9 +87,7 @@ anda menggunakan Konqueror dengan sebaiknya.
 Mengklik Continue juga akan menyajikan anda dengan skrin Specification Ianya
 menerangkan maklumat paparan skrin untuk piawaian  yang di sokong  ( seperti
 cascading stylesheets, plug-ins dan openSSL), protokol dan sebagainya.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 23.9 GALEON
 Galeon merupakan pelayar GNOME berasaskan Mozilla .Ia hanyalah pelayar web. Ia
 tidak mempunyai kemudahan e-mel, kumpulan berita (newsgroups) atau fungsi lain
@@ -123,14 +110,10 @@ atau pilih New Tab dari menu Fail. Mod melayari web secara tab ini boleh di konf
 pada laman Tab di tetingkap Preferences.
 Untuk maklumat tambahan penggunaan Galeon, klik Help pada panel menu atas untuk
 mencapai manual atau FAQ Galeon .
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 24: Perkhidmatan DHCP
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, penekanan mula diberikan kepada pembangunan sistem. Anda akan
 diberikan peluang untuk memahami perkhidmatan DHCP dan seterusnya menggunakan
@@ -144,9 +127,7 @@ permintaan dari pelanggan DHCP
 pelayan DHCP
 4. Melakukan penetapan pada pelanggan DHCP dan memulakan  perkhidmatan
 pelayan DHCP
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 24 PERKHIDMATAN DHCP
 24.1 Pengenalan DHCP
 Seperti mana BIND, perisian DHCP Linux ini juga diselia-bangun oleh Internet Software
@@ -173,9 +154,7 @@ DHCP akan cuba memperbaharui maklumat mereka setiap kali tempoh leased mencapai
 50% dari tarikh tamat.
 Terdapat 4 langkah untuk pelanggan mendapatkan maklumat DHCP, ia lebih dikenali
 sebagai proses DORA.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 i) DHCPDISCOVER
 Pelanggan menghantar broadcasts mesej DHCPDISCOVER pada
 255.255.255.255 (seluruh network) dalam network untuk mencari lokasi
@@ -202,9 +181,7 @@ Akhir sekali, pelayan DHCP A akan menghantar DHCPACK kepada
 pelanggan dan menghantar maklumat lain seperti gateway dan lain-lain.
 Apabila DHCPACK diterima oleh pelanggan, informasi untuk komunikasi
 rangkaian bagi pelanggan adalah lengkap dan komunikasi boleh dimulakan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 24.2 Pelayan dan Pelanggan DHCP Linux
 Konfigurasi pelayan dan pelanggan DHCP adalah amat mudah dan ringkas oleh itu tiada
 sebab untuk sesorang pengendali sistem untuk mengatakan tidak kepada DHCP.

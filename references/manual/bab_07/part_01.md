@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 7 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Textedit Editor Xview
 Vim VI Improved, editor pengatur cara
 Xedit Editor untuk X11
@@ -34,9 +31,7 @@ Mendepani anak panah C+f
 Memadamkan aksara C+d
 Memadamkan baris C+k
 Memadamkan perkataan M+d
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Memulakan fail M+<
 Memulakan baris C+a
 Mengakhiri fail M+>
@@ -58,9 +53,7 @@ Arahan di atas akan memuatkan editor dan membuka fail yang diminta. Jika anda
 kursuskan emacs pada baris arahan (command line) dengan sendirinya, program itu
 bermula, paparkan skrin pembuka dan kemudian hilang bila anda menyentuh kunci pada
 papan kekunci.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 149 : Terminal X11 pada GNU emacs
 Jika anda memulakan GNU emacs pada shell bagi X11 terminal Windows, versi X11
 bagi GNU emacs, dengan tetikus dan penyokong (support) menu, bermula secara
@@ -71,9 +64,7 @@ line) ditunjukkan di bawah
 # emacs ±nw myfile.txt
 Arahan ini membolehkan anda melarikan GNU emacs di dalam terminal X11 anda tanpa
 bar menu (menu bar).
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 16.1.1.3 Menjalankan ( run ) Xemacs
 Untuk memulakan karangan XEmacs semasa sesi X11, taip arahan ini :
 # xemacs
@@ -82,9 +73,7 @@ Gambar Rajah 150 : Skrin editor XEmacs.
 16.1.1.4 Pilihan Toolkit
 GNU emacs dan Xemacs dalam mod X11 mematuhi dan mengikut kebanyakan pilihan
 toolkit X11. Sesetengah pilihan dapat membantu seperti contoh di bawah:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 -bg color -set background to color (latar belakang)
 -cr color -set text cursor to color (teks)
 -fg color -set foreground to color (latar depan)
@@ -105,16 +94,12 @@ kemudian taip ini untuk mengubah adat Xemacs:
 (appt – initialize)
 Tekan ctrl+x dan ctrl+s untuk simpan fail, dan tekan ctrl+x dan ctrl+c untuk keluar
 Xemacs.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 16.1.2 VIM ( Variants of The Visual Improved Editor)
 Editor vim dibangunkan oleh Bram Moolenaar. Ia adalah teks editor yang sesuai dengan
 vi (visual editor, editor yang popular).
 Gambar Rajah 151 : Skrin editor VIM
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Semasa memuatkan pakej bagi vim ke dalam sistem, beberapa fail dan sambungan
 simbolik ke editor vim akan dibuat:
 /usr/bin/vi     - vim
@@ -138,9 +123,7 @@ untuk memasukkan data :
 • tekan ‘a’ – masuk perkataan yang baru di tempat yang berikutnya selepas
 kedudukan  anak panah (cursor)
 • tekan ‘i’ – masuk perkataan yang baru pada kedudukan anak panah (cursor)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 • tekan ‘o’ – tambah baris baru atau menukar kedudukan anak panah (cursor) pada
 baris baru
 Sekiranya anda hendak menukar daripada Mod Input (Input Mode) ke Mod Arahan
@@ -166,9 +149,7 @@ B Anak panah (cursor) bergerak ke aksara awal dalam perkataan tersebut
 { Anak panah (cursor) bergerak ke awal perenggan
 } Anak panah (cursor) bergerak ke akhir perenggan
 Jadual 27 : Arahan-arahan papan kekunci untuk perisian VIM
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 ^b Halaman ke atas
 ^f Halaman ke bawah
 ^u Gerakan anak panah (cursor) separuh halaman menaik
@@ -198,9 +179,7 @@ tekan ‘←’ untuk memadam aksara yang berada sebelum lokasi anak panah
 dan yang sebelumnya.
 -   tek an ‘↓’ untuk memadam aksara di mana anak panah (cursor) terletak,
 dan yang sebelumnya.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Dd Tekan ‘d’ dua kali untuk memadam baris pada anak panah (cursor)
 dw  Gerakkan anak panah (cursor) pada aksara yang pertama pada suatu
 perkataan, dan tekan ‘dw’ untuk memadam perkataan tersebut. Sekiranya
@@ -231,9 +210,7 @@ Tekan pada papan kekunci untuk memaparkan baris nombor pada baris di
 mana anak panah (cursor) berada  dan jumlah baris yang terdapat
 nG N adalah nombor. Tekan ‘35G’ untuk memasuki baris yang ke 35
 Jadual 31 : Arahan-arahan untuk mendapatkan barisan  fail dalam perisian VIM
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 5. Papan kekunci yang berlainan
 R Menukarkan perkataan di mana anak panah (cursor) dengan perkataan yang
 baru
@@ -267,9 +244,7 @@ character
 Untuk mencari sesuatu aksara di dalam perkataan, papan kekunci adalah
 ‘/’. Sebagai contoh , papan kekunci :/gz untuk mencari kedudukan g dan
 z selepas anak panah (cursor)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Replace
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

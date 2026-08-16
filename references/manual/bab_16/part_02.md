@@ -10,16 +10,11 @@ tags: [noss, dbp]
 Fail Konfogurasi Utama:  /etc/dhcpd.conf
 /etc/sysconfig/dhcpd
 Fail Lease:   /var/lib/dhcp/dhcpd.leases
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 216 : Contoh fail bagi konfigurasi perkhidmatan DHCP
 Rajah dibawah menerangkan nilai konfigurasi yang selalu digunakan dalam pelayan dhcp
 atau lebih tepat lagi didalam konfigurasi failnya di /etc/dhcpd.conf
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Pilihan Contoh Nilai Deskripsi
 subnet 192.168.100.0
 Subnet dimana pelayan DHCP wajar mengiklankan
@@ -51,9 +46,7 @@ Anda diminta untuk membangunkan pelayan DHCP
 /usr/share/doc/dhcp-3.0pl1/dhcpd.conf.sample /etc/dhcpd.conf
 4. Ubah fail /etc/dhcpd.conf mengikut spesifikasi dibawah dengan menggunakan
 editor teks kegemaran anda. Anda boleh mengubahnya mengikut keadaan semasa.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 5. Larikan arahan touch /var/lib/dhcp/dhcpd.leases  untuk membina sebuah fail
 kosong yang akan digunakan oleh dhcpd dalam menyimpan rekod lease
 pelanggannya.
@@ -81,9 +74,7 @@ berakhir dengan 10.0.11.250
 untuk pelanggan rangkaian.
 default-lease-time 21600    IP tersebut akan kekal selama 6 jam
 max-lease-time 43200    Maksimum akan kekal selama 12 jam
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 25: Perkhidmatan Web
 

@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 2 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 12.2.7 Ketupat
 Merupakan percubaan terbaik yang pernah lahir dari jurukod Malaysia dan merupakan
 terbitan Red Hat. Penulis mendapati pecahan ini sudah mati dan tidak mendapat
@@ -22,9 +19,7 @@ Tapak web   http://www.ketupatlinux.com.my (telah ditutup)
 Versi terkini  Ketupat v2.0
 Seni bina   Intel/IBM
 Pilihan penulis  Tidak dalam senarai pilihan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.3 Hakcipta Linux
 Mengikut seksyen 7(3) Akta Hakcipta 1987 dan Seksyen 27L(1) Akta Hakcipta (Pindaan)
 1996, perisian komputer merupakan karya sastera. Perisian komputer yang dimaksudkan
@@ -52,9 +47,7 @@ termasuklah dalam bentuk separa-binari ataupun kod sumber. Harus diingat bahawa
 hakcipta semua perisian GPL masih terletak pada penulisnya, oleh itu semua undang-
 undang hakcipta Malaysia serta antarabangsa masih lagi melindungi perisian dan
 penulisnya.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Lesen GPL membenarkan sesiapapun untuk mengubahsuai, mengedar dan seterusnya
 menerbitkan perisian yang baru berdasarkan perisian bebas yang asal dengan syarat
 menyatakan penulis asal pada kod sumber yang digunakan dan mengedarkan kod sumber
@@ -76,9 +69,7 @@ sistem seperti RAM dan ruang cakera. OS juga menyediakan sistem fail yang
 mengawal storan data. Sebuah OS juga harus menyediakan  Aplikasi
 Pengaturcaraan (API – Application Programming Interface) yang memudahkan
 pembangunan pengaturcaraan aplikasi.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 2. Apakah Linux?
 Linux ialah terbitan sistem operasi UNIX. Linux mampu dilarikan untuk pelbagai
 platform seperti Intel x86, Alpha, PowerPC dan komputer tapak tangan.
@@ -102,9 +93,7 @@ Pakej perisian yang dikenali SAMBA membolehkan semua komputer peribadi
 (yang menggunakan protokol LanManager, CIFS dan NetBIOS) berkomunikasi
 dengan sistem fail dan pencetak (printer) yang disambungkan kepada mesin
 Linux.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 5. Mampukah Linux memainkan peranan penting untuk Pembekal Servis
 Internet?
 Linux boleh ditetapkan sebagai dinding api untuk keselamatan dan kredibiliti
@@ -130,9 +119,7 @@ sah, begitu juga dengan Linux. Sebenarnya, semua OS Microsoft Windows dan
 Linux mematuhi kelayakan asas sebagai sebuah sistem operasi dalam persekitaran
 berangkaian namun Linux mampu melakukan apa sahaja yang keluarga Microsoft
 Windows mampu lakukan bahkan lebih.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 9. Perlukah saya membayar untuk memperolehi dan menggunakan Linux?
 Tidak ianya adalah PERCUMA dan BEBAS. Anda bebas untuk melakukan apa
 sahaja selagi tertakluk di bawah perundangan lesen GNU GPL dan GNU FDL.
@@ -157,9 +144,7 @@ Tapak SEUL/edu (Simple End User Linux Project), merupakan kumpulan perbincangan
 yang berminat dengan Linux untuk pendidikan. Ia merangkumi semua aspek penggunaan
 Linux oleh guru, penjaga dan murid. Sebagai tambahan, mereka juga sedang mengumpul
 sumber-sumber yang membolehkan pembangunan (dengan bantuan beberapa
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 sukarelawan) untuk pelbagai perisian sumber terbuka yang mampu membuatkan Linux
 lebih sesuai untuk pengajar dan penjaga.
 dijelaskan di sini ialah Linux dibangunkan oleh ratusan ribu jurukod di seluruh dunia oleh
@@ -181,9 +166,7 @@ merujuk kepada isirung (kernel) pembangunan dan mungkin tidak stabil (contohnya 
 2.3 dan 2.5).
 Selain mempunyai isirung (kernel) yang sama (cuma versi yang berlainan) semua
 pecahan Linux turut mempunyai beberapa persamaan pakej asas seperti di bawah:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.7 Linux, Linux dan Linux Lagi
 12.7.1 Perbandingan Aplikasi Linux dan Microsoft Windows
 Sistem Aplikasi Linux  Aplikasi Windows 9x, NT, 2000

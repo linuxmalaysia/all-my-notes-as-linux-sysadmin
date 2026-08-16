@@ -10,9 +10,7 @@ ata dengan menggunakan
 arahan makewhatis, ia boleh di dapati di /usr/sbin direktori. anda harus log masuk (login)
 sebagai “root”.
 # makewhatis
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.12 Mendapatkan Bantuan Dengan man
 Kesemua pecahan Linux datang dengan manual yang mengandungi informasi mengenai
 program, utiliti, arahan dan program sistem.
@@ -35,9 +33,7 @@ Seksyen Jenis Dokumentasi
 4 Fail Khas
 5 Format Fail (/etc/passwd dan sebagainya)
 6 Permainan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 7 Format Makro (format halaman man)
 8 Pengendalian Sistem (utiliti root)
 9 Rutin Isirung (kernel)
@@ -59,9 +55,7 @@ Who Menunjukkan pengguna yang telah log masuk
 Whois Program pencari IP/Domain
 W Menunjukkan pengguna yang telah log masuk
 Jadual 13 : Arahan informasi sistem
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.13.2 Arahan Berhubungan Fail
 Arahan Ulasan
 Ls Melayari kandungan sesebuah lipatan

@@ -20,9 +20,7 @@ o control panel, backup, rangkaian da komunikasi
 o man dan whatis
 • GUI
 o GNOME, KDE
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Data / RDBMS  Informix, Sybase  Informic, Sybase
 Pelayar Internet  Netscape Communicator, StarOffice
 Netscape Communicator, MS Internet
@@ -66,9 +64,7 @@ Linux Jurnal http://www.ssc.com/lj/index.html/
 Linux Meta FAQ
 ftp://rtfm.mit.edu/pub/usenet-by-
 hierarchy/comp.os/linux/answers/linux/meta-faq
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Linux NOW! http://www.linuxnow.com/
 Informasi Linux http://www.linux.org/
 Sumber Linux http://linuxresources.com/
@@ -83,9 +79,7 @@ tuebingen.de/zdv/projeckte/linux/books/nag/nag.html
 Tenungan Linux http://fokus.gmd.de/linux/
 Sijil Profesional Linux http://www.digitalmetrics.com
 Perisian FreshMeat http://freshmeat.net/
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.7.3 X Windows
 Perisian URL
 Metrolink  http://www.metrolink.com
@@ -93,9 +87,7 @@ Xfree86 Project  http://www.xfree86.org/
 Xi graphics  http://www.xinside.com/
 GNOME  http://www.gnome.org/
 KDE  http://www.kde.org/
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.7.4 URL Pecahan dan Perisian Berguna Untuk Linux
 Laman Web URL
 Tapak FTP BLINUX  ftp://leb.net/pub/blinux/
@@ -112,14 +104,10 @@ Tapak FTP Red Hat  ftp://ftp.redhat.com/pub/
 Arkib Linux UNC  ftp://metalab.unc.edu/pub/Linux/
 Tapak FTP Walnut Creek  ftp://warchive.cdrom.com/pub/linux/
 Tapak Perisian Linux Woven  http://www.fokus.gmd.de/linux/linux-softw.html
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 13 : Menginstalasi & Konfigurasi
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini anda akan diperkenalkan kepada proses instalasi Linux dan
 seterusnya membimbing anda untuk menghabiskan proses instalasi dengan menggunakan
@@ -136,9 +124,7 @@ Objektif:
 6. Mengetahui kaedah mencipta akuan pengguna
 7. Mengetahui kaedah mendapatkan bantuan dari sistem
 8. Mengetahui kepelbagaian kaedah menutup sistem dan menghidupkannya semula
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 13 PROSES MENGINSTALASI
 13.1 Pengenalan
 Bahagian ini disiapkan untuk membimbing pembaca secara langkah demi langkah dalam

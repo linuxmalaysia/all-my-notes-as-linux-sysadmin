@@ -6,25 +6,16 @@ tags: [noss, dbp]
 ---
 # Bab 1 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 PANDUAN PENGAJAR
 Infrastruktur Sistem & Linux
 Red Hat 9
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Seksyen B
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 12 : Pengenalan Kepada Linux
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini anda akan diperkenalkan kepada sistem operasi Linux, tenaga kerja
 di sebalik tabir Linux. Di sini juga anda akan diperlihatkan beberapa contoh pecahan
@@ -46,9 +37,7 @@ pengkomputeran
 6. Memperjelaskan sifat-sifat asas pecahan Linux
 7. Membandingkan perisian aplikasi Linux dan Microsoft Windows, URL informasi
 Linux dan URL pecahan dan aplikasi Linux
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12 SISTEM OPERASI LINUX
 Bahagian ini membimbing anda untuk membiasakan diri dengan Red Hat Linux versi 9
 sebagai satu sistem pengendalian yang asas dengan menggunakan persekitaran bergrafik
@@ -74,9 +63,7 @@ Seperti sistem operasi Unix lain, Linux dibina dengan bahasa pengaturcaraan C da
 mematuhi kaedah serta peraturan pengaturcaraan Posix. Satu perkara penting yang perlu
 dijelaskan di sini ialah Linux dibangunkan oleh ratusan ribu jurukod di seluruh dunia oleh
 itu hak cipta Linux terletak di tangan Linus, namun program lain terletak kepada pengatur
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 cara yang membuatnya. Oleh itu penghormatan pengeluaran isirung (kernel) secara
 rasminya akan hanya dilakukan oleh Linus sendiri.
 Linux boleh di peroleh secara percuma dari Internet. Kebanyakan syarikat yang
@@ -90,9 +77,7 @@ sains di sebuah universiti di Helsinki, Finland. Idea untuk memulakan projek hob
 telah berputik daripada kelas sistem operasinya. Ketika itu pelajar-pelajar yang
 mengambil mata pelajaran tersebut menggunakan buku teks yang ditulis oleh Prof.
 Andrew Tanenbaum.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 130 : Linus Benedict Torvalds
 Prof Tanenbaum telah memperkenalkan sistem operasi Minix melalui bukunya, oleh itu
 tidak hairanlah apabila saudara Linus telah bermula dengan Minix untuk membangunkan
@@ -104,9 +89,7 @@ Sebenarnya pada peringkat awal, Linux hanyalah mengekodkan program pengaturan
 ingatan yang merupakan sebahagian daripada isirung (kernel) Linux. Setelah itu beliau
 mula menggabungkan dengan pelbagai kod yang boleh di peroleh secara bebas di Internet
 dengan isirung (kernel) Linux.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Pada waktu ini, Linus bekerja di bawah naungan syarikat Transmeta Corporation di
 Silicon Valley. Terdapat khabar angin yang mengatakan beliau akan bekerja untuk Red
 Hat, tetapi beliau tetap kekal dengan pendirian untuk tidak menunjukkan minat dan
@@ -129,9 +112,7 @@ sentiasa menjadi rujukan dan pelakon utama dalam pengeluaran isirung (kernel) ra
 selain Linus Torvalds. Jika anda lebih peka, anda akan mendapati kebanyakan ikon-ikon
 berkenaan isirung (kernel) akan dilambangkan sebagai seorang yang berjanggut dan
 bertopi sempena menghargai hasil usaha Alan Cox.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 131 : Alan Cox
 Beliau telah mula bekerja dengan isirung (kernel) Linux sejak pengeluaran isirung
 (kernel) 1.0 (isirung (kernel) terkini ialah 2.6.x), oleh itu hampir setiap hari beliau
@@ -141,9 +122,7 @@ http://www.linux.org.uk. Kini Cox banyak menulis diarinya dalam bahasa Welsh, ol
 lebih baik jika anda membaca diari isterinya.
 Jika anda melihat diari beliau pasti anda akan terkejut dengan cara kehidupannya, ia
 menunjukkan seolah-olah beliau hanya makan Linux, minum Linux dan tidur Linux. Tapi
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 harus diingat itu semua tidak menjadi penghalang untuknya mengekalkan
 perkahwinannya dengan isterinya, Telsa dan hidup bahagia di samping keluarga.
 Sebagai keluarga penggodam yang berjaya, Telsa juga banyak menyumbang kepada
@@ -168,9 +147,7 @@ secara langsung, namun usaha yang dimulakannya telah berjaya membuka mata orang
 ramai akan keberkesanan perisian bebas ini. Melalui organisasi tersebut, Stallman telah
 menghasilkan pelbagai projek perisian, oleh itu beliau mendapati beliau memerlukan
 lesen hak cipta untuk melindungi perisian mereka tanpa melanggar prinsip-prinsip
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 mereka, hasilnya lesen GNU GPL telah diterbitkan. Kita akan membincangkan lesen
 GNU GPL ini dengan lebih lanjut selepas ini.
 Sebenarnya sebahagian ideologi yang cuba dibawa oleh Free Software Foundation ini
@@ -184,9 +161,7 @@ batas yang telah digariskan.
 Mereka berdua merupakan pengasas awal kepada sistem grafik Linux yang dikenali
 sebagai X Windows. Bahkan nama James Gettys telah disemadikan untuk terminal
 konsol Linux.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.2Pecahan Linux
 Salah satu keunikan Linux ialah tersedianya banyak pilihan untuk pengguna memilih
 pelbagai pecahan Linux. Pecahan yang dimaksudkan di sini ialah pecahan Linux yang
@@ -204,9 +179,7 @@ Tapak web  http://www.debian.org
 Versi terkini  Debian v3.0r2 (Isirung 2.4.20)
 Seni bina  Intel/IBM
 Pilihan penulis  *****
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.2.2 Red Hat
 Satu ketika dahulu di antara semua pecahan Linu
 ---

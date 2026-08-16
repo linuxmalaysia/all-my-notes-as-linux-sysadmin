@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 11 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Gambar Rajah 164 : xpdf Beroperasi
 Halaman utama xpdf mempunyai informasi tentang pilihan xpdf. Untuk melihat halaman
 utama, type man xpdf di shell.
@@ -19,22 +16,16 @@ dengan type xpdf di shell.
 3. Pilih open untuk melihat senarai fail.
 4. Pilih dokumen PDF yang anda ingin untuk pancar dan klik buka (open).
 Adobe Acrobat Reader adalah lagi satu pemancar PDF yang popular. Walaupun ia tidak
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 berada di Red Hat Linux secara asasnya, anda boleh memuat turun aplikasi ini melalui
 halaman web rasmi Adobe di http://www.adobe.com/. Anda boleh dapatkan link
 untuknya di meja kerja apabila anda log masuk (login) ke sistem. Klik berganda pada
 perisian pemuat tersebut dan ia akan secara automatik memuat turun Adobe Acrobat
 Reader ke sistem anda.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 20: Konfigurasi Pencetak (printer)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada proses percetakan dalam Linux.
 Sebelum ini ramai beranggapan konfigurasi pencetak (printer) amat sukar dilakukan
@@ -43,9 +34,7 @@ lebih memberikan pemahaman terhadap konfigurasi pencetak (printer) dalam Linux.
 Objektif:
 1. Mengenali cara dan alatan konfigurasi pencetak (printer)
 2. Mengenali kaedah menambah pencetak (printer) setempat (local printer)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 20 KONFIGURASI PENCETAK (PRINTER CONFIGURATION)
 20.1 Alatan Mengkonfigurasi Pencetak (printer)
 Sebelum anda memulakan penggunaan komputer untuk mengeluarkan dokumen, anda
@@ -63,9 +52,7 @@ satu cara di bawah.
 1. Dalam meja kerja grafik, klik Main Menu > System Settings > Printing
 2. Dalam shell prompt (contohnya di terminal arahan) taipkan redhat-config-
 printer untuk memulakan versi grafik.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 165 : Skrin konfigurasi pencetak (printer)
 Jika anda ingin menambah pencetak (printer) tanpa menggunakan Alatan Konfigurasi
 Pencetak (Printer Configuration Tool), sunting fail /etc/printcap.local. Jangan bimbang
@@ -76,13 +63,9 @@ Di dalam Linux, untuk menambahkan pencetak (printer) adalah menambahkan baris
 pencetak (printer queue) baru.
 Baris pencetak (Print queue) boleh didefinisikan sebagai tempat di mana tugas mencetak
 disenaraikan sedia untuk dicetak. Lima jenis queue pencetak (print queue) iaitu :-
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 166 : Jenis penyenaraian pencetak (printer)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 20.1.1 Local Printer
 Pencetak (printer) di sambung secara terus pada komputer anda melalui parallel atau port
 USB. Di dalam senarai utama pencetak (printer), Jenis queue (Queue Type) untuk
@@ -102,9 +85,7 @@ mesin Microsoft Windows). Di dalam senarai utama pencetak (printer), jenis queue
 Pencetak (printer) disambung kepada sistem yang berbeza di mana menggunakan
 teknologi rangkaian Novell¶s NetWare. Di dalam senarai utama pencetak (printer), jenis
 queue (queue type) untuk kawalan pencetak (printer control) Novell diset kepada NCP.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 20.1.5 JetDirect Printer
 Pencetak (printer) disambungkan secara terus kepada rangkaian melalui kad
 rangkaiannya sendiri (network card) dan bukan kepada komputer. Di dalam senarai
@@ -115,9 +96,7 @@ Walaupun ia hanya boleh menjalankan fungsi tertentu (seperti menguruskan baris
 pencetak (print queue)), ia tidak boleh dimatikan selepas ia menjalankan tugas
 tersebut. Tidak seperti arahan biasa yang boleh dimatikan selepas ia dilakukan,
 daemons sentiasa aktif, menunggu untuk arahan yang lain atau data.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 20.2 Menambah Pencetak Setempat (Local Printer)
 Untuk menambah pencetak setempat (local printer) seperti seseorang menyambungkan
 kepada port parallel atau port USB komputer anda, hanya ikut langkah mudah seperti
@@ -125,9 +104,7 @@ yang tertera di sini:
 1) Klik butang New pada tetingkap Printer Configuration Tool utama. Tetingkap yang
 tertera dibawah akan muncul. Klik Forward untuk diproses.
 Gambar Rajah 167 : Paparan skrin penambahan pencetak (printer)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 2) Masukkan nama unik untuk pencetak (printer) di dalam medan teks Queue Name.
 Nama pencetak (printer) tidak boleh mengandungi ruang dan mestilah bermula
 dengan huruf a sehingga z, atau A sehingga Z.
@@ -137,9 +114,7 @@ device) anda dan memaparkannya. Jika peranti pencetak (printer device) tidak
 dipaparkan, klik Custom Device. Taip nama peranti pencetak (printer device) anda
 dan klik OK untuk menambahkannya ke dalam senarai peranti pencetak (printer
 device). Selepas memilih peranti pencetak (printer device) anda, klik Forward.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 169 : Skrin bagi mengkonfigurasi pencetak setempat (local printer)
 4) Seterusnya, Printer Configuration Tool  akan cuba untuk mengesan pencetak
 (printer) yang mana disambungkan ke peranti pencetak (printer device) yang anda
@@ -152,17 +127,13 @@ kepada pengilang atau jenama. Klik anak panah di sebelah pengilang untuk
 pencetak (printer) anda. Cari pencetak (printer) anda dari senarai selebihnya, dan
 klik anak panah di bawah nama pencetak (printer). Senarai pemacu (driver) untuk
 pencetak (printer) anda akan keluar.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 170 : pemilihan jenis pemandu pencetak (printer)
 5) Pilih salah satu. Jika anda tidak tahu yang mana satu yang akan digunakan, pilih
 yang pertama di dalam senarai. Jika anda mempunyai masalah menggunakan
 pemacu (driver) tersebut, edit konfigurasi pencetak (printer) di dalam printconf dan
 pilih pemacu (driver) yang berbeza.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 171 : Skrin penyelesaian penambahan pencetak (printer)
 6) Langkah terakhir adalah untuk mengesahkan pencetak (printer) anda. Klik Apply
 jika ini adalah pencetak (printer) yang anda mahu tambah. Klik Back jika anda perlu
@@ -172,9 +143,7 @@ tetingkap utama. Klik butang Apply di tetingkap (window) untuk menyimpan
 perubahan anda pada fail konfigurasi /etc/printcap dan hidupkan semula daemon
 pencetak (lpd). Selepas melakukan perubahan, cetak muka surat percubaan untuk
 memastikan konfigurasi adalah betul.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 172 : Nama pencetak (printer) yang baru dipaparkan dalam skrin konfigurasi
 pencetak (printer configuration)
 20.2.1 Pencetak (printer) Mukasurat Percubaan

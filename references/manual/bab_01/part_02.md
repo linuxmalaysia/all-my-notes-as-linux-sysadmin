@@ -30,9 +30,7 @@ Tapak web  http://www.redhat.com
 Versi terkini  Red Hat v9 (Isirung 2.4.18-20)
 Seni bina  Intel/IBM
 Pilihan penulis  *
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.2.4 Yellow Dog
 YellowDog Linux (YDL) merupakan terbitan Red Hat untuk seni bina PowerPC. YDL
 mampu dimuatkan bersama-sama Mac OS atau menggantikan terus Mac OS dalam "New
@@ -49,9 +47,7 @@ Tapak web  http://www.yellowdog.com
 Versi terkini  YellowDog v3.0.1
 Seni bina  Power PC (PPC)
 Pilihan penulis  *****
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 12.2.5 Mandrake
 Merupakan terbitan daripada Red Hat, pada peringkat awalnya banyak pihak yang
 merungut, tetapi kini ia telah matang dan terus

@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 10 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Gambar Rajah 157 : Tetingkap yang dipaparkan selepas menekan ikon “Start Here”
 Ikon Mula Di sini (Start Here) meliputi ikon yang membolehkan anda memilih aplikasi,
 tetapan meja kerja (desktop preferences) yang anda berkenan, butir-butir Main Menu  dan
@@ -16,9 +13,7 @@ tetapan sistem. Anda boleh menambah aplikasi yang anda berkenan kepada bahagian
 Favourite. Untuk melakukannya, sila pilih aplikasi dari menu utama (main Menu), klik di
 atasnya dengan butang tetikus kanan dan pilih Add this to favourites  dari menu yang
 terpancar. Anda akan melihat ikon untuk aplikasi tersebut di dalam bahagian Favourite.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.3.12 Pensesuaian Gnome (Gnome Customization)
 Di dalam kawasan Start Here , anda boleh memilih menu kecil Preferences untuk
 menyesuaikan meja kerja GNOME anda. Kemudian anda akan dipaparkan dengan pilihan
@@ -40,9 +35,7 @@ tetingkap Sawfish. Pengurus tetingkap ini akan menentukan bila, di mana dan
 bagaimana tetingkap diletakkan di atas skrin, di samping bagaimana sempadan
 tetingkap dihias. Ianya membolehkan bagaimana anda boleh mengubah jalan kerja
 dan paparan Sawfish Window Manager.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.4 Pensesuaian Sistem (Sistem Customization)
 Start Here  pada Nautilus sebenarnya mempunyai konfigurasi sistem tambahan yang
 membantu anda dalam penggunaan sistem Linux RED HAT dan aplikasi pelayan yang
@@ -64,9 +57,7 @@ sambungan rangkaian (Network Connection) sama ada ianya modem, kad rangkaian
 • Printer Configuration Tools . Ianya membolehkan anda menambah pencetak
 (printer) baru kepada sistem anda. Pencetak (printer) boleh disambung terus ke
 komputer anda atau melalui rangkaian.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.5 Aplikasi Gnome
 Ada banyak aplikasi tersedia di GNOME. Yang berikut adalah lintas lalu tentang aplikasi
 yang boleh didapati di GNOME.
@@ -82,9 +73,7 @@ Audio dengan tajuk Cd, nama artis dan keterangan lain.
 • Xterm (Sistem)
 Versi berwarna program terminal emulator   Xterm yang masyhur itu melalui shell
 prom.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 • GIMP (Grafik)
 Program penyunting foto dan grafik yang menyamai Adobe Photoshop bahkan
 beberapa cirinya tidak dapat ditandingi oleh perisian aplikasi lain seperti penjelahan
@@ -97,15 +86,11 @@ setting) mengubah masa dan tarikh sistem dan mengkonfigurasi ketetapan (setting)
 yang lain.
 • Mozilla (Internet)
 Pakej pelayar web penuh, termasuk e-mel dan kumpulan berita.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 160 : Paparan tetingkap pelayar web Mozilla
 • TimeTool (sistem)
 Untuk anda meminda masa dan tarikh.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.6 Log Keluar (Logout), Matikan (Shutdown) Atau
 Hidupkan Semula (Reboot)
 Jika anda sudah menggunakan GNOME dan ingin meninggalkan GNOME, anda boleh
@@ -117,14 +102,10 @@ Untuk mematikan sistem, pilih Log Out dari butir dari menu utama (Main Menu), pi
 Shut Down dari pilihan terpapar (lihat gambar di atas) dan ini akan mematikan sistem.
 Untuk menjalankan semula sistem, pilih Log Out dari Main Menu, kemudian pilih Restart
 The Computer dari pilihan terpapar.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 19: Memanipulasi Imej & PDF
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada aplikasi GIMP. Keupayaan GIMP
 telah terbukti dalam pelbagai filem-filem yang menjadi kegilaan penonton. Kita
@@ -135,9 +116,7 @@ Objektif:
 1. Mengenali asas-asas penggunaan GIMP
 2. Mengetahui kaedah memanipulasi imej menggunakan GIMP
 3. Mengetahui kaedah pembacaan fail PDF dengan aplikasi xpdf
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 19  MANIPULASI IMEJ DAN PDF
 19.1 Memanipulasikan Imej Dengan GIMP
 GIMP (GNU Image Manipulation Program) adalah alat berkuasa yang boleh digunakan
@@ -151,9 +130,7 @@ shell prompt, anda mulakan dengan GIMP dengan menggunakan arahan
 # gimp
 Mulakan dengan The GIMP pada GNOME dengan pergi ke Menu Utama > Graphics >
 The GIMP. Pada KDE, pergi ke Start Application > Graphics > The GIMP.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 161 : Pandangan Aplikasi GIMP
 19.1.2 Memuatkan Fail
 Untuk memuatkan fail yang sedia ada, klik pada File > Open. Anda akan dapat melihat
@@ -161,9 +138,7 @@ dialog Load Image. Dialog Load Image memaparkan direktori kerja anda di mana apa
 anda GIMP dilancarkan. Anda boleh melayari fail sistem ke atas dan ke bawah dengan
 mengklik dua kali pada senarai Directories di sebelah kiri, dan pilih fail untuk dibuka
 daripada senarai Files di sebelah kanan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 162 : GIMP Beroperasi
 Nama fail yang lengkap disokong oleh GIMP. Jika anda menaip huruf pertama (atau
 beberapa ayat yang pertama) daripada nama fail ke dalam Selection field dan tekan Tab,
@@ -174,9 +149,7 @@ Preview thumbnail  akan dipaparkan di dalam kotak dialog; secara alternatifnya, 
 akan dapat melihat butang Generate Preview. Jika anda hendak melihat imej thumbnail,
 klik pada butang Generate Preview. Sekali anda pilih fail tersebut, klik pada butang OK
 untuk membukanya. Anda juga boleh klik berganda pada nama fail untuk membukanya.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 19.1.3 Menyelamatkan Fail
 Untuk menyimpan fail imej, klik kanan pada imej dan pilih File > Save (atau Save as).
 Anda akan dapat melihat dialog Save Image jika anda memilih Save as  atau jika anda
@@ -197,9 +170,7 @@ klik kanan pada imej dan pilih Filter > Distorts > Newsprint. Pilih kuantiti gar
 inci dengan menggunakan slider. Apabila anda menghampiri kuantiti yang anda ingini
 dan telah bersedia untuk penjelahan imej, klik OK. GIMP akan menjelah imej dengan
 kesan (effect) baru yang telah dihasilkan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 163 : Contoh hasil GIMP
 19.2.2 Menggunakan toolbox
 Kotak Alat (toolbox) juga mempunyai beberapa fungsi khusus. Dengan menggunakan
@@ -212,9 +183,7 @@ yang anda ingin meletakkannya. Anda membuat ini dengan menggunakan move layers
 tools.
 GIMP adalah alatan imej yang berkuasa dan ini akan mengambil masa yang agak panjang
 untuk mengenali semua fungsinya. Cuba menjelajah pilihan lain dengan sendiri. Jika
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 anda membuat kesalahan, anda boleh mengundur kesalahan anda dengan klik-kanan di
 image dan pilih edit > undo.
 19.3 

@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 6 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 14.13.5 Arahan Penapis
 Arahan Ulasan
 Grep Menulis baris demi baris setiap paten pencarian yang dipadankan
@@ -36,9 +33,7 @@ Aksara Ulasan
 ? Kad liar (wild card) untuk satu aksara sahaja
 \ Menghapuskan fungsi khas sesuatu aksara
 Jadual 19 : Aksara khas (special charactor)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.13.8 Arahan Pengurusan
 Arahan Ulasan
 Init Permulaan kawalan proses
@@ -65,9 +60,7 @@ telnet Antara muka (interface) pengguna kepada protokol telnet
 ftp / ncftp Antara muka (interface) pengguna kepada protokol ftp
 Lynx Pelayar Internet secara teks pelbagai guna
 Jadual 21 : Alatan dan arahan rangkaian
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 14.13.10 Alatan Pemampat dan Arkib
 Arahan Ulasan
 Gunzip Pengembang fail ekstensi .gz
@@ -76,14 +69,10 @@ Bunzip2 Pengembang fail ekstensi .bz2
 Bzip Pemampat fail ekstensi .bz2
 Tar Membuat dan meleraikan arkib ekstensi .tar
 Jadual 22 : Alatan pemampat dan arkib
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 15 : Asas Operasi Cakera
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diberikan pemahaman untuk menjalankan operasi cakera
 asas dalam Linux. Banyak konsep-konsep asas seperti membaca cakera padat (CD-ROM)
@@ -95,9 +84,7 @@ kenapa lipatan-lipatan tersebut hadir dalam sistem fail Linux
 2. Mengetahui bagaimana proses membaca cakera keras dalam Linux
 3. Mengetahui bagaimana proses membaca cakera liut dalam Linux
 4. Mengetahui bagaimana proses membaca cakera padat (CD-ROM) dalam Linux
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 15 OPERASI CAKERA  ASAS
 15.1 Memahami Struktur Cakera Linux
 Dalam persekitaran Microsoft Windows, kita sudah biasa dengan konsep ‘drive letters’
@@ -120,9 +107,7 @@ Linux, iaitu program dan data anda ditempatkan. Andaikan juga yang cakera keras
 mengandungi direktori yang dinamakan /etc, /bin, /usr, /sbin, /home dan etc. Kita boleh
 memetakan struktur direktori sebagai bentuk di bawah:
 Gambar Rajah 148 : Struktur Direktori
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Struktur yang paling atas adalah nama direktori yang mudah “/” (disebut sebagai ‘root’).
 Sebagai direktori ‘root’ dalam sistem operasi Linux, anda boleh menempatkan kedua-dua
 fail dan direktori dalam ‘root’. Jika anda melihat dalam salah satu daripada direktori sub,
@@ -154,9 +139,7 @@ etcusr
 tmp
 lost + found
 lib
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 /etc Mengandungi ‘sy stem-wide configuration file’. Mesti berada
 dalam sama sistem fail iaitu “/”.
 /lib Mengandungi ‘library’ y ang digunakan dalam sistem Linux. Mesti
@@ -187,9 +170,7 @@ paling besar. Ini boleh jadi pada sistem fail yang dibahagikan dari
 /tmp Digunakan sebagai ruang storan sementara untuk program dan
 semua pengguna pada sistem itu. Ini boleh jadi pada sistem fail
 yang dibahagikan dari “/”.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 /usr M engandungi arahan pengguna, ‘libraries’, kod sumber, dan
 dokumentasi. Direktori ini biasanya agak besar. Ini boleh jadi pada
 sistem fail yang dibahagikan dari “/”.
@@ -219,9 +200,7 @@ pada IDE kedua)
 Modem /dev/modem
 Kad Bunyi /dev/sound, /dev/dsp
 Jadual 24 : Direktori-direktori untuk komponen komputer
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 15.3 Menggunakan Cakera Liut
 Cakera liut (floppy disk) adalah sekali satu komponen yang standard dalam komputer
 kini. Tetapi bagaimana anda menggunakannya dalam Linux? Terdapat beberapa langkah
@@ -242,9 +221,7 @@ yang pertama akan menjadi /dev/fd0 dan pemacu cakera liut (floppy disk drive) ya
 kedua akan menjadi /dev/fd1.
 Langkah 2 Ubah direktori ke dalam direktori sub, dan anda boleh akses kandungan
 dalam cakera liut:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 #  ls /mnt/floppy
 Selepas anda membina, memadam atau mengubah kandungan dalam /mnt/floppy, anda
 perlu menyimpan pengubahsuaian anda:

@@ -6,24 +6,17 @@ tags: [noss, dbp]
 ---
 # Bab 14 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 $ /usr/bin/kppp
 Ini akan melarikan tetingkap KPPP
 Gambar Rajah 188 ; Tetingkap KPPP
 Sebelum anda boleh menggunakan KPPP untuk menyambung ke Internet melalui ISP,
 anda perlu membuat konfigurasi. KPPP mudah untuk dikonfigurasikan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 1. Kali pertama anda mulakan KPPP, klik Setup di tetingkap KPPP.
 Gambar Rajah 189 : Tetingkap konfigurasi KPPP
 2. Di tetingkap konfigurasi KPPP, pilih Accounts dan klik New.
 Gambar Rajah 190 : Skrin penambahan akaun baru untuk KPPP
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 3. Pilih Dialog Setup dan bukan Wizard untuk dikonfigurasi. Wizard Wizard tidak sesuai
 jika anda membuat penetapan akaun ISP di Malaysia.
 Gambar Rajah 191 : Tetingkap Penetapan akaun baru untuk penyambungan KPPP
@@ -36,16 +29,12 @@ TMNet, Maxis dan sebagainya.
 /checkbldCustomize pppd.... Mengemaskan lagi  jika anda mahu, jika tidak hanya
 gunakan tetapan tersedia (default value).
 Selepas mengisi maklumat di atas, anda akan melihat suatu skrin  seperti di bawah.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 192 : Penambahan nombor telefon untuk Pemberian Perkhidmatan Internet
 4. Jika anda ingin Linux mengawal selia  masa dan juga kos semasa anda  di dalam
 talian, klik Accounting dan pilih Enable Accounting . Selepas itu pilih Malaysia
 /TMNet Jaring dari senarai. Klik OK jika selesai.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 193 : Pemilihan ISP untuk mengaktifkan akaun
 5. Klik tab Device dan pastikan bahawa tetapan tersedia (default value) untuk Modem
 Device adalah  /dev/modem, flow control CRTCTS, Line Termination CR dan
@@ -54,21 +43,15 @@ selesai.
 6. Ini akan membawa anda ke tetingkap utama KPPP. Masukkan  kata pengguna di
 Login ID dan kata laluan di Password dan aktifkan akaun yang baru anda cipta  di
 butang Connect.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 194 : Tetingkap penyambungan kepada internet
 Klik pada Connect dan anda boleh mula melayari Internet.
 Semasa anda dalam talian, anda dapat lihat  masa dalam talian dan juga kos. Jika anda
 klik pada Details, anda boleh melihat juga melihat statistik modem.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 23: E-Mel & WWW
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, penekanan akan diberikan kepada penggunaan beberapa perisian
 pelayaran web yang tersedia dalam Linux di samping membincangkan aplikasi pembaca
@@ -83,9 +66,7 @@ Objektif:
 7. Mengetahui cara menggunakan Nautilus dan tatacara penetapannya
 8. Mengetahui cara menggunakan Konqueror dan tatacara penetapannya
 9. Mengetahui cara menggunakan Galeon dan tatacara penetapannya
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 23 E-MEL & WWW
 23.1 Perisian Pelanggan E-Mel
 E-mel merupakan suatu saluran untuk berkomunikasi yang masyhur melalui Internet.
@@ -107,9 +88,7 @@ menyedia pakai dan mengkonfigurasi e-mel tersebut:
 Sebelum anda bermula, anda harus mengetahui maklumat-maklumat di bawah
 1) Alamat e-mel anda – Anda boleh menghantar dan menerima melseperti berikut
 memanda@pulaucendana.net.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 2) Pelayan e-mel (POP atau IMAP server) – Anda boleh menerima mel dari pelayan
 dan  juga harus tahu apakah nama pelayan anda dan bagaimana pentadbir
 rangkaian atau ISP menggunakannya.
@@ -131,9 +110,7 @@ mel dari pelayan mel ke petisurat terima e-mel pelanggan e-mel  yakni tempat di 
 e-mel diterima disimpan. Kebanyakan ISP menggunakan protokol POP ada juga yang
 men
 ggunakan protokol baru IMAP.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 23.2Evolution
 Gambar Rajah 195 : Langkah-langkah untuk membuka e-mel
 Evolution adalah perisian pelanggan e-mel yang mempunyai ramai pengguna. Pelbagai
@@ -145,9 +122,7 @@ menetapkan mesyuarat kumpulan dan acara-acara secara dalam talian. Ia juga merup
 satu perisian pentadbiran maklumat persendirian dan berkumpulan berfungsi penuh untuk
 Linux dan UNIX  dan ia adalah perisian pelanggan e-mel tersedia guna untuk Red Hat
 Linux.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 23.2.1 Menyedia Pakai Akaun E-Mel
 Untuk melancarkan Evolution, sila klik ke Main Menu > Internet > Email.
 Anda akan disajikan dengan  ‘Welcome Screen’ di mana anda boleh mengkonfigurasi e-
@@ -157,24 +132,18 @@ Berikut adalah contoh skrin semasa anda mengisi maklumat.
 Gambar Rajah 196 : Skrin untuk mengkonfigurasi program Evolution
 1) Klik Next pada skrin selamat datang (welcome screen) untuk menyedia pakai dan
 seterusnya isikan nama dan alamat emel pada ruang yang disediakan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 197 : Melengkapkan informasi identiti pengguna
 2) Seterusnya, anda hendaklah memasukkan maklumat di  pilihan  ‘Receiving Mail’.
 Di Malaysia, kebanyakan ISP menyokong POP, jadi anda boleh memilih POP
 sebagai jenis pelayan (Server Type). Selepas itu, untuk bahagian Host, anda boleh
 mendapat maklumat dari ISP, sebagai contoh untuk Jaring adalah mbox.jaring.my
 manakala untuk TMNet adalah pop.tm.net.my.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 198 : Melengkapkan informasi pelayan penerima e-mel
 3) Selepas itu, anda boleh menggunakan nilai tetapan tersedia (delault values) dan
 klik Next.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 199 : Pemilihan masa untuk muat turun e-mel daripada pelayan
 4) Selepas ini, anda harus mengkonfigurasi pilihan Sending Email . Di sini, pilih
 SMTP untuk jenis pelayan (Server Type) yakni yang biasa di gunakan di

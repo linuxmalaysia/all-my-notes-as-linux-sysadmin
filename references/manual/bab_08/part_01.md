@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 8 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada dua utiliti berguna dalam
 menaiktarafkan pakej dalam Linux. Kedua-duanya amat berguna dalam memastikan anda
@@ -20,9 +17,7 @@ Objektif:
 4. Mengetahui kaedah mengompil kod sumber
 5. Mengetahui kepenggunaan apt
 6. Mengetahui perkakasan GUI dalam apt
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 17 MENGINSTALASI DAN MENAIKTARAF PERISIAN
 17.1 Pengenalan
 Kebanyakan pengedaran Linux (Linux Distribution) yang moden penuh dengan pelbagai pakej
@@ -45,9 +40,7 @@ Mengemaskinikan pakej yang sedia ada  adalah sama penting seperti menambah pakej
 baru. Menaiktaraf mungkin boleh membaiki masalah pepijat (bug) dan ketidaksempurnaan
 keselamatan sistem, atau pun hanya menambah ciri-ciri baru /sokongan baru yang diperlukan
 oleh perisian baru yang akan dilarikan.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 17.2 Pakej Binari
 Prosedur untuk pemasangan perisian adalah berbeza untuk setiap Distribusi Linux.
 Kebanyakan distribusi hari ini menggunakan samaada fail Red Hat Package Manager (RPM)
@@ -71,9 +64,7 @@ Instalasi RPM adalah proses yang sangat mudah. RPM boleh dilaksanakan dalam bany
 cara, menggunakan sama ada perkakas (tool) berdasarkan-teks atau perkakas (tool) antara
 muka (interface) grafik pengguna (GUI). Kedua-dua perkakas akan dibincangkan secara
 ringkas di sini.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Perhatian !!
 Menaiktarafkan pakej RPM kadangkala menghilangkan fail konfigurasi asal pakej ,
 oleh itu buatlah ‘BACK UP’ untuk fail konfigurasi yang penting (selalunya pada
@@ -96,9 +87,7 @@ Jadual di bawah meringkaskan operasi rpm yang lazim digunakan, dan beberapa pili
 yang penting.
 Operasi rpm Deskripsi
 - I Instalasi pakej ; sistem itu mestilah tidak mengandungi
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 pakej yang mempunyai nama yang sama atau ia akan
 memberikan error.
 - U Instalasi pakej baru atau menaiktaraf perisian yang
@@ -115,9 +104,7 @@ konfigurasi.
 - rebuild Membina pakej binari , diberi sumber fail RPM.
 - rebuilddb Membina pengkalan RPM , untuk membaiki error.
 Jadual 34 : Operasi rpm yang lazim digunakan
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Pilihan rpm
 Digunakan dengan
 operasi Deskripsi
@@ -146,9 +133,7 @@ lain tanpa sebenarnya menginstalasi pakej itu.
 - prefix path - i , - U , - F Set direcktori instalasi kepada path (tidak sesuai
 untuk semua pakej).
 - a atau – all - q , - V Menyoal atau mengesahkan semua pakej.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 - f file atau –
 file file
 - q , - V Menyoal atau mengesahkan pakej yang memiliki
@@ -176,9 +161,7 @@ rpm berikut :
 #  rpm  - Uvh  nmap  - 2 . 4 – 10 . i386 . rpm
 Preparing . . .      #########################################  [ 100 % ]
 1 . nmap             #########################################   [ 100 % ]
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gantikan “nmap  - 2 . 4 – 10 . i386 . rpm” dengan nama fail pakej ( atau senarai nama fail
 yang mahu diinstalasi atau dinaiktaraf).
 Cara lain untuk menginstalasi pakej baru ialah dengan menggunakan “rpm – ivh” sebagai
@@ -197,9 +180,7 @@ seperti iinstalasi , kemaskini , soal (query) atau membuang apa saja pakej-pakej
 Perkakas GUI baru ini dipanggil Perkakas Pengurusan Pakej (Package Management
 Tool). Untuk memulakan aplikasi , pergi butang menu utama (pada panel) > System
 System > Packages , atau taip arahan redhat ± config ± packages pada shell prompt.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Gambar Rajah 152 : Langkah-langkah untuk mendapatkan srin Penambahan dan Pembunagan
 Pakej
 Antara muka (interface) untuk aplikasi ini adalah sama seperti yang digunakan semasa
@@ -212,9 +193,7 @@ dialihkan. Pakej tambahan pula adalah pakej berpilihan yang boleh dipilih untuk 
 atau dialihkan , selagi kumpulan pakej dipilih.
 Tetingkap utama menunjukkan senarai kumpulan pakej. Jika kumpulan pakej mempunyai
 tanda semakan dalam kotak semakan di sebelahnya, maka pakej daripada kumpulan itu
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 sudah diinstalasikan dan sedang digunakan. Untuk melihat senarai pakej individual untuk
 kumpulan , klik butang Details di sebelahnya. Pakej individual dengan tanda semakan di
 sebelahnya adalah sedang digunakan.

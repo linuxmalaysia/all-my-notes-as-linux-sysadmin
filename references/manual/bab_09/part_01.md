@@ -6,9 +6,6 @@ tags: [noss, dbp]
 ---
 # Bab 9 - Bahagian 1
 
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
 17.4.2 Pengompilan Tarballs (.tar.gz atau .tgz)
 Kadangkala mungkin tidak dapat membuat fail pakej daripada fail sumber RPM , maka
 kod sumber boleh dikompilkan daripada sumber tarball yang asal atau mengompil
@@ -31,9 +28,7 @@ kod sumber.
 Secara amnya, kod sumber boleh dikompilkan dengan langkah berikut tetapi selalu rujuk
 kepada dokumentasinya sendiri.
 5. Konfigurasi sumber yang akan dikompil dalam sistem semasa:
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 # ./configure
 6. Kompilkan kod sumber:
 # make
@@ -55,9 +50,7 @@ Kebaikannya ialah apt untuk rpm berkemungkinan besar digunakan dengan apa saja
 distribusi berdasarkan-rpm. Apa yang diperlukan adalah pakej RPM yang betul untuk
 versi Red Hat Linux (dan versi RPM) dan sekurang-kurangnya penyimpanan pakej rpm
 dan metadata apt mereka boleh ditemui.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Anda akan dapat mencari pakej apt yang pra-konfigurasinya bersih untuk Red Hat Linux.
 http://apt.freshrpms.net. Muat turunkan pakej apt untuk distribusi Linux daripada halaman
 internet. Pakej itu adalah sangat kecil dan ia sepatutnya dimuat turunkan dalam tempoh
@@ -78,9 +71,7 @@ sedia ada
 Sintaks : apt – get install < package_name >
 Contoh penggunaannya :
 Menginstalasikan suatu pakej
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Menaiktaraf suatu pakej
 17.5.3 Untuk mendapatkan kemaskini penyimpanan RPM yang mutakhir :
 Syntaks : apt ± get update
@@ -99,9 +90,7 @@ sahaaj yang diperlukan untuk memastikan Linux kemas-kinikan dengan semua
 perlindungan, bug dan membaiki untuk peningkatan:
 # apt – get update
 # apt – get upgrade
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 17.6 SYNAPTIK : apt dalam GUI
 Jika penggunaan apt berversi GUI lebih digemari sebagai ganti kepada arahan terbaris
 (command line) , maka pakej lain perlu diinstalasikan dan ia dikenali sebagai Synaptik.
@@ -112,14 +101,10 @@ Untuk mendapatkan synaptik melalui apt :
 Sebaik sahaja Synaptik diinstalasikan , pilihan diberi samaada ia mahu dilaksanakan
 daripada menu Start > System Settings > Synaptic atau jenis synaptik pada prompt arahan.
 Setting untuk penyimpanan apt boleh diedit daripada Settings tab.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 PANDUAN PENGAJAR
 Pelajaran 18: Meja Kerja GNOME
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Mukadimah:
 Dalam pelajaran ini, anda akan diperkenalkan kepada meja kerja Linux yang terkenal dan
 menjadi asas kepada hampir kesemua pecahan Linux iaitu GNOME. GNOME yang
@@ -134,9 +119,7 @@ Objektif:
 5. Mengetahui kepelbagaian aplikasi dalam GNOME
 6. Mengetahui kaedah menutup, log keluar dan menghidupkan semula sistem dalam
 persekitaran GNOME
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18 GNOME
 18.1 Pengenalan Kepada Gnome
 Gnome merupakan persekitaran bergrafik asas untuk Red Hat Linux yang membolehkan
@@ -162,9 +145,7 @@ penggunanya.
 Tidak seperti Microsoft Windows atau Mac OS, Linux menyediakan lebih dari satu GUI.
 GNOME adalah di antara satu suasana antara muka (interface) grafik yang disediakan
 dengan Linux Red Hat.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 GNOME menyediakan suatu suasana mesra pengguna di mana anda boleh dengan
 mudahnya mencapai aplikasi dan sistem. Pengguna baru dan berpengalaman akan dapat
 menggunakan dengan sepenuhnya kelebihan sistem Linux Red Hat dengan menggunakan
@@ -177,9 +158,7 @@ environment) yang lain. Sebagai contoh, anda boleh menggunakan  pelanggan e-mel
 suasana antara muka grafik KDE (KDE graphical user interface environment) yakni
 KMAIL di masa anda menggunakan GNOME. Anda boleh mencapai aplikasi KDE
 dalam menu utama (Main Menu) di kaki paparan skrin di menu KDE.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.2 Mendapat Bantuan
 Dokumentasi tambahan GNOME boleh didapati dengan mengklik di atas menu ‘help’ di
 sebelah kanan tetingkap Nautilus. Ini akan menggerakkan pelayar bantuan terbina dalam
@@ -190,9 +169,7 @@ Guide’.
 Di bawah adalah paparan meja kerja suasana antara muka grafik GNOME (GNOME
 graphical user interface desktop screen):
 Gambar Rajah 156 : Paparan Mejakerja GNOME (GNOME Desktop screen)
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Seperti diterangkan sebelumnya, suasana antara muka grafik GNOME membenarkan
 anda untuk mencapai aplikasi dan ketetapan (setting) sistem. Anda dapati ia menyediakan
 tiga jenis alat untuk menggunakan sistem GNOME.
@@ -216,9 +193,7 @@ Dari sini, anda dapat melancarkan sebahagian besar aplikasi yang terkandung dala
 Linux. Anda dapati anda boleh mencapai aplikasi KDE di bawah pilihan menu KDE
 (KDE Menu) jika KDE dipasang di sistem anda. Sub Menu ini akan membenarkan anda
 menggunakan aplikasi-aplikasi di sistem anda.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 Dari Menu Utama anda boleh juga keluar sistem, melancarkan aplikasi dari arahan
 terbaris, mengunci paparan yang akan menjalankan penyelamat skrin berkata laluan di
 man

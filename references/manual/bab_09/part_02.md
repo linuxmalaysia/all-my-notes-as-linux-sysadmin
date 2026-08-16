@@ -29,9 +29,7 @@ GNOME (GNOME Taskbar). Bar ini adalah suatu aplet yang menunjukkan aplikasi yang
 sedang dilarikan di atas sesuatu meja kerja. Ini mat membantu jika anda ingin
 meminimumkan sesuatu aplikasi di mana ia menyebabkan sesuatu aplikasi mengecil ke
 atas bar tugasan tersebut.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.3.7 Applikasi Pemberitahuan Amaran Rangkaian Red Hat
 Aplikasi  ini adalah cara mudah untuk memastikan sistem anda telah dikemas kini dengan
 ‘errata’ dan nyah pepijat dari Red Hat. Aplet ini memaparkan imej berbeza sama ada
@@ -53,9 +51,7 @@ TIP : Suatu car mudah untuk menambah pelancar aplikasi adalah dengan mengklik
 GNOME Main Menu dan pilih Panel >Add To Panel> Launcher dari menu. Kemudian,
 pilih aplikasi yang terpapar di Main Menu. Secara automatik pelancar aplikasi akan
 ditambah ke panel berdasarkan aplikasi yang anda pilih di Main Menu
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 18.3.9 Panel Konfigurasi Gnome
 Anda boleh menyembunyikan panel secara automatik atau manual, tempatkannya pada
 mana-mana sudut meja kerja (desktop), ubah saiz dan warnanya dan ubah cara
@@ -80,9 +76,7 @@ menerangkan bagaimana menggunakan Nautilus untuk pengalaman yang teruja.
 atas meja kerja.
 • Apabila Nautilus muncul, anda boleh melayari home directory atau fail yang lain.
 Untuk kembali ke home directory, tekan butang home.
-Ministry of Education : Computerisation (IT Lab)
-Infrastruktur Sistem & Linux
-Strictly Confidential
+
 • Ketika anda melayari sistem fail anda, anda dapat mengetahui kedudukan anda
 sekarang dengan melihat tetingkap di sebelah kiri. Ia menunjukkan kedudukan anda
 di dalam direktori sekarang.
