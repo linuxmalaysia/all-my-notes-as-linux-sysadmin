@@ -2,6 +2,12 @@
 
 Projek ini merupakan sebuah pangkalan pengetahuan Sistem Operasi Linux yang tidak rasmi, disusun berdasarkan Standard Kemahiran Pekerjaan Kebangsaan (NOSS) Malaysia. Ia dibina di atas kerangka seni bina *exocortex* (memori luaran) yang mematuhi protokol **Deep State of Mind (DSOM) v0.1**.
 
+| Pautan Rujukan | Keterangan |
+| :--- | :--- |
+| 🗃️ [Palace Knowledge Index](.agents/skills/index.md) | Daftar rasmi (Sovereign Root) untuk 105+ modul kemahiran NOSS Linux. |
+| 🛡️ [Tri-Phasic Architecture](docs/explanation/governance/DSOM-TRI-PHASIC-COGNITIVE-ARCHITECTURE.md) | Model pemprosesan kognitif 3-lapis AI (Active, Twilight, Deep State). |
+| 📜 [Penyata Hak Cipta AI](NOTICE.md) | Deklarasi CC BY-SA 4.0 dan atribusi Harisfazillah Jamel. |
+
 Susun atur spatial ini direka khusus untuk kecekapan Ejen AI (seperti Claude, Cursor, Windsurf, Jules) mengekstrak dan membaca silibus teknikal tanpa membebankan konteks memori.
 
 > **PENAFIAN PENTING**: Repositori ini adalah TIDAK RASMI dan dicipta untuk tujuan pengetahuan / pembelajaran sahaja. Ia tidak mewakili Jabatan Pembangunan Kemahiran (JPK) atau Kementerian Sumber Manusia Malaysia (MOHR). Sila rujuk `LEGAL-NOTICE.md`.

@@ -5,6 +5,12 @@ Semua perubahan ketara kepada projek ini akan direkodkan dalam fail ini.
 Format ini berdasarkan kepada [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), 
 dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added (Penambahan)
+- **Governance**: Adopted the *Tri-Phasic Mind Cognitive Architecture* blueprint, injecting Tech Stack and Implementation Roadmap into `docs/explanation/governance/DSOM-TRI-PHASIC-COGNITIVE-ARCHITECTURE.md`.
+- **Rules**: Added Rule 11 to AI Constitution (`.agents/AGENTS.md`) governing Tri-Phasic execution state constraints.
+
 ## [1.0.4] - 2026-05-24
 
 ### Added (Penambahan)

@@ -1,5 +1,15 @@
 # Project History (Sovereign Markdown Palace)
 
+## [2026-08-16] DSOM Policy Adopter: Tri-Phasic Cognitive Architecture
+- **Action**: Ingested and integrated external structural blueprint for DSOM.
+- **Artifacts Modified**: 
+  - `docs/explanation/governance/DSOM-TRI-PHASIC-COGNITIVE-ARCHITECTURE.md`: Appended Tech Stack and Implementation Roadmap.
+  - `.agents/AGENTS.md`: Enforced Rule 11 (Tri-Phasic Architecture Execution).
+  - Triple-Ledger (`README.md`, `CHANGELOG.md`, `HISTORY.md`) updated synchronously.
+- **Impact**: Establishes structural guidelines for separating AI actions into Active, Twilight, and Deep State boundaries.
+
+## [2026-07-06] The Start Of Sovereign Markdown Palace)
+
 ## Pengenalan
 
 Projek **Sovereign Markdown Palace** bermula sebagai satu anjakan paradigma (paradigm shift) dalam cara kita menguruskan pengetahuan peribadi, terutamanya modal kerjaya (career capital), daripada dokumen konvensional kepada struktur yang dapat diproses dan dimanfaatkan secara terus oleh kecerdasan buatan (AI).
