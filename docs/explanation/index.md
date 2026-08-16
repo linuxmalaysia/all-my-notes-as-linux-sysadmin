@@ -27,6 +27,7 @@ Explanation material focuses on **discussion, architectural context, design deci
 - **[Diátaxis Framework Adoption](diataxis.md):** Architectural design decision and rationale for integrating the Diátaxis Framework into DSOM.
 - **[Seni Bina Diátaxis & Penerbitan Pelbagai Pelantar](diataxis-architecture.md):** Kerangka Diátaxis, prinsip Markdown-First, dan penerbitan ke GitHub/GitLab Pages, Read the Docs, GitBook, Nginx, dan Apache.
 - **[Sejarah Dokumen Manual Asal KPM (2004–2026)](sejarah-dokumen-asal-linux-kpm.md):** Latar belakang manual pengkomputeran makmal sekolah KPM, sumbangan perintis sumber terbuka tempatan, dan evolusinya ke NOSS Linux.
+- **[Sejarah & Warisan OSCC MAMPU (2004–2020)](sejarah-oscc-mampu-malaysia.md):** Pengarkiban sejarah penubuhan Pusat Kompetensi Sumber Terbuka MAMPU dan Pelan Induk OSS Sektor Awam Malaysia.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

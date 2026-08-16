@@ -80,6 +80,7 @@ nav:
   - "Dokumen Tadbir Urus":
       - "Seni Bina Diátaxis & Web": docs/explanation/diataxis-architecture.md
       - "Sejarah Manual Asal KPM": docs/explanation/sejarah-dokumen-asal-linux-kpm.md
+      - "Sejarah OSCC MAMPU": docs/explanation/sejarah-oscc-mampu-malaysia.md
       - "Polisi Keselamatan": docs/SECURITY.md
       - "Notis & Penafian": docs/LEGAL-NOTICE.md
       - "Garis Panduan Agen AI": AGENTS.md

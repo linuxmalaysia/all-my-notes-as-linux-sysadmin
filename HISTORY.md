@@ -1,5 +1,10 @@
 # Project History (Sovereign Markdown Palace)
 
+## [2026-08-16] Pengarkiban Sejarah: OSCC MAMPU (2004–2020)
+- **Peristiwa**: Memulakan pendokumentasian sejarah Open Source Competency Centre (OSCC) MAMPU dan Pelan Induk OSS Sektor Awam Malaysia 2004 bagi memelihara rekod digital yang kian menghilang.
+- **Artifak Baharu**: `docs/explanation/sejarah-oscc-mampu-malaysia.md`
+- **Tindakan Lanjut**: Persediaan untuk projek arkib digital berasingan khusus bagi OSCC MAMPU.
+
 ## [2026-08-16] Sejarah Warisan: Pengabadian Manual Asal KPM 2004
 - **Peristiwa**: Memformalkan pautan sejarah dan asal-usul bahan mentah `references/manual/` yang digubal pada Mei 2004 untuk Projek Pengkomputeran Makmal Komputer Kementerian Pendidikan Malaysia (KPM).
 - **Artifak Baharu**: `docs/explanation/sejarah-dokumen-asal-linux-kpm.md`
