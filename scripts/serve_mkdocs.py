@@ -8,13 +8,6 @@ import shutil
 from pathlib import Path
 
 def create_junction(src: Path, dest: Path):
-    """
-    Create a directory junction on Windows or a symbolic link on other platforms.
-    
-    Parameters:
-        src (Path): Directory to link to.
-        dest (Path): Destination path for the junction or symbolic link.
-    """
     if dest.exists() or dest.is_symlink():
         if dest.is_symlink() or dest.is_file():
             dest.unlink()
@@ -25,20 +18,15 @@ def create_junction(src: Path, dest: Path):
                 shutil.rmtree(dest)
     
     if sys.platform.startswith('win'):
-        subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], check=True)
+        subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     else:
         os.symlink(src.resolve(), dest)
 
 def create_hardlink(src: Path, dest: Path):
-    """
-    Create a hard link from a source path to a destination path.
-    
-    Existing destination files and symbolic links are replaced. On Windows, the link is created as a hard link; on other platforms, a symbolic link is used if hard-link creation fails.
-    """
     if dest.exists() or dest.is_symlink():
         dest.unlink()
     if sys.platform.startswith('win'):
-        subprocess.run(["cmd", "/c", "mklink", "/H", str(dest), str(src)], check=True)
+        subprocess.run(["cmd", "/c", "mklink", "/H", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     else:
         try:
             os.link(src, dest)
@@ -46,13 +34,6 @@ def create_hardlink(src: Path, dest: Path):
             os.symlink(src.resolve(), dest)
 
 def prepare_docs_dir(root_dir: Path, build_dir: Path):
-    """
-    Prepare a documentation build directory by linking available project directories and documentation files from the project root.
-    
-    Parameters:
-    	root_dir (Path): Project root containing the source directories and files.
-    	build_dir (Path): Directory to populate with links to the documentation sources.
-    """
     if not build_dir.exists():
         build_dir.mkdir(parents=True)
         

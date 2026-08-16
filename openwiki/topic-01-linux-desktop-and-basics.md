@@ -23,7 +23,6 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ## Silibus Utama
 
 ### 1. Sejarah & Asal-Usul Linux
-
 - Linus Torvalds, Universiti Helsinki, 1991: Dari hobi kepada infrastruktur global
 - Projek GNU & Richard Stallman: Falsafah 4 Kebebasan Perisian
 - Evolusi isirung: Linux 0.01 (1991) → Linux 6.14 LTS (2026, ~38 juta baris kod)
@@ -32,7 +31,6 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [palace/cu01/pengenalan-linux-dan-sejarah.md](../palace/cu01/pengenalan-linux-dan-sejarah.md)
 
 ### 2. Falsafah & Lesen GNU GPL
-
 - Perbezaan antara "perisian bebas" dan "sumber terbuka"
 - GNU GPL v2 (isirung Linux), MIT, Apache, CC BY-SA
 - Hak pengguna di bawah perisian terbuka
@@ -41,7 +39,6 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [palace/cu01/hakcipta-dan-pelesenan.md](../palace/cu01/hakcipta-dan-pelesenan.md)
 
 ### 3. Ekosistem Distribusi Linux 2026 (Piawaian Kanonik)
-
 - **Ubuntu 26.04 LTS "Quetzal"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
 - **AlmaLinux 10 "Purple Lion"**: Rujukan pelayan & desktop perusahaan (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035)
 - **Fedora 43**: Rujukan teknologi terkini (bleeding-edge workstation)
@@ -50,7 +47,6 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [palace/cu01/pecahan-linux-terkini.md](../palace/cu01/pecahan-linux-terkini.md)
 
 ### 4. Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI
-
 - Spesifikasi minimum & disyorkan (x86_64, ARM64)
 - Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
 - Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
@@ -58,14 +54,12 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [palace/cu01/keperluan-perkakasan-dan-bios-uefi.md](../palace/cu01/keperluan-perkakasan-dan-bios-uefi.md)
 
 ### 5. Prosedur Pemasangan Sistem Operasi & Storan LVM
-
 - Langkah demi langkah pemasangan Ubuntu 26.04 LTS, AlmaLinux 10, dan Fedora 43
 - Skema pembahagian storan LVM (`/boot/efi`, `/`, `/var`, `/home`, `swap`)
 
 **📖 Baca Lanjut:** [palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md](../palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md)
 
 ### 6. Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 & MAMPU)
-
 - Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS
 - Pengurusan berbilang slot kunci (*multi-user key slots*) untuk pengguna dan pentadbir IT
 - Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) & Pekeliling MAMPU
@@ -73,7 +67,6 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [palace/cu01/penyulitan-cakera-luks2-pejabat.md](../palace/cu01/penyulitan-cakera-luks2-pejabat.md)
 
 ### 7. Tugasan Pasca-Pemasangan, Pemacu Peranti & Hardening
-
 - Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
 - Pemasangan pemacu grafik proprietary Nvidia / AMD
 - Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
@@ -81,7 +74,6 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [palace/cu01/pasca-pemasangan-dan-driver.md](../palace/cu01/pasca-pemasangan-dan-driver.md)
 
 ### 8. Soal Jawab (FAQ) & Direktori Perisian Alternatif
-
 - Soalan lazim pengguna baharu Linux
 - Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
 

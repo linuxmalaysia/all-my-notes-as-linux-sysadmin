@@ -74,21 +74,9 @@ nav:
   - "Mula Di Sini": START-HERE.md
   - "Nota Rujukan (OpenWiki)":
       - "Topik 1: Desktop & Asas": openwiki/topic-01-linux-desktop-and-basics.md
-      - "Topik 2: Storan & Virtualisasi": openwiki/topic-02-storage-and-virtualisation.md
-      - "Topik 3: Pentadbiran Pelayan": openwiki/topic-03-linux-server-administration.md
-      - "Topik 4: Automasi & Sandaran": openwiki/topic-04-automation-and-backup.md
-      - "Topik 5: Keselamatan Linux": openwiki/topic-05-linux-security.md
-      - "Topik 6: Penyelesaian Masalah & Log": openwiki/topic-06-troubleshooting-and-logs.md
-  - "Palace (CU01 - Desktop & Asas)":
-      - "Pengenalan & Sejarah Linux": palace/cu01/pengenalan-linux-dan-sejarah.md
-      - "Hakcipta & Pelesenan": palace/cu01/hakcipta-dan-pelesenan.md
-      - "Pecahan Linux Terkini": palace/cu01/pecahan-linux-terkini.md
-      - "Keperluan Perkakasan & BIOS/UEFI": palace/cu01/keperluan-perkakasan-dan-bios-uefi.md
-      - "Prosedur Pemasangan Ubuntu & AlmaLinux": palace/cu01/prosedur-pemasangan-ubuntu-almalinux.md
-      - "Penyulitan Cakera LUKS2": palace/cu01/penyulitan-cakera-luks2-pejabat.md
-      - "Pasca-Pemasangan & Driver": palace/cu01/pasca-pemasangan-dan-driver.md
-      - "Soal Jawab Linux": palace/cu01/soal-jawab-linux.md
-      - "Direktori Sumber Rujukan": palace/cu01/direktori-sumber-rujukan.md
+      - "Topik 2: Pengurusan Pelayan": openwiki/topic-02-linux-server-management.md
+      - "Topik 3: Keselamatan & Hardening": openwiki/topic-03-linux-security-hardening.md
+      - "Topik 4: Skrip & Automasi": openwiki/topic-04-scripting-and-automation.md
   - "Panduan Operasi (How-To)":
       - "Penggunaan & Binaan HTML": docs/how-to/deploy-and-serve-html.md
       - "Audit Pematuhan OKF": docs/how-to/audit-and-apply-frontmatter.md

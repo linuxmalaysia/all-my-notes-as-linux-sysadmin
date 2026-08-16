@@ -13,7 +13,7 @@ resource: "file:///palace/cu01/keperluan-perkakasan-dan-bios-uefi.md"
 
 > *"Sistem operasi yang hebat bermula daripada persediaan tegar perkakasan dan mod penimbalan peranti yang betul."*
 
-Sebelum memulakan proses pemasangan sistem operasi Linux (sama ada untuk kegunaan desktop latihan mahupun pelayan perusahaan), pentadbir sistem wajib memahami spesifikasi minimum perkakasan serta tatacara konfigurasi tegar (*firmware*) BIOS dan UEFI.
+Sebelum memulakan proses pemasangan sistem operasi Linux (sama ada untuk kegunaan desktop latihan mahupun pelayan perusahaan), pentadbir sistem wajib memahami spesifikasi minimum perkakasan serta tatacara konfigurasi tegar tegar (*firmware*) BIOS dan UEFI.
 
 ---
 
@@ -32,11 +32,11 @@ Jadual berikut memaparkan keperluan perkakasan untuk tiga edaran kanonik rujukan
 
 ---
 
-## 2. Perbezaan Warisan BIOS (Legacy CSM) vs Modern UEFI
+## 2. Perbezaan Warisan BIOS (Legacy CSB) vs Modern UEFI
 
 Sistem pengkomputeran moden telah beralih daripada **Legacy BIOS** kepada **UEFI (Unified Extensible Firmware Interface)**.
 
-```text
+```
                     MOD PENIMBALAN SISTEM (BOOT MODE)
                                    │
          ┌─────────────────────────┴─────────────────────────┐
@@ -49,13 +49,12 @@ Sistem pengkomputeran moden telah beralih daripada **Legacy BIOS** kepada **UEFI
 ```
 
 ### Tetapan Secure Boot & Mod Compatibility Support Module (CSM)
-
 1. **Secure Boot:**
-    - Ciri keselamatan UEFI yang menghalang pemuat but (*bootloader*) tidak diiktiraf daripada dijalankan.
-    - **Ubuntu 26.04 LTS** dan **AlmaLinux 10** menyokong penuh Secure Boot secara lalai (*out-of-the-box*) melalui tandatangan digital Microsoft `shim`.
-    - Untuk pemacu peranti pihak ketiga khas (contohnya pemacu grafik Nvidia proprietary purba), Secure Boot mungkin perlu dilumpuhkan sementara atau kunci MOK (*Machine Owner Key*) mesti didaftarkan.
+   - Ciri keselamatan UEFI yang menghalang pemuat but (*bootloader*) tidak diiktiraf daripada dijalankan.
+   - **Ubuntu 26.04 LTS** dan **AlmaLinux 10** menyokong penuh Secure Boot secara lalai (*out-of-the-box*) melalui tandatangan digital Microsoft `shim`.
+   - Untuk pemacu peranti pihak ketiga khas (contohnya pemacu grafik Nvidia proprietary purba), Secure Boot mungkin perlu dilumpuhkan sementara atau kunci MOK (*Machine Owner Key*) mesti didaftarkan.
 2. **Nyahaktif CSM (Legacy Mode):**
-    - Disyorkan untuk mematikan CSM/Legacy Mode di BIOS/UEFI bagi memastikan sistem beroperasi dalam mod UEFI tulen dengan jadual partitions GPT.
+   - Disyorkan untuk mematikan CSM/Legacy Mode di BIOS/UEFI bagi memastikan sistem beroperasi dalam mod UEFI tulen dengan jadual partitions GPT.
 
 ---
 

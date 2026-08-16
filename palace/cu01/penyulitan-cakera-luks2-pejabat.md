@@ -23,20 +23,20 @@ Di dalam ekosistem Linux, **LUKS2 (Linux Unified Key Setup version 2)** dengan a
 
 Penyulitan LUKS2 dilaksanakan di atas peranti blok fizikal (atau partition) sebelum pembentukan LVM Logical Volume:
 
-```text
-┌─────────────────────────────────────────────────────────────────┐
-│                    Sistem Fail (`/` dan `/home`)                │
-├─────────────────────────────────────────────────────────────────┤
-│              LVM Logical Volumes (`lv_root`, `lv_home`)         │
-├─────────────────────────────────────────────────────────────────┤
-│                   LVM Volume Group (`vg_secure`)                │
-├─────────────────────────────────────────────────────────────────┤
-│   Satu Peranti Terbuka Decrypted (`/dev/mapper/crypt_root`)     │
-├─────────────────────────────────────────────────────────────────┤
-│              🔒 Lapisan Penyulitan LUKS2 (AES-256-XTS)          │
-├─────────────────────────────────────────────────────────────────┤
-│             Partition Fizikal Storan (`/dev/nvme0n1p3`)         │
-└─────────────────────────────────────────────────────────────────┘
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Sistem Fail (`/` dan `/home`)             │
+├─────────────────────────────────────────────────────────────┤
+│                 LVM Logical Volumes (`lv_root`, `lv_home`)  │
+├─────────────────────────────────────────────────────────────┤
+│                  LVM Volume Group (`vg_secure`)             │
+├─────────────────────────────────────────────────────────────┤
+│        Satu Peranti Terbuka Decrypted (`/dev/mapper/crypt_root`)│
+├─────────────────────────────────────────────────────────────┤
+│         🔒 Lapisan Penyulitan LUKS2 (AES-256-XTS)           │
+├─────────────────────────────────────────────────────────────┤
+│          Partition Fizikal Storan (`/dev/nvme0n1p3`)       │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -48,7 +48,7 @@ Format partition storan (contoh: `/dev/nvme0n1p3`) menggunakan LUKS2 dengan fras
 
 ```bash
 # Formatkan partition sasaran dengan LUKS2
-sudo cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --key-size 512 --pbkdf argon2id /dev/nvme0n1p3
+sudo cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --key-size 512 /dev/nvme0n1p3
 
 # Buka peranti terdiskripsi dan berikan nama pemetaan (contoh: crypt_root)
 sudo cryptsetup open /dev/nvme0n1p3 crypt_root
@@ -82,8 +82,7 @@ sudo mkswap /dev/vg_secure/lv_swap
 
 ## 3. Pengurusan Berbilang Kunci Pengguna (Multi-User LUKS2 Key Slots)
 
-LUKS2 menyediakan sehingga **32 ruang kunci (Key Slots 0 hingga 31)**. Ini membolehkan:
-
+LUKS2 menyediakan sehingga **8 ruang kunci (Key Slots 0 hingga 7)**. Ini membolehkan:
 - **Slot 0:** Frasa laluan pengguna / pegawai pemilik komputer riba.
 - **Slot 1:** Frasa laluan sandaran (*Master Recovery Key*) Pentadbir IT / SysAdmin Pejabat.
 - **Slot 2:** Kunci TPM2 (*Trusted Platform Module*) atau YubiKey FIDO2 untuk nyahkunci automatik perkakasan.
@@ -94,13 +93,10 @@ LUKS2 menyediakan sehingga **32 ruang kunci (Key Slots 0 hingga 31)**. Ini membo
 # 1. Semak maklumat slot kunci LUKS2 terisi
 sudo cryptsetup luksDump /dev/nvme0n1p3
 
-# 2. Tambah frasa laluan baharu ke Slot 1 (contoh: Kunci Sandaran Pegawai IT)
-sudo cryptsetup luksAddKey --key-slot 1 /dev/nvme0n1p3
+# 2. Tambah frasa laluan baharu (contoh: Kunci Sandaran Pegawai IT ke Slot 1)
+sudo cryptsetup luksAddKey /dev/nvme0n1p3
 
-# 3. Uji frasa laluan Slot 1 untuk memastikan ia berfungsi
-sudo cryptsetup open --test-passphrase --key-slot 1 /dev/nvme0n1p3
-
-# 4. Padam frasa laluan lama daripada Slot 0 selepas pengesahan berjaya
+# 3. Padam frasa laluan pengguna lama daripada slot (contoh: memadam Slot 0)
 sudo cryptsetup luksKillSlot /dev/nvme0n1p3 0
 ```
 
@@ -112,11 +108,9 @@ Untuk membolehkan prapemuat but (*initramfs/dracut*) meminta frasa laluan semasa
 
 ### Fail `/etc/crypttab`:
 ```text
-# <target name>   <source device>                           <key file>      <options>
-crypt_root        UUID=a1b2c3d4-e5f6-7890-abcd-ef1234567890  none            luks
+# <target name>   <source device>         <key file>      <options>
+crypt_root        UUID=a1b2c3d4-e5f6-7890  none            luks,discard
 ```
-
-> **Nota:** Pilihan `discard` membolehkan operasi TRIM untuk SSD, tetapi boleh membocorkan maklumat penggunaan ruang storan kepada penyerang fizikal. Gunakan hanya jika prestasi SSD lebih kritikal daripada privasi metadata.
 
 ### Fail `/etc/fstab`:
 ```text
@@ -132,7 +126,7 @@ crypt_root        UUID=a1b2c3d4-e5f6-7890-abcd-ef1234567890  none            luk
 | Audit / Standard | Keperluan Tekno-Legal | Tindakan Pelaksanaan Linux |
 | :--- | :--- | :--- |
 | **ISO/IEC 27001 (A.8.24)** | Pengurusan Kunci Kriptografi & Penyulitan Data | Menggunakan LUKS2 AES-256 dengan PBKDF `argon2id` untuk halangan serangan *brute-force*. |
-| **Pekeliling MAMPU ICT** | Perlindungan Storan Komputer Riba / Peranti Mudah Alih | Semua komputer riba kerajaan wajib dipasang LUKS2 FDE sebelum diserahkan kepada pegawai. |
+| **Pekeliling MAMPU ICT** | Perlindungan Storan Komputer Liba / Peranti Mudah Alih | Semua komputer riba kerajaan wajib dipasang LUKS2 FDE sebelum diserahkan kepada pegawai. |
 | **Sokongan TPM2 / Secure Boot** | Halangan pembongkaran pemuat but (*bootloader tampering*) | Mempautkan kunci LUKS2 ke cip TPM2 menggunakan `systemd-cryptenroll --tpm2-device=auto`. |
 
 ---
