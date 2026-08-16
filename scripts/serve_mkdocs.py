@@ -25,7 +25,7 @@ def create_junction(src: Path, dest: Path):
                 shutil.rmtree(dest)
     
     if sys.platform.startswith('win'):
-        subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["cmd", "/c", "mklink", "/J", str(dest), str(src)], check=True)
     else:
         os.symlink(src.resolve(), dest)
 
@@ -38,7 +38,7 @@ def create_hardlink(src: Path, dest: Path):
     if dest.exists() or dest.is_symlink():
         dest.unlink()
     if sys.platform.startswith('win'):
-        subprocess.run(["cmd", "/c", "mklink", "/H", str(dest), str(src)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["cmd", "/c", "mklink", "/H", str(dest), str(src)], check=True)
     else:
         try:
             os.link(src, dest)

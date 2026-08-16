@@ -58,11 +58,24 @@ sudo ubuntu-drivers install
 sudo reboot
 ```
 
-### Pada AlmaLinux 10 / Fedora 43:
+### Pada AlmaLinux 10:
 ```bash
-# Aktifkan repositori RPM Fusion Non-Free
-sudo dnf install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm \
-                    https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm -y
+# Pastikan EPEL sudah dipasang (prasyarat untuk RPM Fusion)
+sudo dnf install epel-release -y
+
+# Aktifkan repositori RPM Fusion untuk AlmaLinux
+sudo dnf install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm \
+                 https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm -y
+
+# Pasang pemacu grafik Nvidia
+sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda -y
+```
+
+### Pada Fedora 43:
+```bash
+# Aktifkan repositori RPM Fusion untuk Fedora
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+                 https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 
 # Pasang pemacu grafik Nvidia
 sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda -y
@@ -72,7 +85,7 @@ sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda -y
 
 ## 3. Pengurusan Pengguna & Kebenaran `sudo`
 
-Menambah akaun pengguna baharu untuk kakitangan pejabat dan memberikan akses pentadbir berjadual melalui `sudo` (Rule 3 DBP / English command parameters):
+Menambah akaun pengguna baharu untuk kakitangan pejabat dan memberikan akses pentadbir berjadual melalui `sudo`:
 
 ```bash
 # 1. Cipta pengguna baharu (contoh: user 'ali')
@@ -117,13 +130,13 @@ PermitRootLogin no
 # Hadkan cubaan log masuk gagal
 MaxAuthTries 3
 
-# Niahaktifkan autentikasi kata laluan jika menggunakan kunci SSH
-PasswordAuthentication yes
+# Nyahaktifkan autentikasi kata laluan jika menggunakan kunci SSH
+PasswordAuthentication no
 ```
 
 ```bash
 # Muat semula perkhidmatan SSH
-sudo systemctl restart sshd
+sudo systemctl restart ssh
 ```
 
 ---

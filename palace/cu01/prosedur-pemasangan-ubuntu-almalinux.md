@@ -22,6 +22,7 @@ Dokumen ini menyediakan panduan terperinci langkah demi langkah untuk proses pem
 Dalam persekitaran latihan NOSS Level 3 dan pengeluaran pejabat, penggunaan **LVM (Logical Volume Manager)** adalah sangat disyorkan berbanding partition fizikal statik.
 
 ### Skema Storan Rujukan (Cakera 100 GB SSD/NVMe)
+
 | Titik Lekap (Mount Point) | Jenis Sistem Fail | Saiz Disyorkan | Keterangan / Fungsi |
 | :--- | :--- | :--- | :--- |
 | `/boot/efi` | `vfat` (FAT32) | 1,024 MB (1 GB) | Partition Sistem EFI untuk pemuat but UEFI (`shim` & `grub2`) |
@@ -37,50 +38,50 @@ Dalam persekitaran latihan NOSS Level 3 dan pengeluaran pejabat, penggunaan **LV
 ## 2. Prosedur Pemasangan Ubuntu 26.04 LTS "Quetzal"
 
 1. **Boot daripada USB Live:**
-   - Masukkan pemacu USB Live Ubuntu 26.04 LTS dan pilih menu `Try or Install Ubuntu`.
+    - Masukkan pemacu USB Live Ubuntu 26.04 LTS dan pilih menu `Try or Install Ubuntu`.
 2. **Pilihan Bahasa & Susun Atur Papan Kekunci:**
-   - Pilih `Bahasa Melayu` atau `English (US)` untuk sistem, dan `English (US)` untuk papan kekunci.
+    - Pilih `Bahasa Melayu` atau `English (US)` untuk sistem, dan `English (US)` untuk papan kekunci.
 3. **Pilihan Jenis Pemasangan (Interactive vs Automated):**
-   - Pilih `Interactive Installation` → `Default Selection` (Aplikasi asas pejabat dan utiliti).
+    - Pilih `Interactive Installation` → `Default Selection` (Aplikasi asas pejabat dan utiliti).
 4. **Pemasangan Perisian Pihak Ketiga & Pemacu:**
-   - Tandakan pilihan `Install third-party software for graphics and Wi-Fi hardware` dan `Download & install support for additional media formats`.
+    - Tandakan pilihan `Install third-party software for graphics and Wi-Fi hardware` dan `Download & install support for additional media formats`.
 5. **Konfigurasi Storan & Pembahagian manual (Manual Partitioning):**
-   - Pilih `Manual Partitioning` (atau `Advanced Features` → `Use LVM`).
-   - Cipta `/boot/efi` (1 GB, FAT32).
-   - Cipta `/boot` (2 GB, ext4).
-   - Cipta Physical Volume (PV) LVM untuk baki ruang dan bentuk Volume Group `vg_system`.
-   - Bahagikan Logical Volume (`lv_root`, `lv_var`, `lv_home`, `lv_swap`).
+    - Pilih `Manual Partitioning` (atau `Advanced Features` → `Use LVM`).
+    - Cipta `/boot/efi` (1 GB, FAT32).
+    - Cipta `/boot` (2 GB, ext4).
+    - Cipta Physical Volume (PV) LVM untuk baki ruang dan bentuk Volume Group `vg_system`.
+    - Bahagikan Logical Volume (`lv_root`, `lv_var`, `lv_home`, `lv_swap`).
 6. **Akaun Pengguna & Zon Masa:**
-   - Tetapkan Zon Masa kepada `Asia/Kuala_Lumpur`.
-   - Masukkan Nama Pengguna (contoh: `sysadmin`) dan Kata Laluan Tegar.
+    - Tetapkan Zon Masa kepada `Asia/Kuala_Lumpur`.
+    - Masukkan Nama Pengguna (contoh: `sysadmin`) dan Kata Laluan Tegar.
 7. **Selesai & But Semula:**
-   - Tunggu proses pemasangan selesai, cabut pemacu USB apabila diarahkan, dan tekan `Enter` untuk boot semula.
+    - Tunggu proses pemasangan selesai, cabut pemacu USB apabila diarahkan, dan tekan `Enter` untuk boot semula.
 
 ---
 
 ## 3. Prosedur Pemasangan AlmaLinux 10 "Purple Lion"
 
 1. **Boot Pemuat But Anaconda:**
-   - Masukkan media ISO AlmaLinux 10 dan pilih `Install AlmaLinux 10.0`.
+    - Masukkan media ISO AlmaLinux 10 dan pilih `Install AlmaLinux 10.0`.
 2. **Pemilihan Bahasa:**
-   - Pilih `English (United States)` / `Bahasa Melayu`.
+    - Pilih `English (United States)` / `Bahasa Melayu`.
 3. **Papan Pemuka Pemasangan (Installation Summary):**
-   - **Software Selection:** Pilih `Server with GUI` untuk persekitaran makmal latihan atau `Minimal Install` untuk pelayan pengeluaran.
-   - **Installation Destination:**
-     - Pilih disk sasaran.
-     - Di bawah *Storage Configuration*, pilih `Custom`.
-     - Tetapkan skema ke `LVM`.
-     - Cipta `/boot/efi` (1 GB, Standard Partition, xfs/vfat).
-     - Cipta `/boot` (2 GB, Standard Partition, xfs).
-     - Baki ruang diletakkan bawah LVM VG `almalinux` dan dipisahkan kepada `/` (xfs), `/home` (xfs), `/var` (xfs), dan `swap`.
-   - **Network & Host Name:**
-     - Tetapkan Hostname (contoh: `srv-noss01.my`).
-     - Aktifkan kad rangkaian (Ethernet / Wi-Fi).
-   - **Root Password & User Creation:**
-     - Tetapkan kata laluan `root`.
-     - Cipta akaun pentadbir pengguna biasa (tandakan `Make this user administrator` untuk akses `sudo`).
+    - **Software Selection:** Pilih `Server with GUI` untuk persekitaran makmal latihan atau `Minimal Install` untuk pelayan pengeluaran.
+    - **Installation Destination:**
+        - Pilih disk sasaran.
+        - Di bawah *Storage Configuration*, pilih `Custom`.
+        - Tetapkan skema ke `LVM`.
+        - Cipta `/boot/efi` (1 GB, Standard Partition, vfat/FAT32).
+        - Cipta `/boot` (2 GB, Standard Partition, xfs).
+        - Baki ruang diletakkan bawah LVM VG `almalinux` dan dipisahkan kepada `/` (xfs), `/home` (xfs), `/var` (xfs), dan `swap`.
+    - **Network & Host Name:**
+        - Tetapkan Hostname (contoh: `srv-noss01.my`).
+        - Aktifkan kad rangkaian (Ethernet / Wi-Fi).
+    - **Root Password & User Creation:**
+        - Tetapkan kata laluan `root`.
+        - Cipta akaun pentadbir pengguna biasa (tandakan `Make this user administrator` untuk akses `sudo`).
 4. **Mulakan Pemasangan (Begin Installation):**
-   - Klik `Begin Installation`. Setelah selesai, klik `Reboot System`.
+    - Klik `Begin Installation`. Setelah selesai, klik `Reboot System`.
 
 ---
 
