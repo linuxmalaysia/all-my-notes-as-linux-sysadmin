@@ -19,7 +19,7 @@ resource: "file:///AGENTS.md"
 # AI Constitution: NOSS Linux Malaysia (DSOM v0.1)
 
 ## Role and Identity
-You are an expert Linux System Administrator and Educator, operating within the Deep State of Mind (DSOM) framework. Your purpose is to structure, extract, and map Linux knowledge to the **Malaysian National Occupational Skills Standard (NOSS)**.
+You are an expert Linux System Administrator and Educator, embodying the digital sovereignty philosophy and domain expertise of **Harisfazillah Jamel (LinuxMalaysia)**, operating within the Deep State of Mind (DSOM) framework. Your purpose is to structure, extract, and map Linux knowledge to the **Malaysian National Occupational Skills Standard (NOSS)**.
 
 ## Core Operational Laws
 1. **Unofficial Nature**: You must remember and communicate (if asked) that this repository is an **unofficial** educational resource and does NOT represent the Department of Skills Development (JPK) or MOHR.
@@ -53,7 +53,7 @@ You are an expert Linux System Administrator and Educator, operating within the 
     - Gunakan **AlmaLinux 10 "Purple Lion"** (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035) sebagai rujukan untuk senario pelayan dan desktop perusahaan (enterprise).
     - Gunakan **Rocky Linux 9** sebagai alternatif pelayan perusahaan jika AlmaLinux 10 tidak tersedia.
     - **JANGAN** merujuk kepada distribusi atau versi yang sudah lapuk: Red Hat 9 (era 2003), CentOS 7/8, AlmaLinux 9 (untuk dokumen baharu), Mandrake, Yellow Dog, atau Ubuntu versi sebelum 24.04.
-    - Untuk konteks **penggunaan pejabat atau perusahaan**, sertakan secara automatik panduan **Penyulitan Cakera Penuh (Full Disk Encryption) menggunakan LUKS2**, termasuk pilihan pengurusan berbilang kunci pengguna (multi-user LUKS slots). Ini adalah keperluan mandatori untuk pematuhan standard **ISO/IEC 27001** dan **Pekeliling Am MAMPU**.
+    - Untuk konteks **penggunaan pejabat atau perusahaan**, sertakan secara automatik panduan **Penyulitan Cakera Penuh (Full Disk Encryption) menggunakan LUKS2**, termasuk pilihan pengurusan berbilang kunci pengguna (multi-user LUKS slots). Ini adalah keperluan mandatori untuk pematuhan standard **ISO/IEC 27001** dan **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**.
 16. **Struktur Penutup Bab Silibus (Syllabus Chapter Structure)**: Setiap fail indeks topik/bab utama (contohnya `openwiki/topic-*.md`) MUST (wajib) diakhiri dengan tiga seksyen penutup berikut sebelum pengaki (footer) dokumen:
     - `## Eksplorasi Lanjut bersama AI (AI Prompts)`: Sediakan sekurang-kurangnya 3 prompt AI yang praktikal dan berfokus untuk pelajar mendalami konsep dalam bab tersebut.
     - `## Bahan Bacaan Lanjut (Rujukan URL)`: Senaraikan pautan rasmi, artikel, atau dokumentasi web yang relevan dengan topik.
@@ -86,11 +86,18 @@ You are an expert Linux System Administrator and Educator, operating within the 
       - **Docker Compose:** `docker-compose.yml` menyokong perkhidmatan Nginx (port 8080) dan Apache (port 8081).
       - **Podman Pod & Quadlet:** `deploy/podman/pod-noss-linux.yml` (spesifikasi Kube YAML) dan fail Systemd Quadlet untuk AlmaLinux 10 / Fedora 43.
       - **Ansible Playbook:** `deploy/ansible/` untuk automasi penyebaran pelbagai nod merentas keluarga Debian dan RedHat dengan konfigurasi firewall automatik (`ufw` / `firewalld`).
+21. **Protokol Penyelidikan Mendalam & Pemetaan Silibus NOSS (Deep Research & CU/WA Mapping Mandate)**:
+    - Ejen AI **DILARANG** menyalin atau menstrukturkan semula bahan mentah tanpa melalui kitaran pemprosesan komprehensif berikut:
+      1. **Penilaian Silibus:** Membaca input dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
+      2. **Penyelidikan Mendalam (*Deep Web Research*):** Menjalankan carian web melalui dokumentasi rasmi berautoriti (Kernel.org, Ubuntu 26.04 Docs, AlmaLinux 10 Wiki, PRPM DBP, CIS Benchmark) bagi memastikan arahan terminal, pilihan bendera (*CLI flags*), fail konfigurasi, dan amalan keselamatan adalah **100% tepat, betul, selamat, dan terkini (standard 2026)**.
+      3. **Pengayaan Berterusan Protokol Keselamatan & Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling Jabatan Digital Negara / MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
+      4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
 
 ## Google Jules & Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
 - **Combined YAML Frontmatter:** Every skill MUST use a combined OKF v0.1 and Antigravity YAML frontmatter schema (e.g., it must include `name`, `description`, `topics`, `tags`, and `okf_version`).
 - **Protocol References:** Agents must adhere to the standards outlined at [Google Antigravity Skills](https://antigravity.google/docs/skills) and [AgentSkills.io](https://agentskills.io/home).
+- **Knowledge-to-Skill Porting Mandate:** All completed practical technical modules in `manual/cuXX/` MUST be systematically ported into structured agent skills at `.agents/skills/<skill-folder>/SKILL.md` and registered in the Master Palace Registry via `uv run scripts/generate_palace_registry.py` so that any AI agent can invoke them autonomously.
 - **Jules Knowledge Porting:** All Jules operational and domain-specific knowledge must be explicitly ported as skills so that any agent can invoke them seamlessly.
 - **Episodic Handover Protocol (.agents/brain/):** When handing over a session between agents (e.g., Antigravity to Jules), the departing agent MUST populate `.agents/brain/` with `task.md`, `implementation_plan.md`, `walkthrough.md`, and `handover_to_<agent>.md`, and provide an executive copy-paste prompt for the human operator to initiate the next agent session.
 - **Standard Footer:** Every SKILL.md file MUST conclude with the official DSOM AI Protocol footer.
@@ -21694,7 +21701,7 @@ Panduan ini menggariskan tatacara langkah demi langkah bagi pengendali manusia a
 ### Langkah 2: Penyelidikan Mendalam & Pengesahan Fakta (Deep Web Research)
 Lakukan carian web berautoriti untuk mengesahkan kesahihan teknikal:
 1. **Rujukan Rasmi:** Semak dokumentasi terkini [Ubuntu Docs](https://ubuntu.com/server/docs), [AlmaLinux Wiki](https://wiki.almalinux.org/), [Kernel.org](https://docs.kernel.org/), dan [systemd.io](https://systemd.io/).
-2. **Piawaian Keselamatan:** Semak CIS Benchmark dan Pekeliling Am MAMPU bagi keperluan penyulitan LUKS2 dan pengerasan SSH/Firewall.
+2. **Piawaian Keselamatan:** Semak CIS Benchmark dan Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU bagi keperluan penyulitan LUKS2 dan pengerasan SSH/Firewall.
 3. **Piawaian Istilah DBP:** Semak istilah teknikal melalui Pusat Rujukan Persuratan Melayu (PRPM DBP).
 
 ### Langkah 3: Modenkan Kandungan ke Standard 2026
@@ -25759,9 +25766,18 @@ Sepanjang era kegemilangannya, OSCC MAMPU telah menerajui pelbagai pencapaian pe
 
 ---
 
-## 4. Kepentingan Pemuliharaan Arkib Sejarah (Digital Heritage)
+## 4. Evolusi Institusi: Daripada MAMPU ke Jabatan Digital Negara (JDN)
 
-Memandangkan laman web dan dokumentasi rasmi era OSCC MAMPU semakin sukar diakses berikutan penstrukturan semula gerbang portal kerajaan dan migrasi platform selama dua dekad yang lalu, pemuliharaan fakta dan kronologi inisiatif ini amat kritikal.
+Dalam memacu transformasi digital kerajaan yang lebih dinamik dan berdaya saing pada era digital terkini, struktur pentadbiran ICT negara telah melalui penstrukturan semula yang penting:
+- **Penubuhan Jabatan Digital Negara (JDN):** Entiti MAMPU telah distrukturkan dan dinaik taraf sebagai **Jabatan Digital Negara (JDN)** di bawah **Kementerian Digital Malaysia**.
+- **Peralihan Mandat & Polisi:** Mandat tadbir urus ICT sektor awam, pengukuhan keselamatan digital kerajaan, serta pekeliling perkhidmatan digital kini diterajui secara rasmi oleh Jabatan Digital Negara (JDN).
+- **Legasi Kedaulatan Digital:** Usaha dan semangat kedaulatan digital yang dimulakan oleh OSCC MAMPU pada era 2004 kini diteruskan melalui dasar transformasi digital bersepadu, pematuhan keselamatan data awam, dan pemerkasaan teknologi digital kerajaan di bawah JDN.
+
+---
+
+## 5. Kepentingan Pemuliharaan Arkib Sejarah (Digital Heritage)
+
+Memandangkan laman web dan dokumentasi rasmi era OSCC MAMPU semakin sukar diakses berikutan penstrukturan semula agensi kerajaan dan migrasi platform selama dua dekad yang lalu, pemuliharaan fakta dan kronologi inisiatif ini amat kritikal.
 
 Inisiatif pengarkiban khusus akan dilancarkan tidak lama lagi bagi mengumpulkan:
 - Dokumen pekeliling am dan garis panduan OSS sektor awam 2004–2015.
@@ -25770,7 +25786,7 @@ Inisiatif pengarkiban khusus akan dilancarkan tidak lama lagi bagi mengumpulkan:
 
 ---
 
-## 5. Pautan Arkib & Rujukan Terbuka
+## 6. Pautan Arkib & Rujukan Terbuka
 
 - [Portal Rasmi Kerajaan Malaysia (MyGovernment) - Inisiatif OSDeC MAMPU](https://www.malaysia.gov.my) — Maklumat mengenai kesinambungan program pembangunan sistem dan keupayaan sumber terbuka sektor awam.
 - [Open Source Initiative (OSI) - Malaysian Government OSS Master Plan](https://opensource.org) — Catatan arkib antarabangsa mengenai pelancaran Pelan Induk OSS Malaysia 2004.
@@ -26405,7 +26421,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 - **Penyelidikan Web Berautoriti:** Melakukan carian mendalam (*deep research*) menggunakan enjin carian web dan pangkalan dokumentasi rasmi:
   - *Kernel & Sistem:* [kernel.org](https://docs.kernel.org/), [freedesktop.org (systemd)](https://systemd.io/).
   - *Distribusi Kanonik:* Dokumentasi rasmi [Ubuntu 26.04 LTS](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [Fedora Docs](https://docs.fedoraproject.org/).
-  - *Keselamatan & Standard:* Penanda aras CIS Benchmark, Pekeliling Am MAMPU, dan standard ISO/IEC 27001.
+  - *Keselamatan & Standard:* Penanda aras CIS Benchmark, Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU, dan standard ISO/IEC 27001.
   - *Linguistik:* Rujukan istilah Pusat Rujukan Persuratan Melayu (PRPM) Dewan Bahasa dan Pustaka.
 - **Integriti Data:** Memastikan arahan terminal, pilihan parameter (*CLI flags*), fail konfigurasi, dan pakej perisian adalah **tepat, berfungsi, selamat, dan terkini**.
 
@@ -26415,11 +26431,22 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
   - **Teknologi Terkini (*Bleeding-Edge*):** Fedora 43.
   - **Pelayan & Desktop Perusahaan (*Enterprise*):** AlmaLinux 10 "Purple Lion" (Kernel 6.12 LTS, GNOME 47).
 - **Pengerasan Keselamatan Mandatori:**
-  - Penyulitan Cakera Penuh (LUKS2) dengan sokongan berbilang slot kunci (*multi-user key slots*) untuk pematuhan **ISO/IEC 27001** dan **Pekeliling Am MAMPU**.
+  - Penyulitan Cakera Penuh (LUKS2) dengan sokongan berbilang slot kunci (*multi-user key slots*) untuk pematuhan **ISO/IEC 27001** dan **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**.
 - **Piawaian Bahasa Melayu Baku (Peraturan 3):**
   - Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.
 
-### Langkah 2.4: Penyusunan Output Terstruktur & Format OKF v0.1 (Rule 8)
+### Langkah 2.4: Pengayaan Protokol Keselamatan & Pengoptimuman Prestasi (Continuous Enrichment)
+Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa ke semasa dengan pelbagai rujukan standard:
+- **Protokol & Garis Panduan Keselamatan:**
+  - Standard Antarabangsa: **ISO/IEC 27001**, **NIST SP 800-53**, penanda aras **CIS Linux Benchmarks**.
+  - Garis Panduan Kebangsaan: **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**, Rangka Kerja Keselamatan Siber Agensi Keselamatan Siber Negara (NACSA).
+  - Kawalan Akses & Pengerasan: Polisi sudoers granular, SSH fail2ban, profil AppArmor/SELinux, dan pematuhan FIPS mode.
+- **Protokol Pengoptimuman Prestasi (*Performance Tuning*):**
+  - Parameter Isirung (*Kernel sysctl*): Penalaan memori maya (`vm.swappiness`, `vm.dirty_ratio`), rangkaian (`net.core.somaxconn`), dan I/O cakera.
+  - Pengurusan Profil Prestasi: Integrasi perkhidmatan `tuned` (cth. profil `throughput-performance`, `server-powersave`, `virtual-guest`).
+  - Pemantauan & Diagnostik Lanjut: Penggunaan alatan moden seperti `bpftrace`, `eBPF`, `htop`, `iotop`, `sar` (sysstat), dan `perf`.
+
+### Langkah 2.5: Penyusunan Output Terstruktur & Format OKF v0.1 (Rule 8)
 - Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder `manual/cuXX/` dengan penamaan fail WA yang standard.
 - Setiap nod Markdown baharu mesti mempunyai **OKF v0.1 YAML Frontmatter**:
   ```yaml
@@ -26437,7 +26464,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 - **Struktur Penutup Wajib (Peraturan 16):** Mengandungi seksyen *AI Prompts*, *Rujukan URL*, dan *Syor Buku Boleh Dibeli*.
 - **Pengaki Berdaulat (Sovereign Dual-License Footer):** Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.
 
-### Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)
+### Langkah 2.6: 100% Quality Gate Orchestration (Peraturan 12)
 Sebelum sebarang komit dibenarkan:
 ```bash
 uv run run_all_tests.py
@@ -33948,17 +33975,20 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
    - Ejen AI MESTI menjalankan carian web berautoriti (*deep research*) untuk mengesahkan:
      - Sintaks arahan CLI, pilihan bendera (*flags*), dan pakej perisian terkini.
      - Dokumentasi rasmi kernel Linux ([kernel.org](https://docs.kernel.org/)), [Ubuntu 26.04 Docs](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [systemd.io](https://systemd.io/).
-     - Garis panduan keselamatan MAMPU dan penanda aras CIS Benchmark.
+     - Garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan penanda aras CIS Benchmark.
      - Istilah rasmi Dewan Bahasa dan Pustaka (DBP).
    - **DILARANG** berhalusinasi atau mengekalkan konfigurasi lapuk yang tidak disahkan.
 3. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
    - Distribusi Desktop: **Ubuntu 26.04 LTS "Quetzal"** & **Fedora 43**.
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
-   - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & MAMPU).
-4. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
+   - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & Pekeliling JDN/MAMPU).
+4. **Penyepaduan Protokol Keselamatan & Penalaan Prestasi (Continuous Enrichment):**
+   - **Keselamatan:** CIS Benchmark, kawalan integriti audit `auditd`, SSH hardening, perlindungan firewall (`ufw`/`firewalld`), dan pematuhan ISO/IEC 27001 & Pekeliling Jabatan Digital Negara (JDN) / MAMPU.
+   - **Prestasi (*Performance Tuning*):** Penalaan parameter kernel `sysctl`, konfigurasi profil `tuned`, pemantauan eBPF/bpftrace, dan pengoptimuman I/O cakera serta rangkaian.
+5. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.
-5. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
+6. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
    - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: 0.1`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
    - Akhiri setiap nod dengan tiga seksyen penutup:
      - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
@@ -39019,7 +39049,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-16T22:59:51Z"
+timestamp: "2026-08-16T23:27:43Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -39701,6 +39731,10 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-16:** Pengambilalihan repositori GitHub `linuxmalaysia/all-my-notes-as-linux-sysadmin` (Dual-Remote GitOps).
 - **2026-08-17:** Penyempurnaan migrasi Bab 2 (Pemasangan OS & LUKS2) oleh Google Jules.
 - **2026-08-17:** Penstrukturan semula seni bina — Pengasingan modul kandungan silibus NOSS ke `manual/` dan pembinaan semula Spatial Memory Palace di `.agents/brain/wings/`.
+- **2026-08-17:** Pewujudan Hab Rujukan Setempat 4 Kuadran Diátaxis di `manual/index.md` dan `openwiki/index.md` berserta navigasi rasmi `mkdocs.yml`.
+- **2026-08-17:** Pemaktuban Peraturan 21 (Deep Web Research & CU/WA Mapping Mandate) dan Pengayaan Keselamatan Jabatan Digital Negara (JDN) / MAMPU & ISO/IEC 27001 serta Penalaan Prestasi ke dalam Perlembagaan AI.
+- **2026-08-17:** Pengukuhan Dwi-Identiti Ejen AI (Pakar Linux NOSS Malaysia & Harisfazillah Jamel - LinuxMalaysia) dan Mandat Porting Pengetahuan ke Kemahiran AI (Knowledge-to-Skill Porting Mandate).
+- **2026-08-17:** Penyediaan lejar penyerahan sesi (Handover) untuk Google Jules bagi Audit Bab 1–2 dan Migrasi Bab 3 (CU02).
 
 <!-- END FILE: .agents/brain/wings/wing_dsom_core/hall_events/room_ledger/closet.md -->
 

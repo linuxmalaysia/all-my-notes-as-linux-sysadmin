@@ -16,3 +16,7 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-16:** Pengambilalihan repositori GitHub `linuxmalaysia/all-my-notes-as-linux-sysadmin` (Dual-Remote GitOps).
 - **2026-08-17:** Penyempurnaan migrasi Bab 2 (Pemasangan OS & LUKS2) oleh Google Jules.
 - **2026-08-17:** Penstrukturan semula seni bina — Pengasingan modul kandungan silibus NOSS ke `manual/` dan pembinaan semula Spatial Memory Palace di `.agents/brain/wings/`.
+- **2026-08-17:** Pewujudan Hab Rujukan Setempat 4 Kuadran Diátaxis di `manual/index.md` dan `openwiki/index.md` berserta navigasi rasmi `mkdocs.yml`.
+- **2026-08-17:** Pemaktuban Peraturan 21 (Deep Web Research & CU/WA Mapping Mandate) dan Pengayaan Keselamatan Jabatan Digital Negara (JDN) / MAMPU & ISO/IEC 27001 serta Penalaan Prestasi ke dalam Perlembagaan AI.
+- **2026-08-17:** Pengukuhan Dwi-Identiti Ejen AI (Pakar Linux NOSS Malaysia & Harisfazillah Jamel - LinuxMalaysia) dan Mandat Porting Pengetahuan ke Kemahiran AI (Knowledge-to-Skill Porting Mandate).
+- **2026-08-17:** Penyediaan lejar penyerahan sesi (Handover) untuk Google Jules bagi Audit Bab 1–2 dan Migrasi Bab 3 (CU02).
