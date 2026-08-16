@@ -76,5 +76,22 @@ timeline
 Berasaskan **Peraturan 17 Perlembagaan AI DSOM**, fail-fail di dalam direktori `references/manual/` diisytiharkan sebagai **Arkib Sejarah Warisan Kekal**. Ia tidak akan dipadam, tetapi dipelihara dalam keadaan yang bersih daripada teks pengepala berulang lapuk bagi menghormati sumbangan seluruh konsortium, panel penulis, dan jurulatih yang telah membina asas ekosistem sumber terbuka di Malaysia.
 
 ---
+
+## 6. Kaedah Penemuan Maklumat & Pautan Rujukan Luar (URL)
+
+Penyelidikan asal-usul dokumen ini dijalankan oleh Ejen AI menggunakan teknik padanan rentetan tepat (*exact string search*) pada enjin carian web terhadap metadata yang diekstrak daripada teks manual lama:
+
+### Kata Kunci Siasatan (Search Queries)
+1. `"Ministry of Education" "Computerisation" "IT Lab" Malaysia Linux OR "Infrastruktur Sistem"`
+2. `"ISL9" "Infrastruktur Sistem & Linux" OR "Khalid A. Al-Jufry" OR "BostonWeb Academy" "Ministry of Education"`
+
+### Senarai Pautan Arkib & Rujukan Terbuka
+- [Scribd: 12 Sistem Operasi Linux (Modul ISL9 KPM)](https://www.scribd.com/document/217983693/12-Sistem-Operasi-Linux) — Salinan arkib awam modul ISL9 (*Infrastruktur Sistem & Linux*).
+- [GNU Free Documentation License (GFDL) v1.3](https://www.gnu.org/licenses/fdl-1.3.html) — Terma pelesenan dokumen bebas GNU asal yang diguna pakai dalam modul pengkomputeran sekolah KPM.
+- [Portal Rasmi Bahagian Sumber dan Teknologi Pendidikan (BSTP KPM)](https://moe.gov.my) — Laman rasmi Kementerian Pendidikan Malaysia bagi pembudayaan teknologi pendidikan.
+- [Malaysian Open Source Community (MOSCMY)](https://github.com/moscmy) — Repositori dan arkib inisiatif komuniti sumber terbuka Malaysia.
+- [Portal MAMPU: Dasar Sumber Terbuka Sektor Awam](https://www.mampu.gov.my) — Sejarah pelan induk pelaksanaan perisian sumber terbuka (OSS) dalam agensi kerajaan Malaysia.
+
+---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
