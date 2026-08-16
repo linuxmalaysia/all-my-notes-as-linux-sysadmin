@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPC Format Reference — Annotated DOCX Structure - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+
+    <header>
+        <a href="../../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="cpc-format-reference-annotated-docx-structure">CPC Format Reference — Annotated DOCX Structure</h1>
+<h2 id="document-cpc-level-3-generateddocx">Document: CPC-Level-3-Generated.docx</h2>
+<p>Derived from direct XML inspection of the reference file.</p>
+<hr />
+<h2 id="key-differences-from-cp-format">Key Differences from CP Format</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">CP</th>
+<th style="text-align: left;">CPC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Tables</td>
+<td style="text-align: left;">13 (1 header + 2 per CU)</td>
+<td style="text-align: left;"><strong>2 total</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Table width</td>
+<td style="text-align: left;">100%</td>
+<td style="text-align: left;">Header: 100%, Grid: <strong>50%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Width units</td>
+<td style="text-align: left;">Percentage</td>
+<td style="text-align: left;"><strong>DXA (twips)</strong> for grid cells</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cell colours</td>
+<td style="text-align: left;">None (white only)</td>
+<td style="text-align: left;">Multiple colours (orange/yellow/green/blue/white)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Text colour</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: left;">Labels: black, Values: <strong>red FF0000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Cell merging</td>
+<td style="text-align: left;">colspan only</td>
+<td style="text-align: left;"><strong>rowSpan (vMerge)</strong> on orange column</td>
+</tr>
+<tr>
+<td style="text-align: left;">Layout type</td>
+<td style="text-align: left;">auto</td>
+<td style="text-align: left;">Grid: <strong>fixed</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="table-1-metadata-header-xml">Table 1 — Metadata Header XML</h2>
+<pre><code class="language-xml">&lt;w:tblPr&gt;
+  &lt;w:tblW w:w=&quot;5000&quot; w:type=&quot;pct&quot;/&gt;   &lt;!-- 100% width --&gt;
+&lt;/w:tblPr&gt;
+</code></pre>
+<h3 id="label-cell-grey-efefef-fill">Label Cell (grey EFEFEF fill)</h3>
+<pre><code class="language-xml">&lt;w:tcPr&gt;
+  &lt;w:tcW w:w=&quot;2616&quot; w:type=&quot;dxa&quot;/&gt;
+  &lt;w:tcBorders&gt;
+    &lt;w:top    w:val=&quot;single&quot; w:sz=&quot;4&quot; w:space=&quot;0&quot; w:color=&quot;000000&quot;/&gt;
+    &lt;w:start  w:val=&quot;single&quot; w:sz=&quot;4&quot; w:space=&quot;0&quot; w:color=&quot;000000&quot;/&gt;
+    &lt;w:bottom w:val=&quot;single&quot; w:sz=&quot;4&quot; w:space=&quot;0&quot; w:color=&quot;000000&quot;/&gt;
+    &lt;w:end    w:val=&quot;single&quot; w:sz=&quot;4&quot; w:space=&quot;0&quot; w:color=&quot;000000&quot;/&gt;
+  &lt;/w:tcBorders&gt;
+  &lt;w:shd w:fill=&quot;EFEFEF&quot; w:val=&quot;clear&quot;/&gt;
+  &lt;w:vAlign w:val=&quot;center&quot;/&gt;
+&lt;/w:tcPr&gt;
+&lt;w:p&gt;
+  &lt;w:pPr&gt;
+    &lt;w:spacing w:before=&quot;100&quot; w:after=&quot;100&quot;/&gt;
+    &lt;w:jc w:val=&quot;center&quot;/&gt;
+  &lt;/w:pPr&gt;
+  &lt;w:r&gt;
+    &lt;w:rPr&gt;
+      &lt;w:rFonts w:eastAsia=&quot;Times New Roman&quot; w:cs=&quot;Times New Roman&quot;/&gt;
+      &lt;w:b w:val=&quot;false&quot;/&gt;
+      &lt;w:bCs w:val=&quot;false&quot;/&gt;
+      &lt;w:sz w:val=&quot;22&quot;/&gt;
+      &lt;w:szCs w:val=&quot;22&quot;/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;SECTION&lt;/w:t&gt;
+  &lt;/w:r&gt;
+&lt;/w:p&gt;
+</code></pre>
+<h3 id="value-cell-white-ffffff-fill-red-ff0000-text-colspan4-gridspan3-in-5-col-grid">Value Cell (white FFFFFF fill, red FF0000 text, colSpan=4 → gridSpan=3 in 5-col grid)</h3>
+<pre><code class="language-xml">&lt;w:tcPr&gt;
+  &lt;w:tcW w:w=&quot;7850&quot; w:type=&quot;dxa&quot;/&gt;
+  &lt;w:gridSpan w:val=&quot;3&quot;/&gt;
+  &lt;w:tcBorders&gt; ... same borders ... &lt;/w:tcBorders&gt;
+  &lt;w:shd w:fill=&quot;FFFFFF&quot; w:val=&quot;clear&quot;/&gt;
+  &lt;w:vAlign w:val=&quot;center&quot;/&gt;
+&lt;/w:tcPr&gt;
+&lt;w:p&gt;
+  &lt;w:r&gt;
+    &lt;w:rPr&gt;
+      &lt;w:rFonts w:eastAsia=&quot;Times New Roman&quot; w:cs=&quot;Times New Roman&quot;/&gt;
+      &lt;w:color w:val=&quot;FF0000&quot;/&gt;
+      &lt;w:sz w:val=&quot;22&quot;/&gt;
+      &lt;w:szCs w:val=&quot;22&quot;/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;K62 COMPUTER PROGRAMMING...&lt;/w:t&gt;
+  &lt;/w:r&gt;
+&lt;/w:p&gt;
+</code></pre>
+<hr />
+<h2 id="table-2-cpc-grid-xml">Table 2 — CPC Grid XML</h2>
+<pre><code class="language-xml">&lt;w:tblPr&gt;
+  &lt;w:tblW w:w=&quot;5000&quot; w:type=&quot;pct&quot;/&gt;     &lt;!-- 50% of page --&gt;
+  &lt;w:jc w:val=&quot;start&quot;/&gt;                  &lt;!-- left-aligned --&gt;
+  &lt;w:tblInd w:w=&quot;0&quot; w:type=&quot;dxa&quot;/&gt;
+  &lt;w:tblLayout w:type=&quot;fixed&quot;/&gt;          &lt;!-- fixed layout! --&gt;
+  &lt;w:tblCellMar&gt;
+    &lt;w:top    w:w=&quot;100&quot; w:type=&quot;dxa&quot;/&gt;
+    &lt;w:start  w:w=&quot;100&quot; w:type=&quot;dxa&quot;/&gt;
+    &lt;w:bottom w:w=&quot;100&quot; w:type=&quot;dxa&quot;/&gt;
+    &lt;w:end    w:w=&quot;100&quot; w:type=&quot;dxa&quot;/&gt;
+  &lt;/w:tblCellMar&gt;
+&lt;/w:tblPr&gt;
+&lt;w:tblGrid&gt;
+  &lt;w:gridCol w:w=&quot;1744&quot;/&gt;
+  &lt;w:gridCol w:w=&quot;1744&quot;/&gt;
+  &lt;w:gridCol w:w=&quot;1744&quot;/&gt;
+  &lt;w:gridCol w:w=&quot;1745&quot;/&gt;
+  &lt;w:gridCol w:w=&quot;1744&quot;/&gt;
+  &lt;w:gridCol w:w=&quot;1745&quot;/&gt;
+&lt;/w:tblGrid&gt;
+</code></pre>
+<h3 id="vmerge-start-orange-column-first-row-of-cu-block">vMerge START (orange column, first row of CU block)</h3>
+<pre><code class="language-xml">&lt;w:tcPr&gt;
+  &lt;w:tcW w:w=&quot;1744&quot; w:type=&quot;dxa&quot;/&gt;
+  &lt;w:vMerge w:val=&quot;restart&quot;/&gt;
+  &lt;w:tcBorders&gt; ... &lt;/w:tcBorders&gt;
+  &lt;w:shd w:fill=&quot;FFC000&quot; w:val=&quot;clear&quot;/&gt;
+  &lt;w:vAlign w:val=&quot;center&quot;/&gt;
+&lt;/w:tcPr&gt;
+</code></pre>
+<h3 id="vmerge-continuation-orange-column-subsequent-rows">vMerge CONTINUATION (orange column, subsequent rows)</h3>
+<pre><code class="language-xml">&lt;w:tcPr&gt;
+  &lt;w:tcW w:w=&quot;1744&quot; w:type=&quot;dxa&quot;/&gt;
+  &lt;w:vMerge/&gt;   &lt;!-- no w:val = continuation --&gt;
+  &lt;w:tcBorders&gt; ... &lt;/w:tcBorders&gt;
+  &lt;!-- no shd fill in continuation cells --&gt;
+  &lt;w:vAlign w:val=&quot;center&quot;/&gt;
+&lt;/w:tcPr&gt;
+</code></pre>
+<hr />
+<h2 id="complete-row-by-row-map-cu01-example-6-was">Complete Row-by-Row Map (CU01 example, 6 WAs)</h2>
+<pre><code>Row 0 (header):
+  [col0: 1744 WHITE empty] [col1: 1744 GREEN &quot;←COMPETENCY UNIT→&quot;] [col2-5: 6978 BLUE gs=4 &quot;←WORK ACTIVITIES→&quot;]
+
+Row 1 (spacer):
+  [col0-5: 10466 WHITE gs=6 empty]
+
+Row 2 (CU01 name row A):
+  [col0: 1744 ORANGE vMerge:START &quot;C\nO\nR\nE&quot;]
+  [col1: 1744 YELLOW &quot;PERFORM BASIC COMPUTER SYSTEM INSTALLATION AND CONFIGURATION&quot;]
+  [col2: 1744 WHITE &quot;Prepare computer system set-up components.&quot;]
+  [col3: 1745 WHITE &quot;Carry out computer system hardware installation.&quot;]
+  [col4: 1744 WHITE &quot;Carry out computer Operating System (OS) software installation.&quot;]
+  [col5: 1745 WHITE &quot;Carry out computer application, peripheral and device driver installation.&quot;]
+
+Row 3 (CU01 code row A):
+  [col0: 1744 vMerge:CONT empty]
+  [col1: 1744 GREEN &quot;CODE CU01&quot;]
+  [col2: 1744 BLUE &quot;CODE CU01-WA01&quot;]
+  [col3: 1745 BLUE &quot;CODE CU01-WA02&quot;]
+  [col4: 1744 BLUE &quot;CODE CU01-WA03&quot;]
+  [col5: 1745 BLUE &quot;CODE CU01-WA04&quot;]
+
+Row 4 (CU01 name row B — overflow WA5,6):
+  [col0: 1744 vMerge:CONT empty]
+  [col1: 1744 WHITE empty]
+  [col2: 1744 WHITE &quot;Configure static IP and wireless network parameters.&quot;]
+  [col3: 1745 WHITE &quot;Prepare computer system installation record.&quot;]
+  [col4: 1744 WHITE empty]
+  [col5: 1745 WHITE empty]
+
+Row 5 (CU01 code row B — overflow codes):
+  [col0: 1744 vMerge:CONT empty]
+  [col1: 1744 WHITE empty]
+  [col2: 1744 BLUE &quot;CODE CU01-WA05&quot;]
+  [col3: 1745 BLUE &quot;CODE CU01-WA06&quot;]
+  [col4: 1744 BLUE empty]
+  [col5: 1745 BLUE empty]
+
+Row 6 (CU01 spacer):
+  [col0-5: 10466 WHITE gs=6 empty]
+</code></pre>
+<hr />
+<h2 id="colour-reference-table">Colour Reference Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Hex</th>
+<th style="text-align: left;">Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ORANGE</td>
+<td style="text-align: left;"><code>FFC000</code></td>
+<td style="text-align: left;">CORE column (col 0)</td>
+</tr>
+<tr>
+<td style="text-align: left;">YELLOW</td>
+<td style="text-align: left;"><code>FFFF00</code></td>
+<td style="text-align: left;">CU Title (col 1, name rows)</td>
+</tr>
+<tr>
+<td style="text-align: left;">GREEN</td>
+<td style="text-align: left;"><code>92D050</code></td>
+<td style="text-align: left;">CU Code (col 1, code rows) + header</td>
+</tr>
+<tr>
+<td style="text-align: left;">BLUE</td>
+<td style="text-align: left;"><code>DDEBF7</code></td>
+<td style="text-align: left;">WA Codes (cols 2–5, code rows) + header</td>
+</tr>
+<tr>
+<td style="text-align: left;">WHITE</td>
+<td style="text-align: left;"><code>FFFFFF</code></td>
+<td style="text-align: left;">WA Titles (cols 2–5, name rows) + spacers</td>
+</tr>
+<tr>
+<td style="text-align: left;">GREY</td>
+<td style="text-align: left;"><code>EFEFEF</code></td>
+<td style="text-align: left;">Metadata label cells (Table 1 only)</td>
+</tr>
+<tr>
+<td style="text-align: left;">RED text</td>
+<td style="text-align: left;"><code>FF0000</code></td>
+<td style="text-align: left;">All metadata values (Table 1 only)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

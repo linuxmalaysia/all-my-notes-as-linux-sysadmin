@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdf-text-extractor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: pdf-text-extractor
+name: pdf-text-extractor
+description: Safely download external PDF files and extract their text content using curl and an isolated uv Python environment.
+topics: [pdf, text, extraction, curl, uv]
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="pdf-text-extractor-workflow">PDF Text Extractor Workflow</h1>
+<p>Use this skill when you need to read, parse, or extract text from an external PDF document (e.g., government directives, manuals, or research papers) provided via a URL.</p>
+<h2 id="step-1-download-the-pdf-safely">Step 1: Download the PDF Safely</h2>
+<p>Standard web requests often fail on strict servers. Use <code>curl.exe</code> with a standard browser User-Agent (<code>-A</code>) and follow redirects (<code>-L</code>).</p>
+<p><strong>Action:</strong> Use the <code>run_command</code> tool to execute:<br />
+<code>powershell
+curl.exe -A "Mozilla/5.0" -L "&lt;PDF_URL&gt;" -o "temp_document.pdf"</code></p>
+<h2 id="step-2-extract-text-using-uv-and-pypdf">Step 2: Extract Text using <code>uv</code> and <code>pypdf</code></h2>
+<p>Do not attempt to install global Python packages. Instead, use <code>uv</code> to run a temporary, isolated Python script with the <code>pypdf</code> dependency.</p>
+<p><strong>Action:</strong> Use the <code>run_command</code> tool to execute:<br />
+<code>powershell
+uv run --with pypdf python -c "
+from pypdf import PdfReader
+import sys
+try:
+    reader = PdfReader('temp_document.pdf')
+    text = ''
+    for page in reader.pages:
+        text += page.extract_text() + '\n'
+    print(text)
+except Exception as e:
+    print(f'Error reading PDF: {e}', file=sys.stderr)
+    sys.exit(1)
+"</code></p>
+<h2 id="step-3-analyze-and-clean-up">Step 3: Analyze and Clean Up</h2>
+<ol>
+<li>Read the standard output from the command to get the extracted text.</li>
+<li>If the text is extremely long, parse it or summarize it as requested by the user.</li>
+<li>Clean up the downloaded file by running <code>Remove-Item temp_document.pdf</code>.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

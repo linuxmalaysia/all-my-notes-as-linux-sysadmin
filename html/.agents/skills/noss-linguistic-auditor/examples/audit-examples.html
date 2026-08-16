@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOSS Linguistic Audit Examples - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+
+    <header>
+        <a href="../../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="noss-linguistic-audit-examples">NOSS Linguistic Audit Examples</h1>
+<h2 id="how-to-use-this-file">How to use this file</h2>
+<p>An AI agent reads these examples to understand what PASS and FAIL looks like<br />
+for each quality gate before auditing real content.</p>
+<hr />
+<h2 id="example-a-full-pass-cu03-wa01">Example A — FULL PASS (CU03-WA01)</h2>
+<p>This is a correctly written Work Activity. All 4 gates pass.</p>
+<pre><code>WA Title : Prepare server installation requirements.
+WA Code  : IT-020-3:2026-CU03-WA01
+Platform : Linux
+</code></pre>
+<h3 id="work-steps">Work Steps ✅</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Gate G1 check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">Identify server installation specifications.</td>
+<td style="text-align: left;">✅ "Identify" — action verb</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">Identify server hardware requirements.</td>
+<td style="text-align: left;">✅ "Identify" — action verb</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.3</td>
+<td style="text-align: left;">Identify server software requirements.</td>
+<td style="text-align: left;">✅ "Identify" — action verb</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.4</td>
+<td style="text-align: left;">Map server network configuration settings.</td>
+<td style="text-align: left;">✅ "Map" — action verb</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">Prepare server installation tools and safety equipment.</td>
+<td style="text-align: left;">✅ "Prepare" — action verb</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-criteria">Performance Criteria ✅</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: left;">Gate G2 check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">Server installation specifications and deployment requirements <strong>analyzed</strong> in accordance with the enterprise server installation checklist.</td>
+<td style="text-align: left;">✅ "analyzed" in whitelist</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">Server physical form factor and hardware module specs <strong>determined</strong> in accordance with the hardware inventory record procedure.</td>
+<td style="text-align: left;">✅ "determined" in whitelist</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.3</td>
+<td style="text-align: left;">Server operating systems and configuration profiles <strong>determined</strong> in accordance with software technical specifications.</td>
+<td style="text-align: left;">✅ "determined" in whitelist</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.4</td>
+<td style="text-align: left;">Pre-installation server configuration details (hostnames, static IPs, DNS) <strong>mapped</strong> in accordance with network addressing scheme.</td>
+<td style="text-align: left;">✅ "mapped" in whitelist</td>
+</tr>
+<tr>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">Server installation tools and safety gear <strong>prepared</strong> in accordance with server environment handling guidelines.</td>
+<td style="text-align: left;">✅ "prepared" in whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audit-result">Audit Result</h3>
+<pre><code>✅ PASS — IT-020-3:2026-CU03-WA01
+Steps: 5 | Criteria: 5 | 1-to-1: ✓ | Active Voice: ✓ | Passive Voice: ✓ | Language: ✓
+</code></pre>
+<hr />
+<h2 id="example-b-multiple-failures-cu03-wa02">Example B — MULTIPLE FAILURES (CU03-WA02)</h2>
+<p>This Work Activity has intentional errors across all 4 gates.</p>
+<pre><code>WA Title : Carry out server hardware installation.
+WA Code  : IT-020-3:2026-CU03-WA02
+Platform : Linux
+</code></pre>
+<h3 id="work-steps-with-errors">Work Steps ❌ (with errors)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Step (with errors)</th>
+<th style="text-align: left;">Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2.1</td>
+<td style="text-align: left;">Server chassis was unpacked and inspected for damage.</td>
+<td style="text-align: left;">❌ G1: "was unpacked" = passive voice</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.2</td>
+<td style="text-align: left;">Assembled server processors, cooling modules, memory.</td>
+<td style="text-align: left;">❌ G1: "Assembled" = past tense</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">Mount server chassis on rack rails and secure it.</td>
+<td style="text-align: left;">✅ "Mount" = OK</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.4</td>
+<td style="text-align: left;">Make sure the cables are all plugged in properly.</td>
+<td style="text-align: left;">❌ G4a: "Make sure" is vague; "properly" is vague</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.5</td>
+<td style="text-align: left;">Use ipconfig to check server IP after boot.</td>
+<td style="text-align: left;">❌ G4b: <code>ipconfig</code> is a Windows command in Linux content</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step count: 5</strong></p>
+<h3 id="performance-criteria-with-errors">Performance Criteria ❌ (with errors)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Criterion (with errors)</th>
+<th style="text-align: left;">Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2.1</td>
+<td style="text-align: left;">Server chassis unpacked and modules inspected for damage in accordance with server safety guidelines.</td>
+<td style="text-align: left;">✅ OK</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.2</td>
+<td style="text-align: left;">The technician assembles server hardware and checks it is working.</td>
+<td style="text-align: left;">❌ G2: Active voice, starts with "The technician"</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">Server chassis mounted in accordance with datacenter mounting specs.</td>
+<td style="text-align: left;">✅ OK</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.4</td>
+<td style="text-align: left;">All cables plugged in.</td>
+<td style="text-align: left;">❌ G2: No passive verb from whitelist, no "in accordance with"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Criteria count: 4</strong></p>
+<h3 id="audit-report">Audit Report</h3>
+<pre><code>❌ FAIL — IT-020-3:2026-CU03-WA02
+
+[G3] 1-to-1 MAPPING MISMATCH
+  Issue: Steps count (5) does not match Criteria count (4).
+  Fix: Add missing criterion 2.5 to match step 2.5.
+
+[G1] ACTIVE VOICE VIOLATION — Step 2.1
+  Current: &quot;Server chassis was unpacked and inspected for damage.&quot;
+  Fix:     &quot;Unpack server chassis and inspect modules for damage.&quot;
+
+[G1] ACTIVE VOICE VIOLATION — Step 2.2
+  Current: &quot;Assembled server processors, cooling modules, memory.&quot;
+  Fix:     &quot;Assemble server processors, cooling modules, and memory channels.&quot;
+
+[G4a] VAGUE LANGUAGE — Step 2.4
+  Current: &quot;Make sure the cables are all plugged in properly.&quot;
+  Fix:     &quot;Connect server interface cables firmly to the designated ports.&quot;
+
+[G4b] OS BOUNDARY VIOLATION — Step 2.5
+  Current: &quot;Use ipconfig to check server IP after boot.&quot;
+  Fix:     &quot;Verify server IP address assignment using the ip addr show command.&quot;
+           (ipconfig is a Windows command — forbidden in Linux content)
+
+[G2] PASSIVE VOICE VIOLATION — Criterion 2.2
+  Current: &quot;The technician assembles server hardware and checks it is working.&quot;
+  Fix:     &quot;Server hardware components assembled in accordance with server hardware installation manuals.&quot;
+
+[G2] PASSIVE VOICE VIOLATION — Criterion 2.4
+  Current: &quot;All cables plugged in.&quot;
+  Fix:     &quot;Server physical interface connections connected firmly in accordance with cabling protocols.&quot;
+</code></pre>
+<hr />
+<h2 id="example-c-corrected-version-of-example-b">Example C — CORRECTED VERSION of Example B</h2>
+<p>After applying all fixes from the audit report:</p>
+<h3 id="work-steps-corrected">Work Steps ✅ (corrected)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Gate G1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2.1</td>
+<td style="text-align: left;">Unpack server chassis and inspect modules for damage.</td>
+<td style="text-align: left;">✅ "Unpack"</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.2</td>
+<td style="text-align: left;">Assemble server processors, cooling modules, and memory channels.</td>
+<td style="text-align: left;">✅ "Assemble"</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">Mount server chassis on rack rails and secure within the enclosure.</td>
+<td style="text-align: left;">✅ "Mount"</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.4</td>
+<td style="text-align: left;">Connect server interface cables firmly to the designated ports.</td>
+<td style="text-align: left;">✅ "Connect"</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.5</td>
+<td style="text-align: left;">Boot up the server and verify the POST status output.</td>
+<td style="text-align: left;">✅ "Boot"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-criteria-corrected">Performance Criteria ✅ (corrected)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: left;">Gate G2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2.1</td>
+<td style="text-align: left;">Server chassis <strong>unpacked</strong> and internal modules <strong>inspected</strong> for damage in accordance with server safety guidelines.</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.2</td>
+<td style="text-align: left;">Server processors, cooling modules, and memory channels <strong>assembled</strong> in accordance with server hardware installation manuals.</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">Server chassis <strong>mounted</strong> on rack rails and <strong>secured</strong> within the server rack enclosure in accordance with datacenter mounting specifications.</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.4</td>
+<td style="text-align: left;">Server physical interface connections <strong>connected</strong> firmly in accordance with cabling protocols.</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.5</td>
+<td style="text-align: left;">Server Power-On Self-Test (POST) status <strong>verified</strong> without errors in accordance with controller BIOS specifications.</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audit-result_1">Audit Result</h3>
+<pre><code>✅ PASS — IT-020-3:2026-CU03-WA02 (corrected)
+Steps: 5 | Criteria: 5 | 1-to-1: ✓ | Active Voice: ✓ | Passive Voice: ✓ | Language: ✓
+</code></pre>
+<hr />
+<h2 id="example-d-g4c-complex-command-violation">Example D — G4c Complex Command Violation</h2>
+<p>A step that uses a multi-pipe command forbidden at Level 3.</p>
+<h3 id="fail">❌ FAIL</h3>
+<pre><code>Step 3.2: Extract failed SSH login attempts from the auth log using the command:
+  awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c | sort -rn | head -10
+</code></pre>
+<p><strong>Audit finding:</strong></p>
+<pre><code>[G4c] COMPLEX PIPELINE VIOLATION — Step 3.2
+  Issue: 4-pipe awk command detected. awk is a forbidden complex utility at Level 3.
+  Fix:   Run the audit-ssh-failures.sh script to extract failed login events.
+         (The complex pipeline is abstracted into /scripts/audit-ssh-failures.sh)
+</code></pre>
+<h3 id="pass-after-fix">✅ PASS (after fix)</h3>
+<pre><code>Step 3.2: Run the audit-ssh-failures.sh script to extract failed SSH login events.
+</code></pre>
+<hr />
+<h2 id="passive-verb-whitelist-quick-lookup-table">Passive Verb Whitelist — Quick Lookup Table</h2>
+<p>Use this table when checking if a criterion contains an approved passive verb.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">A–C</th>
+<th style="text-align: left;">D–L</th>
+<th style="text-align: left;">M–R</th>
+<th style="text-align: left;">S–Z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">accessed</td>
+<td style="text-align: left;">defined</td>
+<td style="text-align: left;">maintained</td>
+<td style="text-align: left;">saved</td>
+</tr>
+<tr>
+<td style="text-align: left;">activated</td>
+<td style="text-align: left;">deployed</td>
+<td style="text-align: left;">managed</td>
+<td style="text-align: left;">scheduled</td>
+</tr>
+<tr>
+<td style="text-align: left;">added</td>
+<td style="text-align: left;">determined</td>
+<td style="text-align: left;">mapped</td>
+<td style="text-align: left;">secured</td>
+</tr>
+<tr>
+<td style="text-align: left;">allocated</td>
+<td style="text-align: left;">diagnosed</td>
+<td style="text-align: left;">matched</td>
+<td style="text-align: left;">selected</td>
+</tr>
+<tr>
+<td style="text-align: left;">analysed</td>
+<td style="text-align: left;">disabled</td>
+<td style="text-align: left;">monitored</td>
+<td style="text-align: left;">set</td>
+</tr>
+<tr>
+<td style="text-align: left;">applied</td>
+<td style="text-align: left;">displayed</td>
+<td style="text-align: left;">mounted</td>
+<td style="text-align: left;">simulated</td>
+</tr>
+<tr>
+<td style="text-align: left;">archived</td>
+<td style="text-align: left;">documented</td>
+<td style="text-align: left;">notified</td>
+<td style="text-align: left;">started</td>
+</tr>
+<tr>
+<td style="text-align: left;">assembled</td>
+<td style="text-align: left;">established</td>
+<td style="text-align: left;">operated</td>
+<td style="text-align: left;">stopped</td>
+</tr>
+<tr>
+<td style="text-align: left;">assigned</td>
+<td style="text-align: left;">evaluated</td>
+<td style="text-align: left;">parsed</td>
+<td style="text-align: left;">structured</td>
+</tr>
+<tr>
+<td style="text-align: left;">audited</td>
+<td style="text-align: left;">executed</td>
+<td style="text-align: left;">performed</td>
+<td style="text-align: left;">submitted</td>
+</tr>
+<tr>
+<td style="text-align: left;">booted</td>
+<td style="text-align: left;">exported</td>
+<td style="text-align: left;">prepared</td>
+<td style="text-align: left;">supported</td>
+</tr>
+<tr>
+<td style="text-align: left;">captured</td>
+<td style="text-align: left;">extracted</td>
+<td style="text-align: left;">provided</td>
+<td style="text-align: left;">synchronized</td>
+</tr>
+<tr>
+<td style="text-align: left;">checked</td>
+<td style="text-align: left;">filtered</td>
+<td style="text-align: left;">pulled</td>
+<td style="text-align: left;">tested</td>
+</tr>
+<tr>
+<td style="text-align: left;">cleared</td>
+<td style="text-align: left;">formatted</td>
+<td style="text-align: left;">queried</td>
+<td style="text-align: left;">toggled</td>
+</tr>
+<tr>
+<td style="text-align: left;">cloned</td>
+<td style="text-align: left;">generated</td>
+<td style="text-align: left;">recorded</td>
+<td style="text-align: left;">traced</td>
+</tr>
+<tr>
+<td style="text-align: left;">collected</td>
+<td style="text-align: left;">handled</td>
+<td style="text-align: left;">registered</td>
+<td style="text-align: left;">tracked</td>
+</tr>
+<tr>
+<td style="text-align: left;">compiled</td>
+<td style="text-align: left;">identified</td>
+<td style="text-align: left;">removed</td>
+<td style="text-align: left;">triaged</td>
+</tr>
+<tr>
+<td style="text-align: left;">completed</td>
+<td style="text-align: left;">implemented</td>
+<td style="text-align: left;">resolved</td>
+<td style="text-align: left;">triggered</td>
+</tr>
+<tr>
+<td style="text-align: left;">confirmed</td>
+<td style="text-align: left;">inspected</td>
+<td style="text-align: left;">restored</td>
+<td style="text-align: left;">updated</td>
+</tr>
+<tr>
+<td style="text-align: left;">configured</td>
+<td style="text-align: left;">installed</td>
+<td style="text-align: left;">restricted</td>
+<td style="text-align: left;">uploaded</td>
+</tr>
+<tr>
+<td style="text-align: left;">connected</td>
+<td style="text-align: left;">investigated</td>
+<td style="text-align: left;">retrieved</td>
+<td style="text-align: left;">validated</td>
+</tr>
+<tr>
+<td style="text-align: left;">converted</td>
+<td style="text-align: left;">isolated</td>
+<td style="text-align: left;">reviewed</td>
+<td style="text-align: left;">verified</td>
+</tr>
+<tr>
+<td style="text-align: left;">copied</td>
+<td style="text-align: left;">launched</td>
+<td style="text-align: left;">reverted</td>
+<td style="text-align: left;">visualised</td>
+</tr>
+<tr>
+<td style="text-align: left;">created</td>
+<td style="text-align: left;">loaded</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">written</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">locked</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">logged</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

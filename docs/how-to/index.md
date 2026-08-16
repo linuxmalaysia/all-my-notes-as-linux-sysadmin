@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Index"
 description: "DSOM Guide document for Index."
 type: "guide"
@@ -27,6 +27,7 @@ How-To Guides provide **practical, problem-oriented directions** for completing 
 - **[Run the FastMCP Server](run-fastmcp-server.md):** How to configure, test, and execute the FastMCP server.
 - **[Generate SEO Assets and Sitemaps](generate-sitemaps-seo.md):** How to generate unified XML/TXT sitemaps and robots.txt.
 - **[Operate the OpenWiki Emulator](use-openwiki-emulator.md):** How to initialise, update, and query the OpenWiki emulator.
+- **[Penggunaan & Pengemaskinian HTML Statik](deploy-and-serve-html.md):** Panduan menggunakan laman web `html/` prabina dan membina semula untuk Nginx, Apache, atau luar talian.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOSS CPC DOCX Formatter Skill - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: noss-cpc-docx-formatter
+title: noss-cpc-docx-formatter
+description: "This skill equips an AI agent to **generate** the official NOSS Level 3 Competency Profile Chart (CPC) document in two formats:  | Output | Description | | :
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <p>-- | :---------- | | `CPC-Level-3-Gen..."<br />
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"<br />
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"<br />
+noss_code: <br />
+target_level: 3</p>
+<hr />
+<h1 id="noss-cpc-docx-formatter-skill">NOSS CPC DOCX Formatter Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill equips an AI agent to <strong>generate</strong> the official NOSS Level 3<br />
+Competency Profile Chart (CPC) document in two formats:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Output</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>CPC-Level-3-Generated.md</code></td>
+<td style="text-align: left;">GitHub-flavoured Markdown representation of the CPC</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CPC-Level-3-Generated.docx</code></td>
+<td style="text-align: left;">Word document matching the exact coloured grid layout</td>
+</tr>
+</tbody>
+</table>
+<p>The CPC is a <strong>colour-coded visual matrix</strong> — fundamentally different from the CP.<br />
+It maps every Competency Unit (CU) to its Work Activities (WA) in a compact<br />
+6-column grid with coloured fills, vertical cell merging, and overflow row logic.</p>
+<hr />
+<h2 id="2-prerequisites">2. Prerequisites</h2>
+<p>The agent must verify the following before running:</p>
+<ol>
+<li><strong>Node.js ≥ 18</strong> is available (<code>node --version</code>).</li>
+<li><strong><code>docx</code> npm package</strong> is installed in the project root<br />
+   (<code>npm list docx</code> — must show a version, including <code>AlignmentType</code>, <code>VerticalAlign</code>, <code>BorderStyle</code>).</li>
+<li><strong>CU profile source files</strong> exist at:<br />
+<code>noss-rebuild/competency-profiles/&lt;cuXX&gt;/&lt;cuXX&gt;-profile.md</code><br />
+   for each CU to compile.</li>
+</ol>
+<p>If the <code>docx</code> package is missing, run: <code>npm install docx</code></p>
+<hr />
+<h2 id="3-reference-format-specification">3. Reference Format Specification</h2>
+<h3 id="31-global-document-settings">3.1 Global Document Settings</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Font family</td>
+<td style="text-align: left;"><strong>Times New Roman</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Font size</td>
+<td style="text-align: left;"><strong>11 pt</strong> (22 in half-points)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Page margins</td>
+<td style="text-align: left;">Top: 720, Right: 720, Bottom: 720, Left: 720 (twips)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Heading</td>
+<td style="text-align: left;"><code>"1. Competency Profile Chart (CPC)"</code> — Heading 1 style</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-document-structure-in-order">3.2 Document Structure (in order)</h3>
+<pre><code>Heading 1: &quot;1. Competency Profile Chart (CPC)&quot;
+Empty paragraph
+[Table 1: Metadata Header]    ← grey/red coloured 5-column table
+Empty paragraph
+[Table 2: CPC Grid]           ← 6-column colour matrix, 50% page width
+</code></pre>
+<hr />
+<h3 id="33-table-1-metadata-header">3.3 Table 1 — Metadata Header</h3>
+<p><strong>Width:</strong> 100% of page<br />
+<strong>Grid:</strong> 5 equal columns<br />
+<strong>Cell borders:</strong> Single black <code>000000</code>, sz=4 on all sides<br />
+<strong>Cell alignment:</strong> CENTER, vAlign CENTER<br />
+<strong>Margins:</strong> top/start/bottom/end = 100 dxa  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Row</th>
+<th style="text-align: left;">Col 1 (grey <code>EFEFEF</code>)</th>
+<th style="text-align: left;">Col 2–5 (white <code>FFFFFF</code>, text RED <code>FF0000</code>, colSpan=4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">SECTION</td>
+<td style="text-align: left;">K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">GROUP</td>
+<td style="text-align: left;">622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">AREA</td>
+<td style="text-align: left;">(value from config)</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">NOSS TITLE</td>
+<td style="text-align: left;">(value from config)</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">NOSS LEVEL (grey)</td>
+<td style="text-align: left;">LEVEL 3 (red text, white) | NOSS CODE (grey) | IT-020-3:2026 (red, white, colSpan=2)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Label cells</strong> (<code>EFEFEF</code> fill): plain black text, NOT bold<br />
+<strong>Value cells</strong> (<code>FFFFFF</code> fill): text colour <code>FF0000</code> (red), NOT bold  </p>
+<p>Row 5 has <strong>4 separate cells</strong>: NOSS LEVEL label | LEVEL 3 value | NOSS CODE label | code value (colSpan=2)</p>
+<hr />
+<h3 id="34-table-2-cpc-grid">3.4 Table 2 — CPC Grid</h3>
+<p><strong>Width:</strong> 50% of page (<code>w:w="5000" w:type="pct"</code>)<br />
+<strong>Layout:</strong> Fixed (<code>w:tblLayout w:type="fixed"</code>)<br />
+<strong>Grid:</strong> 6 columns of 1744/1744/1744/1745/1744/1745 dxa<br />
+<strong>Alignment:</strong> left-justified (<code>w:jc w:val="start"</code>)<br />
+<strong>Cell borders:</strong> Single black <code>000000</code>, sz=4, space=0 on all sides<br />
+<strong>Cell alignment:</strong> CENTER horizontal, CENTER vertical<br />
+<strong>Margins:</strong> top/start/bottom/end = 100 dxa<br />
+<strong>Spacing:</strong> before=100, after=100 per paragraph  </p>
+<h4 id="colour-palette">Colour Palette</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Constant</th>
+<th style="text-align: left;">Hex</th>
+<th style="text-align: left;">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>COLOR_ORANGE</code></td>
+<td style="text-align: left;"><code>FFC000</code></td>
+<td style="text-align: left;">CORE category column (col 0, vertical merge)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>COLOR_YELLOW</code></td>
+<td style="text-align: left;"><code>FFFF00</code></td>
+<td style="text-align: left;">CU Title cell (col 1, WA name rows)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>COLOR_GREEN</code></td>
+<td style="text-align: left;"><code>92D050</code></td>
+<td style="text-align: left;">CU Code cell (col 1, code rows) + col-1 header</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>COLOR_BLUE</code></td>
+<td style="text-align: left;"><code>DDEBF7</code></td>
+<td style="text-align: left;">WA Code cells (cols 2–5, code rows) + cols 2–5 header</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>COLOR_WHITE</code></td>
+<td style="text-align: left;"><code>FFFFFF</code></td>
+<td style="text-align: left;">WA Title cells (cols 2–5, name rows) + spacers</td>
+</tr>
+</tbody>
+</table>
+<h4 id="table-2-row-structure">Table 2 Row Structure</h4>
+<p>The grid follows this repeating pattern:</p>
+<pre><code>ROW 0 (header):
+  [col 0: white, empty]
+  [col 1: GREEN &quot;←COMPETENCY UNIT→&quot;]
+  [col 2–5: BLUE colspan=4, &quot;←WORK ACTIVITIES→&quot;]
+
+ROW 1 (spacer):
+  [col 0–5: WHITE colspan=6, empty]
+
+For each CU block (3 or 5 rows depending on WA count):
+  [NAME ROW A]:
+    col 0: ORANGE &quot;C\nO\nR\nE&quot; (first CU only) or empty,
+           vMerge restart, rowSpan = 2 (or 4 if overflow)
+    col 1: YELLOW — CU full name (title case)
+    col 2–5: WHITE — WA names 1–4 (fill empty if &lt; 4 WAs)
+
+  [CODE ROW A]:
+    col 0: vMerge continuation (no text, no fill)
+    col 1: GREEN — &quot;CODE CUXX&quot;
+    col 2–5: BLUE — &quot;CODE CUXX-WA01&quot; ... &quot;CODE CUXX-WA04&quot; (empty if unused)
+
+  IF CU has more than 4 WAs (overflow):
+    [NAME ROW B]:
+      col 0: vMerge continuation
+      col 1: WHITE — empty
+      col 2–5: WHITE — WA names 5–8 (fill empty if &lt; 4 overflow WAs)
+
+    [CODE ROW B]:
+      col 0: vMerge continuation
+      col 1: WHITE — empty
+      col 2–5: BLUE — &quot;CODE CUXX-WA05&quot;... (empty if unused)
+
+  [SPACER ROW]:
+    col 0–5: WHITE colspan=6, empty
+
+END OF PATTERN
+</code></pre>
+<h4 id="vmerge-rules">vMerge Rules</h4>
+<p>The orange CORE column (col 0) uses <code>rowSpan</code> in the <code>docx</code> library which maps<br />
+to <code>w:vMerge w:val="restart"</code> on the first row and <code>w:vMerge</code> (continuation) on<br />
+subsequent merged rows. The rowSpan value is:<br />
+- <strong>2</strong> if the CU has 4 or fewer WAs (2 rows: name + codes)<br />
+- <strong>4</strong> if the CU has 5 or more WAs (4 rows: name + codes + overflow name + overflow codes)</p>
+<p>Only the <strong>first CU</strong> displays the <code>"C\nO\nR\nE"</code> text in the orange column.<br />
+All subsequent CUs have the orange column empty (but still merged).</p>
+<hr />
+<h2 id="4-markdown-format-specification">4. Markdown Format Specification</h2>
+<p>The CPC <code>.md</code> file uses a simplified 2-column table representation.</p>
+<h3 id="41-header-block">4.1 Header Block</h3>
+<pre><code class="language-markdown"># Competency Profile Chart (CPC)
+
+| SECTION | (J) Information and Communication |
+| :--- | :--- |
+| **GROUP** | (620) Computer Programming, Consultancy and Related Activities |
+| **AREA** | Computer System Administration |
+| **NOSS TITLE** | Sovereign IT Infrastructure Operations |
+| **NOSS LEVEL** | LEVEL 3 |
+| **NOSS CODE** | IT-020-3:2026 |
+</code></pre>
+<h3 id="42-core-competencies-table">4.2 Core Competencies Table</h3>
+<pre><code class="language-markdown">## 🟢 CORE COMPETENCIES
+
+| COMPETENCY UNIT (CU) | WORK ACTIVITIES (WA) |
+| :--- | :--- |
+| **&lt;CU TITLE IN CAPS&gt;**&lt;br&gt;`[CODE: CUxx]` | **1.** WA Title One `[CUxx-WA01]`&lt;br&gt;&lt;br&gt;**2.** WA Title Two `[CUxx-WA02]`&lt;br&gt;&lt;br&gt;... |
+</code></pre>
+<p><strong>Rules:</strong><br />
+- CU title in <code>**UPPERCASE BOLD**</code><br />
+- CU code in backtick monospace: <code>`[CODE: CU01]`</code><br />
+- Each WA entry: <code>**N.** WA Title</code> followed by <code>`[CUxx-WAxx]`</code> code<br />
+- WA entries separated by <code>&lt;br&gt;&lt;br&gt;</code> (double break)<br />
+- Blank line between the header table and the CORE COMPETENCIES section</p>
+<hr />
+<h2 id="5-source-data-contract">5. Source Data Contract</h2>
+<p>The agent reads from CU profile Markdown files at:<br />
+<code>noss-rebuild/competency-profiles/&lt;cuXX&gt;/&lt;cuXX&gt;-profile.md</code></p>
+<h3 id="what-is-extracted-per-cu">What is extracted per CU:</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Source location in profile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CU Title</td>
+<td style="text-align: left;">First line: <code># &lt;Title&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">CU Code</td>
+<td style="text-align: left;">Derived: <code>CODE CU0X</code> / <code>IT-020-3:2026-CU0X</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">WA Titles</td>
+<td style="text-align: left;">Competency Matrix table, column 1, <code>**N. &lt;Title&gt;**</code> pattern</td>
+</tr>
+<tr>
+<td style="text-align: left;">WA Codes</td>
+<td style="text-align: left;">Derived: <code>CODE CU0X-WA0Y</code></td>
+</tr>
+</tbody>
+</table>
+<p>The CPC does <strong>not</strong> use the CU Descriptor or Performance Criteria.<br />
+It only uses CU titles and WA titles/codes.</p>
+<hr />
+<h2 id="6-step-by-step-agent-instructions">6. Step-by-Step Agent Instructions</h2>
+<h3 id="step-1-verify-environment">Step 1 – Verify environment</h3>
+<pre><code class="language-bash">node --version
+npm list docx
+</code></pre>
+<p>If <code>docx</code> is missing:</p>
+<pre><code class="language-bash">npm install docx
+</code></pre>
+<h3 id="step-2-locate-source-files">Step 2 – Locate source files</h3>
+<p>Verify these exist for each CU (default cu01–cu06):</p>
+<pre><code>noss-rebuild/competency-profiles/cu01/cu01-profile.md
+...
+noss-rebuild/competency-profiles/cu06/cu06-profile.md
+</code></pre>
+<h3 id="step-3-run-the-cpc-generator">Step 3 – Run the CPC generator</h3>
+<pre><code class="language-bash">node scripts/generate_rebuild_cpc_docx.js
+</code></pre>
+<p>Expected output:</p>
+<pre><code>Successfully generated DOCX at .../CPC-Level-3-Generated.docx
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> The CPC generator currently only produces DOCX.<br />
+The Markdown CPC is maintained separately in <code>noss-rebuild/references/CPC-Level-3.md</code><br />
+or generated by a companion MD-only script.</p>
+</blockquote>
+<h3 id="step-4-verify-output">Step 4 – Verify output</h3>
+<pre><code class="language-bash">node -e &quot;const fs=require('fs'); const s=fs.statSync('noss-rebuild/references/CPC-Level-3-Generated.docx'); console.log('DOCX size:', s.size, 'bytes'); if(s.size &lt; 5000) console.error('FAIL: File too small'); else console.log('PASS');&quot;
+</code></pre>
+<h3 id="step-5-quality-gate">Step 5 – Quality gate</h3>
+<pre><code class="language-bash">node -e &quot;
+const fs=require('fs');
+const {Document,Packer}=require('docx');
+// Check that source profiles parse correctly
+const profilesDir='noss-rebuild/competency-profiles';
+const cuList=['cu01','cu02','cu03','cu04','cu05','cu06'];
+let ok=true;
+cuList.forEach(id=&gt;{
+  const f=profilesDir+'/'+id+'/'+id+'-profile.md';
+  if(!fs.existsSync(f)){console.error('MISSING:',f);ok=false;}
+  else {
+    const c=fs.readFileSync(f,'utf8');
+    const was=(c.match(/\*\*\d+\./g)||[]).length;
+    console.log(id,'- WA count:',was);
+    if(was&lt;1){console.error('FAIL: No WAs found in',id);ok=false;}
+  }
+});
+if(ok) console.log('PASS: All profiles found and parseable');
+&quot;
+</code></pre>
+<hr />
+<h2 id="7-wa-overflow-logic-more-than-4-was-per-cu">7. WA Overflow Logic (more than 4 WAs per CU)</h2>
+<p>When a CU has more than 4 WAs, the grid wraps into additional rows.</p>
+<pre><code>CU with 6 WAs → 4 rows + spacer:
+  Row A (name): [ORANGE-CORE] [YELLOW: CU title] [WA1] [WA2] [WA3] [WA4]
+  Row A (code): [vMerge cont] [GREEN: CODE CUxx] [WA01] [WA02] [WA03] [WA04]
+  Row B (name): [vMerge cont] [WHITE: empty]     [WA5] [WA6] [empty] [empty]
+  Row B (code): [vMerge cont] [WHITE: empty]     [WA05] [WA06] [empty] [empty]
+  Spacer:       [WHITE colspan=6]
+
+CU with 4 WAs → 2 rows + spacer:
+  Row A (name): [ORANGE-CORE] [YELLOW: CU title] [WA1] [WA2] [WA3] [WA4]
+  Row A (code): [vMerge cont] [GREEN: CODE CUxx] [WA01] [WA02] [WA03] [WA04]
+  Spacer:       [WHITE colspan=6]
+</code></pre>
+<p>The <code>rowSpan</code> on the orange CORE cell must match the total data rows<br />
+(excluding the spacer):<br />
+- 2 WA rows → <code>rowSpan: 2</code><br />
+- 4 WA rows (overflow) → <code>rowSpan: 4</code></p>
+<hr />
+<h2 id="8-exact-docx-api-mapping">8. Exact docx API Mapping</h2>
+<pre><code class="language-javascript">// Required imports
+const {
+  Document, Packer, Paragraph, Table, TableCell, TableRow,
+  WidthType, TextRun, HeadingLevel,
+  AlignmentType, VerticalAlign, BorderStyle
+} = require('docx');
+
+// Standard cell with colour fill
+function createCell(content, bgColor, colSpan = 1, rowSpan = 1) {
+  return new TableCell({
+    children: Array.isArray(content)
+      ? content
+      : [new Paragraph({
+          children: [new TextRun({ text: content, font: 'Times New Roman', size: 22 })],
+          alignment: AlignmentType.CENTER,
+          spacing: { before: 100, after: 100 }
+        })],
+    shading: { fill: bgColor },
+    columnSpan: colSpan,
+    rowSpan: rowSpan,
+    verticalAlign: VerticalAlign.CENTER,
+    margins: { top: 100, bottom: 100, left: 100, right: 100 },
+    borders: {
+      top:    { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+      bottom: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+      left:   { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+      right:  { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+    }
+  });
+}
+
+// Red text cell (for metadata values)
+function createRedTextCell(text, bgColor = 'FFFFFF', colSpan = 1) {
+  return createCell(
+    [new Paragraph({
+      children: [new TextRun({ text, font: 'Times New Roman', size: 22, color: 'FF0000' })],
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 100, after: 100 }
+    })],
+    bgColor, colSpan
+  );
+}
+
+// CPC Grid table: fixed layout, 50% width
+const gridTable = new Table({
+  width: { size: 50, type: WidthType.PERCENTAGE },
+  layout: 'fixed',                // maps to w:tblLayout w:type=&quot;fixed&quot;
+  rows: [ ...coreRows ]
+});
+</code></pre>
+<hr />
+<h2 id="9-error-patterns-fixes">9. Error Patterns &amp; Fixes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Symptom</th>
+<th style="text-align: left;">Root Cause</th>
+<th style="text-align: left;">Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">WA overflow rows misaligned</td>
+<td style="text-align: left;">rowSpan calculated without overflow</td>
+<td style="text-align: left;">Check WA count: if &gt;4 use rowSpan=4 else rowSpan=2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Orange column not merging</td>
+<td style="text-align: left;">Missing <code>rowSpan</code> argument to createCell</td>
+<td style="text-align: left;">Always pass <code>rowSpan</code> for col 0 cells</td>
+</tr>
+<tr>
+<td style="text-align: left;">Grid wider than expected</td>
+<td style="text-align: left;">Table width set to 100%</td>
+<td style="text-align: left;">Set <code>size: 50, type: WidthType.PERCENTAGE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">WA codes wrong format</td>
+<td style="text-align: left;">Hardcoded vs dynamic</td>
+<td style="text-align: left;">Generate as <code>CODE CU0X-WA0Y</code> (zero-padded)</td>
+</tr>
+<tr>
+<td style="text-align: left;">CU title not uppercase</td>
+<td style="text-align: left;">Missing <code>.toUpperCase()</code></td>
+<td style="text-align: left;">Title must be all-caps in the DOCX grid</td>
+</tr>
+<tr>
+<td style="text-align: left;">Red text not appearing</td>
+<td style="text-align: left;">Missing <code>color: 'FF0000'</code> in TextRun</td>
+<td style="text-align: left;">All metadata values use red text</td>
+</tr>
+<tr>
+<td style="text-align: left;">Grey label cells wrong</td>
+<td style="text-align: left;">Using bold instead of EFEFEF fill</td>
+<td style="text-align: left;">Labels use fill <code>EFEFEF</code>, NOT bold</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-extending-this-skill">10. Extending This Skill</h2>
+<p>This skill covers <strong>CPC only</strong>. For related documents:<br />
+- <strong>CP (Competency Profile):</strong> Use skill <code>noss-cp-docx-formatter</code><br />
+- <strong>CoCU (Content of CU):</strong> Use skill <code>noss-cocu-docx-formatter</code><br />
+- <strong>Job Sheets:</strong> Use skill <code>noss-job-sheet-formatter</code></p>
+<hr />
+<h2 id="11-pedagogical-scope-boundary">11. Pedagogical Scope Boundary</h2>
+<blockquote>
+<p><strong>⚠️ LEVEL 3 CONSTRAINT</strong></p>
+<p>The CPC is a structural/administrative document. Its content must faithfully<br />
+reflect the WA titles from the approved Level 3 profile files. Do not<br />
+introduce new WA titles, merge WAs, or alter codes without explicit<br />
+human approval from the principal maintainer.</p>
+</blockquote>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

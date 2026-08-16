@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>docx-highlight-extractor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: docx-highlight-extractor
+name: docx-highlight-extractor
+description: Extracts highlighted text and comments from DOCX files, preserving exact page locations and paragraph context, and generates a tracking ledger.
+topics: [docx, highlight, comments, audit, tracking, xml]
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="docx-highlight-extractor">DOCX Highlight Extractor</h1>
+<p>Use this skill when the user asks to extract comments, feedback, or highlighted text from a Microsoft Word (<code>.docx</code>) document. Standard markdown converters lose the precise context, so this skill utilizes native XML parsing to locate page boundaries, paragraphs, and adjacent contextual text.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>Identify the target <code>.docx</code> file to extract from.</li>
+<li>Execute the XML extraction script to generate the raw JSON data:<br />
+<code>uv run .agents/skills/docx-highlight-extractor/scripts/extract_detailed_highlights.py &lt;path_to_input_docx&gt; &lt;path_to_output_json&gt;</code></li>
+<li>Execute the markdown generator script to compile the detailed tracking ledger:<br />
+<code>uv run .agents/skills/docx-highlight-extractor/scripts/generate_detailed_md.py &lt;path_to_input_json&gt; &lt;path_to_output_md&gt;</code></li>
+<li>Present the generated markdown file to the user as an artifact (e.g. <code>review_notes_detailed.md</code>).</li>
+<li><strong>Auditing Protocol:</strong> Whenever the user successfully addresses a specific highlight (e.g., <code>HL-001</code>), manually append a <code>Resolution / Replacement</code> row directly into the markdown table documenting the exact change.</li>
+</ol>
+<h2 id="constraints-immutability">Constraints &amp; Immutability</h2>
+<ul>
+<li><strong>Tracking ID Immutability:</strong> Once a tracking ledger is generated and <code>HL-XXX</code> IDs are assigned, they are considered immutable team references. <strong>NEVER</strong> delete, filter, or re-sequence highlights to "clean up" the document, as this destroys external team alignment.</li>
+<li><strong>Invisible Highlights:</strong> Raw XML extraction often captures invisible formatting artifacts (e.g., <code>white</code> or <code>lightGray</code> highlights caused by copy-pasting). Do not delete these from the JSON. Instead, maintain the sequence and explicitly mark them in the markdown <code>Resolution / Replacement</code> column as: <code>⏩ **Skipped:** Invisible formatting artifact. Can safely skip.</code></li>
+</ul>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia)</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

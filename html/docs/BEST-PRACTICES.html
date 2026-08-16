@@ -1,0 +1,1270 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Guide document for Best Practices.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Best Practices - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#best-practices-for-skill-creators" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Best Practices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-from-real-expertise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start from real expertise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-from-a-hands-on-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extract from a hands-on task
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synthesize-from-existing-project-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synthesize from existing project artifacts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refine-with-real-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refine with real execution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spending-context-wisely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spending context wisely
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spending context wisely">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-what-the-agent-lacks-omit-what-it-knows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add what the agent lacks, omit what it knows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-coherent-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design coherent units
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aim-for-moderate-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aim for moderate detail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-large-skills-with-progressive-disclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure large skills with progressive disclosure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibrating-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibrating control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calibrating control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#match-specificity-to-fragility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Match specificity to fragility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provide-defaults-not-menus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provide defaults, not menus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#favor-procedures-over-declarations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Favor procedures over declarations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-for-effective-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns for effective instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns for effective instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gotchas-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates-for-output-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Templates for output format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklists-for-multi-step-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklists for multi-step workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-validate-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan-validate-execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundling-reusable-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bundling reusable scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="best-practices-for-skill-creators">Best practices for skill creators<a class="headerlink" href="#best-practices-for-skill-creators" title="Permanent link">&para;</a></h1>
+<p>How to write skills that are well-scoped and calibrated to the task.</p>
+<h2 id="start-from-real-expertise">Start from real expertise<a class="headerlink" href="#start-from-real-expertise" title="Permanent link">&para;</a></h2>
+<p>A common pitfall in skill creation is asking an LLM to generate a skill without providing domain-specific context — relying solely on the LLM’s general training knowledge. The result is vague, generic procedures (“handle errors appropriately,” “follow best practices for authentication”) rather than the specific API patterns, edge cases, and project conventions that make a skill valuable. Effective skills are grounded in real expertise. The key is feeding domain-specific context into the creation process.</p>
+<h2 id="extract-from-a-hands-on-task">Extract from a hands-on task<a class="headerlink" href="#extract-from-a-hands-on-task" title="Permanent link">&para;</a></h2>
+<p>Complete a real task in conversation with an agent, providing context, corrections, and preferences along the way. Then extract the reusable pattern into a skill. Pay attention to:</p>
+<ul>
+<li>Steps that worked — the sequence of actions that led to success</li>
+<li>Corrections you made — places where you steered the agent’s approach (e.g., “use library X instead of Y,” “check for edge case Z”)</li>
+<li>Input/output formats — what the data looked like going in and coming out</li>
+<li>Context you provided — project-specific facts, conventions, or constraints the agent didn’t already know</li>
+</ul>
+<h2 id="synthesize-from-existing-project-artifacts">Synthesize from existing project artifacts<a class="headerlink" href="#synthesize-from-existing-project-artifacts" title="Permanent link">&para;</a></h2>
+<p>When you have a body of existing knowledge, you can feed it into an LLM and ask it to synthesize a skill. A data-pipeline skill synthesized from your team’s actual incident reports and runbooks will outperform one synthesized from a generic “data engineering best practices” article, because it captures your schemas, failure modes, and recovery procedures. The key is project-specific material, not generic references. Good source material includes:</p>
+<ul>
+<li>Internal documentation, runbooks, and style guides</li>
+<li>API specifications, schemas, and configuration files</li>
+<li>Code review comments and issue trackers (captures recurring concerns and reviewer expectations)</li>
+<li>Version control history, especially patches and fixes (reveals patterns through what actually changed)</li>
+<li>Real-world failure cases and their resolutions</li>
+</ul>
+<h2 id="refine-with-real-execution">Refine with real execution<a class="headerlink" href="#refine-with-real-execution" title="Permanent link">&para;</a></h2>
+<p>The first draft of a skill usually needs refinement. Run the skill against real tasks, then feed the results — all of them, not just failures — back into the creation process. Ask: what triggered false positives? What was missed? What could be cut? Even a single pass of execute-then-revise noticeably improves quality, and complex domains often benefit from several.
+Read agent execution traces, not just final outputs. If the agent wastes time on unproductive steps, common causes include instructions that are too vague (the agent tries several approaches before finding one that works), instructions that don’t apply to the current task (the agent follows them anyway), or too many options presented without a clear default.</p>
+<h2 id="spending-context-wisely">Spending context wisely<a class="headerlink" href="#spending-context-wisely" title="Permanent link">&para;</a></h2>
+<p>Once a skill activates, its full SKILL.md body loads into the agent’s context window alongside conversation history, system context, and other active skills. Every token in your skill competes for the agent’s attention with everything else in that window.</p>
+<h3 id="add-what-the-agent-lacks-omit-what-it-knows">Add what the agent lacks, omit what it knows<a class="headerlink" href="#add-what-the-agent-lacks-omit-what-it-knows" title="Permanent link">&para;</a></h3>
+<p>Focus on what the agent wouldn’t know without your skill: project-specific conventions, domain-specific procedures, non-obvious edge cases, and the particular tools or APIs to use. You don’t need to explain what a PDF is, how HTTP works, or what a database migration does.</p>
+<p>Ask yourself about each piece of content: “Would the agent get this wrong without this instruction?” If the answer is no, cut it. If you’re unsure, test it. And if the agent already handles the entire task well without the skill, the skill may not be adding value.</p>
+<h3 id="design-coherent-units">Design coherent units<a class="headerlink" href="#design-coherent-units" title="Permanent link">&para;</a></h3>
+<p>Deciding what a skill should cover is like deciding what a function should do: you want it to encapsulate a coherent unit of work that composes well with other skills. Skills scoped too narrowly force multiple skills to load for a single task, risking overhead and conflicting instructions. Skills scoped too broadly become hard to activate precisely. A skill for querying a database and formatting the results may be one coherent unit, while a skill that also covers database administration is probably trying to do too much.</p>
+<h3 id="aim-for-moderate-detail">Aim for moderate detail<a class="headerlink" href="#aim-for-moderate-detail" title="Permanent link">&para;</a></h3>
+<p>Overly comprehensive skills can hurt more than they help — the agent struggles to extract what’s relevant and may pursue unproductive paths triggered by instructions that don’t apply to the current task. Concise, stepwise guidance with a working example tends to outperform exhaustive documentation. When you find yourself covering every edge case, consider whether most are better handled by the agent’s own judgment.</p>
+<h3 id="structure-large-skills-with-progressive-disclosure">Structure large skills with progressive disclosure<a class="headerlink" href="#structure-large-skills-with-progressive-disclosure" title="Permanent link">&para;</a></h3>
+<p>The specification recommends keeping SKILL.md under 500 lines and 5,000 tokens — just the core instructions the agent needs on every run. When a skill legitimately needs more content, move detailed reference material to separate files in references/ or similar directories. The key is telling the agent when to load each file. “Read references/api-errors.md if the API returns a non-200 status code” is more useful than a generic “see references/ for details.” This lets the agent load context on demand rather than up front, which is how progressive disclosure is designed to work.</p>
+<h2 id="calibrating-control">Calibrating control<a class="headerlink" href="#calibrating-control" title="Permanent link">&para;</a></h2>
+<p>Not every part of a skill needs the same level of prescriptiveness. Match the specificity of your instructions to the fragility of the task.</p>
+<h3 id="match-specificity-to-fragility">Match specificity to fragility<a class="headerlink" href="#match-specificity-to-fragility" title="Permanent link">&para;</a></h3>
+<p>Give the agent freedom when multiple approaches are valid and the task tolerates variation. For flexible instructions, explaining why can be more effective than rigid directives — an agent that understands the purpose behind an instruction makes better context-dependent decisions. A code review skill can describe what to look for without prescribing exact steps.</p>
+<p>Be prescriptive when operations are fragile, consistency matters, or a specific sequence must be followed. Most skills have a mix. Calibrate each part independently.</p>
+<h3 id="provide-defaults-not-menus">Provide defaults, not menus<a class="headerlink" href="#provide-defaults-not-menus" title="Permanent link">&para;</a></h3>
+<p>When multiple tools or approaches could work, pick a default and mention alternatives briefly rather than presenting them as equal options.</p>
+<h3 id="favor-procedures-over-declarations">Favor procedures over declarations<a class="headerlink" href="#favor-procedures-over-declarations" title="Permanent link">&para;</a></h3>
+<p>A skill should teach the agent how to approach a class of problems, not what to produce for a specific instance. This doesn’t mean skills can’t include specific details — output format templates, constraints like “never output PII,” and tool-specific instructions are all valuable. The point is that the approach should generalize even when individual details are specific.</p>
+<h2 id="patterns-for-effective-instructions">Patterns for effective instructions<a class="headerlink" href="#patterns-for-effective-instructions" title="Permanent link">&para;</a></h2>
+<p>These are reusable techniques for structuring skill content. Not every skill needs all of them — use the ones that fit your task.</p>
+<h3 id="gotchas-sections">Gotchas sections<a class="headerlink" href="#gotchas-sections" title="Permanent link">&para;</a></h3>
+<p>The highest-value content in many skills is a list of gotchas — environment-specific facts that defy reasonable assumptions. These aren’t general advice (“handle errors appropriately”) but concrete corrections to mistakes the agent will make without being told otherwise.
+Keep gotchas in SKILL.md where the agent reads them before encountering the situation. A separate reference file works if you tell the agent when to load it, but for non-obvious issues, the agent may not recognize the trigger.
+When an agent makes a mistake you have to correct, add the correction to the gotchas section.</p>
+<h3 id="templates-for-output-format">Templates for output format<a class="headerlink" href="#templates-for-output-format" title="Permanent link">&para;</a></h3>
+<p>When you need the agent to produce output in a specific format, provide a template. This is more reliable than describing the format in prose, because agents pattern-match well against concrete structures. Short templates can live inline in SKILL.md; for longer templates, or templates only needed in certain cases, store them in assets/ and reference them from SKILL.md so they only load when needed.</p>
+<h3 id="checklists-for-multi-step-workflows">Checklists for multi-step workflows<a class="headerlink" href="#checklists-for-multi-step-workflows" title="Permanent link">&para;</a></h3>
+<p>An explicit checklist helps the agent track progress and avoid skipping steps, especially when steps have dependencies or validation gates.</p>
+<h3 id="validation-loops">Validation loops<a class="headerlink" href="#validation-loops" title="Permanent link">&para;</a></h3>
+<p>Instruct the agent to validate its own work before moving on. The pattern is: do the work, run a validator (a script, a reference checklist, or a self-check), fix any issues, and repeat until validation passes. A reference document can also serve as the “validator” — instruct the agent to check its work against the reference before finalizing.</p>
+<h3 id="plan-validate-execute">Plan-validate-execute<a class="headerlink" href="#plan-validate-execute" title="Permanent link">&para;</a></h3>
+<p>For batch or destructive operations, have the agent create an intermediate plan in a structured format, validate it against a source of truth, and only then execute. The key ingredient is a validation script that checks the plan against the source of truth. Errors give the agent enough information to self-correct.</p>
+<h3 id="bundling-reusable-scripts">Bundling reusable scripts<a class="headerlink" href="#bundling-reusable-scripts" title="Permanent link">&para;</a></h3>
+<p>When iterating on a skill, compare the agent’s execution traces across test cases. If you notice the agent independently reinventing the same logic each run — building charts, parsing a specific format, validating output — that’s a signal to write a tested script once and bundle it in scripts/.</p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

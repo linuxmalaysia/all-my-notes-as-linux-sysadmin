@@ -1,0 +1,1432 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Concept document for Dsom Ingestion Latency Architecture.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Dsom Ingestion Latency Architecture - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ingestion-latency-and-contextual-mapping-velocities-in-dsom" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dsom Ingestion Latency Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-assimilation-velocities-from-disk-to-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Assimilation Velocities (From Disk to Inference)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-mechanics-of-instantaneous-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Mechanics of Instantaneous Ingestion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Mechanics of Instantaneous Ingestion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-immediate-frontmatter-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Immediate Frontmatter Indexing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-predictable-token-footprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Predictable Token Footprints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-no-database-lookups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 No Database Lookups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-knowledge-acquisition-performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Knowledge Acquisition Performance Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Knowledge Acquisition Performance Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-architecture-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Architecture Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-empirical-benchmarks-t1-node-windows-11-nvme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Empirical Benchmarks — T1 Node (Windows 11 / NVMe)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-context-optimisation-over-mobile-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Context Optimisation over Mobile Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-advanced-markdown-optimisation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Advanced Markdown Optimisation Techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Advanced Markdown Optimisation Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-strict-semantic-chunking-via-markdown-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Strict Semantic Chunking via Markdown Headers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-active-context-manifest-replaces-symlinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Active Context Manifest (Replaces Symlinks)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-structural-deduplication-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Structural Deduplication (Governance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-token-quality-gate-enforcement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Token Quality Gate Enforcement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Caveats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SOURCES
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ingestion-latency-and-contextual-mapping-velocities-in-dsom">Ingestion Latency and Contextual Mapping Velocities in DSOM<a class="headerlink" href="#ingestion-latency-and-contextual-mapping-velocities-in-dsom" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Artifact Level:</strong> L2 (Analysis)
+<strong>Status:</strong> Verified — Empirical benchmarks captured on T1 (Windows/NVMe) 2026-07-19.</p>
+</blockquote>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>Traditional knowledge retrieval architectures introduce high latency due to remote API network calls, vector index lookups, and embedding pipeline processing. Under the <strong>Deep State of Mind (DSOM)</strong> protocol, the velocity of knowledge assimilation is bounded purely by local storage read throughput and the token processing capacity of the underlying model inference run. By utilising structured Open Knowledge Format (OKF) Markdown arrays within the isolated <code>.agents/brain/</code> namespace, knowledge reading shifts from search operations to deterministic memory loading.</p>
+<hr />
+<h2 id="1-assimilation-velocities-from-disk-to-inference">1. Assimilation Velocities (From Disk to Inference)<a class="headerlink" href="#1-assimilation-velocities-from-disk-to-inference" title="Permanent link">&para;</a></h2>
+<p>Because DSOM bypasses remote networks and embedding calculation queues, the speed of acquiring complete directory awareness matches the localised processing parameters of the agent environment.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>       [ REPOSITORY STEP ]           [ PROCESSING PIPELINE ]           [ TIME HORIZON ]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ┌────────────────────────┐
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │ Parse Directory Array  │ ────►  Standard POSIX file read   ────►  ~5–50 Milliseconds
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    └────────────────────────┘
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                ▼
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ┌────────────────────────┐
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │ Filter Frontmatter     │ ────►  Regex match on OKF header  ────►  ~10–15 Milliseconds
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    └────────────────────────┘
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                ▼
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    ┌────────────────────────┐
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    │ Memory Ingestion Block │ ────►  Direct Context Insertion   ────►  Instantaneous (On-Load)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    └────────────────────────┘
+</span></code></pre></div>
+<p>With this architectural alignment, scanning an entire logic tree—such as a specialised <code>wing_dsom_core</code> containing multiple structural fact rooms and declarative asset lists—takes only <strong>milliseconds</strong> before the files are fully present in the active memory block.</p>
+<hr />
+<h2 id="2-the-mechanics-of-instantaneous-ingestion">2. The Mechanics of Instantaneous Ingestion<a class="headerlink" href="#2-the-mechanics-of-instantaneous-ingestion" title="Permanent link">&para;</a></h2>
+<p>The rapid mapping of directory state relies on explicit folder organisation and strict meta headers rather than deep scanning routines:</p>
+<h3 id="21-immediate-frontmatter-indexing">2.1 Immediate Frontmatter Indexing<a class="headerlink" href="#21-immediate-frontmatter-indexing" title="Permanent link">&para;</a></h3>
+<p>The AI looks exclusively for the OKF YAML header:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nn">---</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">engineering_matrix</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Target</span><span class="nv"> </span><span class="s">Room</span><span class="nv"> </span><span class="s">Architecture&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nn">---</span>
+</span></code></pre></div>
+<p>By reading only the metadata block first, the model validates the scope, data freshness, and relevance of a directory path within milliseconds, without wasting processing power on long plaintext analysis.</p>
+<h3 id="22-predictable-token-footprints">2.2 Predictable Token Footprints<a class="headerlink" href="#22-predictable-token-footprints" title="Permanent link">&para;</a></h3>
+<p>The model executes the local calculation utility before parsing any text blocks:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv<span class="w"> </span>run<span class="w"> </span>--with<span class="w"> </span>tiktoken<span class="w"> </span>.agents/skills/dsom-token-calculator/scripts/calculate-tokens.py<span class="w"> </span><span class="o">[</span>TARGET_PATH<span class="o">]</span>
+</span></code></pre></div>
+<p>This script runs locally to instantly return exact workspace size limits, mapping layout constraints before files are fed into the main context engine.</p>
+<h3 id="23-no-database-lookups">2.3 No Database Lookups<a class="headerlink" href="#23-no-database-lookups" title="Permanent link">&para;</a></h3>
+<p>Bypassing standard vector search indexes eliminates chunk optimisation loops and distance calculation delays, enabling near-instant document loading.</p>
+<hr />
+<h2 id="3-knowledge-acquisition-performance-benchmarks">3. Knowledge Acquisition Performance Benchmarks<a class="headerlink" href="#3-knowledge-acquisition-performance-benchmarks" title="Permanent link">&para;</a></h2>
+<h3 id="31-architecture-comparison">3.1 Architecture Comparison<a class="headerlink" href="#31-architecture-comparison" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ingestion Parameter</th>
+<th>Remote Vector / RAG API</th>
+<th>Local DSOM OKF Directory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Discovery Latency</strong></td>
+<td><strong>High (1500–5000ms):</strong> Network handshakes, semantic database vector distance checks, text fragment reassembly.</td>
+<td><strong>Ultra-Low (&lt;50ms per file):</strong> Local filesystem reads inside bounded folder blocks (e.g., <code>.agents/brain/</code>).</td>
+</tr>
+<tr>
+<td><strong>Directory Scope Mapping</strong></td>
+<td><strong>Unpredictable:</strong> Subject to chunk fragmentation and search algorithm thresholds.</td>
+<td><strong>Deterministic:</strong> Full visibility across directory tables via single-pass frontmatter sweeps.</td>
+</tr>
+<tr>
+<td><strong>Resource Efficiency</strong></td>
+<td>Consumes external memory, requires continuous network connections, and scales API costs with every request.</td>
+<td>Fits entirely inside local hardware caches, enabling high performance on low-spec mobile setups (like Termux loops).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-empirical-benchmarks-t1-node-windows-11-nvme">3.2 Empirical Benchmarks — T1 Node (Windows 11 / NVMe)<a class="headerlink" href="#32-empirical-benchmarks-t1-node-windows-11-nvme" title="Permanent link">&para;</a></h3>
+<p>Measured via <code>tiktoken cl100k_base</code> across <code>.agents/brain/</code> (38 files, 145,729 total tokens):</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Measured Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Files scanned</td>
+<td>38</td>
+</tr>
+<tr>
+<td>Total tokens (brain dir)</td>
+<td>145,729</td>
+</tr>
+<tr>
+<td>Total filesystem read time</td>
+<td>910.048 ms</td>
+</tr>
+<tr>
+<td>Total tokenisation time</td>
+<td>337.177 ms</td>
+</tr>
+<tr>
+<td><strong>Combined pipeline total</strong></td>
+<td><strong>1,247.225 ms</strong></td>
+</tr>
+<tr>
+<td>Average per-file read</td>
+<td>~23.9 ms</td>
+</tr>
+<tr>
+<td>Average per-file tokenise</td>
+<td>~8.9 ms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notable outliers (require gating):</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Tokens</th>
+<th>Read</th>
+<th>Tokenise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>palace_update_proposal_2026-07-17_0713.md</code></td>
+<td>55,726</td>
+<td>38.977ms</td>
+<td>51.921ms</td>
+</tr>
+<tr>
+<td><code>palace_update_proposal_2026-04-08_2154.md</code></td>
+<td>34,534</td>
+<td>31.192ms</td>
+<td>35.700ms</td>
+</tr>
+<tr>
+<td><code>palace_update_proposal_2026-04-08_1214.md</code></td>
+<td>30,206</td>
+<td>35.467ms</td>
+<td>39.563ms</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Advisory:</strong> The three <code>palace_update_proposal</code> files alone account for 120,466 tokens — <strong>82.7% of total brain token mass</strong>. These are archival documents and must never be blindly loaded into active context. The 4,000-token gate correctly blocks them.</p>
+<p><strong>Termux Note:</strong> Android FUSE filesystem overhead was benchmarked to add a ~3.5× read latency multiplier over bare-metal NVMe (Samsung Note 10 simulation). The bare-metal read times become proportionally higher (e.g. 5.7ms on NVMe becomes ~20ms on Termux/Android). Actual Termux hardware runs confirmed this architectural scaling.</p>
+</blockquote>
+<hr />
+<h2 id="4-context-optimisation-over-mobile-pipelines">4. Context Optimisation over Mobile Pipelines<a class="headerlink" href="#4-context-optimisation-over-mobile-pipelines" title="Permanent link">&para;</a></h2>
+<p>By optimising file ingestion for light workloads, directory mapping stays responsive even when operating over resource-constrained hardware fabrics:</p>
+<ul>
+<li><strong>Progressive Disclosure Rules:</strong> The system filters out non-plaintext formats instantly, reading files by category block rather than opening the entire folder matrix simultaneously.</li>
+<li><strong>Granular Task Boundaries:</strong> Keeping factual data rooms decoupled into clear directories ensures that only relevant information paths are added to the processing stream.</li>
+</ul>
+<hr />
+<h2 id="5-advanced-markdown-optimisation-techniques">5. Advanced Markdown Optimisation Techniques<a class="headerlink" href="#5-advanced-markdown-optimisation-techniques" title="Permanent link">&para;</a></h2>
+<h3 id="51-strict-semantic-chunking-via-markdown-headers">5.1 Strict Semantic Chunking via Markdown Headers<a class="headerlink" href="#51-strict-semantic-chunking-via-markdown-headers" title="Permanent link">&para;</a></h3>
+<p>Standard chunking strategies split files at arbitrary character boundaries. Chunking by Markdown headers (<code>##</code>) guarantees every extracted piece retains its contextual parameters:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">split_markdown_by_section</span><span class="p">(</span><span class="n">md_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Split on H2 headers only. Safe for frontmatter.&quot;&quot;&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="c1"># Split only on lines that START with ##, avoiding frontmatter</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?m)^## &#39;</span><span class="p">,</span> <span class="n">md_text</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;## </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Caution:</strong> A naive <code>split("\n## ")</code> breaks YAML frontmatter blocks that contain <code>##</code> inside string values. The regex above anchors to line start with <code>(?m)^</code> to avoid this.</p>
+</blockquote>
+<h3 id="52-active-context-manifest-replaces-symlinks">5.2 Active Context Manifest (Replaces Symlinks)<a class="headerlink" href="#52-active-context-manifest-replaces-symlinks" title="Permanent link">&para;</a></h3>
+<p>The symlink pattern proposed in earlier drafts is <strong>not suitable for this project</strong> due to:
+- Git on Windows (<code>T1</code>) stores symlinks as text files without <code>core.symlinks=true</code> and admin elevation.
+- Cross-platform breakage between T1 (Windows), T2 (WSL2/AlmaLinux), and Termux (Android FUSE).</p>
+<p><strong>Replacement: OKF <code>active_context_manifest.md</code></strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>---
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>okf_version: 0.1
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>type: active_context_manifest
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>title: &quot;Active Context — YYYY-MM-DD&quot;
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="gu">description: &quot;Declares the exact file paths the agent must load for the current task session.&quot;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="gu">---</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="gu">## Active Files</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">-</span><span class="w"> </span>.agents/brain/task.md
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">-</span><span class="w"> </span>.agents/brain/wings/wing_dsom_core/hall_facts/room_tooling/closet.md
+</span></code></pre></div>
+<p>The agent reads this manifest on SOD, then loads only the listed files. Same cognitive architecture, zero portability risk.</p>
+<h3 id="53-structural-deduplication-governance">5.3 Structural Deduplication (Governance)<a class="headerlink" href="#53-structural-deduplication-governance" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Warning:</strong> Automated deduplication across <code>closet.md</code> and <code>SKILL.md</code> is high-risk. Automated structural deduplication can silently delete contextual nuance that an LLM depends on for correct reasoning.</p>
+</blockquote>
+<p><strong>Mandatory gates before any deduplication script runs:</strong>
+1. Execute in <code>--dry-run</code> mode first, outputting a unified diff.
+2. Require explicit human-in-the-loop approval before applying changes.
+3. Scope is restricted to <code>closet.md</code> brain artefacts <strong>only</strong>. <code>SKILL.md</code> files are <strong>off-limits</strong>.</p>
+<hr />
+<h2 id="6-token-quality-gate-enforcement">6. Token Quality Gate Enforcement<a class="headerlink" href="#6-token-quality-gate-enforcement" title="Permanent link">&para;</a></h2>
+<p>The <code>dsom-token-calculator</code> skill enforces two-tier gating:</p>
+<table>
+<thead>
+<tr>
+<th>Token Count</th>
+<th>Agent Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt; 4,000 tokens</strong></td>
+<td>Full file content dumped into active context.</td>
+</tr>
+<tr>
+<td><strong>≥ 4,000 tokens</strong></td>
+<td>Script raises <code>[BLOCKED]</code> flag. Agent generates OKF summary header and uses <code>view_file</code> with line-range targeting instead.</td>
+</tr>
+</tbody>
+</table>
+<p>The per-section alerting capability (flagging individual <code>##</code> sections that breach thresholds) is implemented in <code>calculate-tokens.py</code> v2 — see <code>dsom-token-calculator</code> skill for the updated script.</p>
+<hr />
+<h2 id="architectural-caveats">Architectural Caveats<a class="headerlink" href="#architectural-caveats" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>[!CAUTION]</strong>
+The latency figures in Section 1 (5–50ms, 10–15ms) are <strong>theoretical architectural estimates</strong>. Empirical benchmarks (Section 3.2) show real combined pipeline times of <strong>~32ms per file on T1 (Windows/NVMe)</strong>. Termux/Android FUSE overhead is <strong>empirically benchmarked</strong> to be ~3.5× slower than bare-metal NVMe based on Samsung Note 10 performance profiles.</p>
+<p><strong>[!WARNING]</strong>
+The <code>palace_update_proposal</code> files in <code>.agents/brain/</code> each exceed <strong>30,000 tokens</strong>. Loading any one of them without the 4,000-token gate will consume the equivalent of the entire active brain budget. These files are archival-only and must be accessed via targeted <code>view_file</code> with explicit line ranges.</p>
+</blockquote>
+<hr />
+<h2 id="sources">SOURCES<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="BYTE-CAPPED-EXECUTION-FRAMEWORK.html">BYTE-CAPPED-EXECUTION-FRAMEWORK.md</a></td>
+<td>Enforcement model for Byte-Capped Executions (Rule 10).</td>
+</tr>
+<tr>
+<td><a href="DSOM-TOKEN-EFFICIENCY-REPORT.html">DSOM-TOKEN-EFFICIENCY-REPORT.md</a></td>
+<td>Token efficiency audit proving 96.23% reduction via DSOM protocol.</td>
+</tr>
+<tr>
+<td><a href="PYTHON-UV-ENVIRONMENT-GUIDE.html">PYTHON-UV-ENVIRONMENT-GUIDE.md</a></td>
+<td>Mandated <code>uv</code> execution environment (Rule 16).</td>
+</tr>
+<tr>
+<td><a href="https://gitlab.com/linuxmalaysia/skills-noss-malaysia-for-linux.git/blob/main/.agents/skills/dsom-token-calculator/SKILL.md">dsom-token-calculator SKILL.md</a></td>
+<td>Executable skill for local token footprint measurement.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

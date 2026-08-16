@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSOM Policy Adopter - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: skill
+title: "DSOM Policy Adopter"
+name: "dsom-policy-adopter"
+description: "Automatically ingests an external research paper or policy document (PDF/Markdown) and formally integrates it into the DSOM framework governance and core rules."
+topics: [policy, governance, pdf, ingestion, compliance]
+timestamp: 2026-07-11T23:19:45Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="dsom-policy-adopter-skill">DSOM Policy Adopter Skill</h1>
+<p><strong>Purpose</strong>: To seamlessly ingest external architectural or governance documents and integrate them into the DSOM repository strictly adhering to the Triple-Ledger Synchronization Mandate and Core Rules.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>The user has provided an absolute path to a document (e.g., PDF or Markdown).</li>
+<li>If the document is a PDF, the AI should use the iew_file or pdf-text-extractor tool to read the contents first.</li>
+</ul>
+<h2 id="execution-workflow">Execution Workflow</h2>
+<ol>
+<li><strong>Ingest &amp; Extract</strong></li>
+<li>Read the provided document in its entirety.</li>
+<li>
+<p>Extract the core architectural principles, rules, and actionable constraints that apply to the DSOM ecosystem.</p>
+</li>
+<li>
+<p><strong>Draft Governance Document</strong></p>
+</li>
+<li>Create a dedicated, highly-structured Markdown file in the docs/governance/ directory.</li>
+<li>The file must contain OKF v0.1 YAML frontmatter (with okf_version,     ype: documentation,     itle, and   imestamp).</li>
+<li>
+<p>Format the document strictly following the Generative Engine Optimization (GEO) standard: Authoritative tone, verifiable statistics/quotes, H2 user-centric headings, and 200-400 word chunks.</p>
+</li>
+<li>
+<p><strong>Core Engine Injection (AGENTS.md)</strong></p>
+</li>
+<li>Distill the most critical, actionable constraints from the new policy.</li>
+<li>
+<p>Inject these constraints directly as a new numbered Core Rule into .agents/AGENTS.md. Be extremely precise; do not bloat the file.</p>
+</li>
+<li>
+<p><strong>Triple-Ledger Synchronization</strong></p>
+</li>
+<li><strong>README.md</strong>: Add a link to the new docs/governance/ file in the "Key Documents" table with a short emoji-prefixed description.</li>
+<li><strong>CHANGELOG.md</strong>: Add an entry under ## [Unreleased] describing the new governance policy and rule addition.</li>
+<li>
+<p><strong>HISTORY.md</strong>: Append a new entry to the universal ledger detailing the architectural integration and the exact files modified.</p>
+</li>
+<li>
+<p><strong>Defensive GitOps (Commit &amp; Push)</strong></p>
+</li>
+<li>Run git pull --rebase origin main to ensure sync.</li>
+<li>Add all changed files: git add docs/governance/... .agents/AGENTS.md README.md CHANGELOG.md HISTORY.md</li>
+<li>Commit with an atomic, conventional commit message (e.g., docs(governance): adopt [Policy Name]).</li>
+<li>
+<p>Push to all active remotes (e.g., GitHub and GitLab).</p>
+</li>
+<li>
+<p><strong>Closure &amp; Walkthrough</strong></p>
+</li>
+<li>Report the successful adoption to the user, highlighting the exact architectural changes made.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-11</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

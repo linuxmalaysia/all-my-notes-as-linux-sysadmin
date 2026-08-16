@@ -1,0 +1,1652 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Reference document for Noss Cp Docx Formatter.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Noss Cp Docx Formatter - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#noss-cp-docx-formatter-skill" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Noss Cp Docx Formatter
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-reference-format-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reference Format Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Reference Format Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-global-document-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Global Document Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-document-structure-in-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Document Structure (in order)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-header-table-sectiongroupareanoss-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Header Table (Section/Group/Area/NOSS metadata)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-cu-header-table-per-cu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 CU Header Table (per CU)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-wa-matrix-table-per-cu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 WA Matrix Table (per CU)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-markdown-format-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Markdown Format Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Markdown Format Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-document-header-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Document Header Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-per-cu-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Per-CU Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-source-data-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Source Data Contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Source Data Contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-title-line-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Title (line 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cu-descriptor-in-a-2-column-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 CU Descriptor (in a 2-column table)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-work-activities-matrix-in-a-3-column-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Work Activities Matrix (in a 3-column table)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-step-by-step-agent-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Step-by-Step Agent Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Step-by-Step Agent Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-verify-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 – Verify environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-locate-source-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 – Locate source files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-run-the-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 – Run the generator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-verify-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 – Verify outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-quality-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 – Quality gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-manual-authoring-rules-when-writing-content-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Manual Authoring Rules (when writing content by hand)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Manual Authoring Rules (when writing content by hand)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-cu-descriptor-3-paragraph-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 CU Descriptor — 3-Paragraph Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-work-steps-active-voice-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Work Steps — Active Voice Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-performance-criteria-passive-voice-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Performance Criteria — Passive Voice Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-wa-title-convention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 WA Title Convention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-error-patterns-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Error Patterns &amp; Fixes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-extending-to-other-document-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Extending to Other Document Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-pedagogical-scope-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Pedagogical Scope Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>-- | :---------- | | <code>CP-Level-3-Generated.md</code> | ..."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+noss_code: 
+target_level: 3</p>
+<hr />
+<h1 id="noss-cp-docx-formatter-skill">NOSS CP DOCX Formatter Skill<a class="headerlink" href="#noss-cp-docx-formatter-skill" title="Permanent link">&para;</a></h1>
+<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
+<p>This skill equips an AI agent to <strong>generate</strong> the official NOSS Level 3
+Competency Profile document in two formats:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Output</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>CP-Level-3-Generated.md</code></td>
+<td style="text-align: left;">GitHub-flavoured Markdown replica of the CP</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CP-Level-3-Generated.docx</code></td>
+<td style="text-align: left;">Word document matching the exact table/font specification</td>
+</tr>
+</tbody>
+</table>
+<p>Both outputs must be <strong>byte-for-byte structurally equivalent</strong> — meaning every
+heading, every cell width, every bold label, every line-break must match the
+reference document described in Section 3.</p>
+<hr />
+<h2 id="2-prerequisites">2. Prerequisites<a class="headerlink" href="#2-prerequisites" title="Permanent link">&para;</a></h2>
+<p>The agent must verify the following before running:</p>
+<ol>
+<li><strong>Node.js ≥ 18</strong> is available (<code>node --version</code>).</li>
+<li><strong><code>docx</code> npm package</strong> is installed in the project root
+   (<code>npm list docx</code> — must show a version).</li>
+<li><strong>CU profile source files</strong> exist at:
+   <code>noss-rebuild/competency-profiles/&lt;cuXX&gt;/&lt;cuXX&gt;-profile.md</code>
+   for each CU the agent intends to compile.</li>
+</ol>
+<p>If the <code>docx</code> package is missing, run: <code>npm install docx</code> in the project root.</p>
+<hr />
+<h2 id="3-reference-format-specification">3. Reference Format Specification<a class="headerlink" href="#3-reference-format-specification" title="Permanent link">&para;</a></h2>
+<h3 id="31-global-document-settings">3.1 Global Document Settings<a class="headerlink" href="#31-global-document-settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Font family</td>
+<td style="text-align: left;"><strong>Times New Roman</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Font size</td>
+<td style="text-align: left;"><strong>11 pt</strong> (22 in half-points, the docx unit)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Page margins</td>
+<td style="text-align: left;">Top: 720, Right: 720, Bottom: 720, Left: 720 (twips)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Table width</td>
+<td style="text-align: left;"><strong>100%</strong> of page width</td>
+</tr>
+<tr>
+<td style="text-align: left;">Table borders</td>
+<td style="text-align: left;">Single, <code>color="auto"</code>, <code>sz=4</code> on all 6 sides (top, bottom, left, right, insideH, insideV)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cell margins</td>
+<td style="text-align: left;">Top: 100, Left: 100, Bottom: 100, Right: 100 (dxa)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-document-structure-in-order">3.2 Document Structure (in order)<a class="headerlink" href="#32-document-structure-in-order" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Heading 1: &quot;1. Competency Profile (CP)&quot;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Empty paragraph
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[Header Table]        ← 4-column grid, 25%/75% colspans
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Empty paragraph
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>For each CU:
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  [CU Header Table]   ← 2-column, 25%/75%
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Empty paragraph
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  [WA Matrix Table]   ← 3-column, 30%/35%/35%
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  Empty paragraph
+</span></code></pre></div>
+<h3 id="33-header-table-sectiongroupareanoss-metadata">3.3 Header Table (Section/Group/Area/NOSS metadata)<a class="headerlink" href="#33-header-table-sectiongroupareanoss-metadata" title="Permanent link">&para;</a></h3>
+<ul>
+<li>4 logical columns (each <code>gridCol w:w="100"</code>), percentage-based widths</li>
+<li>Row layout:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Row</th>
+<th style="text-align: left;">Col 1 (25%, bold)</th>
+<th style="text-align: left;">Col 2 (75%, bold, colSpan=3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">SECTION</td>
+<td style="text-align: left;">(J) Information and Communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">GROUP</td>
+<td style="text-align: left;">(620) Computer Programming, Consultancy and Related Activities</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">AREA</td>
+<td style="text-align: left;">Computer System Administration</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">NOSS TITLE</td>
+<td style="text-align: left;">Sovereign IT Infrastructure Operations</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">NOSS LEVEL (25%)</td>
+<td style="text-align: left;">LEVEL 3 (25%) | NOSS CODE (25%, bold) | IT-020-3:2026 (25%)</td>
+</tr>
+</tbody>
+</table>
+<p>Row 5 has <strong>4 separate cells</strong> (no colspan), each 25%.</p>
+<h3 id="34-cu-header-table-per-cu">3.4 CU Header Table (per CU)<a class="headerlink" href="#34-cu-header-table-per-cu" title="Permanent link">&para;</a></h3>
+<ul>
+<li>2 logical columns, percentage-based</li>
+<li>Row 1: <code>CU TITLE &amp; CU CODE</code> (bold, 25%) | <code>&lt;title&gt; (&lt;code&gt;)</code> (bold, 75%)</li>
+<li>Row 2: <code>CU DESCRIPTOR</code> (bold, 25%) | descriptor text (NOT bold, 75%)</li>
+<li>Descriptor uses <code>\n\n</code> for paragraph breaks in DOCX (NOT <code>&lt;br&gt;</code>)</li>
+</ul>
+<h3 id="35-wa-matrix-table-per-cu">3.5 WA Matrix Table (per CU)<a class="headerlink" href="#35-wa-matrix-table-per-cu" title="Permanent link">&para;</a></h3>
+<ul>
+<li>3 columns: <strong>30%</strong> / <strong>35%</strong> / <strong>35%</strong></li>
+<li>Row 1 (header): <code>WORK ACTIVITIES</code> | <code>WORK STEPS</code> | <code>PERFORMANCE CRITERIA</code> (all bold)</li>
+<li>Per WA row:</li>
+<li><strong>Col 1</strong> – WA name + <code>\n(WA code)</code> in a single cell, NOT bold</li>
+<li><strong>Col 2</strong> – One <code>Paragraph</code> element per work step, numbered <code>N.M text</code></li>
+<li><strong>Col 3</strong> – One <code>Paragraph</code> element per PC, numbered <code>N.M text</code></li>
+<li>Steps and PCs are separate <code>Paragraph</code> children inside the cell (not <code>&lt;br&gt;</code>)</li>
+</ul>
+<hr />
+<h2 id="4-markdown-format-specification">4. Markdown Format Specification<a class="headerlink" href="#4-markdown-format-specification" title="Permanent link">&para;</a></h2>
+<p>The <code>.md</code> file is a direct mirror of the DOCX using GitHub table syntax.</p>
+<h3 id="41-document-header-block">4.1 Document Header Block<a class="headerlink" href="#41-document-header-block" title="Permanent link">&para;</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gh"># 1. Competency Profile (CP)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>| SECTION | (J) Information and Communication | | |
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>| :---- | :---- | :---- | :---- |
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>| GROUP | (620) Computer Programming, Consultancy and Related Activities | | |
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>| AREA | Computer System Administration | | |
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>| NOSS TITLE | Sovereign IT Infrastructure Operations | | |
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>| NOSS LEVEL | LEVEL 3 | NOSS CODE | IT-020-3:2026 |
+</span></code></pre></div>
+<h3 id="42-per-cu-block">4.2 Per-CU Block<a class="headerlink" href="#42-per-cu-block" title="Permanent link">&para;</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>| CU TITLE &amp; CU CODE | &lt;Title&gt; (&lt;Code&gt;) |
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>| :---- | :---- |
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>| CU DESCRIPTOR | &lt;Paragraph 1&gt;&lt;br&gt;&lt;br&gt;&lt;Paragraph 2&gt;&lt;br&gt;&lt;br&gt;&lt;Paragraph 3&gt; |
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>| WORK ACTIVITIES | WORK STEPS | PERFORMANCE CRITERIA |
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>| ----- | ----- | ----- |
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>| &lt;WA Name&gt;..&lt;br&gt;(&lt;WA Code&gt;) | N.1 Step one.&lt;br&gt;N.2 Step two. | N.1 PC one.&lt;br&gt;N.2 PC two. |
+</span></code></pre></div>
+<p><strong>Critical rules:</strong>
+- Descriptor paragraphs separated by <code>&lt;br&gt;&lt;br&gt;</code> (double break)
+- WA name ends with <code>..</code> before <code>&lt;br&gt;(Code)</code>
+- Steps and PCs use <code>&lt;br&gt;</code> between items within a cell
+- Blank line between each CU block</p>
+<hr />
+<h2 id="5-source-data-contract">5. Source Data Contract<a class="headerlink" href="#5-source-data-contract" title="Permanent link">&para;</a></h2>
+<p>The agent reads from <strong>CU profile Markdown files</strong> at:
+<code>noss-rebuild/competency-profiles/&lt;cuXX&gt;/&lt;cuXX&gt;-profile.md</code></p>
+<p>Each profile file must contain:</p>
+<h3 id="51-title-line-1">5.1 Title (line 1)<a class="headerlink" href="#51-title-line-1" title="Permanent link">&para;</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gh"># &lt;CU Title&gt;</span>
+</span></code></pre></div>
+<h3 id="52-cu-descriptor-in-a-2-column-table">5.2 CU Descriptor (in a 2-column table)<a class="headerlink" href="#52-cu-descriptor-in-a-2-column-table" title="Permanent link">&para;</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>| <span class="gs">**CU DESCRIPTOR**</span> | &lt;full three-paragraph descriptor&gt; |
+</span></code></pre></div>
+<h3 id="53-work-activities-matrix-in-a-3-column-table">5.3 Work Activities Matrix (in a 3-column table)<a class="headerlink" href="#53-work-activities-matrix-in-a-3-column-table" title="Permanent link">&para;</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>| WORK ACTIVITIES | WORK STEPS | PERFORMANCE CRITERIA |
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>| :--- | :--- | :--- |
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>| <span class="gs">**N. &lt;WA Title&gt;**</span>&lt;br&gt;*(&lt;WA Code&gt;)* | N.1 Step.&lt;br&gt;N.2 Step. | N.1 PC.&lt;br&gt;N.2 PC. |
+</span></code></pre></div>
+<hr />
+<h2 id="6-step-by-step-agent-instructions">6. Step-by-Step Agent Instructions<a class="headerlink" href="#6-step-by-step-agent-instructions" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-verify-environment">Step 1 – Verify environment<a class="headerlink" href="#step-1-verify-environment" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>node<span class="w"> </span>--version
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>npm<span class="w"> </span>list<span class="w"> </span>docx
+</span></code></pre></div>
+<p>If <code>docx</code> is not installed:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>npm<span class="w"> </span>install<span class="w"> </span>docx
+</span></code></pre></div></p>
+<h3 id="step-2-locate-source-files">Step 2 – Locate source files<a class="headerlink" href="#step-2-locate-source-files" title="Permanent link">&para;</a></h3>
+<p>For each CU to compile (default: cu01 through cu06), verify:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>noss-rebuild/competency-profiles/cu01/cu01-profile.md
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>noss-rebuild/competency-profiles/cu02/cu02-profile.md
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>...
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>noss-rebuild/competency-profiles/cu06/cu06-profile.md
+</span></code></pre></div></p>
+<p>Report any missing files before proceeding.</p>
+<h3 id="step-3-run-the-generator">Step 3 – Run the generator<a class="headerlink" href="#step-3-run-the-generator" title="Permanent link">&para;</a></h3>
+<p>The canonical generator script is at:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>scripts/generate_rebuild_cp.js
+</span></code></pre></div></p>
+<p>Run:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>node<span class="w"> </span>scripts/generate_rebuild_cp.js
+</span></code></pre></div></p>
+<p>Expected output:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Saved Markdown to .../CP-Level-3-Generated.md
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Saved DOCX to .../CP-Level-3-Generated.docx
+</span></code></pre></div></p>
+<h3 id="step-4-verify-outputs">Step 4 – Verify outputs<a class="headerlink" href="#step-4-verify-outputs" title="Permanent link">&para;</a></h3>
+<p>Check that both files exist and have non-zero size:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;const fs=require(&#39;fs&#39;); [&#39;noss-rebuild/references/CP-Level-3-Generated.md&#39;,&#39;noss-rebuild/references/CP-Level-3-Generated.docx&#39;].forEach(f=&gt;{const s=fs.statSync(f);console.log(f,s.size,&#39;bytes&#39;)})&quot;</span>
+</span></code></pre></div></p>
+<h3 id="step-5-quality-gate">Step 5 – Quality gate<a class="headerlink" href="#step-5-quality-gate" title="Permanent link">&para;</a></h3>
+<p>Run the Markdown verification check:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s2">const fs=require(&#39;fs&#39;);</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s2">const md=fs.readFileSync(&#39;noss-rebuild/references/CP-Level-3-Generated.md&#39;,&#39;utf8&#39;);</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="s2">const cuCount=(md.match(/CU TITLE/g)||[]).length;</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s2">const waCount=(md.match(/IT-020-3:2026-CU\d+-WA\d+/g)||[]).length;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="s2">console.log(&#39;CU blocks found:&#39;,cuCount);</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="s2">console.log(&#39;WA codes found:&#39;,waCount);</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="s2">if(cuCount&lt;6) console.error(&#39;FAIL: Expected at least 6 CU blocks&#39;);</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="s2">else console.log(&#39;PASS: CU count OK&#39;);</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="s2">&quot;</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="7-manual-authoring-rules-when-writing-content-by-hand">7. Manual Authoring Rules (when writing content by hand)<a class="headerlink" href="#7-manual-authoring-rules-when-writing-content-by-hand" title="Permanent link">&para;</a></h2>
+<p>When an AI agent writes or edits CP content directly (not via generator),
+it MUST follow these rules:</p>
+<h3 id="71-cu-descriptor-3-paragraph-formula">7.1 CU Descriptor — 3-Paragraph Formula<a class="headerlink" href="#71-cu-descriptor-3-paragraph-formula" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Paragraph 1: &lt;CU Title&gt; describes [scope of activities].
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>             This activity typically takes place [context].
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>Paragraph 2: The person who is competent in this CU should be able to
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>             [WA1], [WA2], [WA3], and [WA4/5].
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>Paragraph 3: The outcome of this CU is [measurable deliverable]
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>             in accordance with [standard/policy/SOP].
+</span></code></pre></div>
+<h3 id="72-work-steps-active-voice-rules">7.2 Work Steps — Active Voice Rules<a class="headerlink" href="#72-work-steps-active-voice-rules" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Begin with an <strong>action verb</strong> (Install, Configure, Verify, Connect...)</li>
+<li>Use present tense</li>
+<li>Reference a concrete tool or command where applicable</li>
+<li>Format: <code>N.M [Action Verb] [Object] [Qualifier/Tool].</code></li>
+</ul>
+<h3 id="73-performance-criteria-passive-voice-rules">7.3 Performance Criteria — Passive Voice Rules<a class="headerlink" href="#73-performance-criteria-passive-voice-rules" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Object first, verb passive (past participle)</li>
+<li>End with <code>in accordance with [standard/policy/procedure]</code></li>
+<li>Format: <code>N.M [Object] [Passive Verb] in accordance with [reference].</code></li>
+</ul>
+<h3 id="74-wa-title-convention">7.4 WA Title Convention<a class="headerlink" href="#74-wa-title-convention" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Start with action verb</li>
+<li>Follow NOSS naming: <code>[Verb] [Object] [Qualifier]</code></li>
+<li>Append WA code in parentheses on a separate line in the DOCX cell</li>
+</ul>
+<hr />
+<h2 id="8-error-patterns-fixes">8. Error Patterns &amp; Fixes<a class="headerlink" href="#8-error-patterns-fixes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Symptom</th>
+<th style="text-align: left;">Root Cause</th>
+<th style="text-align: left;">Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">DOCX missing CU</td>
+<td style="text-align: left;">Profile file not found</td>
+<td style="text-align: left;">Verify file path matches <code>cu0X-profile.md</code> naming</td>
+</tr>
+<tr>
+<td style="text-align: left;">Descriptor split wrong</td>
+<td style="text-align: left;">Missing <code>\n\n</code> between paragraphs</td>
+<td style="text-align: left;">Add blank line between descriptor paragraphs in profile</td>
+</tr>
+<tr>
+<td style="text-align: left;">WA steps merged into one line</td>
+<td style="text-align: left;"><code>&lt;br&gt;</code> not present in profile table</td>
+<td style="text-align: left;">Ensure <code>&lt;br&gt;</code> separates steps in the source table cell</td>
+</tr>
+<tr>
+<td style="text-align: left;">PC count ≠ Step count</td>
+<td style="text-align: left;">Matrix misalignment</td>
+<td style="text-align: left;">Count steps and PCs; add missing entries to balance</td>
+</tr>
+<tr>
+<td style="text-align: left;">DOCX not generated</td>
+<td style="text-align: left;"><code>docx</code> package missing</td>
+<td style="text-align: left;">Run <code>npm install docx</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Font appears different</td>
+<td style="text-align: left;">Font not specified per run</td>
+<td style="text-align: left;">Ensure every <code>TextRun</code> includes <code>font: "Times New Roman", size: 22</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-extending-to-other-document-types">9. Extending to Other Document Types<a class="headerlink" href="#9-extending-to-other-document-types" title="Permanent link">&para;</a></h2>
+<p>This skill covers <strong>CP only</strong>. For related documents, use these companion skills:
+- <strong>CPC (Competency Profile Chart):</strong> Use skill <code>noss-cpc-docx-formatter</code>
+- <strong>CoCU (Content of Competency Unit):</strong> Use skill <code>noss-cocu-docx-formatter</code>
+- <strong>Job Sheets:</strong> Use skill <code>noss-job-sheet-formatter</code></p>
+<hr />
+<h2 id="10-pedagogical-scope-boundary">10. Pedagogical Scope Boundary<a class="headerlink" href="#10-pedagogical-scope-boundary" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>⚠️ LEVEL 3 CONSTRAINT</strong></p>
+<p>All content generated by this skill must remain within <strong>NOSS Level 3</strong>
+boundaries:
+- Use only fundamental Linux/Windows CLI commands
+- Do not reference Kubernetes, Ansible, Terraform, or advanced orchestration
+- Work Steps must be executable by an SPM-entry vocational trainee
+- Do not introduce scripting logic beyond basic one-liner commands</p>
+</blockquote>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

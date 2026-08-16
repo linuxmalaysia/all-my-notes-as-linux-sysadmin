@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>odp-slide-generator - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: odp-slide-generator
+name: odp-slide-generator
+description: Generates highly styled 3-column Corporate Presentation slides (PPTX/ODP format) based on a specific HTML/CSS theme using python-pptx.
+topics: [presentation, pptx, odp, python-pptx, slides]
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="odp-slide-generator">odp-slide-generator</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when you need to generate a LibreOffice Impress / Microsoft PowerPoint presentation that strictly adheres to the custom 3-column corporate theme (deep blue, vibrant orange accents, grid layout).</p>
+<h2 id="format-rules">Format Rules</h2>
+<p>The slide generator (<code>tools/compile_3col_slides.py</code>) expects a highly specific Markdown format to populate the complex geometric shapes.</p>
+<ol>
+<li>Create a markdown file with the following exact structure:</li>
+<li><code># [Main Slide Title]</code> (Must be Top Level)</li>
+<li><code>## [Slide Subtitle]</code> (Optional Subtitle)</li>
+<li><code>### [Column Label]</code> (e.g. Stage 01: Source)</li>
+<li><code>**[Box Header Text]**</code> (e.g. Direct Extraction)</li>
+<li><code>- [Bullet point 1]</code></li>
+<li><code>- [Bullet point 2]</code></li>
+<li><code>&gt; "[Footer Quote Text]"</code> (Optional footer quote block)</li>
+</ol>
+<h3 id="example-markdown">Example Markdown:</h3>
+<pre><code class="language-markdown"># Achieving Zero-Downtime Cutover
+## Near-Real-Time Delta Sync (CDC) Architecture
+
+### Stage 01: Source
+**Direct Extraction**
+- Native connection to PostgreSQL Write-Ahead Logs (WAL).
+- Row-level mutation tracking without database triggers.
+
+### Stage 02: Transport
+**Streaming Fabric**
+- Apache Kafka (KRaft Mode) for high-throughput event bus.
+- Debezium Connect for automated change capture.
+
+### Stage 03: Target
+**Instant Mirroring**
+- Near-instant transaction mirroring to Percona target.
+- Continuous data validation during sync phase.
+
+&gt; &quot;By streaming row-level mutations in real-time, we compress the final production cutover window.&quot;
+</code></pre>
+<h2 id="execution">Execution</h2>
+<ol>
+<li>Write the target markdown file (e.g., <code>docs/slide_data.md</code>).</li>
+<li>Run the compiler using <code>uv</code>:<br />
+<code>powershell
+   uv run --with python-pptx python tools/compile_3col_slides.py docs/slide_data.md docs/my_presentation.pptx</code></li>
+<li>The resulting <code>.pptx</code> file is 100% natively compatible with LibreOffice Impress and will retain all shape geometries, exact RGB colors, and custom fonts.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2083 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Reference document for Noss Linguistic Auditor.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Noss Linguistic Auditor - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#noss-linguistic-auditor-skill" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Noss Linguistic Auditor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-four-quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Four Quality Gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Four Quality Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gate-g1-active-voice-work-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate G1 — Active Voice (Work Steps)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gate G1 — Active Voice (Work Steps)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pass-examples-active-voice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS Examples (Active Voice)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-examples-passive-voice-in-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL Examples (Passive Voice in Steps)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 How to Fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gate-g2-passive-voice-performance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate G2 — Passive Voice (Performance Criteria)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gate G2 — Passive Voice (Performance Criteria)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approved-passive-verb-whitelist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approved Passive Verb Whitelist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-examples-passive-voice-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS Examples (Passive Voice Criteria)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-examples-active-no-passive-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL Examples (Active / No Passive Indicator)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-fix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 How to Fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gate-g3-1-to-1-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate G3 — 1-to-1 Mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gate G3 — 1-to-1 Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pass-example-5-steps-5-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS Example (5 steps = 5 criteria)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-example-5-steps-4-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL Example (5 steps ≠ 4 criteria)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gate-g4-language-cleanliness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate G4 — Language Cleanliness
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gate G4 — Language Cleanliness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#g4a-no-vague-or-guess-and-check-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G4a — No Vague or "Guess and Check" Language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-precise-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS (Precise language)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-vague-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL (Vague language)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g4b-no-forbidden-os-commands-os-boundary-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G4b — No Forbidden OS Commands (OS Boundary Check)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g4c-no-overly-complex-commands-in-trainee-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G4c — No Overly Complex Commands in Trainee Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-simple-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS (Simple commands)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-too-complex-for-level-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL (Too complex for Level 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-how-to-apply-this-skill-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. How to Apply This Skill (Step-by-Step)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. How to Apply This Skill (Step-by-Step)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-read-the-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Read the content
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-run-gate-g3-first-count-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Run Gate G3 first (count check)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-run-gate-g1-active-voice-on-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Run Gate G1 (Active Voice on Steps)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-run-gate-g2-passive-voice-on-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Run Gate G2 (Passive Voice on Criteria)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-run-gate-g4-g5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Run Gate G4 &amp; G5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-run-gate-g6-ase-domain-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Run Gate G6 (ASE Domain Separation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-report-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Report findings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-confirm-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8 — Confirm PASS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Quick Reference Card
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gate-g5-uk-english-spelling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Gate G5 — UK English Spelling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Gate G5 — UK English Spelling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-uk-spellings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mandatory UK Spellings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gate-g6-ase-domain-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Gate G6 — ASE Domain Separation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Gate G6 — ASE Domain Separation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#g6a-safety-vs-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G6a — Safety vs. Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g6b-grammar-enforcements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G6b — Grammar Enforcements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="G6b — Grammar Enforcements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pass-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PASS Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ FAIL Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-scope-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Scope Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-related-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Related Skills
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="noss-linguistic-auditor-skill">NOSS Linguistic Auditor Skill<a class="headerlink" href="#noss-linguistic-auditor-skill" title="Permanent link">&para;</a></h1>
+<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
+<p>This skill teaches an AI agent to <strong>read and audit</strong> NOSS Level 3 Competency
+Profile content for linguistic compliance.</p>
+<p>The agent applies <strong>four quality gates</strong> by reading the content and comparing
+it against the rules and examples in this document:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Gate</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">What it checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">G1</td>
+<td style="text-align: left;"><strong>Active Voice</strong></td>
+<td style="text-align: left;">Work Steps begin with an action verb</td>
+</tr>
+<tr>
+<td style="text-align: left;">G2</td>
+<td style="text-align: left;"><strong>Passive Voice</strong></td>
+<td style="text-align: left;">Performance Criteria contain a passive-voice indicator</td>
+</tr>
+<tr>
+<td style="text-align: left;">G3</td>
+<td style="text-align: left;"><strong>1-to-1 Mapping</strong></td>
+<td style="text-align: left;">Step count exactly equals Criteria count per WA</td>
+</tr>
+<tr>
+<td style="text-align: left;">G4</td>
+<td style="text-align: left;"><strong>Language Cleanliness</strong></td>
+<td style="text-align: left;">No vague phrases, no forbidden OS commands</td>
+</tr>
+<tr>
+<td style="text-align: left;">G5</td>
+<td style="text-align: left;"><strong>UK English Spelling</strong></td>
+<td style="text-align: left;">All content uses British English spelling conventions</td>
+</tr>
+<tr>
+<td style="text-align: left;">G6</td>
+<td style="text-align: left;"><strong>ASE Domain Separation</strong></td>
+<td style="text-align: left;">Strict separation of physical Safety vs IT Security, plus grammar rules</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-the-four-quality-gates">2. The Four Quality Gates<a class="headerlink" href="#2-the-four-quality-gates" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="gate-g1-active-voice-work-steps">Gate G1 — Active Voice (Work Steps)<a class="headerlink" href="#gate-g1-active-voice-work-steps" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Every Work Step must begin with a present-tense <strong>action verb</strong>.</p>
+<p>A step describes what <strong>the person does</strong>. It must not begin with:
+- A past-tense verb ending in <code>-ed</code> (e.g. <code>Installed</code>, <code>Configured</code>, <code>Verified</code>)
+- A noun (e.g. <code>The system</code>, <code>Server</code>, <code>Network</code>)
+- A passive construction (e.g. <code>Is installed</code>, <code>Was configured</code>)</p>
+<h4 id="pass-examples-active-voice">✅ PASS Examples (Active Voice)<a class="headerlink" href="#pass-examples-active-voice" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Install the server operating system using the bootable USB drive.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Configure the hostname and static IP address in the network settings file.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Verify the network adapter link status using the ping command.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Open the firewall management console on the local system.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Check the system log directory for critical error entries.
+</span></code></pre></div>
+<h4 id="fail-examples-passive-voice-in-steps">❌ FAIL Examples (Passive Voice in Steps)<a class="headerlink" href="#fail-examples-passive-voice-in-steps" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Installed the server OS using the bootable USB.       ← past-tense, sounds passive
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>The hostname was configured in the settings file.     ← &quot;was configured&quot; = passive
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Network adapter is verified using ping.               ← &quot;is verified&quot; = passive
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>System log directory is opened to check errors.       ← &quot;is opened&quot; = passive
+</span></code></pre></div>
+<h4 id="how-to-fix">🔧 How to Fix<a class="headerlink" href="#how-to-fix" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ FAIL</th>
+<th style="text-align: left;">✅ PASS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Installed the server OS</code></td>
+<td style="text-align: left;"><code>Install the server OS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>The hostname was configured</code></td>
+<td style="text-align: left;"><code>Configure the hostname</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Network adapter is verified</code></td>
+<td style="text-align: left;"><code>Verify the network adapter</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pattern:</strong> Strip past tense / passive wrapper → start with bare infinitive verb.</p>
+<hr />
+<h3 id="gate-g2-passive-voice-performance-criteria">Gate G2 — Passive Voice (Performance Criteria)<a class="headerlink" href="#gate-g2-passive-voice-performance-criteria" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Every Performance Criterion must contain a <strong>passive-voice indicator</strong>
+verb and end with <code>in accordance with [reference/standard/policy]</code>.</p>
+<p>A criterion describes what <strong>was achieved</strong>. It must:
+1. Start with the <strong>object</strong> (not the person)
+2. Contain a past-participle passive verb (see whitelist below)
+3. End with <code>in accordance with [document/policy/procedure]</code></p>
+<h4 id="approved-passive-verb-whitelist">Approved Passive Verb Whitelist<a class="headerlink" href="#approved-passive-verb-whitelist" title="Permanent link">&para;</a></h4>
+<p>The criterion must contain <strong>at least one</strong> of these words:</p>
+<blockquote>
+<p><strong>Note:</strong> All words use <strong>UK English spelling</strong>. US spellings (e.g. <code>analyzed</code>, <code>synchronized</code>) are not accepted.</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>accessed        activated       added           addressed       allocated
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>analysed        applied         archived        assembled       assigned
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>audited         booted          captured        categorised     checked
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>cleared         cloned          closed          collected       compiled
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>completed       confirmed       configured      connected       conducted
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>converted       copied          created         defined         deployed
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>determined      diagnosed       disabled        displayed       documented
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>established     evaluated       executed        exported        extracted
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>filtered        formatted       generated       handled         identified
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>implemented     installed       inspected       investigated    isolated
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>launched        loaded          locked          logged          maintained
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>managed         mapped          matched         monitored       mounted
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>notified        operated        organised       parsed          performed
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>prepared        provided        pulled          purged          queried
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>recognised      recorded        reclaimed       registered      removed
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>resolved        restored        restricted      retrieved       reviewed
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>reverted        saved           scheduled       secured         selected
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>set             simulated       started         stopped         structured
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>submitted       supported       synchronised    tested          toggled
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>traced          tracked         triaged         triggered       updated
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>uploaded        validated       verified        visualised      written
+</span></code></pre></div>
+<h4 id="pass-examples-passive-voice-criteria">✅ PASS Examples (Passive Voice Criteria)<a class="headerlink" href="#pass-examples-passive-voice-criteria" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Server operating system installed and license credentials configured in
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>accordance with license compliance guides.
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Network adapter link status and gateway connectivity verified using ping
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>tools in accordance with connection guidelines.
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>System log directory accessed and critical error files identified in
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>accordance with diagnostic checklist.
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Firewall inbound rules configured to block unauthorized packets in
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>accordance with host network defense policies.
+</span></code></pre></div>
+<h4 id="fail-examples-active-no-passive-indicator">❌ FAIL Examples (Active / No Passive Indicator)<a class="headerlink" href="#fail-examples-active-no-passive-indicator" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>The technician installs the OS and sets up the credentials.
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>← Active voice, starts with &quot;the technician&quot;
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>User opens the firewall console and blocks the ports.
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>← Active voice, no passive verb from whitelist
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Network settings should be correct for the system to work.
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>← Vague, no passive indicator, no &quot;in accordance with&quot;
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Check that the ping works.
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>← Active command, not a criterion
+</span></code></pre></div>
+<h4 id="how-to-fix_1">🔧 How to Fix<a class="headerlink" href="#how-to-fix_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ FAIL</th>
+<th style="text-align: left;">✅ PASS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>The technician installs the OS</code></td>
+<td style="text-align: left;"><code>OS installed and credentials configured in accordance with license compliance guides.</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>User opens the firewall</code></td>
+<td style="text-align: left;"><code>Firewall configuration interface accessed in accordance with security policy.</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Check that the ping works</code></td>
+<td style="text-align: left;"><code>Network connectivity verified using ping tools in accordance with connection guidelines.</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pattern:</strong> Object first → passive verb → <code>in accordance with [reference]</code>.</p>
+<hr />
+<h3 id="gate-g3-1-to-1-mapping">Gate G3 — 1-to-1 Mapping<a class="headerlink" href="#gate-g3-1-to-1-mapping" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> The number of Work Steps in a WA must <strong>exactly equal</strong> the number
+of Performance Criteria in that same WA.</p>
+<p>Each step N.M must have a matching criterion N.M.</p>
+<h4 id="pass-example-5-steps-5-criteria">✅ PASS Example (5 steps = 5 criteria)<a class="headerlink" href="#pass-example-5-steps-5-criteria" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>WORK STEPS                                    PERFORMANCE CRITERIA
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>1.1 Identify server installation specs.       1.1 Server specs identified in accordance with checklist.
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>1.2 Identify server hardware requirements.    1.2 Hardware requirements identified in accordance with procedure.
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>1.3 Identify server software requirements.    1.3 Software requirements identified in accordance with specs.
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>1.4 Map server network configuration.         1.4 Network config mapped in accordance with addressing scheme.
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>1.5 Prepare installation tools.               1.5 Tools prepared in accordance with handling guidelines.
+</span></code></pre></div>
+<h4 id="fail-example-5-steps-4-criteria">❌ FAIL Example (5 steps ≠ 4 criteria)<a class="headerlink" href="#fail-example-5-steps-4-criteria" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>WORK STEPS                                    PERFORMANCE CRITERIA
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>1.1 Identify server installation specs.       1.1 Server specs identified in accordance with checklist.
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>1.2 Identify server hardware requirements.    1.2 Hardware requirements identified in accordance with procedure.
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>1.3 Identify server software requirements.    1.3 Software requirements identified in accordance with specs.
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>1.4 Map server network configuration.         1.4 Network config mapped in accordance with addressing scheme.
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>1.5 Prepare installation tools.               ← MISSING criterion 1.5
+</span></code></pre></div>
+<p><strong>Fix:</strong> Add the missing criterion, or remove the extra step. Always balance.</p>
+<hr />
+<h3 id="gate-g4-language-cleanliness">Gate G4 — Language Cleanliness<a class="headerlink" href="#gate-g4-language-cleanliness" title="Permanent link">&para;</a></h3>
+<p>This gate has <strong>three sub-checks</strong>:</p>
+<h4 id="g4a-no-vague-or-guess-and-check-language">G4a — No Vague or "Guess and Check" Language<a class="headerlink" href="#g4a-no-vague-or-guess-and-check-language" title="Permanent link">&para;</a></h4>
+<p>These phrases are <strong>forbidden</strong> anywhere in Work Steps or Performance Criteria:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Forbidden Phrase</th>
+<th style="text-align: left;">Why forbidden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>guess</code></td>
+<td style="text-align: left;">No guessing in a structured operation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>trial and error</code></td>
+<td style="text-align: left;">Trainees need deterministic steps</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>play around</code></td>
+<td style="text-align: left;">Unprofessional and unstructured</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>try running</code></td>
+<td style="text-align: left;">Implies uncertainty — use <code>Run</code> instead</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>check the screen error</code></td>
+<td style="text-align: left;">Too vague — specify what to check</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>should work</code></td>
+<td style="text-align: left;">Not a verifiable outcome</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>might be</code></td>
+<td style="text-align: left;">Ambiguous</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>somehow</code></td>
+<td style="text-align: left;">Vague</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pass-precise-language">✅ PASS (Precise language)<a class="headerlink" href="#pass-precise-language" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Run the system disk cleanup utility using the built-in tool.
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Verify the backup status in the task scheduler log.
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Identify the error code from the system event viewer.
+</span></code></pre></div>
+<h4 id="fail-vague-language">❌ FAIL (Vague language)<a class="headerlink" href="#fail-vague-language" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Try running the cleanup tool and see if it works.
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Play around with the settings until the backup works.
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Somehow get the error message from somewhere in the log.
+</span></code></pre></div>
+<hr />
+<h4 id="g4b-no-forbidden-os-commands-os-boundary-check">G4b — No Forbidden OS Commands (OS Boundary Check)<a class="headerlink" href="#g4b-no-forbidden-os-commands-os-boundary-check" title="Permanent link">&para;</a></h4>
+<p>Linux content must not reference Windows commands.
+Windows content must not reference Linux commands.</p>
+<p><strong>Forbidden in Linux content:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ipconfig       powershell      cmd.exe
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cls            dir /           dir \
+</span></code></pre></div>
+<p><strong>Forbidden in Windows content:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>apt update     apt install     clamscan
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>lynis          systemctl restart    sudo systemctl
+</span></code></pre></div>
+<h4 id="pass">✅ PASS<a class="headerlink" href="#pass" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[Linux step]  Check network interface settings using the ip addr command.
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>[Windows step] Check network adapter settings using the ipconfig command.
+</span></code></pre></div>
+<h4 id="fail">❌ FAIL<a class="headerlink" href="#fail" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[Linux step]  Use ipconfig to check network settings.     ← Windows command in Linux content
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>[Windows step] Run apt install to install the package.    ← Linux command in Windows content
+</span></code></pre></div>
+<hr />
+<h4 id="g4c-no-overly-complex-commands-in-trainee-steps">G4c — No Overly Complex Commands in Trainee Steps<a class="headerlink" href="#g4c-no-overly-complex-commands-in-trainee-steps" title="Permanent link">&para;</a></h4>
+<p>Commands in Work Steps must be simple, single-purpose, and Level 3 appropriate.</p>
+<p><strong>Forbidden patterns:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">Why forbidden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>awk</code> pipelines</td>
+<td style="text-align: left;">Too complex for L3 trainees</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sed</code> inline substitution</td>
+<td style="text-align: left;">Abstracted to <code>/scripts/</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grep -E</code> or <code>grep -P</code></td>
+<td style="text-align: left;">Regex too advanced</td>
+</tr>
+<tr>
+<td style="text-align: left;">More than 1 pipe <code>\|</code> in one command</td>
+<td style="text-align: left;">Complex pipeline — abstract it</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>perl -e</code></td>
+<td style="text-align: left;">Not a basic utility</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pass-simple-commands">✅ PASS (Simple commands)<a class="headerlink" href="#pass-simple-commands" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cat /var/log/syslog
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>systemctl status nginx
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>ip addr show
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>ping -c 4 8.8.8.8
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>ls -lh /var/backups/
+</span></code></pre></div>
+<h4 id="fail-too-complex-for-level-3">❌ FAIL (Too complex for Level 3)<a class="headerlink" href="#fail-too-complex-for-level-3" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>awk &#39;{print $1}&#39; /var/log/auth.log | sort | uniq -c | sort -rn | head -10
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>grep -E &quot;Failed|Invalid&quot; /var/log/auth.log | awk &#39;{print $NF}&#39; | sort
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sed -i &#39;s/^PasswordAuthentication yes/PasswordAuthentication no/&#39; /etc/ssh/sshd_config
+</span></code></pre></div>
+<p><strong>Fix:</strong> Move complex commands to <code>/scripts/</code> bash files. Reference the script name in the step:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Run the audit-ssh-failures.sh script to extract failed login events.
+</span></code></pre></div></p>
+<hr />
+<h2 id="3-how-to-apply-this-skill-step-by-step">3. How to Apply This Skill (Step-by-Step)<a class="headerlink" href="#3-how-to-apply-this-skill-step-by-step" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-read-the-content">Step 1 — Read the content<a class="headerlink" href="#step-1-read-the-content" title="Permanent link">&para;</a></h3>
+<p>Read the Work Activity content to be audited. Identify:
+- The WA title and code
+- All Work Steps (numbered N.M)
+- All Performance Criteria (numbered N.M)</p>
+<h3 id="step-2-run-gate-g3-first-count-check">Step 2 — Run Gate G3 first (count check)<a class="headerlink" href="#step-2-run-gate-g3-first-count-check" title="Permanent link">&para;</a></h3>
+<p>Count the steps and count the criteria.
+If they do not match → flag immediately and stop. Fix the count before checking voice.</p>
+<h3 id="step-3-run-gate-g1-active-voice-on-steps">Step 3 — Run Gate G1 (Active Voice on Steps)<a class="headerlink" href="#step-3-run-gate-g1-active-voice-on-steps" title="Permanent link">&para;</a></h3>
+<p>For each step:
+- Read the first word
+- Is it a present-tense action verb? → PASS
+- Does it end in <code>-ed</code>? → FAIL
+- Does it start with <code>The</code>, <code>A</code>, <code>An</code>? → FAIL
+- Does it contain <code>is/was/were + verb</code>? → FAIL</p>
+<h3 id="step-4-run-gate-g2-passive-voice-on-criteria">Step 4 — Run Gate G2 (Passive Voice on Criteria)<a class="headerlink" href="#step-4-run-gate-g2-passive-voice-on-criteria" title="Permanent link">&para;</a></h3>
+<p>For each criterion:
+- Does it contain at least one word from the Passive Verb Whitelist? → PASS
+- Does it end with <code>in accordance with [something]</code>? → Required
+- Does it start with an object (not "The technician" or "The person")? → Required</p>
+<h3 id="step-5-run-gate-g4-g5">Step 5 — Run Gate G4 &amp; G5<a class="headerlink" href="#step-5-run-gate-g4-g5" title="Permanent link">&para;</a></h3>
+<p>Scan every line for:
+- Forbidden vague phrases (G4a)
+- Wrong OS commands for the platform (G4b)
+- Complex multi-pipe commands or awk/sed (G4c)
+- UK English spelling enforcement (G5)</p>
+<h3 id="step-6-run-gate-g6-ase-domain-separation">Step 6 — Run Gate G6 (ASE Domain Separation)<a class="headerlink" href="#step-6-run-gate-g6-ase-domain-separation" title="Permanent link">&para;</a></h3>
+<p>Scan Attitude/Safety/Environment columns:
+- Does SAFETY contain IT security rules? (e.g., password, firewall, SHA-256) → FAIL
+- Do ATTITUDE sentences start with a descriptive adjective? → Required
+- Do ENVIRONMENT sentences start with a sustainability verb? → Required
+- Do SAFETY sentences start with a physical care imperative verb? → Required</p>
+<h3 id="step-7-report-findings">Step 7 — Report findings<a class="headerlink" href="#step-7-report-findings" title="Permanent link">&para;</a></h3>
+<p>For each error found, report in this format:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[GATE] [WA Code] [Step/Criterion Number]
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Issue: [description of the problem]
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Current text: &quot;[the failing text]&quot;
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Suggested fix: &quot;[the corrected text]&quot;
+</span></code></pre></div>
+<h3 id="step-8-confirm-pass">Step 8 — Confirm PASS<a class="headerlink" href="#step-8-confirm-pass" title="Permanent link">&para;</a></h3>
+<p>If no errors are found across all 4 gates:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>✅ PASS — [WA Code]: All linguistic quality gates satisfied.
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Steps: N | Criteria: N | Active Voice: ✓ | Passive Voice: ✓ | Language: ✓
+</span></code></pre></div></p>
+<hr />
+<h2 id="4-quick-reference-card">4. Quick Reference Card<a class="headerlink" href="#4-quick-reference-card" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>┌─────────────────────────────────────────────────────────────────┐
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>│               NOSS L3 LINGUISTIC QUALITY GATES                  │
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>├──────┬──────────────────────────────────────────────────────────┤
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>│  G1  │ WORK STEPS → Active Voice                                │
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>│      │ ✓ Start with action verb: Install / Configure / Verify   │
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>│      │ ✗ No past tense: Installed / Configured / Was verified   │
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>├──────┼──────────────────────────────────────────────────────────┤
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>│  G2  │ PERFORMANCE CRITERIA → Passive Voice                     │
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>│      │ ✓ Object first + passive verb + &quot;in accordance with&quot;     │
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>│      │ ✗ No active construction, no missing reference           │
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>├──────┼──────────────────────────────────────────────────────────┤
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>│  G3  │ 1-to-1 MAPPING                                           │
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>│      │ ✓ Step count = Criteria count (exact match)              │
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>│      │ ✗ Any mismatch = immediate FAIL                          │
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>├──────┼──────────────────────────────────────────────────────────┤
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>│  G4  │ LANGUAGE CLEANLINESS                                     │
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>│      │ ✓ Precise, deterministic language                        │
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>│      │ ✗ No: &quot;try&quot;, &quot;guess&quot;, &quot;play around&quot;, &quot;should work&quot;       │
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>│      │ ✗ No: wrong OS commands for the platform                 │
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>│      │ ✗ No: awk / sed / grep -E / multi-pipe commands          │
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>├──────┼──────────────────────────────────────────────────────────┤
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>│  G5  │ UK ENGLISH SPELLING                                      │
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>│      │ ✓ Use -ise, -our, -re (e.g. Virtualisation, Colour)      │
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>│      │ ✗ No US spelling (e.g. Virtualization, Color)            │
+</span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>├──────┼──────────────────────────────────────────────────────────┤
+</span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>│  G6  │ ASE DOMAIN SEPARATION                                    │
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>│      │ ✓ SAFETY is strictly physical (ESD, lifting)             │
+</span><span id="__span-18-28"><a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>│      │ ✗ SAFETY must NOT contain IT Security (passwords, crypto)│
+</span><span id="__span-18-29"><a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>└──────┴──────────────────────────────────────────────────────────┘
+</span></code></pre></div>
+<hr />
+<h2 id="5-gate-g5-uk-english-spelling">5. Gate G5 — UK English Spelling<a class="headerlink" href="#5-gate-g5-uk-english-spelling" title="Permanent link">&para;</a></h2>
+<p><strong>Rule:</strong> All content must use <strong>British English</strong> spelling. Malaysia follows the
+Commonwealth standard and JPK documents use British English conventions.</p>
+<h3 id="mandatory-uk-spellings">Mandatory UK Spellings<a class="headerlink" href="#mandatory-uk-spellings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ US Spelling (REJECT)</th>
+<th style="text-align: left;">✅ UK Spelling (ACCEPT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>analyzed</code></td>
+<td style="text-align: left;"><code>analysed</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Analyze</code></td>
+<td style="text-align: left;"><code>Analyse</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>organized</code></td>
+<td style="text-align: left;"><code>organised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>recognized</code></td>
+<td style="text-align: left;"><code>recognised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>synchronized</code></td>
+<td style="text-align: left;"><code>synchronised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>categorized</code></td>
+<td style="text-align: left;"><code>categorised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>prioritized</code></td>
+<td style="text-align: left;"><code>prioritised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>optimized</code></td>
+<td style="text-align: left;"><code>optimised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>utilization</code></td>
+<td style="text-align: left;"><code>utilisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>virtualization</code></td>
+<td style="text-align: left;"><code>virtualisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>organization</code></td>
+<td style="text-align: left;"><code>organisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>authorization</code></td>
+<td style="text-align: left;"><code>authorisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>initialization</code></td>
+<td style="text-align: left;"><code>initialisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>visualization</code></td>
+<td style="text-align: left;"><code>visualisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>color</code></td>
+<td style="text-align: left;"><code>colour</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>behavior</code></td>
+<td style="text-align: left;"><code>behaviour</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>neighbor</code></td>
+<td style="text-align: left;"><code>neighbour</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>license</code> (noun)</td>
+<td style="text-align: left;"><code>licence</code> (noun)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>practice</code> (verb)</td>
+<td style="text-align: left;"><code>practise</code> (verb)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>program</code> (non-IT)</td>
+<td style="text-align: left;"><code>programme</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> In computing contexts, <code>program</code> (software) is acceptable in both variants.
+<code>licence</code> as a noun (e.g. <code>license key</code>) — use <code>licence</code>. As a verb <code>to license</code> both are accepted but prefer UK.</p>
+</blockquote>
+<h3 id="pass-examples">✅ PASS Examples<a class="headerlink" href="#pass-examples" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Server operating systems and virtualisation platforms determined...
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Diagnostic findings analysed in accordance with troubleshooting guidelines.
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Resource utilisation metrics verified in accordance with monitoring policy.
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>Organised in accordance with inventory organisation standards.
+</span></code></pre></div>
+<h3 id="fail-examples">❌ FAIL Examples<a class="headerlink" href="#fail-examples" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Diagnostic findings analyzed in accordance with troubleshooting guidelines.
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>← &quot;analyzed&quot; is US spelling → fix to &quot;analysed&quot;
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Virtualization platforms installed in accordance with...
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>← &quot;Virtualization&quot; is US spelling → fix to &quot;Virtualisation&quot;
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>Resource utilization metrics verified...
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>← &quot;utilization&quot; is US spelling → fix to &quot;utilisation&quot;
+</span></code></pre></div>
+<hr />
+<h2 id="6-gate-g6-ase-domain-separation">6. Gate G6 — ASE Domain Separation<a class="headerlink" href="#6-gate-g6-ase-domain-separation" title="Permanent link">&para;</a></h2>
+<p><strong>Rule:</strong> The <code>ATTITUDE / SAFETY / ENVIRONMENT</code> section must strictly separate physical human safety from IT security, and enforce specific grammatical constraints for each domain.</p>
+<h3 id="g6a-safety-vs-security">G6a — Safety vs. Security<a class="headerlink" href="#g6a-safety-vs-security" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>SAFETY</strong> is strictly about the physical safety of the human performing the task. (e.g., ergonomics, ESD straps, handling sharp tools). IT Security (passwords, firewalls, credentials, cryptographic hashes) must <strong>NEVER</strong> be placed under SAFETY.</li>
+</ul>
+<h3 id="g6b-grammar-enforcements">G6b — Grammar Enforcements<a class="headerlink" href="#g6b-grammar-enforcements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ATTITUDE:</strong> Must begin with a descriptive adjective (e.g., <em>Systematic in...</em>, <em>Careful in...</em>).</li>
+<li><strong>ENVIRONMENT:</strong> Must begin with a sustainability action verb (e.g., <em>Practice [3R]</em>, <em>Minimize...</em>).</li>
+<li><strong>SAFETY:</strong> Must begin with a physical care action verb (e.g., <em>Wear</em>, <em>Practice</em>, <em>Isolate</em>).</li>
+<li><strong>SECURITY:</strong> Must begin with a defense/governance action verb (e.g., <em>Comply</em>, <em>Protect</em>, <em>Validate</em>).</li>
+</ul>
+<h4 id="pass-examples_1">✅ PASS Examples<a class="headerlink" href="#pass-examples_1" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ATTITUDE Systematic in recording support information.
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>ENVIRONMENT Practice 3R concept for electronic parts.
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>SAFETY Wear ESD wrist strap when handling electronics.
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>SECURITY Protect database folders containing licensing keys.
+</span></code></pre></div>
+<h4 id="fail-examples_1">❌ FAIL Examples<a class="headerlink" href="#fail-examples_1" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>SAFETY Protect administrator credentials.
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>← FAIL (G6a): IT Security must not be listed as Safety.
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>ENVIRONMENT Always turn off the lights.
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>← FAIL (G6b): Missing sustainability action verb (e.g. &quot;Minimize&quot;).
+</span></code></pre></div>
+<hr />
+<h2 id="7-scope-boundary">7. Scope Boundary<a class="headerlink" href="#7-scope-boundary" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>⚠️ LEVEL 3 CONSTRAINT</strong></p>
+<p>This skill audits content intended for <strong>SPM-entry vocational trainees</strong>.
+All corrections must maintain Level 3 simplicity.
+Do not introduce advanced terminology, complex commands, or Level 4+ concepts
+when suggesting fixes.</p>
+</blockquote>
+<hr />
+<h2 id="8-related-skills">8. Related Skills<a class="headerlink" href="#8-related-skills" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>noss-cp-docx-formatter</code></strong> — use after linguistic audit to regenerate CP documents</li>
+<li><strong><code>noss-cpc-docx-formatter</code></strong> — use after audit to regenerate CPC documents</li>
+<li><strong><code>template-noss-l3-skill</code></strong> — reference template for correct SKILL.md structure</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

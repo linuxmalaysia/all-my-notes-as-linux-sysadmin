@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cross-platform-translator - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+name: cross-platform-translator
+description: Analyzes a Windows PowerShell (.ps1) or Linux Bash (.sh) script and automatically generates its functional equivalent in the other shell language, enforcing the Cross-Platform Mandate.
+topics: [bash, powershell, cross-platform, translation, scripting]
+okf_version: 0.1
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="cross-platform-translator-skill">🔄 Cross-Platform Translator Skill</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when a new automation script is created in one shell language, and the workspace Constitution requires its equivalent to be generated for cross-platform compliance.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li><strong>Analyze Source:</strong> Read the source script (e.g., <code>tools/myscript.ps1</code>) to understand its exact logical flow, variable assignments, standard output formats, and error handling.</li>
+<li><strong>Determine Target:</strong> If the source is <code>.ps1</code>, the target is <code>.sh</code> (Bash). If the source is <code>.sh</code>, the target is <code>.ps1</code> (PowerShell).</li>
+<li><strong>Translation Rules:</strong></li>
+<li><strong>Banners:</strong> Preserve the exact DSOM banner text and colors (using ANSI escape codes in Bash, or <code>Write-Host -ForegroundColor</code> in PowerShell).</li>
+<li><strong>Paths:</strong> Ensure path separators are idiomatic (use <code>/</code> or <code>\</code> appropriately, though PowerShell often accepts <code>/</code>).</li>
+<li><strong>Error Handling:</strong> Map PowerShell's <code>try/catch</code> or <code>$ErrorActionPreference = "Stop"</code> to Bash's <code>set -e</code> or specific <code>if ! command; then ... fi</code> checks.</li>
+<li><strong>Dependencies:</strong> If the script calls another script, ensure it calls the correct extension for its platform (e.g., a <code>.ps1</code> script should call <code>reanimate.ps1</code>, not <code>reanimate.sh</code>).</li>
+<li><strong>Output Generation:</strong> Write the translated script to the target file.</li>
+<li><strong>Update Documentation:</strong> If the script is documented in <code>docs/tools/</code>, ensure the documentation accurately lists both the <code>.ps1</code> and <code>.sh</code> file names.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

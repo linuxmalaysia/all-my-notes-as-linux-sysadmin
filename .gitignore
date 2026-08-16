@@ -30,7 +30,6 @@ __pycache__/
 .ruff_cache/
 
 # Build artifacts
-html/
 mkdocs_src/
 scratch/
 

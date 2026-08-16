@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPC Markdown Format Reference - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+
+    <header>
+        <a href="../../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="cpc-markdown-format-reference">CPC Markdown Format Reference</h1>
+<h2 id="purpose">Purpose</h2>
+<p>Documents the exact Markdown syntax used in <code>CPC-Level-3.md</code> (the source)<br />
+and the expected output for the CPC in Markdown format.</p>
+<hr />
+<h2 id="complete-format-example">Complete Format Example</h2>
+<pre><code class="language-markdown"># Competency Profile Chart (CPC)
+
+| SECTION | (J) Information and Communication |
+| :--- | :--- |
+| **GROUP** | (620) Computer Programming, Consultancy and Related Activities |
+| **AREA** | Computer System Administration |
+| **NOSS TITLE** | Sovereign IT Infrastructure Operations |
+| **NOSS LEVEL** | LEVEL 3 |
+| **NOSS CODE** | IT-020-3:2026 |
+
+
+## 🟢 CORE COMPETENCIES
+
+| COMPETENCY UNIT (CU) | WORK ACTIVITIES (WA) |
+| :--- | :--- |
+| **PERFORM BASIC COMPUTER SYSTEM INSTALLATION AND CONFIGURATION**&lt;br&gt;`[CODE: CU01]` | **1.** Prepare computer system set-up components `[CU01-WA01]`&lt;br&gt;&lt;br&gt;**2.** Carry out computer system hardware installation `[CU01-WA02]`&lt;br&gt;&lt;br&gt;**3.** Carry out computer Operating System (OS) software installation `[CU01-WA03]`&lt;br&gt;&lt;br&gt;**4.** Carry out computer application and device driver installation `[CU01-WA04]`&lt;br&gt;&lt;br&gt;**5.** Configure static IP and wireless network parameters `[CU01-WA05]`&lt;br&gt;&lt;br&gt;**6.** Prepare computer system installation record `[CU01-WA06]` |
+| **OPERATE VIRTUALIZATION ENVIRONMENT**&lt;br&gt;`[CODE: CU02]` | **1.** Determine virtual host and guest VM sizing requirements based on SOP `[CU02-WA01]`&lt;br&gt;&lt;br&gt;**2.** Install Type 2 hypervisors and configure local virtual network adapters `[CU02-WA02]`&lt;br&gt;&lt;br&gt;**3.** Deploy and configure guest virtual machines `[CU02-WA03]`&lt;br&gt;&lt;br&gt;**4.** Manage guest VM operations and server-level network connectivity on a Type 1 hypervisor `[CU02-WA04]`&lt;br&gt;&lt;br&gt;**5.** Perform routine troubleshooting for virtualised environments `[CU02-WA05]` |
+
+---
+*Note: This Markdown CPC maps identically to the backend .agents/skills registry.*
+</code></pre>
+<hr />
+<h2 id="syntax-rules">Syntax Rules</h2>
+<h3 id="header-table">Header Table</h3>
+<ul>
+<li>2-column table (no colspan in Markdown)</li>
+<li>Row 1: plain <code>SECTION</code> | plain value (no bold/italics)</li>
+<li>Rows 2–6: <code>**BOLD LABEL**</code> | plain value</li>
+<li>NOSS LEVEL and NOSS CODE are separate rows (unlike DOCX which puts them in one row)</li>
+<li>Blank line before and after the table</li>
+</ul>
+<h3 id="core-competencies-table">CORE COMPETENCIES Table</h3>
+<p><strong>CU column (left)</strong>:</p>
+<pre><code>**CU TITLE IN UPPERCASE BOLD**&lt;br&gt;`[CODE: CUxx]`
+</code></pre>
+<ul>
+<li><code>&lt;br&gt;</code> separates title from code</li>
+<li>Code in backtick monospace: <code>`[CODE: CU01]`</code></li>
+<li>Title in <code>**double asterisk bold**</code></li>
+</ul>
+<p><strong>WA column (right)</strong>:</p>
+<pre><code>**1.** WA Title One `[CUxx-WA01]`&lt;br&gt;&lt;br&gt;**2.** WA Title Two `[CUxx-WA02]`
+</code></pre>
+<ul>
+<li>Each WA on a new logical line (separated by <code>&lt;br&gt;&lt;br&gt;</code>)</li>
+<li>WA number in <code>**bold**</code> with a period: <code>**1.**</code></li>
+<li>WA title in plain text (no bold)</li>
+<li>WA code in backtick monospace: <code>`[CU01-WA01]`</code></li>
+<li>Code uses short form: <code>[CUxx-WAyy]</code> (not full NOSS code)</li>
+<li>NO trailing <code>&lt;br&gt;&lt;br&gt;</code> after the last WA</li>
+</ul>
+<h3 id="footer-note">Footer Note</h3>
+<pre><code class="language-markdown">---
+*Note: This Markdown CPC elegantly replaces the legacy DOCX block layout. It maps identically to the backend `.agents/skills` registry.*
+</code></pre>
+<hr />
+<h2 id="differences-markdown-vs-docx-representation">Differences: Markdown vs DOCX Representation</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">DOCX Grid</th>
+<th style="text-align: left;">Markdown Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">WA display</td>
+<td style="text-align: left;">Grid cells (max 4 per row)</td>
+<td style="text-align: left;">All WAs in one cell, separated by <code>&lt;br&gt;&lt;br&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">CU title</td>
+<td style="text-align: left;">ALL CAPS in yellow cell</td>
+<td style="text-align: left;"><code>**TITLE CAPS**</code> in bold</td>
+</tr>
+<tr>
+<td style="text-align: left;">CU code</td>
+<td style="text-align: left;"><code>CODE CUxx</code> in green cell</td>
+<td style="text-align: left;"><code>`[CODE: CUxx]`</code> in backtick</td>
+</tr>
+<tr>
+<td style="text-align: left;">WA code</td>
+<td style="text-align: left;"><code>CODE CUxx-WAyy</code> in blue cell</td>
+<td style="text-align: left;"><code>`[CUxx-WAyy]`</code> in backtick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Section codes</td>
+<td style="text-align: left;">K62, 622</td>
+<td style="text-align: left;">(J), (620) — human-readable form</td>
+</tr>
+<tr>
+<td style="text-align: left;">Colours</td>
+<td style="text-align: left;">Full colour fills</td>
+<td style="text-align: left;">Not represented</td>
+</tr>
+<tr>
+<td style="text-align: left;">vMerge</td>
+<td style="text-align: left;">Orange column rowspan</td>
+<td style="text-align: left;">Not applicable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

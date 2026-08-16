@@ -50,10 +50,12 @@ Berasaskan spesifikasi rasmi [Diátaxis Framework](https://deep-state-of-mind-fo
 
 Kandungan repositori ini menyokong secara natif pelbagai sasaran penerbitan:
 
-- **GitHub Pages / GitLab Pages:** Bina ke direktori `html/` dan terbitkan melalui CI/CD.
-- **Read the Docs:** Dikonfigurasikan melalui [`mkdocs.yml`](mkdocs.yml).
-- **GitBook:** Disokong melalui indeks navigasi [`docs/SUMMARY.md`](docs/SUMMARY.md).
-- **Pelayan Nginx & Apache:** Halakan *DocumentRoot* terus ke direktori `html/` (menggunakan pautan relatif luar talian).
+- **Penggunaan Terus Tanpa Build (`git pull`):** Direktori [`html/`](html/) telah disediakan secara **prabina (pre-built)** dan dijejak terus di dalam Git. Pengguna boleh terus membuka `html/index.html` pada pelayar web atau menghalakan pelayan web tanpa perlu membina semula projek.
+- **GitHub Pages / GitLab Pages:** Boleh diterbitkan terus daripada folder `html/` melalui tetapan repositori atau *pipeline* CI/CD.
+- **Read the Docs:** Dikonfigurasikan secara langsung melalui [`mkdocs.yml`](mkdocs.yml).
+- **GitBook:** Disokong melalui indeks navigasi Diátaxis [`docs/SUMMARY.md`](docs/SUMMARY.md).
+- **Pelayan Nginx & Apache:** Halakan *DocumentRoot* terus ke direktori `html/` (disokong penuh oleh mod URL berkait luar talian).
+- **Panduan Terperinci:** Rujuk panduan operasi amali di [**`docs/how-to/deploy-and-serve-html.md`**](docs/how-to/deploy-and-serve-html.md).
 - **Konteks AI / LLM:** Disokong melalui [`llms.txt`](llms.txt), `llms-full.txt`, dan skema **Google OKF v0.1**.
 
 ---

@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noss-linguistic-auditor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: noss-linguistic-auditor
+title: noss-linguistic-auditor
+description: "This skill teaches an AI agent to **read and audit** NOSS Level 3 Competency Profile content for linguistic compliance.  The agent applies **four quality gates** by reading the content and comparin..."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+noss_code: 
+target_level: 3
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="noss-linguistic-auditor-skill">NOSS Linguistic Auditor Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill teaches an AI agent to <strong>read and audit</strong> NOSS Level 3 Competency<br />
+Profile content for linguistic compliance.</p>
+<p>The agent applies <strong>four quality gates</strong> by reading the content and comparing<br />
+it against the rules and examples in this document:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Gate</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">What it checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">G1</td>
+<td style="text-align: left;"><strong>Active Voice</strong></td>
+<td style="text-align: left;">Work Steps begin with an action verb</td>
+</tr>
+<tr>
+<td style="text-align: left;">G2</td>
+<td style="text-align: left;"><strong>Passive Voice</strong></td>
+<td style="text-align: left;">Performance Criteria contain a passive-voice indicator</td>
+</tr>
+<tr>
+<td style="text-align: left;">G3</td>
+<td style="text-align: left;"><strong>1-to-1 Mapping</strong></td>
+<td style="text-align: left;">Step count exactly equals Criteria count per WA</td>
+</tr>
+<tr>
+<td style="text-align: left;">G4</td>
+<td style="text-align: left;"><strong>Language Cleanliness</strong></td>
+<td style="text-align: left;">No vague phrases, no forbidden OS commands</td>
+</tr>
+<tr>
+<td style="text-align: left;">G5</td>
+<td style="text-align: left;"><strong>UK English Spelling</strong></td>
+<td style="text-align: left;">All content uses British English spelling conventions</td>
+</tr>
+<tr>
+<td style="text-align: left;">G6</td>
+<td style="text-align: left;"><strong>ASE Domain Separation</strong></td>
+<td style="text-align: left;">Strict separation of physical Safety vs IT Security, plus grammar rules</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-the-four-quality-gates">2. The Four Quality Gates</h2>
+<hr />
+<h3 id="gate-g1-active-voice-work-steps">Gate G1 — Active Voice (Work Steps)</h3>
+<p><strong>Rule:</strong> Every Work Step must begin with a present-tense <strong>action verb</strong>.</p>
+<p>A step describes what <strong>the person does</strong>. It must not begin with:<br />
+- A past-tense verb ending in <code>-ed</code> (e.g. <code>Installed</code>, <code>Configured</code>, <code>Verified</code>)<br />
+- A noun (e.g. <code>The system</code>, <code>Server</code>, <code>Network</code>)<br />
+- A passive construction (e.g. <code>Is installed</code>, <code>Was configured</code>)</p>
+<h4 id="pass-examples-active-voice">✅ PASS Examples (Active Voice)</h4>
+<pre><code>Install the server operating system using the bootable USB drive.
+Configure the hostname and static IP address in the network settings file.
+Verify the network adapter link status using the ping command.
+Open the firewall management console on the local system.
+Check the system log directory for critical error entries.
+</code></pre>
+<h4 id="fail-examples-passive-voice-in-steps">❌ FAIL Examples (Passive Voice in Steps)</h4>
+<pre><code>Installed the server OS using the bootable USB.       ← past-tense, sounds passive
+The hostname was configured in the settings file.     ← &quot;was configured&quot; = passive
+Network adapter is verified using ping.               ← &quot;is verified&quot; = passive
+System log directory is opened to check errors.       ← &quot;is opened&quot; = passive
+</code></pre>
+<h4 id="how-to-fix">🔧 How to Fix</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ FAIL</th>
+<th style="text-align: left;">✅ PASS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Installed the server OS</code></td>
+<td style="text-align: left;"><code>Install the server OS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>The hostname was configured</code></td>
+<td style="text-align: left;"><code>Configure the hostname</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Network adapter is verified</code></td>
+<td style="text-align: left;"><code>Verify the network adapter</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pattern:</strong> Strip past tense / passive wrapper → start with bare infinitive verb.</p>
+<hr />
+<h3 id="gate-g2-passive-voice-performance-criteria">Gate G2 — Passive Voice (Performance Criteria)</h3>
+<p><strong>Rule:</strong> Every Performance Criterion must contain a <strong>passive-voice indicator</strong><br />
+verb and end with <code>in accordance with [reference/standard/policy]</code>.</p>
+<p>A criterion describes what <strong>was achieved</strong>. It must:<br />
+1. Start with the <strong>object</strong> (not the person)<br />
+2. Contain a past-participle passive verb (see whitelist below)<br />
+3. End with <code>in accordance with [document/policy/procedure]</code></p>
+<h4 id="approved-passive-verb-whitelist">Approved Passive Verb Whitelist</h4>
+<p>The criterion must contain <strong>at least one</strong> of these words:</p>
+<blockquote>
+<p><strong>Note:</strong> All words use <strong>UK English spelling</strong>. US spellings (e.g. <code>analyzed</code>, <code>synchronized</code>) are not accepted.</p>
+</blockquote>
+<pre><code>accessed        activated       added           addressed       allocated
+analysed        applied         archived        assembled       assigned
+audited         booted          captured        categorised     checked
+cleared         cloned          closed          collected       compiled
+completed       confirmed       configured      connected       conducted
+converted       copied          created         defined         deployed
+determined      diagnosed       disabled        displayed       documented
+established     evaluated       executed        exported        extracted
+filtered        formatted       generated       handled         identified
+implemented     installed       inspected       investigated    isolated
+launched        loaded          locked          logged          maintained
+managed         mapped          matched         monitored       mounted
+notified        operated        organised       parsed          performed
+prepared        provided        pulled          purged          queried
+recognised      recorded        reclaimed       registered      removed
+resolved        restored        restricted      retrieved       reviewed
+reverted        saved           scheduled       secured         selected
+set             simulated       started         stopped         structured
+submitted       supported       synchronised    tested          toggled
+traced          tracked         triaged         triggered       updated
+uploaded        validated       verified        visualised      written
+</code></pre>
+<h4 id="pass-examples-passive-voice-criteria">✅ PASS Examples (Passive Voice Criteria)</h4>
+<pre><code>Server operating system installed and license credentials configured in
+accordance with license compliance guides.
+
+Network adapter link status and gateway connectivity verified using ping
+tools in accordance with connection guidelines.
+
+System log directory accessed and critical error files identified in
+accordance with diagnostic checklist.
+
+Firewall inbound rules configured to block unauthorized packets in
+accordance with host network defense policies.
+</code></pre>
+<h4 id="fail-examples-active-no-passive-indicator">❌ FAIL Examples (Active / No Passive Indicator)</h4>
+<pre><code>The technician installs the OS and sets up the credentials.
+← Active voice, starts with &quot;the technician&quot;
+
+User opens the firewall console and blocks the ports.
+← Active voice, no passive verb from whitelist
+
+Network settings should be correct for the system to work.
+← Vague, no passive indicator, no &quot;in accordance with&quot;
+
+Check that the ping works.
+← Active command, not a criterion
+</code></pre>
+<h4 id="how-to-fix_1">🔧 How to Fix</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ FAIL</th>
+<th style="text-align: left;">✅ PASS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>The technician installs the OS</code></td>
+<td style="text-align: left;"><code>OS installed and credentials configured in accordance with license compliance guides.</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>User opens the firewall</code></td>
+<td style="text-align: left;"><code>Firewall configuration interface accessed in accordance with security policy.</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Check that the ping works</code></td>
+<td style="text-align: left;"><code>Network connectivity verified using ping tools in accordance with connection guidelines.</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pattern:</strong> Object first → passive verb → <code>in accordance with [reference]</code>.</p>
+<hr />
+<h3 id="gate-g3-1-to-1-mapping">Gate G3 — 1-to-1 Mapping</h3>
+<p><strong>Rule:</strong> The number of Work Steps in a WA must <strong>exactly equal</strong> the number<br />
+of Performance Criteria in that same WA.</p>
+<p>Each step N.M must have a matching criterion N.M.</p>
+<h4 id="pass-example-5-steps-5-criteria">✅ PASS Example (5 steps = 5 criteria)</h4>
+<pre><code>WORK STEPS                                    PERFORMANCE CRITERIA
+1.1 Identify server installation specs.       1.1 Server specs identified in accordance with checklist.
+1.2 Identify server hardware requirements.    1.2 Hardware requirements identified in accordance with procedure.
+1.3 Identify server software requirements.    1.3 Software requirements identified in accordance with specs.
+1.4 Map server network configuration.         1.4 Network config mapped in accordance with addressing scheme.
+1.5 Prepare installation tools.               1.5 Tools prepared in accordance with handling guidelines.
+</code></pre>
+<h4 id="fail-example-5-steps-4-criteria">❌ FAIL Example (5 steps ≠ 4 criteria)</h4>
+<pre><code>WORK STEPS                                    PERFORMANCE CRITERIA
+1.1 Identify server installation specs.       1.1 Server specs identified in accordance with checklist.
+1.2 Identify server hardware requirements.    1.2 Hardware requirements identified in accordance with procedure.
+1.3 Identify server software requirements.    1.3 Software requirements identified in accordance with specs.
+1.4 Map server network configuration.         1.4 Network config mapped in accordance with addressing scheme.
+1.5 Prepare installation tools.               ← MISSING criterion 1.5
+</code></pre>
+<p><strong>Fix:</strong> Add the missing criterion, or remove the extra step. Always balance.</p>
+<hr />
+<h3 id="gate-g4-language-cleanliness">Gate G4 — Language Cleanliness</h3>
+<p>This gate has <strong>three sub-checks</strong>:</p>
+<h4 id="g4a-no-vague-or-guess-and-check-language">G4a — No Vague or "Guess and Check" Language</h4>
+<p>These phrases are <strong>forbidden</strong> anywhere in Work Steps or Performance Criteria:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Forbidden Phrase</th>
+<th style="text-align: left;">Why forbidden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>guess</code></td>
+<td style="text-align: left;">No guessing in a structured operation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>trial and error</code></td>
+<td style="text-align: left;">Trainees need deterministic steps</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>play around</code></td>
+<td style="text-align: left;">Unprofessional and unstructured</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>try running</code></td>
+<td style="text-align: left;">Implies uncertainty — use <code>Run</code> instead</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>check the screen error</code></td>
+<td style="text-align: left;">Too vague — specify what to check</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>should work</code></td>
+<td style="text-align: left;">Not a verifiable outcome</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>might be</code></td>
+<td style="text-align: left;">Ambiguous</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>somehow</code></td>
+<td style="text-align: left;">Vague</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pass-precise-language">✅ PASS (Precise language)</h4>
+<pre><code>Run the system disk cleanup utility using the built-in tool.
+Verify the backup status in the task scheduler log.
+Identify the error code from the system event viewer.
+</code></pre>
+<h4 id="fail-vague-language">❌ FAIL (Vague language)</h4>
+<pre><code>Try running the cleanup tool and see if it works.
+Play around with the settings until the backup works.
+Somehow get the error message from somewhere in the log.
+</code></pre>
+<hr />
+<h4 id="g4b-no-forbidden-os-commands-os-boundary-check">G4b — No Forbidden OS Commands (OS Boundary Check)</h4>
+<p>Linux content must not reference Windows commands.<br />
+Windows content must not reference Linux commands.</p>
+<p><strong>Forbidden in Linux content:</strong></p>
+<pre><code>ipconfig       powershell      cmd.exe
+cls            dir /           dir \
+</code></pre>
+<p><strong>Forbidden in Windows content:</strong></p>
+<pre><code>apt update     apt install     clamscan
+lynis          systemctl restart    sudo systemctl
+</code></pre>
+<h4 id="pass">✅ PASS</h4>
+<pre><code>[Linux step]  Check network interface settings using the ip addr command.
+[Windows step] Check network adapter settings using the ipconfig command.
+</code></pre>
+<h4 id="fail">❌ FAIL</h4>
+<pre><code>[Linux step]  Use ipconfig to check network settings.     ← Windows command in Linux content
+[Windows step] Run apt install to install the package.    ← Linux command in Windows content
+</code></pre>
+<hr />
+<h4 id="g4c-no-overly-complex-commands-in-trainee-steps">G4c — No Overly Complex Commands in Trainee Steps</h4>
+<p>Commands in Work Steps must be simple, single-purpose, and Level 3 appropriate.</p>
+<p><strong>Forbidden patterns:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">Why forbidden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>awk</code> pipelines</td>
+<td style="text-align: left;">Too complex for L3 trainees</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sed</code> inline substitution</td>
+<td style="text-align: left;">Abstracted to <code>/scripts/</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grep -E</code> or <code>grep -P</code></td>
+<td style="text-align: left;">Regex too advanced</td>
+</tr>
+<tr>
+<td style="text-align: left;">More than 1 pipe <code>\|</code> in one command</td>
+<td style="text-align: left;">Complex pipeline — abstract it</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>perl -e</code></td>
+<td style="text-align: left;">Not a basic utility</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pass-simple-commands">✅ PASS (Simple commands)</h4>
+<pre><code>cat /var/log/syslog
+systemctl status nginx
+ip addr show
+ping -c 4 8.8.8.8
+ls -lh /var/backups/
+</code></pre>
+<h4 id="fail-too-complex-for-level-3">❌ FAIL (Too complex for Level 3)</h4>
+<pre><code>awk '{print $1}' /var/log/auth.log | sort | uniq -c | sort -rn | head -10
+grep -E &quot;Failed|Invalid&quot; /var/log/auth.log | awk '{print $NF}' | sort
+sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+</code></pre>
+<p><strong>Fix:</strong> Move complex commands to <code>/scripts/</code> bash files. Reference the script name in the step:</p>
+<pre><code>Run the audit-ssh-failures.sh script to extract failed login events.
+</code></pre>
+<hr />
+<h2 id="3-how-to-apply-this-skill-step-by-step">3. How to Apply This Skill (Step-by-Step)</h2>
+<h3 id="step-1-read-the-content">Step 1 — Read the content</h3>
+<p>Read the Work Activity content to be audited. Identify:<br />
+- The WA title and code<br />
+- All Work Steps (numbered N.M)<br />
+- All Performance Criteria (numbered N.M)</p>
+<h3 id="step-2-run-gate-g3-first-count-check">Step 2 — Run Gate G3 first (count check)</h3>
+<p>Count the steps and count the criteria.<br />
+If they do not match → flag immediately and stop. Fix the count before checking voice.</p>
+<h3 id="step-3-run-gate-g1-active-voice-on-steps">Step 3 — Run Gate G1 (Active Voice on Steps)</h3>
+<p>For each step:<br />
+- Read the first word<br />
+- Is it a present-tense action verb? → PASS<br />
+- Does it end in <code>-ed</code>? → FAIL<br />
+- Does it start with <code>The</code>, <code>A</code>, <code>An</code>? → FAIL<br />
+- Does it contain <code>is/was/were + verb</code>? → FAIL</p>
+<h3 id="step-4-run-gate-g2-passive-voice-on-criteria">Step 4 — Run Gate G2 (Passive Voice on Criteria)</h3>
+<p>For each criterion:<br />
+- Does it contain at least one word from the Passive Verb Whitelist? → PASS<br />
+- Does it end with <code>in accordance with [something]</code>? → Required<br />
+- Does it start with an object (not "The technician" or "The person")? → Required</p>
+<h3 id="step-5-run-gate-g4-g5">Step 5 — Run Gate G4 &amp; G5</h3>
+<p>Scan every line for:<br />
+- Forbidden vague phrases (G4a)<br />
+- Wrong OS commands for the platform (G4b)<br />
+- Complex multi-pipe commands or awk/sed (G4c)<br />
+- UK English spelling enforcement (G5)</p>
+<h3 id="step-6-run-gate-g6-ase-domain-separation">Step 6 — Run Gate G6 (ASE Domain Separation)</h3>
+<p>Scan Attitude/Safety/Environment columns:<br />
+- Does SAFETY contain IT security rules? (e.g., password, firewall, SHA-256) → FAIL<br />
+- Do ATTITUDE sentences start with a descriptive adjective? → Required<br />
+- Do ENVIRONMENT sentences start with a sustainability verb? → Required<br />
+- Do SAFETY sentences start with a physical care imperative verb? → Required</p>
+<h3 id="step-7-report-findings">Step 7 — Report findings</h3>
+<p>For each error found, report in this format:</p>
+<pre><code>[GATE] [WA Code] [Step/Criterion Number]
+Issue: [description of the problem]
+Current text: &quot;[the failing text]&quot;
+Suggested fix: &quot;[the corrected text]&quot;
+</code></pre>
+<h3 id="step-8-confirm-pass">Step 8 — Confirm PASS</h3>
+<p>If no errors are found across all 4 gates:</p>
+<pre><code>✅ PASS — [WA Code]: All linguistic quality gates satisfied.
+Steps: N | Criteria: N | Active Voice: ✓ | Passive Voice: ✓ | Language: ✓
+</code></pre>
+<hr />
+<h2 id="4-quick-reference-card">4. Quick Reference Card</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│               NOSS L3 LINGUISTIC QUALITY GATES                  │
+├──────┬──────────────────────────────────────────────────────────┤
+│  G1  │ WORK STEPS → Active Voice                                │
+│      │ ✓ Start with action verb: Install / Configure / Verify   │
+│      │ ✗ No past tense: Installed / Configured / Was verified   │
+├──────┼──────────────────────────────────────────────────────────┤
+│  G2  │ PERFORMANCE CRITERIA → Passive Voice                     │
+│      │ ✓ Object first + passive verb + &quot;in accordance with&quot;     │
+│      │ ✗ No active construction, no missing reference           │
+├──────┼──────────────────────────────────────────────────────────┤
+│  G3  │ 1-to-1 MAPPING                                           │
+│      │ ✓ Step count = Criteria count (exact match)              │
+│      │ ✗ Any mismatch = immediate FAIL                          │
+├──────┼──────────────────────────────────────────────────────────┤
+│  G4  │ LANGUAGE CLEANLINESS                                     │
+│      │ ✓ Precise, deterministic language                        │
+│      │ ✗ No: &quot;try&quot;, &quot;guess&quot;, &quot;play around&quot;, &quot;should work&quot;       │
+│      │ ✗ No: wrong OS commands for the platform                 │
+│      │ ✗ No: awk / sed / grep -E / multi-pipe commands          │
+├──────┼──────────────────────────────────────────────────────────┤
+│  G5  │ UK ENGLISH SPELLING                                      │
+│      │ ✓ Use -ise, -our, -re (e.g. Virtualisation, Colour)      │
+│      │ ✗ No US spelling (e.g. Virtualization, Color)            │
+├──────┼──────────────────────────────────────────────────────────┤
+│  G6  │ ASE DOMAIN SEPARATION                                    │
+│      │ ✓ SAFETY is strictly physical (ESD, lifting)             │
+│      │ ✗ SAFETY must NOT contain IT Security (passwords, crypto)│
+└──────┴──────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2 id="5-gate-g5-uk-english-spelling">5. Gate G5 — UK English Spelling</h2>
+<p><strong>Rule:</strong> All content must use <strong>British English</strong> spelling. Malaysia follows the<br />
+Commonwealth standard and JPK documents use British English conventions.</p>
+<h3 id="mandatory-uk-spellings">Mandatory UK Spellings</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ US Spelling (REJECT)</th>
+<th style="text-align: left;">✅ UK Spelling (ACCEPT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>analyzed</code></td>
+<td style="text-align: left;"><code>analysed</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Analyze</code></td>
+<td style="text-align: left;"><code>Analyse</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>organized</code></td>
+<td style="text-align: left;"><code>organised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>recognized</code></td>
+<td style="text-align: left;"><code>recognised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>synchronized</code></td>
+<td style="text-align: left;"><code>synchronised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>categorized</code></td>
+<td style="text-align: left;"><code>categorised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>prioritized</code></td>
+<td style="text-align: left;"><code>prioritised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>optimized</code></td>
+<td style="text-align: left;"><code>optimised</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>utilization</code></td>
+<td style="text-align: left;"><code>utilisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>virtualization</code></td>
+<td style="text-align: left;"><code>virtualisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>organization</code></td>
+<td style="text-align: left;"><code>organisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>authorization</code></td>
+<td style="text-align: left;"><code>authorisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>initialization</code></td>
+<td style="text-align: left;"><code>initialisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>visualization</code></td>
+<td style="text-align: left;"><code>visualisation</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>color</code></td>
+<td style="text-align: left;"><code>colour</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>behavior</code></td>
+<td style="text-align: left;"><code>behaviour</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>neighbor</code></td>
+<td style="text-align: left;"><code>neighbour</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>license</code> (noun)</td>
+<td style="text-align: left;"><code>licence</code> (noun)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>practice</code> (verb)</td>
+<td style="text-align: left;"><code>practise</code> (verb)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>program</code> (non-IT)</td>
+<td style="text-align: left;"><code>programme</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> In computing contexts, <code>program</code> (software) is acceptable in both variants.<br />
+<code>licence</code> as a noun (e.g. <code>license key</code>) — use <code>licence</code>. As a verb <code>to license</code> both are accepted but prefer UK.</p>
+</blockquote>
+<h3 id="pass-examples">✅ PASS Examples</h3>
+<pre><code>Server operating systems and virtualisation platforms determined...
+Diagnostic findings analysed in accordance with troubleshooting guidelines.
+Resource utilisation metrics verified in accordance with monitoring policy.
+Organised in accordance with inventory organisation standards.
+</code></pre>
+<h3 id="fail-examples">❌ FAIL Examples</h3>
+<pre><code>Diagnostic findings analyzed in accordance with troubleshooting guidelines.
+← &quot;analyzed&quot; is US spelling → fix to &quot;analysed&quot;
+
+Virtualization platforms installed in accordance with...
+← &quot;Virtualization&quot; is US spelling → fix to &quot;Virtualisation&quot;
+
+Resource utilization metrics verified...
+← &quot;utilization&quot; is US spelling → fix to &quot;utilisation&quot;
+</code></pre>
+<hr />
+<h2 id="6-gate-g6-ase-domain-separation">6. Gate G6 — ASE Domain Separation</h2>
+<p><strong>Rule:</strong> The <code>ATTITUDE / SAFETY / ENVIRONMENT</code> section must strictly separate physical human safety from IT security, and enforce specific grammatical constraints for each domain.</p>
+<h3 id="g6a-safety-vs-security">G6a — Safety vs. Security</h3>
+<ul>
+<li><strong>SAFETY</strong> is strictly about the physical safety of the human performing the task. (e.g., ergonomics, ESD straps, handling sharp tools). IT Security (passwords, firewalls, credentials, cryptographic hashes) must <strong>NEVER</strong> be placed under SAFETY.</li>
+</ul>
+<h3 id="g6b-grammar-enforcements">G6b — Grammar Enforcements</h3>
+<ul>
+<li><strong>ATTITUDE:</strong> Must begin with a descriptive adjective (e.g., <em>Systematic in...</em>, <em>Careful in...</em>).</li>
+<li><strong>ENVIRONMENT:</strong> Must begin with a sustainability action verb (e.g., <em>Practice [3R]</em>, <em>Minimize...</em>).</li>
+<li><strong>SAFETY:</strong> Must begin with a physical care action verb (e.g., <em>Wear</em>, <em>Practice</em>, <em>Isolate</em>).</li>
+<li><strong>SECURITY:</strong> Must begin with a defense/governance action verb (e.g., <em>Comply</em>, <em>Protect</em>, <em>Validate</em>).</li>
+</ul>
+<h4 id="pass-examples_1">✅ PASS Examples</h4>
+<pre><code>ATTITUDE Systematic in recording support information.
+ENVIRONMENT Practice 3R concept for electronic parts.
+SAFETY Wear ESD wrist strap when handling electronics.
+SECURITY Protect database folders containing licensing keys.
+</code></pre>
+<h4 id="fail-examples_1">❌ FAIL Examples</h4>
+<pre><code>SAFETY Protect administrator credentials.
+← FAIL (G6a): IT Security must not be listed as Safety.
+
+ENVIRONMENT Always turn off the lights.
+← FAIL (G6b): Missing sustainability action verb (e.g. &quot;Minimize&quot;).
+</code></pre>
+<hr />
+<h2 id="7-scope-boundary">7. Scope Boundary</h2>
+<blockquote>
+<p><strong>⚠️ LEVEL 3 CONSTRAINT</strong></p>
+<p>This skill audits content intended for <strong>SPM-entry vocational trainees</strong>.<br />
+All corrections must maintain Level 3 simplicity.<br />
+Do not introduce advanced terminology, complex commands, or Level 4+ concepts<br />
+when suggesting fixes.</p>
+</blockquote>
+<hr />
+<h2 id="8-related-skills">8. Related Skills</h2>
+<ul>
+<li><strong><code>noss-cp-docx-formatter</code></strong> — use after linguistic audit to regenerate CP documents</li>
+<li><strong><code>noss-cpc-docx-formatter</code></strong> — use after audit to regenerate CPC documents</li>
+<li><strong><code>template-noss-l3-skill</code></strong> — reference template for correct SKILL.md structure</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

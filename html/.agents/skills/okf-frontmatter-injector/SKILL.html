@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>okf-frontmatter-injector - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: okf-frontmatter-injector
+description: Scans a target directory and automatically injects OKF v0.1 YAML frontmatter into any Markdown files missing it.
+topics: [okf, frontmatter, yaml, compliance, markdown]
+timestamp: 2026-07-04T10:00:00Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="okf-frontmatter-injector">💉 OKF Frontmatter Injector</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when the user asks to ensure documentation is OKF (Open Knowledge Format) compliant, or when importing new markdown files that lack standard YAML frontmatter headers.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>This skill utilises a Python script embedded in <code>scripts/apply_okf.py</code>.</li>
+<li>Ask the user for the target directory to scan (default is the project root <code>.</code>).</li>
+<li>Execute the script using your terminal tools:<br />
+<code>bash
+   python .agents/skills/okf-frontmatter-injector/scripts/apply_okf.py &lt;TARGET_DIRECTORY&gt;</code></li>
+<li>The script will automatically skip files that already possess frontmatter. It categorizes files dynamically based on their folder structure (e.g. <code>agent_skill</code>, <code>governance_protocol</code>, etc.).</li>
+<li>Inform the user of the total number of files modified based on the script's output.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

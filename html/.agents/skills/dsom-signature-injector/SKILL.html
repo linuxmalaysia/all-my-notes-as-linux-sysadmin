@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Sovereign Signature Injector - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: skill
+title: "Universal Sovereign Signature Injector"
+name: "dsom-signature-injector"
+description: "Automatically injects the standard DSOM ownership, timestamp, and GPL v3.0 license signature into Markdown files and executable scripts based on the file's last modified date."
+topics: [signature, license, gpl, okf, markdown]
+timestamp: 2026-07-12T07:08:35Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="dsom-signature-injector">DSOM Signature Injector</h1>
+<p><strong>Purpose</strong>: To enforce digital sovereignty and authorship across all readable files in the DSOM framework. </p>
+<h2 id="execution-workflow">Execution Workflow</h2>
+<ol>
+<li><strong>Trigger Condition</strong>: When generating a new Markdown file, script, or playbook, or when the user asks to sign/stamp a directory or file.</li>
+<li><strong>Execute Script</strong>: Run the embedded Python script targeting the specific file or directory.</li>
+</ol>
+<p>\\ash<br />
+   python .agents/skills/dsom-signature-injector/scripts/inject.py <target_path><br />
+   \\</p>
+<h2 id="technical-constraints">Technical Constraints</h2>
+<ul>
+<li><strong>Markdown (.md):</strong> The script blind-appends the signature to the bottom using an italicized Markdown footer. The timestamp is dynamically calculated from the file's \mtime.</li>
+<li><strong>Code Files (.sh, .ps1, .yml):</strong> The script prepends the signature to the top of the file using the appropriate comment syntax (e.g., #) to ensure the code remains executable without fatal syntax errors.</li>
+</ul>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-12</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

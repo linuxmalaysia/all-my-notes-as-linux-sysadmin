@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sod-palace-sync - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: sod-palace-sync
+description: The Reanimation (Start of Day) ritual to load the workspace context and establish the day's tasks.
+topics: [sod, palace, sync, git, ritual]
+timestamp: 2026-06-19T14:00:00Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="sod-palace-sync-reanimation">🌅 SOD Palace Sync (Reanimation)</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when the user declares "Start of Day" (SOD), "Wake up", "Reanimate", or initiates a new working session.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li><strong>Context Loading:</strong> Immediately read <code>.agents/brain/palace_registry.md</code> to map the workspace.</li>
+<li><strong>Anchor Retrieval:</strong> Read <code>.agents/brain/checkpoint_summary.txt</code> to find the latest "[MENTAL ANCHOR]" left by the previous session.</li>
+<li><strong>Task Initialization:</strong> Create or update <code>.agents/brain/task.md</code> outlining the immediate objectives based on the Mental Anchor.</li>
+<li><strong>Environment Check:</strong> Ensure the daily mechanical scripts have been run by the user or run them if appropriate:<br />
+<code>powershell
+   # On Windows
+   .\tools\sod-palace.ps1</code><br />
+<code>bash
+   # On Linux/macOS
+   bash tools/sod-palace.sh</code></li>
+<li>Acknowledge your Reanimation and state: "Sovereign State Synchronised. Awaiting instructions."</li>
+</ol>
+<h2 id="architecture-implementation">Architecture &amp; Implementation</h2>
+<p>If <code>tools/sod-palace.ps1</code> or <code>tools/sod-palace.sh</code> are missing, agents must reconstruct them with the following logic:<br />
+1. <strong>Git Pull:</strong> Perform a <code>git pull --rebase origin main</code> to sync local state.<br />
+2. <strong>Pre-flight Audit:</strong> Execute <code>.tools/audit-pre-flight.ps1</code> (or the equivalent Linux checks).<br />
+3. <strong>Registry Check:</strong> Verify that <code>.agents/brain/palace_registry.md</code> exists.<br />
+4. <strong>Reanimation Manifest:</strong> Execute <code>.\tools\reanimate.ps1</code> to bundle the workspace context into a timestamped <code>sod_manifest_&lt;date&gt;.txt</code> file.<br />
+5. <strong>Prompt User:</strong> Instruct the human to upload the newly generated manifest and initialize the AI via the DSOM protocol.<br />
+<em>(Note: On Linux/macOS, <code>sod-palace.sh</code> simply wraps <code>ansible-playbook playbooks/dsom/sod-palace.yml</code> with <code>ANSIBLE_NOCOWS=1</code>)</em></p>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-06-19</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

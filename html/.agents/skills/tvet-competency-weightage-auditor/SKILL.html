@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tvet-competency-weightage-auditor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: tvet-competency-weightage-auditor
+title: tvet-competency-weightage-auditor
+description: "This skill teaches an AI agent to **audit, validate, and structure** JPK-compliant **Competency Weightage (Peratusan Pemberat Kompetensi)** matrices for NOSS curricula.  The agent applies **four st..."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+noss_code: 
+target_level: 3
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="tvet-competency-weightage-auditor-skill">TVET Competency Weightage Auditor Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill teaches an AI agent to <strong>audit, validate, and structure</strong> JPK-compliant <strong>Competency Weightage (Peratusan Pemberat Kompetensi)</strong> matrices for NOSS curricula.</p>
+<p>The agent applies <strong>four strict validation gates</strong> to check mathematical integrity, elective bounds, and educational prioritization before generating or publishing weightage sheets.</p>
+<hr />
+<h2 id="2-validation-gates">2. Validation Gates</h2>
+<h3 id="gate-g1-core-cu-sum-constraint-100-core-total">Gate G1 — Core CU Sum Constraint (100% Core Total)</h3>
+<ul>
+<li><strong>Rule:</strong> The sum of parent <code>Competency Unit Weightage</code> percentages across all Core Competency Units must equal exactly <strong>100%</strong>.</li>
+<li><strong>Audit Action:</strong> Sum the parent percentages of all Core CUs. If the total is not 100%, flag a failure.</li>
+</ul>
+<h3 id="gate-g2-work-activity-sum-constraint-100-per-cu">Gate G2 — Work Activity Sum Constraint (100% per CU)</h3>
+<ul>
+<li><strong>Rule:</strong> Within any single Competency Unit, the sum of all child <code>Work Activities Weightage</code> percentages must equal exactly <strong>100%</strong>.</li>
+<li><strong>Audit Action:</strong> For each CU, sum the child WA percentages. If any CU's activities do not sum to exactly 100%, flag a failure for that CU.</li>
+</ul>
+<h3 id="gate-g3-elective-cu-capacity-cap-max-30">Gate G3 — Elective CU Capacity Cap (Max 30%)</h3>
+<ul>
+<li><strong>Rule:</strong> If elective Competency Units are included in the curriculum, their combined weightage must not exceed <strong>30%</strong> of the total core competency unit weightage.</li>
+<li><strong>Audit Action:</strong> Check if the sum of all elective CUs is (\le 30\%).</li>
+</ul>
+<h3 id="gate-g4-complexity-and-priority-check-pedagogical-check">Gate G4 — Complexity and Priority Check (Pedagogical Check)</h3>
+<ul>
+<li><strong>Rule:</strong> Module weightages must align with task complexity, safety risks, and training contact hours:</li>
+<li>High-complexity modules (e.g., system administration, troubleshooting, security hardening) should generally have higher weightage.</li>
+<li>Basic or introductory modules (e.g., computer setup) should have lower or moderate weightage.</li>
+</ul>
+<hr />
+<h2 id="3-reference-table-structure">3. Reference Table Structure</h2>
+<p>All generated Competency Weightage tables must be structured as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">CU CODE</th>
+<th style="text-align: left;">COMPETENCY UNIT TITLE</th>
+<th style="text-align: left;">COMPETENCY UNIT WEIGHTAGE</th>
+<th style="text-align: left;">WORK ACTIVITIES</th>
+<th style="text-align: left;">WORK ACTIVITIES WEIGHTAGE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>[CU-CODE-1]</strong></td>
+<td style="text-align: left;">[CU Title 1]</td>
+<td style="text-align: left;">[CU-1 Weight]%</td>
+<td style="text-align: left;">1. [WA 1 Title]<br>2. [WA 2 Title]<br>3. [WA 3 Title]</td>
+<td style="text-align: left;">[WA-1 Weight]%<br>[WA-2 Weight]%<br>[WA-3 Weight]%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>[CU-CODE-2]</strong></td>
+<td style="text-align: left;">[CU Title 2]</td>
+<td style="text-align: left;">[CU-2 Weight]%</td>
+<td style="text-align: left;">1. [WA 1 Title]<br>2. [WA 2 Title]</td>
+<td style="text-align: left;">[WA-1 Weight]%<br>[WA-2 Weight]%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TOTAL</strong></td>
+<td style="text-align: left;"><strong>CORE COMPETENCY</strong></td>
+<td style="text-align: left;"><strong>100%</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-audit-execution-runbook">4. Audit Execution Runbook</h2>
+<p>When requested to review a weightage sheet, execute this checklist:<br />
+1. <strong>List all Core CUs</strong> and calculate the sum of the <code>Competency Unit Weightage</code> column. Verify it is exactly <code>100%</code>.<br />
+2. <strong>For each CU</strong>, verify that the child <code>Work Activities Weightage</code> values sum up to exactly <code>100%</code>.<br />
+3. <strong>If electives exist</strong>, sum their parent weights and ensure the total is (\le 30\%).<br />
+4. <strong>Identify anomalies:</strong> Flag any CUs or WAs with (0\%) weightage, non-integer values, or missing titles.<br />
+5. <strong>Output a clear pass/fail report</strong> indicating the status of Gates G1 to G4.</p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

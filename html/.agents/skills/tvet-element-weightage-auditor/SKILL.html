@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tvet-element-weightage-auditor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: tvet-element-weightage-auditor
+title: tvet-element-weightage-auditor
+description: "This skill teaches an AI agent to **audit, validate, and structure** JPK-compliant **Element Content Weightage** matrices for NOSS curricula, enforcing the strict 100% vertical column rule."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+target_level: 3
+topics: [noss, tvet, weightage, audit, element]
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="tvet-element-content-weightage-auditor-skill">TVET Element Content Weightage Auditor Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill teaches an AI agent to <strong>audit, calculate, and construct</strong> JPK-compliant <strong>Element Content Weightage</strong> tables for NOSS curricula.</p>
+<p>This matrix differs fundamentally from the standard "Competency Weightage" table. The critical distinction is that weightages are distributed <strong>vertically across all Competency Units</strong> rather than horizontally per unit.</p>
+<hr />
+<h2 id="2-validation-gates">2. Validation Gates</h2>
+<h3 id="gate-g1-the-vertical-sum-mandate-100-per-column">Gate G1 — The Vertical Sum Mandate (100% per Column)</h3>
+<ul>
+<li><strong>Rule:</strong> Each individual domain column (OSH, SD, M&amp;A, IT) must sum to exactly <strong>100% vertically</strong> across all Competency Units. </li>
+<li><strong>Audit Action:</strong> Sum the percentages down each column. If any column (OSH, SD, M&amp;A, IT) does not equal exactly 100%, the matrix fails validation and must be recalculated.</li>
+</ul>
+<h3 id="gate-g2-the-justification-requirement">Gate G2 — The Justification Requirement</h3>
+<ul>
+<li><strong>Rule:</strong> The <code>NOTES</code> row at the bottom of the table must explicitly state which Competency Unit(s) received the <em>Highest</em> and <em>Lowest</em> percentage for each domain, along with a pedagogical justification.</li>
+<li><strong>Audit Action:</strong> Ensure the NOTES row contains 4 distinct blocks (OSH, SD, M&amp;A, IT) explaining the reasoning for the highest and lowest values.</li>
+</ul>
+<hr />
+<h2 id="3-domain-definitions-pedagogical-anchors">3. Domain Definitions &amp; Pedagogical Anchors</h2>
+<p>When calculating or distributing weightages, agents must anchor percentages to these specific domain realities:</p>
+<ol>
+<li><strong>OSH (Occupational Safety and Health):</strong></li>
+<li><em>High Weightage:</em> Tasks involving physical hardware lifting, rack mounting, server room environmental hazards, and under-desk electrical cabling (e.g., Hardware Installation, End-User Support).</li>
+<li>
+<p><em>Low Weightage:</em> Pure software, logical, or remotely configured domains (e.g., Virtualisation, Cybersecurity).</p>
+</li>
+<li>
+<p><strong>SD (Sustainable Development):</strong></p>
+</li>
+<li><em>High Weightage:</em> Domains that heavily reduce physical footprints, power consumption, and e-waste (e.g., Virtualisation / Server Consolidation).</li>
+<li>
+<p><em>Low Weightage:</em> Domains focused strictly on logical data protection (e.g., Cybersecurity).</p>
+</li>
+<li>
+<p><strong>M&amp;A (Management and Administration):</strong></p>
+</li>
+<li><em>High Weightage:</em> Domains with heavy reliance on policy documentation, SLAs, compliance audits, or ticketing systems (e.g., Cybersecurity Audits, DR Policies, Helpdesk Operations).</li>
+<li>
+<p><em>Low Weightage:</em> Basic physical procedural tasks with minimal paperwork (e.g., unboxing and installing hardware).</p>
+</li>
+<li>
+<p><strong>IT (Industry Technological Advances):</strong></p>
+</li>
+<li><em>High Weightage:</em> The deepest technical engineering cores of the curriculum (e.g., Server Administration, Hypervisor Clustering).</li>
+<li><em>Low Weightage:</em> Tasks that are highly procedural or heavily balanced by soft skills (e.g., End-User Support).</li>
+</ol>
+<hr />
+<h2 id="4-reference-table-structure">4. Reference Table Structure</h2>
+<p>All generated Element Content Weightage tables must be structured via Markdown or DOCX using this exact layout:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">CU CODE</th>
+<th style="text-align: left;">CU TITLE</th>
+<th style="text-align: center;">OSH</th>
+<th style="text-align: center;">SD</th>
+<th style="text-align: center;">M&amp;A</th>
+<th style="text-align: center;">IT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>[CU-1]</strong></td>
+<td style="text-align: left;">[Title 1]</td>
+<td style="text-align: center;">X%</td>
+<td style="text-align: center;">X%</td>
+<td style="text-align: center;">X%</td>
+<td style="text-align: center;">X%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>[CU-2]</strong></td>
+<td style="text-align: left;">[Title 2]</td>
+<td style="text-align: center;">X%</td>
+<td style="text-align: center;">X%</td>
+<td style="text-align: center;">X%</td>
+<td style="text-align: center;">X%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TOTAL ELEMENT CONTENT WEIGHTAGE</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"><strong>100/100%</strong></td>
+<td style="text-align: center;"><strong>100/100%</strong></td>
+<td style="text-align: center;"><strong>100/100%</strong></td>
+<td style="text-align: center;"><strong>100/100%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NOTES</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">[Highest/Lowest OSH justifications]</td>
+<td style="text-align: center;">[Highest/Lowest SD justifications]</td>
+<td style="text-align: center;">[Highest/Lowest M&amp;A justifications]</td>
+<td style="text-align: center;">[Highest/Lowest IT justifications]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-audit-execution-runbook">5. Audit Execution Runbook</h2>
+<p>When requested to review or generate an Element Content Weightage sheet:<br />
+1. <strong>List all Competency Units</strong>.<br />
+2. <strong>Assign logical percentages</strong> based on the Pedagogical Anchors.<br />
+3. <strong>Verify Gate G1:</strong> Sum each column (OSH, SD, M&amp;A, IT). Adjust values until every column strictly equals 100%.<br />
+4. <strong>Construct the NOTES block</strong> validating Gate G2 with specific justifications.<br />
+5. <strong>Output the matrix</strong> in the requested formats.</p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

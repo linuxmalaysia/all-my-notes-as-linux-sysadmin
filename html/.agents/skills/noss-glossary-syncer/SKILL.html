@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noss-glossary-syncer - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: noss-glossary-syncer
+name: noss-glossary-syncer
+description: Automates glossary syncing by extracting terms from the core NOSS document, purging zero-count entries, and generating JPK-compliant DOCX and OKF Markdown glossaries.
+topics: [noss, glossary, extraction, sync, terminology]
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="noss-glossary-syncer">NOSS Glossary Syncer</h1>
+<p>Use this skill when the user asks to update, sync, or extract the Glossary of Terms for the current NOSS framework.</p>
+<h2 id="purpose">Purpose</h2>
+<p>The active <code>glossary.md</code> file must be continuously updated against technical terms defined in the NOSS baseline.</p>
+<p>This skill performs a rigorous <strong>Strict Inclusion Audit</strong>, automatically purging any glossary term that does not physically appear outside of the glossary section in the active CoCU matrix (0 count). It then builds the final OKF v0.1 compliant markdown file and uses a custom Node.js compiler to generate a <code>.docx</code> file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>Ensure the source files exist:</li>
+<li>Extracted NOSS Document: <code>noss-l3-latest/references/extracted_noss.md</code></li>
+<li>Execute the bundled python synchronization script to extract and purge:<br />
+   Command: <code>uv run .agents/skills/noss-glossary-syncer/scripts/sync_glossary.py</code></li>
+<li>Execute the custom DOCX Node.js compiler to generate the strict JPK template:<br />
+   Command: <code>node .agents/skills/noss-glossary-syncer/scripts/compile_glossary_docx.js</code></li>
+<li>Convert the DOCX to ODT via Pandoc (optional if the user wants an open format):<br />
+   Command: <code>pandoc noss-l3-latest/addon-knowledge/glossary.docx -o noss-l3-latest/addon-knowledge/glossary.odt</code></li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia)</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

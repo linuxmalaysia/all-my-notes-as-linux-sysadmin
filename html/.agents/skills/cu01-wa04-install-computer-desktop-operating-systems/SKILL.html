@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cu01-wa04-install-computer-desktop-operating-systems - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+name: cu01-wa04-install-computer-desktop-operating-systems
+description: Kemahiran amali pemasangan sistem operasi Linux desktop — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10.
+topics: [noss, cu01, wa04, linux-install, ubuntu, fedora, almalinux]
+tags: [linux, pemasangan, desktop, ubuntu, almalinux, fedora, cu01, wa04]
+type: procedural_skill
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="cu01-wa04-pemasangan-sistem-operasi-linux-desktop">CU01-WA04: Pemasangan Sistem Operasi Linux Desktop</h1>
+<h2 id="tujuan-kemahiran">Tujuan Kemahiran</h2>
+<p>Kemahiran ini melengkapkan pelajar dengan prosedur pemasangan sistem operasi Linux desktop secara lengkap — daripada menyediakan media pemasangan hinggalah sistem siap digunakan sepenuhnya.</p>
+<blockquote>
+<p><strong>💡 Pemikiran Ke Belakang:</strong> Matlamat akhir = sistem Linux fungsional untuk pengguna. Langkah terakhir = log masuk pertama. Maka kita mula dari pembinaan media USB → konfigurasi BIOS/UEFI → partition → pemasangan → but pertama.</p>
+</blockquote>
+<hr />
+<h2 id="prasyarat">Prasyarat</h2>
+<ul>
+<li>Sudah memahami ekosistem Linux (CU01-WA00)</li>
+<li>Pemacu kilat USB (minimum 8GB)</li>
+<li>Sambungan internet untuk muat turun fail ISO</li>
+<li>Komputer sasaran dengan ruang storan minimum 25GB</li>
+</ul>
+<hr />
+<h2 id="prosedur-pemasangan">Prosedur Pemasangan</h2>
+<h3 id="fasa-1-penyediaan-media-pemasangan">Fasa 1: Penyediaan Media Pemasangan</h3>
+<p><strong>Langkah 1: Muat turun fail ISO</strong></p>
+<pre><code class="language-bash"># Pilihan distribusi yang disyorkan:
+
+# [1] Ubuntu 26.04 LTS &quot;Quetzal&quot; — DISYORKAN untuk latihan &amp; pengguna umum
+# URL: https://ubuntu.com/download/desktop
+# SHA256: semak di https://ubuntu.com/download/desktop#verify
+# Isirung: Linux 6.14 LTS | Persekitaran Meja: GNOME 48
+# Sokongan: sehingga April 2031 (5 tahun)
+
+# [2] AlmaLinux 10 &quot;Purple Lion&quot; (GNOME Desktop) — DISYORKAN untuk pejabat &amp; persekitaran enterprise
+# URL: https://almalinux.org/get-almalinux/#AlmaLinux_OS_10
+# Pilih: AlmaLinux-10-latest-x86_64-dvd.iso  (DVD ISO, termasuk GNOME penuh)
+# SHA256: semak di https://repo.almalinux.org/almalinux/10/isos/x86_64/
+# Isirung: Linux 6.12 LTS (RHEL 10-stable) | Persekitaran Meja: GNOME 47
+# Sokongan: sehingga 2035 (Enterprise Long-Term)
+# Kelebihan: Serasi penuh RHEL 10 / RPM, sijil enterprise, sesuai persekitaran mixed-OS
+
+# [3] Fedora Workstation 43 — Untuk teknologi terkini &amp; pembangun
+# URL: https://fedoraproject.org/workstation/download
+
+# [4] Linux Mint 22.1 — Paling mesra pemula
+# URL: https://linuxmint.com/download.php
+</code></pre>
+<p><strong>Langkah 2: Tulis ISO ke USB menggunakan Balena Etcher</strong></p>
+<pre><code>1. Muat turun Balena Etcher dari https://etcher.balena.io
+2. Buka Etcher
+3. Pilih &quot;Flash from file&quot; → pilih fail .iso
+4. Pilih &quot;Select target&quot; → pilih pemacu USB anda
+5. Klik &quot;Flash!&quot; dan tunggu sehingga selesai
+</code></pre>
+<p><strong>Alternatif CLI (Linux/macOS):</strong></p>
+<pre><code class="language-bash"># Gantikan /dev/sdX dengan pemacu USB anda (semak dengan lsblk)
+sudo dd if=ubuntu-26.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress sync
+</code></pre>
+<hr />
+<h3 id="fasa-2-konfigurasi-biosuefi">Fasa 2: Konfigurasi BIOS/UEFI</h3>
+<p><strong>Langkah 3: Boot dari USB</strong></p>
+<pre><code>1. Masukkan USB ke komputer
+2. Hidupkan semula dan tekan kekunci BIOS:
+   - Dell: F2 atau F12
+   - HP: F9 atau F10  
+   - Lenovo: F1 atau F12
+   - ASUS: F2 atau Del
+   - Acer: F2 atau Del
+3. Dalam menu BIOS/UEFI:
+   - Lumpuhkan Secure Boot (jika perlu)
+   - Tetapkan urutan but: USB dahulu
+4. Simpan dan keluar (F10)
+</code></pre>
+<hr />
+<h3 id="fasa-3-pemasangan-ubuntu-2604-lts-quetzal">Fasa 3: Pemasangan Ubuntu 26.04 LTS "Quetzal"</h3>
+<p><strong>Langkah 4: Mulakan pemasangan</strong></p>
+<pre><code>1. Pilih &quot;Try or Install Ubuntu 26.04 LTS&quot;
+2. Pilih bahasa: Bahasa Melayu (atau English)
+3. Pilih &quot;Install Ubuntu&quot;
+4. Sambungan WiFi (jika tersedia)
+5. Jenis pemasangan:
+   - ☑ Normal installation
+   - ☑ Download updates while installing
+   - ☑ Install third-party software (penting untuk pemacu!)
+
+Nota Ubuntu 26.04 LTS (Quetzal):
+  - Antara muka pemasang: Subiquity (versi terkini, lebih pantas)
+  - Sokongan TPM-based Full Disk Encryption diaktifkan secara lalai
+  - GNOME 48 dengan Wallpaper AI Generatif (opsional)
+  - Snap Firefox dan beberapa aplikasi teras sudah pra-pasang
+</code></pre>
+<p><strong>Langkah 5: Penyulitan Cakera Penuh (Full Disk Encryption) — WAJIB Untuk Pejabat</strong></p>
+<blockquote>
+<p><strong>🔐 Dasar Keselamatan Pejabat:</strong> Semua komputer pejabat yang menyimpan data kerajaan atau korporat MESTI menggunakan penyulitan cakera penuh (Full Disk Encryption / FDE) bagi mematuhi standard <strong>ISO/IEC 27001</strong> dan <strong>Pekeliling Am Bil. 3 Tahun 2000 (MAMPU)</strong>. Sekiranya komputer dicuri atau hilang, data tidak boleh diakses tanpa kata laluan penyulitan.</p>
+</blockquote>
+<hr />
+<h4 id="5a-kaedah-gui-pilihan-pemasang-ubuntu-paling-mudah">5A. Kaedah GUI — Pilihan Pemasang Ubuntu (Paling Mudah)</h4>
+<p>Ubuntu 26.04 LTS menawarkan dua pilihan penyulitan melalui antara muka grafik pemasang:</p>
+<p><strong>Pilihan 1: TPM-backed Encryption (Baharu di Ubuntu 26.04)</strong></p>
+<pre><code>→ Pilih &quot;Erase disk and install Ubuntu&quot;
+→ Klik pilihan: &quot;Advanced features...&quot;
+→ Pilih: ☑ &quot;Use TPM-backed Full Disk Encryption&quot; (DIUTAMAKAN untuk pejabat)
+
+Kelebihan:
+  ✅ Penyulitan diurus secara automatik melalui cip TPM 2.0
+  ✅ Pengguna tidak perlu ingat frasa laluan (passphrase) tambahan
+  ✅ Boot automatik jika cip TPM hadir dan sistem tidak diusik
+  ✅ Selamat terhadap kecurian fizik
+
+Prasyarat:
+  - Komputer mesti mempunyai cip TPM 2.0 (hampir semua komputer pejabat 2020+)
+  - UEFI Secure Boot mestilah aktif
+</code></pre>
+<p><strong>Pilihan 2: LUKS dengan Frasa Laluan Manual (Paling Selamat, Disyorkan untuk Data Sangat Sensitif)</strong></p>
+<pre><code>→ Pilih &quot;Erase disk and install Ubuntu&quot;
+→ Klik: &quot;Advanced features...&quot;
+→ Pilih: ☑ &quot;Use LVM with the new Ubuntu installation&quot;
+→ TANDAKAN: ☑ &quot;Encrypt the new Ubuntu installation for security&quot;
+→ Masukkan Kunci Keselamatan (Security key / LUKS passphrase):
+  - Minimum 20 aksara
+  - Gabungkan huruf besar, kecil, nombor, dan simbol khas
+  - CONTOH FORMAT: PejabatKL-2026!Selamat#Linux
+→ ☑ &quot;Overwrite empty disk space&quot; (untuk data yang padam tidak boleh dipulihkan)
+</code></pre>
+<hr />
+<h4 id="5b-kaedah-manual-luks-partition-tersuai-pentadbir-sistem-mahir">5B. Kaedah Manual LUKS — Partition Tersuai (Pentadbir Sistem Mahir)</h4>
+<p>Kaedah ini memberikan kawalan penuh dan fleksibiliti untuk senario penyebaran besar (mass deployment) di pejabat.</p>
+<p><strong>Struktur partition yang disyorkan untuk desktop pejabat:</strong></p>
+<pre><code>┌──────────────────────────────────────────────────────────────────┐
+│                    CAKERA FIZIKAL (SSD/HDD)                       │
+├─────────┬──────────────────────────────────────────────────────────┤
+│ 1 GB    │ /boot/efi  → EFI (TIDAK disulitkan — diperlukan untuk but)│
+│ 1 GB    │ /boot      → ext4 (TIDAK disulitkan — kernel &amp; initrd)    │
+│ Baki    │ LUKS Container (DISULITKAN sepenuhnya)                   │
+│         │   ├── LVM Volume Group                                   │
+│         │   │     ├── 60 GB → / (root) — ext4                     │
+│         │   │     ├── 2×RAM → swap (tersulit dalam LUKS)           │
+│         │   │     └── Baki  → /home — ext4                        │
+└─────────┴──────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Arahan terminal untuk setup LUKS manual:</strong></p>
+<pre><code class="language-bash"># ⚠️ AMARAN: Arahan berikut akan MEMADAMKAN semua data di cakera!
+# Gantikan /dev/nvme0n1 dengan nama cakera anda (semak dengan: lsblk)
+
+# 1. Buat partition menggunakan gdisk
+sudo gdisk /dev/nvme0n1
+
+# 2. Format dan aktifkan LUKS pada partition data utama
+sudo cryptsetup luksFormat --type luks2 \
+    --cipher aes-xts-plain64 \
+    --key-size 512 \
+    --hash sha512 \
+    --iter-time 5000 \
+    /dev/nvme0n1p3
+
+# 3. Buka kontena LUKS
+sudo cryptsetup luksOpen /dev/nvme0n1p3 pejabat-disk
+
+# 4. Buat LVM di dalam kontena LUKS
+sudo pvcreate /dev/mapper/pejabat-disk
+sudo vgcreate vg-pejabat /dev/mapper/pejabat-disk
+sudo lvcreate -L 60G -n lv-root vg-pejabat
+sudo lvcreate -L 8G  -n lv-swap vg-pejabat
+sudo lvcreate -l 100%FREE -n lv-home vg-pejabat
+
+# 5. Format partition logik
+sudo mkfs.ext4 /dev/vg-pejabat/lv-root
+sudo mkfs.ext4 /dev/vg-pejabat/lv-home
+sudo mkswap /dev/vg-pejabat/lv-swap
+</code></pre>
+<hr />
+<h4 id="5c-penambahan-kunci-penyulitan-untuk-pengguna-lain-multi-user-luks">5C. Penambahan Kunci Penyulitan untuk Pengguna Lain (Multi-User LUKS)</h4>
+<p>LUKS2 menyokong sehingga <strong>32 slot kunci</strong> — sesuai untuk persekitaran pejabat di mana lebih dari satu pentadbir perlu akses pemulihan.</p>
+<pre><code class="language-bash"># Lihat slot kunci sedia ada
+sudo cryptsetup luksDump /dev/nvme0n1p3
+
+# Tambah kunci pemulihan untuk Pentadbir IT (slot 1)
+sudo cryptsetup luksAddKey /dev/nvme0n1p3
+# (masukkan kunci sedia ada dahulu, kemudian kunci baharu pentadbir)
+
+# Tambah fail kunci (keyfile) untuk pengguna tertentu — slot 2
+sudo dd if=/dev/urandom bs=512 count=4 of=/root/keyfile-it.bin
+sudo chmod 400 /root/keyfile-it.bin
+sudo cryptsetup luksAddKey /dev/nvme0n1p3 /root/keyfile-it.bin
+
+# Senarai semua slot kunci aktif
+sudo cryptsetup luksDump /dev/nvme0n1p3 | grep ENABLED
+
+# Cabut slot kunci jika pekerja berhenti (slot 2 sebagai contoh)
+sudo cryptsetup luksKillSlot /dev/nvme0n1p3 2
+</code></pre>
+<blockquote>
+<p><strong>⚠️ AMARAN PENTING:</strong> Simpan sekurang-kurangnya satu kunci pemulihan (recovery key) dalam peti besi fizikal atau pengurus kata laluan berpusat seperti <strong>Vault (HashiCorp)</strong> atau <strong>Bitwarden Enterprise</strong>. Sekiranya semua kunci hilang, data TIDAK BOLEH dipulihkan.</p>
+</blockquote>
+<hr />
+<p><strong>Langkah 6: Maklumat pengguna</strong></p>
+<pre><code>- Nama anda: [Nama Penuh]
+- Nama komputer: [hostname-pejabat-ringkas]  # cth: ws-it-001-kl
+- Nama pengguna: [pengguna-kecil-tanpa-spasi] # cth: ali.hassan
+- Kata laluan: [minimum 16 aksara untuk akaun pejabat]
+- ☑ Require password to log in
+- ☑ Use Active Directory (jika domain pejabat tersedia)
+</code></pre>
+<hr />
+<h3 id="fasa-4-selepas-pemasangan">Fasa 4: Selepas Pemasangan</h3>
+<p><strong>Langkah 7: Kemas kini sistem (kewajiban)</strong></p>
+<pre><code class="language-bash"># Kemas kini semua pakej
+sudo apt update &amp;&amp; sudo apt upgrade -y
+
+# Pasang alatan asas
+sudo apt install -y \
+    curl wget git vim \
+    htop neofetch tree \
+    build-essential
+
+# Semak versi isirung
+uname -r
+
+# Semak maklumat sistem
+neofetch
+</code></pre>
+<p><strong>Langkah 8: Konfigurasi bahasa Melayu (opsional)</strong></p>
+<pre><code class="language-bash"># Pasang sokongan bahasa Melayu
+sudo apt install -y language-pack-ms language-pack-ms-base
+
+# Kemaskini setempat (locale)
+sudo update-locale LANG=ms_MY.UTF-8
+</code></pre>
+<hr />
+<h3 id="fasa-5-pemasangan-almalinux-10-purple-lion-desktop-pejabat-enterprise">Fasa 5: Pemasangan AlmaLinux 10 "Purple Lion" Desktop (Pejabat &amp; Enterprise)</h3>
+<blockquote>
+<p><strong>🏢 Konteks Penggunaan:</strong> AlmaLinux 10 desktop sesuai untuk persekitaran pejabat yang memerlukan keserasian dengan ekosistem Red Hat Enterprise Linux (RHEL 10), pengurusan pakej <code>dnf</code>/<code>rpm</code>, atau penggunaan perisian enterprise seperti IBM, Oracle, dan SAP yang diperakui pada platform RHEL-compatible.</p>
+</blockquote>
+<p><strong>Ciri Khusus AlmaLinux 10 "Purple Lion" Desktop:</strong></p>
+<pre><code>✅ Serasi binari 1:1 dengan RHEL 10 (tanpa perlu langganan berbayar)
+✅ Sokongan sehingga 2035 (lebih panjang dari AlmaLinux 9)
+✅ SELinux diaktifkan secara lalai (keselamatan peringkat enterprise)
+✅ Isirung 6.12 LTS — sokongan perkakasan terkini (PCIe 6, NVMe 2.0, GPU AI)
+✅ Pengurus pakej DNF5 (lebih pantas dari DNF4 pada AlmaLinux 9)
+✅ GNOME 47 dengan antara muka moden
+✅ FIPS 140-3 compliance untuk agensi kerajaan
+✅ Sokongan Rust-based kernel modules (keselamatan memori)
+</code></pre>
+<p><strong>Langkah A: Pemasangan melalui pemasang Anaconda (GUI)</strong></p>
+<pre><code>1. But dari USB → Pilih &quot;Install AlmaLinux 10&quot;
+2. Pilih bahasa: English (United States) atau Malay
+3. Dalam &quot;Installation Summary&quot;:
+
+   📦 SOFTWARE SELECTION:
+   → Pilih: &quot;Workstation&quot; (atau &quot;Custom Operating System&quot; untuk minimal)
+   → Tambahan: ☑ &quot;GNOME Applications&quot;
+                ☑ &quot;Office Suite and Productivity&quot;
+                ☑ &quot;Development Tools&quot; (jika diperlukan)
+
+   💾 INSTALLATION DESTINATION:
+   → Pilih cakera sasaran
+   → &quot;Storage Configuration&quot;: Custom
+   → ☑ &quot;Encrypt my data&quot; (LUKS — WAJIB untuk pejabat)
+   → Masukkan frasa laluan LUKS (minimum 20 aksara)
+
+   🌐 NETWORK &amp; HOSTNAME:
+   → Tetapkan hostname: ws-alma-[nombor]-[lokasi]  # cth: ws-alma-001-kl
+   → Aktifkan sambungan rangkaian
+
+4. Klik &quot;Begin Installation&quot;
+5. Tetapkan kata laluan root dan buat akaun pengguna pejabat
+</code></pre>
+<p><strong>Langkah B: Konfigurasi Selepas Pemasangan AlmaLinux 10</strong></p>
+<pre><code class="language-bash"># Kemas kini sistem
+sudo dnf update -y
+
+# DNF5 digunakan secara lalai pada AlmaLinux 10
+# (sintaks arahan kekal sama, tetapi prestasi lebih pantas)
+
+# Aktifkan repositori EPEL 10 (Extra Packages for Enterprise Linux)
+sudo dnf install -y epel-release
+sudo dnf update -y
+
+# Pasang alatan pejabat asas
+sudo dnf install -y \
+    libreoffice \
+    thunderbird \
+    firefox \
+    vlc \
+    htop \
+    neofetch \
+    git curl wget
+
+# Aktifkan Flatpak (untuk aplikasi yang tidak ada dalam repo)
+sudo dnf install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Semak status SELinux (seharusnya &quot;enforcing&quot; untuk pejabat)
+getenforce
+sudo sestatus
+</code></pre>
+<p><strong>Langkah C: Penyulitan LUKS pada AlmaLinux (Jika Tiada Semasa Pasang)</strong></p>
+<pre><code class="language-bash"># Semak sama ada penyulitan sudah aktif
+lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT
+sudo dmsetup status
+
+# Semak maklumat LUKS pada partition (gantikan sda3 dengan partition anda)
+sudo cryptsetup luksDump /dev/sda3
+
+# Tambah kunci pemulihan untuk Pentadbir IT (multi-user slot)
+sudo cryptsetup luksAddKey /dev/sda3
+# Masukkan kunci sedia ada → masukkan kunci pentadbir baharu
+
+# Semak semua slot kunci aktif
+sudo cryptsetup luksDump /dev/sda3 | grep -A2 'Keyslot'
+</code></pre>
+<p><strong>Langkah D: Konfigurasi Bahasa Melayu pada AlmaLinux</strong></p>
+<pre><code class="language-bash"># Pasang sokongan locale Melayu
+sudo dnf install -y glibc-langpack-ms
+
+# Semak locale tersedia
+locale -a | grep ms
+
+# Tetapkan locale sistem ke Bahasa Melayu Malaysia
+sudo localectl set-locale LANG=ms_MY.UTF-8
+sudo localectl set-keymap ms  # papan kekunci standard Malaysia
+
+# Sahkan perubahan
+localectl status
+</code></pre>
+<p><strong>Langkah E: Senarai Semak Pengesahan AlmaLinux Desktop</strong></p>
+<pre><code class="language-bash"># Pengesahan lengkap selepas pemasangan
+echo &quot;=== Maklumat Sistem ===&quot;     &amp;&amp; hostnamectl
+echo &quot;=== Versi Isirung ===&quot;       &amp;&amp; uname -r
+echo &quot;=== Versi AlmaLinux ===&quot;     &amp;&amp; cat /etc/almalinux-release
+echo &quot;=== SELinux Status ===&quot;      &amp;&amp; getenforce
+echo &quot;=== Status LUKS ===&quot;         &amp;&amp; lsblk -o NAME,FSTYPE | grep -i crypt
+echo &quot;=== Ruang Storan ===&quot;        &amp;&amp; df -h /
+echo &quot;=== Rangkaian ===&quot;           &amp;&amp; ip addr show
+echo &quot;=== Repositori Aktif ===&quot;    &amp;&amp; sudo dnf repolist
+</code></pre>
+<hr />
+<h2 id="pengesahan-kejayaan-pemasangan">Pengesahan Kejayaan Pemasangan</h2>
+<pre><code class="language-bash"># Senarai semak selepas pemasangan
+echo &quot;=== Maklumat Sistem ===&quot;     &amp;&amp; hostnamectl
+echo &quot;=== Versi Isirung ===&quot;       &amp;&amp; uname -r
+echo &quot;=== Ruang Storan ===&quot;        &amp;&amp; df -h /
+echo &quot;=== Memori ===&quot;              &amp;&amp; free -h
+echo &quot;=== Rangkaian ===&quot;           &amp;&amp; ip addr show
+
+# Pengesahan LUKS (jika penyulitan diaktifkan)
+echo &quot;=== Status Penyulitan LUKS ===&quot;
+lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT | grep -E 'crypt|luks|dm-'
+sudo dmsetup status
+
+# Sahkan LUKS digunakan pada cakera sistem
+sudo cryptsetup status $(lsblk -o NAME,FSTYPE | grep crypto | awk '{print $1}') 2&gt;/dev/null || \
+    echo &quot;Semak secara manual: sudo cryptsetup luksDump /dev/&lt;partition&gt;&quot;
+</code></pre>
+<p>Pemasangan dianggap berjaya apabila semua arahan di atas mengembalikan output yang sah.</p>
+<hr />
+<h2 id="rujukan">Rujukan</h2>
+<ul>
+<li><a href="https://help.ubuntu.com">Panduan Rasmi Ubuntu 26.04 LTS</a></li>
+<li><a href="https://discourse.ubuntu.com/c/release/18">Nota Keluaran Ubuntu 26.04</a></li>
+<li><a href="https://wiki.almalinux.org">Dokumentasi AlmaLinux 10</a></li>
+<li><a href="https://wiki.almalinux.org/release-notes/10.0.html">Nota Keluaran AlmaLinux 10</a></li>
+<li><a href="https://wiki.almalinux.org/documentation/installation-guide.html">Panduan Pemasangan AlmaLinux 10</a></li>
+<li><a href="https://wiki.almalinux.org/repos/Extras.html">AlmaLinux EPEL 10 Setup</a></li>
+<li><a href="https://docs.fedoraproject.org">Dokumentasi Fedora 43</a></li>
+<li><a href="https://etcher.balena.io">Balena Etcher</a></li>
+<li><a href="https://rufus.ie">Rufus (Windows)</a> — Alternatif Etcher untuk Windows</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

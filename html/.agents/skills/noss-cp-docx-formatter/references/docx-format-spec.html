@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP Format Reference — Annotated Structure - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+
+    <header>
+        <a href="../../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="cp-format-reference-annotated-structure">CP Format Reference — Annotated Structure</h1>
+<h2 id="document-cp-level-3-generateddocx">Document: CP-Level-3-Generated.docx</h2>
+<p>This file documents the <strong>exact XML/DOCX structure</strong> derived from inspecting<br />
+<code>noss-rebuild/references/CP-Level-3-Generated.docx</code>.</p>
+<hr />
+<h2 id="table-properties-all-tables">Table Properties (all tables)</h2>
+<pre><code class="language-xml">&lt;w:tblPr&gt;
+  &lt;w:tblW w:type=&quot;pct&quot; w:w=&quot;100%&quot;/&gt;
+  &lt;w:tblBorders&gt;
+    &lt;w:top    w:val=&quot;single&quot; w:color=&quot;auto&quot; w:sz=&quot;4&quot;/&gt;
+    &lt;w:left   w:val=&quot;single&quot; w:color=&quot;auto&quot; w:sz=&quot;4&quot;/&gt;
+    &lt;w:bottom w:val=&quot;single&quot; w:color=&quot;auto&quot; w:sz=&quot;4&quot;/&gt;
+    &lt;w:right  w:val=&quot;single&quot; w:color=&quot;auto&quot; w:sz=&quot;4&quot;/&gt;
+    &lt;w:insideH w:val=&quot;single&quot; w:color=&quot;auto&quot; w:sz=&quot;4&quot;/&gt;
+    &lt;w:insideV w:val=&quot;single&quot; w:color=&quot;auto&quot; w:sz=&quot;4&quot;/&gt;
+  &lt;/w:tblBorders&gt;
+&lt;/w:tblPr&gt;
+</code></pre>
+<h2 id="cell-properties-all-cells">Cell Properties (all cells)</h2>
+<pre><code class="language-xml">&lt;w:tcPr&gt;
+  &lt;w:tcW w:type=&quot;pct&quot; w:w=&quot;NN%&quot;/&gt;
+  &lt;w:gridSpan w:val=&quot;N&quot;/&gt;  &lt;!-- only when colspan &gt; 1 --&gt;
+  &lt;w:tcMar&gt;
+    &lt;w:top    w:type=&quot;dxa&quot; w:w=&quot;100&quot;/&gt;
+    &lt;w:left   w:type=&quot;dxa&quot; w:w=&quot;100&quot;/&gt;
+    &lt;w:bottom w:type=&quot;dxa&quot; w:w=&quot;100&quot;/&gt;
+    &lt;w:right  w:type=&quot;dxa&quot; w:w=&quot;100&quot;/&gt;
+  &lt;/w:tcMar&gt;
+&lt;/w:tcPr&gt;
+</code></pre>
+<h2 id="run-properties-all-text-runs">Run Properties (all text runs)</h2>
+<pre><code class="language-xml">&lt;w:rPr&gt;
+  &lt;w:rFonts w:ascii=&quot;Times New Roman&quot;
+            w:cs=&quot;Times New Roman&quot;
+            w:eastAsia=&quot;Times New Roman&quot;
+            w:hAnsi=&quot;Times New Roman&quot;/&gt;
+  &lt;w:b/&gt;    &lt;!-- present for bold cells only --&gt;
+  &lt;w:bCs/&gt;  &lt;!-- present for bold cells only --&gt;
+  &lt;w:sz   w:val=&quot;22&quot;/&gt;   &lt;!-- 11pt = 22 half-points --&gt;
+  &lt;w:szCs w:val=&quot;22&quot;/&gt;
+&lt;/w:rPr&gt;
+</code></pre>
+<p>For non-bold cells within a bold section, the generator explicitly sets:</p>
+<pre><code class="language-xml">&lt;w:b w:val=&quot;false&quot;/&gt;
+&lt;w:bCs w:val=&quot;false&quot;/&gt;
+</code></pre>
+<hr />
+<h2 id="table-1-header-metadata-4-column-grid">Table 1 — Header / Metadata (4-column grid)</h2>
+<pre><code>SECTION (25%, bold)  | (J) Information and Communication (75%, bold, colspan=3)
+GROUP   (25%, bold)  | (620) Computer Programming...     (75%, bold, colspan=3)
+AREA    (25%, bold)  | Computer System Administration    (75%, bold, colspan=3)
+NOSS TITLE (25%,b)   | Sovereign IT Infrastructure...    (75%, bold, colspan=3)
+NOSS LEVEL (25%,b)   | LEVEL 3 (25%) | NOSS CODE (25%,b) | IT-020-3:2026 (25%)
+</code></pre>
+<p>Grid definition: <code>&lt;w:gridCol w:w="100"/&gt;</code> × 4 (equal columns, % overrides apply)</p>
+<hr />
+<h2 id="table-2-cu-header-2-column-grid-per-cu">Table 2 — CU Header (2-column grid, per CU)</h2>
+<pre><code>CU TITLE &amp; CU CODE (25%, bold) | &lt;Title&gt; (&lt;Code&gt;)  (75%, bold)
+CU DESCRIPTOR      (25%, bold) | &lt;descriptor text&gt; (75%, NOT bold)
+</code></pre>
+<p>Descriptor text uses <code>\n</code> (newline) for paragraph breaks in DOCX,<br />
+NOT <code>&lt;br&gt;</code> tags. The docx library renders each <code>\n</code> as a new paragraph<br />
+within the same cell.</p>
+<hr />
+<h2 id="table-3-wa-matrix-3-column-grid-per-cu">Table 3 — WA Matrix (3-column grid, per CU)</h2>
+<pre><code>WORK ACTIVITIES (30%, bold) | WORK STEPS (35%, bold) | PERFORMANCE CRITERIA (35%, bold)
+&lt;WA Name&gt;.\n(&lt;WA Code&gt;)     | [Paragraph per step]   | [Paragraph per PC]
+</code></pre>
+<ul>
+<li>WA column: single TextRun with <code>\n</code> between name and code, NOT bold</li>
+<li>Steps column: <strong>one Paragraph per step</strong>, each with its own TextRun</li>
+<li>PC column: <strong>one Paragraph per PC</strong>, each with its own TextRun</li>
+</ul>
+<hr />
+<h2 id="docx-library-mapping">docx Library Mapping</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">docx API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Table</td>
+<td style="text-align: left;"><code>new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows: [...] })</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Row</td>
+<td style="text-align: left;"><code>new TableRow({ children: [...] })</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Cell</td>
+<td style="text-align: left;"><code>new TableCell({ children: [...], width: { size: N, type: WidthType.PERCENTAGE }, columnSpan: N, margins: {...} })</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;"><code>new Paragraph({ children: [new TextRun({ text, bold, font: "Times New Roman", size: 22 })] })</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Bold label</td>
+<td style="text-align: left;"><code>bold: true</code> in TextRun</td>
+</tr>
+<tr>
+<td style="text-align: left;">Non-bold override</td>
+<td style="text-align: left;"><code>bold: false</code> in TextRun</td>
+</tr>
+<tr>
+<td style="text-align: left;">Heading</td>
+<td style="text-align: left;"><code>new Paragraph({ text: "...", heading: HeadingLevel.HEADING_1 })</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Page margin</td>
+<td style="text-align: left;"><code>sections[0].properties.page.margin = { top:720, right:720, bottom:720, left:720 }</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

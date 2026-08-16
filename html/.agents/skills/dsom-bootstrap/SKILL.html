@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dsom-bootstrap - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+name: dsom-bootstrap
+description: Executes the DSOM bootstrapping process for a new or existing project by reading the HOWTO-DSOM-BASELINE.md guide and pulling files from the permanent baseline repository.
+topics: [bootstrap, setup, onboarding, project-init, dsom]
+okf_version: 0.1
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="dsom-bootstrap-skill">🚀 DSOM Bootstrap Skill</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when you are operating in a new or existing workspace that lacks the full DSOM (Digital Sovereign Operating Model) architecture, and the user asks to initialize, bootstrap, or port DSOM.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li><strong>Locate Blueprint:</strong> Verify that <code>HOWTO-DSOM-BASELINE.md</code> exists in the current project root. If it does not exist, inform the user that they must copy this file from the baseline repository first.</li>
+<li><strong>Read Blueprint:</strong> Use your file reading tools to read <code>HOWTO-DSOM-BASELINE.md</code>.</li>
+<li><strong>Assess Environment:</strong> Analyze the current workspace. Determine if it is a NEW project (no <code>.agents</code> or <code>tools</code> directory) or an EXISTING project.</li>
+<li><strong>Execute Path:</strong></li>
+<li>Follow the precise instructions in the HOWTO document corresponding to your assessment (Section 3 for NEW, Section 4 for EXISTING).</li>
+<li>Use your terminal execution tools (<code>run_command</code>) to perform the recursive copies (<code>cp -r</code> or <code>Copy-Item -Recurse</code>) from the defined Baseline Path.</li>
+<li>For EXISTING projects, ensure you read existing files and perform intelligent merges using your file editing tools, rather than destructive overwrites.</li>
+<li><strong>Sanitize (If New):</strong> Ensure the <code>checkpoint_summary.txt</code>, <code>task.md</code>, and <code>walkthrough.md</code> in <code>.agents/brain/</code> are emptied of baseline history.</li>
+<li><strong>Verify:</strong> Run the <code>tools/diagnostic.ps1</code> or <code>tools/diagnostic.sh</code> script to confirm the port was successful.</li>
+<li><strong>Report:</strong> Output a success message to the user, confirming that the AI now possesses full DSOM capabilities, tools, and documentation.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tvet-tem-auditor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: tvet-tem-auditor
+title: tvet-tem-auditor
+description: "This skill teaches an AI agent to **audit, validate, and structure** JPK-compliant **Tools, Equipment, and Materials (TEM)** lists for NOSS curricula.  The agent applies **four validation gates** t..."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+noss_code: 
+target_level: 3
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="tvet-tools-equipment-and-materials-tem-auditor-skill">TVET Tools, Equipment, and Materials (TEM) Auditor Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill teaches an AI agent to <strong>audit, validate, and structure</strong> JPK-compliant <strong>Tools, Equipment, and Materials (TEM)</strong> lists for NOSS curricula.</p>
+<p>The agent applies <strong>four validation gates</strong> to verify equipment ratios, brand neutrality, classification categories, and resource mappings.</p>
+<hr />
+<h2 id="2-validation-gates">2. Validation Gates</h2>
+<h3 id="gate-g1-brand-neutrality-generic-descriptions">Gate G1 — Brand Neutrality (Generic Descriptions)</h3>
+<ul>
+<li><strong>Rule:</strong> All items must be listed by their generic technical specification. Specific commercial brand names must not be used as direct item names. Brands can only be referenced as examples using <code>(e.g., [Brand/Software] or equivalent)</code>.</li>
+<li><strong>Audit Action:</strong> Scan the item column. Flag any absolute brand names that do not include the "or equivalent" qualifier.</li>
+</ul>
+<h3 id="gate-g2-cohort-ratio-verification-base-25-trainees">Gate G2 — Cohort Ratio Verification (Base 25 Trainees)</h3>
+<ul>
+<li><strong>Rule:</strong> Quantities and ratios must be optimized for a maximum training cohort of <strong>25 trainees</strong> at one time. Valid ratios include:</li>
+<li><strong>1:1:</strong> For individual hand tools, software interfaces, or workstations.</li>
+<li><strong>1:5:</strong> For shared testing equipment, multimeters, or lab test stations.</li>
+<li><strong>1:10:</strong> For racks, ladders, routers, and switches.</li>
+<li><strong>1:25:</strong> For collective reference gear, fiber splicing machines, OTDRs, or master network sources.</li>
+<li><strong>AR (As Required):</strong> For software features, digital templates, and reference materials.</li>
+<li><strong>Audit Action:</strong> Flag any arbitrary ratios (e.g., 1:3, 1:7) that do not fit standard TVET cohort distributions.</li>
+</ul>
+<h3 id="gate-g3-infrastructure-and-general-facilities-exclusion">Gate G3 — Infrastructure and General Facilities Exclusion</h3>
+<ul>
+<li><strong>Rule:</strong> General institutional furniture, office equipment, or facilities (e.g., chairs, desks, whiteboards, air conditioning, internet access, AV aids) must be excluded from TEM as they are governed under separate licensing criteria.</li>
+<li><strong>Audit Action:</strong> Flag and reject any general facility items found in the TEM list.</li>
+</ul>
+<h3 id="gate-g4-grouping-and-classification-integrity">Gate G4 — Grouping and Classification Integrity</h3>
+<ul>
+<li><strong>Rule:</strong> Every item must be correctly categorized under one of the three JPK groups:</li>
+<li><strong>A. Tools:</strong> Hand tools, software toolkits, simulators, and diagnostic programs.</li>
+<li><strong>B. Equipment:</strong> Heavy hardware, physical computers, servers, switches, routers, and test devices.</li>
+<li><strong>C. Materials:</strong> UTP/fiber cables, connectors, document templates, operational manuals, and threat/configuration logs.</li>
+<li><strong>Audit Action:</strong> Verify that items are in their correct section. (e.g., a "cabling template document" should be under Materials, not Tools).</li>
+</ul>
+<hr />
+<h2 id="3-reference-matrix-layout">3. Reference Matrix Layout</h2>
+<p>All TEM tables must match this standard format:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">NO.</th>
+<th style="text-align: left;">ITEM*</th>
+<th style="text-align: left;">RATIO (TEM : Trainees or AR = As Required)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>C01</strong> | <strong>C02</strong> | <strong>C03</strong> | <strong>C04</strong> | <strong>C05</strong> | <strong>C06</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>A. Tools</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Pliers set</td>
+<td style="text-align: left;">1:1 | 1:1 | 1:1 | | 1:1 |</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Terminal emulation software (e.g., PuTTY or equivalent)</td>
+<td style="text-align: left;">| | 1:1 | 1:1 | 1:1 | 1:1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>B. Equipment</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Workstations/Laptops</td>
+<td style="text-align: left;">1:1 | 1:1 | 1:1 | 1:1 | 1:1 | 1:1</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Network switch (e.g., Cisco or equivalent)</td>
+<td style="text-align: left;">| | 1:10 | 1:10 | 1:10 | 1:10</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>C. Materials</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">UTP patch cord</td>
+<td style="text-align: left;">| AR | AR | AR | |</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Sample of network configuration template</td>
+<td style="text-align: left;">| | 1:1 | 1:1 | 1:1 |</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-audit-runbook">4. Audit Runbook</h2>
+<p>When requested to review a TEM list, perform these steps:<br />
+1. Confirm the list is grouped into <strong>A. Tools</strong>, <strong>B. Equipment</strong>, and <strong>C. Materials</strong>.<br />
+2. Run the <strong>Brand Neutrality Check</strong> on all items to verify "or equivalent" wording.<br />
+3. Verify that all numerical ratios conform to the standard set of values (<strong>1:1</strong>, <strong>1:5</strong>, <strong>1:10</strong>, <strong>1:25</strong>, or <strong>AR</strong>).<br />
+4. Verify that general classroom fittings are excluded.<br />
+5. Output a status report indicating if the list passes all four gates.</p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

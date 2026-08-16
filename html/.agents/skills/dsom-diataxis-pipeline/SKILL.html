@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dsom-diataxis-pipeline - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: skill
+title: "dsom-diataxis-pipeline"
+timestamp: "2026-08-16T09:12:00Z"
+topics: ["dsom", "diataxis", "pipeline"]
+tags: ["script", "automation", "python", "docs"]
+description: "Executes the DSOM-Governed Diátaxis & OKF Documentation Pipeline to restructure the repository's docs folder."
+resource: "file:///.agents/skills/dsom-diataxis-pipeline/SKILL.md"
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="dsom-diataxis-documentation-pipeline">DSOM Diátaxis Documentation Pipeline</h1>
+<h2 id="overview">Overview</h2>
+<p>This skill executes the architectural mandate to restructure documentation into the <strong>4 Diátaxis Quadrants</strong> (Tutorials, How-To, Reference, Explanation), injects strict <strong>Google OKF v0.1</strong> schemas, and generates the required AI index <code>llms.txt</code> and GitBook index <code>SUMMARY.md</code>.</p>
+<h2 id="when-to-use">When to Use</h2>
+<p>Trigger this skill whenever you perform a major documentation import, create new tools, or need to refresh the <code>docs/</code> structure and <code>llms.txt</code> root index.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>Ensure you are at the project root.</li>
+<li>Execute the pipeline script using <code>uv run</code> to satisfy the Python UV Mandate (Rule 9):</li>
+</ol>
+<pre><code class="language-powershell">uv run scripts/build_diataxis_docs.py
+</code></pre>
+<ol>
+<li>The script will automatically reorganize folders, generate missing reference files for skills, and rebuild <code>llms.txt</code>.</li>
+<li>Verify the output in <code>docs/SUMMARY.md</code> and <code>/llms.txt</code>.</li>
+</ol>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

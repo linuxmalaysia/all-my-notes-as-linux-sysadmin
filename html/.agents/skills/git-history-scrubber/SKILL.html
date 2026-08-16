@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>git-history-scrubber - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+name: git-history-scrubber
+description: Safely purges sensitive data (IPs, credentials) from Git history using git-filter-repo, deletes old releases, and handles force-push protocols.
+topics: [git, security, history, scrub, credentials]
+okf_version: 0.1
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="git-history-scrubber-skill">🧹 Git History Scrubber Skill</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This skill instructs agents on how to safely and permanently rewrite Git history to remove sensitive data (e.g., leaked IPs, credentials, personal hostnames) using <code>git-filter-repo</code>. It enforces operational security by obfuscating the true nature of the cleanup and mandates strict protocols for force-pushing to protected environments like GitLab.</p>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Trigger this skill whenever the user asks to "purge", "scrub", "remove from history", or "clean up" sensitive information from past Git commits and releases.</p>
+<h2 id="execution-constraints-security-obfuscation">Execution Constraints (Security Obfuscation)</h2>
+<blockquote>
+<p>[!IMPORTANT]<br />
+<strong>Operational Security:</strong> When executing this skill, communicating with the user, or writing commit messages, you MUST use generic terminology such as "files cleanup" or "repository maintenance". <strong>Never</strong> explicitly state in commit messages or public issue trackers that you are removing sensitive data, passwords, or IPs, as this draws attention to the vulnerability.</p>
+</blockquote>
+<h2 id="execution-steps">Execution Steps</h2>
+<h3 id="1-identify-and-map-replacements">1. Identify and Map Replacements</h3>
+<p>First, identify all strings the user wants scrubbed. Propose generic replacements (e.g., <code>10.0.0.1</code>, <code>example-user</code>). Obtain user approval before proceeding.<br />
+Write these mappings to a <code>replacements.txt</code> file in the workspace root:</p>
+<pre><code class="language-text">[SENSITIVE-IP]==&gt;10.10.10.10
+my-secret-username==&gt;example-user
+</code></pre>
+<h3 id="2-rewrite-the-git-history">2. Rewrite the Git History</h3>
+<p>Execute <code>git-filter-repo</code> via the <code>uv</code> Python tool. This rewrites the entire history offline.</p>
+<pre><code class="language-bash">uv tool run git-filter-repo --replace-text replacements.txt --force
+</code></pre>
+<h3 id="3-delete-outdated-releases">3. Delete Outdated Releases</h3>
+<p>Because Git releases contain <code>.zip</code> and <code>.tar.gz</code> archives of the old unamended code, they must be manually deleted using the GitHub and GitLab CLIs.</p>
+<pre><code class="language-bash">gh release delete &lt;tag-name&gt; -y --cleanup-tag
+glab release delete &lt;tag-name&gt; -y --with-tag
+</code></pre>
+<h3 id="4-warn-the-user-gitlab-protected-branches">4. Warn the User (GitLab Protected Branches)</h3>
+<p>Before attempting to push the new history, you <strong>must</strong> explicitly warn the user that GitLab protects the <code>main</code> branch by default.<br />
+Instruct the user to:<br />
+1. Go to their GitLab Settings -&gt; Repository -&gt; Protected branches.<br />
+2. Toggle "Allowed to force push" to ON for the <code>main</code> branch.</p>
+<h3 id="5-re-add-remote-and-force-push">5. Re-add Remote and Force Push</h3>
+<p><code>git-filter-repo</code> removes remotes by default for safety. Re-add the remotes (if necessary) and execute the force pushes:</p>
+<pre><code class="language-bash">git remote add origin &lt;repo-url&gt;
+git push origin --force --all
+git push origin --force --tags
+
+# Repeat for GitLab if configured as a separate remote
+git push gitlab --force --all
+git push gitlab --force --tags
+</code></pre>
+<h3 id="6-heal-the-sovereign-memory">6. Heal the Sovereign Memory</h3>
+<p>Remind the user (or automatically invoke) the <code>git-commit-resolver</code> skill, as the history rewrite will have invalidated all cryptographic commit hashes currently saved in the <code>.agents/brain/</code> memory.</p>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

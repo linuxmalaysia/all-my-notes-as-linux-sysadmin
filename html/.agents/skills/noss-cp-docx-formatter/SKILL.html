@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOSS CP DOCX Formatter Skill - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: noss-cp-docx-formatter
+title: noss-cp-docx-formatter
+description: "This skill equips an AI agent to **generate** the official NOSS Level 3 Competency Profile document in two formats:  | Output | Description | | :
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <p>-- | :---------- | | <code>CP-Level-3-Generated.md</code> | ..."<br />
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"<br />
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"<br />
+noss_code: <br />
+target_level: 3</p>
+<hr />
+<h1 id="noss-cp-docx-formatter-skill">NOSS CP DOCX Formatter Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill equips an AI agent to <strong>generate</strong> the official NOSS Level 3<br />
+Competency Profile document in two formats:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Output</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>CP-Level-3-Generated.md</code></td>
+<td style="text-align: left;">GitHub-flavoured Markdown replica of the CP</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CP-Level-3-Generated.docx</code></td>
+<td style="text-align: left;">Word document matching the exact table/font specification</td>
+</tr>
+</tbody>
+</table>
+<p>Both outputs must be <strong>byte-for-byte structurally equivalent</strong> — meaning every<br />
+heading, every cell width, every bold label, every line-break must match the<br />
+reference document described in Section 3.</p>
+<hr />
+<h2 id="2-prerequisites">2. Prerequisites</h2>
+<p>The agent must verify the following before running:</p>
+<ol>
+<li><strong>Node.js ≥ 18</strong> is available (<code>node --version</code>).</li>
+<li><strong><code>docx</code> npm package</strong> is installed in the project root<br />
+   (<code>npm list docx</code> — must show a version).</li>
+<li><strong>CU profile source files</strong> exist at:<br />
+<code>noss-rebuild/competency-profiles/&lt;cuXX&gt;/&lt;cuXX&gt;-profile.md</code><br />
+   for each CU the agent intends to compile.</li>
+</ol>
+<p>If the <code>docx</code> package is missing, run: <code>npm install docx</code> in the project root.</p>
+<hr />
+<h2 id="3-reference-format-specification">3. Reference Format Specification</h2>
+<h3 id="31-global-document-settings">3.1 Global Document Settings</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Font family</td>
+<td style="text-align: left;"><strong>Times New Roman</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Font size</td>
+<td style="text-align: left;"><strong>11 pt</strong> (22 in half-points, the docx unit)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Page margins</td>
+<td style="text-align: left;">Top: 720, Right: 720, Bottom: 720, Left: 720 (twips)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Table width</td>
+<td style="text-align: left;"><strong>100%</strong> of page width</td>
+</tr>
+<tr>
+<td style="text-align: left;">Table borders</td>
+<td style="text-align: left;">Single, <code>color="auto"</code>, <code>sz=4</code> on all 6 sides (top, bottom, left, right, insideH, insideV)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cell margins</td>
+<td style="text-align: left;">Top: 100, Left: 100, Bottom: 100, Right: 100 (dxa)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-document-structure-in-order">3.2 Document Structure (in order)</h3>
+<pre><code>Heading 1: &quot;1. Competency Profile (CP)&quot;
+Empty paragraph
+[Header Table]        ← 4-column grid, 25%/75% colspans
+Empty paragraph
+For each CU:
+  [CU Header Table]   ← 2-column, 25%/75%
+  Empty paragraph
+  [WA Matrix Table]   ← 3-column, 30%/35%/35%
+  Empty paragraph
+</code></pre>
+<h3 id="33-header-table-sectiongroupareanoss-metadata">3.3 Header Table (Section/Group/Area/NOSS metadata)</h3>
+<ul>
+<li>4 logical columns (each <code>gridCol w:w="100"</code>), percentage-based widths</li>
+<li>Row layout:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Row</th>
+<th style="text-align: left;">Col 1 (25%, bold)</th>
+<th style="text-align: left;">Col 2 (75%, bold, colSpan=3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">SECTION</td>
+<td style="text-align: left;">(J) Information and Communication</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">GROUP</td>
+<td style="text-align: left;">(620) Computer Programming, Consultancy and Related Activities</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">AREA</td>
+<td style="text-align: left;">Computer System Administration</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">NOSS TITLE</td>
+<td style="text-align: left;">Sovereign IT Infrastructure Operations</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">NOSS LEVEL (25%)</td>
+<td style="text-align: left;">LEVEL 3 (25%) | NOSS CODE (25%, bold) | IT-020-3:2026 (25%)</td>
+</tr>
+</tbody>
+</table>
+<p>Row 5 has <strong>4 separate cells</strong> (no colspan), each 25%.</p>
+<h3 id="34-cu-header-table-per-cu">3.4 CU Header Table (per CU)</h3>
+<ul>
+<li>2 logical columns, percentage-based</li>
+<li>Row 1: <code>CU TITLE &amp; CU CODE</code> (bold, 25%) | <code>&lt;title&gt; (&lt;code&gt;)</code> (bold, 75%)</li>
+<li>Row 2: <code>CU DESCRIPTOR</code> (bold, 25%) | descriptor text (NOT bold, 75%)</li>
+<li>Descriptor uses <code>\n\n</code> for paragraph breaks in DOCX (NOT <code>&lt;br&gt;</code>)</li>
+</ul>
+<h3 id="35-wa-matrix-table-per-cu">3.5 WA Matrix Table (per CU)</h3>
+<ul>
+<li>3 columns: <strong>30%</strong> / <strong>35%</strong> / <strong>35%</strong></li>
+<li>Row 1 (header): <code>WORK ACTIVITIES</code> | <code>WORK STEPS</code> | <code>PERFORMANCE CRITERIA</code> (all bold)</li>
+<li>Per WA row:</li>
+<li><strong>Col 1</strong> – WA name + <code>\n(WA code)</code> in a single cell, NOT bold</li>
+<li><strong>Col 2</strong> – One <code>Paragraph</code> element per work step, numbered <code>N.M text</code></li>
+<li><strong>Col 3</strong> – One <code>Paragraph</code> element per PC, numbered <code>N.M text</code></li>
+<li>Steps and PCs are separate <code>Paragraph</code> children inside the cell (not <code>&lt;br&gt;</code>)</li>
+</ul>
+<hr />
+<h2 id="4-markdown-format-specification">4. Markdown Format Specification</h2>
+<p>The <code>.md</code> file is a direct mirror of the DOCX using GitHub table syntax.</p>
+<h3 id="41-document-header-block">4.1 Document Header Block</h3>
+<pre><code class="language-markdown"># 1. Competency Profile (CP)
+
+| SECTION | (J) Information and Communication | | |
+| :---- | :---- | :---- | :---- |
+| GROUP | (620) Computer Programming, Consultancy and Related Activities | | |
+| AREA | Computer System Administration | | |
+| NOSS TITLE | Sovereign IT Infrastructure Operations | | |
+| NOSS LEVEL | LEVEL 3 | NOSS CODE | IT-020-3:2026 |
+</code></pre>
+<h3 id="42-per-cu-block">4.2 Per-CU Block</h3>
+<pre><code class="language-markdown">| CU TITLE &amp; CU CODE | &lt;Title&gt; (&lt;Code&gt;) |
+| :---- | :---- |
+| CU DESCRIPTOR | &lt;Paragraph 1&gt;&lt;br&gt;&lt;br&gt;&lt;Paragraph 2&gt;&lt;br&gt;&lt;br&gt;&lt;Paragraph 3&gt; |
+
+| WORK ACTIVITIES | WORK STEPS | PERFORMANCE CRITERIA |
+| ----- | ----- | ----- |
+| &lt;WA Name&gt;..&lt;br&gt;(&lt;WA Code&gt;) | N.1 Step one.&lt;br&gt;N.2 Step two. | N.1 PC one.&lt;br&gt;N.2 PC two. |
+</code></pre>
+<p><strong>Critical rules:</strong><br />
+- Descriptor paragraphs separated by <code>&lt;br&gt;&lt;br&gt;</code> (double break)<br />
+- WA name ends with <code>..</code> before <code>&lt;br&gt;(Code)</code><br />
+- Steps and PCs use <code>&lt;br&gt;</code> between items within a cell<br />
+- Blank line between each CU block</p>
+<hr />
+<h2 id="5-source-data-contract">5. Source Data Contract</h2>
+<p>The agent reads from <strong>CU profile Markdown files</strong> at:<br />
+<code>noss-rebuild/competency-profiles/&lt;cuXX&gt;/&lt;cuXX&gt;-profile.md</code></p>
+<p>Each profile file must contain:</p>
+<h3 id="51-title-line-1">5.1 Title (line 1)</h3>
+<pre><code class="language-markdown"># &lt;CU Title&gt;
+</code></pre>
+<h3 id="52-cu-descriptor-in-a-2-column-table">5.2 CU Descriptor (in a 2-column table)</h3>
+<pre><code class="language-markdown">| **CU DESCRIPTOR** | &lt;full three-paragraph descriptor&gt; |
+</code></pre>
+<h3 id="53-work-activities-matrix-in-a-3-column-table">5.3 Work Activities Matrix (in a 3-column table)</h3>
+<pre><code class="language-markdown">| WORK ACTIVITIES | WORK STEPS | PERFORMANCE CRITERIA |
+| :--- | :--- | :--- |
+| **N. &lt;WA Title&gt;**&lt;br&gt;*(&lt;WA Code&gt;)* | N.1 Step.&lt;br&gt;N.2 Step. | N.1 PC.&lt;br&gt;N.2 PC. |
+</code></pre>
+<hr />
+<h2 id="6-step-by-step-agent-instructions">6. Step-by-Step Agent Instructions</h2>
+<h3 id="step-1-verify-environment">Step 1 – Verify environment</h3>
+<pre><code class="language-bash">node --version
+npm list docx
+</code></pre>
+<p>If <code>docx</code> is not installed:</p>
+<pre><code class="language-bash">npm install docx
+</code></pre>
+<h3 id="step-2-locate-source-files">Step 2 – Locate source files</h3>
+<p>For each CU to compile (default: cu01 through cu06), verify:</p>
+<pre><code>noss-rebuild/competency-profiles/cu01/cu01-profile.md
+noss-rebuild/competency-profiles/cu02/cu02-profile.md
+...
+noss-rebuild/competency-profiles/cu06/cu06-profile.md
+</code></pre>
+<p>Report any missing files before proceeding.</p>
+<h3 id="step-3-run-the-generator">Step 3 – Run the generator</h3>
+<p>The canonical generator script is at:</p>
+<pre><code>scripts/generate_rebuild_cp.js
+</code></pre>
+<p>Run:</p>
+<pre><code class="language-bash">node scripts/generate_rebuild_cp.js
+</code></pre>
+<p>Expected output:</p>
+<pre><code>Saved Markdown to .../CP-Level-3-Generated.md
+Saved DOCX to .../CP-Level-3-Generated.docx
+</code></pre>
+<h3 id="step-4-verify-outputs">Step 4 – Verify outputs</h3>
+<p>Check that both files exist and have non-zero size:</p>
+<pre><code class="language-bash">node -e &quot;const fs=require('fs'); ['noss-rebuild/references/CP-Level-3-Generated.md','noss-rebuild/references/CP-Level-3-Generated.docx'].forEach(f=&gt;{const s=fs.statSync(f);console.log(f,s.size,'bytes')})&quot;
+</code></pre>
+<h3 id="step-5-quality-gate">Step 5 – Quality gate</h3>
+<p>Run the Markdown verification check:</p>
+<pre><code class="language-bash">node -e &quot;
+const fs=require('fs');
+const md=fs.readFileSync('noss-rebuild/references/CP-Level-3-Generated.md','utf8');
+const cuCount=(md.match(/CU TITLE/g)||[]).length;
+const waCount=(md.match(/IT-020-3:2026-CU\d+-WA\d+/g)||[]).length;
+console.log('CU blocks found:',cuCount);
+console.log('WA codes found:',waCount);
+if(cuCount&lt;6) console.error('FAIL: Expected at least 6 CU blocks');
+else console.log('PASS: CU count OK');
+&quot;
+</code></pre>
+<hr />
+<h2 id="7-manual-authoring-rules-when-writing-content-by-hand">7. Manual Authoring Rules (when writing content by hand)</h2>
+<p>When an AI agent writes or edits CP content directly (not via generator),<br />
+it MUST follow these rules:</p>
+<h3 id="71-cu-descriptor-3-paragraph-formula">7.1 CU Descriptor — 3-Paragraph Formula</h3>
+<pre><code>Paragraph 1: &lt;CU Title&gt; describes [scope of activities].
+             This activity typically takes place [context].
+
+Paragraph 2: The person who is competent in this CU should be able to
+             [WA1], [WA2], [WA3], and [WA4/5].
+
+Paragraph 3: The outcome of this CU is [measurable deliverable]
+             in accordance with [standard/policy/SOP].
+</code></pre>
+<h3 id="72-work-steps-active-voice-rules">7.2 Work Steps — Active Voice Rules</h3>
+<ul>
+<li>Begin with an <strong>action verb</strong> (Install, Configure, Verify, Connect...)</li>
+<li>Use present tense</li>
+<li>Reference a concrete tool or command where applicable</li>
+<li>Format: <code>N.M [Action Verb] [Object] [Qualifier/Tool].</code></li>
+</ul>
+<h3 id="73-performance-criteria-passive-voice-rules">7.3 Performance Criteria — Passive Voice Rules</h3>
+<ul>
+<li>Object first, verb passive (past participle)</li>
+<li>End with <code>in accordance with [standard/policy/procedure]</code></li>
+<li>Format: <code>N.M [Object] [Passive Verb] in accordance with [reference].</code></li>
+</ul>
+<h3 id="74-wa-title-convention">7.4 WA Title Convention</h3>
+<ul>
+<li>Start with action verb</li>
+<li>Follow NOSS naming: <code>[Verb] [Object] [Qualifier]</code></li>
+<li>Append WA code in parentheses on a separate line in the DOCX cell</li>
+</ul>
+<hr />
+<h2 id="8-error-patterns-fixes">8. Error Patterns &amp; Fixes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Symptom</th>
+<th style="text-align: left;">Root Cause</th>
+<th style="text-align: left;">Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">DOCX missing CU</td>
+<td style="text-align: left;">Profile file not found</td>
+<td style="text-align: left;">Verify file path matches <code>cu0X-profile.md</code> naming</td>
+</tr>
+<tr>
+<td style="text-align: left;">Descriptor split wrong</td>
+<td style="text-align: left;">Missing <code>\n\n</code> between paragraphs</td>
+<td style="text-align: left;">Add blank line between descriptor paragraphs in profile</td>
+</tr>
+<tr>
+<td style="text-align: left;">WA steps merged into one line</td>
+<td style="text-align: left;"><code>&lt;br&gt;</code> not present in profile table</td>
+<td style="text-align: left;">Ensure <code>&lt;br&gt;</code> separates steps in the source table cell</td>
+</tr>
+<tr>
+<td style="text-align: left;">PC count ≠ Step count</td>
+<td style="text-align: left;">Matrix misalignment</td>
+<td style="text-align: left;">Count steps and PCs; add missing entries to balance</td>
+</tr>
+<tr>
+<td style="text-align: left;">DOCX not generated</td>
+<td style="text-align: left;"><code>docx</code> package missing</td>
+<td style="text-align: left;">Run <code>npm install docx</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Font appears different</td>
+<td style="text-align: left;">Font not specified per run</td>
+<td style="text-align: left;">Ensure every <code>TextRun</code> includes <code>font: "Times New Roman", size: 22</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-extending-to-other-document-types">9. Extending to Other Document Types</h2>
+<p>This skill covers <strong>CP only</strong>. For related documents, use these companion skills:<br />
+- <strong>CPC (Competency Profile Chart):</strong> Use skill <code>noss-cpc-docx-formatter</code><br />
+- <strong>CoCU (Content of Competency Unit):</strong> Use skill <code>noss-cocu-docx-formatter</code><br />
+- <strong>Job Sheets:</strong> Use skill <code>noss-job-sheet-formatter</code></p>
+<hr />
+<h2 id="10-pedagogical-scope-boundary">10. Pedagogical Scope Boundary</h2>
+<blockquote>
+<p><strong>⚠️ LEVEL 3 CONSTRAINT</strong></p>
+<p>All content generated by this skill must remain within <strong>NOSS Level 3</strong><br />
+boundaries:<br />
+- Use only fundamental Linux/Windows CLI commands<br />
+- Do not reference Kubernetes, Ansible, Terraform, or advanced orchestration<br />
+- Work Steps must be executable by an SPM-entry vocational trainee<br />
+- Do not introduce scripting logic beyond basic one-liner commands</p>
+</blockquote>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

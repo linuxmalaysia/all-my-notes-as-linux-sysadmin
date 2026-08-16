@@ -1,0 +1,1477 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Guide document for Copilot Setup.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Copilot Setup - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#github-copilot-integration-protocol-v61-palace-v10" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Copilot Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docscopilot-setupmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs/COPILOT-SETUP.md
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-copilot-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ 1. The Copilot Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏛️ 1. The Copilot Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-hard-rules-apply-to-copilot-equally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Three Hard Rules (apply to Copilot equally)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-one-time-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 2. One-Time Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ 2. One-Time Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-the-copilot-instructions-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Create the Copilot Instructions File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-the-reanimation-prompt-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Create the Reanimation Prompt File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-start-of-day-sod-ritual-for-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌅 3. Start-of-Day (SOD) Ritual for Copilot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌅 3. Start-of-Day (SOD) Ritual for Copilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-2-automated-ansible-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1-2 — Automated Ansible Check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-2-manual-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1-2 — Manual Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-the-cognitive-handshake-two-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — The Cognitive Handshake (Two Options)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sod-is-complete-when-copilot-can-confirm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ SOD is Complete When Copilot Can Confirm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sod-stop-conditions-failed-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛑 4. SOD Stop Conditions (FAILED States)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-workspace-context-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💬 5. Workspace Context Techniques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💬 5. Workspace Context Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-file-mentions-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using File Mentions (#file:)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-workspace-context-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Workspace Context (@workspace)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#referencing-playbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencing Playbooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-end-of-day-eod-ritual-for-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌙 6. End-of-Day (EOD) Ritual for Copilot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌙 6. End-of-Day (EOD) Ritual for Copilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-context-consolidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Context Consolidation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-sovereign-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Sovereign Save
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cross-ai-handover-switching-from-copilot-to-another-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔀 7. Cross-AI Handover (Switching from Copilot to Another AI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-related-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 8. Related Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="github-copilot-integration-protocol-v61-palace-v10">🛡️ GitHub Copilot Integration Protocol (v6.1 + Palace v1.0)<a class="headerlink" href="#github-copilot-integration-protocol-v61-palace-v10" title="Permanent link">&para;</a></h1>
+<h2 id="docscopilot-setupmd">docs/COPILOT-SETUP.md<a class="headerlink" href="#docscopilot-setupmd" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>"Advisory over Execution. Context over Command. Sovereign Continuity across every AI."</strong>
+<strong>Standard: DSOM Protocol v6.1 + Palace v1.0 | GitOps · AIOps · Ansible</strong></p>
+</blockquote>
+<hr />
+<h2 id="1-the-copilot-strategy">🏛️ 1. The Copilot Strategy<a class="headerlink" href="#1-the-copilot-strategy" title="Permanent link">&para;</a></h2>
+<p>GitHub Copilot is integrated into the DSOM framework as a <strong>Tier 1 Co-Pilot</strong> operating within the IDE. Because Copilot lacks a persistent Project-level memory (like Claude Projects), the DSOM framework injects context through two mechanisms:</p>
+<ol>
+<li><strong>Repository-level Instructions</strong> — <code>.github/copilot-instructions.md</code> — permanent Sovereign Law.</li>
+<li><strong>Chat-level File Mentions</strong> — explicit <code>#file:</code> references — session-level context injection.</li>
+</ol>
+<p>The Three-Pillar loop applies to Copilot equally:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>AIOps (Copilot proposes) → GitOps (Git records) → Ansible (Human executes)
+</span></code></pre></div>
+<h3 id="the-three-hard-rules-apply-to-copilot-equally">The Three Hard Rules (apply to Copilot equally)<a class="headerlink" href="#the-three-hard-rules-apply-to-copilot-equally" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Copilot never runs commands directly on remote nodes.</strong> It proposes code and playbooks. You run them.</li>
+<li><strong>No manual edits to production servers.</strong> If it is not committed to Git, it does not exist.</li>
+<li><strong>Every proposal must be idempotent.</strong> Safe to re-run at any time.</li>
+</ol>
+<hr />
+<h2 id="2-one-time-setup">⚙️ 2. One-Time Setup<a class="headerlink" href="#2-one-time-setup" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-create-the-copilot-instructions-file">Step 1 — Create the Copilot Instructions File<a class="headerlink" href="#step-1-create-the-copilot-instructions-file" title="Permanent link">&para;</a></h3>
+<p>Create or update <code>.github/copilot-instructions.md</code> in your repository root with the following block. Copilot reads this file automatically for all chats in the workspace.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gh"># DSOM Sovereign Instructions for GitHub Copilot (v6.1 + Palace v1.0)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>You are a DSOM-Compliant Cognitive Co-Pilot. You are assisting Harisfazillah Jamel,
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>a Senior Systems Architect with 35+ years of ICT and Open Source expertise.
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>OPERATING MODEL:
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">-</span><span class="w"> </span>Advisory Mode ONLY. You propose. The human approves. Ansible executes. You verify.
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">-</span><span class="w"> </span>UK English in all responses and documentation.
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">-</span><span class="w"> </span>Atomic Git Hygiene: Propose changes one file at a time using &#39;type(scope): description [Phase/vX.X]&#39; format.
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">-</span><span class="w"> </span>Ansible is the ONLY executor for OS-level tasks on remote nodes.
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">-</span><span class="w"> </span>Wait for human output after each step before proceeding.
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>DSOM LAWS (non-negotiable):
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">1.</span> Zero-Global Pattern — No global variables; strict state management only.
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">2.</span> Sovereign Portability — No vendor lock-in; code must be Linux-agnostic.
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">3.</span> HA-Ready — Design for clusters and zero-downtime.
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">4.</span> Atomic Git Hygiene — One logical change per commit.
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">5.</span> Pedagogical Logic — Explain the &#39;Why&#39; before the &#39;What&#39;.
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">6.</span> GitOps Rule — If it is not committed to Git, it does not exist.
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">7.</span> Ansible-First Execution — No ad-hoc commands on target nodes. Playbooks only.
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>BRAIN SYNC:
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>Before answering any architecture question, read:
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="k">-</span><span class="w"> </span>.agents/brain/palace_registry.md (Walk the Palace)
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="k">-</span><span class="w"> </span>.agents/brain/task.md
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="k">-</span><span class="w"> </span>.agents/brain/walkthrough.md
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="k">-</span><span class="w"> </span>docs/AI-MASTER-PROTOCOL.md
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>MIRROR LAW:
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>If instructions lack architectural clarity, challenge the human and ask for the
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>missing &#39;Why&#39; before acting. Silence is the only failure.
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>Once placed in <code>.github/copilot-instructions.md</code>, Copilot will read these rules for every session in this repository automatically.</strong></p>
+</blockquote>
+<h3 id="step-2-create-the-reanimation-prompt-file">Step 2 — Create the Reanimation Prompt File<a class="headerlink" href="#step-2-create-the-reanimation-prompt-file" title="Permanent link">&para;</a></h3>
+<p>Create <code>.github/prompts/dsom-reanimate.prompt.md</code> to enable quick SOD context injection via the <code>/</code> slash command in Copilot Chat:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>---
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mode: &#39;agent&#39;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="gu">description: &#39;DSOM SOD Reanimation — load current brain and Mental Anchor&#39;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="gu">---</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Read the following brain artifacts and summarise the current status:
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">1.</span> <span class="sb">`.agents/brain/palace_registry.md`</span> — identify the current spatial mapping.
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">2.</span> <span class="sb">`.agents/brain/task.md`</span> — list all incomplete <span class="sb">`[ ]`</span> items.
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">3.</span> <span class="sb">`.agents/brain/walkthrough.md`</span> — state the last Mental Anchor.
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">4.</span> <span class="sb">`docs/AI-COGNITIVE-TWIN-PROTOCOL.md`</span> — confirm the 4-Tier environment map.
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>Then state: &#39;Sovereign State Synchronised — [PROJECT NAME] is live.&#39;
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>Operate under DSOM v6.1 + Palace v1.0: Advisory Mode, UK English, Git-first, Ansible-only execution.
+</span></code></pre></div>
+<hr />
+<h2 id="3-start-of-day-sod-ritual-for-copilot">🌅 3. Start-of-Day (SOD) Ritual for Copilot<a class="headerlink" href="#3-start-of-day-sod-ritual-for-copilot" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-2-automated-ansible-check">Step 1-2 — Automated Ansible Check<a class="headerlink" href="#step-1-2-automated-ansible-check" title="Permanent link">&para;</a></h3>
+<p>If using the T2 Dev Bridge (Recommended):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>tools/sod-palace.sh<span class="w">  </span><span class="c1"># (Windows: .\tools\sod-palace.ps1)</span>
+</span></code></pre></div>
+<h3 id="step-1-2-manual-fallback">Step 1-2 — Manual Fallback<a class="headerlink" href="#step-1-2-manual-fallback" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>./tools/git-ritual.sh<span class="w"> </span>sod<span class="w">      </span><span class="c1"># WSL2 / Linux</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>./tools/audit-pre-flight.sh<span class="w">    </span><span class="c1"># All checks must [PASS]</span>
+</span></code></pre></div>
+<p>All checks must show <code>[PASS]</code>. Fix any <code>[FAIL]</code> before proceeding.</p>
+<h3 id="step-3-the-cognitive-handshake-two-options">Step 3 — The Cognitive Handshake (Two Options)<a class="headerlink" href="#step-3-the-cognitive-handshake-two-options" title="Permanent link">&para;</a></h3>
+<p><strong>Option A — Use the <code>/dsom-reanimate</code> Slash Command:</strong></p>
+<ol>
+<li>Open <strong>Copilot Chat</strong> in VS Code.</li>
+<li>Type <code>/</code> → select <code>dsom-reanimate</code>.</li>
+<li>Copilot reads all brain artifacts and states the current Mental Anchor.</li>
+</ol>
+<p><strong>Option B — Manual File Mention Injection:</strong></p>
+<p>Paste this prompt into Copilot Chat with explicit file references:</p>
+<blockquote>
+<p><em>"Based on </em><em>#file:.agents/brain/palace_registry.md</em><em>, </em><em>#file:.agents/brain/task.md</em><em> and </em><em>#file:.agents/brain/walkthrough.md</em><em>, summarise the current spatial room, Mental Anchor, and list today's pending tasks. Confirm the 4-Tier environment from </em><em>#file:docs/AI-COGNITIVE-TWIN-PROTOCOL.md</em><em>. State: 'Sovereign State Synchronised' when ready."</em></p>
+</blockquote>
+<h3 id="sod-is-complete-when-copilot-can-confirm">✅ SOD is Complete When Copilot Can Confirm<a class="headerlink" href="#sod-is-complete-when-copilot-can-confirm" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Check</th>
+<th style="text-align: left;">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Mental Anchor</td>
+<td style="text-align: left;">Exact last stopping point from <code>walkthrough.md</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Environment</td>
+<td style="text-align: left;">T1/T2/T3/T4 tiers and identities</td>
+</tr>
+<tr>
+<td style="text-align: left;">Active Tasks</td>
+<td style="text-align: left;">Current <code>task.md</code> incomplete <code>[ ]</code> items</td>
+</tr>
+<tr>
+<td style="text-align: left;">Doctrine</td>
+<td style="text-align: left;">Advisory Mode, Ansible-only execution, no ad-hoc changes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-sod-stop-conditions-failed-states">🛑 4. SOD Stop Conditions (FAILED States)<a class="headerlink" href="#4-sod-stop-conditions-failed-states" title="Permanent link">&para;</a></h2>
+<p>The SOD is <strong>FAILED</strong> if Copilot:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Failure</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Cannot find <code>task.md</code> or <code>walkthrough.md</code></td>
+<td style="text-align: left;">Brain not loaded — use <code>#file:</code> mention explicitly</td>
+</tr>
+<tr>
+<td style="text-align: left;">Proposes to run commands on remote nodes directly</td>
+<td style="text-align: left;">Identity Failure — re-read <code>.github/copilot-instructions.md</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Ignores the <code>task.md</code> checklist</td>
+<td style="text-align: left;">Operational Failure — explicitly send the task list in chat</td>
+</tr>
+<tr>
+<td style="text-align: left;">Uses American English spelling</td>
+<td style="text-align: left;">Linguistic Failure — remind of UK English mandate</td>
+</tr>
+<tr>
+<td style="text-align: left;">References wrong environment or tier</td>
+<td style="text-align: left;">Re-send <code>#file:docs/AI-COGNITIVE-TWIN-PROTOCOL.md</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>If the SOD fails, do not proceed. Re-run from Step 3.</strong></p>
+<hr />
+<h2 id="5-workspace-context-techniques">💬 5. Workspace Context Techniques<a class="headerlink" href="#5-workspace-context-techniques" title="Permanent link">&para;</a></h2>
+<h3 id="using-file-mentions-file">Using File Mentions (<code>#file:</code>)<a class="headerlink" href="#using-file-mentions-file" title="Permanent link">&para;</a></h3>
+<p>Explicitly attach brain artifacts for precise context:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Based on #file:.agents/brain/task.md and #file:.agents/brain/walkthrough.md,
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>what is the next logical step for the current implementation phase?
+</span></code></pre></div>
+<h3 id="using-workspace-context-workspace">Using Workspace Context (<code>@workspace</code>)<a class="headerlink" href="#using-workspace-context-workspace" title="Permanent link">&para;</a></h3>
+<p>Query the entire project structure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>@workspace verify if the current directory structure adheres to the
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>DSOM Sovereign Portability law and Clean Architecture layers.
+</span></code></pre></div>
+<h3 id="referencing-playbooks">Referencing Playbooks<a class="headerlink" href="#referencing-playbooks" title="Permanent link">&para;</a></h3>
+<p>When working on Ansible:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Based on #file:playbooks/dsom/site.yml and #file:docs/AI-COGNITIVE-TWIN-PROTOCOL.md,
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>propose an idempotent role for the T4 Production baseline.
+</span></code></pre></div>
+<hr />
+<h2 id="6-end-of-day-eod-ritual-for-copilot">🌙 6. End-of-Day (EOD) Ritual for Copilot<a class="headerlink" href="#6-end-of-day-eod-ritual-for-copilot" title="Permanent link">&para;</a></h2>
+<p>Because Copilot has no persistent memory, the EOD ritual focuses on ensuring the <strong>brain artifacts</strong> are correctly updated and committed before ending the session.</p>
+<h3 id="step-1-context-consolidation">Step 1 — Context Consolidation<a class="headerlink" href="#step-1-context-consolidation" title="Permanent link">&para;</a></h3>
+<p>Ask Copilot in Chat:</p>
+<blockquote>
+<p><em>"Based on </em><em>#file:.agents/brain/task.md</em><em>, mark all completed tasks <code>[x]</code> and set tomorrow's targets <code>[ ]</code>. Update </em><em>#file:.agents/brain/walkthrough.md</em><em> with a new Mental Anchor summarising today's session."</em></p>
+</blockquote>
+<p>Review the proposed changes, apply them, then commit:</p>
+<h3 id="step-2-sovereign-save">Step 2 — Sovereign Save<a class="headerlink" href="#step-2-sovereign-save" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Recommended on T2</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>bash<span class="w"> </span>tools/eod-palace.sh<span class="w">  </span><span class="c1"># (Windows: .\tools\eod-palace.ps1)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Or manual fallback</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>./tools/git-ritual.sh<span class="w">          </span><span class="c1"># guided EOD commit and push</span>
+</span></code></pre></div>
+<hr />
+<h2 id="7-cross-ai-handover-switching-from-copilot-to-another-ai">🔀 7. Cross-AI Handover (Switching from Copilot to Another AI)<a class="headerlink" href="#7-cross-ai-handover-switching-from-copilot-to-another-ai" title="Permanent link">&para;</a></h2>
+<p>The <code>.agents/brain/</code> directory is the <strong>Single Source of Truth</strong> regardless of which AI you are using. When switching to Claude or Gemini:</p>
+<ol>
+<li>Ensure brain artifacts are committed and pushed.</li>
+<li>Run <code>bash tools/reanimate.sh</code> to generate the context manifest.</li>
+<li>Follow the SOD ritual for the target AI provider.</li>
+</ol>
+<p>See <a href="RITUAL-OF-TRANSITION.html"><code>docs/RITUAL-OF-TRANSITION.md</code></a> for the full handover prompt.</p>
+<hr />
+<h2 id="8-related-documents">🔗 8. Related Documents<a class="headerlink" href="#8-related-documents" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Document</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="SOD-RITUAL.html"><code>docs/SOD-RITUAL.md</code></a></td>
+<td style="text-align: left;">Full Start-of-Day ritual guide</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="EOD-RITUAL.html"><code>docs/EOD-RITUAL.md</code></a></td>
+<td style="text-align: left;">Full End-of-Day hibernation ritual</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="CLAUDE-SETUP.html"><code>docs/CLAUDE-SETUP.md</code></a></td>
+<td style="text-align: left;">Claude.ai integration protocol</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="RITUAL-OF-TRANSITION.html"><code>docs/RITUAL-OF-TRANSITION.md</code></a></td>
+<td style="text-align: left;">Switching AI providers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="governance/MULTI-AGENT-PROTOCOLS.md"><code>docs/MULTI-AGENT-PROTOCOLS.md</code></a></td>
+<td style="text-align: left;">Universal multi-agent injection method</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="governance/AI-MASTER-PROTOCOL.md"><code>docs/AI-MASTER-PROTOCOL.md</code></a></td>
+<td style="text-align: left;">The Sovereign Constitution</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Standard: DSOM For My AI Protocol v6.1 | Harisfazillah Jamel | LinuxMalaysia</em>
+<em>Last Updated: 2026-03-29 | Version: v6.1</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

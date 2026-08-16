@@ -1,0 +1,1358 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Concept document for Research Reasoning Gap.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Research Reasoning Gap - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-reasoning-gap-what-dsom-solves-and-what-it-doesnt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Research Reasoning Gap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-scale-of-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 The Scale of the Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-dsom-solves-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ What DSOM Solves Well
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ What DSOM Solves Well">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Persistence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fact-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fact Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Persistence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-identified-gap-live-reasoning-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ The Identified Gap: Live Reasoning Capture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ The Identified Gap: Live Reasoning Capture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-gap-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the Gap Is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-it-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why It Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Scenario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-mitigation-hibernation-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Current Mitigation: Hibernation Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-practice-the-decision-log-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Recommended Practice: The Decision Log Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Recommended Practice: The Decision Log Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-trigger-a-decision-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Trigger a Decision Log
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-consideration-semantic-search-for-dsom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Future Consideration: Semantic Search for DSOM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-status-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Gap Status Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Related Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="the-reasoning-gap-what-dsom-solves-and-what-it-doesnt">🧩 The Reasoning Gap: What DSOM Solves and What It Doesn't<a class="headerlink" href="#the-reasoning-gap-what-dsom-solves-and-what-it-doesnt" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><em>"The reasoning, the tradeoffs, the 'we tried X and it failed because Y' — all trapped in chat windows that evaporate when the session ends."</em>
+— MemPalace research, 2025</p>
+</blockquote>
+<p><strong>Document Type:</strong> Research Finding | <strong>Status:</strong> Open Gap — Partially Mitigated
+<strong>Date Identified:</strong> 2026-04-08 | <strong>Protocol Version:</strong> DSOM v6.1 + Palace v1.0</p>
+<hr />
+<h2 id="the-scale-of-the-problem">📊 The Scale of the Problem<a class="headerlink" href="#the-scale-of-the-problem" title="Permanent link">&para;</a></h2>
+<p>Six months of daily AI use produces millions of tokens of conversation. That includes every decision, every debugging session, and every architecture debate. All of it is trapped in chat windows.</p>
+<blockquote>
+<p>[!NOTE]
+DSOM with the Sovereign Markdown Palace addresses the <strong>state persistence</strong> problem effectively. This approach originated from and was inspired by the <strong>MemPalace</strong> research (<a href="https://github.com/milla-jovovich/mempalace">milla-jovovich/mempalace</a>).</p>
+</blockquote>
+<hr />
+<h2 id="what-dsom-solves-well">✅ What DSOM Solves Well<a class="headerlink" href="#what-dsom-solves-well" title="Permanent link">&para;</a></h2>
+<p>DSOM with the Sovereign Markdown Palace addresses the <strong>cost and state persistence problem</strong> effectively:</p>
+<h3 id="state-persistence">State Persistence<a class="headerlink" href="#state-persistence" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>task.md</code> — What we are working on right now (Present)</li>
+<li><code>walkthrough.md</code> — Full session history with Mental Anchors (Past)</li>
+<li><code>implementation_plan.md</code> — Project roadmap (Future)</li>
+<li><code>palace_registry.md</code> — Spatial index loaded at every SOD</li>
+</ul>
+<h3 id="fact-retrieval">Fact Retrieval<a class="headerlink" href="#fact-retrieval" title="Permanent link">&para;</a></h3>
+<p>Each <code>closet.md</code> is a distilled, high-density summary. Instead of scanning 300+ lines of session logs, the AI walks to the relevant Room and reads a 40–80 line summary.</p>
+<h3 id="git-persistence">Git Persistence<a class="headerlink" href="#git-persistence" title="Permanent link">&para;</a></h3>
+<p>Every state change is committed to Git. The project state cannot be lost — it is version-controlled, multi-machine synced, and provider-agnostic.</p>
+<hr />
+<h2 id="the-identified-gap-live-reasoning-capture">⚠️ The Identified Gap: Live Reasoning Capture<a class="headerlink" href="#the-identified-gap-live-reasoning-capture" title="Permanent link">&para;</a></h2>
+<h3 id="what-the-gap-is">What the Gap Is<a class="headerlink" href="#what-the-gap-is" title="Permanent link">&para;</a></h3>
+<p>DSOM does <strong>not</strong> automatically capture the <em>reasoning</em> behind decisions. It captures outcomes — what was decided, what was built, what changed. It does not capture:</p>
+<ul>
+<li>❌ <strong>Why</strong> a decision was made</li>
+<li>❌ <strong>What alternatives were considered and rejected</strong></li>
+<li>❌ <strong>The conversation thread</strong> that produced the reasoning</li>
+<li>❌ <strong>"We tried X and it failed because Y"</strong> — unless manually committed</li>
+</ul>
+<h3 id="why-it-matters">Why It Matters<a class="headerlink" href="#why-it-matters" title="Permanent link">&para;</a></h3>
+<p>Decisions made today become constraints six months from now. If the reasoning is lost:</p>
+<ul>
+<li>A future session may propose the same failed approach again.</li>
+<li>The AI has no way to explain <em>why</em> the current architecture is the way it is.</li>
+<li>New team members (human or AI) cannot understand the tradeoff history.</li>
+</ul>
+<h3 id="example-scenario">Example Scenario<a class="headerlink" href="#example-scenario" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Session Day 1:
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  Human: &quot;Why are we using Macvlan instead of bridge networking?&quot;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  AI: &quot;Because Elasticsearch nodes needed their own routable IPs for 
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       cluster discovery. Bridge networking caused split-brain under 
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       load. We tested this in Phase 42 and it failed with 3 nodes.&quot;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Session Day 180 (new AI, same repo):
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Human: &quot;Why are we using Macvlan?&quot;
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  AI: &quot;I don&#39;t know. The config shows Macvlan but there&#39;s no reasoning 
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>       documented. Do you want to reconsider?&quot;
+</span></code></pre></div>
+<p>The outcome (Macvlan config) is in Git. The <em>reasoning</em> is gone.</p>
+<hr />
+<hr />
+<h2 id="current-mitigation-hibernation-notes">🔧 Current Mitigation: Hibernation Notes<a class="headerlink" href="#current-mitigation-hibernation-notes" title="Permanent link">&para;</a></h2>
+<p>The existing EOD ritual includes the <strong>Hibernation Notes export prompt</strong>, which asks the AI to dump its full in-session memory before the session ends:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&quot;List every memory you have stored about our progress and our chats of 
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>this project... Cover: reasoning, tradeoffs, what failed and why...&quot;
+</span></code></pre></div>
+<p><strong>Limitation:</strong> This relies on the AI's <strong>in-session memory at that moment</strong>. If the session was long, context was refreshed mid-session, or the AI forgot earlier reasoning, the export is incomplete.</p>
+<p>Hibernation Notes mitigate the gap — they do not close it.</p>
+<hr />
+<h2 id="recommended-practice-the-decision-log-protocol">💡 Recommended Practice: The Decision Log Protocol<a class="headerlink" href="#recommended-practice-the-decision-log-protocol" title="Permanent link">&para;</a></h2>
+<h3 id="the-principle">The Principle<a class="headerlink" href="#the-principle" title="Permanent link">&para;</a></h3>
+<p><strong>Capture reasoning in the moment, not at EOD.</strong> At every significant architectural decision, constraint, or failure, immediately ask the AI to log it:</p>
+<h3 id="the-command">The Command<a class="headerlink" href="#the-command" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&quot;Log this decision to walkthrough.md:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> Decision: [what] | Alternatives rejected: [what and why] | Reason: [why this]&quot;
+</span></code></pre></div>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&quot;Log this decision to walkthrough.md:
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> Decision: Macvlan networking for Elasticsearch nodes
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> Alternatives: Bridge networking (tested Phase 42), Host networking (security risk)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> Reason: Nodes need routable IPs for cluster discovery. Bridge caused split-brain 
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>          under 3-node load test on 2026-03-15.
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> Context: Revisit if we move to Kubernetes (CNI handles this differently).&quot;
+</span></code></pre></div>
+<p>This entry lands in Git <strong>during the session</strong>, not hours later in a summary that may lose fidelity.</p>
+<h3 id="when-to-trigger-a-decision-log">When to Trigger a Decision Log<a class="headerlink" href="#when-to-trigger-a-decision-log" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Any time you say "we'll use X instead of Y"</li>
+<li>Any time a test fails and you pivot approach</li>
+<li>Any time you override an AI recommendation</li>
+<li>Any time you establish a constraint that will affect future sessions</li>
+</ul>
+<hr />
+<h2 id="future-consideration-semantic-search-for-dsom">🗺️ Future Consideration: Semantic Search for DSOM<a class="headerlink" href="#future-consideration-semantic-search-for-dsom" title="Permanent link">&para;</a></h2>
+<p>If the DSOM community grows and the reasoning backlog becomes deep, a sovereign semantic search layer could be added <strong>without breaking the Plain Markdown Mandate</strong>:</p>
+<ul>
+<li>Tool: <code>ripgrep</code> (already used) for keyword search across all closets</li>
+<li>Upgrade: A local embedding model (e.g., via Ollama) to add vector search on top of the existing Markdown files</li>
+<li>The Markdown files remain the source of truth — the embeddings are a search index only</li>
+</ul>
+<p>This would close the gap entirely while maintaining full sovereignty and zero vendor dependency.</p>
+<hr />
+<h2 id="gap-status-summary">📋 Gap Status Summary<a class="headerlink" href="#gap-status-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Status</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State persistence</td>
+<td>✅ Solved</td>
+<td><code>walkthrough.md</code> + Git</td>
+</tr>
+<tr>
+<td>Fact retrieval</td>
+<td>✅ Solved</td>
+<td>Walk Palace → closet.md</td>
+</tr>
+<tr>
+<td>Outcome capture</td>
+<td>✅ Solved</td>
+<td>Git commit history + <code>palace-sync</code></td>
+</tr>
+<tr>
+<td><strong>Live reasoning capture</strong></td>
+<td><strong>⚠️ Partially mitigated</strong></td>
+<td><strong>Hibernation Notes + Decision Log Protocol</strong></td>
+</tr>
+<tr>
+<td>Semantic search</td>
+<td>🔵 Future</td>
+<td>Planned: local Ollama embeddings</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-documents">🔗 Related Documents<a class="headerlink" href="#related-documents" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../PALACE-BUILD-STORY.md"><code>docs/PALACE-BUILD-STORY.md</code></a></td>
+<td>Why the Palace was built</td>
+</tr>
+<tr>
+<td><a href="DIGITAL-SOVEREIGNTY-OPERATIONAL-MODEL-PALACE.html"><code>docs/DIGITAL-SOVEREIGNTY-OPERATIONAL-MODEL-PALACE.md</code></a></td>
+<td>Full Palace specification</td>
+</tr>
+<tr>
+<td><a href="../EOD-RITUAL.md"><code>docs/EOD-RITUAL.md</code></a></td>
+<td>Hibernation Notes export protocol</td>
+</tr>
+<tr>
+<td><a href="../HOWTO-PALACE-ONBOARDING.md"><code>docs/HOWTO-PALACE-ONBOARDING.md</code></a></td>
+<td>Palace usage guide</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Research finding documented: 2026-04-08</em>
+<em>Identified by: Harisfazillah Jamel (LinuxMalaysia) in session with Google Antigravity</em>
+<em>Inspired by and originated from: MemPalace research (<a href="https://github.com/milla-jovovich/mempalace">milla-jovovich/mempalace</a>)</em>
+<em>Protocol: DSOM v6.1 + Palace v1.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

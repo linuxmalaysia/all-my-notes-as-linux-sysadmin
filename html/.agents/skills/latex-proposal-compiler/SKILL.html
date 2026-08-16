@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latex-proposal-compiler - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: latex-proposal-compiler
+name: latex-proposal-compiler
+description: Compiles a markdown proposal document into a professionally formatted PDF using Pandoc and XeLaTeX. Contains crucial fixes for TOC generation, double-numbering, and table layout bugs.
+topics: [latex, pandoc, pdf, proposal, document]
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="latex-proposal-compiler">latex-proposal-compiler</h1>
+<p>When the user requests to compile a proposal to PDF using LaTeX/Pandoc, follow these strict guidelines to prevent silent compilation failures:</p>
+<h2 id="1-pre-flight-cleanup-critical">1. Pre-flight Cleanup (CRITICAL)</h2>
+<ul>
+<li>xelatex reads auxiliary files (.toc, .aux) from the <strong>current working directory</strong> (project root) <em>before</em> reading from the -output-directory.</li>
+<li>If an older compilation was run manually without an output directory, stale files in the root will silently hijack the build, resulting in a broken or missing Table of Contents.</li>
+<li><strong>Always run this cleanup before compiling:</strong><br />
+<code>powershell
+  Remove-Item *.aux, *.toc, *.log, *.out -ErrorAction SilentlyContinue
+  Remove-Item docs/proposal/&lt;client&gt;/*.aux, docs/proposal/&lt;client&gt;/*.toc, docs/proposal/&lt;client&gt;/*.out -ErrorAction SilentlyContinue</code></li>
+</ul>
+<h2 id="2-compilation-command">2. Compilation Command</h2>
+<ul>
+<li>Use the dedicated Node.js wrapper script which automatically handles Pandoc heading shifts, strips problematic \LTcaptype wrappers, and executes the required two-pass XeLaTeX compilation.</li>
+<li><strong>Command</strong>: <code>node tools/compile_latex_proposal.js &lt;CLIENT_NAME&gt;</code> (e.g., PPZ)</li>
+<li>If <code>tools/compile_latex_proposal.js</code> or <code>tools/compile_proposal.py</code> are missing, reconstruct them using the blueprint in <code>docs/tools/compile-engines.md</code>.</li>
+</ul>
+<h2 id="3-pandoc-table-alignment-overfull-hbox">3. Pandoc Table Alignment (Overfull \hbox)</h2>
+<ul>
+<li>If a Markdown table renders with broken alignments or overlapping text in the PDF, it is because Pandoc's longtable generator falls back to standard l c c c columns when widths aren't explicitly declared.</li>
+<li><strong>Fix</strong>: Modify the <em>Markdown table</em> to balance character lengths. Shorten overly long row labels (e.g., "Ph 1: Discovery" instead of "Phase 1: Discovery &amp; Planning") and lengthen short column headers (e.g., "Week 1" instead of "W1"). This forces Pandoc to allocate balanced column widths natively.</li>
+</ul>
+<h2 id="4-double-section-numbering">4. Double Section Numbering</h2>
+<ul>
+<li>If section headers display double numbers (e.g., 1 1. Executive Summary), it means Pandoc's converted \section{...} tags are clashing with the manual numbers in the Markdown.</li>
+<li><strong>Fix</strong>: Ensure \setcounter{secnumdepth}{-1} is present in docs/templates/proposal_preamble.tex to disable LaTeX auto-numbering, while keeping \setcounter{tocdepth}{4} so the sections still correctly populate the TOC.</li>
+</ul>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

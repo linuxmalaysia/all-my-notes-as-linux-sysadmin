@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dsom-mass-okf-migrator - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: skill
+title: "dsom-mass-okf-migrator"
+timestamp: "2026-08-16T08:57:00Z"
+topics: ["dsom", "okf", "migration"]
+tags: ["script", "automation", "python"]
+description: "Automatically migrates a directory of markdown files to the OKF v0.1 format, replacing obsolete URLs and injecting the Sovereign Dual-License Footer."
+resource: "file:///.agents/skills/dsom-mass-okf-migrator/SKILL.md"
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="dsom-mass-okf-migrator">DSOM Mass OKF Migrator</h1>
+<h2 id="overview">Overview</h2>
+<p>This skill instructs the AI on how to perform a mass migration of legacy markdown documents into the highly-structured <strong>Open Knowledge Format (OKF) v0.1</strong> tailored for the Linux NOSS Malaysia project.</p>
+<p>It utilises a Python script to deeply copy a directory while rewriting the metadata, URLs, and appending the Sovereign Dual-License footer.</p>
+<h2 id="when-to-use">When to Use</h2>
+<p>Trigger this skill whenever you need to import external documentation, migrate an older DSOM repository's <code>docs/</code> or <code>openwiki/</code> folder, or standardise a large batch of markdown files to comply with the project's AI Constitution (AGENTS.md) Rule 8 and 9.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python must be executed exclusively via <code>uv</code> (as per Rule 9).</li>
+</ul>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>Identify the absolute path of the <strong>Source Directory</strong> (the legacy docs).</li>
+<li>Identify the absolute path of the <strong>Destination Directory</strong>.</li>
+<li>Execute the migration script using <code>uv run</code> to maintain environment hygiene:</li>
+</ol>
+<pre><code class="language-powershell">uv run .agents/skills/dsom-mass-okf-migrator/scripts/migrate.py &quot;&lt;SOURCE_DIR&gt;&quot; &quot;&lt;DEST_DIR&gt;&quot;
+</code></pre>
+<p><em>Note: The script automatically skips overwriting <code>PERSONALIZATION.md</code>, <code>OKF-ADOPTION-GUIDE.md</code>, and <code>SKILL-FORMAT.md</code>.</em></p>
+<h2 id="verification">Verification</h2>
+<p>After the script completes, use the <code>list_dir</code> tool to verify the destination directory and <code>view_file</code> to ensure the YAML frontmatter (<code>okf_version: 0.1</code>) and Sovereign footer were injected correctly.</p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

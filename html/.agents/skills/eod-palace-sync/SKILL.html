@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eod-palace-sync - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: eod-palace-sync
+description: The Hibernation (End of Day) ritual to externalize memory into the Palace and push to Git.
+topics: [eod, palace, sync, git, ritual]
+timestamp: 2026-06-19T14:00:00Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="eod-palace-sync-hibernation">🌙 EOD Palace Sync (Hibernation)</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when the user declares "End of Day" (EOD), "Save memory", or requests to update the palace and hibernate the agent.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li><strong>Walkthrough Update:</strong> Append the day's major accomplishments, tested commands, and E2E results to <code>.agents/brain/walkthrough.md</code>.</li>
+<li><strong>Anchor Creation:</strong> Update <code>.agents/brain/checkpoint_summary.txt</code> with a clear, concise "[MENTAL ANCHOR]" for the next agent to resume from.</li>
+<li><strong>Palace Sync:</strong> Update any modified architectural rules inside the specific <code>closet.md</code> spatial rooms.</li>
+<li><strong>Memory Dump Generation:</strong> Compile a comprehensive checkpoint summary documenting project details, instructions, frameworks, and active phases.</li>
+<li>Save this summary directly to <code>.agents/brain/checkpoint_summary.txt</code>.</li>
+<li>Ensure <code>HISTORY.md</code>, <code>CHANGELOG.md</code>, <code>README.md</code>, and <code>.agents/brain/task.md</code> are up to date.</li>
+<li>Instruct the user to execute the final git commit and push via the EOD script:<br />
+<code>powershell
+   # On Windows
+   .\tools\eod-palace.ps1</code><br />
+<code>bash
+   # On Linux/macOS
+   bash tools/eod-palace.sh</code></li>
+<li>Confirm to the user that state has been fully externalized and archived.</li>
+</ol>
+<h2 id="architecture-implementation">Architecture &amp; Implementation</h2>
+<p>If <code>tools/eod-palace.ps1</code> or <code>tools/eod-palace.sh</code> are missing, agents must reconstruct them with the following logic:<br />
+1. <strong>Validation:</strong> Check that <code>.agents/brain/task.md</code> has completed tasks (<code>[x]</code>), and <code>.agents/brain/walkthrough.md</code> contains today's <code>yyyy-MM-dd</code> anchor.<br />
+2. <strong>Summary Verification:</strong> Check that <code>.agents/brain/checkpoint_summary.txt</code> exists. If it does not, output a massive terminal warning instructing the user to prompt the AI to generate it.<br />
+3. <strong>Palace Sync:</strong> Run <code>.\tools\palace-sync.ps1</code> to generate any update proposals.<br />
+4. <strong>Staging:</strong> <code>git add</code> the core artifacts: <code>task.md</code>, <code>walkthrough.md</code>, <code>palace_registry.md</code>, <code>checkpoint_summary.txt</code>, and <code>implementation_plan.md</code>.<br />
+5. <strong>Commit &amp; Push:</strong> Execute <code>git commit -m "eod: &lt;contents of checkpoint_summary&gt;"</code> and <code>git push origin main</code>.<br />
+<em>(Note: On Linux/macOS, <code>eod-palace.sh</code> simply wraps <code>ansible-playbook playbooks/dsom/eod-palace.yml</code> with <code>ANSIBLE_NOCOWS=1</code>)</em></p>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-06-19</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

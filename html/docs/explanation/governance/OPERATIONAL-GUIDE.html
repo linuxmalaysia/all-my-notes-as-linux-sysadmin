@@ -1,0 +1,1478 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Concept document for Operational Guide.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Operational Guide - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dsom-operational-guide-level-3-specialised-tasks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Operational Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-of-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose of this Document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-reanimation-sequence-start-of-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Reanimation Sequence (Start-of-Day)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Reanimation Sequence (Start-of-Day)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-ansible-palace-sod-t2-linuxwsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [RECOMMENDED] Ansible Palace SOD (T2: Linux/WSL2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-physical-reality-check-the-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Physical Reality Check (The Audit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-generating-the-manifest-the-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Generating the Manifest (The Injection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-the-handshake-the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: The Handshake (The Prompt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-walking-the-palace-the-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Walking the Palace (The Retrieval)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-hibernation-sequence-end-of-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Hibernation Sequence (End-of-Day)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Hibernation Sequence (End-of-Day)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-ansible-palace-eod-t2-linuxwsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [RECOMMENDED] Ansible Palace EOD (T2: Linux/WSL2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-context-consolidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Context Consolidation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-the-safe-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: The Safe Shutdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architectural-layers-clean-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 🛠️ Architectural Layers (Clean Architecture)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-adoption-upgrade-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Adoption &amp; Upgrade Scenarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Adoption &amp; Upgrade Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-brownfield-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1: Brownfield Adoption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-legacy-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2: Legacy Upgrade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-palace-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3: Palace Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-4-new-adopter-palace-edition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 4: New Adopter — Palace Edition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-execution-guardrails-the-three-pillar-laws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. ⚙️ Execution Guardrails (The Three-Pillar Laws)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. ⚙️ Execution Guardrails (The Three-Pillar Laws)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guardrail-1-no-silent-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrail 1: No Silent Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardrail-2-ansible-pre-flight-mandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrail 2: Ansible Pre-flight Mandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardrail-3-log-review-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrail 3: Log Review Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardrail-4-self-healing-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrail 4: Self-Healing Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardrail-5-gitops-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrail 5: GitOps Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="dsom-operational-guide-level-3-specialised-tasks">📖 DSOM Operational Guide (Level 3 - Specialised Tasks)<a class="headerlink" href="#dsom-operational-guide-level-3-specialised-tasks" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>"Theory without Practice is Hallucination. Practice without Theory is Chaos."</strong>
+<strong>Standard: DSOM v6.1 + Palace v1.0</strong></p>
+</blockquote>
+<h2 id="1-purpose-of-this-document">1. Purpose of this Document<a class="headerlink" href="#1-purpose-of-this-document" title="Permanent link">&para;</a></h2>
+<p>This guide bridges the gap between the <strong>Abstract Laws</strong> (<code>AI-MASTER-PROTOCOL.md</code>) and the <strong>Concrete Actions</strong> (Bash/PowerShell scripts). It defines the <strong>Specialised Tasks (L3)</strong> required to execute the DSOM protocol.</p>
+<p>It answers the question: <em>"How do I actually perform the rituals defined in the Master Protocol?"</em></p>
+<hr />
+<h2 id="2-the-reanimation-sequence-start-of-day">2. The Reanimation Sequence (Start-of-Day)<a class="headerlink" href="#2-the-reanimation-sequence-start-of-day" title="Permanent link">&para;</a></h2>
+<p>The Reanimation Ritual is not just running a script; it is a <strong>Cognitive Handshake</strong> that transfers the project's soul from disk to the AI's active memory.</p>
+<h3 id="recommended-ansible-palace-sod-t2-linuxwsl2">[RECOMMENDED] Ansible Palace SOD (T2: Linux/WSL2)<a class="headerlink" href="#recommended-ansible-palace-sod-t2-linuxwsl2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Run this single command on T2 instead of Steps 1–3 below. It automates git pull, audit, palace check, and reanimate.</p>
+</blockquote>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash<span class="w"> </span>tools/sod-palace.sh<span class="w">  </span><span class="c1"># (Windows: .\tools\sod-palace.ps1)</span>
+</span></code></pre></div>
+<p>Then upload the manifest and say: <em>"Initialise DSOM Protocol v6.1 + Palace v1.0. Walk the Palace Registry in Section [14]. State: 'Sovereign State Synchronised' when ready."</em></p>
+<hr />
+<h3 id="step-1-physical-reality-check-the-audit">Step 1: Physical Reality Check (The Audit)<a class="headerlink" href="#step-1-physical-reality-check-the-audit" title="Permanent link">&para;</a></h3>
+<p>Before waking the AI, we must verify that the physical environment matches the expected state.</p>
+<p><strong>Command:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Linux / WSL2</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>./tools/audit-pre-flight.sh
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Windows</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>.<span class="se">\t</span>ools<span class="se">\a</span>udit-pre-flight.ps1
+</span></code></pre></div>
+<p><strong>Success Criteria:</strong></p>
+<ol>
+<li><strong>Brain Check:</strong> <code>task.md</code> and <code>walkthrough.md</code> must exist.</li>
+<li><strong>Git Drift:</strong> Local repo must be synced with Remote.</li>
+<li><strong>Palace Registry:</strong> <code>.agents/brain/palace_registry.md</code> must exist. If missing, run <code>bash tools/palace-sync.sh --backfill</code>.</li>
+<li><strong>Cognitive Twin Protocol:</strong> <code>docs/AI-COGNITIVE-TWIN-PROTOCOL.md</code> must exist and be filled in for this project.</li>
+<li><strong>Ansible Baseline:</strong> <code>inventory/hosts.yml</code> and <code>ansible.cfg</code> must exist if this project uses infrastructure automation.</li>
+</ol>
+<h3 id="step-2-generating-the-manifest-the-injection">Step 2: Generating the Manifest (The Injection)<a class="headerlink" href="#step-2-generating-the-manifest-the-injection" title="Permanent link">&para;</a></h3>
+<p>We aggregate all context into a single "Truth File."</p>
+<p><strong>Command:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Linux</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>./tools/reanimate.sh
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Windows</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>.<span class="se">\t</span>ools<span class="se">\r</span>eanimate.ps1
+</span></code></pre></div>
+<p><strong>What is Injected (v2.2 — Palace-aware)?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[1–5]</td>
+<td>Identity, Laws, Brain (task/walkthrough/plan)</td>
+</tr>
+<tr>
+<td>[6–10]</td>
+<td>Git log, file tree, SUMMARY, CHANGELOG, env telemetry</td>
+</tr>
+<tr>
+<td>[11–13]</td>
+<td>Cognitive Twin, Ansible topology, GitOps strategy</td>
+</tr>
+<tr>
+<td><strong>[14]</strong></td>
+<td><strong><code>palace_registry.md</code> — AI spatial map (Palace v1.0)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-3-the-handshake-the-prompt">Step 3: The Handshake (The Prompt)<a class="headerlink" href="#step-3-the-handshake-the-prompt" title="Permanent link">&para;</a></h3>
+<p>Upload the generated text file to the AI and say:</p>
+<blockquote>
+<p><em>"Initialise DSOM Protocol v6.1 + Palace v1.0. Read the manifest. Walk the Palace Registry in Section [14] — identify relevant Rooms for today's work. State: 'Sovereign State Synchronised' when ready."</em></p>
+</blockquote>
+<h3 id="step-4-walking-the-palace-the-retrieval">Step 4: Walking the Palace (The Retrieval)<a class="headerlink" href="#step-4-walking-the-palace-the-retrieval" title="Permanent link">&para;</a></h3>
+<p>Before starting logic work, the AI must traverse the <strong>Spatial Markdown Palace</strong> (<code>.agents/brain/wings/</code>):</p>
+<ol>
+<li><strong>Registry Scan:</strong> Read <code>palace_registry.md</code> to identify the relevant Wing and Rooms.</li>
+<li><strong>Room Entry:</strong> Load the <code>closet.md</code> for specific technical contexts (e.g., Auth, Persistence).</li>
+<li><strong>Discovery:</strong> Use the Palace to identify connections between disparate data points that the linear walkthrough might obscure.</li>
+</ol>
+<hr />
+<h2 id="3-the-hibernation-sequence-end-of-day">3. The Hibernation Sequence (End-of-Day)<a class="headerlink" href="#3-the-hibernation-sequence-end-of-day" title="Permanent link">&para;</a></h2>
+<p>We never "just close the window." We must perform a controlled shutdown to prevent context decay.</p>
+<h3 id="recommended-ansible-palace-eod-t2-linuxwsl2">[RECOMMENDED] Ansible Palace EOD (T2: Linux/WSL2)<a class="headerlink" href="#recommended-ansible-palace-eod-t2-linuxwsl2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Run this single command on T2 instead of Steps 1–2 below. It validates brain, runs palace-sync, stages, commits, and pushes.</p>
+</blockquote>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>tools/eod-palace.sh<span class="w">  </span><span class="c1"># (Windows: .\tools\eod-palace.ps1)</span>
+</span></code></pre></div>
+<p>After it completes — review <code>palace_update_proposal_YYYY-MM-DD.md</code> with your AI and update relevant closets.</p>
+<hr />
+<h3 id="step-1-context-consolidation">Step 1: Context Consolidation<a class="headerlink" href="#step-1-context-consolidation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Update <code>task.md</code>:</strong> Check off completed items.</li>
+<li><strong>Update <code>walkthrough.md</code>:</strong> Create a new "Session Anchor."</li>
+<li><strong>Log decisions:</strong> Apply the Decision Log Protocol — record <em>why</em> key decisions were made.</li>
+</ol>
+<h3 id="step-2-the-safe-shutdown">Step 2: The Safe Shutdown<a class="headerlink" href="#step-2-the-safe-shutdown" title="Permanent link">&para;</a></h3>
+<p>Run the hibernation tool to verify safety.</p>
+<p><strong>Command:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Linux</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>./tools/hibernation.sh
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Windows</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>.<span class="se">\t</span>ools<span class="se">\h</span>ibernation.ps1
+</span></code></pre></div>
+<p><strong>The Logic (v2.1 — Palace-aware):</strong></p>
+<ul>
+<li>Checks <code>task.md</code> for <code>[x]</code> completed tasks</li>
+<li>Checks <code>walkthrough.md</code> for today's date anchor</li>
+<li><strong>Step 7: Palace Spatial Reflection</strong> — auto-runs <code>palace-sync.sh</code> to generate <code>palace_update_proposal_YYYY-MM-DD.md</code></li>
+<li>Commits and pushes if all checks pass</li>
+</ul>
+<hr />
+<h2 id="4-architectural-layers-clean-architecture">4. 🛠️ Architectural Layers (Clean Architecture)<a class="headerlink" href="#4-architectural-layers-clean-architecture" title="Permanent link">&para;</a></h2>
+<p>When writing code, you must place files in the correct "Ring" of the Clean Architecture model.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Layer</th>
+<th style="text-align: left;">Directory</th>
+<th style="text-align: left;">Allowed Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Entities</strong></td>
+<td style="text-align: left;"><code>src/Domain/</code></td>
+<td style="text-align: left;">None (Pure Logic).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Use Cases</strong></td>
+<td style="text-align: left;"><code>src/Application/</code></td>
+<td style="text-align: left;">Entities only.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Adapters</strong></td>
+<td style="text-align: left;"><code>src/Infrastructure/</code></td>
+<td style="text-align: left;">Use Cases &amp; Entities.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Drivers</strong></td>
+<td style="text-align: left;"><code>tools/</code>, <code>public/</code></td>
+<td style="text-align: left;">Everything (The Entry Points).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule:</strong> Dependencies point INWARD. <code>tools/</code> can import <code>src/</code>, but <code>src/Domain/</code> cannot import <code>tools/</code>.</p>
+<hr />
+<hr />
+<h2 id="5-adoption-upgrade-scenarios">5. Adoption &amp; Upgrade Scenarios<a class="headerlink" href="#5-adoption-upgrade-scenarios" title="Permanent link">&para;</a></h2>
+<p>For detailed step-by-step guides on how to apply DSOM to your specific situation, refer to the specialized manuals:</p>
+<h3 id="scenario-1-brownfield-adoption">Scenario 1: Brownfield Adoption<a class="headerlink" href="#scenario-1-brownfield-adoption" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Situation:</strong> You have an existing project (Standard Code) and want to add DSOM.</li>
+<li><strong>Guide:</strong> <a href="../HOWTO-ADOPT-DSOM.md">HOWTO: Adopt DSOM in Existing Projects</a></li>
+</ul>
+<h3 id="scenario-2-legacy-upgrade">Scenario 2: Legacy Upgrade<a class="headerlink" href="#scenario-2-legacy-upgrade" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Situation:</strong> You have an older DSOM version (v3/v4) and want to upgrade to v5.x (ITIL/Privacy).</li>
+<li><strong>Guide:</strong> <a href="../HOWTO-UPGRADE-DSOM.md">HOWTO: Upgrade and Audit DSOM</a></li>
+</ul>
+<h3 id="scenario-3-palace-migration">Scenario 3: Palace Migration<a class="headerlink" href="#scenario-3-palace-migration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Situation:</strong> You have DSOM v6.x but no Palace. You want to add the spatial memory layer.</li>
+<li><strong>Guide:</strong> <a href="../HOWTO-MIGRATE-TO-PALACE.md">HOWTO: Migrate to Palace</a></li>
+</ul>
+<h3 id="scenario-4-new-adopter-palace-edition">Scenario 4: New Adopter — Palace Edition<a class="headerlink" href="#scenario-4-new-adopter-palace-edition" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Situation:</strong> First time setting up DSOM from scratch with Palace v1.0.</li>
+<li><strong>Guide:</strong> <a href="../HOWTO-PALACE-ONBOARDING.md">HOWTO: Palace Onboarding</a></li>
+</ul>
+<hr />
+<h2 id="6-execution-guardrails-the-three-pillar-laws">6. ⚙️ Execution Guardrails (The Three-Pillar Laws)<a class="headerlink" href="#6-execution-guardrails-the-three-pillar-laws" title="Permanent link">&para;</a></h2>
+<p>These guardrails apply to <strong>all</strong> DSOM projects using the GitOps + AIOps + Ansible model. They are non-negotiable.</p>
+<h3 id="guardrail-1-no-silent-execution">Guardrail 1: No Silent Execution<a class="headerlink" href="#guardrail-1-no-silent-execution" title="Permanent link">&para;</a></h3>
+<p>The AI <strong>never</strong> directly runs commands on remote infrastructure. The workflow is always:</p>
+<blockquote>
+<p><strong>AI Proposes</strong> → <strong>Human Reviews</strong> → <strong>Human Approves</strong> → <strong>Ansible Executes</strong></p>
+</blockquote>
+<h3 id="guardrail-2-ansible-pre-flight-mandate">Guardrail 2: Ansible Pre-flight Mandate<a class="headerlink" href="#guardrail-2-ansible-pre-flight-mandate" title="Permanent link">&para;</a></h3>
+<p>Before executing <strong>any</strong> playbook, the following must be verified:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Run the DSOM pre-flight audit</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>./tools/audit-pre-flight.sh
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># 2. Verify Ansible connectivity to all target nodes</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>ansible<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping<span class="w"> </span>-i<span class="w"> </span>inventory/hosts.yml
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># 3. Dry-run the playbook first</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>ansible-playbook<span class="w"> </span>playbooks/site.yml<span class="w"> </span>--check<span class="w"> </span>--diff
+</span></code></pre></div>
+<p>If any step fails, execution is <strong>stopped</strong>. The AI diagnoses the failure and proposes a fix.</p>
+<h3 id="guardrail-3-log-review-protocol">Guardrail 3: Log Review Protocol<a class="headerlink" href="#guardrail-3-log-review-protocol" title="Permanent link">&para;</a></h3>
+<p>After every Ansible execution, the human must provide output to the AI for verification. Two accepted formats:</p>
+<ul>
+<li><strong>Direct Terminal Sync:</strong> Full output copied and pasted into the chat.</li>
+<li><strong>Persistent Log File:</strong> Output redirected to a log file for deep analysis:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ansible-playbook<span class="w"> </span>playbooks/site.yml<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>.logs/deploy-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>.log
+</span></code></pre></div>
+<p>The AI will not proceed to the next phase without reviewing the execution output.</p>
+<h3 id="guardrail-4-self-healing-rule">Guardrail 4: Self-Healing Rule<a class="headerlink" href="#guardrail-4-self-healing-rule" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>NEVER</strong> delete data directories (e.g., <code>[PROD_PATH]/data</code>). Deletion requires explicit Sovereign authorisation.</li>
+<li>Recovery is achieved through <strong>idempotent Ansible automation</strong> — re-running the playbook restores the desired state.</li>
+<li>If data corruption is suspected, stop all actions, preserve logs, and escalate to the Sovereign Architect.</li>
+</ul>
+<h3 id="guardrail-5-gitops-loop">Guardrail 5: GitOps Loop<a class="headerlink" href="#guardrail-5-gitops-loop" title="Permanent link">&para;</a></h3>
+<ul>
+<li>All playbook or configuration changes are <strong>committed to Git before execution</strong>.</li>
+<li>No ad-hoc file edits on target nodes via SSH.</li>
+<li>The Git commit IS the change record. No commit = no change.</li>
+</ul>
+<p>For full doctrine, see <a href="GITOPS-AIOPS-ANSIBLE-STRATEGY.html"><code>docs/GITOPS-AIOPS-ANSIBLE-STRATEGY.md</code></a>.</p>
+<hr />
+<p><em>Last Updated: 2026-04-08 (v6.1 + Palace v1.0: Ansible SOD/EOD playbooks, Section [14] Palace Registry, Palace Migration scenarios)</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

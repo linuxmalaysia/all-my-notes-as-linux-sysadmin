@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noss-cocu-docx-formatter - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+name: noss-cocu-docx-formatter
+title: noss-cocu-docx-formatter
+description: "This skill teaches AI agents how to programmatically generate NOSS Level 3 curriculum and support documents (CoCU matrices, Element Content Weightage, Competency Weightage, and TEM lists) matching ..."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+noss_code: 
+target_level: 3
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="noss-cocu-docx-formatter-skill">NOSS COCU DOCX Formatter Skill</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This skill teaches AI agents how to programmatically generate NOSS Level 3 curriculum and support documents (CoCU matrices, Element Content Weightage, Competency Weightage, and TEM lists) matching the official JPK TVET layout. It relies on the shared utility module at <a href="file:///D:/Users/LinuxMalaysia/Projects/skills-noss-l3/scripts/utils/noss-docx-template.js">noss-docx-template.js</a> to enforce layout consistency.</p>
+<hr />
+<h2 id="2-prerequisites">2. Prerequisites</h2>
+<p>The agent must verify that:<br />
+1. <code>docx</code> library version <code>^9.7.1</code> is installed.<br />
+2. The helper module <code>scripts/utils/noss-docx-template.js</code> exists and is accessible.</p>
+<hr />
+<h2 id="3-formatting-standards-specifications">3. Formatting Standards &amp; Specifications</h2>
+<p>All generated documents must comply with the following parameters:</p>
+<h3 id="31-page-settings-margins">3.1 Page Settings &amp; Margins</h3>
+<ul>
+<li><strong>Page Size:</strong> Standard A4 (<code>width: 11907 dxa</code>, <code>height: 16840 dxa</code>).</li>
+<li><strong>Orientation (Multi-Section):</strong><ul>
+<li><strong>Section 1 (Page 1):</strong> <strong>Portrait</strong> (<code>width: 11907 dxa</code>, printable table width <code>9027 dxa</code>) for CoCU Metadata Header Table.</li>
+<li><strong>Section 2 (Page 2+):</strong> <strong>Landscape</strong> (<code>width: 16840 dxa</code>, printable table width <code>13443 dxa</code>) for CoCU 5-Column Matrix Table.</li>
+</ul>
+</li>
+<li><strong>LibreOffice ODT XML Patching:</strong> For <code>.odt</code> documents, execute XML patching on <code>styles.xml</code> (<code>fo:page-width="29.7cm"</code> and <code>fo:page-height="21.001cm"</code> for <code>Converted1</code>) and <code>content.xml</code> (<code>style:page-name="Converted1"</code> on paragraph break before <code>Table2</code>) to ensure LibreOffice Writer natively transitions Page 1 to Portrait and Page 2+ to Landscape.</li>
+<li><strong>Margins:</strong> 1.0 inch (<code>1440 dxa</code>) on all sides (top, bottom, left, right).</li>
+<li><strong>Fonts:</strong> <strong>Times New Roman</strong> only.<ul>
+<li><strong>Matrix Content:</strong> <code>10 pt</code> (size <code>20</code> in half-points).</li>
+<li><strong>Normal Body Text:</strong> <code>12 pt</code> (size <code>24</code> in half-points).</li>
+<li><strong>Titles / Headings:</strong> H1: <code>14 pt</code> (size <code>28</code>) or <code>16 pt</code> (size <code>32</code>); H2: <code>12 pt</code> (size <code>24</code>).</li>
+</ul>
+</li>
+<li><strong>Cell Margins (Padding):</strong> Top/Bottom/Left/Right: <code>55 dxa</code> (~2.75 pt).</li>
+<li><strong>Borders:</strong> Single solid line, <code>0.5 pt</code> size (<code>4</code> in docx package), black.</li>
+</ul>
+<h3 id="32-specific-column-widths-in-dxa">3.2 Specific Column Widths (in DXA)</h3>
+<p>To match the template tables exactly, column widths must be defined explicitly:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Table Type</th>
+<th style="text-align: left;">Column Widths (DXA)</th>
+<th style="text-align: left;">Header Background Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CoCU Metadata (Header)</strong></td>
+<td style="text-align: left;"><code>[2780, 10673]</code></td>
+<td style="text-align: left;">Left cell: <code>D9D9D9</code> (Light Grey)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoCU Matrix</strong></td>
+<td style="text-align: left;"><code>[1814, 2268, 2835, 2835, 3691]</code></td>
+<td style="text-align: left;">All headers: <code>D9D9D9</code> (Light Grey)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Element Weightage</strong></td>
+<td style="text-align: left;"><code>[2154, 3842, 7684]</code></td>
+<td style="text-align: left;">All headers: <code>BFBFBF</code> (Medium Grey)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Competency Weightage</strong></td>
+<td style="text-align: left;"><code>[1836, 3204, 1851, 4247, 2299]</code></td>
+<td style="text-align: left;">All headers: <code>BFBFBF</code> (Medium Grey)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TEM Matrix</strong></td>
+<td style="text-align: left;"><code>[955, 3667, 1478]</code> <em>(1478 dxa per CU column)</em></td>
+<td style="text-align: left;">All headers: <code>BFBFBF</code> (Medium Grey)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-how-to-use-the-shared-formatting-module">4. How to Use the Shared Formatting Module</h2>
+<p>AI agents should import layout settings and cell helpers from <code>scripts/utils/noss-docx-template.js</code>:</p>
+<pre><code class="language-js">const {
+  PAGE_A4_PORTRAIT,
+  PAGE_A4_LANDSCAPE,
+  MARGIN_DEFAULT,
+  COLOR_GREY_LIGHT,
+  COLOR_GREY_MEDIUM,
+  TABLE_WIDTHS,
+  createTableCell,
+  createMetadataRow,
+  DEFAULT_DOCUMENT_STYLES
+} = require('../utils/noss-docx-template');
+</code></pre>
+<h3 id="41-creating-paragraphs-with-line-breaks-and-bullets">4.1 Creating Paragraphs with Line Breaks and Bullets</h3>
+<p>Use the helper <code>createTableCell(content, options)</code> which parses line breaks (<code>&lt;br&gt;</code>) and bullet symbols (<code>•</code>) automatically.<br />
+*   Line breaks inside cells must be written as <code>&lt;br&gt;</code> in markdown strings.<br />
+*   Bullets must be written starting with a bullet symbol <code>•</code>.</p>
+<h3 id="42-adding-a-metadata-row">4.2 Adding a Metadata Row</h3>
+<p>To append rows to the CU Metadata table:</p>
+<pre><code class="language-js">new TableRow({
+  children: [
+    createTableCell(&quot;SECTION&quot;, { width: TABLE_WIDTHS.COCU_HEADER[0], bg: COLOR_GREY_LIGHT, bold: true }),
+    createTableCell(&quot;K62 COMPUTER PROGRAMMING...&quot;, { width: TABLE_WIDTHS.COCU_HEADER[1] })
+  ]
+})
+</code></pre>
+<p>Or use the shorthand helper:</p>
+<pre><code class="language-js">createMetadataRow(&quot;SECTION&quot;, &quot;K62 COMPUTER PROGRAMMING...&quot;)
+</code></pre>
+<hr />
+<h2 id="5-matrix-guidelines-rules">5. Matrix Guidelines &amp; Rules</h2>
+<ol>
+<li><strong>Landscape Orientation for Tables:</strong> All matrix, weightage, and TEM tables must sit inside a landscape section.<ul>
+<li><strong>CRITICAL FIX:</strong> When defining <code>sections</code> in the <code>docx</code> library, you MUST explicitly include <code>type: SectionType.NEXT_PAGE</code> in the section properties to force Google Docs and LibreOffice to respect the orientation change.</li>
+<li>Example: <code>properties: { type: SectionType.NEXT_PAGE, page: { size: PAGE_A4_LANDSCAPE, margin: MARGIN_DEFAULT } }</code></li>
+<li><strong>GOOGLE DOCS GEOMETRY HACK:</strong> Due to a bug in the <code>docx</code> v7 library auto-swapping dimensions when <code>orientation: PageOrientation.LANDSCAPE</code> is set, you MUST intentionally define <code>PAGE_A4_LANDSCAPE</code> with reversed dimensions (<code>width: 11907</code>, <code>height: 16840</code>). This tricks the library into outputting the correct larger width in the XML.</li>
+</ul>
+</li>
+<li><strong>Explicit Table Widths:</strong> Always define explicit table widths (<code>width: { size: X, type: WidthType.DXA }</code>) when constructing tables.<ul>
+<li>CoCU Matrix: <code>13443 dxa</code></li>
+<li>CoCU Metadata: <code>13453 dxa</code></li>
+<li>Competency Weightage: <code>13437 dxa</code></li>
+<li>TEM Matrix: <code>13489 dxa</code></li>
+</ul>
+</li>
+<li><strong>Cross-Platform Table Borders:</strong> Google Docs strictly ignores <code>insideH</code> and <code>insideV</code> borders applied at the <code>TableCell</code> level. You MUST explicitly pass a default border configuration (e.g. <code>borders: TABLE_BORDERS_DEFAULT</code>) to every <code>Table</code> wrapper instantiation.<ul>
+<li>Failure to specify explicit widths will cause the tables to collapse to zero-width columns on the page margin in LibreOffice/Word.</li>
+</ul>
+</li>
+<li><strong>Google Docs Table Layout Compatibility (CRITICAL):</strong> When instantiating a <code>new Table(...)</code> from the <code>docx</code> library, you MUST explicitly declare <code>layout: TableLayoutType.FIXED</code> and provide the <code>columnWidths</code> array matching the DXA cell widths. Failure to include this will cause Google Docs to collapse all columns to zero width upon import.<ul>
+<li>Example: <code>new Table({ width: { size: 9027, type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [2780, 6247], rows: docxRows })</code></li>
+<li>You must also ensure <code>TableLayoutType</code> is imported from <code>docx</code>.</li>
+</ul>
+</li>
+<li><strong>Learning Outcomes construction:</strong> Dynamically build the learning outcome cell by gathering the work activities of the CU:<br />
+<code>"The learning outcomes of this competency are to enable the trainees to perform &lt;cuTitle&gt;. Upon completion, trainees should be able to:&lt;br&gt;" + workActivitiesList</code></li>
+<li><strong>Pedagogical Boundary:</strong> Do not add Windows Server configuration/licensing items to Linux CUs or vice-versa. Maintain separate items or files.</li>
+<li><strong>Standalone Deliverables Architecture &amp; Formatting Rules:</strong><ul>
+<li>Deliverables MUST be generated as individual standalone files (<code>.odt</code>, <code>.docx</code>, <code>.md</code>) inside <code>noss-rebuild-v2/cocu/</code> (for core CoCU packages) and <code>noss-rebuild-v2/addon-knowledge/</code> (for support matrices and glossaries). Monolithic combined master documents are prohibited.</li>
+<li><strong>ODT Patching Constraint:</strong> If a script generates <code>.odt</code> files with multiple CoCUs, the Python XML patcher (<code>patch_odt_landscape.py</code>) must be configured to loop through and patch <strong>all</strong> even-numbered tables (<code>Table2</code>, <code>Table4</code>, <code>Table6</code>, etc.) to ensure every matrix receives the <code>Converted1</code> landscape page style.</li>
+<li>Supporting reference document tables (Audit Matrix, TEM, Weightage, Abbreviations, Job Sheets) MUST NOT contain bullet points (<code>•</code>) inside table cells and MUST enforce <strong>Times New Roman 10pt</strong> font to match official CoCU standards.</li>
+<li>Section B / CoCU 5-column table formats and internal bullets MUST remain untouched.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="6-examples">6. Examples</h2>
+<ul>
+<li><strong>CoCU Matrix Generation Example:</strong> See <a href="file:///D:/Users/LinuxMalaysia/Projects/skills-noss-l3/.agents/skills/noss-cocu-docx-formatter/examples/example-generator.js">example-generator.js</a></li>
+<li><strong>TEM Matrix Generation Example:</strong> See <a href="file:///D:/Users/LinuxMalaysia/Projects/skills-noss-l3/.agents/skills/noss-cocu-docx-formatter/examples/example-tem-generator.js">example-tem-generator.js</a></li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

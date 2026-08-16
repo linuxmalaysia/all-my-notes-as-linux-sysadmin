@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>initialize-gitops - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+type: agent_skill
+title: initialize-gitops
+description: Establishes the foundational GitOps repository, configures the .gitignore, and commits the Genesis DSOM architecture for a new project.
+topics: [gitops, init, git, sovereign, setup]
+timestamp: 2026-06-19T14:00:00Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="initialize-gitops-skill">🐙 Initialize GitOps Skill</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill at the absolute beginning of a new project, immediately after scaffolding the Sovereign Workspace directory structure (<code>.agents/brain</code>, etc.). This is mandatory because the AI's memory palace relies entirely on Git version control. Without Git, you cannot perform Hibernation or trace your cognitive history.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>Ensure you are in the project's root directory.</li>
+<li>Check if a Git repository already exists. If not, run <code>git init</code>.</li>
+<li>Create a <code>.gitignore</code> file to ensure ephemeral logs or sensitive secrets are not tracked. See the baseline <code>.gitignore</code> template below.</li>
+<li>Execute <code>git add .</code> to stage the core <code>AGENTS.md</code>, <code>.agents/brain/</code>, and <code>.agents/skills/</code> structures.</li>
+<li>Create the "Genesis Commit" with the message <code>git commit -m "chore: Genesis Commit - Initialize DSOM Cognitive Architecture"</code>.</li>
+<li>Inform the user that the Immutable Ledger has been established and ask if there is a remote repository (like Gitea, GitLab, or GitHub) that they want you to push to.</li>
+</ol>
+<h2 id="baseline-gitignore-template">Baseline <code>.gitignore</code> Template</h2>
+<p>When creating the <code>.gitignore</code>, always include these baseline rules to prevent AI bloat:</p>
+<pre><code class="language-text"># Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment Variables
+.env
+.env.local
+
+# AI Ephemeral Artifacts (DO NOT IGNORE THE ENTIRE .agents/ FOLDER)
+# Only ignore temporary scratch files if they exist.
+.agents/brain/scratch/
+.agents/brain/.system_generated/
+</code></pre>
+<h2 id="architectural-note">Architectural Note</h2>
+<ul>
+<li><strong>Why is this a skill?</strong> Because Git is not just version control for code; it is the physical "hippocampus" for the AI. Every action, artifact, and thought process is stored as a commit. Initializing it perfectly ensures the AI never suffers from amnesia.</li>
+</ul>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-06-19</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

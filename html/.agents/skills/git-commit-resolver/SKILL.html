@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>git-commit-resolver - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+name: git-commit-resolver
+description: Automatically resolves invalid or orphaned Git commit IDs referenced in the Agent Brain by searching the Git history for the matching commit message.
+topics: [git, commit, history, brain, resolver]
+okf_version: 0.1
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="git-commit-resolver-skill">🔍 Git Commit Resolver Skill</h1>
+<h2 id="purpose">Purpose</h2>
+<p>The DSOM repository has undergone Git history rewrites (e.g., using <code>git-filter-repo</code> for security sanitization). This process permanently alters cryptographic commit IDs (SHA-1 hashes) while leaving commit messages, dates, and authors intact.<br />
+As a result, some commit IDs stored in the <code>.agents/brain/</code> memory (e.g., in <code>palace_registry.md</code> or <code>HISTORY.md</code>) may become <strong>invalid or orphaned</strong>. </p>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Trigger this skill whenever you attempt to reference, checkout, or view a Git commit ID (e.g., <code>git show &lt;hash&gt;</code>) and Git returns an error indicating the commit does not exist or is invalid.</p>
+<h2 id="execution-steps">Execution Steps</h2>
+<h3 id="1-identify-the-context">1. Identify the Context</h3>
+<p>If a commit hash is invalid, do not assume the work was lost. Find the context of the commit by reading the surrounding text in the brain artifact or ledger to determine the <strong>Commit Subject/Message</strong> or <strong>Date</strong>.</p>
+<h3 id="2-search-git-log-by-message">2. Search Git Log by Message</h3>
+<p>Use the <code>git log</code> command with the <code>--grep</code> flag to search for the original commit message.</p>
+<pre><code class="language-bash">git log --grep=&quot;&lt;part of the commit message&gt;&quot; --oneline
+</code></pre>
+<p><em>Example:</em> If the old hash <code>abc1234</code> was for "docs: update gitbook architecture", run:<br />
+<code>git log --grep="update gitbook architecture" --oneline</code></p>
+<h3 id="3-extract-the-new-hash">3. Extract the New Hash</h3>
+<p>The command will return the <em>new</em> valid commit hash associated with that exact same work. Use this new hash for your operations.</p>
+<h3 id="4-self-healing-optional-but-recommended">4. Self-Healing (Optional but Recommended)</h3>
+<p>If you are actively editing a brain artifact or ledger when you discover a broken hash, proactively update the document to replace the old broken hash with the newly resolved valid hash to heal the Sovereign Memory.</p>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

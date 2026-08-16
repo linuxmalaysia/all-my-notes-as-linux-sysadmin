@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>palace-auditor - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+name: palace-auditor
+description: A diagnostic skill that crawls the workspace to verify index.md links, identify undocumented scripts in tools/, and propose structural cleanups to maintain the Sovereign Memory Palace.
+topics: [palace, audit, brain, index, cleanup]
+okf_version: 0.1
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="palace-auditor-skill">🕵️ Palace Auditor Skill</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when the user requests a workspace audit, health check, or when preparing for a major structural release to ensure the <code>.agents</code> palace is pristine.</p>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li><strong>Diagnostic Check:</strong> Run <code>.\tools\diagnostic.ps1</code> (or <code>./tools/diagnostic.sh</code> on Linux) and capture the output. Ensure all dependencies (<code>uv</code>, <code>node</code>, <code>git</code>) and paths are healthy.</li>
+<li><strong>Index Verification:</strong> Read <code>.agents/brain/index.md</code>. Verify that every <code>closet.md</code> or <code>.md</code> file listed under <code>Path:</code> actually exists in the filesystem.</li>
+<li><strong>Toolchain Audit:</strong></li>
+<li>List all files in the <code>tools/</code> directory.</li>
+<li>List all documentation files in <code>docs/tools/</code>.</li>
+<li>Identify any <code>.ps1</code>, <code>.sh</code>, <code>.py</code>, or <code>.js</code> script in <code>tools/</code> that does NOT have a corresponding structural blueprint in <code>docs/tools/</code>.</li>
+<li>Identify any script that lacks either its <code>.ps1</code> or <code>.sh</code> cross-platform twin.</li>
+<li><strong>Report Generation:</strong> Create a report artifact for the user summarizing:</li>
+<li>System Diagnostic Health.</li>
+<li>Broken links in <code>index.md</code> (if any).</li>
+<li>Undocumented scripts.</li>
+<li>Scripts violating the Cross-Platform Mandate.</li>
+<li><strong>Propose Actions:</strong> Suggest specific actions to resolve the findings.</li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

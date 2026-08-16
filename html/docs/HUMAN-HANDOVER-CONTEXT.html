@@ -1,0 +1,1140 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DSOM Guide document for Human Handover Context.">
+      
+      
+        <meta name="author" content="Harisfazillah Jamel">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Human Handover Context - NOSS Linux Malaysia (DSOM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#human-handover-contextmd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Human Handover Context
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+      
+  <img src="../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laman Utama (NOSS Linux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../START-HERE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mula Di Sini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nota Rujukan (OpenWiki)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nota Rujukan (OpenWiki)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 1: Desktop & Asas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-02-linux-server-management.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 2: Pengurusan Pelayan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-03-linux-security-hardening.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 3: Keselamatan & Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openwiki/topic-04-scripting-and-automation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topik 4: Skrip & Automasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panduan Operasi (How-To)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Panduan Operasi (How-To)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/deploy-and-serve-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penggunaan & Binaan HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Pematuhan OKF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/run-fastmcp-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pelayan FastMCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to/generate-sitemaps-seo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penjanaan Peta Tapak SEO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumen Tadbir Urus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dokumen Tadbir Urus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/diataxis-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seni Bina Diátaxis & Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah Manual Asal KPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah OSCC MAMPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/sejarah-mosc-malaysia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sejarah MOSC / MOSCMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="SECURITY.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polisi Keselamatan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEGAL-NOTICE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notis & Penafian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AGENTS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garis Panduan Agen AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="human-handover-contextmd">🤝 HUMAN-HANDOVER-CONTEXT.md<a class="headerlink" href="#human-handover-contextmd" title="Permanent link">&para;</a></h1>
+<h1 id="path-docshuman-handover-contextmd">Path: docs/HUMAN-HANDOVER-CONTEXT.md<a class="headerlink" href="#path-docshuman-handover-contextmd" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>DSOM For My AI — SESSION HANDOVER TEMPLATE</strong>
+Adapt this file for every new project cloned from the DSOM skeleton.
+Fill in every <code>[PLACEHOLDER]</code> with your project-specific values.
+This file is the <strong>first document</strong> you paste into a new AI session.</p>
+</blockquote>
+<hr />
+<h3 id="session-handover-prompt">⚡ SESSION HANDOVER PROMPT<a class="headerlink" href="#session-handover-prompt" title="Permanent link">&para;</a></h3>
+<p><em>(Copy everything below this line and paste as your first AI message)</em></p>
+<hr />
+<p>I am starting a new AI session. Synchronise your state with the following:</p>
+<ol>
+<li><strong>READ</strong> the project brief: <code>docs/</code> directory and the DSOM brain files.</li>
+<li><strong>SYNC</strong> with the task tracker: <code>.agents/brain/task.md</code></li>
+<li><strong>READ</strong> brain artifacts: <code>.agents/brain/walkthrough.md</code> and <code>.agents/brain/implementation_plan.md</code></li>
+<li><strong>VERIFY</strong> <code>docs/AI-COGNITIVE-TWIN-PROTOCOL.md</code> — confirm all <code>[PLACEHOLDER]</code> fields are filled.</li>
+<li><strong>READ</strong> <code>README.md</code>, <code>SUMMARY.md</code>, <code>CHANGELOG.md</code></li>
+<li><strong>RUN</strong> <code>git log --oneline -20</code> to read recent commit history.</li>
+<li><strong>WALK THE PALACE</strong> — read <code>.agents/brain/palace_registry.md</code> (Section [14] of the SOD manifest) and identify the relevant Wings and Rooms for today's work.</li>
+</ol>
+<p>Run <strong>Start of Day (SOD)</strong> as per DSOM For My AI Protocol v6.1 + Palace v1.0.</p>
+<blockquote>
+<p><strong>T2 shortcut:</strong> <code>bash tools/sod-palace.sh  # (Windows: .\tools\sod-palace.ps1)</code> automates steps 1–6 + palace check automatically. Upload the manifest and use the handshake phrase below.</p>
+</blockquote>
+<hr />
+<h4 id="project-identity">🏗️ Project Identity<a class="headerlink" href="#project-identity" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Project Name:</strong> <code>[YOUR_PROJECT_NAME]</code></li>
+<li><strong>Stack:</strong> <code>[YOUR_STACK e.g. Logstash + Kafka + Podman / ELK / Ansible roles]</code></li>
+<li><strong>Purpose:</strong> <code>[ONE_LINE_PURPOSE]</code></li>
+<li><strong>Repo:</strong> <code>[YOUR_GITHUB_REPO_URL]</code></li>
+<li><strong>Protocol Version:</strong> DSOM v6.1 + Palace v1.0 | GitOps · AIOps · Ansible</li>
+</ul>
+<hr />
+<h4 id="4-tier-command-highway">🗺️ 4-Tier Command Highway<a class="headerlink" href="#4-tier-command-highway" title="Permanent link">&para;</a></h4>
+<p>We strictly follow the <strong>4-Tier Command Highway</strong> (T1→T2→T3→T4):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tier</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Environment</th>
+<th style="text-align: left;">Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>T1</strong></td>
+<td style="text-align: left;">Command Centre</td>
+<td style="text-align: left;">Windows 11 + PowerShell + Google Antigravity</td>
+<td style="text-align: left;"><code>[T1_WINDOWS_PATH]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T2</strong></td>
+<td style="text-align: left;">Dev Bridge</td>
+<td style="text-align: left;">WSL2: <code>dsom-control-almalinux10</code></td>
+<td style="text-align: left;"><code>/mnt/[T2_MOUNTED_PATH]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T3</strong></td>
+<td style="text-align: left;">Jump Host / Ansible Control</td>
+<td style="text-align: left;"><code>[T3_HOST_IP_OR_NAME]</code></td>
+<td style="text-align: left;"><code>/opt/[YOUR_PROJECT_NAME]/</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T4</strong></td>
+<td style="text-align: left;">Production Fabric</td>
+<td style="text-align: left;"><code>[T4_NODE_IPS_OR_NAMES]</code></td>
+<td style="text-align: left;"><code>[T4_TARGET_PATH]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Code is promoted:</strong> T1 → Git → T2 → T3 → T4. No shortcuts.</p>
+<hr />
+<h4 id="security-doctrine-rootful-control-rootless-application">🛡️ Security Doctrine: "Rootful Control, Rootless Application"<a class="headerlink" href="#security-doctrine-rootful-control-rootless-application" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Rootful Control:</strong> Ansible/sudo manages OS-level tasks — systemd, networking, filesystem.</li>
+<li><strong>Rootless Application:</strong> All containers/services run as <code>[APP_USER]</code> (UID <code>[APP_UID]</code> GID <code>[APP_GID]</code>).</li>
+<li><strong>Sovereign Identity:</strong> <code>dsom-admin:2001:2001</code> on target nodes.</li>
+<li><strong>Dev Identity:</strong> <code>[DEV_USERNAME]:[DEV_UID]:[DEV_GID]</code> on WSL2.</li>
+</ul>
+<hr />
+<h4 id="environment-rules">⚙️ Environment Rules<a class="headerlink" href="#environment-rules" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>AI Partner:</strong> Google Antigravity on Windows 11 (PowerShell).</li>
+<li><strong>Ansible:</strong> Runs from <strong>T2 WSL2</strong> (<code>dsom-control-almalinux10</code>). NOT from Windows directly.</li>
+<li><strong>Git operations:</strong> All <code>git add</code>, <code>git commit</code>, <code>git push</code> done on <strong>T1 Windows/PowerShell</strong>.</li>
+<li><strong>Dev testing:</strong> Human runs scripts inside <strong>T2 WSL2</strong> (<code>dsom-control-almalinux10</code>). AI guides and waits for output.</li>
+<li><strong>Production:</strong><code>hosts.prod.yml</code> is in <code>.gitignore</code>. Human must supply it for any production Ansible run.</li>
+</ul>
+<hr />
+<h4 id="the-safe-sync-ritual-run-after-every-t1-push">🔄 The Safe Sync Ritual (Run After Every T1 Push)<a class="headerlink" href="#the-safe-sync-ritual-run-after-every-t1-push" title="Permanent link">&para;</a></h4>
+<p>Whenever changes are pushed from Windows (T1), perform this ritual to align all tiers:</p>
+<p><strong>Step 1 — Pull on T2 (WSL2: <code>dsom-control-almalinux10</code>)</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/mnt/<span class="o">[</span>T2_MOUNTED_PATH<span class="o">]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+<p><strong>Step 2 — Promote to T3 Jump Host / Ansible Control (if applicable)</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Run from T2 WSL2 — promote project to T3 orchestrator</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>rsync<span class="w"> </span>-avz<span class="w"> </span>--checksum<span class="w"> </span>--delete<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--exclude<span class="w"> </span><span class="s1">&#39;.git&#39;</span><span class="w"> </span>--exclude<span class="w"> </span><span class="s1">&#39;.gemini&#39;</span><span class="w"> </span>--exclude<span class="w"> </span><span class="s1">&#39;.agents&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>./<span class="w"> </span>dsom-admin@<span class="o">[</span>T3_IP<span class="o">]</span>:/opt/<span class="o">[</span>YOUR_PROJECT_NAME<span class="o">]</span>/
+</span></code></pre></div>
+<p><strong>Step 3 — Verify T3 Ansible Connectivity</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Run from T2 WSL2</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ansible<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping<span class="w"> </span>-i<span class="w"> </span>inventory/hosts.yml
+</span></code></pre></div>
+<p><strong>Step 4 — Optional: Remote Audit from T1 via WSL</strong></p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Run from Windows PowerShell (T1) — bridges through T2 → T3</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">wsl</span> <span class="n">-d</span> <span class="n">dsom-control-almalinux10</span> <span class="n">-u</span> <span class="n">dsom-admin</span> <span class="n">-e</span> <span class="n">bash</span> <span class="n">-c</span> <span class="p">`</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">&quot;ssh -t dsom-admin@[T3_IP] &#39;cd /opt/[YOUR_PROJECT_NAME] &amp;&amp; bash tools/audit-pre-flight.sh&#39;&quot;</span>
+</span></code></pre></div>
+<hr />
+<h4 id="sovereign-directive-the-handshake-trigger">🏁 Sovereign Directive (The Handshake Trigger)<a class="headerlink" href="#sovereign-directive-the-handshake-trigger" title="Permanent link">&para;</a></h4>
+<p>After the AI reads all context, trigger the session with:</p>
+<blockquote>
+<p><em>"Initialise DSOM Protocol v6.1 + Palace v1.0 for [YOUR_PROJECT_NAME]. Read the uploaded manifest or this handover file. Walk the Palace Registry in Section [14] — identify the relevant Rooms for today's work. Confirm the 4-Tier Command Highway is mapped. Verify <code>docs/AI-COGNITIVE-TWIN-PROTOCOL.md</code> is filled in. State the last Mental Anchor from <code>.agents/brain/walkthrough.md</code>. Respond in UK English. State: 'Sovereign State Synchronised — [YOUR_PROJECT_NAME] is live.' when ready."</em></p>
+</blockquote>
+<hr />
+<h4 id="how-to-provide-output-for-ai-review">📋 How to Provide Output for AI Review<a class="headerlink" href="#how-to-provide-output-for-ai-review" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Direct Paste</strong></td>
+<td style="text-align: left;">Copy full terminal output into AI chat</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Log File</strong></td>
+<td style="text-align: left;"><code>bash tools/audit-pre-flight.sh \| tee audit_result.log</code> — share log content</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ansible Output</strong></td>
+<td style="text-align: left;"><code>ansible-playbook playbooks/dsom/audit-preflight.yml -i localhost, \| tee audit_ansible.log</code></td>
+</tr>
+</tbody>
+</table>
+<p>AI will <strong>wait for your results</strong> before proceeding. Never assume success.</p>
+<hr />
+<h4 id="current-state-fill-in-at-each-session-end">📌 Current State (Fill in at each session end)<a class="headerlink" href="#current-state-fill-in-at-each-session-end" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>CURRENT STATE: [DESCRIBE_CURRENT_STATE e.g. v1.0 — Ansible baseline deployed, Kafka brokers up]
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Environment:   [e.g. 3-node test cluster]
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Last Commit:   [PASTE LAST COMMIT HASH AND MESSAGE]
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Mental Anchor: [ONE SENTENCE — exact state and where to resume]
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Next Action:   [WHAT THE AI SHOULD DO FIRST IN THE NEW SESSION]
+</span></code></pre></div>
+<hr />
+<h4 id="key-reminders-to-ai-agent">🔑 Key Reminders to AI Agent<a class="headerlink" href="#key-reminders-to-ai-agent" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Advisory Mode only.</strong> Propose → Human approves → Ansible executes → AI verifies.</li>
+<li><strong>Never run commands on production nodes.</strong> Write Ansible playbooks. Human runs them.</li>
+<li><strong>Every step is committed to Git</strong> before execution. No Git = no change.</li>
+<li><strong>Idempotency is mandatory.</strong> Every playbook must be safe to re-run.</li>
+<li><strong>All secrets via <code>ansible-vault</code>.</strong> Never commit plaintext secrets.</li>
+<li><strong>Detailed Git commit messages.</strong> Format: <code>type(scope): description [Phase/vXXX]</code></li>
+<li><strong>UK English only</strong> in all documentation and responses.</li>
+<li><strong>Wait for human output</strong> before proceeding with the next step.</li>
+<li><strong>Control yourself during long debugging.</strong> Emit one action at a time.</li>
+<li><strong>Both T1 and T2 must be in sync</strong> — always pull on T2 after T1 push.</li>
+<li><strong>Walk the Palace Registry</strong> at the start of every session — read <code>palace_registry.md</code> and load the relevant <code>closet.md</code> files before advising.</li>
+<li><strong>Propose Palace closet updates</strong> at EOD if new decisions or discoveries were made.</li>
+</ol>
+<hr />
+<p><em>Standard: DSOM For My AI Protocol v6.1 + Palace v1.0 | Harisfazillah Jamel | LinuxMalaysia</em>
+<em>Template source: docs/HUMAN-HANDOVER-CONTEXT.md | Updated: 2026-04-08</em>
+<em>Adapted from: DSOM elasticsearch-kibana-podman project (v9.4 Sovereign Recovery model)</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

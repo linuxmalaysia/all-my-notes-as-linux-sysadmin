@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐧 CU01-WA00: Memahami Ekosistem Linux - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+okf_version: 0.1
+name: cu01-wa00-memahami-ekosistem-linux
+description: Kemahiran Asas: Memahami ekosistem Linux, sejarahnya, distribusi terkini, dan falsafah perisian bebas sebagai asas kepada semua CU01 yang seterusnya.
+topics: [noss, cu01, wa00, linux-intro, ekosistem]
+tags: [linux, pengenalan, sejarah, distribusi, gpl, cu01]
+type: foundational_skill
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="cu01-wa00-memahami-ekosistem-linux">🐧 CU01-WA00: Memahami Ekosistem Linux</h1>
+<h2 id="tujuan-kemahiran">Tujuan Kemahiran</h2>
+<p>Kemahiran asas ini mewujudkan pemahaman konseptual dan kontekstual yang kukuh tentang ekosistem Linux sebelum pelajar meneruskan kepada kemahiran praktikal pemasangan dan konfigurasi. Tanpa pemahaman ini, pelajar akan cenderung menjadi "pengguna arahan buta" tanpa memahami mengapa dan bagaimana sistem ini berfungsi.</p>
+<blockquote>
+<p><strong>💡 Pemikiran Rantaian Ke Belakang:</strong> Matlamat akhir ialah pentadbir sistem Linux yang mahir. Untuk sampai ke sana, pelajar perlu terlebih dahulu <em>memahami falsafah</em> ekosistem — barulah tangan mengikut minda.</p>
+</blockquote>
+<hr />
+<h2 id="hasil-pembelajaran-learning-outcomes">Hasil Pembelajaran (Learning Outcomes)</h2>
+<p>Setelah menyelesaikan kemahiran ini, pelajar berupaya untuk:</p>
+<ol>
+<li><strong>Menerangkan</strong> asal-usul dan evolusi Linux daripada projek hobi kepada infrastruktur global</li>
+<li><strong>Membezakan</strong> antara isirung Linux (kernel) dengan distribusi Linux lengkap</li>
+<li><strong>Mengenalpasti</strong> tokoh-tokoh kunci dalam ekosistem Linux dan sumbangan masing-masing</li>
+<li><strong>Menerangkan</strong> prinsip lesen GNU GPL dan kepentingannya kepada komuniti perisian bebas</li>
+<li><strong>Memilih</strong> distribusi Linux yang paling sesuai berdasarkan kes penggunaan yang diberikan</li>
+<li><strong>Membandingkan</strong> ekosistem Linux 2024 dengan landskap teknologi semasa</li>
+</ol>
+<hr />
+<h2 id="kandungan-silibus">Kandungan Silibus</h2>
+<h3 id="modul-a-sejarah-falsafah">Modul A: Sejarah &amp; Falsafah</h3>
+<ul>
+<li>Kelahiran Linux: Linus Torvalds dan Universiti Helsinki (1991)</li>
+<li>Projek GNU dan Richard Stallman: Mengapa "GNU/Linux" lebih tepat</li>
+<li>Evolusi isirung dari 0.01 (1991) → 6.11 (2024)</li>
+<li>Falsafah perisian bebas vs sumber terbuka (Free Software vs Open Source)</li>
+</ul>
+<p><strong>Nod Palace:</strong> <a href="../../palace/cu01/pengenalan-linux-dan-sejarah.html">pengenalan-linux-dan-sejarah.md</a></p>
+<h3 id="modul-b-lesen-hak-cipta">Modul B: Lesen &amp; Hak Cipta</h3>
+<ul>
+<li>GNU GPL v2 — Lesen isirung Linux</li>
+<li>Perbezaan: GPL, MIT, Apache, CC BY-SA</li>
+<li>Hak pengguna di bawah perisian berlesen terbuka</li>
+<li>Implikasi perundangan di Malaysia (Akta Hak Cipta 1987)</li>
+</ul>
+<h3 id="modul-c-landskap-distribusi-linux-2024">Modul C: Landskap Distribusi Linux 2024</h3>
+<ul>
+<li>Keluarga Debian: Debian, Ubuntu, Linux Mint</li>
+<li>Keluarga Red Hat: Fedora, RHEL, AlmaLinux, Rocky Linux</li>
+<li>Keluarga Arch: Arch Linux, Manjaro</li>
+<li>Keluarga SUSE: openSUSE Leap, Tumbleweed</li>
+<li>Distribusi Khusus: Kali Linux, Alpine, Raspberry Pi OS</li>
+</ul>
+<p><strong>Nod Palace:</strong> <a href="../../palace/cu01/pecahan-linux-terkini.html">pecahan-linux-terkini.md</a></p>
+<h3 id="modul-d-linux-dalam-konteks-malaysia">Modul D: Linux dalam Konteks Malaysia</h3>
+<ul>
+<li>Dasar Sumber Terbuka Kerajaan Malaysia (OSS Policy 2001)</li>
+<li>MAMPU dan inisiatif perisian bebas sektor awam</li>
+<li>Penggunaan Linux dalam universiti awam Malaysia</li>
+<li>Keperluan NOSS / TVET dan sijil kebangsaan</li>
+</ul>
+<hr />
+<h2 id="penilaian-assessment">Penilaian (Assessment)</h2>
+<h3 id="teori-40">Teori (40%)</h3>
+<ul>
+<li>Uji Pra: Pengetahuan asas OS sebelum kursus</li>
+<li>Soal Jawab Kelas: Perbincangan tokoh dan falsafah Linux</li>
+<li>Kuiz Ringkas: Padanan distribusi dengan kes penggunaan</li>
+</ul>
+<h3 id="amali-asas-60">Amali Asas (60%)</h3>
+<pre><code class="language-bash"># Aktiviti 1: Kenali sistem anda
+cat /etc/os-release
+uname -r
+hostnamectl
+
+# Aktiviti 2: Semak isirung dan seni bina
+uname -a
+lscpu | head -20
+
+# Aktiviti 3: Terokai ekosistem dalam terminal
+# (Tanpa internet - hanya gunakan man pages)
+man intro
+man linux
+</code></pre>
+<hr />
+<h2 id="rujukan-nod-palace">Rujukan Nod Palace</h2>
+<table>
+<thead>
+<tr>
+<th>Nod</th>
+<th>Pautan</th>
+<th>Topik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sejarah Linux</td>
+<td><a href="../../palace/cu01/pengenalan-linux-dan-sejarah.html">pengenalan-linux-dan-sejarah.md</a></td>
+<td>Linus, GNU, GPL</td>
+</tr>
+<tr>
+<td>Distribusi Terkini</td>
+<td><a href="../../palace/cu01/pecahan-linux-terkini.html">pecahan-linux-terkini.md</a></td>
+<td>Ubuntu, Fedora, Debian</td>
+</tr>
+<tr>
+<td>Pemasangan Desktop</td>
+<td><a href="../cu01-wa04-install-computer-desktop-operating-systems/SKILL.html">cu01-wa04</a></td>
+<td>Pemasangan OS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sumber-rujukan-luaran-2024">Sumber Rujukan Luaran (2024)</h2>
+<ul>
+<li><a href="https://www.linuxfoundation.org">The Linux Foundation</a></li>
+<li><a href="https://distrowatch.com">DistroWatch.com</a> — Tangga populariti distribusi Linux terkini</li>
+<li><a href="https://kernel.org">kernel.org</a> — Muat turun isirung Linux rasmi</li>
+<li><a href="https://www.gnu.org">GNU.org</a> — Projek GNU dan lesen GPL</li>
+<li><a href="https://www.mampu.gov.my">MAMPU OSS Portal</a> — Dasar OSS Malaysia</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>

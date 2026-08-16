@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSOM Project Cloner Skill - NOSS Linux Malaysia</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+
+    <!--
+    OKF Metadata:
+name: dsom-project-cloner
+description: Scaffolds a new DSOM project by copying the Sovereign Engine, Intelligence Payload, Governance, and Ritual Scripts from the baseline repository to a user-specified target path.
+topics: [project, scaffold, clone, dsom, setup]
+okf_version: 0.1
+type: skill
+title: "DSOM Project Cloner Skill"
+timestamp: 2026-07-04T11:15:00Z
+    -->
+
+    <header>
+        <a href="../../../index.html">Sovereign Markdown Palace (Web)</a>
+    </header>
+    <div class="container">
+        <h1 id="dsom-project-cloner-skill">🏗️ DSOM Project Cloner Skill</h1>
+<h2 id="when-to-use-this-skill">When to use this skill</h2>
+<p>Use this skill when the user asks to create, clone, scaffold, or bootstrap a <strong>new</strong> DSOM project based on the current baseline repository (e.g., "Create a new project at D:\Projects\my-new-app").</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>The user must provide the <strong>absolute path</strong> to the new target repository. Ask for it if not provided.</li>
+</ul>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li><strong>Verify Target Path:</strong> Ensure you have the absolute path for the new target repository from the user.</li>
+<li><strong>Establish Directories:</strong> Use your terminal execution tools (<code>run_command</code>) to create the mandatory folder structures in the target path:</li>
+<li><code>&lt;target_path&gt;/.agents/brain/wings</code></li>
+<li><code>&lt;target_path&gt;/.agents/skills</code></li>
+<li><code>&lt;target_path&gt;/docs/agent-configs</code></li>
+<li><code>&lt;target_path&gt;/docs/governance</code></li>
+<li><code>&lt;target_path&gt;/tools</code></li>
+<li><strong>Copy the Four Pillars:</strong> Use your terminal execution tools (<code>run_command</code>) to copy the assets from the CURRENT repository (baseline) to the TARGET repository:</li>
+<li><strong>Pillar A (The Engine):</strong> Copy <code>.agents/AGENTS.md</code> to <code>&lt;target_path&gt;/.agents/</code></li>
+<li><strong>Pillar B (The Intelligence Payload):</strong> Recursively copy all contents of <code>.agents/skills/</code> to <code>&lt;target_path&gt;/.agents/skills/</code></li>
+<li><strong>Pillar C (Governance &amp; Configuration):</strong><ul>
+<li>Recursively copy <code>docs/agent-configs/</code> to <code>&lt;target_path&gt;/docs/agent-configs/</code></li>
+<li>Recursively copy <code>docs/governance/</code> to <code>&lt;target_path&gt;/docs/governance/</code></li>
+<li>Copy <code>docs/AI-AGENT-SKILLS-GUIDE.md</code> to <code>&lt;target_path&gt;/docs/</code></li>
+<li>Copy all <code>docs/HOWTO-*.md</code> files to <code>&lt;target_path&gt;/docs/</code></li>
+</ul>
+</li>
+<li><strong>Pillar D (Ritual Scripts):</strong> Recursively copy <code>tools/</code> to <code>&lt;target_path&gt;/tools/</code></li>
+<li><strong>Persona Injection Check:</strong> Ask the user if they wish to automatically inject their persona using the <code>persona-injector</code> skill for the new project.</li>
+<li><strong>Finalization:</strong> Output a success message to the user, providing them with the initialization commands for their new workspace:</li>
+<li><code>bash tools/reanimate.sh</code> or <code>.\tools\reanimate.ps1</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m "chore(dsom): scaffold genesis dsom architecture and AI skills"</code></li>
+</ol>
+<hr />
+<p><em>Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-04</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0</em></p>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.html">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+        <div class="footer">
+            <p>Janaan Automatik DSOM AI | Laman Web Statik Tidak Rasmi</p>
+        </div>
+    </div>
+</body>
+</html>
