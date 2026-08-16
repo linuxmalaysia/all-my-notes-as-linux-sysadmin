@@ -70,6 +70,15 @@ tags:
   - review
 ```
 
+#### topics
+Specific subject matters or syllabus topics this skill covers.
+```yaml
+topics:
+  - linux-server
+  - security-audit
+  - networking
+```
+
 #### requires
 Other skills or tools this skill depends on.
 ```yaml

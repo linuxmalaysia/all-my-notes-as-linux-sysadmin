@@ -5,6 +5,9 @@ tags:
   - linux
   - desktop
   - cu01
+topics:
+  - Operating System Fundamentals
+  - Basic Command Line
 ---
 
 # Topik 1: Pengenalan & Asas Meja Linux (CU01)

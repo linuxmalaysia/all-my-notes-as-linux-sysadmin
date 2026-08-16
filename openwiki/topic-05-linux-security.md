@@ -5,6 +5,10 @@ tags:
   - linux
   - security
   - cu05
+topics:
+  - Firewalls
+  - File Permissions
+  - Mandatory Access Control
 ---
 
 # Topik 5: Keselamatan Linux (CU05)

@@ -6,6 +6,10 @@ tags:
   - troubleshooting
   - logs
   - cu06
+topics:
+  - System Logs
+  - Network Troubleshooting
+  - Resource Monitoring
 ---
 
 # Topik 6: Penyelesaian Masalah & Log (CU06)

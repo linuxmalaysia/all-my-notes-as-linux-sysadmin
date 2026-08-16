@@ -6,6 +6,10 @@ tags:
   - backup
   - scripting
   - cu04
+topics:
+  - Shell Scripting
+  - Cronjobs
+  - Data Backup
 ---
 
 # Topik 4: Automasi & Sandaran (CU04)

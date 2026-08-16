@@ -6,6 +6,9 @@ tags:
   - storage
   - virtualisation
   - cu02
+topics:
+  - Disk Partitioning
+  - Virtual Machines
 ---
 
 # Topik 2: Pengurusan Storan & Pengmayaan (CU02)
