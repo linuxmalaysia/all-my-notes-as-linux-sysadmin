@@ -1096,10 +1096,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-tugasan-pasca-pemasangan-pemacu-peranti-hardening" class="md-nav__link">
+  <a href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Tugasan Pasca-Pemasangan, Pemacu Peranti &amp; Hardening
+        7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)
       
     </span>
   </a>
@@ -1107,10 +1107,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-soal-jawab-faq-direktori-perisian-alternatif" class="md-nav__link">
+  <a href="#8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif
+        8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#9-tugasan-pasca-pemasangan-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        9. Tugasan Pasca-Pemasangan &amp; Hardening
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#10-soal-jawab-faq-direktori-perisian-alternatif" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        10. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif
       
     </span>
   </a>
@@ -1716,10 +1738,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-tugasan-pasca-pemasangan-pemacu-peranti-hardening" class="md-nav__link">
+  <a href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#9-tugasan-pasca-pemasangan-hardening" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Tugasan Pasca-Pemasangan, Pemacu Peranti &amp; Hardening
+        9. Tugasan Pasca-Pemasangan &amp; Hardening
       
     </span>
   </a>
@@ -1727,10 +1771,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-soal-jawab-faq-direktori-perisian-alternatif" class="md-nav__link">
+  <a href="#10-soal-jawab-faq-direktori-perisian-alternatif" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif
+        10. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif
       
     </span>
   </a>
@@ -1805,7 +1849,7 @@
 
 <h1 id="topik-1-pengenalan-asas-ekosistem-linux-cu01">Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01)<a class="headerlink" href="#topik-1-pengenalan-asas-ekosistem-linux-cu01" title="Permanent link">&para;</a></h1>
 <h2 id="gambaran-keseluruhan-overview">Gambaran Keseluruhan (Overview)<a class="headerlink" href="#gambaran-keseluruhan-overview" title="Permanent link">&para;</a></h2>
-<p>Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian <strong>NOSS Level 3 (CU01)</strong>. Ia menggabungkan <strong>konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, serta penegasan keselamatan pasca-pemasangan</strong>.</p>
+<p>Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian <strong>NOSS Level 3 (CU01)</strong>. Ia menggabungkan <strong>konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi &amp; pemacu, konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan</strong>.</p>
 <blockquote>
 <p><strong>💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:</strong>
 Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).</p>
@@ -1853,17 +1897,30 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <ul>
 <li>Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS</li>
 <li>Pengurusan berbilang slot kunci (<em>multi-user key slots</em>) untuk pengguna dan pentadbir IT</li>
-<li>Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) &amp; Pekeliling MAMPU</li>
+<li>Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) &amp; Pekeliling MAMPU/JDN</li>
 </ul>
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/penyulitan-cakera-luks2-pejabat.html">manual/cu01/penyulitan-cakera-luks2-pejabat.md</a></p>
-<h3 id="7-tugasan-pasca-pemasangan-pemacu-peranti-hardening">7. Tugasan Pasca-Pemasangan, Pemacu Peranti &amp; Hardening<a class="headerlink" href="#7-tugasan-pasca-pemasangan-pemacu-peranti-hardening" title="Permanent link">&para;</a></h3>
+<h3 id="7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05">7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)<a class="headerlink" href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pengurusan pakej asli (<code>apt</code> pada Ubuntu, <code>dnf5</code> pada AlmaLinux/Fedora)</li>
+<li>Pakej berasaskan kontena universal (<code>Flatpak</code>, <code>Snap</code>)</li>
+<li>Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti</li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.html">manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md</a></p>
+<h3 id="8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06">8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)<a class="headerlink" href="#8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pengurusan sambungan berwayar dan Wi-Fi menggunakan NetworkManager (<code>nmcli</code>) dan <code>iproute2</code></li>
+<li>Penetapan Alamat IP Statik, DHCP, dan pelayan DNS</li>
+<li>Pengerasan keselamatan profil sambungan dan resolusi nama DNS</li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.html">manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md</a></p>
+<h3 id="9-tugasan-pasca-pemasangan-hardening">9. Tugasan Pasca-Pemasangan &amp; Hardening<a class="headerlink" href="#9-tugasan-pasca-pemasangan-hardening" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Kemaskini repositori dan pengurusan pakej (<code>apt</code>, <code>dnf</code>)</li>
-<li>Pemasangan pemacu grafik proprietary Nvidia / AMD</li>
 <li>Pengurusan pengguna, kumpulan <code>sudo</code>/<code>wheel</code>, serta penegasan keselamatan firewall (<code>ufw</code>, <code>firewalld</code>, SSH)</li>
 </ul>
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/pasca-pemasangan-dan-driver.html">manual/cu01/pasca-pemasangan-dan-driver.md</a></p>
-<h3 id="8-soal-jawab-faq-direktori-perisian-alternatif">8. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif<a class="headerlink" href="#8-soal-jawab-faq-direktori-perisian-alternatif" title="Permanent link">&para;</a></h3>
+<h3 id="10-soal-jawab-faq-direktori-perisian-alternatif">10. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif<a class="headerlink" href="#10-soal-jawab-faq-direktori-perisian-alternatif" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Soalan lazim pengguna baharu Linux</li>
 <li>Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)</li>
@@ -1920,7 +1977,7 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <li><a href="https://www.gnu.org/philosophy/free-sw.ms.html">Projek GNU dan Maksud Perisian Bebas</a> — (Tersedia dalam Bahasa Melayu)</li>
 <li><a href="https://distrowatch.com">DistroWatch.com</a> — Tangga &amp; statistik distribusi Linux terkini dunia</li>
 <li><a href="https://kernel.org">kernel.org</a> — Repositori rasmi Isirung Linux</li>
-<li><a href="https://www.mampu.gov.my">MAMPU Malaysia / HKSA</a> — Dasar OSS &amp; Pekeliling Keselamatan ICT sektor awam Malaysia</li>
+<li><a href="https://www.jdn.gov.my">Jabatan Digital Negara (JDN) / MAMPU Malaysia</a> — Dasar OSS &amp; Pekeliling Keselamatan ICT sektor awam Malaysia</li>
 <li><a href="https://www.linuxfoundation.org">The Linux Foundation</a></li>
 </ul>
 <hr />
@@ -1935,7 +1992,7 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 3. <em>UNIX and Linux System Administration Handbook, 5th Edition</em> oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin — Kitab rujukan utama pentadbir sistem profesional.
 4. <em>Just for Fun: The Story of an Accidental Revolutionary</em> oleh Linus Torvalds &amp; David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.</p>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em>
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

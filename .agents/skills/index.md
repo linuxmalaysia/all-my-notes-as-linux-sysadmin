@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-16T23:27:43Z"
+timestamp: "2026-08-16T23:36:31Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -33,10 +33,10 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu01-wa02-assemble-physical-computer-system-hardware`** <br> *cu01-wa02-assemble-physical-computer-system-hardware* | No description provided. | N/A |
 | **`cu01-wa03-assemble-laptop-hardware-components`** <br> *cu01-wa03-assemble-laptop-hardware-components* | No description provided. | N/A |
 | **`cu01-wa04-install-computer-desktop-operating-systems`** <br> *cu01-wa04-install-computer-desktop-operating-systems* | Kemahiran amali pemasangan sistem operasi Linux desktop — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10. | noss, cu01, wa04, linux-install, ubuntu, fedora, almalinux |
-| **`cu01-wa05-install-computer-applications-and-device-drivers`** <br> *cu01-wa05-install-computer-applications-and-device-drivers* | No description provided. | N/A |
-| **`cu01-wa06-configure-endpoint-network-connectivity`** <br> *cu01-wa06-configure-endpoint-network-connectivity* | No description provided. | N/A |
+| **`cu01-wa05-install-computer-applications-and-device-drivers`** <br> *cu01-wa05-install-computer-applications-and-device-drivers* | Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Flatpak, Snap, GPU Drivers) | noss, cu01, wa05, package-management, device-drivers |
+| **`cu01-wa06-configure-endpoint-network-connectivity`** <br> *cu01-wa06-configure-endpoint-network-connectivity* | Executes NOSS Work Activity: Configure Endpoint Network Connectivity (NetworkManager, nmcli, iproute2, Static IP, DHCP, Wi-Fi, DNS) | noss, cu01, wa06, networking, networkmanager |
 | **`cu01-wa07-prepare-computer-system-installation-records`** <br> *cu01-wa07-prepare-computer-system-installation-records* | No description provided. | N/A |
-| **`cu02-wa01-identify-virtualisation-infrastructure-requirements`** <br> *cu02-wa01-identify-virtualisation-infrastructure-requirements* | No description provided. | N/A |
+| **`cu02-wa01-identify-virtualisation-infrastructure-requirements`** <br> *cu02-wa01-identify-virtualisation-infrastructure-requirements* | Executes NOSS Work Activity: Identify Virtualisation Infrastructure & Storage Partitioning Requirements (GPT, LVM2, Filesystems) | noss, cu02, wa01, storage, virtualisation |
 | **`cu02-wa02-install-type-2-hypervisor-platform`** <br> *cu02-wa02-install-type-2-hypervisor-platform* | No description provided. | N/A |
 | **`cu02-wa03-deploy-guest-virtual-machines-vm`** <br> *cu02-wa03-deploy-guest-virtual-machines-vm* | No description provided. | N/A |
 | **`cu02-wa04-prepare-virtualisation-configuration-records`** <br> *cu02-wa04-prepare-virtualisation-configuration-records* | No description provided. | N/A |

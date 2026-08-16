@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pengurusan pakej (APT, DNF, Flatpak) dan pemasangan pemacu proprietari GPU (NVIDIA/AMD).">
+        <meta name="description" content="Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap) dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Pemasangan Aplikasi & Pemacu Peranti Linux - NOSS Linux Malaysia (DSOM)</title>
+        <title>CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pemasangan-aplikasi-pemacu-peranti-linux" class="md-skip">
+        <a href="#cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pemasangan Aplikasi & Pemacu Peranti Linux
+              CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux
             
           </span>
         </div>
@@ -1425,22 +1425,34 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#garis-panduan-amali-prosedur" class="md-nav__link">
+  <a href="#garis-panduan-amali-prosedur-kerja" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Garis Panduan Amali &amp; Prosedur
+        🛠️ Garis Panduan Amali &amp; Prosedur Kerja
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur">
+    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur Kerja">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-pengurusan-pakej-asli-apt-dnf5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
+        1. Pengurusan Pakej Asli (APT &amp; DNF5)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="1. Pengurusan Pakej Asli (APT &amp; DNF5)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-debianubuntu-apt-advanced-package-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Debian/Ubuntu (APT - Advanced Package Tool)
       
     </span>
   </a>
@@ -1448,10 +1460,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#b-red-hatalmalinuxfedora-dnf5-dnf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)
       
     </span>
   </a>
@@ -1461,6 +1473,111 @@
       </ul>
     </nav>
   
+</li>
+
+          <li class="md-nav__item">
+  <a href="#2-pemasangan-pakej-universal-flatpak-snap" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. Pemasangan Pakej Universal (Flatpak &amp; Snap)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="2. Pemasangan Pakej Universal (Flatpak &amp; Snap)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-flatpak-flathub-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Flatpak (Flathub Repository)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-snap-ubuntu-canonical-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Snap (Ubuntu Canonical Ecosystem)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-perkakasan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Perkakasan)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Perkakasan)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-pengesanan-perkakasan-peranti" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Pengesanan Perkakasan Peranti
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#c-pemasangan-pemacu-nvidia-pada-almalinux-10-fedora-43" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Pemasangan Pemacu NVIDIA pada AlmaLinux 10 / Fedora 43
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+    </span>
+  </a>
+
 </li>
       
         <li class="md-nav__item">
@@ -1524,58 +1641,133 @@
 
 
 
-<h1 id="pemasangan-aplikasi-pemacu-peranti-linux">Pemasangan Aplikasi &amp; Pemacu Peranti Linux<a class="headerlink" href="#pemasangan-aplikasi-pemacu-peranti-linux" title="Permanent link">&para;</a></h1>
+<h1 id="cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux">CU01-WA05: Pemasangan Aplikasi &amp; Pemacu Peranti Linux<a class="headerlink" href="#cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Pengurusan pakej (APT, DNF, Flatpak) dan pemasangan pemacu proprietari GPU (NVIDIA/AMD).</p>
-<blockquote>
-<p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU01</strong>.</p>
-</blockquote>
+<p>Menguasai prosedur amali pengurusan aplikasi, pakej perisian, serta pemasangan dan konfigurasi pemacu peranti (<em>device drivers</em>) pada sistem operasi Linux desktop mengikut piawaian <strong>NOSS Tahap 3 (CU01-WA05)</strong>.</p>
+<p>Setelah menyempurnakan modul ini, pelajar akan dapat:
+1. Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (<strong>APT</strong> pada Ubuntu 26.04 LTS, <strong>DNF5</strong> pada AlmaLinux 10 dan Fedora 43).
+2. Memasang dan menguruskan aplikasi berasaskan kontena universal (<strong>Flatpak</strong> dan <strong>Snap</strong>).
+3. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari (terutamanya GPU NVIDIA dan AMD Radeon) serta kad peranti rangkaian tanpa wayar.
+4. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (<em>GPG key verification</em>).</p>
 <hr />
-<h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
-</ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<h2 id="garis-panduan-amali-prosedur-kerja">🛠️ Garis Panduan Amali &amp; Prosedur Kerja<a class="headerlink" href="#garis-panduan-amali-prosedur-kerja" title="Permanent link">&para;</a></h2>
+<h3 id="1-pengurusan-pakej-asli-apt-dnf5">1. Pengurusan Pakej Asli (APT &amp; DNF5)<a class="headerlink" href="#1-pengurusan-pakej-asli-apt-dnf5" title="Permanent link">&para;</a></h3>
+<h4 id="a-debianubuntu-apt-advanced-package-tool">A. Debian/Ubuntu (APT - Advanced Package Tool)<a class="headerlink" href="#a-debianubuntu-apt-advanced-package-tool" title="Permanent link">&para;</a></h4>
+<p>Pada <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, pengurusan pakej dilakukan menggunakan arahan <code>apt</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Kemas kini indeks repositori dan senaraikan pakej yang boleh dinaik taraf</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Naik taraf kesemua pakej sistem ke versi terkini secara selamat</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Cari dan pasang aplikasi (contoh: cURL, Git, VLC)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>apt<span class="w"> </span>search<span class="w"> </span>vlc
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl<span class="w"> </span>git<span class="w"> </span>vlc
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># 4. Buang pakej yang tidak diperlukan beserta fail konfigurasi sisa</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sudo<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>-y<span class="w"> </span>vlc
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>-y
 </span></code></pre></div>
+<h4 id="b-red-hatalmalinuxfedora-dnf5-dnf">B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)<a class="headerlink" href="#b-red-hatalmalinuxfedora-dnf5-dnf" title="Permanent link">&para;</a></h4>
+<p>Pada <strong>AlmaLinux 10 "Purple Lion"</strong> dan <strong>Fedora 43</strong>, pengurus pakej generasi baharu <strong>DNF5</strong> digunakan:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Kemas kini indeks pakej dan sistem</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>check-update
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2. Pasang aplikasi dan kumpulan perisian (Package Groups)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>htop<span class="w"> </span>wget
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 3. Pengurusan repositori EPEL (Extra Packages for Enterprise Linux) pada AlmaLinux 10</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>config-manager<span class="w"> </span>--enable<span class="w"> </span>epel
+</span></code></pre></div>
+<hr />
+<h3 id="2-pemasangan-pakej-universal-flatpak-snap">2. Pemasangan Pakej Universal (Flatpak &amp; Snap)<a class="headerlink" href="#2-pemasangan-pakej-universal-flatpak-snap" title="Permanent link">&para;</a></h3>
+<p>Untuk aplikasi desktop moden yang terpencil (<em>sandboxed</em>) demi keselamatan persekitaran pejabat:</p>
+<h4 id="a-flatpak-flathub-repository">A. Flatpak (Flathub Repository)<a class="headerlink" href="#a-flatpak-flathub-repository" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Pastikan perkhidmatan Flatpak terpasang dan tambah repositori Flathub</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>flatpak<span class="w">   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># sudo dnf install -y flatpak # AlmaLinux / Fedora</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>flatpak<span class="w"> </span>remote-add<span class="w"> </span>--if-not-exists<span class="w"> </span>flathub<span class="w"> </span>https://dl.flathub.org/repo/flathub.flatpakrepo
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 2. Pasang dan jalankan aplikasi (contoh: LibreOffice / GIMP)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>flatpak<span class="w"> </span>install<span class="w"> </span>flathub<span class="w"> </span>org.gimp.GIMP<span class="w"> </span>-y
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>flatpak<span class="w"> </span>run<span class="w"> </span>org.gimp.GIMP
+</span></code></pre></div>
+<h4 id="b-snap-ubuntu-canonical-ecosystem">B. Snap (Ubuntu Canonical Ecosystem)<a class="headerlink" href="#b-snap-ubuntu-canonical-ecosystem" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Semak status dan pasang aplikasi Snap</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>snap<span class="w"> </span>list
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>code<span class="w"> </span>--classic<span class="w">  </span><span class="c1"># VS Code</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>chromium
+</span></code></pre></div>
+<hr />
+<h3 id="3-pengesanan-pemasangan-pemacu-peranti-gpu-perkakasan">3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Perkakasan)<a class="headerlink" href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-perkakasan" title="Permanent link">&para;</a></h3>
+<h4 id="a-pengesanan-perkakasan-peranti">A. Pengesanan Perkakasan Peranti<a class="headerlink" href="#a-pengesanan-perkakasan-peranti" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>vga
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Senaraikan peranti USB</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>lsusb
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>nvidia
+</span></code></pre></div>
+<h4 id="b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts">B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS<a class="headerlink" href="#b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Kesan pemacu yang disyorkan oleh peranti</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ubuntu-drivers<span class="w"> </span>devices
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. Pasang pemacu NVIDIA terkini secara automatik</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>ubuntu-drivers<span class="w"> </span>install
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 3. Sahkan pemacu NVIDIA berfungsi selepas but semula</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>nvidia-smi
+</span></code></pre></div>
+<h4 id="c-pemasangan-pemacu-nvidia-pada-almalinux-10-fedora-43">C. Pemasangan Pemacu NVIDIA pada AlmaLinux 10 / Fedora 43<a class="headerlink" href="#c-pemasangan-pemacu-nvidia-pada-almalinux-10-fedora-43" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. Tambah repositori RPM Fusion Non-Free</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 2. Pasang pemacu kmod-nvidia</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
+</span></code></pre></div>
+<hr />
+<h2 id="pematuhan-keselamatan-jdn-mampu-isoiec-27001">🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001<a class="headerlink" href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Verifikasi Kunci GPG:</strong> Sentiasa pastikan pengesahan kunci cryptographic GPG diaktifkan pada repositori (<code>gpgcheck=1</code> dalam DNF / APT) untuk mengelakkan serangan man-in-the-middle atau suntikan pakej palsu.</li>
+<li><strong>Pakej Berdaftar Sahaja:</strong> HANYA pasang perisian daripada repositori rasmi atau Flathub berverifikasi di komputer pejabat sektor awam.</li>
+<li><strong>Audit Pemasangan:</strong> Simpan log pemasangan di <code>/var/log/dpkg.log</code> atau <code>/var/log/dnf.log</code> sebagai sebahagian daripada audit keselamatan ISO 27001.</li>
+</ol>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.</li>
+<li>[ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.</li>
+<li>[ ] Berjaya mengenal pasti cip grafik menggunakan <code>lspci</code> dan memasang pemacu GPU rasmi.</li>
+<li>[ ] Mengesahkan modul pemacu dimuatkan ke dalam isirung Linux (<code>lsmod</code> / <code>nvidia-smi</code>).</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemasangan Aplikasi &amp; Pemacu Peranti Linux dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Pemasangan Aplikasi &amp; Pemacu Peranti Linux menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Bandingkan kelebihan dan kekurangan seni bina pembungkusan pakej APT/RPM berbanding ketersendirian kontena Flatpak dan Snap dari sudut keselamatan sektor awam."</em></li>
+<li><em>"Tuliskan skrip Bash untuk menyemak sama ada pemacu peranti NVIDIA atau AMD telah dimuatkan dengan betul dalam Kernel Linux 6.14."</em></li>
+<li><em>"Bagaimanakah cara menguruskan repositori cermin tempatan (local mirror repository) bagi persekitaran terpencil tanpa internet (air-gapped network)?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://ubuntu.com/server/docs/package-management">Dokumentasi Pengurusan Pakej Ubuntu</a></li>
+<li><a href="https://dnf5.readthedocs.io/">Dokumentasi Rasmi DNF5 Fedora / AlmaLinux</a></li>
+<li><a href="https://flathub.org/">Panduan Pengurusan Flathub</a></li>
+<li><a href="https://www.jdn.gov.my/">Garis Panduan Keselamatan Perisian MAMPU / JDN</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>The Linux Command Line, 2nd Edition</strong> oleh William Shotts.</li>
+<li><strong>Nota Pentadbiran Sistem Linux Malaysia</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />

@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
-timestamp: "2026-08-16T12:20:00Z"
+timestamp: "2026-08-17T00:00:00Z"
 topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2"]
 tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2"]
 description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan prosedur pemasangan NOSS Level 3."
@@ -13,7 +13,7 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ## Gambaran Keseluruhan (Overview)
 
-Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, serta penegasan keselamatan pasca-pemasangan**.
+Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi & pemacu, konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan**.
 
 > **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
 > Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
@@ -62,18 +62,31 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ### 6. Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 & MAMPU)
 - Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS
 - Pengurusan berbilang slot kunci (*multi-user key slots*) untuk pengguna dan pentadbir IT
-- Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) & Pekeliling MAMPU
+- Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) & Pekeliling MAMPU/JDN
 
 **📖 Baca Lanjut:** [manual/cu01/penyulitan-cakera-luks2-pejabat.md](../manual/cu01/penyulitan-cakera-luks2-pejabat.md)
 
-### 7. Tugasan Pasca-Pemasangan, Pemacu Peranti & Hardening
+### 7. Pemasangan Aplikasi & Pemacu Peranti Linux (CU01-WA05)
+- Pengurusan pakej asli (`apt` pada Ubuntu, `dnf5` pada AlmaLinux/Fedora)
+- Pakej berasaskan kontena universal (`Flatpak`, `Snap`)
+- Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti
+
+**📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
+
+### 8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)
+- Pengurusan sambungan berwayar dan Wi-Fi menggunakan NetworkManager (`nmcli`) dan `iproute2`
+- Penetapan Alamat IP Statik, DHCP, dan pelayan DNS
+- Pengerasan keselamatan profil sambungan dan resolusi nama DNS
+
+**📖 Baca Lanjut:** [manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md](../manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md)
+
+### 9. Tugasan Pasca-Pemasangan & Hardening
 - Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
-- Pemasangan pemacu grafik proprietary Nvidia / AMD
 - Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
 
 **📖 Baca Lanjut:** [manual/cu01/pasca-pemasangan-dan-driver.md](../manual/cu01/pasca-pemasangan-dan-driver.md)
 
-### 8. Soal Jawab (FAQ) & Direktori Perisian Alternatif
+### 10. Soal Jawab (FAQ) & Direktori Perisian Alternatif
 - Soalan lazim pengguna baharu Linux
 - Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
 
@@ -112,7 +125,7 @@ Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk
 - [Projek GNU dan Maksud Perisian Bebas](https://www.gnu.org/philosophy/free-sw.ms.html) — (Tersedia dalam Bahasa Melayu)
 - [DistroWatch.com](https://distrowatch.com) — Tangga & statistik distribusi Linux terkini dunia
 - [kernel.org](https://kernel.org) — Repositori rasmi Isirung Linux
-- [MAMPU Malaysia / HKSA](https://www.mampu.gov.my) — Dasar OSS & Pekeliling Keselamatan ICT sektor awam Malaysia
+- [Jabatan Digital Negara (JDN) / MAMPU Malaysia](https://www.jdn.gov.my) — Dasar OSS & Pekeliling Keselamatan ICT sektor awam Malaysia
 - [The Linux Foundation](https://www.linuxfoundation.org)
 
 ---
@@ -132,5 +145,5 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
 4. *Just for Fun: The Story of an Accidental Revolutionary* oleh Linus Torvalds & David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
