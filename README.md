@@ -5,6 +5,13 @@ Projek ini merupakan sebuah pangkalan pengetahuan Sistem Operasi Linux yang tida
 Susun atur spatial ini direka khusus untuk kecekapan Ejen AI (seperti Claude, Cursor, Windsurf, Jules) mengekstrak dan membaca silibus teknikal tanpa membebankan konteks memori.
 
 > **PENAFIAN PENTING**: Repositori ini adalah TIDAK RASMI dan dicipta untuk tujuan pengetahuan / pembelajaran sahaja. Ia tidak mewakili Jabatan Pembangunan Kemahiran (JPK) atau Kementerian Sumber Manusia Malaysia (MOHR). Sila rujuk `LEGAL-NOTICE.md`.
+
+## Misi Projek (Project Mission)
+
+Objektif utama repositori ini adalah untuk **memanfaatkan ilmu Sistem Operasi Linux kepada awam (public benefit)**. Kami membina kandungan terbuka ini dengan harapan agar ia boleh:
+1. Digunakan secara bebas oleh sesiapa sahaja (Ejen AI, pendidik, mahupun institusi latihan).
+2. Menjadi pangkalan rujukan teknikal yang kukuh untuk membantu usaha pembinaan, pemetaan, atau pelaksanaan ekosistem latihan berkaitan **NOSS Malaysia**.
+3. Menyumbang semula kepada komuniti perisian sumber terbuka (Open Source) tempatan dan menyokong matlamat kemahiran pendigitalan negara.
 ## Rujukan Teras (References)
 
 Pembangunan senibina dan standard ejen ini merujuk secara langsung kepada sumber-sumber utama berikut yang membina ekosistem *Agent Skills*:
