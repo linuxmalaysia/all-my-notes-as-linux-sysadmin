@@ -21,8 +21,8 @@ def get_markdown_title(filepath: Path) -> str:
 
 def main():
     root_dir = Path(__file__).parent.parent.resolve()
-    target_dirs = ['docs', 'openwiki', 'palace', '.agents/skills']
-    root_files = ['README.md', 'START-HERE.md', 'AGENTS.md', 'CHANGELOG.md']
+    target_dirs = ['docs', 'openwiki', 'manual', '.agents/skills', '.agents/brain/wings']
+    root_files = ['README.md', 'START-HERE.md', 'AGENTS.md', 'CHANGELOG.md', 'NOTICE.md', 'LEGAL-NOTICE.md']
     
     llms_txt_path = root_dir / 'llms.txt'
     llms_full_txt_path = root_dir / 'llms-full.txt'
@@ -31,8 +31,9 @@ def main():
         'Root Documents': [],
         'Documentation (docs)': [],
         'OpenWiki': [],
-        'Palace': [],
-        'Agent Skills': []
+        'Sovereign Manual NOSS (manual)': [],
+        'Agent Skills': [],
+        'DSOM Spatial Memory Palace': []
     }
     
     all_files = []
@@ -48,8 +49,9 @@ def main():
     dir_mapping = {
         'docs': 'Documentation (docs)',
         'openwiki': 'OpenWiki',
-        'palace': 'Palace',
-        '.agents/skills': 'Agent Skills'
+        'manual': 'Sovereign Manual NOSS (manual)',
+        '.agents/skills': 'Agent Skills',
+        '.agents/brain/wings': 'DSOM Spatial Memory Palace'
     }
     
     for d in target_dirs:

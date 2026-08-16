@@ -72,29 +72,38 @@ markdown_extensions:
 nav:
   - "Laman Utama (NOSS Linux)": README.md
   - "Mula Di Sini": START-HERE.md
-  - "Nota Rujukan (OpenWiki)":
-      - "Topik 1: Desktop & Asas": openwiki/topic-01-linux-desktop-and-basics.md
-      - "Topik 2: Pengurusan Pelayan": openwiki/topic-02-linux-server-management.md
-      - "Topik 3: Keselamatan & Hardening": openwiki/topic-03-linux-security-hardening.md
-  - "Manual NOSS Linux":
+  - "1. Pembelajaran (Tutorials)":
+      - "Pengenalan & Onboarding": docs/tutorials/index.md
+      - "Langkah Mula Linux": docs/tutorials/getting-started.md
+  - "2. Panduan Operasi (How-To Guides)":
+      - "Transformasi Kandungan NOSS (IPO)": docs/how-to/execute-noss-content-transformation.md
+      - "Penggunaan & Binaan HTML": docs/how-to/deploy-and-serve-html.md
+      - "Audit Pematuhan OKF": docs/how-to/audit-and-apply-frontmatter.md
+      - "Pelayan FastMCP": docs/how-to/run-fastmcp-server.md
+      - "Penjanaan Peta Tapak SEO": docs/how-to/generate-sitemaps-seo.md
+  - "3. Manual Amali NOSS (Reference)":
+      - "Pusat Rujukan Manual": manual/index.md
       - "CU01 - Sistem Komputer & Desktop": manual/cu01/index.md
       - "CU02 - Storan & Pemayaan": manual/cu02/index.md
       - "CU03 - Pentadbiran Pelayan": manual/cu03/index.md
       - "CU04 - Automasi & Sandaran": manual/cu04/index.md
       - "CU05 - Keselamatan & Pengerasan": manual/cu05/index.md
       - "CU06 - Troubleshooting & Sokongan": manual/cu06/index.md
-  - "Panduan Operasi (How-To)":
-      - "Transformasi Kandungan NOSS (IPO)": docs/how-to/execute-noss-content-transformation.md
-      - "Penggunaan & Binaan HTML": docs/how-to/deploy-and-serve-html.md
-      - "Audit Pematuhan OKF": docs/how-to/audit-and-apply-frontmatter.md
-      - "Pelayan FastMCP": docs/how-to/run-fastmcp-server.md
-      - "Penjanaan Peta Tapak SEO": docs/how-to/generate-sitemaps-seo.md
-  - "Dokumen Tadbir Urus":
+      - "Spesifikasi Alatan DSOM": docs/reference/index.md
+  - "4. Kefahaman & Silibus (Explanation)":
+      - "Peta Graf OpenWiki": openwiki/index.md
+      - "Topik 1: Desktop & Asas": openwiki/topic-01-linux-desktop-and-basics.md
+      - "Topik 2: Storan & Pemayaan": openwiki/topic-02-storage-and-virtualisation.md
+      - "Topik 3: Pentadbiran Pelayan": openwiki/topic-03-linux-server-administration.md
+      - "Topik 4: Skrip & Automasi": openwiki/topic-04-automation-and-backup.md
+      - "Topik 5: Keselamatan Linux": openwiki/topic-05-linux-security.md
+      - "Topik 6: Diagnostik & Log": openwiki/topic-06-troubleshooting-and-logs.md
       - "Aliran Kerja IPO (Input-Proses-Output)": docs/explanation/workflow-input-process-output.md
       - "Seni Bina Diátaxis & Web": docs/explanation/diataxis-architecture.md
       - "Sejarah Manual Asal KPM": docs/explanation/sejarah-dokumen-asal-linux-kpm.md
       - "Sejarah OSCC MAMPU": docs/explanation/sejarah-oscc-mampu-malaysia.md
       - "Sejarah MOSC / MOSCMY": docs/explanation/sejarah-mosc-malaysia.md
+  - "Tadbir Urus & Perlembagaan":
       - "Polisi Keselamatan": docs/SECURITY.md
       - "Notis & Penafian": docs/LEGAL-NOTICE.md
       - "Garis Panduan Agen AI": AGENTS.md
