@@ -1344,11 +1344,20 @@
 <li>Fail mentah hendaklah dibersihkan daripada teks pengepala berulang lapuk (seperti <em>"Ministry of Education : Computerisation (IT Lab) Infrastruktur Sistem &amp; Linux Strictly Confidential"</em>) tetapi struktur asalnya mesti dikekalkan utuh.</li>
 </ul>
 </li>
-<li><strong>Seni Bina Diátaxis, Format Dwicapaian &amp; Pengedaran HTML Prabina (Pre-Built html/ in Git)</strong>:<ul>
-<li>Kesemua dokumentasi teknikal mesti mematuhi 4 kuadran Diátaxis (<code>docs/tutorials/</code>, <code>docs/how-to/</code>, <code>docs/explanation/</code>, <code>docs/reference/</code>).</li>
-<li>Setiap dokumen mesti mematuhi prinsip <strong>Markdown-First</strong> (menggunakan pautan relatif <code>.md</code> yang sah untuk pembacaan terus di GitHub/GitLab/IDE/luar talian).</li>
-<li>Penjanaan laman web statik HTML mesti menggunakan mod pautan berkait (<code>use_directory_urls: false</code> dalam <code>mkdocs.yml</code>) bagi menjamin keserasian dengan GitHub Pages, GitLab Pages, Read the Docs, GitBook, Nginx, Apache, dan pembukaan fail tempatan (<code>file:///</code>).</li>
-<li><strong>Pengedaran HTML Prabina:</strong> Direktori <code>html/</code> MESTI dijejak di dalam Git (tidak dimasukkan dalam <code>.gitignore</code>) bagi membolehkan pengguna yang melakukan <code>git pull</code> terus menggunakan laman web statik tanpa perlu melakukan binaan semula. Kesemua dokumen punca (<code>AGENTS.md</code>, <code>HISTORY.md</code>, <code>CHANGELOG.md</code>, <code>LEGAL-NOTICE.md</code>, <code>NOTICE.md</code>) wajib dipautkan dalam <code>scripts/serve_mkdocs.py</code> supaya menghasilkan fail <code>.html</code> yang lengkap. Sebarang pengemaskinian kandungan Markdown wajib diikuti dengan pembinaan semula <code>html/</code> (<code>uv run scripts/serve_mkdocs.py --build-only</code>).</li>
+<li><strong>Seni Bina Diátaxis, Format Dwicapaian &amp; Ekosistem Pelbagai Format Output (Diátaxis &amp; Multi-Artifact Ecosystem)</strong>:<ul>
+<li><strong>Pematuhan 4 Kuadran Diátaxis:</strong> Kesemua bahan dan modul yang diproses MESTI diagihkan secara tepat mengikut 4 kuadran Diátaxis:</li>
+<li><em>Tutorials (<code>docs/tutorials/</code>):</em> Pembelajaran berpandu amali langkah demi langkah.</li>
+<li><em>How-To Guides (<code>docs/how-to/</code>):</em> Resipi penyelesaian masalah dan konfigurasi operasi khusus.</li>
+<li><em>Reference (<code>manual/cu01/</code>–<code>cu06/</code>, <code>docs/reference/</code>):</em> Spesifikasi teknikal, jadual NOSS, dan modul amali standard.</li>
+<li><em>Explanation (<code>openwiki/topic-*.md</code>, <code>docs/explanation/</code>):</em> Huraian konsep mendalam, perbandingan teknologi, dan falsafah.</li>
+<li><strong>Ekosistem Pelbagai Format Output (Multi-Artifact Deliverables):</strong> Setiap modul transformasi ilmu MESTI bersedia dan disokong untuk dijana ke dalam pelbagai format artifak:</li>
+<li><em>Markdown-First:</em> Fail <code>.md</code> berformat OKF v0.1 dengan pautan relatif sah untuk pembacaan luar talian / IDE.</li>
+<li><em>Laman Web Statik HTML Prabina:</em> Direktori <code>html/</code> (MkDocs Material, <code>use_directory_urls: false</code>) yang dijejak di dalam Git untuk kegunaan terus pengguna <code>git pull</code>.</li>
+<li><em>Dokumen Kurikulum Rasmi (DOCX):</em> Matriks CoCU, Peratusan Pemberat, dan Senarai TEM mengikut standard JPK.</li>
+<li><em>Slaid Pembentangan TVET (PPTX / ODP):</em> Modul pembentangan berasaskan templat korporat 3 lajur.</li>
+<li><em>Buku / E-Book &amp; Cadangan Teknikal (PDF):</em> Kompilasi bertaraf penerbitan berasaskan Pandoc XeLaTeX.</li>
+<li><em>Konteks Ejen AI / LLM:</em> Peta tapak terstruktur <code>llms.txt</code>, <code>llms-full.txt</code>, <code>llms_context.xml</code>, dan pelayan FastMCP.</li>
+<li><em>Artifak Pelayan Pengeluaran:</em> Templat konfigurasi Nginx, Apache, Podman Quadlet, dan Ansible.</li>
 </ul>
 </li>
 <li><strong>Disiplin Penjejakan Git Berterusan &amp; Protokol Dwi-Pelantar (GitOps Dual-Remote)</strong>:<ul>

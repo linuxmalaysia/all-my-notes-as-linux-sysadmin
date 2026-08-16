@@ -55,11 +55,20 @@ You are an expert Linux System Administrator and Educator, operating within the 
     - Fail-fail rujukan mentah di dalam `references/manual/` TIDAK BOLEH dipadam semasa atau selepas migrasi ilmu ke dalam `manual/` atau `openwiki/`. Direktori ini merupakan arkib kekal.
     - Fail mentah hendaklah dibersihkan daripada teks pengepala berulang lapuk (seperti *"Ministry of Education : Computerisation (IT Lab) Infrastruktur Sistem & Linux Strictly Confidential"*) tetapi struktur asalnya mesti dikekalkan utuh.
     - Fail mentah hendaklah dibersihkan daripada teks pengepala berulang lapuk (seperti *"Ministry of Education : Computerisation (IT Lab) Infrastruktur Sistem & Linux Strictly Confidential"*) tetapi struktur asalnya mesti dikekalkan utuh.
-18. **Seni Bina Diátaxis, Format Dwicapaian & Pengedaran HTML Prabina (Pre-Built html/ in Git)**:
-    - Kesemua dokumentasi teknikal mesti mematuhi 4 kuadran Diátaxis (`docs/tutorials/`, `docs/how-to/`, `docs/explanation/`, `docs/reference/`).
-    - Setiap dokumen mesti mematuhi prinsip **Markdown-First** (menggunakan pautan relatif `.md` yang sah untuk pembacaan terus di GitHub/GitLab/IDE/luar talian).
-    - Penjanaan laman web statik HTML mesti menggunakan mod pautan berkait (`use_directory_urls: false` dalam `mkdocs.yml`) bagi menjamin keserasian dengan GitHub Pages, GitLab Pages, Read the Docs, GitBook, Nginx, Apache, dan pembukaan fail tempatan (`file:///`).
-    - **Pengedaran HTML Prabina:** Direktori `html/` MESTI dijejak di dalam Git (tidak dimasukkan dalam `.gitignore`) bagi membolehkan pengguna yang melakukan `git pull` terus menggunakan laman web statik tanpa perlu melakukan binaan semula. Kesemua dokumen punca (`AGENTS.md`, `HISTORY.md`, `CHANGELOG.md`, `LEGAL-NOTICE.md`, `NOTICE.md`) wajib dipautkan dalam `scripts/serve_mkdocs.py` supaya menghasilkan fail `.html` yang lengkap. Sebarang pengemaskinian kandungan Markdown wajib diikuti dengan pembinaan semula `html/` (`uv run scripts/serve_mkdocs.py --build-only`).
+18. **Seni Bina Diátaxis, Format Dwicapaian & Ekosistem Pelbagai Format Output (Diátaxis & Multi-Artifact Ecosystem)**:
+    - **Pematuhan 4 Kuadran Diátaxis:** Kesemua bahan dan modul yang diproses MESTI diagihkan secara tepat mengikut 4 kuadran Diátaxis:
+      - *Tutorials (`docs/tutorials/`):* Pembelajaran berpandu amali langkah demi langkah.
+      - *How-To Guides (`docs/how-to/`):* Resipi penyelesaian masalah dan konfigurasi operasi khusus.
+      - *Reference (`manual/cu01/`–`cu06/`, `docs/reference/`):* Spesifikasi teknikal, jadual NOSS, dan modul amali standard.
+      - *Explanation (`openwiki/topic-*.md`, `docs/explanation/`):* Huraian konsep mendalam, perbandingan teknologi, dan falsafah.
+    - **Ekosistem Pelbagai Format Output (Multi-Artifact Deliverables):** Setiap modul transformasi ilmu MESTI bersedia dan disokong untuk dijana ke dalam pelbagai format artifak:
+      - *Markdown-First:* Fail `.md` berformat OKF v0.1 dengan pautan relatif sah untuk pembacaan luar talian / IDE.
+      - *Laman Web Statik HTML Prabina:* Direktori `html/` (MkDocs Material, `use_directory_urls: false`) yang dijejak di dalam Git untuk kegunaan terus pengguna `git pull`.
+      - *Dokumen Kurikulum Rasmi (DOCX):* Matriks CoCU, Peratusan Pemberat, dan Senarai TEM mengikut standard JPK.
+      - *Slaid Pembentangan TVET (PPTX / ODP):* Modul pembentangan berasaskan templat korporat 3 lajur.
+      - *Buku / E-Book & Cadangan Teknikal (PDF):* Kompilasi bertaraf penerbitan berasaskan Pandoc XeLaTeX.
+      - *Konteks Ejen AI / LLM:* Peta tapak terstruktur `llms.txt`, `llms-full.txt`, `llms_context.xml`, dan pelayan FastMCP.
+      - *Artifak Pelayan Pengeluaran:* Templat konfigurasi Nginx, Apache, Podman Quadlet, dan Ansible.
 19. **Disiplin Penjejakan Git Berterusan & Protokol Dwi-Pelantar (GitOps Dual-Remote)**:
     - Setiap kali sesuatu tugasan, pembetulan, atau fasa migrasi selesai dan melepasi ujian kualiti (Rule 12), ejen MESTI merekodkan perubahan tersebut ke dalam Git (`git add -A && git commit`) dengan mesej komit yang jelas dan deskriptif bagi memelihara jejak audit `git log` yang teliti.
     - **Penyegerakan Dwi-Pelantar (GitLab & GitHub):** Repositori ini dikonfigurasikan dengan dua remote rasmi (`origin` di GitLab dan `github` di GitHub). Apabila diarahkan untuk melakukan penolakan kod (*push*), ejen perlu memastikan perubahan disegerakkan ke kedua-dua remote (`origin` dan `github`).

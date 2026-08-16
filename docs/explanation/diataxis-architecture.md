@@ -46,8 +46,8 @@ Berasaskan standard [Diátaxis Documentation Framework](https://deep-state-of-mi
 3. **Explanation (`docs/explanation/`)** — *Understanding-oriented*:
    - Perbincangan falsafah, konsep asas, sejarah, dan seni bina sistem.
    - Contoh: Falsafah Lesen GNU GPL, evolusi isirung Linux, tadbir urus DSOM, dan penjajaran NOSS.
-4. **Reference (`docs/reference/` & `palace/`)** — *Information-oriented*:
-   - Lembaran fakta teknikal, spesifikasi arahan, jadual pemetaan CU/WA NOSS, dan senarai pemboleh ubah tanpa penerangan yang meleret.
+4. **Reference (`docs/reference/` & `manual/`)** — *Information-oriented*:
+   - Lembaran fakta teknikal, spesifikasi arahan, modul amali NOSS standard (CU01–CU06), jadual pemetaan CU/WA NOSS, dan senarai pemboleh ubah tanpa penerangan yang meleret.
 
 ---
 
@@ -133,5 +133,16 @@ uv run run_all_tests.py
 ```
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 6. Ekosistem Pelbagai Format Bahan (Multi-Artifact Deliverables)
+
+Di samping penstrukturan dokumen Diátaxis, ekosistem ini menyokong transformasi kandungan kepada pelbagai jenis artifak:
+- **Matriks Kurikulum DOCX (JPK Format):** Dijana automatik untuk keperluan pensijilan TVET melalui kemahiran `.agents/skills/noss-cocu-docx-formatter/`.
+- **Slaid Pembentangan Visual (PPTX / ODP):** Modul syarahan dan bengkel 3 lajur menggunakan `.agents/skills/odp-slide-generator/`.
+- **Buku & Cadangan Teknikal (PDF):** Dokumen berskala penuh berasaskan enjin Pandoc XeLaTeX.
+- **Konteks AI / FastMCP:** Peta pengetahuan padat melalui `llms.txt`, `llms-full.txt`, `llms_context.xml`, dan protokol FastMCP.
+- **Templat Pengeluaran DevOps:** Konfigurasi Nginx, Apache, Podman Quadlet, dan skrip automasi Ansible.
+
+---
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

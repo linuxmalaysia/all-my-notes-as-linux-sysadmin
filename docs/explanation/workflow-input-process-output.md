@@ -110,34 +110,52 @@ Ujian merangkumi:
 
 ---
 
-## 📤 3. Fasa OUTPUT (Penerbitan & Penyimpanan Memori)
+## 📤 3. Fasa OUTPUT (Penerbitan, Pelbagai Format & Pematuhan Penuh Diátaxis)
 
-Hasil akhir pemprosesan diagihkan ke beberapa sasaran mengikut peranannya:
+Projek ini mewajibkan setiap pemprosesan ilmu menghasilkan output yang merangkumi **keseluruhan 4 Kuadran Kerangka Diátaxis** serta menyokong ekosistem **pelbagai format bahan (*Multi-Artifact Deliverables*)**:
 
-### 1. `manual/` (Sovereign Manual NOSS)
-- Mengandungi modul teknikal amali lengkap mengikut pecahan 6 Unit Kompetensi (CU01 hingga CU06) bagi standard NOSS Level 3:
-  - `manual/cu01/`: Persediaan Sistem Komputer & Desktop Linux
-  - `manual/cu02/`: Pengurusan Storan & Hipervisor Pemayaan
-  - `manual/cu03/`: Pentadbiran Pelayan & Perkhidmatan Linux
-  - `manual/cu04/`: Automasi, Sandaran & Pemulihan Sistem
-  - `manual/cu05/`: Kawalan Keselamatan Endpoint & Pengerasan
-  - `manual/cu06/`: Troubleshooting, Sokongan & Pengurusan RCA
+### A. Pemetaan 4 Kuadran Diátaxis (Wajib Disediakan)
 
-### 2. `openwiki/` (Pangkalan Rujukan Silibus & Sintesis Cepat)
-- Menyediakan pandangan makro mengikut topik silibus untuk bacaan pantas pelajar dan tenaga pengajar tanpa memuatkan perincian amali penuh.
+| Kuadran Diátaxis | Peranan & Fokus | Format & Lokasi Output |
+| :--- | :--- | :--- |
+| **1. Tutorials (Pembelajaran)** | Panduan berpandu langkah demi langkah untuk pemula membina kompetensi pertama. | `docs/tutorials/` (Markdown & Web HTML) |
+| **2. How-To Guides (Operasi)** | Resipi berfokus masalah (*problem-oriented recipes*) menyelesaikan tugasan pentadbiran spesifik. | `docs/how-to/` (Markdown & Web HTML) |
+| **3. Reference (Rujukan Mutlak)** | Spesifikasi teknikal, jadual silibus NOSS, matriks CoCU/TEM, dan modul amali standard. | `manual/cu01/` hingga `cu06/`, `docs/reference/` |
+| **4. Explanation (Kefahaman)** | Penerangan konsep mendalam, sejarah, falsafah sumber terbuka, dan perbandingan teknologi. | `openwiki/topic-*.md`, `docs/explanation/` |
 
-### 3. `html/` (Pengedaran Tapak Web Statik Prabina)
-- Dijana melalui `uv run scripts/serve_mkdocs.py --build-only`.
-- Menggunakan mod pautan berkait (`use_directory_urls: false`) yang membolehkan pengguna membuka laman web secara luar talian (`file:///`) tanpa memerlukan pelayan web aktif.
-- Dijejak terus dalam Git supaya pengguna `git pull` boleh terus membacanya.
+---
 
-### 4. `.agents/brain/` (Memori Semantik & Ruang Loci Ejen AI)
-- **Spatial Memory (`.agents/brain/wings/`):** Menyimpan fakta mutlak dan status kurikulum untuk mengelakkan *context decay*.
-- **Palace Registry (`.agents/brain/palace_registry.md`):** Peta memori lengkap ejen AI.
-- **Episodic Handover:** Rekod penyerahan tugas antara ejen (contohnya Google Jules ➔ Antigravity) melalui `task.md`, `walkthrough.md`, dan `handover_to_<agent>.md`.
+### B. Matriks Kepelbagaian Format Output (Multi-Artifact Ecosystem)
 
-### 5. Dwi-Pelantar GitOps (`origin` & `github`)
-- Perubahan disimpan dalam jejak audit Git yang teliti (`git commit`) dan disegerakkan ke remote GitLab (`origin`) dan GitHub (`github`).
+Bagi memenuhi keperluan pelbagai lapisan pengguna (pelajar TVET, pensyarah, pentadbir sistem, dan ejen AI), output projek ini dijana ke dalam format-format berikut:
+
+```mermaid
+graph LR
+    SRC[Pengetahuan Teras NOSS Linux] --> MD[1. Nod Markdown OKF v0.1<br>manual/ & openwiki/]
+    SRC --> HTML[2. Laman Web Statik Prabina<br>html/ & MkDocs Material]
+    SRC --> DOCX[3. Dokumen Kurikulum NOSS<br>Format JPK / CoCU / TEM DOCX]
+    SRC --> SLIDES[4. Slaid Pembentangan TVET<br>PPTX / ODP 3-Column]
+    SRC --> PDF[5. Cadangan & E-Book<br>Pandoc XeLaTeX / Sovereign Book]
+    SRC --> AI_FEED[6. Suapan Konteks Ejen AI<br>llms.txt, XML & FastMCP Server]
+    SRC --> DEPLOY[7. Artifak Penyebaran Pengeluaran<br>Nginx, Apache, Podman, Ansible]
+```
+
+1. **Nod Markdown Berformat OKF v0.1 (`manual/`, `openwiki/`, `docs/`):**
+   - Rujukan berdaulat berasaskan fail teks tempatan (*offline-first*), bebas pautan putus, dan mesra pembacaan terus di IDE atau Git.
+2. **Tapak Web Statik Prabina (`html/`):**
+   - Tapak web dokumentasi lengkap dijana menggunakan MkDocs Material mod pautan berkait (`use_directory_urls: false`), sedia untuk GitHub Pages, GitLab Pages, dan pembukaan fail tempatan (`file:///`).
+3. **Pakej Kurikulum Rasmi NOSS (DOCX):**
+   - Penjanaan automatik dokumen format JPK (CoCU Matrix, Element Content Weightage, TEM List, Glossary) melalui kemahiran `.agents/skills/noss-cocu-docx-formatter/`.
+4. **Slaid Pembentangan TVET & Korporat (PPTX / ODP):**
+   - Penjanaan modul slaid pengajaran visual berasaskan tema standard menggunakan `.agents/skills/odp-slide-generator/` dan `.agents/skills/node-slide-generator/`.
+5. **Kompilasi Buku & Dokumen Cadangan (PDF / E-Book):**
+   - Penjanaan dokumen PDF profesional bertaraf penerbitan menggunakan enjin Pandoc XeLaTeX melalui `.agents/skills/latex-proposal-compiler/`.
+6. **Antaramuka Konteks AI & FastMCP:**
+   - Suapan data terstruktur untuk perangkak AI dan pelayan Model Context Protocol (FastMCP) melalui `llms.txt`, `llms-full.txt`, dan `llms_context.xml`.
+7. **Templat Penyebaran Pengeluaran (DevOps/GitOps):**
+   - Konfigurasi sedia-guna: Nginx (`deploy/nginx/`), Apache (`deploy/apache/`), Podman Quadlet / Kube YAML (`deploy/podman/`), dan Ansible Playbook (`deploy/ansible/`).
+8. **Memori Ruang & Lejar Ejen AI (`.agents/brain/`):**
+   - Spatial Memory Palace (`wings/`), Master Palace Registry (`palace_registry.md`), dan protokol penyerahan bersiri (`task.md`, `walkthrough.md`, `handover_to_<agent>.md`).
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  

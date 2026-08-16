@@ -49,21 +49,39 @@ Kemahiran ini membimbing mana-mana Ejen AI (Google Jules, Google Antigravity, ds
 ---
 
 ## 📤 Fasa 3: Pengedaran Output & Penyegerakan (Output Distribution)
-1. **Simpan ke Direktori Sasaran:**
-   - Manual Amali: `manual/cuXX/nama-fail.md`
-   - Indeks Naratif Silibus: `openwiki/topic-XX-*.md`
-2. **Kemas Kini Memori Ruang Ejen:**
+
+Ejen AI MESTI memastikan setiap hasil transformasi menyokong **4 Kuadran Diátaxis** dan bersedia dijana ke dalam pelbagai format:
+
+1. **Pengagihan Mengikut Kuadran Diátaxis:**
+   - **Tutorials (`docs/tutorials/`):** Panduan pembelajaran langkah demi langkah untuk pemula.
+   - **How-To Guides (`docs/how-to/`):** Resipi penyelesaian masalah dan konfigurasi operasi khusus.
+   - **Reference (`manual/cuXX/` & `docs/reference/`):** Spesifikasi teknikal, jadual NOSS, dan modul amali standard.
+   - **Explanation (`openwiki/topic-XX-*.md` & `docs/explanation/`):** Huraian konsep mendalam, perbandingan teknologi, dan sejarah.
+
+2. **Sokongan Pelbagai Format Output (Multi-Artifact Deliverables):**
+   - **Markdown OKF v0.1:** Modul teks berdaulat di `manual/` dan `openwiki/`.
+   - **Tapak Web Statik HTML:** Direktori `html/` dijana melalui `uv run scripts/serve_mkdocs.py --build-only`.
+   - **Kurikulum Rasmi DOCX:** Menggunakan kemahiran `.agents/skills/noss-cocu-docx-formatter/` untuk menghasilkan matriks CoCU & TEM.
+   - **Slaid Pembentangan PPTX/ODP:** Menggunakan `.agents/skills/odp-slide-generator/` untuk modul slaid TVET.
+   - **Buku / Dokumen Cadangan PDF:** Menggunakan `.agents/skills/latex-proposal-compiler/`.
+   - **Konteks AI / FastMCP:** Suapan `llms.txt`, `llms-full.txt`, dan pelayan FastMCP.
+   - **Templat Pengeluaran DevOps:** Konfigurasi Nginx, Apache, Podman Quadlet, dan Ansible Playbook.
+
+3. **Kemas Kini Memori Ruang Ejen:**
    - Kemas kini closet yang berkaitan di `.agents/brain/wings/` dan lejar di `.agents/brain/task.md`.
-3. **Jana Semula Peta Memori & Laman Web:**
+
+4. **Jana Semula Peta Memori & Laman Web:**
    ```bash
    uv run scripts/generate_palace_registry.py
    uv run scripts/serve_mkdocs.py --build-only
    ```
-4. **Pengesahan 100% Quality Gate (Rule 12):**
+
+5. **Pengesahan 100% Quality Gate (Rule 12):**
    ```bash
    uv run run_all_tests.py
    ```
-5. **Penjejakan & Penyegerakan GitOps (Rule 19):**
+
+6. **Penjejakan & Penyegerakan GitOps (Rule 19):**
    ```bash
    git add -A && git commit -m "feat(manual): <huraian-transformasi>"
    git push origin main && git push github main
