@@ -1096,8 +1096,9 @@
 <li><strong>Pengedaran HTML Prabina:</strong> Direktori <code>html/</code> MESTI dijejak di dalam Git (tidak dimasukkan dalam <code>.gitignore</code>) bagi membolehkan pengguna yang melakukan <code>git pull</code> terus menggunakan laman web statik tanpa perlu melakukan binaan semula. Kesemua dokumen punca (<code>AGENTS.md</code>, <code>HISTORY.md</code>, <code>CHANGELOG.md</code>, <code>LEGAL-NOTICE.md</code>, <code>NOTICE.md</code>) wajib dipautkan dalam <code>scripts/serve_mkdocs.py</code> supaya menghasilkan fail <code>.html</code> yang lengkap. Sebarang pengemaskinian kandungan Markdown wajib diikuti dengan pembinaan semula <code>html/</code> (<code>uv run scripts/serve_mkdocs.py --build-only</code>).</li>
 </ul>
 </li>
-<li><strong>Disiplin Penjejakan Git Berterusan (GitOps Audit Trail)</strong>:<ul>
+<li><strong>Disiplin Penjejakan Git Berterusan &amp; Protokol Dwi-Pelantar (GitOps Dual-Remote)</strong>:<ul>
 <li>Setiap kali sesuatu tugasan, pembetulan, atau fasa migrasi selesai dan melepasi ujian kualiti (Rule 12), ejen MESTI merekodkan perubahan tersebut ke dalam Git (<code>git add -A &amp;&amp; git commit</code>) dengan mesej komit yang jelas dan deskriptif bagi memelihara jejak audit <code>git log</code> yang teliti.</li>
+<li><strong>Penyegerakan Dwi-Pelantar (GitLab &amp; GitHub):</strong> Repositori ini dikonfigurasikan dengan dua remote rasmi (<code>origin</code> di GitLab dan <code>github</code> di GitHub). Apabila diarahkan untuk melakukan penolakan kod (<em>push</em>), ejen perlu memastikan perubahan disegerakkan ke kedua-dua remote (<code>origin</code> dan <code>github</code>).</li>
 </ul>
 </li>
 <li><strong>Piawaian Automasi &amp; Penyebaran Pelayan Pengeluaran (Production Deployment Matrix)</strong>:<ul>

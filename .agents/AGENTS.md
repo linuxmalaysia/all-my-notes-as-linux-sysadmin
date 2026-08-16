@@ -44,8 +44,9 @@ You are an expert Linux System Administrator and Educator, operating within the 
     - Setiap dokumen mesti mematuhi prinsip **Markdown-First** (menggunakan pautan relatif `.md` yang sah untuk pembacaan terus di GitHub/GitLab/IDE/luar talian).
     - Penjanaan laman web statik HTML mesti menggunakan mod pautan berkait (`use_directory_urls: false` dalam `mkdocs.yml`) bagi menjamin keserasian dengan GitHub Pages, GitLab Pages, Read the Docs, GitBook, Nginx, Apache, dan pembukaan fail tempatan (`file:///`).
     - **Pengedaran HTML Prabina:** Direktori `html/` MESTI dijejak di dalam Git (tidak dimasukkan dalam `.gitignore`) bagi membolehkan pengguna yang melakukan `git pull` terus menggunakan laman web statik tanpa perlu melakukan binaan semula. Kesemua dokumen punca (`AGENTS.md`, `HISTORY.md`, `CHANGELOG.md`, `LEGAL-NOTICE.md`, `NOTICE.md`) wajib dipautkan dalam `scripts/serve_mkdocs.py` supaya menghasilkan fail `.html` yang lengkap. Sebarang pengemaskinian kandungan Markdown wajib diikuti dengan pembinaan semula `html/` (`uv run scripts/serve_mkdocs.py --build-only`).
-19. **Disiplin Penjejakan Git Berterusan (GitOps Audit Trail)**:
+19. **Disiplin Penjejakan Git Berterusan & Protokol Dwi-Pelantar (GitOps Dual-Remote)**:
     - Setiap kali sesuatu tugasan, pembetulan, atau fasa migrasi selesai dan melepasi ujian kualiti (Rule 12), ejen MESTI merekodkan perubahan tersebut ke dalam Git (`git add -A && git commit`) dengan mesej komit yang jelas dan deskriptif bagi memelihara jejak audit `git log` yang teliti.
+    - **Penyegerakan Dwi-Pelantar (GitLab & GitHub):** Repositori ini dikonfigurasikan dengan dua remote rasmi (`origin` di GitLab dan `github` di GitHub). Apabila diarahkan untuk melakukan penolakan kod (*push*), ejen perlu memastikan perubahan disegerakkan ke kedua-dua remote (`origin` dan `github`).
 20. **Piawaian Automasi & Penyebaran Pelayan Pengeluaran (Production Deployment Matrix)**:
     - Setiap komponen web statik atau perkhidmatan yang dibina MESTI menyediakan templat konfigurasi pengeluaran siap guna:
       - **Nginx:** `deploy/nginx/nginx.conf` (pemampatan Gzip, penimbalan aset statik 1 tahun, pengepala keselamatan).
