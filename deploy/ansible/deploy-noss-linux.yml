@@ -1,0 +1,194 @@
+---
+# ==============================================================================
+# 🚀 Ansible Playbook: NOSS Linux Malaysia Web Server Deployment
+# ==============================================================================
+# Menyokong:
+# - Ubuntu 26.04 LTS / 24.04 LTS (Debian Family)
+# - AlmaLinux 10 / Rocky Linux 9 / Fedora 43 (RedHat Family)
+#
+# Cara Penggunaan:
+# 1. Pemasangan Asli Nginx (Bare-Metal):
+#    ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags nginx
+#
+# 2. Pemasangan Asli Apache (Bare-Metal):
+#    ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags apache
+#
+# 3. Pemasangan Berasaskan Docker Compose:
+#    ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags docker
+#
+# 4. Pemasangan Berasaskan Podman Pod:
+#    ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags podman
+# ==============================================================================
+
+- name: Deploy NOSS Linux Documentation Web Server
+  hosts: all
+  become: true
+  vars:
+    web_root: "/var/www/skills-noss/html"
+    project_source: "../../"
+    nginx_port: 8080
+    apache_port: 8081
+
+  tasks:
+    # --------------------------------------------------------------------------
+    # 1. Persediaan Sistem & Direktori Sasaran
+    # --------------------------------------------------------------------------
+    - name: Ensure target document directory exists
+      ansible.builtin.file:
+        path: "{{ web_root }}"
+        state: directory
+        owner: "{{ 'www-data' if ansible_os_family == 'Debian' else 'apache' }}"
+        group: "{{ 'www-data' if ansible_os_family == 'Debian' else 'apache' }}"
+        mode: '0755'
+      tags: [always, nginx, apache, bare-metal]
+
+    - name: Synchronize pre-built html/ files to target server
+      ansible.builtin.copy:
+        src: "{{ project_source }}html/"
+        dest: "{{ web_root }}/"
+        owner: "{{ 'www-data' if ansible_os_family == 'Debian' else 'apache' }}"
+        group: "{{ 'www-data' if ansible_os_family == 'Debian' else 'apache' }}"
+        mode: '0644'
+        directory_mode: '0755'
+      tags: [always, nginx, apache, bare-metal]
+
+    # --------------------------------------------------------------------------
+    # 2. Pilihan A: Pemasangan Asli Nginx (Bare-Metal)
+    # --------------------------------------------------------------------------
+    - name: Install Nginx package (Debian/Ubuntu)
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags: [nginx, bare-metal]
+
+    - name: Install Nginx package (RHEL/AlmaLinux/Fedora)
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+      tags: [nginx, bare-metal]
+
+    - name: Deploy custom Nginx production configuration
+      ansible.builtin.copy:
+        src: "{{ project_source }}deploy/nginx/nginx.conf"
+        dest: "{{ '/etc/nginx/sites-available/noss-linux.conf' if ansible_os_family == 'Debian' else '/etc/nginx/conf.d/noss-linux.conf' }}"
+        owner: root
+        group: root
+        mode: '0644'
+      tags: [nginx, bare-metal]
+
+    - name: Enable Nginx site (Debian/Ubuntu)
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/noss-linux.conf
+        dest: /etc/nginx/sites-enabled/noss-linux.conf
+        state: link
+      when: ansible_os_family == "Debian"
+      tags: [nginx, bare-metal]
+
+    - name: Ensure default Nginx site is disabled (Debian/Ubuntu)
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      when: ansible_os_family == "Debian"
+      tags: [nginx, bare-metal]
+
+    - name: Start and enable Nginx service
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+        enabled: yes
+      tags: [nginx, bare-metal]
+
+    # --------------------------------------------------------------------------
+    # 3. Pilihan B: Pemasangan Asli Apache (Bare-Metal)
+    # --------------------------------------------------------------------------
+    - name: Install Apache package (Debian/Ubuntu)
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags: [apache, bare-metal]
+
+    - name: Install Apache (httpd) package (RHEL/AlmaLinux/Fedora)
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+      tags: [apache, bare-metal]
+
+    - name: Start and enable Apache service
+      ansible.builtin.systemd:
+        name: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' }}"
+        state: restarted
+        enabled: yes
+      tags: [apache, bare-metal]
+
+    # --------------------------------------------------------------------------
+    # 4. Pilihan C: Pemasangan Menggunakan Docker Compose
+    # --------------------------------------------------------------------------
+    - name: Copy project compose files for Docker
+      ansible.builtin.copy:
+        src: "{{ project_source }}"
+        dest: "/opt/skills-noss/"
+        mode: '0755'
+      tags: [docker]
+
+    - name: Launch NOSS Linux containers via Docker Compose
+      ansible.builtin.command:
+        cmd: docker compose up -d
+        chdir: /opt/skills-noss
+      tags: [docker]
+
+    # --------------------------------------------------------------------------
+    # 5. Pilihan D: Pemasangan Menggunakan Podman Pod
+    # --------------------------------------------------------------------------
+    - name: Ensure Podman is installed
+      ansible.builtin.package:
+        name: podman
+        state: present
+      tags: [podman]
+
+    - name: Copy Podman Kube definition
+      ansible.builtin.copy:
+        src: "{{ project_source }}deploy/podman/pod-noss-linux.yml"
+        dest: "/opt/skills-noss/pod-noss-linux.yml"
+        mode: '0644'
+      tags: [podman]
+
+    - name: Launch Pod via podman play kube
+      ansible.builtin.command:
+        cmd: podman play kube /opt/skills-noss/pod-noss-linux.yml
+      tags: [podman]
+
+    # --------------------------------------------------------------------------
+    # 6. Konfigurasi Firewall (UFW & Firewalld)
+    # --------------------------------------------------------------------------
+    - name: Allow Web Ports in Firewalld (RedHat/AlmaLinux/Fedora)
+      ansible.posix.firewalld:
+        port: "{{ item }}/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      loop:
+        - 80
+        - 8080
+        - 8081
+      when: ansible_os_family == "RedHat"
+      ignore_errors: yes
+      tags: [always, firewall]
+
+    - name: Allow Web Ports in UFW (Debian/Ubuntu)
+      community.general.ufw:
+        rule: allow
+        port: "{{ item }}"
+        proto: tcp
+      loop:
+        - '80'
+        - '8080'
+        - '8081'
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+      tags: [always, firewall]

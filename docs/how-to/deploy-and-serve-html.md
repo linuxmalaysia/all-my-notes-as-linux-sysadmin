@@ -146,7 +146,41 @@ Rujuk fail lengkap di [`deploy/apache/httpd.conf`](../../deploy/apache/httpd.con
 
 ---
 
-## 5. Prosedur Mengemas Kini & Membina Semula HTML (Untuk Penulis/Penyumbang)
+## 5. Automasi Penyebaran Menggunakan Ansible Playbook
+
+Fail playbook Ansible rasmi disediakan di [`deploy/ansible/`](../../deploy/ansible/) bagi mengautomasikan penyebaran ke pelbagai pelayan Linux secara serentak (**Ubuntu 26.04/24.04 LTS**, **AlmaLinux 10**, **Fedora 43**, atau **Rocky Linux 9**):
+
+### Struktur Direktori Ansible
+```text
+deploy/ansible/
+├── ansible.cfg                    # Konfigurasi lalai Ansible
+├── inventory/
+│   └── hosts.ini                  # Senarai inventori pelayan sasaran
+├── site.yml                       # Titik masuk induk (Master Playbook)
+└── deploy-noss-linux.yml          # Tugasan penyebaran berbilang mod
+```
+
+### Arahan Pelaksanaan Mengikut Mod (Tags):
+
+```bash
+# A. Pasang Nginx Asli (Bare-Metal) pada pelayan sasaran:
+ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags nginx
+
+# B. Pasang Apache Asli (Bare-Metal) pada pelayan sasaran:
+ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags apache
+
+# C. Sebarkan menggunakan Docker Compose:
+ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags docker
+
+# D. Sebarkan menggunakan Podman Pod:
+ansible-playbook -i deploy/ansible/inventory/hosts.ini deploy/ansible/deploy-noss-linux.yml --tags podman
+```
+
+Playbook ini menguruskan secara automatik penyalinan dokumen `html/`, pemasangan pakej sistem, konfigurasi fail pelayan web, serta pembukaan port *firewall* (`ufw` atau `firewalld`).
+
+---
+
+## 6. Prosedur Mengemas Kini & Membina Semula HTML (Untuk Penulis/Penyumbang)
 
 Sekiranya anda telah menambah modul kemahiran baharu dalam `palace/`, menyunting `openwiki/`, atau mengubah dokumentasi `docs/`, bina semula folder `html/`:
 
@@ -163,7 +197,7 @@ Pelayan tempatan akan dibuka secara automatik pada alamat `http://127.0.0.1:8000
 
 ---
 
-## 6. Pengesahan Kualiti Sebelum Komit (Quality Gate)
+## 7. Pengesahan Kualiti Sebelum Komit (Quality Gate)
 
 Berasaskan **Peraturan 12 & 19 Perlembagaan AI DSOM**, setelah membina semula fail HTML, sentiasa jalankan suite ujian penuh dan komit perubahan:
 ```bash
@@ -172,7 +206,7 @@ uv run run_all_tests.py
 
 # 2. Rekodkan kemas kini ke dalam Git
 git add -A
-git commit -m "docs(deploy): update production deployment configs and rebuilt HTML"
+git commit -m "docs(deploy): add Ansible playbooks and update deployment docs"
 ```
 
 ---
