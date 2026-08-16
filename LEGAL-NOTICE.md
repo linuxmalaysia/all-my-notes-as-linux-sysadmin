@@ -1,12 +1,18 @@
 # Legal Notice & Disclaimer
 
-## UNOFFICIAL CONTENT (TIDAK RASMI)
+## UNOFFICIAL CONTENT (TIDAK RASMI) & PENGHARGAAN TANDA DAGANG
 
 > **IMPORTANT: This is unofficial, for knowledge propose only.**
 
-Kandungan, struktur, dan maklumat berkaitan Linux yang terdapat di dalam repositori ini, walaupun mungkin merujuk kepada terma atau silibus "National Occupational Skills Standard" (NOSS) Malaysia, adalah **TIDAK RASMI** dan **TIDAK DISAHKAN** oleh Jabatan Pembangunan Kemahiran (JPK), Kementerian Sumber Manusia (MOHR), mahupun mana-mana agensi kerajaan yang lain.
+Perkataan "NOSS" dan "National Occupational Skills Standard" adalah Tanda Dagang dan hak milik mutlak **Jabatan Pembangunan Kemahiran (JPK), Kementerian Sumber Manusia, Malaysia**. 
 
-Repositori ini dicipta secara peribadi oleh komuniti/individu semata-mata untuk tujuan **pengetahuan, pembelajaran, kesalingoperasian ejen AI, dan perkongsian silibus sistem operasi Linux**.
+Segala rujukan kepada terma, struktur, dan silibus di dalam repositori ini adalah bertujuan untuk menterjemahkan standard kemahiran tersebut ke dalam format pendidikan Linux dan kerangka AI, berlandaskan prinsip *Penggunaan Adil (Fair Use)*. 
+
+Kandungan ini adalah **TIDAK RASMI** dan **TIDAK DISAHKAN** oleh JPK atau MOHR. Kami menghormati sepenuhnya pemilikan kerajaan ke atas harta intelek tersebut. Sebarang rujukan rasmi harus diajukan terus ke:
+> **DEPARTMENT OF SKILLS DEVELOPMENT**
+> Level 7 & 8, Setia Perkasa 4, Kompleks Setia Perkasa, 62530 PUTRAJAYA
+> Tel: 03-8886 5589 | Fax: 03-8889 2423 | Email: jpk[@]mohr[dot]gov[dot]my
+> [Portal Rasmi JPK](https://www.dsd.gov.my/en/service/national-occupational-skills-standards-noss)
 
 ## Tiada Liabiliti
 

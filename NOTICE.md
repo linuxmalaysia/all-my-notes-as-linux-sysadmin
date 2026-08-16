@@ -27,9 +27,13 @@ Bagi melindungi hak pengarang asal serta mematuhi syarat-syarat pelesenan sumber
 - **Keterangan**: Konsep dan seni bina memori pengurusan (Loci/Istana Minda) telah diadaptasi daripada kerangka pemikiran projek-projek ini.
 
 ## 5. National Occupational Skills Standard (NOSS) Malaysia
-- **Hak Cipta**: Hak Cipta Terpelihara Kerajaan Malaysia (Jabatan Pembangunan Kemahiran / Kementerian Sumber Manusia).
-- **Lesen Asal**: Dokumen rasmi kerajaan.
-- **Keterangan**: Rujukan kepada standard kompetensi dan silibus Linux di dalam pangkalan pengetahuan ini diekstrak daripada Standard Kemahiran Pekerjaan Kebangsaan (NOSS). Penggunaan struktur dan terma ini adalah **sepenuhnya tidak rasmi** dan berlandaskan terma *Penggunaan Adil (Fair Use)* untuk tujuan pendidikan dan kesalingoperasian Ejen AI sahaja.
+- **Pemilik Tanda Dagang & Hak Cipta**: Hak Cipta Terpelihara Kerajaan Malaysia (Jabatan Pembangunan Kemahiran / Kementerian Sumber Manusia, Malaysia).
+- **Maklumat Rasmi Jabatan**:
+  > **DEPARTMENT OF SKILLS DEVELOPMENT**
+  > Level 7 & 8, Setia Perkasa 4, Kompleks Setia Perkasa, 62530 PUTRAJAYA
+  > Tel: 03-8886 5589 | Fax: 03-8889 2423 | Email: jpk[@]mohr[dot]gov[dot]my
+  > [Pautan Rasmi NOSS JPK](https://www.dsd.gov.my/en/service/national-occupational-skills-standards-noss)
+- **Keterangan**: Perkataan dan struktur "NOSS" (National Occupational Skills Standard) adalah hak milik mutlak Jabatan Pembangunan Kemahiran (JPK), Kementerian Sumber Manusia, Malaysia. Rujukan kepada standard kompetensi dan silibus Linux di dalam pangkalan pengetahuan ini adalah **sepenuhnya tidak rasmi** dan berlandaskan terma *Penggunaan Adil (Fair Use)* untuk tujuan pendidikan. Kami sentiasa menghormati dan menyokong pemilikan JPK ke atas standard ini.
 
 ---
 **PENAFIAN PERUNDANGAN**: Pembangun dan pemilik repositori Sovereign Markdown Palace (LinuxMalaysia) tidak menuntut hak pemilikan ke atas mana-mana jenama, spesifikasi, atau kod milik pihak-pihak ketiga yang dinamakan di atas. Sebarang adaptasi dilakukan sepenuhnya atas dasar penggunaan adil (fair use) untuk rujukan, kesalingoperasian, dan pendidikan ejen pengekodan AI.
