@@ -1,6 +1,10 @@
 # Notis Hak Cipta & Atribusi Pihak Ketiga (Third-Party Attributions)
 
-Repositori **Sovereign Markdown Palace** (kerangka kerja Loci) adalah projek sumber terbuka yang dilesenkan di bawah [MIT License](LICENSE). 
+Repositori **Sovereign Markdown Palace** (kerangka kerja Loci) adalah projek sumber terbuka yang dilesenkan di bawah perjanjian **Dwi-Lesen (Dual-License)**:
+- **Kandungan (Teks/Silibus)**: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0).
+- **Perisian (Skrip/Kod)**: MIT License.
+
+Sila rujuk fail [`LICENSE`](LICENSE) untuk maklumat penuh. 
 
 Walau bagaimanapun, projek ini bertindak sebagai sebuah sistem pengagregatan (pengumpul) maklumat yang turut memuatkan dokumen, format panduan, dan teks penerangan yang diadaptasi daripada projek sumber terbuka pihak ketiga.
 
