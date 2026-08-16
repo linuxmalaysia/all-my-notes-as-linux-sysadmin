@@ -1,0 +1,58 @@
+---
+okf_version: 0.1
+type: legacy_reference_skill
+name: "[LEGACY] linux-l3-c03-w04"
+title: linux-l3-c03-w04
+version: 1.0.0
+description: "[LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM SERVER COMMISSIONING AND MAINTENANCE."
+noss_section: "K62 COMPUTER PROGRAMMING, CONSULTANCY AND RELATED ACTIVITIES"
+noss_group: "622 COMPUTER CONSULTANCY AND COMPUTER FACILITIES MANAGEMENT ACTIVITIES"
+noss_code: IT-020-3:2026-CU03-WA04
+target_level: 3
+weightage: "15%"
+---
+# Work Activity Summary
+This skill governs the execution of PERFORM SERVER COMMISSIONING AND MAINTENANCE. to produce functional operational outputs according to enterprise quality standards.
+
+## Required Utilities & Prerequisites
+*   **System Commands:** standard linux utilities
+*   **Hardware / Equipment:** Laptops (1:1), Desktops (1:1), Network firewall (1:1), Network router & switch (1:5), Wireless access point (1:5), Server machine / virtualisation host (1:5), Network equipment rack (1:5), KVM switch (1:5), UPS (1:5), NAS / network backup storage (1:2)
+*   **Tools:** Screwdrivers (Philips & Flathead), Crimping tools, Punch down tools, Pliers and pry tools, Anti-static wrist straps, ESD mats, Multimeters, Cable testers
+*   **Materials:** RJ45 connectors, Cat5e/Cat6 cables, Cable ties, Labels, Thermal paste
+*   **Documentation:** organizational SOPs, vendor manuals
+
+## Core Execution Steps (Work Steps)
+*   **Step 4.1:** Inspect server room.
+*   **Step 4.2:** Verify hardware health.
+*   **Step 4.3:** Monitor server performance.
+*   **Step 4.4:** Execute data backup.
+*   **Step 4.5:** Audit security logs.
+
+## Performance Criteria (Quality Gates)
+> Note: For full compliance checklists, refer to the Compliance archive.
+
+*   Server room environmental thresholds, temperature levels, and physical security controls inspected.
+*   Server hardware health indicators, hardware fault alerts, and system operational statuses confirmed.
+*   Core CPU, memory, and network performance metrics monitored against operational thresholds.
+*   Server data backup tasks, backup logs, and data retention parameters executed.
+*   System security logs, anti-malware definition statuses, and threat scan findings audited.
+
+
+## 📂 References (Progressive Disclosure)
+To maintain context efficiency and save token budget, detailed 
+operational commands and troubleshooting matrices are stored in modular reference files:
+
+*   [**Standard Operating Procedure (SOP)**](references/SOP.md)
+*   [**Troubleshooting Guide**](references/TROUBLESHOOTING.md)
+*   [**NOSS Compliance Matrix**](references/COMPLIANCE.md)
+*   [**Poka-Yoke Execution Scripts**](../../../../../scripts/)
+
+
+## 🎯 Pedagogical Scope
+**Target Level:** NOSS Level 3 (System Administration)
+**Constraint:** Execution must be restricted to Level 3 boundaries. Do not introduce advanced orchestration (e.g., Kubernetes), High-Availability clusters, or Level 4/5 architectural complexities.
+
+
+## Level 4 Progression Pathway (Path of Knowledge)
+**Target Competency:** L4-CU03 (L4-C03-W02-nginx-reverse-proxy-hardening)
+**Context Bridge:** Bridges local server software installation to hardened multi-site reverse proxy gateway setups.
