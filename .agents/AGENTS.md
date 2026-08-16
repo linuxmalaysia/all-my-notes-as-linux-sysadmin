@@ -37,12 +37,20 @@ You are an expert Linux System Administrator and Educator, operating within the 
 17. **Pemuliharaan Arkib Sumber Mentah (Raw Archive Preservation)**:
     - Fail-fail rujukan mentah di dalam `references/manual/` TIDAK BOLEH dipadam semasa atau selepas migrasi ilmu ke dalam `palace/` atau `openwiki/`. Direktori ini merupakan arkib kekal.
     - Fail mentah hendaklah dibersihkan daripada teks pengepala berulang lapuk (seperti *"Ministry of Education : Computerisation (IT Lab) Infrastruktur Sistem & Linux Strictly Confidential"*) tetapi struktur asalnya mesti dikekalkan utuh.
-18. **Seni Bina Diátaxis & Format Dwicapaian (Markdown-First & Multi-Platform)**:
+18. **Seni Bina Diátaxis, Format Dwicapaian & Pengedaran HTML Prabina (Pre-Built html/ in Git)**:
     - Kesemua dokumentasi teknikal mesti mematuhi 4 kuadran Diátaxis (`docs/tutorials/`, `docs/how-to/`, `docs/explanation/`, `docs/reference/`).
     - Setiap dokumen mesti mematuhi prinsip **Markdown-First** (menggunakan pautan relatif `.md` yang sah untuk pembacaan terus di GitHub/GitLab/IDE/luar talian).
     - Penjanaan laman web statik HTML mesti menggunakan mod pautan berkait (`use_directory_urls: false` dalam `mkdocs.yml`) bagi menjamin keserasian dengan GitHub Pages, GitLab Pages, Read the Docs, GitBook, Nginx, Apache, dan pembukaan fail tempatan (`file:///`).
+    - **Pengedaran HTML Prabina:** Direktori `html/` MESTI dijejak di dalam Git (tidak dimasukkan dalam `.gitignore`) bagi membolehkan pengguna yang melakukan `git pull` terus menggunakan laman web statik tanpa perlu melakukan binaan semula. Sebarang pengemaskinian kandungan Markdown wajib diikuti dengan pembinaan semula `html/` (`uv run scripts/serve_mkdocs.py --build-only`).
 19. **Disiplin Penjejakan Git Berterusan (GitOps Audit Trail)**:
     - Setiap kali sesuatu tugasan, pembetulan, atau fasa migrasi selesai dan melepasi ujian kualiti (Rule 12), ejen MESTI merekodkan perubahan tersebut ke dalam Git (`git add -A && git commit`) dengan mesej komit yang jelas dan deskriptif bagi memelihara jejak audit `git log` yang teliti.
+20. **Piawaian Automasi & Penyebaran Pelayan Pengeluaran (Production Deployment Matrix)**:
+    - Setiap komponen web statik atau perkhidmatan yang dibina MESTI menyediakan templat konfigurasi pengeluaran siap guna:
+      - **Nginx:** `deploy/nginx/nginx.conf` (pemampatan Gzip, penimbalan aset statik 1 tahun, pengepala keselamatan).
+      - **Apache HTTP Server:** `deploy/apache/httpd.conf` (`mod_deflate`, `mod_expires`, `mod_headers`).
+      - **Docker Compose:** `docker-compose.yml` menyokong perkhidmatan Nginx (port 8080) dan Apache (port 8081).
+      - **Podman Pod & Quadlet:** `deploy/podman/pod-noss-linux.yml` (spesifikasi Kube YAML) dan fail Systemd Quadlet untuk AlmaLinux 10 / Fedora 43.
+      - **Ansible Playbook:** `deploy/ansible/` untuk automasi penyebaran pelbagai nod merentas keluarga Debian dan RedHat dengan konfigurasi firewall automatik (`ufw` / `firewalld`).
 
 ## Google Jules & Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
