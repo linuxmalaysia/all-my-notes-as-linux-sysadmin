@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "dsom_token_auditor"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for dsom_token_auditor.md."
-resource: "file:///docs/reference\dsom_token_auditor.md"
+title: "Dsom_Token_Auditor"
+description: "DSOM Reference document for Dsom_Token_Auditor."
+type: "reference"
+id: "docs/reference/dsom_token_auditor.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # dsom_token_auditor.py reference

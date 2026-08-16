@@ -1,3 +1,20 @@
+---
+title: "Creating Your First Skill"
+description: "DSOM Guide document for Creating Your First Skill."
+type: "guide"
+id: "docs/CREATING-YOUR-FIRST-SKILL.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Creating Your First Skill
 
 This tutorial walks you through creating your first Claude Skill from scratch.

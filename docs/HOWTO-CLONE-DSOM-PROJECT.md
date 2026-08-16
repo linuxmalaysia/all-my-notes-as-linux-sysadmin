@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-CLONE-DSOM-PROJECT"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for scaffolding a new project from an existing DSOM repository."
-resource: "file:///docs/HOWTO-CLONE-DSOM-PROJECT.md"
+title: "Howto Clone Dsom Project"
+description: "DSOM Guide document for Howto Clone Dsom Project."
+type: "guide"
+id: "docs/HOWTO-CLONE-DSOM-PROJECT.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # HOWTO: Clone a DSOM Project (Scaffolding Blueprint)

@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "RITUAL-OF-TRANSITION"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for RITUAL-OF-TRANSITION.md."
-resource: "file:///docs/RITUAL-OF-TRANSITION.md"
+title: "Ritual Of Transition"
+description: "DSOM Guide document for Ritual Of Transition."
+type: "guide"
+id: "docs/RITUAL-OF-TRANSITION.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🕯️ DSOM Ritual of Transition (v6.1 + Palace v1.0)

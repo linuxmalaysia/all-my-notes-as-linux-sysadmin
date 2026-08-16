@@ -1,3 +1,20 @@
+---
+title: "Best Practices"
+description: "DSOM Guide document for Best Practices."
+type: "guide"
+id: "docs/BEST-PRACTICES.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Best practices for skill creators
 
 How to write skills that are well-scoped and calibrated to the task.

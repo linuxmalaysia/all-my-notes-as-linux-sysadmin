@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "openwiki-mcp-architecture"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for openwiki-mcp-architecture.md."
-resource: "file:///docs/explanation\openwiki-mcp-architecture.md"
+title: "Openwiki Mcp Architecture"
+description: "DSOM Concept document for Openwiki Mcp Architecture."
+type: "concept"
+id: "docs/explanation/openwiki-mcp-architecture.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # OpenWiki and FastMCP architecture

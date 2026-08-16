@@ -1,13 +1,21 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "LEGAL-NOTICE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for LEGAL-NOTICE.md."
-resource: "file:///docs/LEGAL-NOTICE.md"
----../LEGAL-NOTICE.md
+title: "Legal Notice"
+description: "DSOM Guide document for Legal Notice."
+type: "guide"
+id: "docs/LEGAL-NOTICE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
+../LEGAL-NOTICE.md
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

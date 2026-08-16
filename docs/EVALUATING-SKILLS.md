@@ -1,3 +1,20 @@
+---
+title: "Evaluating Skills"
+description: "DSOM Guide document for Evaluating Skills."
+type: "guide"
+id: "docs/EVALUATING-SKILLS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Evaluating skill output quality
 
 > How to test whether your skill produces good outputs using eval-driven iteration.

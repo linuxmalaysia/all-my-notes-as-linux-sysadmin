@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "Open Knowledge Format (OKF) Adoption Guide"
-timestamp: "2026-08-16T08:46:00Z"
-topics: ["okf", "documentation", "standards"]
-tags: ["dsom", "okf", "guide"]
-description: "Official guide on how the Open Knowledge Format (OKF) is implemented within the Linux for NOSS Malaysia project."
-resource: "file:///docs/OKF-ADOPTION-GUIDE.md"
+title: "Okf Adoption Guide"
+description: "DSOM Guide document for Okf Adoption Guide."
+type: "guide"
+id: "docs/OKF-ADOPTION-GUIDE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # Open Knowledge Format (OKF) Adoption Guide

@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-CREATE-DSOM-GEMINI-GEM"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "Step-by-step guide to configuring a permanent DSOM Cognitive Twin Gem inside the Google Gemini interface."
-resource: "file:///docs/HOWTO-CREATE-DSOM-GEMINI-GEM.md"
+title: "Howto Create Dsom Gemini Gem"
+description: "DSOM Guide document for Howto Create Dsom Gemini Gem."
+type: "guide"
+id: "docs/HOWTO-CREATE-DSOM-GEMINI-GEM.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # How to Create a Gemini Gem for DSOM

@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "dsom-claude-initialiser"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for dsom-claude-initialiser.md."
-resource: "file:///docs/model-specifics\dsom-claude-initialiser.md"
+title: "Dsom Claude Initialiser"
+description: "DSOM Guide document for Dsom Claude Initialiser."
+type: "guide"
+id: "docs/model-specifics/dsom-claude-initialiser.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🧪 DSOM Claude Initialiser

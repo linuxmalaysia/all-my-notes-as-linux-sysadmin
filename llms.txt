@@ -1,20 +1,15 @@
-# Sovereign Markdown Palace: Linux NOSS Malaysia
+# Project Name - DSOM AI Knowledge Base
 
-> This repository is unofficial and created for educational/knowledge purposes only. It is not affiliated with or endorsed by the Department of Skills Development (JPK) or the Ministry of Human Resources Malaysia (MOHR).
+> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs.
 
-This repository serves as an AI-native external memory (exocortex) structured using the Deep State of Mind (DSOM) v0.1 protocol. It holds educational content related to the Linux Operating System, mapped to the Malaysian National Occupational Skills Standard (NOSS).
+## Core Governance & Architecture
+- [DSOM Governance](docs/explanation/governance/DIGITAL-SOVEREIGNTY-MODEL.md): Metacognitive context management and protocol standards.
+- [Diátaxis Framework](docs/explanation/diataxis.md): Quadrant layout and documentation structure.
+- [System Architecture](docs/explanation/openwiki-mcp-architecture.md): Subsystem topologies and integration points.
 
-## Directory Map
+## Tools & Component References
+- [Tool Index](docs/reference/index.md): Exhaustive list of scripts, modules, and API signatures.
 
-- `/START-HERE.md`: The primary entry point explaining the project architecture.
-- `/AGENTS.md`: Gateway redirect for AI agents.
-- `/.agents/AGENTS.md`: Full AI Constitution and Operational Laws for this repository.
-- `/LEGAL-NOTICE.md`: Legal disclaimers regarding the unofficial nature of the NOSS content.
-- `/NOTICE.md`: Attributions to third-party open-source projects (DSOM, OpenSkills, AgentSkills).
-- `/README.md`: High-level summary of the project.
-- `/openwiki/`: Contains DSOM-compliant knowledge graph nodes.
-- `/palace/`: Contains spatial memory "Loci" mapping for Linux NOSS syllabus.
-
-## Core Architectural Principle
-
-This project uses spatial memory (Loci) and YAML-frontmatter Markdown (`SKILL.md`) to allow AI agents to navigate dense Linux documentation with extremely low token overhead (reducing 98% of context bloat). Do not ingest all files simultaneously. Follow the `START-HERE.md` entry points.
+## Practical Operational Guides
+- [Getting Started Onboarding](docs/tutorials/getting-started.md): Beginner step-by-step onboarding walkthrough.
+- [Operational Recipes](docs/how-to/index.md): Task-oriented execution recipes.

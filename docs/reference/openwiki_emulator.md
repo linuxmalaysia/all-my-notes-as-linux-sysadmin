@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "openwiki_emulator"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for openwiki_emulator.md."
-resource: "file:///docs/reference\openwiki_emulator.md"
+title: "Openwiki_Emulator"
+description: "DSOM Reference document for Openwiki_Emulator."
+type: "reference"
+id: "docs/reference/openwiki_emulator.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # openwiki_emulator.py reference

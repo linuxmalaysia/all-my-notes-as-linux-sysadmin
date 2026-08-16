@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "generate-sitemaps-seo"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for generate-sitemaps-seo.md."
-resource: "file:///docs/how-to\generate-sitemaps-seo.md"
+title: "Generate Sitemaps Seo"
+description: "DSOM Guide document for Generate Sitemaps Seo."
+type: "guide"
+id: "docs/how-to/generate-sitemaps-seo.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # Generate SEO assets and sitemaps

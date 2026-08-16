@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "AI-AGENT-SKILLS-GUIDE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for AI-AGENT-SKILLS-GUIDE.md."
-resource: "file:///docs/AI-AGENT-SKILLS-GUIDE.md"
+title: "Ai Agent Skills Guide"
+description: "DSOM Guide document for Ai Agent Skills Guide."
+type: "guide"
+id: "docs/AI-AGENT-SKILLS-GUIDE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🤖 AI Agent Skills Development Guide

@@ -1,3 +1,20 @@
+---
+title: "Using Reference Files"
+description: "DSOM Reference document for Using Reference Files."
+type: "reference"
+id: "docs/USING-REFERENCE-FILES.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Using Reference Files
 
 Reference files let you extend your skill's knowledge without bloating the main `SKILL.md`. This guide covers how to use them effectively.

@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "CLAUDE-SETUP"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for CLAUDE-SETUP.md."
-resource: "file:///docs/CLAUDE-SETUP.md"
+title: "Claude Setup"
+description: "DSOM Guide document for Claude Setup."
+type: "guide"
+id: "docs/CLAUDE-SETUP.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🎭 Claude.ai Integration Protocol (v6.1 + Palace v1.0)

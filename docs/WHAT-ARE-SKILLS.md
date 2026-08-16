@@ -1,3 +1,20 @@
+---
+title: "What Are Skills"
+description: "DSOM Guide document for What Are Skills."
+type: "guide"
+id: "docs/WHAT-ARE-SKILLS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # What Are Claude Skills?
 
 If you've been using Claude and wondered why it sometimes feels like starting from scratch with every conversation, you're not alone. That's exactly the problem Claude Skills solve.

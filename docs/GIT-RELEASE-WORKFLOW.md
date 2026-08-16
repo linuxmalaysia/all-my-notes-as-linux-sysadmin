@@ -1,3 +1,20 @@
+---
+title: "Git Release Workflow"
+description: "DSOM Guide document for Git Release Workflow."
+type: "guide"
+id: "docs/GIT-RELEASE-WORKFLOW.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Aliran Kerja Git & Pengurusan Keluaran (Git Release Workflow)
 
 Dokumen ini merekodkan cara ejen AI mengurus kawalan versi (version control) dan proses pengepakan perisian (release packaging) secara automatik dalam projek Sovereign Markdown Palace. Panduan ini amat penting agar ejen AI masa depan (atau skrip automasi) dapat meniru dan melaksana kembali aliran kerja ini dengan tepat.

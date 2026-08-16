@@ -1,0 +1,22 @@
+---
+title: "Cu01 Wa04 Install Computer Desktop Operating Systems"
+description: "DSOM Reference document for Cu01 Wa04 Install Computer Desktop Operating Systems."
+type: "reference"
+id: "docs/reference/skills/cu01-wa04-install-computer-desktop-operating-systems.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
+# Install Computer Desktop Operating Systems
+*Executes NOSS standard K622-XXX-3:2026-C01 WA04*
+
+## Procedure
+1. *Pending implementation based on JTPS 2 document.*

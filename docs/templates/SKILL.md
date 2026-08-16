@@ -1,14 +1,18 @@
 ---
-name: profil-eksekutif-seni-bina-sistem-awan
-description: >
-  Mengandungi profil profesional, kompetensi teknikal, dan metrik pencapaian strategik calon.
-  Gunakan kemahiran ini apabila pengguna bertanyakan tentang pengalaman kerja, ingin membina 
-  resume, memerlukan data peribadi, atau memerlukan pengesahan kelayakan profesional.
-disable-model-invocation: true
-user-invocable: false
-metadata:
-  version: 10.0.0-palace
-  license: GPL-3.0-or-later
+title: "Skill"
+description: "DSOM Guide document for Skill."
+type: "guide"
+id: "docs/templates/SKILL.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # Panduan Pelaksanaan Ejen: Profil Eksekutif

@@ -1,3 +1,20 @@
+---
+title: "Writing Effective Skills"
+description: "DSOM Guide document for Writing Effective Skills."
+type: "guide"
+id: "docs/WRITING-EFFECTIVE-SKILLS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Writing Effective Skills
 
 This guide covers best practices for creating powerful, reusable Claude Skills that work reliably.

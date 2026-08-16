@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-DSOM-ONBOARDING"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for HOWTO-DSOM-ONBOARDING.md."
-resource: "file:///docs/HOWTO-DSOM-ONBOARDING.md"
+title: "Howto Dsom Onboarding"
+description: "DSOM Guide document for Howto Dsom Onboarding."
+type: "guide"
+id: "docs/HOWTO-DSOM-ONBOARDING.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🚀 HOWTO: Adopt DSOM Using Automated Onboarding

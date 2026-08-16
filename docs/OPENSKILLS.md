@@ -1,3 +1,20 @@
+---
+title: "Openskills"
+description: "DSOM Guide document for Openskills."
+type: "guide"
+id: "docs/OPENSKILLS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # OpenSkills
 
 Universal skills loader for AI coding agents

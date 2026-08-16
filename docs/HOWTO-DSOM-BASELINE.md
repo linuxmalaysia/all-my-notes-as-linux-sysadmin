@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-DSOM-BASELINE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "Agent-readable instructions for porting the DSOM architecture from the baseline repository to a new or existing workspace."
-resource: "file:///docs/HOWTO-DSOM-BASELINE.md"
+title: "Howto Dsom Baseline"
+description: "DSOM Guide document for Howto Dsom Baseline."
+type: "guide"
+id: "docs/HOWTO-DSOM-BASELINE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # DSOM Bootstrapping Guide (Agent-Readable)

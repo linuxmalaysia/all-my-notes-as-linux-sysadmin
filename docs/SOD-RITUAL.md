@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "SOD-RITUAL"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for SOD-RITUAL.md."
-resource: "file:///docs/SOD-RITUAL.md"
+title: "Sod Ritual"
+description: "DSOM Guide document for Sod Ritual."
+type: "guide"
+id: "docs/SOD-RITUAL.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🌅 SOD-RITUAL.md — Start-of-Day Ritual

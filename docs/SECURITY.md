@@ -1,13 +1,21 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "SECURITY"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for SECURITY.md."
-resource: "file:///docs/SECURITY.md"
----../SECURITY.md
+title: "Security"
+description: "DSOM Guide document for Security."
+type: "guide"
+id: "docs/SECURITY.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
+../SECURITY.md
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

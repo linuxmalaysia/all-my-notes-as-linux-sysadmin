@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "mkdocs_hooks"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for mkdocs_hooks.md."
-resource: "file:///docs/reference\mkdocs_hooks.md"
+title: "Mkdocs_Hooks"
+description: "DSOM Reference document for Mkdocs_Hooks."
+type: "reference"
+id: "docs/reference/mkdocs_hooks.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # mkdocs_hooks.py reference

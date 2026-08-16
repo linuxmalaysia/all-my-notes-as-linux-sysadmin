@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "autonomous_agent_manifest"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for autonomous_agent_manifest.md."
-resource: "file:///docs/agent-configs\autonomous_agent_manifest.md"
+title: "Autonomous_Agent_Manifest"
+description: "DSOM Guide document for Autonomous_Agent_Manifest."
+type: "guide"
+id: "docs/agent-configs/autonomous_agent_manifest.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # DSOM Autonomous Agent Manifest (v1.0)

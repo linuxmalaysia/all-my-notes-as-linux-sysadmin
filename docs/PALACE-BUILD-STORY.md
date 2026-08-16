@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "PALACE-BUILD-STORY"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for PALACE-BUILD-STORY.md."
-resource: "file:///docs/PALACE-BUILD-STORY.md"
+title: "Palace Build Story"
+description: "DSOM Guide document for Palace Build Story."
+type: "guide"
+id: "docs/PALACE-BUILD-STORY.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🏛️ PALACE-BUILD-STORY: How the Sovereign Markdown Palace Was Built

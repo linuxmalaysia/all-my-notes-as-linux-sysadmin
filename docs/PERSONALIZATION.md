@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "🧠 DSOM Personalisation: The Cognitive Digital Twin — NOSS Linux Edition"
-timestamp: "2026-08-16T08:49:00Z"
-topics: ["personalisation", "ai-prompt", "identity"]
-tags: ["dsom", "ai", "guide"]
-description: "Master prompt instructions for configuring an AI agent to act as the Cognitive Digital Twin for the Linux NOSS Malaysia project."
-resource: "file:///docs/PERSONALIZATION.md"
+title: "Personalization"
+description: "DSOM Guide document for Personalization."
+type: "guide"
+id: "docs/PERSONALIZATION.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🧠 DSOM Personalisation: The Cognitive Digital Twin — NOSS Linux Edition

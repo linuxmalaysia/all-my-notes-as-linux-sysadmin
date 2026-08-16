@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-PORT-AI-PALACE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for HOWTO-PORT-AI-PALACE.md."
-resource: "file:///docs/HOWTO-PORT-AI-PALACE.md"
+title: "Howto Port Ai Palace"
+description: "DSOM Guide document for Howto Port Ai Palace."
+type: "guide"
+id: "docs/HOWTO-PORT-AI-PALACE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🚀 HOWTO: Port the AI Spatial Memory Palace to Other Projects

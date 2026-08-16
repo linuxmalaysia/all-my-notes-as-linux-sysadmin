@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-UPGRADE-LEGACY-DSOM"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for migrating older DSOM projects to the current architectural baseline."
-resource: "file:///docs/HOWTO-UPGRADE-LEGACY-DSOM.md"
+title: "Howto Upgrade Legacy Dsom"
+description: "DSOM Guide document for Howto Upgrade Legacy Dsom."
+type: "guide"
+id: "docs/HOWTO-UPGRADE-LEGACY-DSOM.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # HOWTO: Upgrade Legacy DSOM Projects

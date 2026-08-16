@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "HOWTO-SETUP-WSL-ALMALINUX10"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for HOWTO-SETUP-WSL-ALMALINUX10.md."
-resource: "file:///docs/HOWTO-SETUP-WSL-ALMALINUX10.md"
+title: "Howto Setup Wsl Almalinux10"
+description: "DSOM Guide document for Howto Setup Wsl Almalinux10."
+type: "guide"
+id: "docs/HOWTO-SETUP-WSL-ALMALINUX10.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # 🐧 HOWTO: Setup AlmaLinux 10 WSL2 as DSOM Ansible Control Node

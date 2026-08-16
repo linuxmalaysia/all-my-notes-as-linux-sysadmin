@@ -1,3 +1,20 @@
+---
+title: "What Is Dspy"
+description: "DSOM Guide document for What Is Dspy."
+type: "guide"
+id: "docs/WHAT-IS-DSPY.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # What is DSPy?
 
 DSPy is a framework from Stanford NLP that lets you program language models instead of prompting them. You write Python code describing what you want, and DSPy's optimizers automatically figure out how to make it happen.

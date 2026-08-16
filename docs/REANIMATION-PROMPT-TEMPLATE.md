@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "REANIMATION-PROMPT-TEMPLATE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for REANIMATION-PROMPT-TEMPLATE.md."
-resource: "file:///docs/REANIMATION-PROMPT-TEMPLATE.md"
+title: "Reanimation Prompt Template"
+description: "DSOM Guide document for Reanimation Prompt Template."
+type: "guide"
+id: "docs/REANIMATION-PROMPT-TEMPLATE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # ⚡ DSOM Reanimation Prompt Templates (v3.0)

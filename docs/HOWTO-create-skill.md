@@ -1,3 +1,20 @@
+---
+title: "Howto Create Skill"
+description: "DSOM Guide document for Howto Create Skill."
+type: "guide"
+id: "docs/HOWTO-create-skill.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # 📜 docs/HOWTO-create-skill.md
 
 ## 🏛️ 1. Pengenalan & Falsafah Operasi (Seni Bina Kognitif DSOM)

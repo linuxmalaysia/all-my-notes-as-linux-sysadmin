@@ -1,3 +1,20 @@
+---
+title: "Optimizing Descriptions"
+description: "DSOM Guide document for Optimizing Descriptions."
+type: "guide"
+id: "docs/OPTIMIZING-DESCRIPTIONS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Optimizing skill descriptions
 
 > How to improve your skill's description so it triggers reliably on relevant prompts.

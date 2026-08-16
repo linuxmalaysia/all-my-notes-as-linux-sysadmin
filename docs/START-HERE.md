@@ -1,13 +1,21 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "START-HERE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for START-HERE.md."
-resource: "file:///docs/START-HERE.md"
----../START-HERE.md
+title: "Start Here"
+description: "DSOM Guide document for Start Here."
+type: "guide"
+id: "docs/START-HERE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
+../START-HERE.md
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

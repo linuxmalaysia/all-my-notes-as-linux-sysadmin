@@ -1,3 +1,20 @@
+---
+title: "Prompts"
+description: "DSOM Guide document for Prompts."
+type: "guide"
+id: "docs/PROMPTS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # ==============================================================================
 # Sovereign Markdown Palace v10.0: Meta-Prompt Shield
 # ==============================================================================

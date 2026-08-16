@@ -1,3 +1,20 @@
+---
+title: "Using Scripts"
+description: "DSOM Guide document for Using Scripts."
+type: "guide"
+id: "docs/USING-SCRIPTS.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Using scripts in skills
 
 > How to run commands and bundle executable scripts in your skills.

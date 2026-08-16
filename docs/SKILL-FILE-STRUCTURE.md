@@ -1,3 +1,20 @@
+---
+title: "Skill File Structure"
+description: "DSOM Guide document for Skill File Structure."
+type: "guide"
+id: "docs/SKILL-FILE-STRUCTURE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # Skill File Structure
 
 This guide explains the anatomy of a Claude Skill and how to organize its files.

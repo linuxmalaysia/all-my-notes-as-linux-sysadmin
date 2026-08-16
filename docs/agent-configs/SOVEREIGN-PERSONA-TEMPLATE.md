@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "SOVEREIGN-PERSONA-TEMPLATE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "Template to define a core persona, linguistic DNA, and operational constraints for the AI Cognitive Twin."
-resource: "file:///docs/agent-configs\SOVEREIGN-PERSONA-TEMPLATE.md"
+title: "Sovereign Persona Template"
+description: "DSOM Guide document for Sovereign Persona Template."
+type: "guide"
+id: "docs/agent-configs/SOVEREIGN-PERSONA-TEMPLATE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # Sovereign Persona Profile Template

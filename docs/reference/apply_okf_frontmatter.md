@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "apply_okf_frontmatter"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for apply_okf_frontmatter.md."
-resource: "file:///docs/reference\apply_okf_frontmatter.md"
+title: "Apply_Okf_Frontmatter"
+description: "DSOM Reference document for Apply_Okf_Frontmatter."
+type: "reference"
+id: "docs/reference/apply_okf_frontmatter.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # apply_okf_frontmatter.py reference

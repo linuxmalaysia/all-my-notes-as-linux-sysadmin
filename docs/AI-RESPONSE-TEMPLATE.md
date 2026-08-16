@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "AI-RESPONSE-TEMPLATE"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for AI-RESPONSE-TEMPLATE.md."
-resource: "file:///docs/AI-RESPONSE-TEMPLATE.md"
+title: "Ai Response Template"
+description: "DSOM Guide document for Ai Response Template."
+type: "guide"
+id: "docs/AI-RESPONSE-TEMPLATE.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 ### 📜 docs/AI-RESPONSE-TEMPLATE.md

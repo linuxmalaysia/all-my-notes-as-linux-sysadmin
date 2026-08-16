@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "cursorrules_template"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for cursorrules_template.md."
-resource: "file:///docs/agent-configs\cursorrules_template.md"
+title: "Cursorrules_Template"
+description: "DSOM Guide document for Cursorrules_Template."
+type: "guide"
+id: "docs/agent-configs/cursorrules_template.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # .cursorrules (DSOM Template)

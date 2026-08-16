@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "audit-and-apply-frontmatter"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for audit-and-apply-frontmatter.md."
-resource: "file:///docs/how-to\audit-and-apply-frontmatter.md"
+title: "Audit And Apply Frontmatter"
+description: "DSOM Guide document for Audit And Apply Frontmatter."
+type: "guide"
+id: "docs/how-to/audit-and-apply-frontmatter.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # Check and apply OKF compliance

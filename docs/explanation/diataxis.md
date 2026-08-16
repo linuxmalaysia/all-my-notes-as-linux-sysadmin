@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "diataxis"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for diataxis.md."
-resource: "file:///docs/explanation\diataxis.md"
+title: "Diataxis"
+description: "DSOM Concept document for Diataxis."
+type: "concept"
+id: "docs/explanation/diataxis.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # Diátaxis framework adoption in DSOM

@@ -1,3 +1,20 @@
+---
+title: "Adding Skills Support"
+description: "DSOM Guide document for Adding Skills Support."
+type: "guide"
+id: "docs/ADDING-SKILLS-SUPPORT.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
+---
+
 # How to add skills support to your agent
 
 > A guide for adding Agent Skills support to an AI agent or development tool.

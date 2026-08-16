@@ -1,12 +1,18 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "bench_brain"
-timestamp: "2026-08-16T08:54:28Z"
-topics: ["dsom", "noss-linux"]
-tags: ["documentation", "noss"]
-description: "OKF-compliant documentation for bench_brain.md."
-resource: "file:///docs/reference\bench_brain.md"
+title: "Bench_Brain"
+description: "DSOM Reference document for Bench_Brain."
+type: "reference"
+id: "docs/reference/bench_brain.md"
+dsom_governance:
+  domain: "AI"
+  context_tier: "L2-Operational"
+tags:
+  - "dsom-protocol"
+  - "diataxis-quadrant"
+related_links:
+  - "docs/reference/index.md"
+nav_order: 10
+layout: "default"
 ---
 
 # bench_brain.py reference
