@@ -1067,6 +1067,7 @@
 <li>Use <code>uvx ruff check .</code> as the primary static analysis and auto-fixing tool for codebase health audits.</li>
 <li><strong>Windows Terminal Unicode Safe</strong>: Always include <code>if hasattr(sys.stdout, 'reconfigure'): sys.stdout.reconfigure(encoding='utf-8')</code> in CLI scripts to prevent <code>UnicodeEncodeError</code> when printing emojis or special characters on Windows.</li>
 <li><strong>Subprocess Execution</strong>: When running Python submodules via <code>subprocess</code> from within an isolated script, exclusively use <code>[sys.executable, "-m", "module_name"]</code> instead of nested <code>uv run</code> commands to prevent pathing failures.</li>
+<li><strong>Cross-Platform Filesystem Testing</strong>: When testing filesystem linking (symlinks vs Windows NTFS junctions), write platform-aware assertions. Do not rely solely on <code>Path.is_symlink()</code> on Windows (use <code>is_junction()</code> or resolution matching) to ensure 100% test compatibility across both Windows and POSIX environments.</li>
 </ul>
 </li>
 <li><strong>Piawaian Distribusi Linux Kanonik &amp; Dasar Penyulitan Pejabat</strong>: Apabila menulis atau mengemaskini sebarang kemahiran, dokumentasi, atau kandungan silibus yang melibatkan distribusi Linux:<ul>
