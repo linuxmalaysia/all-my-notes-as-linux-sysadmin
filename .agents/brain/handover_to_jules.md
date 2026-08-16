@@ -1,27 +1,47 @@
-# 🤝 Taklimat Penyerahan Sesi: Google Jules (GitHub)
+# 🤝 Taklimat Penyerahan Memori Ejen: Google Antigravity ➔ Google Jules
 
-> **Kepada:** Google Jules (AI Autonomous Coding Agent)  
-> **Daripada:** Antigravity (Pair-Programming Lead Agent)  
-> **Projek:** Linux for NOSS Malaysia (Sovereign Markdown Palace & DSOM v0.1)  
-> **Repositori GitHub:** `https://github.com/linuxmalaysia/all-my-notes-as-linux-sysadmin`  
-> **Status:** Fasa 1 Selesai (100% Quality Gate). Sedia untuk Fasa 2 (Migrasi Kandungan Silibus).
+**Tarikh / Masa:** 2026-08-17  
+**Status Sesi Terkini:** Penstrukturan Semula Seni Bina DSOM, `manual/`, dan Kerangka Diátaxis Selesai (100% Quality Gate).
 
 ---
 
-## 🧭 Protokol Operasi Jules
-1. **Baca Perlembagaan AI:** Sila baca [`.agents/AGENTS.md`](../AGENTS.md) terlebih dahulu sebelum memulakan sebarang tugas.
-2. **Ketahui Struktur Projek:** Rujuk [`README.md`](../../README.md), [`START-HERE.md`](../../START-HERE.md), dan [`llms.txt`](../../llms.txt).
-3. **Penyelarasan Tugas:** Semak [`.agents/brain/task.md`](task.md) dan [`.agents/brain/implementation_plan.md`](implementation_plan.md).
+## 📌 Ringkasan Status & Perubahan Seni Bina Terkini
+1. **Pemisahan `manual/` & `.agents/brain/wings/`:**
+   - **`manual/`:** Menempatkan kesemua fail modul amali teknikal NOSS Linux (CU01 hingga CU06).
+   - **`.agents/brain/wings/`:** Memori Ruang Ejen AI (*Method of Loci / Spatial Memory Palace*) untuk mengekalkan fakta mutlak dan lejar status projek.
+   - **`openwiki/`:** Indeks naratif silibus untuk rujukan cepat.
+2. **Hab Rujukan Setempat 4 Kuadran Diátaxis:**
+   - Pintu masuk utama di `manual/index.md` dan `openwiki/index.md`.
+   - Navigasi web di `mkdocs.yml` tersusun mengikut: `1. Pembelajaran (Tutorials)`, `2. Panduan Operasi (How-To Guides)`, `3. Manual Amali NOSS (Reference)`, dan `4. Kefahaman & Silibus (Explanation)`.
+3. **Kemahiran Transformasi Kandungan:**
+   - Kemahiran `.agents/skills/noss-content-transformation-pipeline/` sedia digunakan untuk memproses bahan secara automatik mengikut model IPO.
 
 ---
 
-## 🎯 Tugasan Utama Anda (Fasa 2):
-1. **Migrasi Bab 2 (`references/manual/bab_02/`):**
-   - Rujuk manual arkib lama (kekalkan fail mentah - Rule 17).
-   - Bentuk nod memori modular dalam `palace/cu01/` berlandaskan edaran moden 2026: **Ubuntu 26.04 LTS**, **Fedora 43**, dan **AlmaLinux 10** (Rule 15).
-   - Sertakan panduan **Penyulitan Penuh Cakera LUKS2 Pejabat** (Rule 15).
-   - Kemas kini indeks silibus di `openwiki/topic-01-linux-desktop-and-basics.md`.
-   - Lengkapkan seksyen penutup silibus (AI Prompts, URL Rujukan, Syor Buku) (Rule 16).
-2. **Bina Semula HTML Prabina:** Jalankan `uv run scripts/serve_mkdocs.py --build-only` (Rule 18).
-3. **Ujian Kualiti 100%:** Jalankan `uv run run_all_tests.py` sebelum komit (Rule 12).
-4. **GitOps Dual-Remote:** Rekodkan komit bermakna dan pastikan perubahan disegerakkan ke remote (Rule 19).
+## 🎯 Tugasan Seterusnya untuk Google Jules (Actionable Next Steps)
+
+### Sasaran Utama: Migrasi Silibus Bab 3 (Pengurusan Storan, Partisi & Sistem Fail)
+1. **Sumber Mentah:** Baca bahan arkib di `references/manual/bab_03/` (ingat: **JANGAN padam** fail arkib, patuhi Rule 17).
+2. **Transformasi & Pemodenan ke 2026:**
+   - Masukkan prosedur partisi moden **GPT** (`gdisk` / `parted`) menggantikan MBR lapuk.
+   - Modul pengurusan volum logikal **LVM2** (Physical Volume `pvcreate`, Volume Group `vgcreate`, Logical Volume `lvcreate`).
+   - Sistem fail moden: **EXT4**, **XFS** (standard AlmaLinux), dan pengenalan **Btrfs**.
+3. **Penulisan ke Modul Sasaran:**
+   - `manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md`
+   - Kemas kini WA berkaitan di `manual/cu02/`.
+   - Pautkan ke `openwiki/topic-02-storage-and-virtualisation.md`.
+4. **Pematuhan OKF v0.1 & Footer Berdaulat:**
+   - Pastikan frontmatter OKF v0.1 dan tiga seksyen penutup (AI Prompts, URL, Syor Buku) lengkap.
+5. **Quality Gate & Binaan:**
+   - Jalankan `uv run scripts/serve_mkdocs.py --build-only` dan `uv run run_all_tests.py`.
+   - Komit ke Git dan segerakkan ke `origin` (GitLab) serta `github` (GitHub).
+
+---
+
+## 💬 Prompt Salin & Tampal untuk Memulakan Sesi Google Jules
+
+```text
+Hai Jules! Sila bertindak sebagai Pakar Linux NOSS Malaysia di bawah kerangka Deep State of Mind (DSOM v0.1). Sila rujuk .agents/brain/task.md, .agents/brain/handover_to_jules.md, dan perlembagaan AI di .agents/AGENTS.md. 
+
+Tugasan anda sekarang adalah melaksanakan Fasa Transformasi Bab 3 (Pengurusan Storan, Partisi GPT, LVM2, dan Sistem Fail EXT4/XFS/Btrfs) daripada references/manual/bab_03/ ke dalam manual/cu02/ dan openwiki/topic-02-storage-and-virtualisation.md mengikut kemahiran noss-content-transformation-pipeline. Pastikan anda mengekalkan 100% Quality Gate melalui `uv run run_all_tests.py` dan membina semula html/ sebelum membuat komit dwi-remote.
+```

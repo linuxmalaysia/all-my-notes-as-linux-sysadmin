@@ -4,13 +4,15 @@
 - [x] **Penstrukturan Semula Direktori Punca `manual/`:**
   - Pengasingan modul amali silibus NOSS (CU01–CU06) daripada Memori Ruang Ejen ke dalam folder `manual/`.
   - Penjanaan rangka nod draf lengkap berformat OKF v0.1 untuk kesemua Aktiviti Kerja (WA01–WA07) bagi CU01 hingga CU06.
-- [x] **Pembinaan Semula DSOM Spatial Memory Palace (.agents/brain/wings/):**
+- [x] **Pembinaan Semula DSOM Spatial Memory Palace (`.agents/brain/wings/`):**
   - Penyusunan Sayap `wing_dsom_core` (`hall_facts`, `hall_events`, `hall_discoveries`) dan `wing_noss_linux` (`hall_curriculum`, `hall_governance`).
   - Penjanaan Master Palace Registry di `.agents/brain/palace_registry.md`.
-- [x] **Kemas Kini Perlembagaan & Alatan:**
-  - Pindaan Peraturan 2 & Peraturan 8 dalam `AGENTS.md` dan `.agents/AGENTS.md`.
-  - Pengemaskinian `scripts/serve_mkdocs.py`, `mkdocs.yml`, dan suite ujian pematuhan (`tests/test_okf_compliance.py`, `tests/test_serve_mkdocs.py`, `tests/test_manual_cu01_bab2_content.py`).
-  - 100% Quality Gate tercapai (802/802 Python tests, 38/38 Jest tests).
+- [x] **Penguatkuasaan 4 Kuadran Diátaxis & Hab Rujukan Setempat:**
+  - Pewujudan pusat rujukan sehenti di `manual/index.md` dan `openwiki/index.md`.
+  - Penstrukturan navigasi web `mkdocs.yml` mengikut 4 kuadran Diátaxis rasmi.
+  - Dokumentasi seni bina IPO (`docs/explanation/workflow-input-process-output.md`) dan panduan amali (`docs/how-to/execute-noss-content-transformation.md`).
+  - Kemahiran Ejen AI: `noss-content-transformation-pipeline` (`.agents/skills/noss-content-transformation-pipeline/SKILL.md`).
+  - 100% Quality Gate tercapai (810/810 Python tests, 38/38 Jest tests).
 
 ---
 
@@ -19,7 +21,7 @@
   - [x] 4 nod memori dimodenkan dalam `manual/cu01/` (`keperluan-perkakasan-dan-bios-uefi.md`, `prosedur-pemasangan-ubuntu-almalinux.md`, `penyulitan-cakera-luks2-pejabat.md`, `pasca-pemasangan-dan-driver.md`).
   - [x] Kemas kini `openwiki/topic-01-linux-desktop-and-basics.md`.
 - [ ] **Bab 3 (Pengurusan Storan, Partisi & Sistem Fail Linux - SASARAN SETERUSNYA):**
-  - [ ] Migrasi kandungan amali `references/manual/bab_03/` ke `manual/cu02/` (Partisi GPT/fdisk/parted, LVM2, EXT4, XFS, Btrfs).
+  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_03/` ke `manual/cu02/` (Partisi GPT/fdisk/parted, LVM2, EXT4, XFS, Btrfs).
   - [ ] Kemas kini `openwiki/topic-02-storage-and-virtualisation.md`.
 - [ ] **Bab 4 (Pentadbiran Pengguna, Hak Akses & Keselamatan Asas):**
   - [ ] Migrasi kandungan `references/manual/bab_04/` ke `manual/cu01/` & `manual/cu05/`.
