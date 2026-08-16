@@ -1,5 +1,10 @@
 # Project History (Sovereign Markdown Palace)
 
+## [2026-08-16] Sejarah Warisan: Pengabadian Manual Asal KPM 2004
+- **Peristiwa**: Memformalkan pautan sejarah dan asal-usul bahan mentah `references/manual/` yang digubal pada Mei 2004 untuk Projek Pengkomputeran Makmal Komputer Kementerian Pendidikan Malaysia (KPM).
+- **Artifak Baharu**: `docs/explanation/sejarah-dokumen-asal-linux-kpm.md`
+- **Tadbir Urus**: Penguatkuasaan Peraturan 17 (Pemuliharaan Arkib Mentah) bagi mengekalkan dokumen 2004 ini sebagai warisan digital sumber terbuka Malaysia.
+
 ## [2026-08-16] DSOM Policy Adopter: Tri-Phasic Cognitive Architecture
 - **Action**: Ingested and integrated external structural blueprint for DSOM.
 - **Artifacts Modified**: 
