@@ -25,12 +25,18 @@ Bagi melindungi hak pengarang asal serta mematuhi syarat-syarat pelesenan sumber
 - **Lesen Asal**: [MIT License](https://github.com/stanfordnlp/dspy/blob/main/LICENSE)
 - **Keterangan**: Kandungan berhubung konsep rantaian pemikiran (Chain of Thought), algoritma pemprograman LLM, dan penerangan mengenai pengoptimum GEPA di dalam `docs/WHAT-IS-DSPY.md` adalah berdasarkan dokumentasi rasmi DSPy.
 
-## 4. Deep State of Mind & MemPalace Framework
-- **Hak Cipta**: Copyright (c) Pembangun dan Penyumbang Asal.
-- **Lesen Asal**: Tertakluk kepada terma pelesenan masing-masing di repositori asal mereka.
-- **Keterangan**: Konsep dan seni bina memori pengurusan (Loci/Istana Minda) telah diadaptasi daripada kerangka pemikiran projek-projek ini.
+## 4. Deep State of Mind (DSOM)
+- **Pengasas & Pengarang**: Harisfazillah Jamel (LinuxMalaysia).
+- **Pautan Rasmi**: [https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai](https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai)
+- **Keterangan**: Kerangka kerja tadbir urus kognitif AI, protokol penjelmaan semula (Reanimation), kitaran fasa SOD/EOD, dan sistem kawalan kendiri AI berdaulat yang dicipta dan dibangunkan oleh Harisfazillah Jamel.
 
-## 5. National Occupational Skills Standard (NOSS) Malaysia
+## 5. MemPalace Framework
+- **Pencipta & Pengarang Asal**: Milla Jovovich dan Ben Sigman.
+- **Pautan Rasmi**: [https://github.com/milla-jovovich/mempalace](https://github.com/milla-jovovich/mempalace)
+- **Lesen Asal**: [MIT License](https://github.com/milla-jovovich/mempalace/blob/main/LICENSE)
+- **Keterangan**: Konsep dan seni bina memori ruang (*Spatial Memory / Method of Loci*) untuk LLM yang diasaskan oleh Milla Jovovich dan Ben Sigman. Konsep ini amat diminati dan diadaptasikan oleh Harisfazillah Jamel ke dalam komponen *Sovereign Markdown Palace* di bawah kerangka Deep State of Mind (DSOM).
+
+## 6. National Occupational Skills Standard (NOSS) Malaysia
 - **Pemilik Tanda Dagang & Hak Cipta**: Hak Cipta Terpelihara Kerajaan Malaysia (Jabatan Pembangunan Kemahiran / Kementerian Sumber Manusia, Malaysia).
 - **Maklumat Rasmi Jabatan**:
   > **DEPARTMENT OF SKILLS DEVELOPMENT**

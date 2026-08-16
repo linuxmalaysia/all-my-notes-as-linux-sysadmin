@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Palace Build Story"
 description: "DSOM Guide document for Palace Build Story."
 type: "guide"
@@ -40,9 +40,9 @@ The `task.md`, `walkthrough.md`, and `implementation_plan.md` structure (the "Dr
 
 ## 2. 💡 The Inspiration: MemPalace
 
-The solution came from the [MemPalace](https://github.com/andrewyng/mempalace) concept — inspired by the ancient **Method of Loci** technique where Greek orators memorised entire speeches by mentally placing ideas in rooms of an imaginary building.
+The solution came from the [MemPalace](https://github.com/milla-jovovich/mempalace) concept created by Milla Jovovich and Ben Sigman — inspired by the ancient **Method of Loci** technique where Greek orators memorised entire speeches by mentally placing ideas in rooms of an imaginary building.
 
-The DSOM adaptation: **store everything in Git (the Drawer), then organise it spatially (the Palace).**
+Harisfazillah Jamel adopted this spatial memory concept into the Deep State of Mind (DSOM) framework: **store everything in Git (the Drawer), then organise it spatially (the Sovereign Markdown Palace).**
 
 - The Drawer (`walkthrough.md`) = **temporal** (time-ordered, verbatim, persistent)
 - The Palace (`wings/`) = **semantic** (meaning-ordered, distilled, fast retrieval)

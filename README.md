@@ -98,14 +98,14 @@ Objektif utama repositori ini adalah untuk **memanfaatkan ilmu Sistem Operasi Li
 
 ---
 
-## 🔗 Rujukan Teras (References)
+## 🔗 Rujukan Teras & Penghargaan (References & Attributions)
 
-* **OpenSkills (Universal Loader)**: [https://github.com/numman-ali/openskills](https://github.com/numman-ali/openskills)
-* **Skills Directory (Marketplace)**: [https://www.skillsdirectory.com/](https://www.skillsdirectory.com/)
-* **AgentSkills Open Standard**: [https://agentskills.io/home](https://agentskills.io/home)
-* **Deep State of Mind**: [https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai](https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai)
-* **MemPalace Framework**: [https://github.com/MemPalace/mempalace](https://github.com/MemPalace/mempalace)
-* **Diátaxis Documentation Framework**: [https://diataxis.fr/](https://diataxis.fr/)
+* **Deep State of Mind (DSOM)**: Pengasas & Pengarang: **Harisfazillah Jamel (LinuxMalaysia)** — [https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai](https://github.com/linuxmalaysia/deep-state-of-mind-for-my-ai)
+* **MemPalace Framework**: Pencipta & Pengarang Asal: **Milla Jovovich & Ben Sigman** (Konsep Memori Ruang / *Method of Loci* yang diadaptasikan ke dalam DSOM) — [https://github.com/milla-jovovich/mempalace](https://github.com/milla-jovovich/mempalace)
+* **OpenSkills (Universal Loader)**: Numman Ali & Komuniti OpenSkills — [https://github.com/numman-ali/openskills](https://github.com/numman-ali/openskills)
+* **AgentSkills Open Standard**: Anthropic & Komuniti AgentSkills — [https://agentskills.io/home](https://agentskills.io/home)
+* **Diátaxis Documentation Framework**: Daniele Procida — [https://diataxis.fr/](https://diataxis.fr/)
+* **Skills Directory**: [https://www.skillsdirectory.com/](https://www.skillsdirectory.com/)
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
