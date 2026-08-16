@@ -35,7 +35,7 @@ You are an expert Linux System Administrator and Educator, operating within the 
     - Gunakan **AlmaLinux 10 "Purple Lion"** (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035) sebagai rujukan untuk senario pelayan dan desktop perusahaan (enterprise).
     - Gunakan **Rocky Linux 9** sebagai alternatif pelayan perusahaan jika AlmaLinux 10 tidak tersedia.
     - **JANGAN** merujuk kepada distribusi atau versi yang sudah lapuk: Red Hat 9 (era 2003), CentOS 7/8, AlmaLinux 9 (untuk dokumen baharu), Mandrake, Yellow Dog, atau Ubuntu versi sebelum 24.04.
-    - Untuk konteks **penggunaan pejabat atau perusahaan**, sertakan secara automatik panduan **Penyulitan Cakera Penuh (Full Disk Encryption) menggunakan LUKS2**, termasuk pilihan pengurusan berbilang kunci pengguna (multi-user LUKS slots). Ini adalah keperluan mandatori untuk pematuhan standard **ISO/IEC 27001** dan **Pekeliling Am MAMPU**.
+    - Untuk konteks **penggunaan pejabat atau perusahaan**, sertakan secara automatik panduan **Penyulitan Cakera Penuh (Full Disk Encryption) menggunakan LUKS2**, termasuk pilihan pengurusan berbilang kunci pengguna (multi-user LUKS slots). Ini adalah keperluan mandatori untuk pematuhan standard **ISO/IEC 27001** dan **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**.
 16. **Struktur Penutup Bab Silibus (Syllabus Chapter Structure)**: Setiap fail indeks topik/bab utama (contohnya `openwiki/topic-*.md`) MUST (wajib) diakhiri dengan tiga seksyen penutup berikut sebelum pengaki (footer) dokumen:
     - `## Eksplorasi Lanjut bersama AI (AI Prompts)`: Sediakan sekurang-kurangnya 3 prompt AI yang praktikal dan berfokus untuk pelajar mendalami konsep dalam bab tersebut.
     - `## Bahan Bacaan Lanjut (Rujukan URL)`: Senaraikan pautan rasmi, artikel, atau dokumentasi web yang relevan dengan topik.
@@ -72,7 +72,7 @@ You are an expert Linux System Administrator and Educator, operating within the 
     - Ejen AI **DILARANG** menyalin atau menstrukturkan semula bahan mentah tanpa melalui kitaran pemprosesan komprehensif berikut:
       1. **Penilaian Silibus:** Membaca input dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
       2. **Penyelidikan Mendalam (*Deep Web Research*):** Menjalankan carian web melalui dokumentasi rasmi berautoriti (Kernel.org, Ubuntu 26.04 Docs, AlmaLinux 10 Wiki, PRPM DBP, CIS Benchmark) bagi memastikan arahan terminal, pilihan bendera (*CLI flags*), fail konfigurasi, dan amalan keselamatan adalah **100% tepat, betul, selamat, dan terkini (standard 2026)**.
-      3. **Pengayaan Berterusan Protokol Keselamatan & Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
+      3. **Pengayaan Berterusan Protokol Keselamatan & Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling Jabatan Digital Negara / MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
       4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
 
 ## Google Jules & Antigravity AgentSkills Protocol

@@ -32,7 +32,7 @@ Panduan ini menggariskan tatacara langkah demi langkah bagi pengendali manusia a
 ### Langkah 2: Penyelidikan Mendalam & Pengesahan Fakta (Deep Web Research)
 Lakukan carian web berautoriti untuk mengesahkan kesahihan teknikal:
 1. **Rujukan Rasmi:** Semak dokumentasi terkini [Ubuntu Docs](https://ubuntu.com/server/docs), [AlmaLinux Wiki](https://wiki.almalinux.org/), [Kernel.org](https://docs.kernel.org/), dan [systemd.io](https://systemd.io/).
-2. **Piawaian Keselamatan:** Semak CIS Benchmark dan Pekeliling Am MAMPU bagi keperluan penyulitan LUKS2 dan pengerasan SSH/Firewall.
+2. **Piawaian Keselamatan:** Semak CIS Benchmark dan Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU bagi keperluan penyulitan LUKS2 dan pengerasan SSH/Firewall.
 3. **Piawaian Istilah DBP:** Semak istilah teknikal melalui Pusat Rujukan Persuratan Melayu (PRPM DBP).
 
 ### Langkah 3: Modenkan Kandungan ke Standard 2026

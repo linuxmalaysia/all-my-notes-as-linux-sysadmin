@@ -39,16 +39,16 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
    - Ejen AI MESTI menjalankan carian web berautoriti (*deep research*) untuk mengesahkan:
      - Sintaks arahan CLI, pilihan bendera (*flags*), dan pakej perisian terkini.
      - Dokumentasi rasmi kernel Linux ([kernel.org](https://docs.kernel.org/)), [Ubuntu 26.04 Docs](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [systemd.io](https://systemd.io/).
-     - Garis panduan keselamatan MAMPU dan penanda aras CIS Benchmark.
+     - Garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan penanda aras CIS Benchmark.
      - Istilah rasmi Dewan Bahasa dan Pustaka (DBP).
    - **DILARANG** berhalusinasi atau mengekalkan konfigurasi lapuk yang tidak disahkan.
 3. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
    - Distribusi Desktop: **Ubuntu 26.04 LTS "Quetzal"** & **Fedora 43**.
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
-   - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & MAMPU).
+   - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & Pekeliling JDN/MAMPU).
 4. **Penyepaduan Protokol Keselamatan & Penalaan Prestasi (Continuous Enrichment):**
-   - **Keselamatan:** CIS Benchmark, kawalan integriti audit `auditd`, SSH hardening, perlindungan firewall (`ufw`/`firewalld`), dan pematuhan ISO/IEC 27001 & Pekeliling MAMPU.
+   - **Keselamatan:** CIS Benchmark, kawalan integriti audit `auditd`, SSH hardening, perlindungan firewall (`ufw`/`firewalld`), dan pematuhan ISO/IEC 27001 & Pekeliling Jabatan Digital Negara (JDN) / MAMPU.
    - **Prestasi (*Performance Tuning*):** Penalaan parameter kernel `sysctl`, konfigurasi profil `tuned`, pemantauan eBPF/bpftrace, dan pengoptimuman I/O cakera serta rangkaian.
 5. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.

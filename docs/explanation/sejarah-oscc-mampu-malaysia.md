@@ -62,9 +62,18 @@ Sepanjang era kegemilangannya, OSCC MAMPU telah menerajui pelbagai pencapaian pe
 
 ---
 
-## 4. Kepentingan Pemuliharaan Arkib Sejarah (Digital Heritage)
+## 4. Evolusi Institusi: Daripada MAMPU ke Jabatan Digital Negara (JDN)
 
-Memandangkan laman web dan dokumentasi rasmi era OSCC MAMPU semakin sukar diakses berikutan penstrukturan semula gerbang portal kerajaan dan migrasi platform selama dua dekad yang lalu, pemuliharaan fakta dan kronologi inisiatif ini amat kritikal.
+Dalam memacu transformasi digital kerajaan yang lebih dinamik dan berdaya saing pada era digital terkini, struktur pentadbiran ICT negara telah melalui penstrukturan semula yang penting:
+- **Penubuhan Jabatan Digital Negara (JDN):** Entiti MAMPU telah distrukturkan dan dinaik taraf sebagai **Jabatan Digital Negara (JDN)** di bawah **Kementerian Digital Malaysia**.
+- **Peralihan Mandat & Polisi:** Mandat tadbir urus ICT sektor awam, pengukuhan keselamatan digital kerajaan, serta pekeliling perkhidmatan digital kini diterajui secara rasmi oleh Jabatan Digital Negara (JDN).
+- **Legasi Kedaulatan Digital:** Usaha dan semangat kedaulatan digital yang dimulakan oleh OSCC MAMPU pada era 2004 kini diteruskan melalui dasar transformasi digital bersepadu, pematuhan keselamatan data awam, dan pemerkasaan teknologi digital kerajaan di bawah JDN.
+
+---
+
+## 5. Kepentingan Pemuliharaan Arkib Sejarah (Digital Heritage)
+
+Memandangkan laman web dan dokumentasi rasmi era OSCC MAMPU semakin sukar diakses berikutan penstrukturan semula agensi kerajaan dan migrasi platform selama dua dekad yang lalu, pemuliharaan fakta dan kronologi inisiatif ini amat kritikal.
 
 Inisiatif pengarkiban khusus akan dilancarkan tidak lama lagi bagi mengumpulkan:
 - Dokumen pekeliling am dan garis panduan OSS sektor awam 2004–2015.
@@ -73,7 +82,7 @@ Inisiatif pengarkiban khusus akan dilancarkan tidak lama lagi bagi mengumpulkan:
 
 ---
 
-## 5. Pautan Arkib & Rujukan Terbuka
+## 6. Pautan Arkib & Rujukan Terbuka
 
 - [Portal Rasmi Kerajaan Malaysia (MyGovernment) - Inisiatif OSDeC MAMPU](https://www.malaysia.gov.my) — Maklumat mengenai kesinambungan program pembangunan sistem dan keupayaan sumber terbuka sektor awam.
 - [Open Source Initiative (OSI) - Malaysian Government OSS Master Plan](https://opensource.org) — Catatan arkib antarabangsa mengenai pelancaran Pelan Induk OSS Malaysia 2004.

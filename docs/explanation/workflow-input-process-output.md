@@ -76,7 +76,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 - **Penyelidikan Web Berautoriti:** Melakukan carian mendalam (*deep research*) menggunakan enjin carian web dan pangkalan dokumentasi rasmi:
   - *Kernel & Sistem:* [kernel.org](https://docs.kernel.org/), [freedesktop.org (systemd)](https://systemd.io/).
   - *Distribusi Kanonik:* Dokumentasi rasmi [Ubuntu 26.04 LTS](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [Fedora Docs](https://docs.fedoraproject.org/).
-  - *Keselamatan & Standard:* Penanda aras CIS Benchmark, Pekeliling Am MAMPU, dan standard ISO/IEC 27001.
+  - *Keselamatan & Standard:* Penanda aras CIS Benchmark, Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU, dan standard ISO/IEC 27001.
   - *Linguistik:* Rujukan istilah Pusat Rujukan Persuratan Melayu (PRPM) Dewan Bahasa dan Pustaka.
 - **Integriti Data:** Memastikan arahan terminal, pilihan parameter (*CLI flags*), fail konfigurasi, dan pakej perisian adalah **tepat, berfungsi, selamat, dan terkini**.
 
@@ -86,7 +86,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
   - **Teknologi Terkini (*Bleeding-Edge*):** Fedora 43.
   - **Pelayan & Desktop Perusahaan (*Enterprise*):** AlmaLinux 10 "Purple Lion" (Kernel 6.12 LTS, GNOME 47).
 - **Pengerasan Keselamatan Mandatori:**
-  - Penyulitan Cakera Penuh (LUKS2) dengan sokongan berbilang slot kunci (*multi-user key slots*) untuk pematuhan **ISO/IEC 27001** dan **Pekeliling Am MAMPU**.
+  - Penyulitan Cakera Penuh (LUKS2) dengan sokongan berbilang slot kunci (*multi-user key slots*) untuk pematuhan **ISO/IEC 27001** dan **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**.
 - **Piawaian Bahasa Melayu Baku (Peraturan 3):**
   - Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.
 
@@ -94,7 +94,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa ke semasa dengan pelbagai rujukan standard:
 - **Protokol & Garis Panduan Keselamatan:**
   - Standard Antarabangsa: **ISO/IEC 27001**, **NIST SP 800-53**, penanda aras **CIS Linux Benchmarks**.
-  - Garis Panduan Kebangsaan: **Pekeliling Am MAMPU**, Rangka Kerja Keselamatan Siber Agensi Keselamatan Siber Negara (NACSA).
+  - Garis Panduan Kebangsaan: **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**, Rangka Kerja Keselamatan Siber Agensi Keselamatan Siber Negara (NACSA).
   - Kawalan Akses & Pengerasan: Polisi sudoers granular, SSH fail2ban, profil AppArmor/SELinux, dan pematuhan FIPS mode.
 - **Protokol Pengoptimuman Prestasi (*Performance Tuning*):**
   - Parameter Isirung (*Kernel sysctl*): Penalaan memori maya (`vm.swappiness`, `vm.dirty_ratio`), rangkaian (`net.core.somaxconn`), dan I/O cakera.
