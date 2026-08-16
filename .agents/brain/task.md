@@ -14,14 +14,16 @@
 
 ---
 
-## 🎯 Roadmap Fasa 2 (Tugasan Google Jules): Migrasi Silibus Manual ke NOSS & Palace
-- [ ] **Bab 2 (Pemasangan & Konfigurasi Linux Desktop/Server):**
-  - [ ] Ekstrak dan modenkan kandungan dari `references/manual/bab_02/` ke piawaian 2026: Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10 (Rule 15).
-  - [ ] Wujudkan nod memori modular dalam `palace/cu01/` dan kemas kini `openwiki/topic-01-linux-desktop-and-basics.md`.
-  - [ ] Masukkan elemen keselamatan: Penyulitan Penuh Cakera LUKS2 (ISO/IEC 27001 & Pekeliling MAMPU).
-  - [ ] Lengkapkan seksyen penutup: AI Prompts, Pautan Rujukan Web, dan Syor Buku Boleh Dibeli (Rule 16).
-- [ ] **Bab 3 (Pengurusan Storan, Partisi & Sistem Fail Linux):**
+## 🎯 Roadmap Fasa 2: Migrasi Silibus Manual ke NOSS & Palace
+- [x] **Bab 2 (Pemasangan & Konfigurasi Linux Desktop/Server - Selesai oleh Google Jules):**
+  - [x] Ekstrak dan modenkan kandungan dari `references/manual/bab_02/` ke piawaian 2026: Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10 (Rule 15).
+  - [x] Wujudkan 4 nod memori modular dalam `palace/cu01/` (`keperluan-perkakasan-dan-bios-uefi.md`, `prosedur-pemasangan-ubuntu-almalinux.md`, `penyulitan-cakera-luks2-pejabat.md`, `pasca-pemasangan-dan-driver.md`).
+  - [x] Kemas kini `openwiki/topic-01-linux-desktop-and-basics.md`.
+  - [x] Masukkan elemen keselamatan: Penyulitan Penuh Cakera LUKS2 (ISO/IEC 27001 & Pekeliling MAMPU).
+  - [x] Lengkapkan seksyen penutup: AI Prompts, Pautan Rujukan Web, dan Syor Buku Boleh Dibeli (Rule 16).
+- [ ] **Bab 3 (Pengurusan Storan, Partisi & Sistem Fail Linux - SASARAN SETERUSNYA):**
   - [ ] Migrasi kandungan `references/manual/bab_03/` ke `palace/cu02/` (LVM, XFS, EXT4, ZFS/Btrfs basics).
+  - [ ] Kemas kini `openwiki/topic-02-storage-and-virtualisation.md`.
 - [ ] **Bab 4 (Pentadbiran Pengguna, Hak Akses & Keselamatan Asas):**
   - [ ] Migrasi kandungan `references/manual/bab_04/` ke `palace/cu01/` & `palace/cu05/`.
 - [ ] **Bab 5 (Pengurusan Rangkaian & Perkhidmatan Pelayan Asas):**
