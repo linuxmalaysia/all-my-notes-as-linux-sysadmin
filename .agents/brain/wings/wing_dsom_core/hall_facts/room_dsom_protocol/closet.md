@@ -15,4 +15,5 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_facts/room_dsom_proto
 - **Pengasas & Hak Cipta DSOM:** Harisfazillah Jamel (LinuxMalaysia).
 - **Pengarang Asal MemPalace Framework:** Milla Jovovich & Ben Sigman (konsep Method of Loci diadaptasikan ke dalam Sovereign Markdown Palace).
 - **Struktur Memori Ejen:** `.agents/brain/` memegang rekod episodik (`task.md`, `implementation_plan.md`, `walkthrough.md`, `handover_to_<agent>.md`, `palace_registry.md`, dan `wings/`).
+- **Protokol Transformasi Pengetahuan (IPO):** Input dinilai mengikut pemetaan CU/WA, disahkan melalui Penyelidikan Mendalam (*Deep Web Research*) untuk menjamin ketepatan moden 2026, dan disusun mengikut piawaian NOSS sebelum diterbitkan.
 - **Persekitaran Python:** Menggunakan `uv` secara eksklusif dengan PEP-723 metadata.

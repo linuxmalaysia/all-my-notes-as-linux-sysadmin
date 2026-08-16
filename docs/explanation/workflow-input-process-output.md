@@ -64,15 +64,23 @@ Semua maklumat dan data mentah yang memasuki ekosistem projek ini mesti melalui 
 
 ---
 
-## ⚙️ 2. Fasa PROSES (Transformasi, Modenisasi & Jaminan Kualiti)
+## ⚙️ 2. Fasa PROSES (Penilaian CU/WA, Penyelidikan Mendalam & Jaminan Kualiti)
 
-Proses pemprosesan menggabungkan automasi skrip Python `uv` dan kepakaran manusia-AI (*Human-AI Synergy*):
+Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diterima tidak disalin secara membuta tuli, sebaliknya melalui kitaran penilaian kritikal dan penyelidikan mendalam:
 
-### Langkah 2.1: Pembersihan & Ekstraksi Teks
-- Menyingkirkan pengepala lama yang berulang (contoh: teks kerahsiaan KPM lama).
-- Mengekstrak langkah amali, arahan baris perintah (*CLI*), dan rajah topologi ke dalam struktur modular.
+### Langkah 2.1: Penilaian Input & Pemetaan Silibus CU/WA (Competency Mapping)
+- **Analisis Niat & Skop:** Menilai topik bahan input (contoh: partisi storan, konfigurasi rangkaian, atau pentadbiran pengguna) dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
+- **Pembersihan Teks Lapuk (Rule 17):** Mengekstrak konsep teras dan menyingkirkan teks pengepala institusi lama tanpa merosakkan arkib kekal `references/`.
 
-### Langkah 2.2: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
+### Langkah 2.2: Penyelidikan Mendalam & Pengesahan Fakta (Deep Research & Verification)
+- **Penyelidikan Web Berautoriti:** Melakukan carian mendalam (*deep research*) menggunakan enjin carian web dan pangkalan dokumentasi rasmi:
+  - *Kernel & Sistem:* [kernel.org](https://docs.kernel.org/), [freedesktop.org (systemd)](https://systemd.io/).
+  - *Distribusi Kanonik:* Dokumentasi rasmi [Ubuntu 26.04 LTS](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [Fedora Docs](https://docs.fedoraproject.org/).
+  - *Keselamatan & Standard:* Penanda aras CIS Benchmark, Pekeliling Am MAMPU, dan standard ISO/IEC 27001.
+  - *Linguistik:* Rujukan istilah Pusat Rujukan Persuratan Melayu (PRPM) Dewan Bahasa dan Pustaka.
+- **Integriti Data:** Memastikan arahan terminal, pilihan parameter (*CLI flags*), fail konfigurasi, dan pakej perisian adalah **tepat, berfungsi, selamat, dan terkini**.
+
+### Langkah 2.3: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
 - **Distribusi Rujukan Rasmi:**
   - **Desktop / Persekitaran Latihan:** Ubuntu 26.04 LTS "Quetzal" (Kernel 6.14 LTS, GNOME 48).
   - **Teknologi Terkini (*Bleeding-Edge*):** Fedora 43.
@@ -82,7 +90,8 @@ Proses pemprosesan menggabungkan automasi skrip Python `uv` dan kepakaran manusi
 - **Piawaian Bahasa Melayu Baku (Peraturan 3):**
   - Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.
 
-### Langkah 2.3: Pemformatan Struktur Standard (OKF v0.1 & Diátaxis)
+### Langkah 2.4: Penyusunan Output Terstruktur & Format OKF v0.1 (Rule 8)
+- Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder `manual/cuXX/` dengan penamaan fail WA yang standard.
 - Setiap nod Markdown baharu mesti mempunyai **OKF v0.1 YAML Frontmatter**:
   ```yaml
   ---
@@ -99,7 +108,7 @@ Proses pemprosesan menggabungkan automasi skrip Python `uv` dan kepakaran manusi
 - **Struktur Penutup Wajib (Peraturan 16):** Mengandungi seksyen *AI Prompts*, *Rujukan URL*, dan *Syor Buku Boleh Dibeli*.
 - **Pengaki Berdaulat (Sovereign Dual-License Footer):** Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.
 
-### Langkah 2.4: 100% Quality Gate Orchestration (Peraturan 12)
+### Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)
 Sebelum sebarang komit dibenarkan:
 ```bash
 uv run run_all_tests.py

@@ -24,33 +24,33 @@ Panduan ini menggariskan tatacara langkah demi langkah bagi pengendali manusia a
 
 ## 🛠️ Langkah-Langkah Transformasi
 
-### Langkah 1: Semak Sumber Input
-Tentukan lokasi sumber bahan mentah:
-- Jika daripada arkib: semak `references/manual/bab_XX/` atau `references/noss/`.
-- Jika daripada muat naik: simpan ke `references/uploads/` atau baca terus dalam sesi.
-- Jika daripada URL: ekstrak menggunakan alatan pelayar / curl ke format teks.
+### Langkah 1: Penilaian Sumber Input & Pemetaan CU/WA
+1. Tentukan lokasi sumber bahan (arkib `references/`, muat naik sesi, atau pautan URL).
+2. Baca dan nilai kandungan untuk memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01–CU06**) dan Aktiviti Kerja (**WA01–WA07**).
+3. Asingkan teks kepada struktur nod modular di `manual/cuXX/` (contoh: `manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md`).
 
-### Langkah 2: Lakukan Pembersihan & Pemisahan Modular
-1. Kenal pasti unit kompetensi NOSS sasaran (CU01 hingga CU06) dan nombor Aktiviti Kerja (WA).
-2. Asingkan teks monolitik kepada fail Markdown berasingan di `manual/cuXX/`.
-3. Pastikan format nama fail deskriptif, contohnya: `manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md`.
+### Langkah 2: Penyelidikan Mendalam & Pengesahan Fakta (Deep Web Research)
+Lakukan carian web berautoriti untuk mengesahkan kesahihan teknikal:
+1. **Rujukan Rasmi:** Semak dokumentasi terkini [Ubuntu Docs](https://ubuntu.com/server/docs), [AlmaLinux Wiki](https://wiki.almalinux.org/), [Kernel.org](https://docs.kernel.org/), dan [systemd.io](https://systemd.io/).
+2. **Piawaian Keselamatan:** Semak CIS Benchmark dan Pekeliling Am MAMPU bagi keperluan penyulitan LUKS2 dan pengerasan SSH/Firewall.
+3. **Piawaian Istilah DBP:** Semak istilah teknikal melalui Pusat Rujukan Persuratan Melayu (PRPM DBP).
 
 ### Langkah 3: Modenkan Kandungan ke Standard 2026
 Semak dan kemas kini parameter berikut:
-1. **Distribusi:** Tukar arahan lapuk (Red Hat 9, CentOS) kepada **Ubuntu 26.04 LTS**, **Fedora 43**, atau **AlmaLinux 10**.
-2. **Pengurusan Cakera:** Gunakan partisi **GPT** (`gdisk` / `parted`) dan format sistem fail **EXT4**, **XFS**, atau **Btrfs**.
-3. **Penyulitan Mandatori:** Masukkan bahagian konfigurasi **LUKS2** bagi persekitaran pejabat.
-4. **Bahasa:** Pastikan Bahasa Melayu mematuhi istilah baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
+1. **Distribusi Kanonik:** Gantikan versi lapuk dengan **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+2. **Pengurusan Cakera & Storan:** Gunakan partisi **GPT** (`gdisk` / `parted`), pengurusan volum **LVM2**, dan format sistem fail **EXT4**, **XFS**, atau **Btrfs**.
+3. **Penyulitan Mandatori:** Sertakan prosedur **LUKS2** bagi persekitaran pejabat/perusahaan.
+4. **Bahasa:** Pastikan teks penjelasan menggunakan Bahasa Melayu baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
 
-### Langkah 4: Lengkapkan YAML Frontmatter & Struktur Penutup
+### Langkah 4: Lengkapkan YAML Frontmatter OKF v0.1 & Struktur Penutup
 Setiap fail MESTI mempunyai pengepala OKF v0.1 dan tiga seksyen penutup:
 - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
 - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
 - `## 📚 Buku Boleh Dibeli (Syor Bacaan)`
 - Pengaki rasmi Sovereign Dual-License Footer.
 
-### Langkah 5: Kemas Kini OpenWiki
-Pautkan fail baharu ke dalam fail indeks topik yang berkaitan di `openwiki/` (contoh: `openwiki/topic-02-storage-and-virtualisation.md`).
+### Langkah 5: Kemas Kini Hab Rujukan Setempat OpenWiki & Manual
+Pautkan fail baharu ke dalam `openwiki/topic-XX-*.md` dan kemas kini `manual/cuXX/index.md` serta `manual/index.md`.
 
 ### Langkah 6: Bina Semula Laman Web & Peta Memori
 Jalankan skrip pembina:

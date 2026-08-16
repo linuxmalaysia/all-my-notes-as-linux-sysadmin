@@ -21508,33 +21508,33 @@ Panduan ini menggariskan tatacara langkah demi langkah bagi pengendali manusia a
 
 ## 🛠️ Langkah-Langkah Transformasi
 
-### Langkah 1: Semak Sumber Input
-Tentukan lokasi sumber bahan mentah:
-- Jika daripada arkib: semak `references/manual/bab_XX/` atau `references/noss/`.
-- Jika daripada muat naik: simpan ke `references/uploads/` atau baca terus dalam sesi.
-- Jika daripada URL: ekstrak menggunakan alatan pelayar / curl ke format teks.
+### Langkah 1: Penilaian Sumber Input &amp; Pemetaan CU/WA
+1. Tentukan lokasi sumber bahan (arkib `references/`, muat naik sesi, atau pautan URL).
+2. Baca dan nilai kandungan untuk memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01–CU06**) dan Aktiviti Kerja (**WA01–WA07**).
+3. Asingkan teks kepada struktur nod modular di `manual/cuXX/` (contoh: `manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md`).
 
-### Langkah 2: Lakukan Pembersihan &amp; Pemisahan Modular
-1. Kenal pasti unit kompetensi NOSS sasaran (CU01 hingga CU06) dan nombor Aktiviti Kerja (WA).
-2. Asingkan teks monolitik kepada fail Markdown berasingan di `manual/cuXX/`.
-3. Pastikan format nama fail deskriptif, contohnya: `manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md`.
+### Langkah 2: Penyelidikan Mendalam &amp; Pengesahan Fakta (Deep Web Research)
+Lakukan carian web berautoriti untuk mengesahkan kesahihan teknikal:
+1. **Rujukan Rasmi:** Semak dokumentasi terkini [Ubuntu Docs](https://ubuntu.com/server/docs), [AlmaLinux Wiki](https://wiki.almalinux.org/), [Kernel.org](https://docs.kernel.org/), dan [systemd.io](https://systemd.io/).
+2. **Piawaian Keselamatan:** Semak CIS Benchmark dan Pekeliling Am MAMPU bagi keperluan penyulitan LUKS2 dan pengerasan SSH/Firewall.
+3. **Piawaian Istilah DBP:** Semak istilah teknikal melalui Pusat Rujukan Persuratan Melayu (PRPM DBP).
 
 ### Langkah 3: Modenkan Kandungan ke Standard 2026
 Semak dan kemas kini parameter berikut:
-1. **Distribusi:** Tukar arahan lapuk (Red Hat 9, CentOS) kepada **Ubuntu 26.04 LTS**, **Fedora 43**, atau **AlmaLinux 10**.
-2. **Pengurusan Cakera:** Gunakan partisi **GPT** (`gdisk` / `parted`) dan format sistem fail **EXT4**, **XFS**, atau **Btrfs**.
-3. **Penyulitan Mandatori:** Masukkan bahagian konfigurasi **LUKS2** bagi persekitaran pejabat.
-4. **Bahasa:** Pastikan Bahasa Melayu mematuhi istilah baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
+1. **Distribusi Kanonik:** Gantikan versi lapuk dengan **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+2. **Pengurusan Cakera &amp; Storan:** Gunakan partisi **GPT** (`gdisk` / `parted`), pengurusan volum **LVM2**, dan format sistem fail **EXT4**, **XFS**, atau **Btrfs**.
+3. **Penyulitan Mandatori:** Sertakan prosedur **LUKS2** bagi persekitaran pejabat/perusahaan.
+4. **Bahasa:** Pastikan teks penjelasan menggunakan Bahasa Melayu baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
 
-### Langkah 4: Lengkapkan YAML Frontmatter &amp; Struktur Penutup
+### Langkah 4: Lengkapkan YAML Frontmatter OKF v0.1 &amp; Struktur Penutup
 Setiap fail MESTI mempunyai pengepala OKF v0.1 dan tiga seksyen penutup:
 - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
 - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
 - `## 📚 Buku Boleh Dibeli (Syor Bacaan)`
 - Pengaki rasmi Sovereign Dual-License Footer.
 
-### Langkah 5: Kemas Kini OpenWiki
-Pautkan fail baharu ke dalam fail indeks topik yang berkaitan di `openwiki/` (contoh: `openwiki/topic-02-storage-and-virtualisation.md`).
+### Langkah 5: Kemas Kini Hab Rujukan Setempat OpenWiki &amp; Manual
+Pautkan fail baharu ke dalam `openwiki/topic-XX-*.md` dan kemas kini `manual/cuXX/index.md` serta `manual/index.md`.
 
 ### Langkah 6: Bina Semula Laman Web &amp; Peta Memori
 Jalankan skrip pembina:
@@ -26162,15 +26162,23 @@ Semua maklumat dan data mentah yang memasuki ekosistem projek ini mesti melalui 
 
 ---
 
-## ⚙️ 2. Fasa PROSES (Transformasi, Modenisasi &amp; Jaminan Kualiti)
+## ⚙️ 2. Fasa PROSES (Penilaian CU/WA, Penyelidikan Mendalam &amp; Jaminan Kualiti)
 
-Proses pemprosesan menggabungkan automasi skrip Python `uv` dan kepakaran manusia-AI (*Human-AI Synergy*):
+Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diterima tidak disalin secara membuta tuli, sebaliknya melalui kitaran penilaian kritikal dan penyelidikan mendalam:
 
-### Langkah 2.1: Pembersihan &amp; Ekstraksi Teks
-- Menyingkirkan pengepala lama yang berulang (contoh: teks kerahsiaan KPM lama).
-- Mengekstrak langkah amali, arahan baris perintah (*CLI*), dan rajah topologi ke dalam struktur modular.
+### Langkah 2.1: Penilaian Input &amp; Pemetaan Silibus CU/WA (Competency Mapping)
+- **Analisis Niat &amp; Skop:** Menilai topik bahan input (contoh: partisi storan, konfigurasi rangkaian, atau pentadbiran pengguna) dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
+- **Pembersihan Teks Lapuk (Rule 17):** Mengekstrak konsep teras dan menyingkirkan teks pengepala institusi lama tanpa merosakkan arkib kekal `references/`.
 
-### Langkah 2.2: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
+### Langkah 2.2: Penyelidikan Mendalam &amp; Pengesahan Fakta (Deep Research &amp; Verification)
+- **Penyelidikan Web Berautoriti:** Melakukan carian mendalam (*deep research*) menggunakan enjin carian web dan pangkalan dokumentasi rasmi:
+  - *Kernel &amp; Sistem:* [kernel.org](https://docs.kernel.org/), [freedesktop.org (systemd)](https://systemd.io/).
+  - *Distribusi Kanonik:* Dokumentasi rasmi [Ubuntu 26.04 LTS](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [Fedora Docs](https://docs.fedoraproject.org/).
+  - *Keselamatan &amp; Standard:* Penanda aras CIS Benchmark, Pekeliling Am MAMPU, dan standard ISO/IEC 27001.
+  - *Linguistik:* Rujukan istilah Pusat Rujukan Persuratan Melayu (PRPM) Dewan Bahasa dan Pustaka.
+- **Integriti Data:** Memastikan arahan terminal, pilihan parameter (*CLI flags*), fail konfigurasi, dan pakej perisian adalah **tepat, berfungsi, selamat, dan terkini**.
+
+### Langkah 2.3: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
 - **Distribusi Rujukan Rasmi:**
   - **Desktop / Persekitaran Latihan:** Ubuntu 26.04 LTS "Quetzal" (Kernel 6.14 LTS, GNOME 48).
   - **Teknologi Terkini (*Bleeding-Edge*):** Fedora 43.
@@ -26180,7 +26188,8 @@ Proses pemprosesan menggabungkan automasi skrip Python `uv` dan kepakaran manusi
 - **Piawaian Bahasa Melayu Baku (Peraturan 3):**
   - Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.
 
-### Langkah 2.3: Pemformatan Struktur Standard (OKF v0.1 &amp; Diátaxis)
+### Langkah 2.4: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
+- Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder `manual/cuXX/` dengan penamaan fail WA yang standard.
 - Setiap nod Markdown baharu mesti mempunyai **OKF v0.1 YAML Frontmatter**:
   ```yaml
   ---
@@ -26197,7 +26206,7 @@ Proses pemprosesan menggabungkan automasi skrip Python `uv` dan kepakaran manusi
 - **Struktur Penutup Wajib (Peraturan 16):** Mengandungi seksyen *AI Prompts*, *Rujukan URL*, dan *Syor Buku Boleh Dibeli*.
 - **Pengaki Berdaulat (Sovereign Dual-License Footer):** Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.
 
-### Langkah 2.4: 100% Quality Gate Orchestration (Peraturan 12)
+### Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)
 Sebelum sebarang komit dibenarkan:
 ```bash
 uv run run_all_tests.py
@@ -26314,8 +26323,8 @@ graph TD
 
 ## 🌐 Navigasi Pusat Mengikut Kuadran Diátaxis
 
-- 🎓 **[Tutorials (Pembelajaran Berpandu)](../docs/tutorials/):** Sesuai untuk pemula memulakan langkah praktikal pertama.
-- 🛠️ **[How-To Guides (Panduan Operasi)](../docs/how-to/):** Resipi penyelesaian masalah khusus pentadbir sistem.
+- 🎓 **[Tutorials (Pembelajaran Berpandu)](../docs/tutorials/index.md):** Sesuai untuk pemula memulakan langkah praktikal pertama.
+- 🛠️ **[How-To Guides (Panduan Operasi)](../docs/how-to/execute-noss-content-transformation.md):** Resipi penyelesaian masalah khusus pentadbir sistem.
 - 📖 **[Reference (Sovereign Manual NOSS)](../manual/index.md):** Modul amali standard CU01–CU06 dan spesifikasi teknikal.
 - 💡 **[Explanation (Seni Bina Diátaxis)](../docs/explanation/diataxis-architecture.md):** Analisis teori dan tatakelola sistem.
 
@@ -29446,10 +29455,10 @@ graph TD
 
 ## 🌐 Navigasi Pantas 4 Kuadran Diátaxis
 
-- 🎓 **[Tutorials (Pembelajaran Berpandu)](../docs/tutorials/):** Sesuai untuk pemula memulakan langkah praktikal pertama.
-- 🛠️ **[How-To Guides (Panduan Operasi)](../docs/how-to/):** Resipi pantas bagi pentadbir sistem menyelesaikan isu harian.
-- 📖 **[Reference (Spesifikasi &amp; Standard)](../docs/reference/):** Spesifikasi teknikal, senarai arahan, dan kemahiran AI.
-- 💡 **[Explanation (Kefahaman &amp; Falsafah)](../openwiki/):** Analisis teori, perbandingan teknologi, dan falsafah sumber terbuka.
+- 🎓 **[Tutorials (Pembelajaran Berpandu)](../docs/tutorials/index.md):** Sesuai untuk pemula memulakan langkah praktikal pertama.
+- 🛠️ **[How-To Guides (Panduan Operasi)](../docs/how-to/execute-noss-content-transformation.md):** Resipi pantas bagi pentadbir sistem menyelesaikan isu harian.
+- 📖 **[Reference (Spesifikasi &amp; Standard)](../docs/reference/index.md):** Spesifikasi teknikal, senarai arahan, dan kemahiran AI.
+- 💡 **[Explanation (Kefahaman &amp; Falsafah)](../openwiki/index.md):** Analisis teori, perbandingan teknologi, dan falsafah sumber terbuka.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -33567,18 +33576,29 @@ Kemahiran ini membimbing mana-mana Ejen AI (Google Jules, Google Antigravity, ds
 ---
 
 ## ⚙️ Fasa 2: Pemprosesan &amp; Transformasi (Core Processing)
-1. **Pemetaan Unit Kompetensi NOSS:**
-   - Petakan kandungan kepada salah satu unit `CU01` hingga `CU06` dan `WA01` hingga `WA07`.
-2. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
+
+Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
+
+1. **Penilaian Input &amp; Pemetaan Silibus CU/WA:**
+   - Baca dan nilai kandungan topik bahan input.
+   - Petakan secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
+2. **Penyelidikan Mendalam &amp; Pengesahan Fakta Web (Deep Research):**
+   - Ejen AI MESTI menjalankan carian web berautoriti (*deep research*) untuk mengesahkan:
+     - Sintaks arahan CLI, pilihan bendera (*flags*), dan pakej perisian terkini.
+     - Dokumentasi rasmi kernel Linux ([kernel.org](https://docs.kernel.org/)), [Ubuntu 26.04 Docs](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [systemd.io](https://systemd.io/).
+     - Garis panduan keselamatan MAMPU dan penanda aras CIS Benchmark.
+     - Istilah rasmi Dewan Bahasa dan Pustaka (DBP).
+   - **DILARANG** berhalusinasi atau mengekalkan konfigurasi lapuk yang tidak disahkan.
+3. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
    - Distribusi Desktop: **Ubuntu 26.04 LTS "Quetzal"** &amp; **Fedora 43**.
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
    - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 &amp; MAMPU).
-3. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
+4. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.
-4. **Pematuhan Format OKF v0.1 (Rule 8):**
+5. **Pematuhan Format OKF v0.1 (Rule 8 &amp; 16):**
    - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: 0.1`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
-   - Akhiri setiap nod dengan tiga seksyen penutup (Rule 16):
+   - Akhiri setiap nod dengan tiga seksyen penutup:
      - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
      - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
      - `## 📚 Buku Boleh Dibeli (Syor Bacaan)`
@@ -39300,6 +39320,7 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_facts/room_dsom_proto
 - **Pengasas &amp; Hak Cipta DSOM:** Harisfazillah Jamel (LinuxMalaysia).
 - **Pengarang Asal MemPalace Framework:** Milla Jovovich &amp; Ben Sigman (konsep Method of Loci diadaptasikan ke dalam Sovereign Markdown Palace).
 - **Struktur Memori Ejen:** `.agents/brain/` memegang rekod episodik (`task.md`, `implementation_plan.md`, `walkthrough.md`, `handover_to_&lt;agent&gt;.md`, `palace_registry.md`, dan `wings/`).
+- **Protokol Transformasi Pengetahuan (IPO):** Input dinilai mengikut pemetaan CU/WA, disahkan melalui Penyelidikan Mendalam (*Deep Web Research*) untuk menjamin ketepatan moden 2026, dan disusun mengikut piawaian NOSS sebelum diterbitkan.
 - **Persekitaran Python:** Menggunakan `uv` secara eksklusif dengan PEP-723 metadata.
 
     </content>

@@ -29,18 +29,29 @@ Kemahiran ini membimbing mana-mana Ejen AI (Google Jules, Google Antigravity, ds
 ---
 
 ## ⚙️ Fasa 2: Pemprosesan & Transformasi (Core Processing)
-1. **Pemetaan Unit Kompetensi NOSS:**
-   - Petakan kandungan kepada salah satu unit `CU01` hingga `CU06` dan `WA01` hingga `WA07`.
-2. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
+
+Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
+
+1. **Penilaian Input & Pemetaan Silibus CU/WA:**
+   - Baca dan nilai kandungan topik bahan input.
+   - Petakan secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
+2. **Penyelidikan Mendalam & Pengesahan Fakta Web (Deep Research):**
+   - Ejen AI MESTI menjalankan carian web berautoriti (*deep research*) untuk mengesahkan:
+     - Sintaks arahan CLI, pilihan bendera (*flags*), dan pakej perisian terkini.
+     - Dokumentasi rasmi kernel Linux ([kernel.org](https://docs.kernel.org/)), [Ubuntu 26.04 Docs](https://ubuntu.com/server/docs), [AlmaLinux 10 Wiki](https://wiki.almalinux.org/), dan [systemd.io](https://systemd.io/).
+     - Garis panduan keselamatan MAMPU dan penanda aras CIS Benchmark.
+     - Istilah rasmi Dewan Bahasa dan Pustaka (DBP).
+   - **DILARANG** berhalusinasi atau mengekalkan konfigurasi lapuk yang tidak disahkan.
+3. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
    - Distribusi Desktop: **Ubuntu 26.04 LTS "Quetzal"** & **Fedora 43**.
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
    - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & MAMPU).
-3. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
+4. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.
-4. **Pematuhan Format OKF v0.1 (Rule 8):**
+5. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
    - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: 0.1`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
-   - Akhiri setiap nod dengan tiga seksyen penutup (Rule 16):
+   - Akhiri setiap nod dengan tiga seksyen penutup:
      - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
      - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
      - `## 📚 Buku Boleh Dibeli (Syor Bacaan)`
