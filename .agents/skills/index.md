@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-16T08:59:44Z"
+timestamp: "2026-08-16T09:01:30Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -13,7 +13,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `138`
+**Total Modules Indexed:** `105`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -102,39 +102,6 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`legacy-linux`** <br> *linux-l3-c06-w05* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM SYSTEM TROUBLESHOOTING AND INCIDENT REFERRALS. | N/A |
 | **`legacy-linux`** <br> *linux-l3-c06-w06* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] RESOLVE SYSTEM ERRORS USING AI DIAGNOSTIC TOOLS. | N/A |
 | **`legacy-linux`** <br> *linux-l3-c06-w07* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] MANAGE SUPPORT RECORDS, SYSTEM UPDATES, AND SERVICE. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w01* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PREPARE COMPUTER SYSTEM SET-UP. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w02* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] ASSEMBLE PHYSICAL COMPUTER SYSTEM HARDWARE. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w03* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] ASSEMBLE LAPTOP HARDWARE COMPONENTS | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w04* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] INSTALL COMPUTER DESKTOP OPERATING SYSTEMS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w05* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] INSTALL COMPUTER APPLICATIONS AND DEVICE DRIVERS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w06* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] CONFIGURE ENDPOINT NETWORK CONNECTIVITY. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c01-w07* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PREPARE COMPUTER SYSTEM INSTALLATION RECORDS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c02-w01* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] IDENTIFY VIRTUALISATION HOST AND RESOURCE REQUIREMENTS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c02-w02* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] INSTALL TYPE 2 HYPERVISOR SOFTWARE. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c02-w03* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] DEPLOY GUEST VIRTUAL MACHINES. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c03-w01* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PREPARE SERVER INSTALLATION REQUIREMENTS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c03-w02* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] CARRY OUT SERVER HARDWARE INSTALLATION. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c03-w03* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] INSTALL SERVER OPERATING SYSTEMS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c03-w04* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM SERVER COMMISSIONING AND MAINTENANCE. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c03-w05* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] IMPLEMENT SERVER NETWORK SERVICES. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c03-w06* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] MANAGE SERVER MAINTENANCE RECORDS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c04-w01* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PREPARE ENDPOINT BACKUP REQUIREMENTS AND DESTINATIONS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c04-w02* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM LOCAL ENDPOINT FILE BACKUP. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c04-w03* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM NETWORK AND CLOUD FILE BACKUP. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c04-w04* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] RESTORE ENDPOINT FILES. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c04-w05* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM ENDPOINT SYSTEM RESTORATION. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c05-w01* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM USER ACCOUNT AND PASSWORD POLICY HARDENING. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c05-w02* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] CONFIGURE FILE SYSTEM ACCESS CONTROLS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c05-w03* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] CONFIGURE LOCAL FIREWALL AND ANTI-MALWARE SETTINGS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c05-w04* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] CONDUCT SYSTEM VULNERABILITY AND PORT AUDITS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c05-w05* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] MANAGE SECURITY LOGS AND INCIDENT REPORT. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w01* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PREPARE END USER AND DEVICE SUPPORT REQUIREMENTS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w02* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] HANDLE END USER SERVICE REQUESTS AND SUPPORT COMMUNICATION. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w03* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] SUPPORT ENDPOINT HARDWARE, SAAS APPLICATIONS, AND PERIPHERAL OPERATIONS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w04* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] CONFIGURE AND TROUBLESHOOT ENDPOINT NETWORK CONNECTIVITY. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w05* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] PERFORM SYSTEM TROUBLESHOOTING AND INCIDENT REFERRALS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w06* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] RESOLVE SYSTEM ERRORS USING AI DIAGNOSTIC TOOLS. | N/A |
-| **`legacy-windows`** <br> *windows-l3-c06-w07* | [LEGACY REFERENCE FOR HUMAN CONSULTATION ONLY] MANAGE SUPPORT RECORDS, SYSTEM UPDATES, AND SERVICE. | N/A |
 | **`node-proposal-formatter`** <br> *node-proposal-formatter* | Compiles a markdown proposal document into a professionally formatted DOCX file using Node.js and the docx npm package. | node, docx, proposal, document, formatter |
 | **`node-slide-generator`** <br> *node-slide-generator* | Generates a PowerPoint presentation from a markdown outline using Node.js and pptxgenjs. | node, pptx, slides, presentation, generator |
 | **`noss-abbreviation-syncer`** <br> *noss-abbreviation-syncer* | Automates abbreviation syncing by extracting acronyms from CoCU documents, merging with legacy dictionaries, purging zero-count entries, and generating JPK-compliant DOCX and OKF Markdown glossaries. | noss, abbreviations, extraction, sync, glossary |
