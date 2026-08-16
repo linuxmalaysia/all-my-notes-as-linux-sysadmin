@@ -3,9 +3,9 @@ okf_version: 0.1
 type: concept
 title: "Sejarah & Asal-Usul Dokumen Manual Linux KPM (2004–2026)"
 timestamp: "2026-08-16T22:36:00Z"
-topics: ["sejarah", "kpm", "projek-pengkomputeran", "red-hat-9", "isl9", "bostonweb-academy", "drb-hicom", "harisfazillah-jamel", "noss-linux", "dsom"]
+topics: ["sejarah", "kpm", "projek-pengkomputeran", "red-hat-9", "isl9", "bostonweb-academy", "drb-hicom", "noss-linux", "dsom"]
 tags: ["sejarah", "manual-asal", "kementerian-pendidikan", "makmal-komputer", "open-source-malaysia", "okf"]
-description: "Dokumentasi sejarah lengkap mengenai asal-usul dokumen modul ISL9 KPM 2004, panel penyusun, pihak konsortium, peranan pelaksana latihan, dan evolusinya ke dalam Sovereign Markdown Palace NOSS Linux."
+description: "Dokumentasi sejarah lengkap mengenai asal-usul dokumen modul ISL9 KPM 2004, panel penyusun, pihak konsortium, peranan pengajar makmal sekolah, dan evolusinya ke dalam Sovereign Markdown Palace NOSS Linux."
 resource: "file:///docs/explanation/sejarah-dokumen-asal-linux-kpm.md"
 ---
 
@@ -31,7 +31,7 @@ Dokumen ini asalnya digubal di bawah kod modul rasmi:
 
 ## 2. Pihak Terlibat, Panel Penggubal & Konsortium Pembangunan
 
-Penyediaan bahan kurikulum dan pelaksanaan projek pengkomputeran makmal sekolah KPM ini merupakan hasil kerjasama pelbagai pihak merangkumi agensi kerajaan, konsortium industri teknologi, panel penulis teknikal, dan jurulatih lapangan:
+Penyediaan bahan kurikulum dan pelaksanaan projek pengkomputeran makmal sekolah KPM ini merupakan hasil kerjasama pelbagai pihak merangkumi agensi kerajaan, konsortium industri teknologi, panel penulis teknikal, dan barisan pengajar:
 
 ### A. Rakan Kerjasama Korporat & Agensi
 * **Kementerian Pendidikan Malaysia (KPM):** Bahagian Teknologi Pendidikan (BTP) & Jawatankuasa Projek Pengkomputeran Makmal Komputer Sekolah.
@@ -44,8 +44,8 @@ Penyediaan bahan kurikulum dan pelaksanaan projek pengkomputeran makmal sekolah 
 * **Penyemak Teknikal (Reviewer):** Asni Nor Rizwan Abdul Rani
 * **Penganalisis Kualiti (Quality Analyst):** Azahari Ismail
 
-### C. Pelaksanaan Latihan Lapangan & Komuniti
-* **Pelaksana Projek & Jurulatih Lapangan:** **Harisfazillah Jamel (LinuxMalaysia)** bersama barisan jurulatih dan penggerak **Malaysian Open Source Community (MOSC)** yang bertindak melaksanakan latihan amali, bengkel persediaan instruktor, dan sokongan teknikal di sekolah-sekolah di seluruh Malaysia.
+### C. Pengajar Lapangan & Komuniti
+* **Pengajar ke Makmal Sekolah:** Barisan pengajar dan jurulatih lapangan bersama para penggerak komuniti sumber terbuka yang bertindak turun padang mengendalikan sesi latihan amali, bengkel persediaan instruktor, dan sokongan teknikal di makmal-makmal komputer sekolah di seluruh Malaysia.
 
 ---
 
@@ -54,7 +54,7 @@ Penyediaan bahan kurikulum dan pelaksanaan projek pengkomputeran makmal sekolah 
 ```mermaid
 graph TD
     Y2004["<b>2004: Penggubalan Modul ISL9</b><br/>Dihasilkan oleh panel BostonWeb Academy / DRB-HICOM untuk KPM (Red Hat 9.0 & GNU FDL)"]
-    Y2006["<b>2004 - 2006: Gelombang Latihan Lapangan</b><br/>Bengkel makmal sekolah & pemerkasaan komuniti oleh Harisfazillah Jamel & MOSC"]
+    Y2006["<b>2004 - 2006: Gelombang Latihan Lapangan</b><br/>Bengkel makmal sekolah & bimbingan pengajar bersama komuniti sumber terbuka"]
     Y2015["<b>2007 - 2015: Era Pelan Induk OSS Sektor Awam</b><br/>MAMPU melancarkan Rangka Kerja OSS Kerajaan & latihan sektor awam"]
     Y2024["<b>2020 - 2024: Digitalisasi & Pemetaan TVET</b><br/>JPK memformalkan Standard Kemahiran Pekerjaan Kebangsaan (NOSS)"]
     Y2026["<b>2026: Sovereign Markdown Palace (DSOM)</b><br/>Pengarkiban sejarah 2004 & transformasi ke Ubuntu 26.04 / AlmaLinux 10 / Diátaxis"]
