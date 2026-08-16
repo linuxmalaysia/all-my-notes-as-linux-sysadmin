@@ -11,6 +11,12 @@ resource: "file:///docs/explanation/sejarah-dokumen-asal-linux-kpm.md"
 
 # Sejarah & Asal-Usul Dokumen Manual Linux KPM (2004–2026)
 
+> [!IMPORTANT]
+> **PENAFIAN SEJARAH & SUMBER TERHAD (DISCLAIMER):**  
+> Rekod sejarah, atribusi panel penggubal, dan latar belakang projek yang didokumentasikan dalam halaman ini adalah **berdasarkan andaian dan dapatan carian sumber terbuka awam (Google) yang terhad**. Ia disusun bagi tujuan pemuliharaan sejarah dan pendidikan tanpa sebarang tuntutan autoriti rasmi.  
+> 
+> Sekiranya terdapat sebarang kesilapan fakta, ketidaktepatan nama pihak terlibat, atau maklumat sejarah tambahan yang perlu dikemas kini, pihak yang berkaitan amat dialu-alukan untuk menyumbang pembetulan dengan **membuka *Pull Request* (PR) atau memfailkan *Issue*** di repositori ini.
+
 ## 1. Pengenalan & Asal-Usul Modul ISL9 (Mei 2004)
 
 Bahan mentah yang disimpan di dalam direktori `references/manual/` merupakan khazanah sejarah penting dalam gerakan **Perisian Sumber Terbuka (Open Source Software - OSS)** dan literasi sistem pengkomputeran di Malaysia. 
