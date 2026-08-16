@@ -90,6 +90,8 @@ Objektif utama repositori ini adalah untuk **memanfaatkan ilmu Sistem Operasi Li
 ## 📚 Maklumat Projek (Project Info)
 
 - [`START-HERE.md`](START-HERE.md): **Titik Masuk Utama (Entry Point)**. Sila baca ini dahulu.
+- [`.agents/AGENTS.md`](.agents/AGENTS.md): **Perlembagaan & Garis Panduan Ejen AI (DSOM v0.1)**.
+- [`.agents/brain/`](.agents/brain/): **Memori Episodik & Penyerahan Ejen (Task, Plan, Walkthrough)**.
 - [`llms.txt`](llms.txt): Peta tapak (sitemap) khusus untuk perangkak AI (AI crawler).
 - [`HISTORY.md`](HISTORY.md): Menjejaki evolusi dan falsafah awal pembinaan projek ini.
 - [`CHANGELOG.md`](CHANGELOG.md): Nota keluaran (Release Notes) rasmi bagi semua versi.
