@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-16T09:01:30Z"
+timestamp: "2026-08-16T09:12:17Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -13,7 +13,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `105`
+**Total Modules Indexed:** `107`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -54,6 +54,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *cu06-wa07-resolve-system-anomalies-and-document-rca* | Executes NOSS Work Activity: Resolve System Anomalies And Document RCA | noss, cu06, wa07 |
 | **`docx-highlight-extractor`** <br> *docx-highlight-extractor* | Extracts highlighted text and comments from DOCX files, preserving exact page locations and paragraph context, and generates a tracking ledger. | docx, highlight, comments, audit, tracking, xml |
 | **`dsom-bootstrap`** <br> *dsom-bootstrap* | Executes the DSOM bootstrapping process for a new or existing project by reading the HOWTO-DSOM-BASELINE.md guide and pulling files from the permanent baseline repository. | bootstrap, setup, onboarding, project-init, dsom |
+| **`dsom-diataxis-pipeline`** <br> *dsom-diataxis-pipeline* | Executes the DSOM-Governed Diátaxis & OKF Documentation Pipeline to restructure the repository's docs folder. | "dsom", "diataxis", "pipeline" |
 | **`dsom-knowledge-ingester`** <br> *dsom-knowledge-ingester* | Executes the Ingest protocol inspired by the LLM WIKI concept to process external raw documents and synthesize them into the Sovereign Markdown Palace. | knowledge, ingestion, okf, palace, markdown |
 | **`dsom-mass-okf-migrator`** <br> *dsom-mass-okf-migrator* | Automatically migrates a directory of markdown files to the OKF v0.1 format, replacing obsolete URLs and injecting the Sovereign Dual-License Footer. | "dsom", "okf", "migration" |
 | **`dsom-policy-adopter`** <br> *dsom-policy-adopter* | No description provided. | N/A |
@@ -112,6 +113,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`noss-linguistic-auditor`** <br> *noss-linguistic-auditor* | This skill teaches an AI agent to **read and audit** NOSS Level 3 Competency Profile content for linguistic compliance.  The agent applies **four quality gates** by reading the content and comparin... | N/A |
 | **`odp-slide-generator`** <br> *odp-slide-generator* | Generates highly styled 3-column Corporate Presentation slides (PPTX/ODP format) based on a specific HTML/CSS theme using python-pptx. | presentation, pptx, odp, python-pptx, slides |
 | **`okf-frontmatter-injector`** <br> *okf-frontmatter-injector* | Scans a target directory and automatically injects OKF v0.1 YAML frontmatter into any Markdown files missing it. | okf, frontmatter, yaml, compliance, markdown |
+| **`openwiki-graph-generator`** <br> *openwiki-graph-generator* | Generates the OpenWiki Master Graph (Mermaid.js) mapping NOSS Linux Topics to Competency Units (CU). | "openwiki", "noss-linux", "graph" |
 | **`palace-auditor`** <br> *palace-auditor* | A diagnostic skill that crawls the workspace to verify index.md links, identify undocumented scripts in tools/, and propose structural cleanups to maintain the Sovereign Memory Palace. | palace, audit, brain, index, cleanup |
 | **`pdf-text-extractor`** <br> *pdf-text-extractor* | No description provided. | N/A |
 | **`persona-injector`** <br> *persona-injector* | Guides a user to define their Sovereign Persona and safely injects it into the agent's core AGENTS.md rulebook. | persona, profile, identity, dsom, agent |
