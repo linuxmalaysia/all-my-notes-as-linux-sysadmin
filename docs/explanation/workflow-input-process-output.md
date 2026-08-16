@@ -90,7 +90,18 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 - **Piawaian Bahasa Melayu Baku (Peraturan 3):**
   - Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.
 
-### Langkah 2.4: Penyusunan Output Terstruktur & Format OKF v0.1 (Rule 8)
+### Langkah 2.4: Pengayaan Protokol Keselamatan & Pengoptimuman Prestasi (Continuous Enrichment)
+Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa ke semasa dengan pelbagai rujukan standard:
+- **Protokol & Garis Panduan Keselamatan:**
+  - Standard Antarabangsa: **ISO/IEC 27001**, **NIST SP 800-53**, penanda aras **CIS Linux Benchmarks**.
+  - Garis Panduan Kebangsaan: **Pekeliling Am MAMPU**, Rangka Kerja Keselamatan Siber Agensi Keselamatan Siber Negara (NACSA).
+  - Kawalan Akses & Pengerasan: Polisi sudoers granular, SSH fail2ban, profil AppArmor/SELinux, dan pematuhan FIPS mode.
+- **Protokol Pengoptimuman Prestasi (*Performance Tuning*):**
+  - Parameter Isirung (*Kernel sysctl*): Penalaan memori maya (`vm.swappiness`, `vm.dirty_ratio`), rangkaian (`net.core.somaxconn`), dan I/O cakera.
+  - Pengurusan Profil Prestasi: Integrasi perkhidmatan `tuned` (cth. profil `throughput-performance`, `server-powersave`, `virtual-guest`).
+  - Pemantauan & Diagnostik Lanjut: Penggunaan alatan moden seperti `bpftrace`, `eBPF`, `htop`, `iotop`, `sar` (sysstat), dan `perf`.
+
+### Langkah 2.5: Penyusunan Output Terstruktur & Format OKF v0.1 (Rule 8)
 - Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder `manual/cuXX/` dengan penamaan fail WA yang standard.
 - Setiap nod Markdown baharu mesti mempunyai **OKF v0.1 YAML Frontmatter**:
   ```yaml
@@ -108,7 +119,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 - **Struktur Penutup Wajib (Peraturan 16):** Mengandungi seksyen *AI Prompts*, *Rujukan URL*, dan *Syor Buku Boleh Dibeli*.
 - **Pengaki Berdaulat (Sovereign Dual-License Footer):** Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.
 
-### Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)
+### Langkah 2.6: 100% Quality Gate Orchestration (Peraturan 12)
 Sebelum sebarang komit dibenarkan:
 ```bash
 uv run run_all_tests.py

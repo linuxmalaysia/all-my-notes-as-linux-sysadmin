@@ -47,9 +47,12 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
    - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & MAMPU).
-4. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
+4. **Penyepaduan Protokol Keselamatan & Penalaan Prestasi (Continuous Enrichment):**
+   - **Keselamatan:** CIS Benchmark, kawalan integriti audit `auditd`, SSH hardening, perlindungan firewall (`ufw`/`firewalld`), dan pematuhan ISO/IEC 27001 & Pekeliling MAMPU.
+   - **Prestasi (*Performance Tuning*):** Penalaan parameter kernel `sysctl`, konfigurasi profil `tuned`, pemantauan eBPF/bpftrace, dan pengoptimuman I/O cakera serta rangkaian.
+5. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.
-5. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
+6. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
    - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: 0.1`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
    - Akhiri setiap nod dengan tiga seksyen penutup:
      - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`

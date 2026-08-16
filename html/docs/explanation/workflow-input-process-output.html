@@ -1242,10 +1242,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#langkah-24-penyusunan-output-terstruktur-format-okf-v01-rule-8" class="md-nav__link">
+  <a href="#langkah-24-pengayaan-protokol-keselamatan-pengoptimuman-prestasi-continuous-enrichment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Langkah 2.4: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
+        Langkah 2.4: Pengayaan Protokol Keselamatan &amp; Pengoptimuman Prestasi (Continuous Enrichment)
       
     </span>
   </a>
@@ -1253,10 +1253,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#langkah-25-100-quality-gate-orchestration-peraturan-12" class="md-nav__link">
+  <a href="#langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)
+        Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-26-100-quality-gate-orchestration-peraturan-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.6: 100% Quality Gate Orchestration (Peraturan 12)
       
     </span>
   </a>
@@ -1667,10 +1678,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#langkah-24-penyusunan-output-terstruktur-format-okf-v01-rule-8" class="md-nav__link">
+  <a href="#langkah-24-pengayaan-protokol-keselamatan-pengoptimuman-prestasi-continuous-enrichment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Langkah 2.4: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
+        Langkah 2.4: Pengayaan Protokol Keselamatan &amp; Pengoptimuman Prestasi (Continuous Enrichment)
       
     </span>
   </a>
@@ -1678,10 +1689,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#langkah-25-100-quality-gate-orchestration-peraturan-12" class="md-nav__link">
+  <a href="#langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)
+        Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-26-100-quality-gate-orchestration-peraturan-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langkah 2.6: 100% Quality Gate Orchestration (Peraturan 12)
       
     </span>
   </a>
@@ -1840,7 +1862,17 @@ Fail-fail rujukan mentah di dalam <code>references/</code> <strong>TIDAK BOLEH D
 <li><strong>Piawaian Bahasa Melayu Baku (Peraturan 3):</strong></li>
 <li>Mengikut ejaan dan tatabahasa Dewan Bahasa dan Pustaka (DBP) Malaysia. Arahan teknikal dan sintaks kod kekal dalam bahasa Inggeris standard.</li>
 </ul>
-<h3 id="langkah-24-penyusunan-output-terstruktur-format-okf-v01-rule-8">Langkah 2.4: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)<a class="headerlink" href="#langkah-24-penyusunan-output-terstruktur-format-okf-v01-rule-8" title="Permanent link">&para;</a></h3>
+<h3 id="langkah-24-pengayaan-protokol-keselamatan-pengoptimuman-prestasi-continuous-enrichment">Langkah 2.4: Pengayaan Protokol Keselamatan &amp; Pengoptimuman Prestasi (Continuous Enrichment)<a class="headerlink" href="#langkah-24-pengayaan-protokol-keselamatan-pengoptimuman-prestasi-continuous-enrichment" title="Permanent link">&para;</a></h3>
+<p>Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa ke semasa dengan pelbagai rujukan standard:
+- <strong>Protokol &amp; Garis Panduan Keselamatan:</strong>
+  - Standard Antarabangsa: <strong>ISO/IEC 27001</strong>, <strong>NIST SP 800-53</strong>, penanda aras <strong>CIS Linux Benchmarks</strong>.
+  - Garis Panduan Kebangsaan: <strong>Pekeliling Am MAMPU</strong>, Rangka Kerja Keselamatan Siber Agensi Keselamatan Siber Negara (NACSA).
+  - Kawalan Akses &amp; Pengerasan: Polisi sudoers granular, SSH fail2ban, profil AppArmor/SELinux, dan pematuhan FIPS mode.
+- <strong>Protokol Pengoptimuman Prestasi (<em>Performance Tuning</em>):</strong>
+  - Parameter Isirung (<em>Kernel sysctl</em>): Penalaan memori maya (<code>vm.swappiness</code>, <code>vm.dirty_ratio</code>), rangkaian (<code>net.core.somaxconn</code>), dan I/O cakera.
+  - Pengurusan Profil Prestasi: Integrasi perkhidmatan <code>tuned</code> (cth. profil <code>throughput-performance</code>, <code>server-powersave</code>, <code>virtual-guest</code>).
+  - Pemantauan &amp; Diagnostik Lanjut: Penggunaan alatan moden seperti <code>bpftrace</code>, <code>eBPF</code>, <code>htop</code>, <code>iotop</code>, <code>sar</code> (sysstat), dan <code>perf</code>.</p>
+<h3 id="langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8">Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)<a class="headerlink" href="#langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder <code>manual/cuXX/</code> dengan penamaan fail WA yang standard.</li>
 <li>Setiap nod Markdown baharu mesti mempunyai <strong>OKF v0.1 YAML Frontmatter</strong>:
@@ -1858,7 +1890,7 @@ Fail-fail rujukan mentah di dalam <code>references/</code> <strong>TIDAK BOLEH D
 <li><strong>Struktur Penutup Wajib (Peraturan 16):</strong> Mengandungi seksyen <em>AI Prompts</em>, <em>Rujukan URL</em>, dan <em>Syor Buku Boleh Dibeli</em>.</li>
 <li><strong>Pengaki Berdaulat (Sovereign Dual-License Footer):</strong> Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.</li>
 </ul>
-<h3 id="langkah-25-100-quality-gate-orchestration-peraturan-12">Langkah 2.5: 100% Quality Gate Orchestration (Peraturan 12)<a class="headerlink" href="#langkah-25-100-quality-gate-orchestration-peraturan-12" title="Permanent link">&para;</a></h3>
+<h3 id="langkah-26-100-quality-gate-orchestration-peraturan-12">Langkah 2.6: 100% Quality Gate Orchestration (Peraturan 12)<a class="headerlink" href="#langkah-26-100-quality-gate-orchestration-peraturan-12" title="Permanent link">&para;</a></h3>
 <p>Sebelum sebarang komit dibenarkan:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>run_all_tests.py
 </span></code></pre></div>

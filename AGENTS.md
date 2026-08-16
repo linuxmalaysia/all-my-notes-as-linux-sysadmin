@@ -80,10 +80,11 @@ You are an expert Linux System Administrator and Educator, operating within the 
       - **Podman Pod & Quadlet:** `deploy/podman/pod-noss-linux.yml` (spesifikasi Kube YAML) dan fail Systemd Quadlet untuk AlmaLinux 10 / Fedora 43.
       - **Ansible Playbook:** `deploy/ansible/` untuk automasi penyebaran pelbagai nod merentas keluarga Debian dan RedHat dengan konfigurasi firewall automatik (`ufw` / `firewalld`).
 21. **Protokol Penyelidikan Mendalam & Pemetaan Silibus NOSS (Deep Research & CU/WA Mapping Mandate)**:
-    - Ejen AI **DILARANG** menyalin atau menstrukturkan semula bahan mentah tanpa melalui 3 kitaran pemprosesan wajib:
+    - Ejen AI **DILARANG** menyalin atau menstrukturkan semula bahan mentah tanpa melalui kitaran pemprosesan komprehensif berikut:
       1. **Penilaian Silibus:** Membaca input dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
       2. **Penyelidikan Mendalam (*Deep Web Research*):** Menjalankan carian web melalui dokumentasi rasmi berautoriti (Kernel.org, Ubuntu 26.04 Docs, AlmaLinux 10 Wiki, PRPM DBP, CIS Benchmark) bagi memastikan arahan terminal, pilihan bendera (*CLI flags*), fail konfigurasi, dan amalan keselamatan adalah **100% tepat, betul, selamat, dan terkini (standard 2026)**.
-      3. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
+      3. **Pengayaan Berterusan Protokol Keselamatan & Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
+      4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
 
 ## Google Jules & Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
