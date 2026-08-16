@@ -34,6 +34,15 @@ You are an expert Linux System Administrator and Educator, operating within the 
     - `## Eksplorasi Lanjut bersama AI (AI Prompts)`: Sediakan sekurang-kurangnya 3 prompt AI yang praktikal dan berfokus untuk pelajar mendalami konsep dalam bab tersebut.
     - `## Bahan Bacaan Lanjut (Rujukan URL)`: Senaraikan pautan rasmi, artikel, atau dokumentasi web yang relevan dengan topik.
     - `## Buku Boleh Dibeli (Syor Bacaan)`: Syorkan buku fizikal/digital yang berkaitan (nyatakan versi Bahasa Melayu atau Inggeris), contohnya buku-buku oleh Harisfazillah Jamel, Brian Ward, dsb.
+17. **Pemuliharaan Arkib Sumber Mentah (Raw Archive Preservation)**:
+    - Fail-fail rujukan mentah di dalam `references/manual/` TIDAK BOLEH dipadam semasa atau selepas migrasi ilmu ke dalam `palace/` atau `openwiki/`. Direktori ini merupakan arkib kekal.
+    - Fail mentah hendaklah dibersihkan daripada teks pengepala berulang lapuk (seperti *"Ministry of Education : Computerisation (IT Lab) Infrastruktur Sistem & Linux Strictly Confidential"*) tetapi struktur asalnya mesti dikekalkan utuh.
+18. **Seni Bina Diátaxis & Format Dwicapaian (Markdown-First & Multi-Platform)**:
+    - Kesemua dokumentasi teknikal mesti mematuhi 4 kuadran Diátaxis (`docs/tutorials/`, `docs/how-to/`, `docs/explanation/`, `docs/reference/`).
+    - Setiap dokumen mesti mematuhi prinsip **Markdown-First** (menggunakan pautan relatif `.md` yang sah untuk pembacaan terus di GitHub/GitLab/IDE/luar talian).
+    - Penjanaan laman web statik HTML mesti menggunakan mod pautan berkait (`use_directory_urls: false` dalam `mkdocs.yml`) bagi menjamin keserasian dengan GitHub Pages, GitLab Pages, Read the Docs, GitBook, Nginx, Apache, dan pembukaan fail tempatan (`file:///`).
+19. **Disiplin Penjejakan Git Berterusan (GitOps Audit Trail)**:
+    - Setiap kali sesuatu tugasan, pembetulan, atau fasa migrasi selesai dan melepasi ujian kualiti (Rule 12), ejen MESTI merekodkan perubahan tersebut ke dalam Git (`git add -A && git commit`) dengan mesej komit yang jelas dan deskriptif bagi memelihara jejak audit `git log` yang teliti.
 
 ## Google Jules & Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
