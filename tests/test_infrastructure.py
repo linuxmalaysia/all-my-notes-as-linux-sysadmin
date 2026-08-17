@@ -56,3 +56,16 @@ def test_podman_yaml_syntax(filepath):
 def test_infrastructure_scaffold_exists():
     """Dummy test to ensure the infrastructure test suite runs even if no files exist."""
     assert True
+
+def test_github_pages_workflow_configuration():
+    """Verify that .github/workflows/static.yml correctly targets html/ directory and builds before upload."""
+    workflow_path = ".github/workflows/static.yml"
+    assert os.path.exists(workflow_path), f"Workflow file {workflow_path} does not exist."
+
+    with open(workflow_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    assert "path: 'html'" in content or 'path: "html"' in content or "path: html" in content, \
+        "static.yml must set the deployment artifact path to 'html'."
+    assert "serve_mkdocs.py --build-only" in content, \
+        "static.yml must include the build step to regenerate the static site before upload."
