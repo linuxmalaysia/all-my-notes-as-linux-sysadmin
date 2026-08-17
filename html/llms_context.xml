@@ -41359,7 +41359,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T12:17:13Z"
+timestamp: "2026-08-17T12:37:04Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -42048,6 +42048,9 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Pemaktuban Protokol Panggilan Langsung Node.js Jest (Direct Jest Execution) ke dalam Peraturan 14 Perlembagaan AI.
 - **2026-08-17:** Penyediaan pelan pelaksanaan &amp; taklimat penyerahan sesi Google Jules untuk Fasa 6 (Migrasi Silibus Bab 6: Sandaran, Pemampatan, Pelekapan Storan, dan Pemprosesan Teks CU04 &amp; CU06 - Kemuncak Siri Manual).
 - **2026-08-17:** Pembetulan kod nama kanonik rasmi Ubuntu 26.04 LTS "Resolute Raccoon" di seluruh dokumen sumber, kemahiran AI, perlembagaan, dan janaan semula manual web statik HTML.
+- **2026-08-17:** Penyempurnaan &amp; Penggabungan (Merge) Google Jules PR #12 &amp; PR #13 — Migrasi Silibus Bab 6 (Sandaran tar/rsync/zstd, Automasi systemd.timer/cron, Pemulihan Data sha256sum, Pelekapan Storan mount/umount/findmnt/fstab, Penapis Teks grep/sed/awk, dan RCA), Porting Kemahiran CU04/CU06, peningkatan kepada 982 ujian Python, dan penyempurnaan menyeluruh siri kurikulum Fasa 1–6.
+- **2026-08-17:** Penyediaan pelan pelaksanaan &amp; taklimat penyerahan sesi Google Jules untuk Fasa 7 (Migrasi &amp; Pemodenan Bab 7: Penyunting Teks Terminal, Persekitaran Shell &amp; Konfigurasi Sistem - CU01, CU03, &amp; CU06).
+
 
     </content>
   </file>
