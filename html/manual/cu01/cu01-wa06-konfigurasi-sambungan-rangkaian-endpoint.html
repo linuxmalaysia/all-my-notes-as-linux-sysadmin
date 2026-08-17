@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Konfigurasi NetworkManager, IP statik/DHCP, Wi-Fi, dan DNS pada sistem endpoint.">
+        <meta name="description" content="Panduan amali NOSS CU01-WA06 bagi konfigurasi NetworkManager, IP statik, DHCP, Wi-Fi, dan DNS pada sistem endpoint Linux.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Konfigurasi Sambungan Rangkaian Endpoint - NOSS Linux Malaysia (DSOM)</title>
+        <title>CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#konfigurasi-sambungan-rangkaian-endpoint" class="md-skip">
+        <a href="#cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint-linux" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Konfigurasi Sambungan Rangkaian Endpoint
+              CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux
             
           </span>
         </div>
@@ -1425,22 +1425,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#garis-panduan-amali-prosedur" class="md-nav__link">
+  <a href="#garis-panduan-amali-prosedur-kerja" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Garis Panduan Amali &amp; Prosedur
+        🛠️ Garis Panduan Amali &amp; Prosedur Kerja
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur">
+    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur Kerja">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-diagnostik-rangkaian-asas-iproute2-tools" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
+        1. Diagnostik Rangkaian Asas (iproute2 &amp; Tools)
       
     </span>
   </a>
@@ -1448,10 +1448,71 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-konfigurasi-networkmanager-menggunakan-cli-nmcli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        2. Konfigurasi NetworkManager Menggunakan CLI (nmcli)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="2. Konfigurasi NetworkManager Menggunakan CLI (nmcli)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-semakan-status-sambungan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Semakan Status Sambungan
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-konfigurasi-alamat-ip-statik-berwayar-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Konfigurasi Alamat IP Statik (Berwayar / Ethernet)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#c-konfigurasi-sambungan-dhcp-dinamik" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Konfigurasi Sambungan DHCP (Dinamik)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-sambungan-rangkaian-tanpa-wayar-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Sambungan Rangkaian Tanpa Wayar (Wi-Fi)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-konfigurasi-dns-resolusi-nama-etcresolvconf-systemd-resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Konfigurasi DNS &amp; Resolusi Nama (/etc/resolv.conf &amp; systemd-resolved)
       
     </span>
   </a>
@@ -1461,6 +1522,17 @@
       </ul>
     </nav>
   
+</li>
+
+        <li class="md-nav__item">
+  <a href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+    </span>
+  </a>
+
 </li>
       
         <li class="md-nav__item">
@@ -1524,61 +1596,127 @@
 
 
 
-<h1 id="konfigurasi-sambungan-rangkaian-endpoint">Konfigurasi Sambungan Rangkaian Endpoint<a class="headerlink" href="#konfigurasi-sambungan-rangkaian-endpoint" title="Permanent link">&para;</a></h1>
+<h1 id="cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint-linux">CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux<a class="headerlink" href="#cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint-linux" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Konfigurasi NetworkManager, IP statik/DHCP, Wi-Fi, dan DNS pada sistem endpoint.</p>
-<blockquote>
-<p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU01</strong>.</p>
-</blockquote>
-<hr />
-<h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
-</ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
+<p>Menguasai prosedur amali pengurusan dan konfigurasi sambungan rangkaian berwayar (<em>Ethernet</em>) dan tanpa wayar (<em>Wi-Fi</em>) pada sistem endpoint Linux mengikut piawaian <strong>NOSS Tahap 3 (CU01-WA06)</strong>.</p>
+<p>Setelah menyempurnakan modul ini, pelajar akan dapat:</p>
 <ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
+<li>Menguruskan antara muka (<em>interface</em>) rangkaian menggunakan perkakas <strong>NetworkManager</strong> (<code>nmcli</code>, <code>nmtui</code>) dan <strong>iproute2</strong> (<code>ip</code>).</li>
+<li>Konfigurasi alamat IP secara dinamik (<strong>DHCP</strong>) dan statik (<strong>Static IP</strong>) mengikut skema IPv4 serta penetapan asas IPv6 (SLAAC / DHCPv6).</li>
+<li>Menyambungkan endpoint ke rangkaian tanpa wayar (<em>Wi-Fi</em>) dengan protokol keselamatan WPA2/WPA3-Personal dan WPA2/WPA3-Enterprise.</li>
+<li>Menganalisis dan melakukan penyelesaian masalah (<em>troubleshooting</em>) rute (<em>routing</em>), resolusi nama DNS, dan ujian ketercapaian pelayan.</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<hr />
+<h2 id="garis-panduan-amali-prosedur-kerja">🛠️ Garis Panduan Amali &amp; Prosedur Kerja<a class="headerlink" href="#garis-panduan-amali-prosedur-kerja" title="Permanent link">&para;</a></h2>
+<h3 id="1-diagnostik-rangkaian-asas-iproute2-tools">1. Diagnostik Rangkaian Asas (<code>iproute2</code> &amp; Tools)<a class="headerlink" href="#1-diagnostik-rangkaian-asas-iproute2-tools" title="Permanent link">&para;</a></h3>
+<p>Sebelum membuat sebarang perubahan konfigurasi, lakukan semakan antara muka dan status semasa:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Senaraikan semua antara muka rangkaian dan alamat IP</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>show
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># atau ringkas:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ip<span class="w"> </span>-c<span class="w"> </span>a
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 2. Senaraikan jadual hala tuju (routing table) dan laluan lalai (default gateway)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>ip<span class="w"> </span>route<span class="w"> </span>show
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># 3. Uji ketercapaian rangkaian tempatan dan internet</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">192</span>.168.1.1
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>.8.8.8
 </span></code></pre></div>
+<hr />
+<h3 id="2-konfigurasi-networkmanager-menggunakan-cli-nmcli">2. Konfigurasi NetworkManager Menggunakan CLI (<code>nmcli</code>)<a class="headerlink" href="#2-konfigurasi-networkmanager-menggunakan-cli-nmcli" title="Permanent link">&para;</a></h3>
+<p>NetworkManager ialah perkhidmatan standard pada <strong>Ubuntu 26.04 LTS</strong>, <strong>AlmaLinux 10</strong>, dan <strong>Fedora 43</strong>.</p>
+<h4 id="a-semakan-status-sambungan">A. Semakan Status Sambungan<a class="headerlink" href="#a-semakan-status-sambungan" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Senaraikan peranti fizikal dan status ketersambungan</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nmcli<span class="w"> </span>device<span class="w"> </span>status
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Senaraikan profil sambungan yang wujud</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>show
+</span></code></pre></div>
+<h4 id="b-konfigurasi-alamat-ip-statik-berwayar-ethernet">B. Konfigurasi Alamat IP Statik (Berwayar / Ethernet)<a class="headerlink" href="#b-konfigurasi-alamat-ip-statik-berwayar-ethernet" title="Permanent link">&para;</a></h4>
+<p>Untuk peranti pejabat yang memerlukan alamat IP tetap:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Cipta profil sambungan IP statik baharu bernama &#39;Pejabat-Statik&#39; pada antaramuka eth0 (atau enp0s3)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ethernet<span class="w"> </span>con-name<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span><span class="w"> </span>ifname<span class="w"> </span>eth0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>ip4<span class="w"> </span><span class="m">192</span>.168.1.150/24<span class="w"> </span>gw4<span class="w"> </span><span class="m">192</span>.168.1.1
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 2. Menetapkannya pelayan DNS (contoh: DNS Jabatan / Cloudflare / Google)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span><span class="w"> </span>ipv4.dns<span class="w"> </span><span class="s2">&quot;192.168.1.10 8.8.8.8&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># 3. Tukar mod carian IPv4 kepada manual</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span><span class="w"> </span>ipv4.method<span class="w"> </span>manual
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># 4. Aktifkan sambungan baharu</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span>
+</span></code></pre></div>
+<h4 id="c-konfigurasi-sambungan-dhcp-dinamik">C. Konfigurasi Sambungan DHCP (Dinamik)<a class="headerlink" href="#c-konfigurasi-sambungan-dhcp-dinamik" title="Permanent link">&para;</a></h4>
+<p>Apabila menukar profil sambungan daripada IP statik kepada DHCP dinamik, padamkan parameter statik terlebih dahulu:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Padamkan penetapan alamat IP statik, gateway, dan DNS lama</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span><span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>ipv4.gateway<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>ipv4.dns<span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 2. Tukar mod carian IPv4 kepada automatik (DHCP)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span><span class="w"> </span>ipv4.method<span class="w"> </span>auto
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># 3. Aktifkan semula sambungan</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;Pejabat-Statik&quot;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="3-sambungan-rangkaian-tanpa-wayar-wi-fi">3. Sambungan Rangkaian Tanpa Wayar (Wi-Fi)<a class="headerlink" href="#3-sambungan-rangkaian-tanpa-wayar-wi-fi" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Pastikan peranti Wi-Fi diaktifkan</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>nmcli<span class="w"> </span>radio<span class="w"> </span>wifi<span class="w"> </span>on
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># 2. Imbas SSID Wi-Fi yang wujud berhampiran</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>nmcli<span class="w"> </span>device<span class="w"> </span>wifi<span class="w"> </span>list
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 3. Menyambung ke SSID Wi-Fi WPA2/WPA3-Personal dengan meminta kata laluan secara interaktif</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>nmcli<span class="w"> </span>--ask<span class="w"> </span>device<span class="w"> </span>wifi<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;Wi-Fi_Pejabat&quot;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="4-konfigurasi-dns-resolusi-nama-etcresolvconf-systemd-resolved">4. Konfigurasi DNS &amp; Resolusi Nama (<code>/etc/resolv.conf</code> &amp; systemd-resolved)<a class="headerlink" href="#4-konfigurasi-dns-resolusi-nama-etcresolvconf-systemd-resolved" title="Permanent link">&para;</a></h3>
+<p>Pada sistem moden dengan <code>systemd-resolved</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Semak status resolusi DNS semasa</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>resolvectl<span class="w"> </span>status
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. Menguji kelajuan dan ketepatan carian nama domain (DNS lookup)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dig<span class="w"> </span>www.jdn.gov.my
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>nslookup<span class="w"> </span>www.gov.my
+</span></code></pre></div>
+<hr />
+<h2 id="pematuhan-keselamatan-jdn-mampu-isoiec-27001">🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001<a class="headerlink" href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Penyulitan Wi-Fi Enterprise:</strong> Elakkan penggunaan rangkaian Wi-Fi terbuka tanpa penyulitan di persekitaran kerajaan. Wajibkan standard WPA2-Enterprise / WPA3.</li>
+<li><strong>Kawalan Profil Rangkaian:</strong> Pastikan fail konfigurasi di <code>/etc/NetworkManager/system-connections/</code> dilindungi dengan kebenaran cap jari fail <code>600</code> (hanya <code>root</code> boleh membaca kata laluan Wi-Fi/IP).</li>
+<li><strong>Pemberhentian Perkhidmatan Tidak Selamat:</strong> Matikan antara muka tanpa wayar jika tidak digunakan (<code>nmcli radio wifi off</code>) pada pelayan atau endpoint sensitif.</li>
+</ol>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya mengenal pasti nama antaramuka rangkaian menggunakan <code>ip addr</code> dan <code>nmcli dev</code>.</li>
+<li>[ ] Berjaya mengkonfigurasi Alamat IP Statik dan Gateway menggunakan <code>nmcli</code>.</li>
+<li>[ ] Berjaya imbas dan menyambung peranti ke Wi-Fi bersekuriti.</li>
+<li>[ ] Berjaya menjalankan diagnostik resolusi DNS menggunakan <code>ping</code>, <code>dig</code>, dan <code>resolvectl</code>.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Konfigurasi Sambungan Rangkaian Endpoint dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Konfigurasi Sambungan Rangkaian Endpoint menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Bandingkan perbezaan seni bina antara NetworkManager, Netplan (Ubuntu), dan systemd-networkd dalam pentadbiran Linux."</em></li>
+<li><em>"Tuliskan skrip Bash penyelesaian masalah rangkaian yang menguji ping gateway, resolusi DNS, dan port HTTP/HTTPS secara automatik."</em></li>
+<li><em>"Bagaimanakah cara mengkonfigurasi pengikatan rangkaian (network bonding / team) untuk toleransi kelemahan (fault tolerance) di Linux?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://networkmanager.dev/docs/">Dokumentasi Rasmi NetworkManager</a></li>
+<li><a href="https://ubuntu.com/server/docs/network-configuration">Panduan Rangkaian Ubuntu 26.04 LTS</a></li>
+<li><a href="https://wiki.linuxfoundation.org/networking/iproute2">Rujukan iproute2 Linux Documentation</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Linux Networking Cookbook</strong> oleh Carla Schroder.</li>
+<li><strong>UNIX and Linux System Administration Handbook, 5th Edition</strong> oleh Evi Nemeth et al.</li>
+<li><strong>Panduan Rangkaian &amp; Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

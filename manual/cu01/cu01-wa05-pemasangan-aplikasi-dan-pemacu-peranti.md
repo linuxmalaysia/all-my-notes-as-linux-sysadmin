@@ -1,70 +1,202 @@
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pemasangan Aplikasi & Pemacu Peranti Linux"
-timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu01", "panduan-amali", "manual-linux"]
-tags: ["cu01", "linux", "noss", "amali", "standard-malaysia"]
-description: "Pengurusan pakej (APT, DNF, Flatpak) dan pemasangan pemacu proprietari GPU (NVIDIA/AMD)."
+title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
+timestamp: "2026-08-16T00:00:00Z"
+topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti"]
+tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver"]
+description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap) dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
 resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md"
 ---
 
-# Pemasangan Aplikasi & Pemacu Peranti Linux
+# CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux
 
 ## 🎯 Objektif Pembelajaran
-Pengurusan pakej (APT, DNF, Flatpak) dan pemasangan pemacu proprietari GPU (NVIDIA/AMD).
 
-> [!NOTE]
-> Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU01**.
+Menguasai prosedur amali pengurusan aplikasi, pakej perisian, serta pemasangan dan konfigurasi pemacu peranti (*device drivers*) pada sistem operasi Linux desktop mengikut piawaian **NOSS Tahap 3 (CU01-WA05)**.
+
+Setelah menyempurnakan modul ini, pelajar akan dapat:
+
+1. Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (**APT** pada Ubuntu 26.04 LTS, **DNF5** pada AlmaLinux 10 dan Fedora 43).
+2. Memasang dan menguruskan aplikasi berasaskan kontena universal (**Flatpak** dan **Snap**).
+3. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).
+4. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (*GPG key verification*).
 
 ---
 
-## 🛠️ Garis Panduan Amali & Prosedur
+## 🛠️ Garis Panduan Amali & Prosedur Kerja
 
-### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Pengurusan Pakej Asli (APT & DNF5)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+#### A. Debian/Ubuntu (APT - Advanced Package Tool)
+
+Pada **Ubuntu 26.04 LTS "Resolute Raccoon"**, pengurusan pakej dilakukan menggunakan arahan `apt`:
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# 1. Kemas kini indeks repositori dan senaraikan pakej yang boleh dinaik taraf
+sudo apt update
+
+# 2. Naik taraf kesemua pakej sistem ke versi terkini secara selamat
+sudo apt upgrade -y
+
+# 3. Cari dan pasang aplikasi (contoh: cURL, Git, VLC)
+sudo apt search vlc
+sudo apt install -y curl git vlc
+
+# 4. Buang pakej yang tidak diperlukan beserta fail konfigurasi sisa
+sudo apt purge -y vlc
+sudo apt autoremove -y
+```
+
+#### B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)
+
+Pada **AlmaLinux 10 "Purple Lion"** dan **Fedora 43**, pengurus pakej generasi baharu **DNF5** digunakan:
+
+```bash
+# 1. Semak kemas kini pakej dan naik taraf sistem
+sudo dnf check-upgrade || true
+sudo dnf upgrade -y
+
+# 2. Pasang aplikasi dan kumpulan perisian (Package Groups)
+sudo dnf install -y htop wget
+sudo dnf groupinstall -y "Development Tools"
+
+# 3. Pengurusan repositori EPEL pada AlmaLinux 10
+sudo dnf install -y epel-release
+sudo dnf config-manager --enable epel
 ```
 
 ---
 
+### 2. Pemasangan Pakej Universal (Flatpak & Snap)
+
+Untuk aplikasi desktop moden yang terpencil (*sandboxed*) demi keselamatan persekitaran pejabat:
+
+#### A. Flatpak (Flathub Repository)
+
+```bash
+# 1. Pastikan perkhidmatan Flatpak terpasang dan tambah repositori Flathub
+sudo apt install -y flatpak   # Ubuntu
+# sudo dnf install -y flatpak # AlmaLinux / Fedora
+
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# 2. Pasang dan jalankan aplikasi (contoh: LibreOffice / GIMP)
+flatpak install flathub org.gimp.GIMP -y
+flatpak run org.gimp.GIMP
+```
+
+#### B. Snap (Ubuntu Canonical Ecosystem)
+
+```bash
+# 1. Semak status dan pasang aplikasi Snap
+snap list
+sudo snap install code --classic  # VS Code
+sudo snap install chromium
+```
+
+---
+
+### 3. Pengesanan & Pemasangan Pemacu Peranti (GPU & Rangkaian Tanpa Wayar)
+
+#### A. Pengesanan Perkakasan Peranti
+
+```bash
+# Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)
+lspci -nnk | grep -A3 -i vga
+lspci -nnk | grep -A3 -i network
+
+# Senaraikan peranti USB
+lsusb
+
+# Semak modul isirung (kernel modules) yang diloadkan
+lsmod | grep -iE 'nvidia|amdgpu|iwlwifi'
+```
+
+#### B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS
+
+```bash
+# 1. Kesan pemacu yang disyorkan oleh peranti
+ubuntu-drivers devices
+
+# 2. Pasang pemacu NVIDIA terkini secara automatik
+sudo ubuntu-drivers install
+
+# 3. Sahkan pemacu NVIDIA berfungsi selepas but semula
+nvidia-smi
+```
+
+#### C. Pemasangan Pemacu NVIDIA pada Fedora 43 & AlmaLinux 10 (RPM Fusion)
+
+```bash
+# Untuk Fedora 43:
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Untuk AlmaLinux 10:
+# sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
+# sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm
+
+# Pasang pemacu akmod-nvidia:
+sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+```
+
+#### D. Pengesanan & Konfigurasi Pemacu AMD Radeon & Kad Rangkaian Tanpa Wayar
+
+```bash
+# Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):
+sudo apt install -y mesa-vulkan-drivers mesa-utils   # Ubuntu
+# sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora
+glxinfo | grep "OpenGL vendor"
+
+# Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):
+sudo apt install -y linux-firmware                   # Ubuntu
+# sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora
+```
+
+---
+
+## 🔒 Pematuhan Keselamatan JDN / MAMPU & ISO/IEC 27001
+
+1. **Verifikasi Kunci GPG APT:** Bagi repositori pihak ketiga pada sistem Debian/Ubuntu, gunakan fail kunci tersimpan di `/etc/apt/keyrings/` dengan opsyen `[signed-by=/etc/apt/keyrings/...]` dalam fail `.list` repositori.
+2. **Pengesahan Kunci DNF:** Tetapkan `gpgcheck=1` pada semua repositori DNF untuk mengelakkan suntikan pakej yang tidak disahkan.
+3. **Pakej Berdaftar Sahaja:** HANYA pasang perisian daripada repositori rasmi atau Flathub berverifikasi di komputer pejabat sektor awam.
+4. **Audit Pemasangan:** Simpan log pemasangan di `/var/log/dpkg.log` atau `/var/log/dnf.log` sebagai sebahagian daripada audit keselamatan ISO 27001.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.
+- [ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.
+- [ ] Berjaya mengenal pasti cip grafik dan kad Wi-Fi menggunakan `lspci` serta memasang pemacu peranti berkaitan.
+- [ ] Mengesahkan modul pemacu dimuatkan ke dalam isirung Linux (`lsmod` / `nvidia-smi` / `glxinfo`).
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemasangan Aplikasi & Pemacu Peranti Linux dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pemasangan Aplikasi & Pemacu Peranti Linux menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Bandingkan kelebihan dan kekurangan seni bina pembungkusan pakej APT/RPM berbanding ketersendirian kontena Flatpak dan Snap dari sudut keselamatan sektor awam."*
+2. *"Tuliskan skrip Bash untuk menyemak sama ada pemacu peranti NVIDIA atau AMD telah dimuatkan dengan betul dalam Kernel Linux 6.14."*
+3. *"Bagaimanakah cara menguruskan repositori cermin tempatan (local mirror repository) bagi persekitaran terpencil tanpa internet (air-gapped network)?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Dokumentasi Pengurusan Pakej Ubuntu](https://ubuntu.com/server/docs/package-management)
+- [Dokumentasi Rasmi DNF5 Fedora / AlmaLinux](https://dnf5.readthedocs.io/)
+- [Panduan Pengurusan Flathub](https://flathub.org/)
+- [Garis Panduan Keselamatan Perisian MAMPU / JDN](https://www.jdn.gov.my/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **The Linux Command Line, 2nd Edition** oleh William Shotts.
+- **Nota Pentadbiran Sistem Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

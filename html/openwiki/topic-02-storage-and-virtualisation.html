@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus pengurusan storan dan mesin maya (KVM) Linux dipetakan kepada NOSS CU02.">
+        <meta name="description" content="Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs, LUKS2) dan pengmayaan (KVM/QEMU/libvirt) Linux dipetakan kepada NOSS CU02.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -27,7 +27,7 @@
     
     
       
-        <title>topic-02-storage-and-virtualisation - NOSS Linux Malaysia (DSOM)</title>
+        <title>Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026 - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              topic-02-storage-and-virtualisation
+              Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026
             
           </span>
         </div>
@@ -1035,10 +1035,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview-gambaran-keseluruhan" class="md-nav__link">
+  <a href="#gambaran-keseluruhan-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview (Gambaran Keseluruhan)
+        Gambaran Keseluruhan (Overview)
       
     </span>
   </a>
@@ -1054,13 +1054,107 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Silibus Utama">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#1-pengurusan-storan-fizikal-jadual-partisi-gpt" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        1. Pengurusan Storan Fizikal &amp; Jadual Partisi GPT
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#2-pengurusan-volum-logikal-lvm2-logical-volume-management" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. Pengurusan Volum Logikal LVM2 (Logical Volume Management)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-sistem-fail-moden-ext4-xfs-btrfs-pautan-kekal-etcfstab" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Sistem Fail Moden (EXT4, XFS, Btrfs) &amp; Pautan Kekal /etc/fstab
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-penyulitan-storan-blok-luks2-pejabat" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Penyulitan Storan Blok LUKS2 Pejabat
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#5-infrastruktur-pemayaan-kvm-type-1-hypervisor-type-2-desktop-products" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5. Infrastruktur Pemayaan (KVM Type-1 Hypervisor &amp; Type-2 Desktop Products)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#pemetaan-noss-agent-skills-noss-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        Pemetaan NOSS &amp; Agent Skills (NOSS Mapping)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
 </li>
       
         <li class="md-nav__item">
-  <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pemetaan NOSS (NOSS Mapping)
+        📚 Buku Boleh Dibeli (Syor Bacaan)
       
     </span>
   </a>
@@ -1500,10 +1594,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview-gambaran-keseluruhan" class="md-nav__link">
+  <a href="#gambaran-keseluruhan-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview (Gambaran Keseluruhan)
+        Gambaran Keseluruhan (Overview)
       
     </span>
   </a>
@@ -1519,13 +1613,107 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Silibus Utama">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#1-pengurusan-storan-fizikal-jadual-partisi-gpt" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        1. Pengurusan Storan Fizikal &amp; Jadual Partisi GPT
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#2-pengurusan-volum-logikal-lvm2-logical-volume-management" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. Pengurusan Volum Logikal LVM2 (Logical Volume Management)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-sistem-fail-moden-ext4-xfs-btrfs-pautan-kekal-etcfstab" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Sistem Fail Moden (EXT4, XFS, Btrfs) &amp; Pautan Kekal /etc/fstab
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-penyulitan-storan-blok-luks2-pejabat" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Penyulitan Storan Blok LUKS2 Pejabat
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#5-infrastruktur-pemayaan-kvm-type-1-hypervisor-type-2-desktop-products" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5. Infrastruktur Pemayaan (KVM Type-1 Hypervisor &amp; Type-2 Desktop Products)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#pemetaan-noss-agent-skills-noss-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        Pemetaan NOSS &amp; Agent Skills (NOSS Mapping)
+
+    </span>
+  </a>
+
 </li>
       
         <li class="md-nav__item">
-  <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pemetaan NOSS (NOSS Mapping)
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
       
     </span>
   </a>
@@ -1550,26 +1738,108 @@
 
 
 <h1 id="topik-2-pengurusan-storan-pengmayaan-cu02">Topik 2: Pengurusan Storan &amp; Pengmayaan (CU02)<a class="headerlink" href="#topik-2-pengurusan-storan-pengmayaan-cu02" title="Permanent link">&para;</a></h1>
-<h2 id="overview-gambaran-keseluruhan">Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
-<p>Topik ini meliputi pengurusan ruang storan keras (disk management) serta pengenalan kepada konsep infrastruktur maya di persekitaran Linux. Ia dipetakan daripada <strong>CU02 (Virtualisation Infrastructure)</strong>.</p>
+<h2 id="gambaran-keseluruhan-overview">Gambaran Keseluruhan (Overview)<a class="headerlink" href="#gambaran-keseluruhan-overview" title="Permanent link">&para;</a></h2>
+<p>Topik ini merangkumi pengurusan ruang storan fizikal dan logikal (<em>disk management</em>), skema partisi GPT moden, Pengurusan Volum Logikal (<strong>LVM2</strong>), sistem fail moden (<strong>EXT4</strong>, <strong>XFS</strong>, <strong>Btrfs</strong>), penyulitan <strong>LUKS2</strong>, serta infrastruktur pemayaan (<em>virtualisation</em>) berprestasi tinggi di persekitaran Linux. Topik ini dipetakan secara terus kepada piawaian <strong>NOSS Level 3 (CU02: Virtualisation Infrastructure &amp; Storage Management)</strong>.</p>
+<blockquote>
+<p><strong>💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:</strong>
+Daripada sekadar "mencipta partisi dan format cakera" (spesifik) → fahami "bagaimana pangkalan data dan hipervisor menguruskan volum storan secara dinamis dan tersulit" (corak) → hayati "apakah peranan ketahanan data dan fleksibiliti storan dalam seni bina awan sovereign" (prinsip universal).</p>
+</blockquote>
+<hr />
 <h2 id="silibus-utama">Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Pengurusan Storan Fizikal &amp; Logikal</strong>:</li>
-<li>Arahan pemerhatian storan: <code>lsblk</code>, <code>df -h</code>, <code>du -sh</code></li>
-<li>Pemisahan cakera (Partitioning): <code>fdisk</code>, <code>parted</code></li>
-<li>Membina sistem fail (Filesystem): <code>mkfs.ext4</code>, <code>mkfs.xfs</code></li>
-<li>LVM (Logical Volume Management): <code>pvcreate</code>, <code>vgcreate</code>, <code>lvcreate</code></li>
-<li><strong>Mounting &amp; Fstab</strong>:</li>
-<li>Pemasangan storan manual: <code>mount</code> dan <code>umount</code></li>
-<li>Tetapan kekal di <code>/etc/fstab</code></li>
-<li><strong>Pengmayaan (Virtualisation)</strong>:</li>
-<li>Hypervisor Type-2 &amp; KVM (Kernel-based Virtual Machine).</li>
-<li>Penggunaan QEMU, <code>libvirt</code>, dan Virtual Machine Manager.</li>
-</ol>
-<h2 id="pemetaan-noss-noss-mapping">Pemetaan NOSS (NOSS Mapping)<a class="headerlink" href="#pemetaan-noss-noss-mapping" title="Permanent link">&para;</a></h2>
-<p>Silibus ini adalah persediaan kepada kemahiran Ejen AI:
-- <code>cu02-wa02-install-type-2-hypervisor-platform</code>
-- <code>cu02-wa03-deploy-guest-virtual-machines-vm</code></p>
+<h3 id="1-pengurusan-storan-fizikal-jadual-partisi-gpt">1. Pengurusan Storan Fizikal &amp; Jadual Partisi GPT<a class="headerlink" href="#1-pengurusan-storan-fizikal-jadual-partisi-gpt" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pemerhatian peranti blok: <code>lsblk</code>, <code>blkid</code>, <code>df -hT</code></li>
+<li>Perbandingan MBR (Legacy) vs <strong>GPT (GUID Partition Table)</strong> moden</li>
+<li>Pembahagian partisi GPT menggunakan <code>gdisk</code> (interaktif) dan <code>parted</code> (skrip)</li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.html">manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md</a></p>
+<h3 id="2-pengurusan-volum-logikal-lvm2-logical-volume-management">2. Pengurusan Volum Logikal LVM2 (Logical Volume Management)<a class="headerlink" href="#2-pengurusan-volum-logikal-lvm2-logical-volume-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Hierarki LVM2: <em>Physical Volume</em> (PV) ➔ <em>Volume Group</em> (VG) ➔ <em>Logical Volume</em> (LV)</li>
+<li>Arahan pembinaan: <code>pvcreate</code>, <code>vgcreate</code>, <code>lvcreate</code></li>
+<li>Peluasan volum secara dalam talian (<em>online volume expansion</em>): <code>lvextend</code> dan <code>resize2fs</code> / <code>xfs_growfs</code></li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.html">manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md</a></p>
+<h3 id="3-sistem-fail-moden-ext4-xfs-btrfs-pautan-kekal-etcfstab">3. Sistem Fail Moden (EXT4, XFS, Btrfs) &amp; Pautan Kekal <code>/etc/fstab</code><a class="headerlink" href="#3-sistem-fail-moden-ext4-xfs-btrfs-pautan-kekal-etcfstab" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Perbandingan prestasi dan kegunaan EXT4 (Desktop/Linux am), XFS (Enterprise Pelayan AlmaLinux 10), dan Btrfs (Snapshot/Fedora 43)</li>
+<li>Arahan format: <code>mkfs.ext4</code>, <code>mkfs.xfs</code>, <code>mkfs.btrfs</code></li>
+<li>Konfigurasi lekap kekal di <code>/etc/fstab</code> menggunakan <code>UUID</code> dan parameter <code>nofail</code></li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.html">manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md</a></p>
+<h3 id="4-penyulitan-storan-blok-luks2-pejabat">4. Penyulitan Storan Blok LUKS2 Pejabat<a class="headerlink" href="#4-penyulitan-storan-blok-luks2-pejabat" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Konfigurasi LUKS2 (<code>cryptsetup luksFormat --type luks2</code>)</li>
+<li>Pembukaan dan pemetaan volum tersulit di <code>/dev/mapper/</code></li>
+<li>Pematuhan piawaian ISO/IEC 27001 &amp; Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU</li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.html">manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md</a></p>
+<h3 id="5-infrastruktur-pemayaan-kvm-type-1-hypervisor-type-2-desktop-products">5. Infrastruktur Pemayaan (KVM Type-1 Hypervisor &amp; Type-2 Desktop Products)<a class="headerlink" href="#5-infrastruktur-pemayaan-kvm-type-1-hypervisor-type-2-desktop-products" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Konsep <strong>KVM (Kernel-based Virtual Machine)</strong> sebagai <strong>Hipervisor Jenis-1 (Type-1 / Bare-Metal)</strong> yang terintegrasi secara langsung ke dalam isirung Linux, berbeza daripada produk Type-2 berasaskan OS hos seperti VirtualBox</li>
+<li>Pengurusan mesin maya tetamu (<em>Guest VMs</em>) menggunakan <code>QEMU</code>, <code>libvirt</code>, <code>virsh</code>, dan <code>virt-manager</code></li>
+<li>Penyediaan rekod konfigurasi pemayaan dan pengasingan rangkaian maya (<em>virtual networks</em>)</li>
+</ul>
+<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.html">manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md</a></p>
+<hr />
+<h2 id="pemetaan-noss-agent-skills-noss-mapping">Pemetaan NOSS &amp; Agent Skills (NOSS Mapping)<a class="headerlink" href="#pemetaan-noss-agent-skills-noss-mapping" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Kod NOSS</th>
+<th>Nama Aktiviti Kerja</th>
+<th>Status Modul &amp; Skill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CU02-WA01</strong></td>
+<td>Keperluan Infrastruktur Pemayaan &amp; Storan</td>
+<td><a href="../.agents/skills/cu02-wa01-identify-virtualisation-infrastructure-requirements/SKILL.html">Lihat Skill</a></td>
+</tr>
+<tr>
+<td><strong>CU02-WA02</strong></td>
+<td>Pemasangan Hipervisor Jenis-2</td>
+<td><a href="../.agents/skills/cu02-wa02-install-type-2-hypervisor-platform/SKILL.html">Lihat Skill</a></td>
+</tr>
+<tr>
+<td><strong>CU02-WA03</strong></td>
+<td>Penyebaran Mesin Maya Tetamu (VM)</td>
+<td><a href="../.agents/skills/cu02-wa03-deploy-guest-virtual-machines-vm/SKILL.html">Lihat Skill</a></td>
+</tr>
+<tr>
+<td><strong>CU02-WA04</strong></td>
+<td>Penyediaan Rekod Konfigurasi Pemayaan</td>
+<td><a href="../.agents/skills/cu02-wa04-prepare-virtualisation-configuration-records/SKILL.html">Lihat Skill</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
+<p>Gunakan <em>prompt</em> berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk mendalami topik ini:
+1. &gt; "Bolehkah anda jelaskan perbezaan antara sistem fail EXT4, XFS, dan Btrfs dari segi sokongan saiz maksimum, kecekapan I/O, dan kebolehan salinan snapshot?"
+2. &gt; "Tuliskan skrip Bash untuk membina susunan LVM2 secara automatik berasaskan dua peranti blok baharu, memformatnya ke XFS, dan memasangnya ke /mnt/data dengan tetapan UUID dalam /etc/fstab."
+3. &gt; "Bagaimanakah cara meluaskan saiz Logical Volume (LV) LVM2 dan sistem fail XFS secara dalam talian (online expansion) tanpa perlu menghentikan mesin maya (VM)?"
+4. &gt; "Apakah perbezaan seni bina antara KVM (Kernel-based Virtual Machine) sebagai Type-1 Hypervisor dengan Type-2 Hypervisor seperti VirtualBox dalam persekitaran pelayan perusahaan?"</p>
+<hr />
+<h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/10/">Dokumentasi LVM2 Red Hat / AlmaLinux 10</a></li>
+<li><a href="https://www.gnu.org/software/parted/">Panduan GNU Parted &amp; GPT Partition Table</a></li>
+<li><a href="https://btrfs.readthedocs.io/">Dokumentasi Btrfs Wiki Documentation</a></li>
+<li><a href="https://libvirt.org/">Dokumentasi KVM &amp; Libvirt Virtualization</a></li>
+<li><a href="https://www.jdn.gov.my/">Pekeliling Keselamatan ICT Jabatan Digital Negara (JDN) / MAMPU</a></li>
+</ul>
+<hr />
+<h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
+<p>Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai buku yang disyorkan:</p>
+<p><strong>Bahasa Melayu:</strong>
+1. <em>Asas Pentadbiran Storan &amp; Pelayan Linux</em> oleh Harisfazillah Jamel — Panduan amali pengurusan storan dan sistem fail dalam persekitaran Malaysia.
+2. <em>Panduan Amali Virtualisasi KVM Linux</em> — Buku latihan amali mesin maya dan LVM.</p>
+<p><strong>English (Antarabangsa):</strong>
+1. <em>UNIX and Linux System Administration Handbook, 5th Edition</em> oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin — Kitab rujukan utama pentadbiran storan dan sistem.
+2. <em>Storage Systems: Organization, Performance, Coding, Reliability, and Statistics</em> oleh Alexander Thomasian — Rujukan mendalam seni bina storan enterprise.
+3. <em>Mastering KVM Virtualization</em> oleh Prasad Mukhedkar, Anil Vettattu, Humble Chirammal — Panduan lengkap hipervisor KVM dan libvirt.</p>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>

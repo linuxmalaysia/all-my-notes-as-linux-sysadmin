@@ -149,7 +149,7 @@ def test_openwiki_topic01_title_reflects_2026_update():
         "manual/cu01/keperluan-perkakasan-dan-bios-uefi.md",
         "manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md",
         "manual/cu01/penyulitan-cakera-luks2-pejabat.md",
-        "manual/cu01/pasca-pemasangan-dan-driver.md",
+        "manual/cu01/penegasan-keselamatan-sistem.md",
     ],
 )
 def test_openwiki_topic01_links_to_new_nodes(expected_link):
@@ -157,13 +157,12 @@ def test_openwiki_topic01_links_to_new_nodes(expected_link):
     assert expected_link in content, f"Syllabus should link to {expected_link}."
 
 
-def test_openwiki_topic01_has_eight_numbered_sections():
+def test_openwiki_topic01_has_numbered_sections():
     content = read(OPENWIKI_TOPIC_01)
-    for n in range(1, 9):
+    for n in range(1, 11):
         assert re.search(rf"^### {n}\. ", content, re.MULTILINE), (
             f"Expected numbered section heading '### {n}. ...' in syllabus."
         )
-    assert not re.search(r"^### 9\. ", content, re.MULTILINE)
 
 
 def test_openwiki_topic01_mentions_canonical_2026_distros():
