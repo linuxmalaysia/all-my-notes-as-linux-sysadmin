@@ -15,7 +15,11 @@ except ImportError:
 
 
 def get_container_files():
-    """Retrieve all container configurations across the repo."""
+    """Collect container configuration file paths from the repository.
+    
+    Returns:
+    	list[str]: Sorted, duplicate-free paths excluding files under ``node_modules`` and ``.venv``.
+    """
     patterns = [
         "**/Dockerfile*",
         "**/Containerfile*",

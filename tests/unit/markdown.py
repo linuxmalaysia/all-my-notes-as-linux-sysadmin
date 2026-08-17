@@ -14,7 +14,11 @@ EXCLUDED_FILES = ["README.md", "CHANGELOG.md", "HISTORY.md", "AGENTS.md", "SUMMA
 
 
 def get_markdown_files():
-    """Retrieve all markdown files matching target directories."""
+    """Collect Markdown files from the configured target directories, excluding specified files.
+    
+    Returns:
+    	list[str]: Sorted unique paths to matching Markdown files.
+    """
     files = []
     for pattern in TARGET_DIRS:
         files.extend(glob.glob(pattern, recursive=True))
@@ -23,7 +27,9 @@ def get_markdown_files():
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
 def test_markdown_okf_compliance(filepath):
-    """Verify markdown file begins with valid OKF v0.1 YAML frontmatter."""
+    """
+    Verify that a Markdown file has valid YAML frontmatter containing OKF or DSOM metadata and a title or name.
+    """
     assert os.path.exists(filepath), f"Markdown file missing: {filepath}"
 
     with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:
