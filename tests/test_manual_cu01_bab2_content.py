@@ -8,7 +8,6 @@ Covers:
   - The Master Palace Registry (.agents/skills/index.md) timestamp update.
 """
 
-import os
 import re
 from pathlib import Path
 

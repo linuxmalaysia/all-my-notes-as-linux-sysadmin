@@ -8,9 +8,7 @@ Covers:
   - openwiki/topic-02-storage-and-virtualisation.md
 """
 
-import re
 from pathlib import Path
-import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
