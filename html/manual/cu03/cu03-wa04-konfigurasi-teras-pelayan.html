@@ -1797,7 +1797,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>sshd<span class="w"> </span>-f
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Filter log mengikut selang masa tertentu</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;2026-08-17 00:00:00&quot;</span><span class="w"> </span>--until<span class="w"> </span><span class="s2">&quot;2026-08-17 12:00:00&quot;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">"2026-08-17 00:00:00"</span><span class="w"> </span>--until<span class="w"> </span><span class="s2">"2026-08-17 12:00:00"</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Memaparkan log berkaitan ralat sahaja (Priority level 3 / ERR)</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>-p<span class="w"> </span>err..emerg
@@ -1870,8 +1870,8 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span></code></pre></div>
 <h4 id="b-utiliti-carian-bantuan-apropos-whatis-whereis-plocate">B. Utiliti Carian Bantuan (<code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>)<a class="headerlink" href="#b-utiliti-carian-bantuan-apropos-whatis-whereis-plocate" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Cari arahan berkaitan kata kunci menggunakan pangkalan data whatis</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>apropos<span class="w"> </span><span class="s2">&quot;systemctl&quot;</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>apropos<span class="w"> </span><span class="s2">&quot;network configuration&quot;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>apropos<span class="w"> </span><span class="s2">"systemctl"</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>apropos<span class="w"> </span><span class="s2">"network configuration"</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Dapatkan gambaran ringkas satu baris fungsi arahan</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>whatis<span class="w"> </span>systemctl

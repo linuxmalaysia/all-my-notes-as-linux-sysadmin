@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T07:12:24Z"
+timestamp: "2026-08-17T08:23:31Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -47,9 +47,9 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu03-wa05-implement-server-roles-and-services`** <br> *cu03-wa05-implement-server-roles-and-services* | No description provided. | N/A |
 | **`cu03-wa06-manage-server-hardware`** <br> *cu03-wa06-manage-server-hardware* | No description provided. | N/A |
 | **`cu04-wa01-prepare-backup-recovery-tools`** <br> *cu04-wa01-prepare-backup-recovery-tools* | No description provided. | N/A |
-| **`cu04-wa02-perform-local-backup-operations`** <br> *cu04-wa02-perform-local-backup-operations* | No description provided. | N/A |
+| **`cu04-wa02-perform-local-backup-operations`** <br> *Perform Local Backup Operations (CU04-WA02)* | Executes NOSS Work Activity CU04-WA02 - Perform Local Backup Operations including tar archive with zstd compression, rsync incremental sync, and systemd.timer automation. | noss, cu04, wa02, backup, tar, zstd, rsync, cron, systemd-timer |
 | **`cu04-wa03-perform-network-based-backup`** <br> *cu04-wa03-perform-network-based-backup* | No description provided. | N/A |
-| **`cu04-wa04-restore-endpoint-data`** <br> *cu04-wa04-restore-endpoint-data* | No description provided. | N/A |
+| **`cu04-wa04-restore-endpoint-data`** <br> *Restore Endpoint Data (CU04-WA04)* | Executes NOSS Work Activity CU04-WA04 - Restore Endpoint Data and Filesystem Recovery including sha256sum checksum validation and selective archive extraction. | noss, cu04, wa04, restore, sha256sum, bare-metal, tar |
 | **`cu04-wa05-perform-endpoint-bare-metal-recovery`** <br> *cu04-wa05-perform-endpoint-bare-metal-recovery* | No description provided. | N/A |
 | **`cu05-wa01-perform-user-account-and-permission-audits`** <br> *Perform User Account and Permission Audits (CU05-WA01)* | Executes NOSS Work Activity CU05-WA01: Audit user accounts, group memberships, authentication files (/etc/passwd, /etc/shadow), sudoers configuration, file permissions, POSIX ACLs, and faillock. | "noss", "cu05", "wa01", "user-audit", "permissions", "visudo", "faillock" |
 | **`cu05-wa02-configure-endpoint-antivirus-anti-malware-defences`** <br> *cu05-wa02-configure-endpoint-antivirus-anti-malware-defences* | No description provided. | N/A |
@@ -59,11 +59,11 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa01-prepare-end-user-support-service-requirements`** <br> *cu06-wa01-prepare-end-user-support-service-requirements* | No description provided. | N/A |
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** <br> *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
 | **`cu06-wa03-support-hardware-troubleshooting`** <br> *cu06-wa03-support-hardware-troubleshooting* | No description provided. | N/A |
-| **`cu06-wa04-configure-and-troubleshoot-peripheral-connections`** <br> *cu06-wa04-configure-and-troubleshoot-peripheral-connections* | No description provided. | N/A |
+| **`cu06-wa04-configure-and-troubleshoot-peripheral-connections`** <br> *Configure and Troubleshoot Peripheral Connections (CU06-WA04)* | Executes NOSS Work Activity CU06-WA04 - Configure and Troubleshoot Peripheral Connections including storage mounting, umount, findmnt, and /etc/fstab security hardening. | noss, cu06, wa04, mount, umount, findmnt, fstab, storage |
 | **`cu06-wa05-optimize-system-performance-and-storage`** <br> *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa05-perform-system-optimisation-and-disk-management`** <br> *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** <br> *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
-| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *cu06-wa07-resolve-system-anomalies-and-document-rca* | No description provided. | N/A |
+| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *Resolve System Anomalies and Document RCA (CU06-WA07)* | Executes NOSS Work Activity CU06-WA07 - Resolve System Anomalies and Document RCA using text filters (grep, sed, awk, cut, sort, uniq), I/O redirection, vim/nano, and RCA reporting. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, nano, rca |
 | **`docx-highlight-extractor`** <br> *docx-highlight-extractor* | No description provided. | N/A |
 | **`dsom-bootstrap`** <br> *dsom-bootstrap* | No description provided. | N/A |
 | **`dsom-diataxis-pipeline`** <br> *dsom-diataxis-pipeline* | No description provided. | N/A |

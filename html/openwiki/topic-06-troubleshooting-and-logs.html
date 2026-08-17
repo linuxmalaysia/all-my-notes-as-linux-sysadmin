@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus penyelesaian masalah sistem, pemantauan prestasi & proses, analisis log journalctl, dan sokongan pengguna dipetakan kepada NOSS CU06.">
+        <meta name="description" content="Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, editor vim/nano, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Topik 6: Penyelesaian Masalah, Pemantauan Prestasi & Analisis Log (CU06) - NOSS Linux Malaysia (DSOM)</title>
+        <title>Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks & Analisis Log (CU06) - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#topik-6-penyelesaian-masalah-pemantauan-prestasi-analisis-log-cu06" class="md-skip">
+        <a href="#topik-6-penyelesaian-masalah-pelekapan-storan-penapis-teks-analisis-log-cu06" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Topik 6: Penyelesaian Masalah, Pemantauan Prestasi & Analisis Log (CU06)
+              Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks & Analisis Log (CU06)
             
           </span>
         </div>
@@ -1615,35 +1615,33 @@
 
 
 
-<h1 id="topik-6-penyelesaian-masalah-pemantauan-prestasi-analisis-log-cu06">Topik 6: Penyelesaian Masalah, Pemantauan Prestasi &amp; Analisis Log (CU06)<a class="headerlink" href="#topik-6-penyelesaian-masalah-pemantauan-prestasi-analisis-log-cu06" title="Permanent link">&para;</a></h1>
+<h1 id="topik-6-penyelesaian-masalah-pelekapan-storan-penapis-teks-analisis-log-cu06">Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks &amp; Analisis Log (CU06)<a class="headerlink" href="#topik-6-penyelesaian-masalah-pelekapan-storan-penapis-teks-analisis-log-cu06" title="Permanent link">&para;</a></h1>
 <h2 id="overview-gambaran-keseluruhan">📌 Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
-<p>Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (<em>troubleshooting</em>), memeriksa kesihatan &amp; prestasi sistem, penalaan proses, dan pengurusan perkhidmatan sokongan pengguna. Dipetakan secara terus daripada <strong>NOSS CU06 (End-User Support &amp; System Maintenance)</strong>.</p>
+<p>Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (<em>troubleshooting</em>), pemeriksaan pelekapan storan &amp; peranti luaran, pemprosesan teks aluran log, penalaan proses, dan penyediaan laporan Analisis Punca Utama (<em>Root Cause Analysis - RCA</em>). Dipetakan secara terus daripada <strong>NOSS CU06 (End-User Support &amp; System Maintenance)</strong>.</p>
 <hr />
 <h2 id="silibus-utama">📚 Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Pemantauan Proses &amp; Sumber Sistem (Resource &amp; Process Monitoring)</strong>:<ul>
-<li>Arahan pemerhatian statik dan interaktif masa nyata: <code>ps aux</code>, <code>top</code>, <code>htop</code>, <code>pidstat</code>.</li>
-<li>Analisis beban purata (<em>load average</em>), penggunaan memori fizikal &amp; swap: <code>uptime</code>, <code>free -h</code>.</li>
-<li>Menganalisis memori maya dan I/O cakera: <code>vmstat 1 5</code>, <code>iostat -xz 1 5</code>.</li>
+<li>Arahan pemerhatian statik dan masa nyata: <code>ps aux</code>, <code>top</code>, <code>htop</code>, <code>pidstat</code>.</li>
+<li>Analisis beban purata (<em>load average</em>), memori fizikal, swap, dan I/O: <code>uptime</code>, <code>free -h</code>, <code>vmstat</code>, <code>iostat</code>.</li>
+<li>Isyarat POSIX (<code>kill</code>, <code>pkill</code>, <code>killall</code>), keutamaan <code>nice</code>/<code>renice</code>, dan <code>cgroups v2</code>.</li>
 </ul>
 </li>
-<li><strong>Kitaran Hayat Proses &amp; Penalaan Keutamaan (Process Lifecycle &amp; Tuning)</strong>:<ul>
-<li>Penghantaran isyarat POSIX (<code>kill -15</code> SIGTERM, <code>kill -9</code> SIGKILL, <code>kill -1</code> SIGHUP, <code>killall</code>, <code>pkill</code>).</li>
-<li>Penalaan keutamaan penjadualan CPU (<em>nice value</em> -20 hingga 19): <code>nice</code>, <code>renice</code>.</li>
-<li>Penalaan keutamaan I/O cakera: <code>ionice</code>.</li>
-<li>Penghadan sumber sistem melalui <code>cgroups v2</code> dan <code>systemd-run</code>.</li>
+<li><strong>Pelekapan Storan &amp; Peranti Luaran (Storage Mounting &amp; Peripherals)</strong>:<ul>
+<li>Nod peranti moden (<code>/dev/nvmeXn1</code>, <code>/dev/sdX</code>, <code>/dev/sr0</code>, USB) berpandukan FHS.</li>
+<li>Pelekapan manual dan penangguhan: <code>mount</code>, <code>umount</code>, <code>findmnt</code>, <code>lsblk</code>, <code>eject</code>.</li>
+<li>Entri pelekapan kekal dalam <code>/etc/fstab</code> dengan pilihan keselamatan JDN/MAMPU (<code>nodev,nosuid,noexec</code>).</li>
 </ul>
 </li>
-<li><strong>Penyelesaian Masalah Rangkaian &amp; Sambungan (Network Troubleshooting)</strong>:<ul>
-<li>Pemeriksaan IP &amp; Antaramuka: <code>ip a</code>, <code>ip route</code>.</li>
-<li>Menguji capaian &amp; laluan: <code>ping</code>, <code>traceroute</code>, <code>tracepath</code>, <code>curl</code>, <code>dig</code>.</li>
-<li>Pemerhatian port &amp; soket aktif: <code>ss -tulpn</code>.</li>
+<li><strong>Pemprosesan Teks Aluran &amp; Editor CLI (Text Filters &amp; CLI Editors)</strong>:<ul>
+<li>Penapis teks: <code>grep</code> / <code>ripgrep</code>, <code>sed</code> (stream editor), <code>awk</code> (pattern scanning), <code>cut</code>, <code>sort</code>, <code>uniq</code>, <code>wc</code>, <code>tr</code>.</li>
+<li>Operator pengalihan I/O (<code>&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;</code>, <code>2&gt;&amp;1</code>, <code>|</code> piping, <code>tee</code>).</li>
+<li>Penyunting teks CLI pentadbiran: <code>vim</code> (mod Command/Insert/Visual/Ex) dan <code>nano</code>.</li>
 </ul>
 </li>
-<li><strong>Pembacaan &amp; Analisis Log Sistem (Log Analysis &amp; Auditing)</strong>:<ul>
-<li>Audit log sistem terpusat menggunakan <code>journalctl</code> (parameter <code>-u</code>, <code>-f</code>, <code>--since</code>, <code>-p err</code>).</li>
-<li>Menyelidik fail log sistem tradisional di <code>/var/log/</code> (<code>syslog</code>, <code>auth.log</code>, <code>messages</code>, <code>secure</code>).</li>
-<li>Penyiasatan punca kegagalan sistem (<em>Root Cause Analysis - RCA</em>).</li>
+<li><strong>Pembacaan Log Sistem &amp; Laporan RCA (Log Analysis &amp; Root Cause Analysis)</strong>:<ul>
+<li>Audit log sistem terpusat menggunakan <code>journalctl</code> dan fail <code>/var/log/</code>.</li>
+<li>Penyediaan laporan Analisis Punca Utama (<em>Root Cause Analysis - RCA</em>) mengikut standard ISO/IEC 27001 dan Pekeliling Am Bilangan 4 Tahun 2022.</li>
 </ul>
 </li>
 </ol>
@@ -1655,34 +1653,35 @@
 <li><code>manual/cu06/cu06-wa02-pengendalian-aduan-dan-insiden-pengguna.md</code> ➔ <code>.agents/skills/cu06-wa02-handle-end-user-requests-and-incidents/</code></li>
 <li><code>manual/cu06/cu06-wa03-diagnostik-dan-troubleshooting-perkakasan.md</code> ➔ <code>.agents/skills/cu06-wa03-support-hardware-troubleshooting/</code></li>
 <li><code>manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md</code> ➔ <code>.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/</code></li>
-<li><code>manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md</code> ➔ <code>.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/</code></li>
+<li><code>manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md</code> ➔ <code>.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/</code> &amp; <code>.agents/skills/cu06-wa05-optimize-system-performance-and-storage/</code></li>
 <li><code>manual/cu06/cu06-wa06-pengurusan-tiket-sokongan-dan-sla.md</code> ➔ <code>.agents/skills/cu06-wa06-manage-support-tickets-and-slas/</code></li>
 <li><code>manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md</code> ➔ <code>.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/</code></li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Bagaimanakah cara menganalisis punca kemerosotan prestasi I/O pelayan apabila vmstat menunjukkan nilai swap-out (so) yang tinggi secara berterusan?"</em></li>
-<li><em>"Tunjukkan skrip Python untuk mengautomasikan pemantauan log journalctl dan menghantar amaran ke saluran Telegram/Slack apabila ralat kritikal (Priority ERR) dikesan."</em></li>
-<li><em>"Apakah langkah-langkah penyediaan laporan RCA (Root Cause Analysis) yang mematuhi format ISO/IEC 27001 bagi insiden perkhidmatan terhenti disebabkan OOM Killer?"</em></li>
+<li><em>"Bagaimanakah cara menggunakan awk dan sort untuk mengekstrak alamat IP terbanyak yang membuat percubaan akses SSH gagal daripada log auth.log?"</em></li>
+<li><em>"Apakah langkah penyelesaian masalah apabila arahan umount melaporkan 'target is busy'?"</em></li>
+<li><em>"Tunjukkan contoh persediaan laporan RCA (Root Cause Analysis) yang lengkap bagi insiden kegagalan perkhidmatan pelayan."</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.brendangregg.com/linuxperf.html">Brendan Gregg's Linux Performance &amp; Tuning Guide</a></li>
-<li><a href="https://ubuntu.com/server/docs">Ubuntu Server Administration &amp; Diagnostics Guide</a></li>
-<li><a href="https://wiki.almalinux.org/">AlmaLinux 10 Performance Optimization Wiki</a></li>
+<li><a href="https://ubuntu.com/server/docs">Ubuntu Server Storage &amp; Diagnostics Guide</a></li>
+<li><a href="https://www.gnu.org/software/sed/manual/sed.html">GNU Sed User Manual</a></li>
+<li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">GNU Awk User's Guide</a></li>
 <li><a href="https://www.freedesktop.org/software/systemd/man/journalctl.html">Systemd Journalctl User Guide</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Systems Performance: Enterprise and the Cloud (2nd Edition)</strong> oleh Brendan Gregg.</li>
-<li><strong>Linux Troubleshooting Bible</strong> oleh Christopher Negus &amp; Thomas Weeks.</li>
+<li><strong>Systems Performance: Enterprise and the Cloud</strong> oleh Brendan Gregg.</li>
+<li><strong>Sed &amp; Awk (2nd Edition)</strong> oleh Dale Dougherty &amp; Arnold Robbins.</li>
 <li><strong>Pengoptimuman &amp; Diagnostik Prestasi Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em>
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 
