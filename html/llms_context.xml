@@ -43,7 +43,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
     - Use `uvx ruff check .` as the primary static analysis and auto-fixing tool for codebase health audits.
     - **Windows Terminal Unicode Safe**: Always include `if hasattr(sys.stdout, 'reconfigure'): sys.stdout.reconfigure(encoding='utf-8')` in CLI scripts to prevent `UnicodeEncodeError` when printing emojis or special characters on Windows.
     - **Subprocess Execution**: When running Python submodules via `subprocess` from within an isolated script, exclusively use `[sys.executable, "-m", "module_name"]` instead of nested `uv run` commands to prevent pathing failures.
-    - **Non-Interactive CI Execution**: When orchestrating multi-language test runners (such as `npm test` or `jest` from Python), always pass `CI=true` and explicit non-interactive flags (`--ci`) to prevent TTY or stdin blocking on Windows and automated runners.
+    - **Non-Interactive CI &amp; Direct Jest Execution**: When orchestrating multi-language test runners from Python, always pass `CI=true`, non-interactive flags (`--ci`), and `stdin=subprocess.DEVNULL`. Prefer invoking the Jest binary directly via Node (`node ./node_modules/jest/bin/jest.js --ci`) to eliminate shell wrapper layering overhead on Windows.
     - **Cross-Platform Filesystem Testing**: When testing filesystem linking (symlinks vs Windows NTFS junctions), write platform-aware assertions. Do not rely solely on `Path.is_symlink()` on Windows (use `is_junction()` or resolution matching) to ensure 100% test compatibility across both Windows and POSIX environments.
 15. **Piawaian Distribusi Linux Kanonik &amp; Dasar Penyulitan Pejabat**: Apabila menulis atau mengemaskini sebarang kemahiran, dokumentasi, atau kandungan silibus yang melibatkan distribusi Linux:
     - Gunakan **Ubuntu 26.04 LTS "Quetzal"** (Isirung 6.14 LTS, GNOME 48, sokongan sehingga April 2031) sebagai distribusi rujukan utama untuk desktop dan persekitaran latihan.
@@ -26646,41 +26646,85 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
   </file>
   <file path="openwiki/topic-03-linux-server-administration.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 type: documentation
-title: "topic-03-linux-server-administration"
-timestamp: "2026-08-16T08:43:42Z"
-topics: ["linux-server", "cu03"]
-tags: ["linux", "server", "cu03"]
-description: "Silibus pentadbiran pelayan Linux (Apache, SSH, Samba) dipetakan kepada NOSS CU03."
+title: "Topik 3: Pentadbiran Pelayan Linux (CU03)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["linux-server", "cu03", "systemd", "openwiki", "noss"]
+tags: ["linux", "server", "cu03", "systemd", "openwiki"]
+description: "Silibus pentadbiran pelayan Linux, pengurusan perkhidmatan systemd, konfigurasi teras pelayan, dan peranan servis pelayan dipetakan kepada NOSS CU03."
 resource: "file:///openwiki/topic-03-linux-server-administration.md"
 ---
 
 # Topik 3: Pentadbiran Pelayan Linux (CU03)
 
-## Overview (Gambaran Keseluruhan)
-Pusat utama ekosistem Linux adalah pelayannya (Server). Topik ini menerangkan tentang proses perkhidmatan (*services*) dan peranan pelayan. Ia merupakan pemetaan langsung daripada **CU03 (Server Setup)**.
+## 📌 Overview (Gambaran Keseluruhan)
 
-## Silibus Utama
-1. **Pemasangan OS Pelayan (Server OS)**: 
-   - Membezakan edisi Desktop vs Server (tiada GUI, dikawal CLI penuh).
-   - *Static IP Configuration* menggunakan Netplan (Ubuntu) atau NetworkManager (RHEL).
-2. **Remote Access &amp; SSH**:
-   - Pemasangan `openssh-server`.
-   - Log masuk jarak jauh dan penggunaan kunci (SSH Keys) `/home/user/.ssh/authorized_keys`.
-3. **Penyedia Khidmat (Service Roles)**:
-   - **Web Server**: Apache (`httpd` / `apache2`) atau Nginx.
-   - **File Sharing**: Samba (SMB) untuk Windows, NFS untuk persekitaran Linux.
-   - **Database**: MariaDB / MySQL.
-
-## Pemetaan NOSS (NOSS Mapping)
-Silibus ini memandu kemahiran Ejen AI berikut:
-- `cu03-wa04-perform-core-server-configurations`
-- `cu03-wa05-implement-server-roles-and-services`
+Pusat utama ekosistem Linux adalah pelayannya (*Server*). Topik ini menerangkan tentang pengurusan perkhidmatan (*services*), konfigurasi teras pelayan, dan pelaksanaan peranan pelayan enterprise. Ia merupakan pemetaan langsung daripada **NOSS CU03 (Server Setup)**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 📚 Silibus Utama
+
+1. **Pemasangan &amp; Persediaan OS Pelayan (Server OS)**:
+    - Membezakan edisi Desktop vs Server (pemasangan minimum, CLI penuh).
+    - *Static IP Configuration* menggunakan Netplan (Ubuntu 26.04 LTS) atau NetworkManager / `nmcli` (AlmaLinux 10 / Fedora 43).
+2. **Konfigurasi Teras Pelayan &amp; Systemd**:
+    - Pengurusan perkhidmatan menggunakan `systemctl` (start, stop, enable, disable, mask, restart, daemon-reload).
+    - Penulisan fail unit perkhidmatan kustom (`/etc/systemd/system/`) dengan parameter pengerasan keselamatan.
+    - Audit log sistem terpusat menggunakan `journalctl`.
+    - Penyegerakan masa kebangsaan dan zon masa melalui `timedatectl` dan `chronyd`.
+    - Navigasi dokumentasi sistem dan halaman manual (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
+3. **Capaian Jarak Jauh &amp; Pengerasan SSH (Remote Access Hardening)**:
+    - Pemasangan dan konfigurasi `openssh-server`.
+    - Log masuk tanpa kata laluan menggunakan kunci SSH (`ssh-keygen`, `ssh-copy-id`, `authorized_keys`).
+    - Pengerasan SSH: penutupan root login (`PermitRootLogin no`), pertukaran port, dan `fail2ban`.
+4. **Penyedia Khidmat &amp; Peranan Pelayan (Server Roles)**:
+    - **Pelayan Web**: Apache (`httpd` / `apache2`) dan Nginx dengan TLS/SSL Let's Encrypt.
+    - **Perkongsian Fail**: Samba (SMB/CIFS) untuk interoperabiliti Windows dan NFSv4 untuk persekitaran Linux.
+    - **Pangkalan Data**: MariaDB / MySQL enterprise hardening.
+
+---
+
+## 🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+Silibus ini memandu modul amali di `manual/cu03/` dan kemahiran AI di `.agents/skills/`:
+
+- `manual/cu03/cu03-wa01-persediaan-pemasangan-pelayan.md` ➔ `.agents/skills/cu03-wa01-prepare-server-setup/`
+- `manual/cu03/cu03-wa02-pelaksanaan-pemasangan-fizikal-pelayan.md` ➔ `.agents/skills/cu03-wa02-carry-out-server-installation/`
+- `manual/cu03/cu03-wa03-pemasangan-sistem-operasi-pelayan.md` ➔ `.agents/skills/cu03-wa03-install-server-operating-system/`
+- `manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md` ➔ `.agents/skills/cu03-wa04-perform-core-server-configurations/`
+- `manual/cu03/cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md` ➔ `.agents/skills/cu03-wa05-implement-server-roles-and-services/`
+- `manual/cu03/cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md` ➔ `.agents/skills/cu03-wa06-manage-server-hardware/`
+
+---
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+1. *"Apakah perbezaan ketara antara pengurusan unit systemd pada Ubuntu Server 26.04 LTS dan AlmaLinux 10 dari segi kawalan SELinux/AppArmor?"*
+2. *"Hasilkan skrip automasi Bash untuk mengesahkan penyegerakan masa chronyc dan status keaktifan semua perkhidmatan teras pelayan."*
+3. *"Bagaimanakah cara mengkonfigurasikan pelayan web Nginx sebagai reverse proxy bersama modul systemd socket activation?"*
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+- [Dokumentasi Systemd Official](https://systemd.io/)
+- [Panduan Pentadbiran Pelayan Ubuntu Server](https://ubuntu.com/server/docs)
+- [AlmaLinux 10 Enterprise Server Administration Wiki](https://wiki.almalinux.org/)
+- [Freedesktop.org Systemd Unit Manual](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
+- **UNIX and Linux System Administration Handbook (5th Edition)** oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin.
+- **Mastering systemd** oleh Anish Nath.
+- **Panduan Praktikal Pentadbiran Pelayan Linux** oleh Harisfazillah Jamel.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -26818,43 +26862,86 @@ Silibus ini memandu kemahiran Ejen AI berikut:
   </file>
   <file path="openwiki/topic-06-troubleshooting-and-logs.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 type: documentation
-title: "topic-06-troubleshooting-and-logs"
-timestamp: "2026-08-16T08:43:42Z"
-topics: ["troubleshooting", "logs", "cu06"]
-tags: ["linux", "troubleshooting", "logs", "cu06"]
-description: "Silibus penyelesaian masalah, rangkaian, dan semakan log Linux dipetakan kepada NOSS CU06."
+title: "Topik 6: Penyelesaian Masalah, Pemantauan Prestasi &amp; Analisis Log (CU06)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["troubleshooting", "logs", "performance", "cu06", "openwiki", "noss"]
+tags: ["linux", "troubleshooting", "logs", "cu06", "prestasi", "openwiki"]
+description: "Silibus penyelesaian masalah sistem, pemantauan prestasi &amp; proses, analisis log journalctl, dan sokongan pengguna dipetakan kepada NOSS CU06."
 resource: "file:///openwiki/topic-06-troubleshooting-and-logs.md"
 ---
 
-# Topik 6: Penyelesaian Masalah &amp; Log (CU06)
+# Topik 6: Penyelesaian Masalah, Pemantauan Prestasi &amp; Analisis Log (CU06)
 
-## Overview (Gambaran Keseluruhan)
-Topik terakhir ini memfokuskan kepada teknik merungkaikan masalah sistem (troubleshooting), memeriksa kesihatan sistem, dan menguruskan perkhidmatan sokongan pengguna. Dipetakan terus daripada **CU06 (End-User Support)**.
+## 📌 Overview (Gambaran Keseluruhan)
 
-## Silibus Utama
-1. **Pengurusan Perkhidmatan (Service Management)**:
-   - Penggunaan `systemctl` (start, stop, enable, status, restart).
-   - Memahami Systemd dan init.
-2. **Pemantauan Sumber (Resource Monitoring)**:
-   - Arahan pemerhatian masa nyata: `top`, `htop`, `free -m`, `uptime`.
-3. **Penyelesaian Masalah Rangkaian (Network Troubleshooting)**:
-   - Pemeriksaan IP: `ip a`, `ifconfig`.
-   - Menguji capaian: `ping`, `traceroute`, `curl`.
-   - Pemerhatian port dan soket: `ss -tulpn`, `netstat`.
-4. **Pembacaan Log (Log Reading)**:
-   - Penggunaan `journalctl`.
-   - Menyelidik fail log sistem seperti `/var/log/syslog`, `/var/log/auth.log`, `/var/log/messages`.
-
-## Pemetaan NOSS (NOSS Mapping)
-Silibus ini memandu kemahiran Ejen AI berikut:
-- `cu06-wa02-handle-end-user-requests-and-incidents`
-- `cu06-wa07-resolve-system-anomalies-and-document-rca`
+Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshooting*), memeriksa kesihatan &amp; prestasi sistem, penalaan proses, dan pengurusan perkhidmatan sokongan pengguna. Dipetakan secara terus daripada **NOSS CU06 (End-User Support &amp; System Maintenance)**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 📚 Silibus Utama
+
+1. **Pemantauan Proses &amp; Sumber Sistem (Resource &amp; Process Monitoring)**:
+    - Arahan pemerhatian statik dan interaktif masa nyata: `ps aux`, `top`, `htop`, `pidstat`.
+    - Analisis beban purata (*load average*), penggunaan memori fizikal &amp; swap: `uptime`, `free -h`.
+    - Menganalisis memori maya dan I/O cakera: `vmstat 1 5`, `iostat -xz 1 5`.
+2. **Kitaran Hayat Proses &amp; Penalaan Keutamaan (Process Lifecycle &amp; Tuning)**:
+    - Penghantaran isyarat POSIX (`kill -15` SIGTERM, `kill -9` SIGKILL, `kill -1` SIGHUP, `killall`, `pkill`).
+    - Penalaan keutamaan penjadualan CPU (*nice value* -20 hingga 19): `nice`, `renice`.
+    - Penalaan keutamaan I/O cakera: `ionice`.
+    - Penghadan sumber sistem melalui `cgroups v2` dan `systemd-run`.
+3. **Penyelesaian Masalah Rangkaian &amp; Sambungan (Network Troubleshooting)**:
+    - Pemeriksaan IP &amp; Antaramuka: `ip a`, `ip route`.
+    - Menguji capaian &amp; laluan: `ping`, `traceroute`, `tracepath`, `curl`, `dig`.
+    - Pemerhatian port &amp; soket aktif: `ss -tulpn`.
+4. **Pembacaan &amp; Analisis Log Sistem (Log Analysis &amp; Auditing)**:
+    - Audit log sistem terpusat menggunakan `journalctl` (parameter `-u`, `-f`, `--since`, `-p err`).
+    - Menyelidik fail log sistem tradisional di `/var/log/` (`syslog`, `auth.log`, `messages`, `secure`).
+    - Penyiasatan punca kegagalan sistem (*Root Cause Analysis - RCA*).
+
+---
+
+## 🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+Silibus ini memandu modul amali di `manual/cu06/` dan kemahiran AI di `.agents/skills/`:
+
+- `manual/cu06/cu06-wa01-keperluan-perkhidmatan-sokongan-pengguna.md` ➔ `.agents/skills/cu06-wa01-prepare-end-user-support-service-requirements/`
+- `manual/cu06/cu06-wa02-pengendalian-aduan-dan-insiden-pengguna.md` ➔ `.agents/skills/cu06-wa02-handle-end-user-requests-and-incidents/`
+- `manual/cu06/cu06-wa03-diagnostik-dan-troubleshooting-perkakasan.md` ➔ `.agents/skills/cu06-wa03-support-hardware-troubleshooting/`
+- `manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md` ➔ `.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/`
+- `manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md` ➔ `.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/`
+- `manual/cu06/cu06-wa06-pengurusan-tiket-sokongan-dan-sla.md` ➔ `.agents/skills/cu06-wa06-manage-support-tickets-and-slas/`
+- `manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md` ➔ `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/`
+
+---
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+1. *"Bagaimanakah cara menganalisis punca kemerosotan prestasi I/O pelayan apabila vmstat menunjukkan nilai swap-out (so) yang tinggi secara berterusan?"*
+2. *"Tunjukkan skrip Python untuk mengautomasikan pemantauan log journalctl dan menghantar amaran ke saluran Telegram/Slack apabila ralat kritikal (Priority ERR) dikesan."*
+3. *"Apakah langkah-langkah penyediaan laporan RCA (Root Cause Analysis) yang mematuhi format ISO/IEC 27001 bagi insiden perkhidmatan terhenti disebabkan OOM Killer?"*
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+- [Brendan Gregg's Linux Performance &amp; Tuning Guide](https://www.brendangregg.com/linuxperf.html)
+- [Ubuntu Server Administration &amp; Diagnostics Guide](https://ubuntu.com/server/docs)
+- [AlmaLinux 10 Performance Optimization Wiki](https://wiki.almalinux.org/)
+- [Systemd Journalctl User Guide](https://www.freedesktop.org/software/systemd/man/journalctl.html)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
+- **Systems Performance: Enterprise and the Cloud (2nd Edition)** oleh Brendan Gregg.
+- **Linux Troubleshooting Bible** oleh Christopher Negus &amp; Thomas Weeks.
+- **Pengoptimuman &amp; Diagnostik Prestasi Pelayan Linux** oleh Harisfazillah Jamel.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -28221,69 +28308,301 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Konfigurasi Teras Pelayan Linux"
+title: "Konfigurasi Teras Pelayan Linux &amp; Pengurusan Perkhidmatan Systemd"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu03", "panduan-amali", "manual-linux"]
-tags: ["cu03", "linux", "noss", "amali", "standard-malaysia"]
-description: "Konfigurasi systemd, hostname, zon masa (Chrony NTP), SSH hardening, dan repositori."
+topics: ["noss-linux", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man"]
+tags: ["cu03", "systemd", "systemctl", "journalctl", "chrony", "timedatectl", "man", "noss", "amali"]
+description: "Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, dan sistem dokumentasi man."
 resource: "file:///manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md"
 ---
 
-# Konfigurasi Teras Pelayan Linux
+# Konfigurasi Teras Pelayan Linux &amp; Pengurusan Perkhidmatan Systemd
 
 ## 🎯 Objektif Pembelajaran
-Konfigurasi systemd, hostname, zon masa (Chrony NTP), SSH hardening, dan repositori.
+
+Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
+
+1. Menguruskan perkhidmatan teras pelayan menggunakan utiliti `systemctl` (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).
+2. Membina dan menguruskan fail unit perkhidmatan kustom `systemd` (`/etc/systemd/system/*.service`) dengan penerapan parameter pengerasan keselamatan.
+3. Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
+4. Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui `timedatectl` dan `chronyd`.
+5. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
 
 &gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU03**.
+&gt; Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C03 (Server Setup) WA04: Perform Core Server Configurations**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali &amp; Prosedur
 
 ### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+- Pelayan beroperasi pada **Ubuntu 26.04 LTS** atau **AlmaLinux 10**.
+- Akses terminal sebagai pengguna yang mempunyai hak arahan `sudo`.
+- Pakej perisian terpasang: `systemd`, `chrony`, `man-db`, `plocate`.
+
+---
+
+### 2. Pengurusan Perkhidmatan &amp; Unit Servis dengan `systemctl`
+
+Pengurus sistem `systemd` merupakan daemon init utama dalam Linux moden. Semua perkhidmatan, sasaran boot, dan soket diuruskan sebagai unit.
+
+#### A. Arahan Asas Kawalan Perkhidmatan (`systemctl`)
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Semak status perkhidmatan SSH
+sudo systemctl status sshd   # AlmaLinux / Fedora
+# atau
+sudo systemctl status ssh    # Ubuntu
+
+# Mulakan, hentikan, dan muat semula perkhidmatan
+sudo systemctl start sshd
+sudo systemctl stop sshd
+sudo systemctl restart sshd
+sudo systemctl reload sshd   # Muat semula konfigurasi tanpa memutuskan sambungan aktif
+
+# Mengaktifkan atau menyahaktifkan auto-start semasa boot
+sudo systemctl enable sshd
+sudo systemctl disable sshd
+
+# Mengaktifkan dan memulakan perkhidmatan secara serentak
+sudo systemctl enable --now sshd
+
+# Menyekat (mask) perkhidmatan supaya tidak boleh dimulakan secara tidak sengaja
+sudo systemctl mask legacy-service
+sudo systemctl unmask legacy-service
+```
+
+#### B. Pengurusan Sasaran Boot (Target Units)
+
+`systemd` menggantikan tahap larian (runlevel) tradisional dengan **Target Units**:
+
+```bash
+# Semak sasaran boot semasa
+systemctl get-default
+
+# Tukar sasaran boot lalai kepada mod CLI (multi-user.target) atau GUI (graphical.target)
+sudo systemctl set-default multi-user.target
+
+# Tukar sasaran boot serta-merta tanpa reboot
+sudo systemctl isolate multi-user.target
 ```
 
 ---
 
+### 3. Pembinaan Fail Unit Perkhidmatan Kustom (`systemd`)
+
+Pembangunan aplikasi enterprise memerlukan penulisan unit servis terkawal di `/etc/systemd/system/`.
+
+#### A. Contoh Fail Unit Servis Kustom dengan Pengerasan Keselamatan (`/etc/systemd/system/myapp.service`)
+
+```ini
+[Unit]
+Description=Aplikasi Pengurusan Teras NOSS App
+After=network.target remote-fs.target network-online.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nossapp
+Group=nossapp
+ExecStart=/usr/local/bin/myapp --config /etc/myapp/config.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+# Parameter Pengerasan Keselamatan (Security Hardening JDN/MAMPU)
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+NoNewPrivileges=true
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ReadWritePaths=/var/log/myapp /var/lib/myapp
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### B. Mengaktifkan Unit Servis Baharu
+
+```bash
+# Buat pengguna sistem khas tanpa akses kelompang interaktif
+sudo useradd -r -s /sbin/nologin nossapp
+
+# Muat semula daemon systemd untuk mengesan unit baharu
+sudo systemctl daemon-reload
+
+# Memulakan dan semak status
+sudo systemctl enable --now myapp.service
+sudo systemctl status myapp.service
+```
+
+---
+
+### 4. Pengauditan Log Sistem &amp; Perkhidmatan dengan `journalctl`
+
+`journalctl` membaca log binari terpusat yang diuruskan oleh `systemd-journald`.
+
+```bash
+# Semak log perkhidmatan secara real-time (follow)
+sudo journalctl -u sshd -f
+
+# Filter log mengikut selang masa tertentu
+sudo journalctl -u myapp.service --since "2026-08-17 00:00:00" --until "2026-08-17 12:00:00"
+
+# Memaparkan log berkaitan ralat sahaja (Priority level 3 / ERR)
+sudo journalctl -u myapp.service -p err..emerg
+
+# Semak log sesi boot terkini
+sudo journalctl -b
+
+# Semak saiz penggunaan ruang cakera oleh journal log dan lakukan pembersihan
+sudo journalctl --disk-usage
+sudo journalctl --vacuum-size=500M
+```
+
+---
+
+### 5. Konfigurasi Zon Masa &amp; Penyegerakan Masa (`timedatectl` &amp; `chrony`)
+
+Ketepatan masa adalah kritikal bagi audit keselamatan ISO/IEC 27001 dan pengesyoran Jabatan Digital Negara (JDN).
+
+#### A. Operasi Arahan `timedatectl`
+
+```bash
+# Semak status masa, zon masa, dan status NTP
+timedatectl status
+
+# Senaraikan zon masa yang sedia ada
+timedatectl list-timezones | grep Asia/Kuala_Lumpur
+
+# Tetapkan zon masa rasmi Malaysia
+sudo timedatectl set-timezone Asia/Kuala_Lumpur
+
+# Aktifkan penyegerakan masa berasaskan rangkaian (NTP)
+sudo timedatectl set-ntp true
+```
+
+#### B. Konfigurasi Daemon Chrony (`chronyd`)
+
+Fail konfigurasi `/etc/chrony/chrony.conf` (Ubuntu) atau `/etc/chrony.conf` (AlmaLinux):
+
+```ini
+# Rujukan Pelayan Masa Kebangsaan / Standard Pool
+server my.pool.ntp.org iburst
+server 0.asia.pool.ntp.org iburst
+server 1.asia.pool.ntp.org iburst
+
+# Kebenaran audit keselamatan &amp; penyesuaian drift
+driftfile /var/lib/chrony/drift
+makestep 1.0 3
+rtcsync
+```
+
+Semakan status penyegerakan:
+
+```bash
+# Pastikan perkhidmatan chrony aktif
+sudo systemctl enable --now chronyd
+
+# Semak sumber pelayan masa dan status ralat penyegerakan
+chronyc sources -v
+chronyc tracking
+```
+
+---
+
+### 6. Bantuan Dokumentasi &amp; Navigasi Sistem Linux
+
+Sistem Linux menyediakan utiliti dokumentasi luar talian (*offline documentation*) yang komprehensif.
+
+#### A. Halaman Panduan `man` (Manual Pages)
+
+Halaman manual dibahagikan kepada 9 seksyen standard:
+- **Seksyen 1:** Arahan Pengguna Global (cth: `ls`, `cd`, `ps`).
+- **Seksyen 2:** Panggilan Sistem Isirung Kernel (cth: `fork`, `exec`).
+- **Seksyen 3:** Panggilan Perpustakaan C (cth: `printf`).
+- **Seksyen 4:** Fail Khas &amp; Peranti (cth: `/dev/null`, `/dev/sda`).
+- **Seksyen 5:** Format Fail Konfigurasi (cth: `/etc/passwd`, `/etc/fstab`).
+- **Seksyen 6:** Permainan &amp; Pembantu.
+- **Seksyen 7:** Format Makro &amp; Standard Sistem.
+- **Seksyen 8:** Arahan Pentadbiran Sistem &amp; Root (cth: `systemctl`, `fdisk`).
+- **Seksyen 9:** Rutin Isirung (Kernel Routines).
+
+```bash
+# Membaca halaman man bagi perkhidmatan systemctl
+man systemctl
+
+# Membaca format fail konfigurasi fstab (Seksyen 5)
+man 5 fstab
+
+# Membaca arahan pentadbiran useradd (Seksyen 8)
+man 8 useradd
+```
+
+#### B. Utiliti Carian Bantuan (`apropos`, `whatis`, `whereis`, `plocate`)
+
+```bash
+# Cari arahan berkaitan kata kunci menggunakan pangkalan data whatis
+apropos "systemctl"
+apropos "network configuration"
+
+# Dapatkan gambaran ringkas satu baris fungsi arahan
+whatis systemctl
+whatis chronyd
+
+# Cari lokasi fail binari, sumber, dan halaman man bagi sesuatu arahan
+whereis systemctl
+whereis chronyc
+
+# Kemas kini pangkalan data fail dan cari lokasi fail dengan pantas
+sudo updatedb
+plocate chrony.conf
+```
+
+---
+
+## 🔒 Pengerasan Keselamatan &amp; Pematuhan JDN / MAMPU
+
+1. **Prinsip Perkhidmatan Minimum (Service Minimisation):** Matikan dan *mask* semua perkhidmatan yang tidak diperlukan (seperti `telnet`, `ftp`, `rsh`) untuk mengurangkan permukaan serangan (*attack surface*).
+2. **Pengasingan Hak Akses Unit Servis:** Setiap perkhidmatan kustom MESTI dijalankan di bawah akaun pengguna sistem berasingan (`/sbin/nologin` atau `/bin/false`).
+3. **Audit Log Berpusat:** Log `journalctl` hendaklah dipastikan mempunyai kebenaran akses terhad (`/var/log/journal/`) dan dihantar ke pelayan log berpusat (Syslog/SIEM) untuk pematuhan ISO/IEC 27001.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya menguruskan status, mula, henti, dan auto-start perkhidmatan dengan `systemctl`.
+- [ ] Berjaya menetapkan sasaran boot sistem (`multi-user.target`).
+- [ ] Berjaya menulis, menguji, dan memuat semula fail unit servis kustom di `/etc/systemd/system/`.
+- [ ] Berjaya membuat analisis log perkhidmatan secara terperinci berasaskan julat masa menggunakan `journalctl`.
+- [ ] Berjaya menetapkan zon masa `Asia/Kuala_Lumpur` dan mengesahkan penyegerakan masa `chronyc tracking`.
+- [ ] Berjaya mengendalikan carian dokumentasi sistem menggunakan `man`, `apropos`, `whatis`, dan `plocate`.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Konfigurasi Teras Pelayan Linux dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Konfigurasi Teras Pelayan Linux menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."*
+2. *"Apakah perbezaan mendalam antara penyegerakan masa NTP melalui systemd-timesyncd dan chronyd untuk persekitaran pelayan perusahaan?"*
+3. *"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Systemd Official Documentation &amp; Index](https://systemd.io/)
+- [Ubuntu Server Guide - Systemd Services](https://ubuntu.com/server/docs)
+- [AlmaLinux 10 System Administration &amp; Chrony Guide](https://wiki.almalinux.org/)
+- [Freedesktop.org - Journalctl Reference](https://www.freedesktop.org/software/systemd/man/journalctl.html)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **Linux System Programming** oleh Robert Love.
+- **The Linux Command Line (2nd Edition)** oleh William Shotts.
+- **Panduan Praktikal Pentadbiran Pelayan Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -29602,69 +29921,245 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pengoptimuman Prestasi Sistem &amp; Ruang Cakera"
+title: "Pengoptimuman Prestasi Sistem, Pemantauan Proses &amp; Kawalan Sumber"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu06", "panduan-amali", "manual-linux"]
-tags: ["cu06", "linux", "noss", "amali", "standard-malaysia"]
-description: "Analisis penggunaan memori (free/vmstat), pemantauan proses (top/htop), dan pembersihan log."
+topics: ["noss-linux", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
+tags: ["cu06", "prestasi", "proses", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups", "amali"]
+description: "Panduan amali pemantauan proses sistem, analisis penggunaan CPU/memori/I-O, kawalan keutamaan nice/renice, penamatan isyarat proses SIGTERM/SIGKILL, dan pengurusan sumber cgroups v2."
 resource: "file:///manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md"
 ---
 
-# Pengoptimuman Prestasi Sistem &amp; Ruang Cakera
+# Pengoptimuman Prestasi Sistem, Pemantauan Proses &amp; Kawalan Sumber
 
 ## 🎯 Objektif Pembelajaran
-Analisis penggunaan memori (free/vmstat), pemantauan proses (top/htop), dan pembersihan log.
+
+Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
+
+1. Memantau dan menganalisis status proses sistem secara deskriptif dan interaktif menggunakan `ps aux`, `top`, `htop`, dan `pidstat`.
+2. Menganalisis prestasi pemprosesan CPU, memori maya, dan statistik I/O cakera menggunakan `vmstat`, `iostat`, `free -h`, dan `uptime`.
+3. Mengurus dan mengawal kitaran hayat proses termasuk hantar isyarat penamatan POSIX (`SIGTERM`, `SIGKILL`, `SIGHUP`) menggunakan `kill`, `killall`, dan `pkill`.
+4. Melaraskan keutamaan penjadualan CPU proses (*nice value*) menggunakan `nice`, `renice`, dan keutamaan I/O `ionice`.
+5. Melaksanakan kawalan dan penghadan sumber sistem (*resource limits*) melalui `cgroups v2` dan `systemd-run`.
 
 &gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU06**.
+&gt; Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C06 (End-User Support &amp; System Maintenance) WA05: Perform System Optimisation and Disk Management**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali &amp; Prosedur
 
 ### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+- Persekitaran Linux beroperasi pada **Ubuntu 26.04 LTS** atau **AlmaLinux 10**.
+- Akses terminal dengan hak pentadbir (`sudo`).
+- Pakej perisian terpasang: `procps`, `psmisc`, `sysstat`, `htop`, `util-linux`.
+
+---
+
+### 2. Pemantauan &amp; Analisis Status Proses Sistem
+
+#### A. Pemeriksaan Statik Menggunakan `ps`
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Paparkan kesemua proses sistem yang sedang berjalan secara terperinci
+ps aux
+
+# Paparkan struktur pokok (hierarchy tree) proses
+ps axjf
+# atau
+pstree -p
+
+# Filter proses khusus (contoh: proses nginx atau sshd)
+ps aux | grep sshd
+
+# Urutkan proses mengikut penggunaan memori (%MEM) atau CPU (%CPU) tertinggi
+ps aux --sort=-%mem | head -n 10
+ps aux --sort=-%cpu | head -n 10
+```
+
+#### B. Pemantauan Masa Nyata Menggunakan `top` dan `htop`
+
+```bash
+# Jalankan pemantauan masa nyata standard
+top
+
+# Kunci navigasi penting dalam top:
+# Press 'P' -&gt; Urutkan mengikut penggunaan CPU
+# Press 'M' -&gt; Urutkan mengikut penggunaan Memori
+# Press 'k' -&gt; Masukkan PID untuk menamatkan proses secara interaktif
+# Press 'q' -&gt; Keluar dari top
+
+# Pemantauan masa nyata berkuasa tinggi berasaskan teks/interaktif
+htop
 ```
 
 ---
 
+### 3. Analisis Kesihatan Memori, CPU &amp; I/O Cakera
+
+#### A. Analisis Memori &amp; Beban Purata (`free` &amp; `uptime`)
+
+```bash
+# Semak beban purata sistem (1 minit, 5 minit, 15 minit)
+uptime
+
+# Semak ruang memori Fizikal dan Swap dalam unit yang mudah dibaca (human-readable)
+free -h
+```
+
+#### B. Analisis Memori Maya &amp; Isirung (`vmstat`)
+
+```bash
+# Paparkan statistik memori maya, swap in/out, IO, dan konteks CPU setiap 1 saat sebanyak 5 kali
+vmstat 1 5
+```
+
+*Petunjuk Penting vmstat:*
+- `r`: Jumlah proses yang menunggu giliran CPU (run queue).
+- `b`: Jumlah proses terhalang dalam ketersediaan I/O (blocked).
+- `si` / `so`: Swap-in dan Swap-out. Sekiranya angka ini sentiasa tinggi, sistem mengalami kekurangan memori RAM fizikal (*thrashing*).
+
+#### C. Analisis Prestasi I/O Peranti Storan (`iostat` &amp; `pidstat`)
+
+```bash
+# Menganalisis kadar pembacaan/penulisan I/O cakera secara terperinci
+iostat -xz 1 5
+
+# Semak kegunaan I/O mengikut proses spesifik
+sudo pidstat -d 1 5
+```
+
+---
+
+### 4. Pengurusan Isyarat POSIX &amp; Penamatan Proses
+
+Proses berkomunikasi dengan isirung kernel melalui **Isyarat POSIX (POSIX Signals)**.
+
+#### A. Jadual Isyarat Utama POSIX
+
+| Nombor Isyarat | Nama Isyarat | Penerangan &amp; Tindakan |
+| :---: | :--- | :--- |
+| **1** | `SIGHUP` | Hangup - Digunakan untuk mengarahkan daemon memuat semula konfigurasi tanpa restart. |
+| **2** | `SIGINT` | Interrupt - Dihantar apabila pengguna menekan `Ctrl + C`. |
+| **9** | `SIGKILL` | Kill - Penamatan paksa sertamerta oleh kernel. **TIDAK BOLEH** ditangkap atau diabaikan oleh proses. |
+| **15** | `SIGTERM` | Terminate - Isyarat penamatan anggun (graceful shutdown) lalai. Membolehkan proses menyimpan data dan menutup pautan. |
+
+#### B. Operasi Penamatan Proses (`kill`, `killall`, `pkill`)
+
+```bash
+# Hantar isyarat penamatan anggun SIGTERM (15) berdasarkan PID
+kill -15 4821
+
+# Hantar isyarat henti paksa SIGKILL (9) jika proses tidak bertindak balas
+kill -9 4821
+
+# Hantar isyarat muat semula SIGHUP (1) kepada daemon
+sudo kill -1 1024
+
+# Menamatkan semua proses mengikut nama aplikasi
+sudo killall -15 nginx
+sudo pkill -f "python3 script.py"
+```
+
+---
+
+### 5. Penalaan Keutamaan CPU &amp; I/O (`nice`, `renice`, `ionice`)
+
+#### A. Penalaan Keutamaan CPU (`nice` &amp; `renice`)
+
+Skala nilai *nice* adalah dari **-20 (Keutamaan Tertinggi)** hingga **19 (Keutamaan Terendah)**. Nilai lalai ialah **0**.
+
+```bash
+# Jalankan skrip baru dengan keutamaan CPU yang lebih tinggi (nilai nice -10) - Perlu sudo
+sudo nice -n -10 /usr/local/bin/heavy-data-process.sh
+
+# Jalankan proses latar belakang dengan keutamaan rendah (nilai nice 15)
+nice -n 15 /usr/local/bin/backup.sh &amp;
+
+# Ubah keutamaan proses yang SEDANG berjalan mengikut PID
+sudo renice -n 5 -p 4821
+```
+
+#### B. Penalaan Keutamaan I/O Cakera (`ionice`)
+
+Class I/O: 1 (Realtime), 2 (Best-effort), 3 (Idle).
+
+```bash
+# Jalankan proses sandaran dengan kelas I/O Idle (hanya guna cakera apabila I/O kosong)
+sudo ionice -c 3 /usr/local/bin/backup-job.sh
+```
+
+---
+
+### 6. Kawalan Sumber Sistem Melalui Control Groups v2 (`cgroups v2`)
+
+Dalam persekitaran Linux moden 2026, `cgroups v2` disepadukan secara langsung dengan `systemd` untuk mengehadkan penggunaan CPU dan memori aplikasi bagi mengelakkan sistem daripada tergantung (*system freeze*).
+
+#### A. Membataskan Sumber Menggunakan `systemd-run`
+
+```bash
+# Jalankan aplikasi berat dengan had memori maksimum 500MB dan CPU maksimum 50%
+sudo systemd-run --scope -p MemoryMax=500M -p CPUQuota=50% /usr/local/bin/heavy-app
+```
+
+#### B. Membataskan Sumber Melalui Unit Drop-in Override (`/etc/systemd/system/myapp.service.d/override.conf`)
+
+```ini
+[Service]
+MemoryMax=1G
+MemoryHigh=800M
+CPUQuota=200%  # Mengehadkan penggunaan maksimum kepada 2 teras CPU
+IOWeight=50
+```
+
+```bash
+# Muat semula konfigurasi dan laksanakan
+sudo systemctl daemon-reload
+sudo systemctl restart myapp.service
+```
+
+---
+
+## 🔒 Pengerasan Keselamatan &amp; Pematuhan JDN / MAMPU
+
+1. **Perlindungan Terhadap DoS &amp; Fork Bomb:** Tetapkan had maksimum proses per pengguna dalam `/etc/security/limits.conf` (`nproc` &amp; `nofile`) bagi menghalang serangan pengeluaran sumber (*resource exhaustion*).
+2. **Pengawasan Proses Luar Biasa:** Pantau proses bermula dari `/tmp` atau `/dev/shm` yang kerap digunakan oleh malwer untuk melakukan perlombongan kripto (*crypto-mining*).
+3. **Pemberhentian Paksa Anggun:** Sentiasa amalkan penamatan isyarat `SIGTERM (15)` terlebih dahulu sebelum menggunakan `SIGKILL (9)` bagi mengelakkan kerosakan fail pangkalan data dan sistem fail.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya memeriksa status dan menyusun proses mengikut penggunaan sumber menggunakan `ps aux`, `top`, dan `htop`.
+- [ ] Berjaya menganalisis statistik kesihatan memori maya dan I/O menggunakan `vmstat`, `iostat`, dan `free -h`.
+- [ ] Berjaya menamatkan proses terhang menggunakan isyarat `SIGTERM (15)` dan `SIGKILL (9)`.
+- [ ] Berjaya melaraskan nilai *nice* proses dengan `nice` dan `renice`.
+- [ ] Berjaya melaksanakan had penggunaan sumber CPU dan memori menggunakan `cgroups v2` atau `systemd-run`.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pengoptimuman Prestasi Sistem &amp; Ruang Cakera dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pengoptimuman Prestasi Sistem &amp; Ruang Cakera menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Apakah tanda-tanda awal memory thrashing dalam laporan vmstat dan bagaimanakah parameter sysctl vm.swappiness boleh dilaras untuk mengurangkannya?"*
+2. *"Tunjukkan cara menulis skrip Shell Bash automatik untuk mengesan dan menamatkan proses yang menggunakan CPU melebihi 90% selama lebih daripada 10 minit."*
+3. *"Jelaskan perbezaan mekasnisme kawalan sumber cgroups v1 dan cgroups v2 dari segi seni bina unified hierarchy dalam kernel Linux moden."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Linux Kernel Documentation - Control Groups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html)
+- [Ubuntu Performance Tuning &amp; Diagnostics Guide](https://ubuntu.com/server/docs)
+- [AlmaLinux 10 System Performance &amp; Monitoring Tools](https://wiki.almalinux.org/)
+- [Brendan Gregg's Linux Performance Tools &amp; BPF](https://www.brendangregg.com/linuxperf.html)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **Systems Performance: Enterprise and the Cloud (2nd Edition)** oleh Brendan Gregg.
+- **Linux Observability with BPF** oleh David Calavera &amp; Lorenzo Fontana.
+- **Pengoptimuman &amp; Diagnostik Prestasi Pelayan Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -33172,23 +33667,138 @@ type: procedural_skill
   </file>
   <file path=".agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 name: cu03-wa04-perform-core-server-configurations
-description: Executes NOSS Work Activity: Perform Core Server Configurations
-topics: [noss, cu03, wa04]
-type: procedural_skill
+title: "CU03 WA04: Perform Core Server Configurations"
+timestamp: "2026-08-17T00:00:00Z"
+type: skill
+topics: ["noss", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man"]
+tags: ["noss", "cu03", "wa04", "systemd", "systemctl", "journalctl", "chrony", "timedatectl", "man"]
+description: "Executes NOSS Work Activity K622-XXX-3:2026-C03 WA04: Perform Core Server Configurations including systemd service management, custom service units, journalctl audit logging, timedatectl/chrony time sync, and system man pages."
+resource: "file:///.agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md"
 ---
 
-# Perform Core Server Configurations
-*Executes NOSS standard K622-XXX-3:2026-C03 WA04*
+# CU03 WA04: Perform Core Server Configurations
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## 🎯 Purpose &amp; Scope
 
+This skill guides AI agents and system administrators in executing core Linux server configurations mapped to Malaysian NOSS **K622-XXX-3:2026-C03 WA04**. Canonical reference environments are **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10 "Purple Lion"**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 🛠️ Execution Protocol &amp; Commands
+
+### 1. Systemd Service Unit Management (`systemctl`)
+
+```bash
+# Check status, start, stop, restart, and reload services
+sudo systemctl status sshd
+sudo systemctl start sshd
+sudo systemctl stop sshd
+sudo systemctl restart sshd
+sudo systemctl reload sshd
+
+# Enable or disable service auto-start at boot
+sudo systemctl enable --now sshd
+sudo systemctl disable sshd
+
+# Mask unneeded or unsafe services
+sudo systemctl mask telnet.service
+```
+
+### 2. Custom Unit File Creation (`/etc/systemd/system/myapp.service`)
+
+```ini
+[Unit]
+Description=NOSS Core Application Service
+After=network.target remote-fs.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nossapp
+Group=nossapp
+ExecStart=/usr/local/bin/myapp --config /etc/myapp/config.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+# JDN/MAMPU &amp; ISO/IEC 27001 Hardening Directives
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+NoNewPrivileges=true
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ReadWritePaths=/var/log/myapp /var/lib/myapp
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# Register and launch custom unit
+sudo useradd -r -s /sbin/nologin nossapp
+sudo systemctl daemon-reload
+sudo systemctl enable --now myapp.service
+```
+
+### 3. Journal Audit Logging (`journalctl`)
+
+```bash
+# Tail real-time service logs
+sudo journalctl -u sshd -f
+
+# Query error logs within specific timeframes
+sudo journalctl -u myapp.service --since "2026-08-17 00:00:00" -p err..emerg
+
+# Manage journal disk usage
+sudo journalctl --disk-usage
+sudo journalctl --vacuum-size=500M
+```
+
+### 4. Time Synchronization &amp; Timezone (`timedatectl` &amp; `chronyd`)
+
+```bash
+# Set timezone to Malaysia Standard Time
+sudo timedatectl set-timezone Asia/Kuala_Lumpur
+sudo timedatectl set-ntp true
+
+# Chrony configuration (/etc/chrony/chrony.conf or /etc/chrony.conf)
+# server my.pool.ntp.org iburst
+
+# Verify Chrony NTP synchronization
+sudo systemctl enable --now chronyd
+chronyc sources -v
+chronyc tracking
+```
+
+### 5. System Documentation Navigation (`man`, `apropos`, `whatis`, `plocate`)
+
+```bash
+# Search offline manual pages by keyword or section
+man systemctl
+man 5 fstab
+man 8 useradd
+apropos "systemctl"
+whatis chronyd
+whereis chronyc
+
+# Rapid file lookup
+sudo updatedb
+plocate chrony.conf
+```
+
+---
+
+## 🔒 Security &amp; Compliance Safeguards
+
+- **Service Minimisation:** Disable and mask unused legacy services (`telnet`, `rsh`, `rlogin`).
+- **Least Privilege:** Run custom services under dedicated system accounts (`/sbin/nologin`).
+- **ISO/IEC 27001 Auditability:** Enforce centralized journal logging and NTP time sync for accurate timestamping across server logs.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -33719,25 +34329,216 @@ type: procedural_skill
 
     </content>
   </file>
+  <file path=".agents/skills/cu06-wa05-optimize-system-performance-and-storage/SKILL.md">
+    <content>
+---
+okf_version: 0.1
+type: skill
+name: cu06-wa05-optimize-system-performance-and-storage
+title: "CU06 WA05: Optimize System Performance and Storage"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
+tags: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
+description: "Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls."
+resource: "file:///.agents/skills/cu06-wa05-optimize-system-performance-and-storage/SKILL.md"
+---
+
+# CU06 WA05: Optimize System Performance and Storage
+
+## 🎯 Purpose &amp; Scope
+
+This skill guides AI agents and system administrators in executing system optimization, process monitoring, and resource management mapped to Malaysian NOSS **K622-XXX-3:2026-C06 WA05**. Canonical reference environments are **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10 "Purple Lion"**.
+
+---
+
+## 🛠️ Execution Protocol &amp; Commands
+
+### 1. Process &amp; System Resource Monitoring (`ps`, `top`, `htop`)
+
+```bash
+# Detailed static process listing and tree views
+ps aux
+ps axjf
+ps aux --sort=-%mem | head -n 10
+ps aux --sort=-%cpu | head -n 10
+
+# Real-time interactive process monitoring
+top
+htop
+```
+
+### 2. Memory, CPU &amp; I/O Diagnostics (`uptime`, `free`, `vmstat`, `iostat`)
+
+```bash
+# Load average and memory usage
+uptime
+free -h
+
+# Virtual memory statistics (interval 1s, count 5)
+vmstat 1 5
+
+# Disk I/O performance and process I/O breakdown
+iostat -xz 1 5
+sudo pidstat -d 1 5
+```
+
+### 3. POSIX Signal Handling &amp; Process Termination (`kill`, `killall`, `pkill`)
+
+```bash
+# Graceful termination SIGTERM (15)
+kill -15 &lt;PID&gt;
+
+# Forceful termination SIGKILL (9)
+kill -9 &lt;PID&gt;
+
+# Configuration reload SIGHUP (1)
+sudo kill -1 &lt;PID&gt;
+
+# Terminate processes by name
+sudo killall -15 nginx
+sudo pkill -f "python3 script.py"
+```
+
+### 4. Process Priority &amp; I/O Scheduling (`nice`, `renice`, `ionice`)
+
+```bash
+# Launch process with high CPU priority (nice value -10)
+sudo nice -n -10 /usr/local/bin/heavy-data-process.sh
+
+# Launch background task with low CPU priority (nice value 15)
+nice -n 15 /usr/local/bin/backup.sh &amp;
+
+# Modify priority of a running process
+sudo renice -n 5 -p &lt;PID&gt;
+
+# Set I/O scheduling class to Idle (Class 3)
+sudo ionice -c 3 /usr/local/bin/backup-job.sh
+```
+
+### 5. Resource Control with Control Groups v2 (`cgroups v2` &amp; `systemd-run`)
+
+```bash
+# Execute process within cgroups v2 scope with memory and CPU caps
+sudo systemd-run --scope -p MemoryMax=500M -p CPUQuota=50% /usr/local/bin/heavy-app
+```
+
+---
+
+## 🔒 Security &amp; Performance Hardening
+
+- **Anti-Fork Bomb Limits:** Enforce maximum process limits in `/etc/security/limits.conf` (`nproc` &amp; `nofile`).
+- **Anomalous Process Sweeps:** Regularly audit processes originating from `/tmp` or `/dev/shm` for unapproved crypto-miners.
+- **Graceful Termination Policy:** Always issue `SIGTERM (15)` before escalating to `SIGKILL (9)` to prevent database and file system corruption.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
+
+    </content>
+  </file>
   <file path=".agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md">
     <content>
-﻿---
+---
 okf_version: 0.1
+type: skill
 name: cu06-wa05-perform-system-optimisation-and-disk-management
-description: Executes NOSS Work Activity: Perform System Optimisation And Disk Management
-topics: [noss, cu06, wa05]
-type: procedural_skill
+title: "CU06 WA05: Perform System Optimisation and Disk Management"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
+tags: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
+description: "Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls."
+resource: "file:///.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md"
 ---
 
-# Perform System Optimisation And Disk Management
-*Executes NOSS standard K622-XXX-3:2026-C06 WA05*
+# CU06 WA05: Perform System Optimisation and Disk Management
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## 🎯 Purpose &amp; Scope
 
+This skill guides AI agents and system administrators in executing system optimization, process monitoring, and resource management mapped to Malaysian NOSS **K622-XXX-3:2026-C06 WA05**. Canonical reference environments are **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10 "Purple Lion"**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 🛠️ Execution Protocol &amp; Commands
+
+### 1. Process &amp; System Resource Monitoring (`ps`, `top`, `htop`)
+
+```bash
+# Detailed static process listing and tree views
+ps aux
+ps axjf
+ps aux --sort=-%mem | head -n 10
+ps aux --sort=-%cpu | head -n 10
+
+# Real-time interactive process monitoring
+top
+htop
+```
+
+### 2. Memory, CPU &amp; I/O Diagnostics (`uptime`, `free`, `vmstat`, `iostat`)
+
+```bash
+# Load average and memory usage
+uptime
+free -h
+
+# Virtual memory statistics (interval 1s, count 5)
+vmstat 1 5
+
+# Disk I/O performance and process I/O breakdown
+iostat -xz 1 5
+sudo pidstat -d 1 5
+```
+
+### 3. POSIX Signal Handling &amp; Process Termination (`kill`, `killall`, `pkill`)
+
+```bash
+# Graceful termination SIGTERM (15)
+kill -15 &lt;PID&gt;
+
+# Forceful termination SIGKILL (9)
+kill -9 &lt;PID&gt;
+
+# Configuration reload SIGHUP (1)
+sudo kill -1 &lt;PID&gt;
+
+# Terminate processes by name
+sudo killall -15 nginx
+sudo pkill -f "python3 script.py"
+```
+
+### 4. Process Priority &amp; I/O Scheduling (`nice`, `renice`, `ionice`)
+
+```bash
+# Launch process with high CPU priority (nice value -10)
+sudo nice -n -10 /usr/local/bin/heavy-data-process.sh
+
+# Launch background task with low CPU priority (nice value 15)
+nice -n 15 /usr/local/bin/backup.sh &amp;
+
+# Modify priority of a running process
+sudo renice -n 5 -p &lt;PID&gt;
+
+# Set I/O scheduling class to Idle (Class 3)
+sudo ionice -c 3 /usr/local/bin/backup-job.sh
+```
+
+### 5. Resource Control with Control Groups v2 (`cgroups v2` &amp; `systemd-run`)
+
+```bash
+# Execute process within cgroups v2 scope with memory and CPU caps
+sudo systemd-run --scope -p MemoryMax=500M -p CPUQuota=50% /usr/local/bin/heavy-app
+```
+
+---
+
+## 🔒 Security &amp; Performance Hardening
+
+- **Anti-Fork Bomb Limits:** Enforce maximum process limits in `/etc/security/limits.conf` (`nproc` &amp; `nofile`).
+- **Anomalous Process Sweeps:** Regularly audit processes originating from `/tmp` or `/dev/shm` for unapproved crypto-miners.
+- **Graceful Termination Policy:** Always issue `SIGTERM (15)` before escalating to `SIGKILL (9)` to prevent database and file system corruption.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -40040,7 +40841,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T05:22:18Z"
+timestamp: "2026-08-17T07:04:57Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -40051,7 +40852,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `122`
+**Total Modules Indexed:** `123`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -40081,7 +40882,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu03-wa01-prepare-server-setup`** &lt;br&gt; *cu03-wa01-prepare-server-setup* | No description provided. | N/A |
 | **`cu03-wa02-carry-out-server-installation`** &lt;br&gt; *cu03-wa02-carry-out-server-installation* | No description provided. | N/A |
 | **`cu03-wa03-install-server-operating-system`** &lt;br&gt; *cu03-wa03-install-server-operating-system* | No description provided. | N/A |
-| **`cu03-wa04-perform-core-server-configurations`** &lt;br&gt; *cu03-wa04-perform-core-server-configurations* | No description provided. | N/A |
+| **`cu03-wa04-perform-core-server-configurations`** &lt;br&gt; *CU03 WA04: Perform Core Server Configurations* | Executes NOSS Work Activity K622-XXX-3:2026-C03 WA04: Perform Core Server Configurations including systemd service management, custom service units, journalctl audit logging, timedatectl/chrony time sync, and system man pages. | "noss", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man" |
 | **`cu03-wa05-implement-server-roles-and-services`** &lt;br&gt; *cu03-wa05-implement-server-roles-and-services* | No description provided. | N/A |
 | **`cu03-wa06-manage-server-hardware`** &lt;br&gt; *cu03-wa06-manage-server-hardware* | No description provided. | N/A |
 | **`cu04-wa01-prepare-backup-recovery-tools`** &lt;br&gt; *cu04-wa01-prepare-backup-recovery-tools* | No description provided. | N/A |
@@ -40098,7 +40899,8 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** &lt;br&gt; *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
 | **`cu06-wa03-support-hardware-troubleshooting`** &lt;br&gt; *cu06-wa03-support-hardware-troubleshooting* | No description provided. | N/A |
 | **`cu06-wa04-configure-and-troubleshoot-peripheral-connections`** &lt;br&gt; *cu06-wa04-configure-and-troubleshoot-peripheral-connections* | No description provided. | N/A |
-| **`cu06-wa05-perform-system-optimisation-and-disk-management`** &lt;br&gt; *cu06-wa05-perform-system-optimisation-and-disk-management* | No description provided. | N/A |
+| **`cu06-wa05-optimize-system-performance-and-storage`** &lt;br&gt; *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
+| **`cu06-wa05-perform-system-optimisation-and-disk-management`** &lt;br&gt; *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** &lt;br&gt; *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
 | **`cu06-wa07-resolve-system-anomalies-and-document-rca`** &lt;br&gt; *cu06-wa07-resolve-system-anomalies-and-document-rca* | No description provided. | N/A |
 | **`docx-highlight-extractor`** &lt;br&gt; *docx-highlight-extractor* | No description provided. | N/A |
@@ -40724,6 +41526,9 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Penyediaan pelan pelaksanaan &amp; taklimat penyerahan sesi Google Jules untuk Fasa 4 (Migrasi Silibus Bab 4: Pentadbiran Pengguna &amp; Keselamatan Endpoint CU05).
 - **2026-08-17:** Penyempurnaan &amp; Penggabungan (Merge) Google Jules PR #6 — Migrasi Bab 4 (Pentadbiran Pengguna, /etc/shadow, visudo, faillock, chmod/chown, SUID/SGID/Sticky bit, POSIX ACL getfacl/setfacl, FHS, pencarian plocate/find), Porting Kemahiran CU05, dan peningkatan kepada 910 ujian Python.
 - **2026-08-17:** Penyediaan pelan pelaksanaan &amp; taklimat penyerahan sesi Google Jules untuk Fasa 5 (Migrasi Silibus Bab 5: Konfigurasi Teras Pelayan CU03 &amp; Pemantauan Prestasi CU06).
+- **2026-08-17:** Penyempurnaan &amp; Penggabungan (Merge) Google Jules PR #9 — Migrasi Bab 5 (Konfigurasi Teras Pelayan CU03-WA04, fail unit systemd, journalctl, timedatectl/chrony, dan Pemantauan Prestasi CU06-WA05 ps/top/htop/vmstat/iostat, nice/renice, isyarat POSIX, cgroups v2), Porting Kemahiran CU03/CU06, dan peningkatan kepada 917 ujian Python.
+- **2026-08-17:** Pemaktuban Protokol Panggilan Langsung Node.js Jest (Direct Jest Execution) ke dalam Peraturan 14 Perlembagaan AI.
+- **2026-08-17:** Penyediaan pelan pelaksanaan &amp; taklimat penyerahan sesi Google Jules untuk Fasa 6 (Migrasi Silibus Bab 6: Sandaran, Pemampatan, Pelekapan Storan, dan Pemprosesan Teks CU04 &amp; CU06 - Kemuncak Siri Manual).
 
     </content>
   </file>
