@@ -1860,7 +1860,7 @@ reference document described in Section 3.</p>
 </tbody>
 </table>
 <h3 id="32-document-structure-in-order">3.2 Document Structure (in order)<a class="headerlink" href="#32-document-structure-in-order" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Heading 1: &quot;1. Competency Profile (CP)&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Heading 1: "1. Competency Profile (CP)"
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Empty paragraph
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[Header Table]        ← 4-column grid, 25%/75% colspans
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Empty paragraph
@@ -2002,20 +2002,20 @@ reference document described in Section 3.</p>
 </span></code></pre></div></p>
 <h3 id="step-4-verify-outputs">Step 4 – Verify outputs<a class="headerlink" href="#step-4-verify-outputs" title="Permanent link">&para;</a></h3>
 <p>Check that both files exist and have non-zero size:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;const fs=require(&#39;fs&#39;); [&#39;noss-rebuild/references/CP-Level-3-Generated.md&#39;,&#39;noss-rebuild/references/CP-Level-3-Generated.docx&#39;].forEach(f=&gt;{const s=fs.statSync(f);console.log(f,s.size,&#39;bytes&#39;)})&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">"const fs=require('fs'); ['noss-rebuild/references/CP-Level-3-Generated.md','noss-rebuild/references/CP-Level-3-Generated.docx'].forEach(f=&gt;{const s=fs.statSync(f);console.log(f,s.size,'bytes')})"</span>
 </span></code></pre></div></p>
 <h3 id="step-5-quality-gate">Step 5 – Quality gate<a class="headerlink" href="#step-5-quality-gate" title="Permanent link">&para;</a></h3>
 <p>Run the Markdown verification check:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s2">const fs=require(&#39;fs&#39;);</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s2">const md=fs.readFileSync(&#39;noss-rebuild/references/CP-Level-3-Generated.md&#39;,&#39;utf8&#39;);</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">"</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s2">const fs=require('fs');</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s2">const md=fs.readFileSync('noss-rebuild/references/CP-Level-3-Generated.md','utf8');</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="s2">const cuCount=(md.match(/CU TITLE/g)||[]).length;</span>
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s2">const waCount=(md.match(/IT-020-3:2026-CU\d+-WA\d+/g)||[]).length;</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="s2">console.log(&#39;CU blocks found:&#39;,cuCount);</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="s2">console.log(&#39;WA codes found:&#39;,waCount);</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="s2">if(cuCount&lt;6) console.error(&#39;FAIL: Expected at least 6 CU blocks&#39;);</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="s2">else console.log(&#39;PASS: CU count OK&#39;);</span>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="s2">&quot;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="s2">console.log('CU blocks found:',cuCount);</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="s2">console.log('WA codes found:',waCount);</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="s2">if(cuCount&lt;6) console.error('FAIL: Expected at least 6 CU blocks');</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="s2">else console.log('PASS: CU count OK');</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="s2">"</span>
 </span></code></pre></div></p>
 <hr />
 <h2 id="7-manual-authoring-rules-when-writing-content-by-hand">7. Manual Authoring Rules (when writing content by hand)<a class="headerlink" href="#7-manual-authoring-rules-when-writing-content-by-hand" title="Permanent link">&para;</a></h2>

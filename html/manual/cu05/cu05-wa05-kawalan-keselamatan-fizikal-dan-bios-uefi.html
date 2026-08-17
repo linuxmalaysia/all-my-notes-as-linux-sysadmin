@@ -1589,8 +1589,8 @@ Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan E
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>grub-mkpasswd-pbkdf2
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Tambahkan konfigurasi pengguna superuser di /etc/grub.d/40_custom</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># cat &lt;&lt; &#39;EOF&#39; | sudo tee -a /etc/grub.d/40_custom</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># set superusers=&quot;admin&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># cat &lt;&lt; 'EOF' | sudo tee -a /etc/grub.d/40_custom</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># set superusers="admin"</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># password_pbkdf2 admin grub.pbkdf2.sha512...</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># EOF</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
@@ -1602,7 +1602,7 @@ Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan E
 <h3 id="3-penguatkuasaan-tamat-masa-sesi-terminal-otomatik-tmout">3. Penguatkuasaan Tamat Masa Sesi Terminal Otomatik (<code>TMOUT</code>)<a class="headerlink" href="#3-penguatkuasaan-tamat-masa-sesi-terminal-otomatik-tmout" title="Permanent link">&para;</a></h3>
 <p>Mengunci atau menamatkan sesi terminal tidak aktif secara automatik selepas 15 minit (900 saat).</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Cipta fail skrip penguatkuasaan TMOUT secara global</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; | sudo tee /etc/profile.d/timeout.sh</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' | sudo tee /etc/profile.d/timeout.sh</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">readonly TMOUT=900</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">export TMOUT</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">EOF</span>
@@ -1619,7 +1619,7 @@ Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan E
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Konfigurasi had sumber sistem di /etc/security/limits.conf</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Menyertakan larangan coredump dan had maxlogins</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; | sudo tee -a /etc/security/limits.conf</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' | sudo tee -a /etc/security/limits.conf</span>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">*          hard    core            0</span>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">*          hard    maxlogins       3</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">EOF</span>
@@ -1627,7 +1627,7 @@ Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan E
 <h3 id="5-prosedur-penutupan-ulang-but-selamat">5. Prosedur Penutupan &amp; Ulang But Selamat<a class="headerlink" href="#5-prosedur-penutupan-ulang-but-selamat" title="Permanent link">&para;</a></h3>
 <p>Arahan penutupan terjadual dan penutupan serta-merta adalah pilihan alternatif mengikut keperluan operasi:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Pilihan A: Hantar mesej amaran dan jadualkan penutupan sistem secara teratur</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>shutdown<span class="w"> </span>-h<span class="w"> </span>+2<span class="w"> </span><span class="s2">&quot;Penyelenggaraan sistem fizikal dalam masa 2 minit.&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>shutdown<span class="w"> </span>-h<span class="w"> </span>+2<span class="w"> </span><span class="s2">"Penyelenggaraan sistem fizikal dalam masa 2 minit."</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Pilihan B: Matikan sistem serta-merta menggunakan systemd</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>poweroff

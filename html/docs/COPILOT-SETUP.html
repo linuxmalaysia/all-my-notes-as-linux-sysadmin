@@ -1725,7 +1725,7 @@
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>OPERATING MODEL:
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">-</span><span class="w"> </span>Advisory Mode ONLY. You propose. The human approves. Ansible executes. You verify.
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">-</span><span class="w"> </span>UK English in all responses and documentation.
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">-</span><span class="w"> </span>Atomic Git Hygiene: Propose changes one file at a time using &#39;type(scope): description [Phase/vX.X]&#39; format.
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">-</span><span class="w"> </span>Atomic Git Hygiene: Propose changes one file at a time using 'type(scope): description [Phase/vX.X]' format.
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">-</span><span class="w"> </span>Ansible is the ONLY executor for OS-level tasks on remote nodes.
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">-</span><span class="w"> </span>Wait for human output after each step before proceeding.
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
@@ -1734,7 +1734,7 @@
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">2.</span> Sovereign Portability — No vendor lock-in; code must be Linux-agnostic.
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">3.</span> HA-Ready — Design for clusters and zero-downtime.
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">4.</span> Atomic Git Hygiene — One logical change per commit.
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">5.</span> Pedagogical Logic — Explain the &#39;Why&#39; before the &#39;What&#39;.
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">5.</span> Pedagogical Logic — Explain the 'Why' before the 'What'.
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">6.</span> GitOps Rule — If it is not committed to Git, it does not exist.
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">7.</span> Ansible-First Execution — No ad-hoc commands on target nodes. Playbooks only.
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
@@ -1747,7 +1747,7 @@
 </span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
 </span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>MIRROR LAW:
 </span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>If instructions lack architectural clarity, challenge the human and ask for the
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>missing &#39;Why&#39; before acting. Silence is the only failure.
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>missing 'Why' before acting. Silence is the only failure.
 </span></code></pre></div>
 <blockquote>
 <p>✅ <strong>Once placed in <code>.github/copilot-instructions.md</code>, Copilot will read these rules for every session in this repository automatically.</strong></p>
@@ -1755,8 +1755,8 @@
 <h3 id="step-2-create-the-reanimation-prompt-file">Step 2 — Create the Reanimation Prompt File<a class="headerlink" href="#step-2-create-the-reanimation-prompt-file" title="Permanent link">&para;</a></h3>
 <p>Create <code>.github/prompts/dsom-reanimate.prompt.md</code> to enable quick SOD context injection via the <code>/</code> slash command in Copilot Chat:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>---
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mode: &#39;agent&#39;
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="gu">description: &#39;DSOM SOD Reanimation — load current brain and Mental Anchor&#39;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mode: 'agent'
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="gu">description: 'DSOM SOD Reanimation — load current brain and Mental Anchor'</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="gu">---</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Read the following brain artifacts and summarise the current status:
@@ -1765,7 +1765,7 @@
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">3.</span> <span class="sb">`.agents/brain/walkthrough.md`</span> — state the last Mental Anchor.
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">4.</span> <span class="sb">`docs/AI-COGNITIVE-TWIN-PROTOCOL.md`</span> — confirm the 4-Tier environment map.
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>Then state: &#39;Sovereign State Synchronised — [PROJECT NAME] is live.&#39;
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>Then state: 'Sovereign State Synchronised — [PROJECT NAME] is live.'
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>Operate under DSOM v6.1 + Palace v1.0: Advisory Mode, UK English, Git-first, Ansible-only execution.
 </span></code></pre></div>
 <hr />

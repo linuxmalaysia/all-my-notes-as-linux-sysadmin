@@ -1441,106 +1441,106 @@
     <span class="md-ellipsis">
       
         1. Pengecaman Peranti Storan &amp; Struktur Nod (/dev/)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="1. Pengecaman Peranti Storan &amp; Struktur Nod (/dev/)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-konvensyen-penamaan-nod-peranti-moden-2026" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A. Konvensyen Penamaan Nod Peranti Moden (2026):
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b-pemeriksaan-peranti-storan" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B. Pemeriksaan Peranti Storan
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2-pelekapan-penangguhan-storan-manual-mount-umount-findmnt" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2. Pelekapan &amp; Penangguhan Storan Manual (mount, umount, findmnt)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="2. Pelekapan &amp; Penangguhan Storan Manual (mount, umount, findmnt)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-melakukan-pelekapan-sistem-fail" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A. Melakukan Pelekapan Sistem Fail
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b-penangguhan-media-luaran-mengeluarkan-disk-umount-eject" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B. Penangguhan Media Luaran &amp; Mengeluarkan Disk (umount, eject)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3-konfigurasi-pelekapan-automatik-kekal-etcfstab" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3. Konfigurasi Pelekapan Automatik Kekal (/etc/fstab)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="3. Konfigurasi Pelekapan Automatik Kekal (/etc/fstab)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-dapatkan-uuid-partisi" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A. Dapatkan UUID Partisi
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b-menambah-entri-dalam-etcfstab-dengan-opsi-keselamatan-jdnmampu" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B. Menambah Entri Dalam /etc/fstab dengan Opsi Keselamatan JDN/MAMPU
       
     </span>
@@ -1563,10 +1563,10 @@
     </nav>
   
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
       
         <li class="md-nav__item">
@@ -1674,7 +1674,7 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Memastikan tiada proses sedang menggunakan direktori sebelum umount</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/usb_flash
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Jika direktori &#39;busy&#39;, kesan proses yang halang umount menggunakan lsof/fuser:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Jika direktori 'busy', kesan proses yang halang umount menggunakan lsof/fuser:</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>lsof<span class="w"> </span>+D<span class="w"> </span>/mnt/usb_flash
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Mengeluarkan pemacu optik CD/DVD atau pen drive</span>

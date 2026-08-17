@@ -26731,41 +26731,76 @@ Silibus ini memandu modul amali di `manual/cu03/` dan kemahiran AI di `.agents/s
   </file>
   <file path="openwiki/topic-04-automation-and-backup.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 type: documentation
-title: "topic-04-automation-and-backup"
-timestamp: "2026-08-16T08:43:42Z"
-topics: ["bash-scripting", "backup", "cu04"]
-tags: ["linux", "backup", "scripting", "cu04"]
-description: "Silibus automasi skrip dan sandaran Linux (Cron, Bash, Rsync) dipetakan kepada NOSS CU04."
+title: "Topik 4: Automasi Skrip, Sandaran Data &amp; Pemulihan Sistem (CU04)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["bash-scripting", "backup", "recovery", "cu04", "tar", "rsync", "zstd", "cron", "systemd-timer"]
+tags: ["linux", "backup", "scripting", "cu04", "recovery", "zstd", "rsync", "noss"]
+description: "Silibus automasi skrip Bash, pengarkiban dan pemampatan tar/zstd, penyegerakan rsync, automasi berkala cron/systemd-timer, dan pemulihan data dipetakan kepada NOSS CU04."
 resource: "file:///openwiki/topic-04-automation-and-backup.md"
 ---
 
-# Topik 4: Automasi &amp; Sandaran (CU04)
+# Topik 4: Automasi Skrip, Sandaran Data &amp; Pemulihan Sistem (CU04)
 
-## Overview (Gambaran Keseluruhan)
-Sistem Linux terkenal dengan keupayaan automasinya. Topik ini menyentuh asas penulisan skrip (shell scripting) dan penggunaan utiliti sandaran data (backup). Dipetakan daripada **CU04 (Backup &amp; Recovery Tools)**.
-
-## Silibus Utama
-1. **Arkib &amp; Pemampatan (Archiving &amp; Compression)**:
-   - Penggunaan `tar`, `gzip`, `zip`.
-2. **Bash Scripting Basics**:
-   - Pembolehubah (Variables).
-   - Struktur kawalan (If-else, For loops).
-   - Kebenaran pelaksanaan (`chmod +x script.sh`).
-3. **Penyelarasan Masa (Job Scheduling)**:
-   - Menggunakan `cron` dan penyuntingan jadual menerusi `crontab -e`.
-4. **Alatan Sandaran Berpusat Rangkaian (Network Backup)**:
-   - Penggunaan `rsync` untuk menyegerak fail antara pelayan berbeza (`rsync -avz /source/ user@server:/destination/`).
-
-## Pemetaan NOSS (NOSS Mapping)
-Silibus ini memandu kemahiran Ejen AI berikut:
-- `cu04-wa02-perform-local-backup-operations`
-- `cu04-wa03-perform-network-based-backup`
+## 📌 Overview (Gambaran Keseluruhan)
+Sistem Linux terkenal dengan keupayaan automasi dan keutuhan integriti data. Topik ini merangkumi pengarkiban moden, penyegerakan direktori pintar, automasi pemasa berjadual, serta strategi pemulihan data dan bencana. Dipetakan daripada **NOSS CU04 (Backup &amp; Recovery Tools)**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 📚 Silibus Utama
+1. **Pengarkiban &amp; Pemampatan Data Moden (Archiving &amp; Compression)**:
+   - Utiliti pengarkiban `tar`.
+   - Pemampat moden berprestasi tinggi `zstd` (*Zstandard multi-threaded*), `xz`, `gzip`, dan `bzip2`.
+   - Menjalankan penyulitan arkib tersulit `gpg` (AES-256) mengikut garis panduan JDN/MAMPU.
+2. **Penyegerakan Data Pintar (Incremental Synchronization)**:
+   - Penggunaan `rsync` untuk penyegerakan direktori tempatan dan rangkaian (`rsync -avzP --delete-after`).
+   - Penerapan Strategi Sandaran **3-2-1** (3 salinan, 2 media, 1 offsite) &amp; pematuhan ISO/IEC 27001.
+3. **Automasi Penjadualan Tugasan (Job Scheduling)**:
+   - Automasi `cron` dan penyuntingan jadual menerusi `crontab -e`.
+   - Automasi moden berasaskan unit `systemd.service` dan `systemd.timer`.
+4. **Pemulihan Data &amp; Verifikasi Integriti (Recovery &amp; Verification)**:
+   - Pengesahan integriti checksum cryptographic `sha256sum`.
+   - Pengekstrakan data terpilih (*selective restoration*) daripada arkib termampat.
+   - Prosedur dan alur kerja pemulihan bencana sistem *bare-metal*.
+
+---
+
+## 🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+Silibus ini memandu modul amali di `manual/cu04/` dan kemahiran AI di `.agents/skills/`:
+
+- `manual/cu04/cu04-wa01-persediaan-alatan-sandaran-dan-pemulihan.md` ➔ `.agents/skills/cu04-wa01-prepare-backup-recovery-tools/`
+- `manual/cu04/cu04-wa02-operasi-sandaran-tempatan.md` ➔ `.agents/skills/cu04-wa02-perform-local-backup-operations/`
+- `manual/cu04/cu04-wa03-sandaran-berasaskan-rangkaian.md` ➔ `.agents/skills/cu04-wa03-perform-network-based-backup/`
+- `manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.md` ➔ `.agents/skills/cu04-wa04-restore-endpoint-data/`
+- `manual/cu04/cu04-wa05-pemulihan-bare-metal-endpoint.md` ➔ `.agents/skills/cu04-wa05-perform-endpoint-bare-metal-recovery/`
+
+---
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+1. *"Apakah perbezaan kelajuan dan kecekapan nisbah mampatan antara tar -I zstd berbanding tar -czvf bagi fail bersaiz besar?"*
+2. *"Bagaimanakah cara membina skrip Bash automasi sandaran rsync yang menghantar makluman kegagalan terus ke log systemd journalctl?"*
+3. *"Tunjukkan kaedah mengesahkan fail sha256sum secara berkelompok sebelum melancarkan proses pemulihan data pelayan."*
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+- [GNU Tar Official Manual](https://www.gnu.org/software/tar/manual/)
+- [Zstandard Compression Algorithm Guide](https://facebook.github.io/zstd/)
+- [Rsync Documentation &amp; User Manual](https://rsync.samba.org/)
+- [Systemd Timers Documentation](https://www.freedesktop.org/software/systemd/man/systemd.timer.html)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+- **Linux Administration Handbook** oleh Evi Nemeth et al.
+- **Automating Linux with Bash and Python** oleh R. W.
+- **Panduan Praktikal Sandaran &amp; Automasi Pelayan Linux** oleh Harisfazillah Jamel.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -26865,41 +26900,39 @@ Silibus ini memandu kemahiran Ejen AI berikut:
 ---
 okf_version: 0.1
 type: documentation
-title: "Topik 6: Penyelesaian Masalah, Pemantauan Prestasi &amp; Analisis Log (CU06)"
+title: "Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks &amp; Analisis Log (CU06)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["troubleshooting", "logs", "performance", "cu06", "openwiki", "noss"]
-tags: ["linux", "troubleshooting", "logs", "cu06", "prestasi", "openwiki"]
-description: "Silibus penyelesaian masalah sistem, pemantauan prestasi &amp; proses, analisis log journalctl, dan sokongan pengguna dipetakan kepada NOSS CU06."
+topics: ["troubleshooting", "logs", "mount", "grep", "sed", "awk", "vim", "cu06", "openwiki", "noss"]
+tags: ["linux", "troubleshooting", "logs", "mount", "fstab", "grep", "sed", "awk", "vim", "rca", "cu06"]
+description: "Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, editor vim/nano, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06."
 resource: "file:///openwiki/topic-06-troubleshooting-and-logs.md"
 ---
 
-# Topik 6: Penyelesaian Masalah, Pemantauan Prestasi &amp; Analisis Log (CU06)
+# Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks &amp; Analisis Log (CU06)
 
 ## 📌 Overview (Gambaran Keseluruhan)
 
-Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshooting*), memeriksa kesihatan &amp; prestasi sistem, penalaan proses, dan pengurusan perkhidmatan sokongan pengguna. Dipetakan secara terus daripada **NOSS CU06 (End-User Support &amp; System Maintenance)**.
+Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshooting*), pemeriksaan pelekapan storan &amp; peranti luaran, pemprosesan teks aluran log, penalaan proses, dan penyediaan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*). Dipetakan secara terus daripada **NOSS CU06 (End-User Support &amp; System Maintenance)**.
 
 ---
 
 ## 📚 Silibus Utama
 
 1. **Pemantauan Proses &amp; Sumber Sistem (Resource &amp; Process Monitoring)**:
-    - Arahan pemerhatian statik dan interaktif masa nyata: `ps aux`, `top`, `htop`, `pidstat`.
-    - Analisis beban purata (*load average*), penggunaan memori fizikal &amp; swap: `uptime`, `free -h`.
-    - Menganalisis memori maya dan I/O cakera: `vmstat 1 5`, `iostat -xz 1 5`.
-2. **Kitaran Hayat Proses &amp; Penalaan Keutamaan (Process Lifecycle &amp; Tuning)**:
-    - Penghantaran isyarat POSIX (`kill -15` SIGTERM, `kill -9` SIGKILL, `kill -1` SIGHUP, `killall`, `pkill`).
-    - Penalaan keutamaan penjadualan CPU (*nice value* -20 hingga 19): `nice`, `renice`.
-    - Penalaan keutamaan I/O cakera: `ionice`.
-    - Penghadan sumber sistem melalui `cgroups v2` dan `systemd-run`.
-3. **Penyelesaian Masalah Rangkaian &amp; Sambungan (Network Troubleshooting)**:
-    - Pemeriksaan IP &amp; Antaramuka: `ip a`, `ip route`.
-    - Menguji capaian &amp; laluan: `ping`, `traceroute`, `tracepath`, `curl`, `dig`.
-    - Pemerhatian port &amp; soket aktif: `ss -tulpn`.
-4. **Pembacaan &amp; Analisis Log Sistem (Log Analysis &amp; Auditing)**:
-    - Audit log sistem terpusat menggunakan `journalctl` (parameter `-u`, `-f`, `--since`, `-p err`).
-    - Menyelidik fail log sistem tradisional di `/var/log/` (`syslog`, `auth.log`, `messages`, `secure`).
-    - Penyiasatan punca kegagalan sistem (*Root Cause Analysis - RCA*).
+    - Arahan pemerhatian statik dan masa nyata: `ps aux`, `top`, `htop`, `pidstat`.
+    - Analisis beban purata (*load average*), memori fizikal, swap, dan I/O: `uptime`, `free -h`, `vmstat`, `iostat`.
+    - Isyarat POSIX (`kill`, `pkill`, `killall`), keutamaan `nice`/`renice`, dan `cgroups v2`.
+2. **Pelekapan Storan &amp; Peranti Luaran (Storage Mounting &amp; Peripherals)**:
+    - Nod peranti moden (`/dev/nvmeXn1`, `/dev/sdX`, `/dev/sr0`, USB) berpandukan FHS.
+    - Pelekapan manual dan penangguhan: `mount`, `umount`, `findmnt`, `lsblk`, `eject`.
+    - Entri pelekapan kekal dalam `/etc/fstab` dengan pilihan keselamatan JDN/MAMPU (`nodev,nosuid,noexec`).
+3. **Pemprosesan Teks Aluran &amp; Editor CLI (Text Filters &amp; CLI Editors)**:
+    - Penapis teks: `grep` / `ripgrep`, `sed` (stream editor), `awk` (pattern scanning), `cut`, `sort`, `uniq`, `wc`, `tr`.
+    - Operator pengalihan I/O (`&gt;`, `&gt;&gt;`, `&lt;`, `2&gt;&amp;1`, `|` piping, `tee`).
+    - Penyunting teks CLI pentadbiran: `vim` (mod Command/Insert/Visual/Ex) dan `nano`.
+4. **Pembacaan Log Sistem &amp; Laporan RCA (Log Analysis &amp; Root Cause Analysis)**:
+    - Audit log sistem terpusat menggunakan `journalctl` dan fail `/var/log/`.
+    - Penyediaan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*) mengikut standard ISO/IEC 27001 dan JDN/MAMPU.
 
 ---
 
@@ -26911,7 +26944,7 @@ Silibus ini memandu modul amali di `manual/cu06/` dan kemahiran AI di `.agents/s
 - `manual/cu06/cu06-wa02-pengendalian-aduan-dan-insiden-pengguna.md` ➔ `.agents/skills/cu06-wa02-handle-end-user-requests-and-incidents/`
 - `manual/cu06/cu06-wa03-diagnostik-dan-troubleshooting-perkakasan.md` ➔ `.agents/skills/cu06-wa03-support-hardware-troubleshooting/`
 - `manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md` ➔ `.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/`
-- `manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md` ➔ `.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/`
+- `manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md` ➔ `.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/` &amp; `.agents/skills/cu06-wa05-optimize-system-performance-and-storage/`
 - `manual/cu06/cu06-wa06-pengurusan-tiket-sokongan-dan-sla.md` ➔ `.agents/skills/cu06-wa06-manage-support-tickets-and-slas/`
 - `manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md` ➔ `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/`
 
@@ -26919,25 +26952,25 @@ Silibus ini memandu modul amali di `manual/cu06/` dan kemahiran AI di `.agents/s
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
 
-1. *"Bagaimanakah cara menganalisis punca kemerosotan prestasi I/O pelayan apabila vmstat menunjukkan nilai swap-out (so) yang tinggi secara berterusan?"*
-2. *"Tunjukkan skrip Python untuk mengautomasikan pemantauan log journalctl dan menghantar amaran ke saluran Telegram/Slack apabila ralat kritikal (Priority ERR) dikesan."*
-3. *"Apakah langkah-langkah penyediaan laporan RCA (Root Cause Analysis) yang mematuhi format ISO/IEC 27001 bagi insiden perkhidmatan terhenti disebabkan OOM Killer?"*
+1. *"Bagaimanakah cara menggunakan awk dan sort untuk mengekstrak alamat IP terbanyak yang membuat percubaan akses SSH gagal daripada log auth.log?"*
+2. *"Apakah langkah penyelesaian masalah apabila arahan umount melaporkan 'target is busy'?"*
+3. *"Tunjukkan contoh persediaan laporan RCA (Root Cause Analysis) yang lengkap bagi insiden kegagalan perkhidmatan pelayan."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
 
 - [Brendan Gregg's Linux Performance &amp; Tuning Guide](https://www.brendangregg.com/linuxperf.html)
-- [Ubuntu Server Administration &amp; Diagnostics Guide](https://ubuntu.com/server/docs)
-- [AlmaLinux 10 Performance Optimization Wiki](https://wiki.almalinux.org/)
+- [Ubuntu Server Storage &amp; Diagnostics Guide](https://ubuntu.com/server/docs)
+- [GNU Sed and Awk User Manuals](https://www.gnu.org/software/sed/manual/sed.html)
 - [Systemd Journalctl User Guide](https://www.freedesktop.org/software/systemd/man/journalctl.html)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
 
-- **Systems Performance: Enterprise and the Cloud (2nd Edition)** oleh Brendan Gregg.
-- **Linux Troubleshooting Bible** oleh Christopher Negus &amp; Thomas Weeks.
+- **Systems Performance: Enterprise and the Cloud** oleh Brendan Gregg.
+- **Sed &amp; Awk (2nd Edition)** oleh Dale Dougherty &amp; Arnold Robbins.
 - **Pengoptimuman &amp; Diagnostik Prestasi Pelayan Linux** oleh Harisfazillah Jamel.
 
 ---
@@ -28840,69 +28873,178 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pelaksanaan Operasi Sandaran Tempatan"
+title: "Pelaksanaan Operasi Sandaran Tempatan &amp; Pemampatan Data"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu04", "panduan-amali", "manual-linux"]
-tags: ["cu04", "linux", "noss", "amali", "standard-malaysia"]
-description: "Automasi skrip sandaran data tempatan menggunakan Bash dan systemd timers / cron."
+topics: ["noss-linux", "cu04", "sandaran", "tar", "rsync", "zstd", "cron", "systemd-timer"]
+tags: ["cu04", "linux", "noss", "sandaran", "zstd", "rsync", "systemd", "standard-malaysia"]
+description: "Panduan amali pelaksanaan operasi sandaran sistem tempatan, arkib berformat tar dengan pemampat moden zstd/gzip/xz, penyegerakan rsync, automasi cron &amp; systemd.timer, serta pematuhan standard ISO/IEC 27001 dan JDN/MAMPU."
 resource: "file:///manual/cu04/cu04-wa02-operasi-sandaran-tempatan.md"
 ---
 
-# Pelaksanaan Operasi Sandaran Tempatan
+# Pelaksanaan Operasi Sandaran Tempatan &amp; Pemampatan Data
 
 ## 🎯 Objektif Pembelajaran
-Automasi skrip sandaran data tempatan menggunakan Bash dan systemd timers / cron.
+Di akhir modul amali ini, pelatih dapat:
+1. Menguasai penciptaan dan pengekstrakan arkib data menggunakan utiliti `tar` berasaskan algoritma pemampatan moden seperti `zstd`, `xz`, `gzip`, dan `bzip2`.
+2. Melaksanakan penyegerakan direktori berprestasi tinggi menggunakan `rsync -avzP --delete-after` bagi operasi sandaran berperingkat (*incremental backup*).
+3. Mengaplikasikan strategi sandaran **3-2-1** mengikut Pekeliling Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001.
+4. Mengautomasikan tugasan sandaran berkala menggunakan `cron` dan unit pemasa `systemd.timer`.
 
 &gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU04**.
+&gt; Modul amali ini dipetakan kepada **NOSS CU04 (Backup &amp; Recovery Tools) - WA02: Perform Local Backup Operations**. Edaran Linux rujukan merangkumi **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali &amp; Prosedur
 
 ### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran Linux beroperasi (Ubuntu 26.04 LTS / AlmaLinux 10 / Fedora 43).
 - Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+- Ruang storan mencukupi pada pemacu sandaran atau partition dedicated (contoh: `/mnt/backup`).
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+---
+
+### 2. Pengarkiban &amp; Pemampatan Data Moden (`tar`, `zstd`, `gzip`, `xz`)
+
+#### A. Konsep &amp; Operator `tar`
+Utiliti `tar` (*Tape Archive*) digabungkan dengan alatan pemampatan untuk mengecilkan saiz arkib data:
+- `-c` (*create*): Membina arkib baharu.
+- `-x` (*extract*): Mengekstrak kandungan arkib.
+- `-v` (*verbose*): Memaparkan maklumat terperinci semasa proses.
+- `-f` (*file*): Menentukan nama fail arkib output.
+- `-z` (*gzip*), `-j` (*bzip2*), `-J` (*xz*), `--zstd` (*zstandard*): Pilihan algoritma pemampatan.
+
+#### B. Pelaksanaan Amali Pemampatan `zstd` (Standard 2026)
+`zstd` (Zstandard) merupakan algoritma pemampatan masa nyata berasaskan bebenang berbilang (*multi-threaded*) berprestasi tinggi.
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Membina arkib terpatat zstd daripada direktori /var/log
+sudo tar -I 'zstd -T0 -19' -cvf /mnt/backup/logs_backup_$(date +%Y%m%d).tar.zst /var/log
+
+# Memeriksa kandungan fail arkib tanpa mengekstrak
+tar -tvf /mnt/backup/logs_backup_*.tar.zst
+
+# Mengekstrak arkib zstd ke direktori sasaran
+sudo tar -I zstd -xvf /mnt/backup/logs_backup_*.tar.zst -C /tmp/restored_logs/
+```
+
+#### C. Pemampat Tradisional &amp; Moden lain
+```bash
+# Pemampatan Gzip (.tar.gz)
+tar -czvf /mnt/backup/etc_backup.tar.gz /etc
+
+# Pemampatan XZ (.tar.xz) - kadar mampatan tinggi
+tar -cJvf /mnt/backup/etc_backup.tar.xz /etc
+```
+
+---
+
+### 3. Penyegerakan Data Pintar &amp; Incremental Backup (`rsync`)
+
+`rsync` (*Remote Sync*) hanya menyalin blok fail yang telah berubah, menjimatkan masa dan penggunaan I/O cakera.
+
+```bash
+# Parameter utama rsync:
+# -a (archive mode): Memelihara kebenaran, pemilik, dan pautan simbolik
+# -v (verbose): Memaparkan perincian
+# -z (compress): Mermampatkan data semasa pemindahan
+# -P (progress &amp; partial): Memaparkan bar kemajuan dan membolehkan resume
+# --delete-after: Memadam fail di destinasi jika ia dipadam di sumber (penyegerakan tepat)
+
+sudo rsync -avzP --delete-after /home/user/documents/ /mnt/backup/documents_mirror/
+```
+
+---
+
+### 4. Strategi Sandaran 3-2-1 &amp; Pengerasan Keselamatan JDN/MAMPU
+
+#### A. Prinsip 3-2-1:
+- **3** salinan data (1 data asal + 2 salinan sandaran).
+- **2** jenis media storan berbeza (contoh: NVMe SSD tempatan + NAS/LUKS Encrypted External Volume).
+- **1** salinan ditempatkan di luar premis (*offsite / cloud / secondary DC*).
+
+#### B. Penyulitan Arkib Sandaran
+Mengikut Pekeliling Am JDN/MAMPU, data sensitif mesti disulitkan sebelum disimpan:
+```bash
+# Menyalurkan arkib tar zstd terus ke penyulitan Symmetric GPG
+tar -I zstd -cvf - /etc | gpg --symmetric --cipher-algo AES256 -o /mnt/backup/etc_encrypted.tar.zst.gpg
+```
+
+---
+
+### 5. Automasi Jadual Sandaran (`cron` &amp; `systemd.timer`)
+
+#### A. Automasi Tradisional menerusi `crontab`
+```bash
+# Menyunting jadual cron pengguna root
+sudo crontab -e
+
+# Format crontab: [Minit] [Jam] [Hari/Bulan] [Bulan] [Hari/Minggu] [Arahan]
+# Contoh: Menjalankan skrip sandaran setiap hari pada jam 2:00 pagi
+0 2 * * * /usr/local/bin/system_backup.sh &gt;&gt; /var/log/backup.log 2&gt;&amp;1
+```
+
+#### B. Automasi Moden menerusi Unit `systemd.service` &amp; `systemd.timer`
+Mewujudkan servis sandaran di `/etc/systemd/system/local-backup.service`:
+```ini
+[Unit]
+Description=Servis Sandaran Sistem Tempatan CU04
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/system_backup.sh
+```
+
+Mewujudkan pemasa di `/etc/systemd/system/local-backup.timer`:
+```ini
+[Unit]
+Description=Pemasa Sandaran Harian CU04
+
+[Timer]
+OnCalendar=*-*-* 02:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+Mengaktifkan pemasa `systemd`:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now local-backup.timer
+sudo systemctl list-timers
 ```
 
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+- [ ] Berjaya membina dan mengekstrak arkib `.tar.zst` dan `.tar.gz`.
+- [ ] Berjaya menyegerakkan direktori menggunakan `rsync` dengan opsi `--delete-after`.
+- [ ] Memahami dan mengaplikasikan prinsip sandaran 3-2-1.
+- [ ] Mampu mengkonfigurasi automasi sandaran berkala menerusi `cron` atau `systemd.timer`.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pelaksanaan Operasi Sandaran Tempatan dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pelaksanaan Operasi Sandaran Tempatan menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+1. *"Apakah perbezaan prestasi dari segi saiz dan masa pemprosesan antara zstd, xz, dan gzip apabila mermampatkan log bersaiz 10GB?"*
+2. *"Tunjukkan skrip Bash lengkap yang merangkumi pengarkiban tar.zst, semakan integriti sha256sum, dan penghantaran laporan e-mel/journalctl."*
+3. *"Bagaimanakah cara mengkonfigurasi systemd.timer untuk menjalankan sandaran hanya apabila sistem berada dalam keadaan idle?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+- [Dokumentasi Rasmi GNU Tar](https://www.gnu.org/software/tar/manual/)
+- [Panduan Pemampatan Zstandard (zstd)](https://facebook.github.io/zstd/)
+- [Rsync Official Documentation &amp; Manual](https://rsync.samba.org/)
+- [Systemd Timers Wiki &amp; Guide](https://wiki.archlinux.org/title/Systemd/Timers)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **Linux Administration Handbook (5th Edition)** oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley.
+- **Mastering Linux System Administration** oleh Christine Bresnahan &amp; Richard Blum.
+- **Panduan Praktikal Pentadbiran &amp; Sandaran Pelayan Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -28990,69 +29132,144 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pemulihan Data &amp; Sistem Fail"
+title: "Pemulihan Data &amp; Verifikasi Integriti Sistem Fail"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu04", "panduan-amali", "manual-linux"]
-tags: ["cu04", "linux", "noss", "amali", "standard-malaysia"]
-description: "Prosedur verifikasi integriti integriti sandaran dan pemulihan data terpilih."
+topics: ["noss-linux", "cu04", "pemulihan", "sha256sum", "bare-metal", "tar"]
+tags: ["cu04", "linux", "noss", "pemulihan", "sha256sum", "bare-metal", "standard-malaysia"]
+description: "Panduan amali prosedur pemulihan data tempatan dan sistem fail, pengesahan integriti checksum SHA-256, pengekstrakan fail terpilih daripada arkib tar/zstd, dan tatacara pemulihan bare-metal."
 resource: "file:///manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.md"
 ---
 
-# Pemulihan Data &amp; Sistem Fail
+# Pemulihan Data &amp; Verifikasi Integriti Sistem Fail
 
 ## 🎯 Objektif Pembelajaran
-Prosedur verifikasi integriti integriti sandaran dan pemulihan data terpilih.
+Di akhir modul amali ini, pelatih dapat:
+1. Melaksanakan verifikasi integriti arkib sandaran menggunakan algoritma hash cryptographic `sha256sum` sebelum proses pemulihan.
+2. Mengekstrak data terpilih (*selective restoration*) daripada arkib termampat `tar.zst` / `tar.gz` tanpa menimpa (*overwrite*) data sedia ada secara tidak sengaja.
+3. Melaksanakan pemulihan kebenaran (*permissions*) dan pemilikan fail POSIX (`chown`, `chmod`) selepas data dipulihkan.
+4. Memahami alur kerja pemulihan *bare-metal disaster recovery* untuk persekitaran endpoint dan pelayan.
 
 &gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU04**.
+&gt; Modul amali ini dipetakan kepada **NOSS CU04 (Backup &amp; Recovery Tools) - WA04: Perform Data and Filesystem Recovery**. Edaran Linux rujukan merangkumi **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali &amp; Prosedur
 
-### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Verifikasi Integriti Arkib Sandaran (`sha256sum`)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+Sebelum memulakan pemulihan data, pengesahan integriti adalah kritikal bagi memastikan arkib sandaran tidak rosak atau diubah suai (*tampered*).
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# A. Menjana nilai checksum SHA-256 semasa pembinaan sandaran
+sha256sum /mnt/backup/etc_backup_20260817.tar.zst &gt; /mnt/backup/etc_backup_20260817.tar.zst.sha256
+
+# B. Mengesahkan integriti fail arkib sebelum pemulihan
+cd /mnt/backup/
+sha256sum -c etc_backup_20260817.tar.zst.sha256
+
+# Output yang sah:
+# etc_backup_20260817.tar.zst: OK
 ```
 
 ---
 
+### 2. Pengekstrakan &amp; Pemulihan Data Terpilih (*Selective Restore*)
+
+#### A. Memeriksa Kandungan Arkib Tanpa Mengekstrak
+```bash
+# Menyenaraikan semua fail dalam arkib dan menapis fail khusus
+tar -tvf /mnt/backup/etc_backup_20260817.tar.zst | grep "netplan"
+```
+
+#### B. Mengekstrak Fail Terpilih ke Direktori Sasar
+```bash
+# Cipta direktori sementara pemulihan untuk mengelakkan penimpaan tidak sengaja
+mkdir -p /tmp/recovery_staging
+
+# Mengekstrak hanya fail netplan/01-netcfg.yaml daripada arkib
+sudo tar -I zstd -xvf /mnt/backup/etc_backup_20260817.tar.zst \
+  -C /tmp/recovery_staging \
+  etc/netplan/01-netcfg.yaml
+
+# Semak kandungan fail yang dipulihkan
+ls -la /tmp/recovery_staging/etc/netplan/
+```
+
+#### C. Memelihara Pemilikan dan Kebenaran Fail (`--same-owner`, `-p`)
+Secara lalai, pengekstrakan oleh pengguna `root` mengekalkan pemilikan asal:
+```bash
+sudo tar -I zstd --same-owner -p -xvf /mnt/backup/etc_backup_20260817.tar.zst -C /
+```
+
+---
+
+### 3. Pemulihan Arkib Tersulit (`gpg`)
+
+Jika arkib disulitkan dengan GPG (AES-256) mengikut garis panduan JDN/MAMPU:
+```bash
+# Dekripsikan dan ekstrak aluran tar terus secara paip
+gpg --decrypt /mnt/backup/etc_encrypted.tar.zst.gpg | sudo tar -I zstd -xvf - -C /tmp/recovery_staging/
+```
+
+---
+
+### 4. Tatacara Pemulihan Bencana Bare-Metal (*Bare-Metal Recovery*)
+
+Pemulihan bare-metal dilaksanakan apabila sistem mengalami kegagalan penuh peranti storan utama:
+
+1. **But menggunakan Persekitaran Live ISO**:
+   - But komputer sasaran menggunakan USB Live Ubuntu 26.04 LTS atau AlmaLinux 10.
+2. **Penyediaan Partisi &amp; Sistem Fail Sasar**:
+   - Bina skema partisi GPT dan penyulitan LUKS2 / LVM2 (jika berkaitan):
+     ```bash
+     sudo cryptsetup luksOpen /dev/nvme0n1p3 cryptroot
+     sudo vgchange -ay
+     sudo mount /dev/ubuntu-vg/ubuntu-lv /mnt
+     sudo mount /dev/nvme0n1p2 /mnt/boot
+     sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+     ```
+3. **Pengekstrakan Arkib Bare-Metal Sistem**:
+   ```bash
+   sudo tar -I zstd -xvf /mnt/backup/full_system_baremetal.tar.zst -C /mnt
+   ```
+4. **Pemasangan Semula Bootloader GRUB2 &amp; Chroot**:
+   ```bash
+   for dir in /dev /dev/pts /proc /sys /run; do sudo mount --bind $dir /mnt$dir; done
+   sudo chroot /mnt
+   grub-install /dev/nvme0n1
+   update-grub
+   exit
+   ```
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+- [ ] Berjaya menjana dan mengesahkan nilai hash `sha256sum` untuk fail arkib.
+- [ ] Berjaya menyenarai dan mengekstrak fail terpilih tanpa mengekstrak keseluruhan arkib.
+- [ ] Berjaya melaksanakan dekripsi arkib tersulit `gpg` ke lokasi pemulihan.
+- [ ] Memahami alur kerja dan langkah asas pemulihan sistem bare-metal.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemulihan Data &amp; Sistem Fail dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pemulihan Data &amp; Sistem Fail menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+1. *"Bagaimanakah cara membina skrip pengesahan sha256sum automatik yang menolak pengekstrakan jika nilai checksum tidak sepadan?"*
+2. *"Apakah langkah-langkah pemulihan data untuk sistem fail Btrfs atau ZFS snapshot apabila berlaku kegagalan integriti data?"*
+3. *"Tunjukkan kaedah memulihkan pangkalan data PostgreSQL daripada fail tar.zst dump tanpa mengganggu perkhidmatan hidup."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+- [GNU Tar Restore &amp; Extraction Manual](https://www.gnu.org/software/tar/manual/html_section/transform.html)
+- [Ubuntu Live ISO System Recovery Guide](https://help.ubuntu.com/community/LiveCdRecovery)
+- [NIST Special Publication 800-34: Contingency Planning Guide for IT Systems](https://csrc.nist.gov/publications/detail/sp/800-34/rev-1/final)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **Linux Incident Response and Forensics** oleh Kristinn Gudjonsson.
+- **Disaster Recovery and Business Continuity** oleh The Open Group.
+- **Panduan Pemulihan Data &amp; Pemantauan Sistem Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -29846,69 +30063,133 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Troubleshooting Peranti Luaran &amp; Pencetak"
+title: "Konfigurasi Pelekapan Storan, Peranti Luaran &amp; Pengoperasian Media"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu06", "panduan-amali", "manual-linux"]
-tags: ["cu06", "linux", "noss", "amali", "standard-malaysia"]
-description: "Konfigurasi pencetak CUPS, pengimbas SANE, dan penyelesaian masalah peranti USB/Thunderbolt."
+topics: ["noss-linux", "cu06", "mount", "umount", "findmnt", "fstab", "storan"]
+tags: ["cu06", "linux", "noss", "mount", "fstab", "nvme", "usb", "standard-malaysia"]
+description: "Panduan amali konfigurasi pelekapan storan, penangguhan media luaran, pengurusan entri /etc/fstab dengan parameter pengerasan keselamatan JDN/MAMPU, dan diagnostik peranti luaran."
 resource: "file:///manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md"
 ---
 
-# Troubleshooting Peranti Luaran &amp; Pencetak
+# Konfigurasi Pelekapan Storan, Peranti Luaran &amp; Pengoperasian Media
 
 ## 🎯 Objektif Pembelajaran
-Konfigurasi pencetak CUPS, pengimbas SANE, dan penyelesaian masalah peranti USB/Thunderbolt.
+Di akhir modul amali ini, pelatih dapat:
+1. Memahami penamaan nod peranti moden dalam Linux (`/dev/nvmeXn1`, `/dev/sdX`, `/dev/sr0`, USB) berpandukan piawaian Filesystem Hierarchy Standard (FHS).
+2. Melaksanakan pelekapan (*mounting*) dan penangguhan (*unmounting*) sistem fail secara manual menggunakan `mount`, `umount`, dan `findmnt`.
+3. Mengkonfigurasi entri pelekapan kekal automatik dalam `/etc/fstab` menggunakan UUID (*Universally Unique Identifier*).
+4. Menerapkan pilihan pengerasan keselamatan storan (`nodev,nosuid,noexec`) mengikut Pekeliling Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001.
 
 &gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU06**.
+&gt; Modul amali ini dipetakan kepada **NOSS CU06 (End-User Support &amp; System Maintenance) - WA04: Configure and Troubleshoot Peripheral Connections**. Edaran Linux rujukan merangkumi **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali &amp; Prosedur
 
-### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Pengecaman Peranti Storan &amp; Struktur Nod (`/dev/`)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+#### A. Konvensyen Penamaan Nod Peranti Moden (2026):
+- **NVMe SSD**: `/dev/nvme0n1` (Pemacu 1), `/dev/nvme0n1p1` (Partisi 1).
+- **SATA / USB Storage**: `/dev/sda` (Pemacu A), `/dev/sdb1` (Partisi 1 Pemacu B).
+- **Pemacu Optik (CD/DVD)**: `/dev/sr0` (pautan simbolik `/dev/cdrom`).
+- **Media Luaran**: Terlekap di bawah `/media/$USER/` atau `/mnt/`.
 
+#### B. Pemeriksaan Peranti Storan
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Menyenaraikan semua blok peranti beserta UUID dan sistem fail
+lsblk -f
+
+# Menganalisis UUID khusus bagi partisi storan luaran /dev/sdb1
+sudo blkid /dev/sdb1
+```
+
+---
+
+### 2. Pelekapan &amp; Penangguhan Storan Manual (`mount`, `umount`, `findmnt`)
+
+#### A. Melakukan Pelekapan Sistem Fail
+```bash
+# Cipta titik pelekap (mount point) di bawah /mnt
+sudo mkdir -p /mnt/usb_flash
+
+# Pelekap sistem fail vfat / exfat / ext4
+sudo mount -t ext4 /dev/sdb1 /mnt/usb_flash
+
+# Verifikasi status pelekapan dan hierarki
+findmnt /mnt/usb_flash
+```
+
+#### B. Penangguhan Media Luaran &amp; Mengeluarkan Disk (`umount`, `eject`)
+```bash
+# Memastikan tiada proses sedang menggunakan direktori sebelum umount
+sudo umount /mnt/usb_flash
+
+# Jika direktori 'busy', kesan proses yang halang umount menggunakan lsof/fuser:
+sudo lsof +D /mnt/usb_flash
+
+# Mengeluarkan pemacu optik CD/DVD atau pen drive
+eject /dev/sr0
+```
+
+---
+
+### 3. Konfigurasi Pelekapan Automatik Kekal (`/etc/fstab`)
+
+Fail `/etc/fstab` (*File System Table*) mengawal pelekapan partition semasa proses but sistem.
+
+#### A. Dapatkan UUID Partisi
+```bash
+sudo blkid /dev/nvme0n1p3
+# Contoh UUID: 550e8400-e29b-41d4-a716-446655440000
+```
+
+#### B. Menambah Entri Dalam `/etc/fstab` dengan Opsi Keselamatan JDN/MAMPU
+Pengerasan keselamatan mewajibkan tetapan `nodev,nosuid,noexec` pada media luaran atau partition muat naik data bagi menghalang pelaksanaan binari berbahaya:
+
+```ini
+# Edit /etc/fstab
+# &lt;file system&gt;                           &lt;mount point&gt;     &lt;type&gt;  &lt;options&gt;                   &lt;dump&gt;  &lt;pass&gt;
+UUID=550e8400-e29b-41d4-a716-446655440000 /mnt/sec_storage   ext4    defaults,nodev,nosuid,noexec  0       2
+```
+
+#### C. menguji Konfigurasi `/etc/fstab`
+```bash
+# Uji entri fstab baharu tanpa mereboot sistem (ELAKKAN ralat but!)
+sudo mount -a
+
+# Sahkan titik pelekapan baharu aktif
+findmnt /mnt/sec_storage
 ```
 
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+- [ ] Berjaya mengenal pasti nod peranti NVMe, SATA, dan USB menggunakan `lsblk` &amp; `blkid`.
+- [ ] Berjaya melekap dan menangguhkan peranti storan menggunakan `mount` dan `umount`.
+- [ ] Berjaya mengkonfigurasi entri automatik kekal dalam `/etc/fstab` menggunakan UUID.
+- [ ] Berjaya menerapkan opsi pengerasan keselamatan `nodev,nosuid,noexec` mengikut standard JDN/MAMPU.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Troubleshooting Peranti Luaran &amp; Pencetak dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Troubleshooting Peranti Luaran &amp; Pencetak menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+1. *"Mengapakah penggunaan UUID lebih selamat berbanding nama nod peranti /dev/sdb1 di dalam fail /etc/fstab?"*
+2. *"Apakah langkah penyelesaian masalah jika sistem gagal but (enter emergency mode) disebabkan ralat sintaks pada /etc/fstab?"*
+3. *"Bagaimanakah cara melekap imej fail ISO secara loop device menggunakan arahan mount -o loop?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+- [Ubuntu Storage &amp; FHS Management Guide](https://ubuntu.com/server/docs)
+- [Systemd Mount Units &amp; fstab Documentation](https://www.freedesktop.org/software/systemd/man/systemd.mount.html)
+- [Arch Linux fstab &amp; UUID Reference](https://wiki.archlinux.org/title/fstab)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **Linux Filesystem Essentials** oleh Practical Linux Series.
+- **System Modernization and Storage Management in Linux** oleh W. John.
+- **Pentadbiran Storan &amp; Sistem Fail Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -30247,69 +30528,136 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Analisis Punca Utama (RCA) &amp; Dokumentasi Anomali"
+title: "Pemprosesan Teks Aluran, Saluran Paip, Editor CLI &amp; Analisis Punca Utama (RCA)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu06", "panduan-amali", "manual-linux"]
-tags: ["cu06", "linux", "noss", "amali", "standard-malaysia"]
-description: "Penyediaan laporan analisis punca (Root Cause Analysis - RCA) untuk insiden berulang."
+topics: ["noss-linux", "cu06", "grep", "sed", "awk", "cut", "sort", "uniq", "vim", "nano", "rca"]
+tags: ["cu06", "linux", "noss", "grep", "sed", "awk", "vim", "nano", "rca", "standard-malaysia"]
+description: "Panduan amali pemprosesan teks aluran menggunakan penapis Linux (grep, sed, awk, cut, sort, uniq), pengalihan I/O dan piping, penyuntingan fail konfigurasi menggunakan vim/nano, serta dokumentasi laporan RCA."
 resource: "file:///manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md"
 ---
 
-# Analisis Punca Utama (RCA) &amp; Dokumentasi Anomali
+# Pemprosesan Teks Aluran, Saluran Paip, Editor CLI &amp; Analisis Punca Utama (RCA)
 
 ## 🎯 Objektif Pembelajaran
-Penyediaan laporan analisis punca (Root Cause Analysis - RCA) untuk insiden berulang.
+Di akhir modul amali ini, pelatih dapat:
+1. Menguasai alat penapis teks berprestasi tinggi (`grep` / `ripgrep`, `sed`, `awk`, `cut`, `sort`, `uniq`, `wc`, `tr`) untuk menganalisis fail log sistem.
+2. Mengaplikasikan pengalihan I/O (`&gt;`, `&gt;&gt;`, `&lt;`, `2&gt;&amp;1`, `|` piping, `tee`) dan pengurusan ralat aluran skrip Bash.
+3. Menyunting fail konfigurasi pentadbiran menggunakan penyunting teks CLI (`vim` dan `nano`).
+4. Menyediakan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*) bagi insiden anomali sistem yang mematuhi standard ISO/IEC 27001 dan JDN/MAMPU.
 
 &gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU06**.
+&gt; Modul amali ini dipetakan kepada **NOSS CU06 (End-User Support &amp; System Maintenance) - WA07: Resolve System Anomalies and Document RCA**. Edaran Linux rujukan merangkumi **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali &amp; Prosedur
 
-### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Penapis Teks Berprestasi Tinggi (*Text Processing Utilities*)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
-
+#### A. carian Corak dengan `grep` / `ripgrep`
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Mencari ralat 'FAILED' dalam auth.log tanpa mengira huruf besar/kecil (-i) beserta nombor baris (-n)
+grep -in "failed" /var/log/auth.log
+
+# Mengira jumlah percubaan log masuk gagal
+grep -c "Failed password" /var/log/auth.log
+```
+
+#### B. Pemprosesan Jalur &amp; Pengasingan Medan (`cut`, `sort`, `uniq`, `wc`)
+```bash
+# Ekstrak senarai alamat IP daripada log percubaan SSH gagal, susun, dan kira frekuensi
+grep "Failed password" /var/log/auth.log | cut -d' ' -f11 | sort | uniq -c | sort -nr
+```
+
+#### C. Editor Aluran &amp; Bahasa Pemprosesan Corak (`sed` &amp; `awk`)
+```bash
+# sed: Menggantikan teks secara aluran (contoh: tukar Port 22 ke 2222 dalam sshd_config)
+sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
+
+# awk: Menganalisis log dan memaparkan medan khusus (Contoh: Cetak Kolom 1 dan Kolom 5 dari log)
+awk '{print $1, $5}' /var/log/syslog | head -n 10
 ```
 
 ---
 
+### 2. Pengalihan Input/Output (I/O Redirection) &amp; Saluran Paip (*Piping*)
+
+| Operator | Penerangan &amp; Kegunaan |
+| :--- | :--- |
+| `&gt;` | Mengalih keluaran standard (stdout) ke fail (menimpa kandungan). |
+| `&gt;&gt;` | Mengalih keluaran standard (stdout) ke fail secara tambahan (*append*). |
+| `&lt;` | Mengalih input standard (stdin) daripada fail. |
+| `2&gt;&amp;1` | Mengalih ralat standard (stderr) ke saluran stdout. |
+| `\|` | Saluran paip (*pipe*) - menyambungkan stdout arahan pertama ke stdin arahan kedua. |
+| `tee` | Memaparkan stdout di skrin terminal serentak menulis ke fail. |
+
+```bash
+# Menyimpan ralat sistem secara bersama ke fail log dan skrin
+sudo systemctl status nginx 2&gt;&amp;1 | tee /tmp/nginx_error_audit.log
+```
+
+---
+
+### 3. Penyuntingan Fail Konfigurasi CLI (`vim` &amp; `nano`)
+
+#### A. Penyunting Teks `nano` (Mesra Pemula):
+- `Ctrl + O`: Menyimpan fail (*WriteOut*).
+- `Ctrl + X`: Keluar dari editor.
+- `Ctrl + W`: Carian teks.
+
+#### B. Penyunting Teks `vim` (Standard Pentadbir Sistem):
+- **Mod Arahan (Command Mode)**:
+  - `i`: Masuk ke Mod Sisipan (*Insert Mode*).
+  - `dd`: Memadam satu baris.
+  - `yy` / `p`: Menyalin baris / Menampal baris.
+  - `/paten`: Carian teks ke hadapan.
+- **Mod Ex / Terakhir (Ex Mode)**:
+  - `:w`: Menyimpan fail.
+  - `:q!`: Keluar tanpa menyimpan.
+  - `:wq` / `:x`: Menyimpan dan keluar.
+
+---
+
+### 4. Penyediaan Laporan Analisis Punca Utama (*Root Cause Analysis - RCA*)
+
+Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA berformat OKF v0.1:
+
+#### Format Laporan RCA Standard JDN/MAMPU:
+1. **Ringkasan Insiden**: Tarikh, masa, dan perkhidmatan yang terjejas.
+2. **Kronologi Kejadian**: Urutan garis masa dikesan menerusi log (`journalctl`, `syslog`).
+3. **Punca Utama (*Root Cause*)**: Hasil analisis pemprosesan teks log (`grep`/`awk`).
+4. **Tindakan Pembaikan**: Langkah pembetulan amali yang diambil.
+5. **Langkah Pencegahan**: CADANGAN automasi atau pengerasan keselamatan agar insiden tidak berulang.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+- [ ] Berjaya menapis dan menganalisis log menggunakan `grep`, `sed`, `awk`, `cut`, `sort`, dan `uniq`.
+- [ ] Berjaya menggunakan operator pengalihan I/O (`&gt;`, `&gt;&gt;`, `2&gt;&amp;1`, `|`, `tee`) dalam aluran skrip Bash.
+- [ ] Berjaya menyunting fail konfigurasi sistem menggunakan `vim` dan `nano`.
+- [ ] Mampu mendokumentasikan laporan RCA rasmi bagi insiden anomali sistem.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Analisis Punca Utama (RCA) &amp; Dokumentasi Anomali dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Analisis Punca Utama (RCA) &amp; Dokumentasi Anomali menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+1. *"Tunjukkan satu arahan awk sebaris (one-liner) untuk mengira jumlah saiz pemindahan fail dalam log akses Nginx."*
+2. *"Apakah perbezaan antara sed -i (in-place) dengan penyuntingan menerusi paip aluran?"*
+3. *"Berikan templat laporan RCA (Root Cause Analysis) ringkas bagi insiden kegagalan perkhidmatan disebabkan kehabisan nod i-node pada sistem fail."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+- [GNU Sed User Manual](https://www.gnu.org/software/sed/manual/sed.html)
+- [GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
+- [Vim Cheat Sheet &amp; Interactive Tutor](https://vim.rtorr.com/)
+- [SRE Incident Management &amp; RCA Guidelines by Google](https://sre.google/sre-book/postmortem-culture/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **Sed &amp; Awk (2nd Edition)** oleh Dale Dougherty &amp; Arnold Robbins.
+- **Learning the vi and Vim Editors** oleh Arnold Robbins &amp; Elbert Hannah.
+- **Analisis Log &amp; RCA Sistem Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -33874,23 +34222,81 @@ type: procedural_skill
   </file>
   <file path=".agents/skills/cu04-wa02-perform-local-backup-operations/SKILL.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 name: cu04-wa02-perform-local-backup-operations
-description: Executes NOSS Work Activity: Perform Local Backup Operations
-topics: [noss, cu04, wa02]
-type: procedural_skill
+description: Executes NOSS Work Activity CU04-WA02 - Perform Local Backup Operations including tar archive with zstd compression, rsync incremental sync, and systemd.timer automation.
+topics: [noss, cu04, wa02, backup, tar, zstd, rsync, cron, systemd-timer]
+type: skill
+title: "Perform Local Backup Operations (CU04-WA02)"
+timestamp: "2026-08-17T00:00:00Z"
+tags: ["cu04", "wa02", "noss", "backup", "zstd", "rsync", "systemd"]
+resource: "file:///.agents/skills/cu04-wa02-perform-local-backup-operations/SKILL.md"
 ---
 
 # Perform Local Backup Operations
-*Executes NOSS standard K622-XXX-3:2026-C04 WA02*
+*Executes NOSS standard K622-001-3:2026-C04 WA02: Perform Local Backup Operations*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
-
+## 🎯 Skill Overview
+This AI agent skill provides systematic procedures for performing local backup operations, multi-threaded tar-zstd compression, incremental directory mirroring with `rsync`, and automated backup scheduling via `cron` or `systemd.timer` according to ISO/IEC 27001 and Malaysian JDN/MAMPU guidelines.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 🛠️ Execution Procedure
+
+### 1. Multi-Threaded Compressed Backup (`tar` + `zstd`)
+```bash
+# Create a zstd compressed archive (-T0 uses all available CPU threads)
+sudo tar -I 'zstd -T0 -19' -cvf /mnt/backup/system_config_$(date +%Y%m%d).tar.zst /etc /var/log
+
+# Verify archive listing without extraction
+tar -tvf /mnt/backup/system_config_*.tar.zst
+```
+
+### 2. Incremental Directory Synchronization (`rsync`)
+```bash
+# Perform incremental backup with delete-after synchronization
+sudo rsync -avzP --delete-after /home/user/documents/ /mnt/backup/documents_mirror/
+```
+
+### 3. Automated Backup Scheduling via `systemd.timer`
+1. Create service at `/etc/systemd/system/local-backup.service`:
+   ```ini
+   [Unit]
+   Description=NOSS CU04 Local Backup Service
+
+   [Service]
+   Type=oneshot
+   ExecStart=/usr/local/bin/system_backup.sh
+   ```
+
+2. Create timer at `/etc/systemd/system/local-backup.timer`:
+   ```ini
+   [Unit]
+   Description=NOSS CU04 Daily Backup Timer
+
+   [Timer]
+   OnCalendar=*-*-* 02:00:00
+   Persistent=true
+
+   [Install]
+   WantedBy=timers.target
+   ```
+
+3. Enable and start timer:
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable --now local-backup.timer
+   ```
+
+---
+
+## 🔒 Security &amp; Compliance Safeguards
+- Enforce the 3-2-1 backup strategy (3 copies, 2 media types, 1 offsite).
+- Encrypt sensitive backups with AES-256 (`gpg --symmetric`).
+
+---
+*Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -33920,23 +34326,58 @@ type: procedural_skill
   </file>
   <file path=".agents/skills/cu04-wa04-restore-endpoint-data/SKILL.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 name: cu04-wa04-restore-endpoint-data
-description: Executes NOSS Work Activity: Restore Endpoint Data
-topics: [noss, cu04, wa04]
-type: procedural_skill
+description: Executes NOSS Work Activity CU04-WA04 - Restore Endpoint Data and Filesystem Recovery including sha256sum checksum validation and selective archive extraction.
+topics: [noss, cu04, wa04, restore, sha256sum, bare-metal, tar]
+type: skill
+title: "Restore Endpoint Data (CU04-WA04)"
+timestamp: "2026-08-17T00:00:00Z"
+tags: ["cu04", "wa04", "noss", "restore", "sha256sum", "bare-metal"]
+resource: "file:///.agents/skills/cu04-wa04-restore-endpoint-data/SKILL.md"
 ---
 
 # Restore Endpoint Data
-*Executes NOSS standard K622-XXX-3:2026-C04 WA04*
+*Executes NOSS standard K622-001-3:2026-C04 WA04: Perform Data and Filesystem Recovery*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
-
+## 🎯 Skill Overview
+This AI agent skill guides the execution of data integrity verification using `sha256sum`, selective file extraction from `tar.zst` archives, permission preservation, and bare-metal disaster recovery procedures.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 🛠️ Execution Procedure
+
+### 1. Integrity Verification (`sha256sum`)
+```bash
+# Verify checksum before attempting restoration
+cd /mnt/backup/
+sha256sum -c system_config_20260817.tar.zst.sha256
+```
+
+### 2. Selective File Extraction
+```bash
+# Extract single configuration file to staging folder
+mkdir -p /tmp/recovery_staging
+sudo tar -I zstd -xvf /mnt/backup/system_config_20260817.tar.zst \
+  -C /tmp/recovery_staging \
+  etc/netplan/01-netcfg.yaml
+```
+
+### 3. Decrypting &amp; Restoring Encrypted Backup
+```bash
+# Decrypt GPG encrypted tar stream
+gpg --decrypt /mnt/backup/backup_encrypted.tar.zst.gpg | sudo tar -I zstd -xvf - -C /tmp/recovery_staging/
+```
+
+### 4. Bare-Metal System Recovery Overview
+1. Boot from Ubuntu 26.04 / AlmaLinux 10 Live ISO.
+2. Mount root and boot partitions to `/mnt`.
+3. Extract bare-metal archive: `sudo tar -I zstd -xvf /mnt/backup/full_system.tar.zst -C /mnt`.
+4. Reinstall GRUB bootloader via chroot.
+
+---
+*Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -34308,23 +34749,65 @@ type: procedural_skill
   </file>
   <file path=".agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 name: cu06-wa04-configure-and-troubleshoot-peripheral-connections
-description: Executes NOSS Work Activity: Configure And Troubleshoot Peripheral Connections
-topics: [noss, cu06, wa04]
-type: procedural_skill
+description: Executes NOSS Work Activity CU06-WA04 - Configure and Troubleshoot Peripheral Connections including storage mounting, umount, findmnt, and /etc/fstab security hardening.
+topics: [noss, cu06, wa04, mount, umount, findmnt, fstab, storage]
+type: skill
+title: "Configure and Troubleshoot Peripheral Connections (CU06-WA04)"
+timestamp: "2026-08-17T00:00:00Z"
+tags: ["cu06", "wa04", "noss", "mount", "fstab", "peripherals"]
+resource: "file:///.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md"
 ---
 
-# Configure And Troubleshoot Peripheral Connections
-*Executes NOSS standard K622-XXX-3:2026-C06 WA04*
+# Configure and Troubleshoot Peripheral Connections
+*Executes NOSS standard K622-001-3:2026-C06 WA04: Configure and Troubleshoot Peripheral Connections*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
-
+## 🎯 Skill Overview
+This AI agent skill provides operational procedures for identifying storage device nodes (`/dev/nvmeXn1`, `/dev/sdX`, `/dev/sr0`), executing manual mount/umount operations, and configuring `/etc/fstab` with security hardening options (`nodev,nosuid,noexec`).
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 🛠️ Execution Procedure
+
+### 1. Storage Identification
+```bash
+# List block devices with UUID and filesystem type
+lsblk -f
+
+# Obtain specific partition UUID
+sudo blkid /dev/sdb1
+```
+
+### 2. Manual Mount and Unmount
+```bash
+# Mount filesystem
+sudo mkdir -p /mnt/external_usb
+sudo mount -t ext4 /dev/sdb1 /mnt/external_usb
+
+# Inspect mount hierarchy
+findmnt /mnt/external_usb
+
+# Safe unmount and eject
+sudo umount /mnt/external_usb
+eject /dev/sr0
+```
+
+### 3. Persistent Automated Mounting in `/etc/fstab` with Security Hardening
+Add partition entry to `/etc/fstab`:
+```ini
+UUID=550e8400-e29b-41d4-a716-446655440000 /mnt/sec_storage ext4 defaults,nodev,nosuid,noexec 0 2
+```
+
+Test configuration without rebooting:
+```bash
+sudo mount -a
+findmnt /mnt/sec_storage
+```
+
+---
+*Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -34568,23 +35051,58 @@ type: procedural_skill
   </file>
   <file path=".agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 name: cu06-wa07-resolve-system-anomalies-and-document-rca
-description: Executes NOSS Work Activity: Resolve System Anomalies And Document RCA
-topics: [noss, cu06, wa07]
-type: procedural_skill
+description: Executes NOSS Work Activity CU06-WA07 - Resolve System Anomalies and Document RCA using text filters (grep, sed, awk, cut, sort, uniq), I/O redirection, vim/nano, and RCA reporting.
+topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, nano, rca]
+type: skill
+title: "Resolve System Anomalies and Document RCA (CU06-WA07)"
+timestamp: "2026-08-17T00:00:00Z"
+tags: ["cu06", "wa07", "noss", "grep", "sed", "awk", "vim", "nano", "rca"]
+resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md"
 ---
 
-# Resolve System Anomalies And Document RCA
-*Executes NOSS standard K622-XXX-3:2026-C06 WA07*
+# Resolve System Anomalies and Document RCA
+*Executes NOSS standard K622-001-3:2026-C06 WA07: Resolve System Anomalies and Document RCA*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
-
+## 🎯 Skill Overview
+This AI agent skill provides systematic techniques for processing log streams using text processing utilities (`grep`, `sed`, `awk`, `cut`, `sort`, `uniq`), executing I/O redirection and piping, modifying system configs with `vim`/`nano`, and drafting Root Cause Analysis (RCA) reports.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 🛠️ Execution Procedure
+
+### 1. High-Performance Text Processing &amp; Log Filtering
+```bash
+# Filter failed log-in attempts
+grep -in "failed" /var/log/auth.log
+
+# Extract top failed IP addresses
+grep "Failed password" /var/log/auth.log | cut -d' ' -f11 | sort | uniq -c | sort -nr
+
+# Stream replacement with sed
+sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
+
+# Column extraction with awk
+awk '{print $1, $5}' /var/log/syslog | head -n 10
+```
+
+### 2. I/O Redirection &amp; Piping
+```bash
+# Tee output to both terminal and audit log
+sudo systemctl status nginx 2&gt;&amp;1 | tee /tmp/nginx_error_audit.log
+```
+
+### 3. Root Cause Analysis (RCA) Report Structure
+1. **Incident Summary**: Date, time, impacted services.
+2. **Chronology**: Timeline extracted from logs (`journalctl`, `syslog`).
+3. **Root Cause**: Anomaly source identified via log filtering (`grep`/`awk`).
+4. **Remediation**: Corrective actions taken.
+5. **Prevention**: System hardening or automation to prevent recurrence.
+
+---
+*Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -40841,7 +41359,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T07:12:24Z"
+timestamp: "2026-08-17T12:17:13Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -40886,9 +41404,9 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu03-wa05-implement-server-roles-and-services`** &lt;br&gt; *cu03-wa05-implement-server-roles-and-services* | No description provided. | N/A |
 | **`cu03-wa06-manage-server-hardware`** &lt;br&gt; *cu03-wa06-manage-server-hardware* | No description provided. | N/A |
 | **`cu04-wa01-prepare-backup-recovery-tools`** &lt;br&gt; *cu04-wa01-prepare-backup-recovery-tools* | No description provided. | N/A |
-| **`cu04-wa02-perform-local-backup-operations`** &lt;br&gt; *cu04-wa02-perform-local-backup-operations* | No description provided. | N/A |
+| **`cu04-wa02-perform-local-backup-operations`** &lt;br&gt; *Perform Local Backup Operations (CU04-WA02)* | Executes NOSS Work Activity CU04-WA02 - Perform Local Backup Operations including tar archive with zstd compression, rsync incremental sync, and systemd.timer automation. | noss, cu04, wa02, backup, tar, zstd, rsync, cron, systemd-timer |
 | **`cu04-wa03-perform-network-based-backup`** &lt;br&gt; *cu04-wa03-perform-network-based-backup* | No description provided. | N/A |
-| **`cu04-wa04-restore-endpoint-data`** &lt;br&gt; *cu04-wa04-restore-endpoint-data* | No description provided. | N/A |
+| **`cu04-wa04-restore-endpoint-data`** &lt;br&gt; *Restore Endpoint Data (CU04-WA04)* | Executes NOSS Work Activity CU04-WA04 - Restore Endpoint Data and Filesystem Recovery including sha256sum checksum validation and selective archive extraction. | noss, cu04, wa04, restore, sha256sum, bare-metal, tar |
 | **`cu04-wa05-perform-endpoint-bare-metal-recovery`** &lt;br&gt; *cu04-wa05-perform-endpoint-bare-metal-recovery* | No description provided. | N/A |
 | **`cu05-wa01-perform-user-account-and-permission-audits`** &lt;br&gt; *Perform User Account and Permission Audits (CU05-WA01)* | Executes NOSS Work Activity CU05-WA01: Audit user accounts, group memberships, authentication files (/etc/passwd, /etc/shadow), sudoers configuration, file permissions, POSIX ACLs, and faillock. | "noss", "cu05", "wa01", "user-audit", "permissions", "visudo", "faillock" |
 | **`cu05-wa02-configure-endpoint-antivirus-anti-malware-defences`** &lt;br&gt; *cu05-wa02-configure-endpoint-antivirus-anti-malware-defences* | No description provided. | N/A |
@@ -40898,11 +41416,11 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa01-prepare-end-user-support-service-requirements`** &lt;br&gt; *cu06-wa01-prepare-end-user-support-service-requirements* | No description provided. | N/A |
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** &lt;br&gt; *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
 | **`cu06-wa03-support-hardware-troubleshooting`** &lt;br&gt; *cu06-wa03-support-hardware-troubleshooting* | No description provided. | N/A |
-| **`cu06-wa04-configure-and-troubleshoot-peripheral-connections`** &lt;br&gt; *cu06-wa04-configure-and-troubleshoot-peripheral-connections* | No description provided. | N/A |
+| **`cu06-wa04-configure-and-troubleshoot-peripheral-connections`** &lt;br&gt; *Configure and Troubleshoot Peripheral Connections (CU06-WA04)* | Executes NOSS Work Activity CU06-WA04 - Configure and Troubleshoot Peripheral Connections including storage mounting, umount, findmnt, and /etc/fstab security hardening. | noss, cu06, wa04, mount, umount, findmnt, fstab, storage |
 | **`cu06-wa05-optimize-system-performance-and-storage`** &lt;br&gt; *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa05-perform-system-optimisation-and-disk-management`** &lt;br&gt; *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** &lt;br&gt; *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
-| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** &lt;br&gt; *cu06-wa07-resolve-system-anomalies-and-document-rca* | No description provided. | N/A |
+| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** &lt;br&gt; *Resolve System Anomalies and Document RCA (CU06-WA07)* | Executes NOSS Work Activity CU06-WA07 - Resolve System Anomalies and Document RCA using text filters (grep, sed, awk, cut, sort, uniq), I/O redirection, vim/nano, and RCA reporting. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, nano, rca |
 | **`docx-highlight-extractor`** &lt;br&gt; *docx-highlight-extractor* | No description provided. | N/A |
 | **`dsom-bootstrap`** &lt;br&gt; *dsom-bootstrap* | No description provided. | N/A |
 | **`dsom-diataxis-pipeline`** &lt;br&gt; *dsom-diataxis-pipeline* | No description provided. | N/A |
