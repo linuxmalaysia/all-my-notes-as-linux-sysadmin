@@ -27706,7 +27706,8 @@ sudo snap install chromium
 
 Pemboleh ubah persekitaran menentukan aplikasi lalai yang digunakan oleh utiliti sistem (seperti `git`, `crontab`, `visudo`) apabila membuka editor teks.
 
-#### A. Konfigurasi Persekitaran Pengguna Indivdu (`~/.bashrc`)
+#### A. Konfigurasi Persekitaran Pengguna Individu (`~/.bashrc`)
+
 Gunakan penyunting teks untuk menambah eksport pemboleh ubah dalam fail profil pengguna:
 
 ```bash
@@ -27723,15 +27724,22 @@ echo $VISUAL
 ```
 
 #### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` & `/etc/profile.d/editor.sh`)
+
 Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:
 
+1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash
-# 1. Menyunting /etc/environment (format kependudukan pemboleh ubah tetap):
-# Tambahkan baris berikut menggunakan sudoedit:
+sudoedit /etc/environment
+```
+
+2. Masukkan baris pemboleh ubah persekitaran berikut di dalam fail `/etc/environment` (format penetapan pasangan nama=nilai):
+```ini
 EDITOR="/usr/bin/vim"
 VISUAL="/usr/bin/vim"
+```
 
-# 2. Sebagai alternatif, cipta skrip profil global di /etc/profile.d/editor.sh:
+3. Sebagai alternatif bagi persekitaran shell interaktif, cipta skrip profil global di `/etc/profile.d/editor.sh`:
+```bash
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
@@ -27739,6 +27747,9 @@ EOF
 
 sudo chmod +x /etc/profile.d/editor.sh
 ```
+
+> [!NOTE]
+> Secara lalai, arahan `sudo` menjalankan pembersihan persekitaran (`env_reset`). Pemboleh ubah `$EDITOR` atau `$VISUAL` pengguna hanya diwariskan semasa `sudo` jika konfigurasi `/etc/sudoers` membenarkannya (contohnya melalui arahan `Defaults env_keep += "EDITOR VISUAL"`).
 
 ---
 
@@ -28655,7 +28666,7 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 
 1. Menguruskan perkhidmatan teras pelayan menggunakan utiliti `systemctl` (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).
 2. Membina dan menguruskan fail unit perkhidmatan kustom `systemd` (`/etc/systemd/system/*.service`) dengan penerapan parameter pengerasan keselamatan.
-3. Melaksanakan pengauditation dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
+3. Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
 4. Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui `timedatectl` dan `chronyd`.
 5. Menyelaraskan pemboleh ubah persekitaran shell pentadbiran pelayan (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
 6. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
@@ -28797,22 +28808,28 @@ sudo journalctl --vacuum-size=500M
 
 ### 5. Penyesuaian Pemboleh Ubah Persekitaran Shell Pentadbiran (`$EDITOR` & `$VISUAL`)
 
-Dalam pentadbiran pelayan, alatan CLI seperti `systemctl edit`, `visudo`, dan `crontab -e` bergantung secara automatik kepada pemboleh ubah persekitaran `$EDITOR` dan `$VISUAL`.
+Dalam pentadbiran pelayan, utiliti sistem menentukan penyunting pilihan mengikut susunan keutamaan yang khusus:
+- **`systemctl edit`**: Mengutuk `SYSTEMD_EDITOR`, diikuti oleh `EDITOR`, dan seterusnya `VISUAL`.
+- **`visudo`**: Mengutuk `SUDO_EDITOR`, diikuti oleh `VISUAL`, dan seterusnya `EDITOR` (hanya jika tetapan `Defaults env_editor` diaktifkan dalam sudoers).
+
+Kerana arahan `sudo` secara lalai membersihkan pemboleh ubah persekitaran (`env_reset`), pemboleh ubah persekitaran pengguna tidak diwarisi melainkan dieksport secara eksplisit atau dikekalkan menerusi polisi sudoers (seperti `Defaults env_keep += "EDITOR VISUAL SYSTEMD_EDITOR"`).
 
 ```bash
 # 1. Penetapan profil pentadbir tempatan dalam ~/.bashrc:
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export SYSTEMD_EDITOR=/usr/bin/vim
 
 # 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export SYSTEMD_EDITOR=/usr/bin/vim
 EOF
 sudo chmod +x /etc/profile.d/editor.sh
 
-# 3. Uji penetapan editor lalai semasa menggunakan systemctl edit
-sudo systemctl edit myapp.service
+# 3. Menguji penyuntingan unit servis di bawah hak akses sudo dengan mengekalkan persekitaran proses:
+sudo SYSTEMD_EDITOR=/usr/bin/vim systemctl edit myapp.service
 ```
 
 ---
@@ -28939,7 +28956,7 @@ plocate chrony.conf
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
 
 1. *"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."*
-2. *"Bagaimanakah pemboleh ubah persekitaran $EDITOR mempengaruhi tingkah laku arahan systemctl edit dan visudo?"*
+2. *"Bagaimanakah pemboleh ubah persekitaran SYSTEMD_EDITOR, EDITOR dan VISUAL mempengaruhi tingkah laku arahan systemctl edit dan visudo di bawah sudoers env_reset?"*
 3. *"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."*
 
 ---
@@ -30880,6 +30897,7 @@ resource: "file:///manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-
 # Pemprosesan Teks Aluran, Saluran Paip, Editor CLI & Analisis Punca Utama (RCA)
 
 ## 🎯 Objektif Pembelajaran
+
 Di akhir modul amali ini, pelatih dapat:
 1. Menguasai alat penapis teks berprestasi tinggi (`grep` / `ripgrep`, `sed`, `awk`, `cut`, `sort`, `uniq`, `wc`, `tr`) untuk menganalisis fail log sistem.
 2. Mengaplikasikan pengalihan I/O (`>`, `>>`, `<`, `2>&1`, `|` piping, `tee`) dan pengurusan ralat aluran skrip Bash.
@@ -30896,6 +30914,7 @@ Di akhir modul amali ini, pelatih dapat:
 ### 1. Penapis Teks Berprestasi Tinggi (*Text Processing Utilities*)
 
 #### A. Carian Corak dengan `grep` / `ripgrep`
+
 ```bash
 # Mencari ralat 'FAILED' dalam auth.log tanpa mengira huruf besar/kecil (-i) beserta nombor baris (-n)
 grep -in "failed" /var/log/auth.log
@@ -30905,12 +30924,14 @@ grep -c "Failed password" /var/log/auth.log
 ```
 
 #### B. Pemprosesan Jalur & Pengasingan Medan (`cut`, `sort`, `uniq`, `wc`)
+
 ```bash
 # Ekstrak senarai alamat IP daripada log percubaan SSH gagal, susun, dan kira frekuensi
 grep "Failed password" /var/log/auth.log | cut -d' ' -f11 | sort | uniq -c | sort -nr
 ```
 
 #### C. Editor Aluran & Bahasa Pemprosesan Corak (`sed` & `awk`)
+
 ```bash
 # sed: Menggantikan teks secara aluran (contoh: tukar Port 22 ke 2222 dalam sshd_config)
 sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
@@ -30944,6 +30965,7 @@ sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI serta amalan keselamatan penyuntingan berhak milik `root`.
 
 #### A. GNU Nano (Penyunting Teks Mudah & Pantas)
+
 GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
 
 - **Pintasan Papan Kekunci Utama**:
@@ -30966,6 +30988,7 @@ GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
   ```
 
 #### B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
+
 Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturcaraan dan pentadbiran sistem Linux.
 
 - **4 Mod Operasi Utama Vim**:
@@ -30996,17 +31019,18 @@ Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturc
   - `5@a`: Jalankan makro sebanyak 5 kali berturut-turut.
 
 #### C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (`sudoedit` & `visudo`)
-Menggunakan `sudo vim` atau `sudo nano` secara terus ke atas fail sistem berisiko meninggalkan penimbal atau kebenaran fail yang rosak jika terminal terputus.
+
+Menggunakan `sudo vim` atau `sudo nano` secara terus menjalankan keseluruhan proses penyunting teks sebagai pengguna `root`. Ini mendedahkan sistem kepada risiko keistimewaan editor berlebihan (*excessive editor privilege*), contohnya melalui keupayaan *shell escape* dalam Vim (`:sh` atau `:!bash`) yang membuka kelompang `root` tanpa kawalan audit log yang jelas.
 
 - **Menggunakan `sudoedit` (`sudo -e`)**:
-  `sudoedit` membuat salinan sementara fail konfigurasi di bawah akaun pengguna biasa, dan menyalin semula ke lokasi sistem secara selamat selepas disahkan.
+  `sudoedit` melancarkan persekitaran penyunting teks di bawah akaun pengguna biasa yang tidak berkeistimewaan (*unprivileged user*) untuk menyunting salinan sementara fail. Hanya komponen `sudo` yang berkeistimewaan akan menyalin semula fail sementara itu ke lokasi sistem sasaran selepas penyuntingan diselesaikan dan fail disimpan dengan selamat.
   ```bash
-  # Menyunting fail konfigurasi rangkaian dengan selamat
+  # Menyunting fail konfigurasi Rangkaian Netplan secara selamat
   sudoedit /etc/netplan/01-netcfg.yaml
   ```
 
 - **Menggunakan `visudo` untuk Pengurusan Sudoers**:
-  `visudo` mengunci fail `/etc/sudoers` dan mengesahkan sintaks secara automatik sebelum menyimpan bagi mengelakkan kebuntuan akses root sistem (*lockout*).
+  `visudo` mengunci fail `/etc/sudoers` secara eksklusif semasa penyuntingan dan mengesahkan sintaks secara automatik sebelum menyimpan perubahan bagi mengelakkan ralat sintaks yang boleh menyebabkan kebuntuan akses root sistem (*lockout*).
   ```bash
   # Menyunting fail sudoers dengan semakan sintaks automatik
   sudo visudo
@@ -31022,6 +31046,7 @@ Menggunakan `sudo vim` atau `sudo nano` secara terus ke atas fail sistem berisik
 Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA berformat OKF v0.1:
 
 #### Format Laporan RCA Standard JDN/MAMPU:
+
 1. **Ringkasan Insiden**: Tarikh, masa, dan perkhidmatan yang terjejas.
 2. **Kronologi Kejadian**: Urutan garis masa dikesan menerusi log (`journalctl`, `syslog`).
 3. **Punca Utama (*Root Cause*)**: Hasil analisis pemprosesan teks log (`grep`/`awk`).
@@ -31031,6 +31056,7 @@ Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA ber
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
+
 - [ ] Berjaya menapis dan menganalisis log menggunakan `grep`, `sed`, `awk`, `cut`, `sort`, dan `uniq`.
 - [ ] Berjaya menggunakan operator pengalihan I/O (`>`, `>>`, `2>&1`, `|`, `tee`) dalam aluran skrip Bash.
 - [ ] Berjaya menyunting fail konfigurasi sistem menggunakan `vim` / `nvim` (mod operasi, regex `%s/old/new/g`, makro) dan `nano` (`.nanorc`).
@@ -31040,13 +31066,15 @@ Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA ber
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
 1. *"Tunjukkan satu arahan awk sebaris (one-liner) untuk mengira jumlah saiz pemindahan fail dalam log akses Nginx."*
 2. *"Bagaimanakah cara membina regex Vim untuk menggantikan semua baris ulasan (#) dalam fail sshd_config secara pukal?"*
-3. *"Mengapakah penggunaan sudoedit lebih selamat berbanding sudo vim dari sudut prinsip keselamatan paling kurang keistimewaan (least privilege)?"*
+3. *"Mengapakah penggunaan sudoedit lebih selamat berbanding sudo vim dari sudut risiko shell escape dan prinsip keselamatan least privilege?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
 - [GNU Sed User Manual](https://www.gnu.org/software/sed/manual/sed.html)
 - [GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
 - [Vim Cheat Sheet & Interactive Tutor](https://vim.rtorr.com/)
@@ -31055,6 +31083,7 @@ Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA ber
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **Sed & Awk (2nd Edition)** oleh Dale Dougherty & Arnold Robbins.
 - **Learning the vi and Vim Editors** oleh Arnold Robbins & Elbert Hannah.
 - **Analisis Log & RCA Sistem Linux** oleh Harisfazillah Jamel.
@@ -36322,7 +36351,7 @@ Use this skill when the user provides a new external source (PDF, Markdown, Web 
 ---
 okf_version: 0.1
 name: cu06-wa07-resolve-system-anomalies-and-document-rca
-description: Executes NOSS Work Activity CU06-WA07 - Resolve System Anomalies and Document RCA using text filters (grep, sed, awk, cut, sort, uniq), I/O redirection, terminal editors (Vim regex %s/old/new/g, Nano), environment variables ($EDITOR/$VISUAL), safe editing (sudoedit/visudo), and RCA reporting.
+description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal (regex Vim %s/asal/ganti/g, Nano), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
 topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca]
 type: skill
 title: "Resolve System Anomalies and Document RCA (CU06-WA07)"
@@ -36332,9 +36361,11 @@ resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-documen
 ---
 
 # Resolve System Anomalies and Document RCA
+
 *Executes NOSS standard K622-001-3:2026-C06 WA07: Resolve System Anomalies and Document RCA*
 
 ## 🎯 Skill Overview
+
 This AI agent skill provides systematic techniques for processing log streams using text processing utilities (`grep`, `sed`, `awk`, `cut`, `sort`, `uniq`), executing I/O redirection and piping, managing terminal editors (**Vim / Neovim**, **GNU Nano**), configuring environment variables (`$EDITOR`/`$VISUAL`), executing secure file editing (`sudoedit`, `visudo`), and drafting Root Cause Analysis (RCA) reports.
 
 ---
@@ -36342,6 +36373,7 @@ This AI agent skill provides systematic techniques for processing log streams us
 ## 🛠️ Execution Procedure
 
 ### 1. High-Performance Text Processing & Log Filtering
+
 ```bash
 # Filter failed log-in attempts
 grep -in "failed" /var/log/auth.log
@@ -36357,12 +36389,14 @@ awk '{print $1, $5}' /var/log/syslog | head -n 10
 ```
 
 ### 2. I/O Redirection & Piping
+
 ```bash
 # Tee output to both terminal and audit log
 sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 ```
 
 ### 3. Terminal Text Editing & Safe System Modifications
+
 ```bash
 # 1. Environment Variable Configuration (~/.bashrc or /etc/environment)
 export EDITOR=/usr/bin/vim
@@ -36378,6 +36412,7 @@ sudo visudo -c
 ```
 
 ### 4. Root Cause Analysis (RCA) Report Structure
+
 1. **Incident Summary**: Date, time, impacted services.
 2. **Chronology**: Timeline extracted from logs (`journalctl`, `syslog`).
 3. **Root Cause**: Anomaly source identified via log filtering (`grep`/`awk`).
@@ -41922,7 +41957,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T12:46:14Z"
+timestamp: "2026-08-17T21:29:00Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -41983,7 +42018,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa05-optimize-system-performance-and-storage`** <br> *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa05-perform-system-optimisation-and-disk-management`** <br> *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** <br> *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
-| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *Resolve System Anomalies and Document RCA (CU06-WA07)* | Executes NOSS Work Activity CU06-WA07 - Resolve System Anomalies and Document RCA using text filters (grep, sed, awk, cut, sort, uniq), I/O redirection, terminal editors (Vim regex %s/old/new/g, Nano), environment variables ($EDITOR/$VISUAL), safe editing (sudoedit/visudo), and RCA reporting. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca |
+| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *Resolve System Anomalies and Document RCA (CU06-WA07)* | Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal (regex Vim %s/asal/ganti/g, Nano), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca |
 | **`docx-highlight-extractor`** <br> *docx-highlight-extractor* | No description provided. | N/A |
 | **`dsom-bootstrap`** <br> *dsom-bootstrap* | No description provided. | N/A |
 | **`dsom-diataxis-pipeline`** <br> *dsom-diataxis-pipeline* | No description provided. | N/A |

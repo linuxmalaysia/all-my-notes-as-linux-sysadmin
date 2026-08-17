@@ -1708,7 +1708,7 @@
 <ol>
 <li>Menguruskan perkhidmatan teras pelayan menggunakan utiliti <code>systemctl</code> (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).</li>
 <li>Membina dan menguruskan fail unit perkhidmatan kustom <code>systemd</code> (<code>/etc/systemd/system/*.service</code>) dengan penerapan parameter pengerasan keselamatan.</li>
-<li>Melaksanakan pengauditation dan analisis log perkhidmatan secara terperinci menggunakan <code>journalctl</code>.</li>
+<li>Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan <code>journalctl</code>.</li>
 <li>Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui <code>timedatectl</code> dan <code>chronyd</code>.</li>
 <li>Menyelaraskan pemboleh ubah persekitaran shell pentadbiran pelayan (<code>$EDITOR</code>, <code>$VISUAL</code>, <code>/etc/environment</code>, <code>~/.bashrc</code>).</li>
 <li>Memanfaatkan utiliti bantuan dokumentasi sistem Linux (<code>man</code>, <code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>).</li>
@@ -1823,20 +1823,25 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span></code></pre></div>
 <hr />
 <h3 id="5-penyesuaian-pemboleh-ubah-persekitaran-shell-pentadbiran-editor-visual">5. Penyesuaian Pemboleh Ubah Persekitaran Shell Pentadbiran (<code>$EDITOR</code> &amp; <code>$VISUAL</code>)<a class="headerlink" href="#5-penyesuaian-pemboleh-ubah-persekitaran-shell-pentadbiran-editor-visual" title="Permanent link">&para;</a></h3>
-<p>Dalam pentadbiran pelayan, alatan CLI seperti <code>systemctl edit</code>, <code>visudo</code>, dan <code>crontab -e</code> bergantung secara automatik kepada pemboleh ubah persekitaran <code>$EDITOR</code> dan <code>$VISUAL</code>.</p>
+<p>Dalam pentadbiran pelayan, utiliti sistem menentukan penyunting pilihan mengikut susunan keutamaan yang khusus:
+- <strong><code>systemctl edit</code></strong>: Mengutuk <code>SYSTEMD_EDITOR</code>, diikuti oleh <code>EDITOR</code>, dan seterusnya <code>VISUAL</code>.
+- <strong><code>visudo</code></strong>: Mengutuk <code>SUDO_EDITOR</code>, diikuti oleh <code>VISUAL</code>, dan seterusnya <code>EDITOR</code> (hanya jika tetapan <code>Defaults env_editor</code> diaktifkan dalam sudoers).</p>
+<p>Kerana arahan <code>sudo</code> secara lalai membersihkan pemboleh ubah persekitaran (<code>env_reset</code>), pemboleh ubah persekitaran pengguna tidak diwarisi melainkan dieksport secara eksplisit atau dikekalkan menerusi polisi sudoers (seperti <code>Defaults env_keep += "EDITOR VISUAL SYSTEMD_EDITOR"</code>).</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Penetapan profil pentadbir tempatan dalam ~/.bashrc:</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>/usr/bin/vim
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VISUAL</span><span class="o">=</span>/usr/bin/vim
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/profile.d/editor.sh<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">export EDITOR=/usr/bin/vim</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">export VISUAL=/usr/bin/vim</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">EOF</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/editor.sh
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># 3. Uji penetapan editor lalai semasa menggunakan systemctl edit</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>edit<span class="w"> </span>myapp.service
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SYSTEMD_EDITOR</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/profile.d/editor.sh<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">export EDITOR=/usr/bin/vim</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">export VISUAL=/usr/bin/vim</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">export SYSTEMD_EDITOR=/usr/bin/vim</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">EOF</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/editor.sh
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># 3. Menguji penyuntingan unit servis di bawah hak akses sudo dengan mengekalkan persekitaran proses:</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>sudo<span class="w"> </span><span class="nv">SYSTEMD_EDITOR</span><span class="o">=</span>/usr/bin/vim<span class="w"> </span>systemctl<span class="w"> </span>edit<span class="w"> </span>myapp.service
 </span></code></pre></div>
 <hr />
 <h3 id="6-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony">6. Konfigurasi Zon Masa &amp; Penyegerakan Masa (<code>timedatectl</code> &amp; <code>chrony</code>)<a class="headerlink" href="#6-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony" title="Permanent link">&para;</a></h3>
@@ -1936,7 +1941,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
 <li><em>"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."</em></li>
-<li><em>"Bagaimanakah pemboleh ubah persekitaran $EDITOR mempengaruhi tingkah laku arahan systemctl edit dan visudo?"</em></li>
+<li><em>"Bagaimanakah pemboleh ubah persekitaran SYSTEMD_EDITOR, EDITOR dan VISUAL mempengaruhi tingkah laku arahan systemctl edit dan visudo di bawah sudoers env_reset?"</em></li>
 <li><em>"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."</em></li>
 </ol>
 <hr />

@@ -1777,18 +1777,18 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <li><code>5@a</code>: Jalankan makro sebanyak 5 kali berturut-turut.</li>
 </ul>
 <h4 id="c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo">C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (<code>sudoedit</code> &amp; <code>visudo</code>)<a class="headerlink" href="#c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" title="Permanent link">&para;</a></h4>
-<p>Menggunakan <code>sudo vim</code> atau <code>sudo nano</code> secara terus ke atas fail sistem berisiko meninggalkan penimbal atau kebenaran fail yang rosak jika terminal terputus.</p>
+<p>Menggunakan <code>sudo vim</code> atau <code>sudo nano</code> secara terus menjalankan keseluruhan proses penyunting teks sebagai pengguna <code>root</code>. Ini mendedahkan sistem kepada risiko keistimewaan editor berlebihan (<em>excessive editor privilege</em>), contohnya melalui keupayaan <em>shell escape</em> dalam Vim (<code>:sh</code> atau <code>:!bash</code>) yang membuka kelompang <code>root</code> tanpa kawalan audit log yang jelas.</p>
 <ul>
 <li>
 <p><strong>Menggunakan <code>sudoedit</code> (<code>sudo -e</code>)</strong>:
-  <code>sudoedit</code> membuat salinan sementara fail konfigurasi di bawah akaun pengguna biasa, dan menyalin semula ke lokasi sistem secara selamat selepas disahkan.
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Menyunting fail konfigurasi rangkaian dengan selamat</span>
+  <code>sudoedit</code> melancarkan persekitaran penyunting teks di bawah akaun pengguna biasa yang tidak berkeistimewaan (<em>unprivileged user</em>) untuk menyunting salinan sementara fail. Hanya komponen <code>sudo</code> yang berkeistimewaan akan menyalin semula fail sementara itu ke lokasi sistem sasaran selepas penyuntingan diselesaikan dan fail disimpan dengan selamat.
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Menyunting fail konfigurasi Rangkaian Netplan secara selamat</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudoedit<span class="w"> </span>/etc/netplan/01-netcfg.yaml
 </span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Menggunakan <code>visudo</code> untuk Pengurusan Sudoers</strong>:
-  <code>visudo</code> mengunci fail <code>/etc/sudoers</code> dan mengesahkan sintaks secara automatik sebelum menyimpan bagi mengelakkan kebuntuan akses root sistem (<em>lockout</em>).
+  <code>visudo</code> mengunci fail <code>/etc/sudoers</code> secara eksklusif semasa penyuntingan dan mengesahkan sintaks secara automatik sebelum menyimpan perubahan bagi mengelakkan ralat sintaks yang boleh menyebabkan kebuntuan akses root sistem (<em>lockout</em>).
   <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Menyunting fail sudoers dengan semakan sintaks automatik</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>visudo
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
@@ -1822,7 +1822,7 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <ol>
 <li><em>"Tunjukkan satu arahan awk sebaris (one-liner) untuk mengira jumlah saiz pemindahan fail dalam log akses Nginx."</em></li>
 <li><em>"Bagaimanakah cara membina regex Vim untuk menggantikan semua baris ulasan (#) dalam fail sshd_config secara pukal?"</em></li>
-<li><em>"Mengapakah penggunaan sudoedit lebih selamat berbanding sudo vim dari sudut prinsip keselamatan paling kurang keistimewaan (least privilege)?"</em></li>
+<li><em>"Mengapakah penggunaan sudoedit lebih selamat berbanding sudo vim dari sudut risiko shell escape dan prinsip keselamatan least privilege?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>

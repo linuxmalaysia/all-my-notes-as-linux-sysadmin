@@ -102,7 +102,8 @@ sudo snap install chromium
 
 Pemboleh ubah persekitaran menentukan aplikasi lalai yang digunakan oleh utiliti sistem (seperti `git`, `crontab`, `visudo`) apabila membuka editor teks.
 
-#### A. Konfigurasi Persekitaran Pengguna Indivdu (`~/.bashrc`)
+#### A. Konfigurasi Persekitaran Pengguna Individu (`~/.bashrc`)
+
 Gunakan penyunting teks untuk menambah eksport pemboleh ubah dalam fail profil pengguna:
 
 ```bash
@@ -119,15 +120,22 @@ echo $VISUAL
 ```
 
 #### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` & `/etc/profile.d/editor.sh`)
+
 Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:
 
+1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash
-# 1. Menyunting /etc/environment (format kependudukan pemboleh ubah tetap):
-# Tambahkan baris berikut menggunakan sudoedit:
+sudoedit /etc/environment
+```
+
+2. Masukkan baris pemboleh ubah persekitaran berikut di dalam fail `/etc/environment` (format penetapan pasangan nama=nilai):
+```ini
 EDITOR="/usr/bin/vim"
 VISUAL="/usr/bin/vim"
+```
 
-# 2. Sebagai alternatif, cipta skrip profil global di /etc/profile.d/editor.sh:
+3. Sebagai alternatif bagi persekitaran shell interaktif, cipta skrip profil global di `/etc/profile.d/editor.sh`:
+```bash
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
@@ -135,6 +143,9 @@ EOF
 
 sudo chmod +x /etc/profile.d/editor.sh
 ```
+
+> [!NOTE]
+> Secara lalai, arahan `sudo` menjalankan pembersihan persekitaran (`env_reset`). Pemboleh ubah `$EDITOR` atau `$VISUAL` pengguna hanya diwariskan semasa `sudo` jika konfigurasi `/etc/sudoers` membenarkannya (contohnya melalui arahan `Defaults env_keep += "EDITOR VISUAL"`).
 
 ---
 

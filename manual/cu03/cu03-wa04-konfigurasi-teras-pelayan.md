@@ -17,7 +17,7 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 
 1. Menguruskan perkhidmatan teras pelayan menggunakan utiliti `systemctl` (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).
 2. Membina dan menguruskan fail unit perkhidmatan kustom `systemd` (`/etc/systemd/system/*.service`) dengan penerapan parameter pengerasan keselamatan.
-3. Melaksanakan pengauditation dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
+3. Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
 4. Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui `timedatectl` dan `chronyd`.
 5. Menyelaraskan pemboleh ubah persekitaran shell pentadbiran pelayan (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
 6. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
@@ -159,22 +159,28 @@ sudo journalctl --vacuum-size=500M
 
 ### 5. Penyesuaian Pemboleh Ubah Persekitaran Shell Pentadbiran (`$EDITOR` & `$VISUAL`)
 
-Dalam pentadbiran pelayan, alatan CLI seperti `systemctl edit`, `visudo`, dan `crontab -e` bergantung secara automatik kepada pemboleh ubah persekitaran `$EDITOR` dan `$VISUAL`.
+Dalam pentadbiran pelayan, utiliti sistem menentukan penyunting pilihan mengikut susunan keutamaan yang khusus:
+- **`systemctl edit`**: Mengutuk `SYSTEMD_EDITOR`, diikuti oleh `EDITOR`, dan seterusnya `VISUAL`.
+- **`visudo`**: Mengutuk `SUDO_EDITOR`, diikuti oleh `VISUAL`, dan seterusnya `EDITOR` (hanya jika tetapan `Defaults env_editor` diaktifkan dalam sudoers).
+
+Kerana arahan `sudo` secara lalai membersihkan pemboleh ubah persekitaran (`env_reset`), pemboleh ubah persekitaran pengguna tidak diwarisi melainkan dieksport secara eksplisit atau dikekalkan menerusi polisi sudoers (seperti `Defaults env_keep += "EDITOR VISUAL SYSTEMD_EDITOR"`).
 
 ```bash
 # 1. Penetapan profil pentadbir tempatan dalam ~/.bashrc:
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export SYSTEMD_EDITOR=/usr/bin/vim
 
 # 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export SYSTEMD_EDITOR=/usr/bin/vim
 EOF
 sudo chmod +x /etc/profile.d/editor.sh
 
-# 3. Uji penetapan editor lalai semasa menggunakan systemctl edit
-sudo systemctl edit myapp.service
+# 3. Menguji penyuntingan unit servis di bawah hak akses sudo dengan mengekalkan persekitaran proses:
+sudo SYSTEMD_EDITOR=/usr/bin/vim systemctl edit myapp.service
 ```
 
 ---
@@ -301,7 +307,7 @@ plocate chrony.conf
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
 
 1. *"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."*
-2. *"Bagaimanakah pemboleh ubah persekitaran $EDITOR mempengaruhi tingkah laku arahan systemctl edit dan visudo?"*
+2. *"Bagaimanakah pemboleh ubah persekitaran SYSTEMD_EDITOR, EDITOR dan VISUAL mempengaruhi tingkah laku arahan systemctl edit dan visudo di bawah sudoers env_reset?"*
 3. *"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."*
 
 ---
