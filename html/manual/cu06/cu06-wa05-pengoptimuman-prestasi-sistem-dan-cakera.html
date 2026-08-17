@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Analisis penggunaan memori (free/vmstat), pemantauan proses (top/htop), dan pembersihan log.">
+        <meta name="description" content="Panduan amali pemantauan proses sistem, analisis penggunaan CPU/memori/I-O, kawalan keutamaan nice/renice, penamatan isyarat proses SIGTERM/SIGKILL, dan pengurusan sumber cgroups v2.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Pengoptimuman Prestasi Sistem & Ruang Cakera - NOSS Linux Malaysia (DSOM)</title>
+        <title>Pengoptimuman Prestasi Sistem, Pemantauan Proses & Kawalan Sumber - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pengoptimuman-prestasi-sistem-ruang-cakera" class="md-skip">
+        <a href="#pengoptimuman-prestasi-sistem-pemantauan-proses-kawalan-sumber" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pengoptimuman Prestasi Sistem & Ruang Cakera
+              Pengoptimuman Prestasi Sistem, Pemantauan Proses & Kawalan Sumber
             
           </span>
         </div>
@@ -1448,19 +1448,225 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-pemantauan-analisis-status-proses-sistem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
-      
+        2. Pemantauan &amp; Analisis Status Proses Sistem
+
     </span>
   </a>
-  
+
+    <nav class="md-nav" aria-label="2. Pemantauan &amp; Analisis Status Proses Sistem">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-pemeriksaan-statik-menggunakan-ps" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Pemeriksaan Statik Menggunakan ps
+
+    </span>
+  </a>
+
 </li>
-        
+
+          <li class="md-nav__item">
+  <a href="#b-pemantauan-masa-nyata-menggunakan-top-dan-htop" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Pemantauan Masa Nyata Menggunakan top dan htop
+
+    </span>
+  </a>
+
+</li>
+
       </ul>
     </nav>
-  
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-analisis-kesihatan-memori-cpu-io-cakera" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Analisis Kesihatan Memori, CPU &amp; I/O Cakera
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="3. Analisis Kesihatan Memori, CPU &amp; I/O Cakera">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-analisis-memori-beban-purata-free-uptime" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Analisis Memori &amp; Beban Purata (free &amp; uptime)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-analisis-memori-maya-isirung-vmstat" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Analisis Memori Maya &amp; Isirung (vmstat)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#c-analisis-prestasi-io-peranti-storan-iostat-pidstat" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Analisis Prestasi I/O Peranti Storan (iostat &amp; pidstat)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-pengurusan-isyarat-posix-penamatan-proses" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Pengurusan Isyarat POSIX &amp; Penamatan Proses
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="4. Pengurusan Isyarat POSIX &amp; Penamatan Proses">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-jadual-isyarat-utama-posix" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Jadual Isyarat Utama POSIX
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-operasi-penamatan-proses-kill-killall-pkill" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Operasi Penamatan Proses (kill, killall, pkill)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#5-penalaan-keutamaan-cpu-io-nice-renice-ionice" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5. Penalaan Keutamaan CPU &amp; I/O (nice, renice, ionice)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="5. Penalaan Keutamaan CPU &amp; I/O (nice, renice, ionice)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-penalaan-keutamaan-cpu-nice-renice" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Penalaan Keutamaan CPU (nice &amp; renice)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-penalaan-keutamaan-io-cakera-ionice" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Penalaan Keutamaan I/O Cakera (ionice)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#6-kawalan-sumber-sistem-melalui-control-groups-v2-cgroups-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        6. Kawalan Sumber Sistem Melalui Control Groups v2 (cgroups v2)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="6. Kawalan Sumber Sistem Melalui Control Groups v2 (cgroups v2)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-membataskan-sumber-menggunakan-systemd-run" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Membataskan Sumber Menggunakan systemd-run
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-membataskan-sumber-melalui-unit-drop-in-override-etcsystemdsystemmyappservicedoverrideconf" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Membataskan Sumber Melalui Unit Drop-in Override (/etc/systemd/system/myapp.service.d/override.conf)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#pengerasan-keselamatan-pematuhan-jdn-mampu" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔒 Pengerasan Keselamatan &amp; Pematuhan JDN / MAMPU
+
+    </span>
+  </a>
+
 </li>
       
         <li class="md-nav__item">
@@ -1524,58 +1730,205 @@
 
 
 
-<h1 id="pengoptimuman-prestasi-sistem-ruang-cakera">Pengoptimuman Prestasi Sistem &amp; Ruang Cakera<a class="headerlink" href="#pengoptimuman-prestasi-sistem-ruang-cakera" title="Permanent link">&para;</a></h1>
+<h1 id="pengoptimuman-prestasi-sistem-pemantauan-proses-kawalan-sumber">Pengoptimuman Prestasi Sistem, Pemantauan Proses &amp; Kawalan Sumber<a class="headerlink" href="#pengoptimuman-prestasi-sistem-pemantauan-proses-kawalan-sumber" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Analisis penggunaan memori (free/vmstat), pemantauan proses (top/htop), dan pembersihan log.</p>
+<p>Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:</p>
+<ol>
+<li>Memantau dan menganalisis status proses sistem secara deskriptif dan interaktif menggunakan <code>ps aux</code>, <code>top</code>, <code>htop</code>, dan <code>pidstat</code>.</li>
+<li>Menganalisis prestasi pemprosesan CPU, memori maya, dan statistik I/O cakera menggunakan <code>vmstat</code>, <code>iostat</code>, <code>free -h</code>, dan <code>uptime</code>.</li>
+<li>Mengurus dan mengawal kitaran hayat proses termasuk hantar isyarat penamatan POSIX (<code>SIGTERM</code>, <code>SIGKILL</code>, <code>SIGHUP</code>) menggunakan <code>kill</code>, <code>killall</code>, dan <code>pkill</code>.</li>
+<li>Melaraskan keutamaan penjadualan CPU proses (<em>nice value</em>) menggunakan <code>nice</code>, <code>renice</code>, dan keutamaan I/O <code>ionice</code>.</li>
+<li>Melaksanakan kawalan dan penghadan sumber sistem (<em>resource limits</em>) melalui <code>cgroups v2</code> dan <code>systemd-run</code>.</li>
+</ol>
 <blockquote>
 <p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU06</strong>.</p>
+Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C06 (End-User Support &amp; System Maintenance) WA05: Perform System Optimisation and Disk Management</strong>. Persekitaran rujukan utama ialah <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
 <h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
+<li>Persekitaran Linux beroperasi pada <strong>Ubuntu 26.04 LTS</strong> atau <strong>AlmaLinux 10</strong>.</li>
+<li>Akses terminal dengan hak pentadbir (<code>sudo</code>).</li>
+<li>Pakej perisian terpasang: <code>procps</code>, <code>psmisc</code>, <code>sysstat</code>, <code>htop</code>, <code>util-linux</code>.</li>
 </ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<hr />
+<h3 id="2-pemantauan-analisis-status-proses-sistem">2. Pemantauan &amp; Analisis Status Proses Sistem<a class="headerlink" href="#2-pemantauan-analisis-status-proses-sistem" title="Permanent link">&para;</a></h3>
+<h4 id="a-pemeriksaan-statik-menggunakan-ps">A. Pemeriksaan Statik Menggunakan <code>ps</code><a class="headerlink" href="#a-pemeriksaan-statik-menggunakan-ps" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Paparkan kesemua proses sistem yang sedang berjalan secara terperinci</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ps<span class="w"> </span>aux
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Paparkan struktur pokok (hierarchy tree) proses</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ps<span class="w"> </span>axjf
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># atau</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>pstree<span class="w"> </span>-p
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Filter proses khusus (contoh: proses nginx atau sshd)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sshd
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># Urutkan proses mengikut penggunaan memori (%MEM) atau CPU (%CPU) tertinggi</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%cpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
 </span></code></pre></div>
+<h4 id="b-pemantauan-masa-nyata-menggunakan-top-dan-htop">B. Pemantauan Masa Nyata Menggunakan <code>top</code> dan <code>htop</code><a class="headerlink" href="#b-pemantauan-masa-nyata-menggunakan-top-dan-htop" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Jalankan pemantauan masa nyata standard</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>top
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Kunci navigasi penting dalam top:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Press &#39;P&#39; -&gt; Urutkan mengikut penggunaan CPU</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Press &#39;M&#39; -&gt; Urutkan mengikut penggunaan Memori</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Press &#39;k&#39; -&gt; Masukkan PID untuk menamatkan proses secara interaktif</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Press &#39;q&#39; -&gt; Keluar dari top</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Pemantauan masa nyata berkuasa tinggi berasaskan teks/interaktif</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>htop
+</span></code></pre></div>
+<hr />
+<h3 id="3-analisis-kesihatan-memori-cpu-io-cakera">3. Analisis Kesihatan Memori, CPU &amp; I/O Cakera<a class="headerlink" href="#3-analisis-kesihatan-memori-cpu-io-cakera" title="Permanent link">&para;</a></h3>
+<h4 id="a-analisis-memori-beban-purata-free-uptime">A. Analisis Memori &amp; Beban Purata (<code>free</code> &amp; <code>uptime</code>)<a class="headerlink" href="#a-analisis-memori-beban-purata-free-uptime" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Semak beban purata sistem (1 minit, 5 minit, 15 minit)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>uptime
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Semak ruang memori Fizikal dan Swap dalam unit yang mudah dibaca (human-readable)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>free<span class="w"> </span>-h
+</span></code></pre></div>
+<h4 id="b-analisis-memori-maya-isirung-vmstat">B. Analisis Memori Maya &amp; Isirung (<code>vmstat</code>)<a class="headerlink" href="#b-analisis-memori-maya-isirung-vmstat" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Paparkan statistik memori maya, swap in/out, IO, dan konteks CPU setiap 1 saat sebanyak 5 kali</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vmstat<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+</span></code></pre></div>
+<p><em>Petunjuk Penting vmstat:</em>
+- <code>r</code>: Jumlah proses yang menunggu giliran CPU (run queue).
+- <code>b</code>: Jumlah proses terhalang dalam ketersediaan I/O (blocked).
+- <code>si</code> / <code>so</code>: Swap-in dan Swap-out. Sekiranya angka ini sentiasa tinggi, sistem mengalami kekurangan memori RAM fizikal (<em>thrashing</em>).</p>
+<h4 id="c-analisis-prestasi-io-peranti-storan-iostat-pidstat">C. Analisis Prestasi I/O Peranti Storan (<code>iostat</code> &amp; <code>pidstat</code>)<a class="headerlink" href="#c-analisis-prestasi-io-peranti-storan-iostat-pidstat" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Menganalisis kadar pembacaan/penulisan I/O cakera secara terperinci</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>iostat<span class="w"> </span>-xz<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Semak kegunaan I/O mengikut proses spesifik</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>pidstat<span class="w"> </span>-d<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+</span></code></pre></div>
+<hr />
+<h3 id="4-pengurusan-isyarat-posix-penamatan-proses">4. Pengurusan Isyarat POSIX &amp; Penamatan Proses<a class="headerlink" href="#4-pengurusan-isyarat-posix-penamatan-proses" title="Permanent link">&para;</a></h3>
+<p>Proses berkomunikasi dengan isirung kernel melalui <strong>Isyarat POSIX (POSIX Signals)</strong>.</p>
+<h4 id="a-jadual-isyarat-utama-posix">A. Jadual Isyarat Utama POSIX<a class="headerlink" href="#a-jadual-isyarat-utama-posix" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Nombor Isyarat</th>
+<th style="text-align: left;">Nama Isyarat</th>
+<th style="text-align: left;">Penerangan &amp; Tindakan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><code>SIGHUP</code></td>
+<td style="text-align: left;">Hangup - Digunakan untuk mengarahkan daemon memuat semula konfigurasi tanpa restart.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><code>SIGINT</code></td>
+<td style="text-align: left;">Interrupt - Dihantar apabila pengguna menekan <code>Ctrl + C</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;"><code>SIGKILL</code></td>
+<td style="text-align: left;">Kill - Penamatan paksa sertamerta oleh kernel. <strong>TIDAK BOLEH</strong> ditangkap atau diabaikan oleh proses.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;"><code>SIGTERM</code></td>
+<td style="text-align: left;">Terminate - Isyarat penamatan anggun (graceful shutdown) lalai. Membolehkan proses menyimpan data dan menutup pautan.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="b-operasi-penamatan-proses-kill-killall-pkill">B. Operasi Penamatan Proses (<code>kill</code>, <code>killall</code>, <code>pkill</code>)<a class="headerlink" href="#b-operasi-penamatan-proses-kill-killall-pkill" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Hantar isyarat penamatan anggun SIGTERM (15) berdasarkan PID</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="m">4821</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Hantar isyarat henti paksa SIGKILL (9) jika proses tidak bertindak balas</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span><span class="m">4821</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Hantar isyarat muat semula SIGHUP (1) kepada daemon</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>sudo<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-1<span class="w"> </span><span class="m">1024</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Menamatkan semua proses mengikut nama aplikasi</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>sudo<span class="w"> </span>killall<span class="w"> </span>-15<span class="w"> </span>nginx
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>sudo<span class="w"> </span>pkill<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;python3 script.py&quot;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="5-penalaan-keutamaan-cpu-io-nice-renice-ionice">5. Penalaan Keutamaan CPU &amp; I/O (<code>nice</code>, <code>renice</code>, <code>ionice</code>)<a class="headerlink" href="#5-penalaan-keutamaan-cpu-io-nice-renice-ionice" title="Permanent link">&para;</a></h3>
+<h4 id="a-penalaan-keutamaan-cpu-nice-renice">A. Penalaan Keutamaan CPU (<code>nice</code> &amp; <code>renice</code>)<a class="headerlink" href="#a-penalaan-keutamaan-cpu-nice-renice" title="Permanent link">&para;</a></h4>
+<p>Skala nilai <em>nice</em> adalah dari <strong>-20 (Keutamaan Tertinggi)</strong> hingga <strong>19 (Keutamaan Terendah)</strong>. Nilai lalai ialah <strong>0</strong>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Jalankan skrip baru dengan keutamaan CPU yang lebih tinggi (nilai nice -10) - Perlu sudo</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>nice<span class="w"> </span>-n<span class="w"> </span>-10<span class="w"> </span>/usr/local/bin/heavy-data-process.sh
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Jalankan proses latar belakang dengan keutamaan rendah (nilai nice 15)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>nice<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>/usr/local/bin/backup.sh<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Ubah keutamaan proses yang SEDANG berjalan mengikut PID</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>sudo<span class="w"> </span>renice<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span>-p<span class="w"> </span><span class="m">4821</span>
+</span></code></pre></div>
+<h4 id="b-penalaan-keutamaan-io-cakera-ionice">B. Penalaan Keutamaan I/O Cakera (<code>ionice</code>)<a class="headerlink" href="#b-penalaan-keutamaan-io-cakera-ionice" title="Permanent link">&para;</a></h4>
+<p>Class I/O: 1 (Realtime), 2 (Best-effort), 3 (Idle).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Jalankan proses sandaran dengan kelas I/O Idle (hanya guna cakera apabila I/O kosong)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>ionice<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>/usr/local/bin/backup-job.sh
+</span></code></pre></div>
+<hr />
+<h3 id="6-kawalan-sumber-sistem-melalui-control-groups-v2-cgroups-v2">6. Kawalan Sumber Sistem Melalui Control Groups v2 (<code>cgroups v2</code>)<a class="headerlink" href="#6-kawalan-sumber-sistem-melalui-control-groups-v2-cgroups-v2" title="Permanent link">&para;</a></h3>
+<p>Dalam persekitaran Linux moden 2026, <code>cgroups v2</code> disepadukan secara langsung dengan <code>systemd</code> untuk mengehadkan penggunaan CPU dan memori aplikasi bagi mengelakkan sistem daripada tergantung (<em>system freeze</em>).</p>
+<h4 id="a-membataskan-sumber-menggunakan-systemd-run">A. Membataskan Sumber Menggunakan <code>systemd-run</code><a class="headerlink" href="#a-membataskan-sumber-menggunakan-systemd-run" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Jalankan aplikasi berat dengan had memori maksimum 500MB dan CPU maksimum 50%</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>systemd-run<span class="w"> </span>--scope<span class="w"> </span>-p<span class="w"> </span><span class="nv">MemoryMax</span><span class="o">=</span>500M<span class="w"> </span>-p<span class="w"> </span><span class="nv">CPUQuota</span><span class="o">=</span><span class="m">50</span>%<span class="w"> </span>/usr/local/bin/heavy-app
+</span></code></pre></div>
+<h4 id="b-membataskan-sumber-melalui-unit-drop-in-override-etcsystemdsystemmyappservicedoverrideconf">B. Membataskan Sumber Melalui Unit Drop-in Override (<code>/etc/systemd/system/myapp.service.d/override.conf</code>)<a class="headerlink" href="#b-membataskan-sumber-melalui-unit-drop-in-override-etcsystemdsystemmyappservicedoverrideconf" title="Permanent link">&para;</a></h4>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">[Service]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">MemoryMax</span><span class="o">=</span><span class="s">1G</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="na">MemoryHigh</span><span class="o">=</span><span class="s">800M</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="na">CPUQuota</span><span class="o">=</span><span class="s">200%</span><span class="w">  </span><span class="c1"># Mengehadkan penggunaan maksimum kepada 2 teras CPU</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="na">IOWeight</span><span class="o">=</span><span class="s">50</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Muat semula konfigurasi dan laksanakan</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>myapp.service
+</span></code></pre></div>
+<hr />
+<h2 id="pengerasan-keselamatan-pematuhan-jdn-mampu">🔒 Pengerasan Keselamatan &amp; Pematuhan JDN / MAMPU<a class="headerlink" href="#pengerasan-keselamatan-pematuhan-jdn-mampu" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Perlindungan Terhadap DoS &amp; Fork Bomb:</strong> Tetapkan had maksimum proses per pengguna dalam <code>/etc/security/limits.conf</code> (<code>nproc</code> &amp; <code>nofile</code>) bagi menghalang serangan pengeluaran sumber (<em>resource exhaustion</em>).</li>
+<li><strong>Pengawasan Proses Luar Biasa:</strong> Pantau proses bermula dari <code>/tmp</code> atau <code>/dev/shm</code> yang kerap digunakan oleh malwer untuk melakukan perlombongan kripto (<em>crypto-mining</em>).</li>
+<li><strong>Pemberhentian Paksa Anggun:</strong> Sentiasa amalkan penamatan isyarat <code>SIGTERM (15)</code> terlebih dahulu sebelum menggunakan <code>SIGKILL (9)</code> bagi mengelakkan kerosakan fail pangkalan data dan sistem fail.</li>
+</ol>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya memeriksa status dan menyusun proses mengikut penggunaan sumber menggunakan <code>ps aux</code>, <code>top</code>, dan <code>htop</code>.</li>
+<li>[ ] Berjaya menganalisis statistik kesihatan memori maya dan I/O menggunakan <code>vmstat</code>, <code>iostat</code>, dan <code>free -h</code>.</li>
+<li>[ ] Berjaya menamatkan proses terhang menggunakan isyarat <code>SIGTERM (15)</code> dan <code>SIGKILL (9)</code>.</li>
+<li>[ ] Berjaya melaraskan nilai <em>nice</em> proses dengan <code>nice</code> dan <code>renice</code>.</li>
+<li>[ ] Berjaya melaksanakan had penggunaan sumber CPU dan memori menggunakan <code>cgroups v2</code> atau <code>systemd-run</code>.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pengoptimuman Prestasi Sistem &amp; Ruang Cakera dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Pengoptimuman Prestasi Sistem &amp; Ruang Cakera menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Apakah tanda-tanda awal memory thrashing dalam laporan vmstat dan bagaimanakah parameter sysctl vm.swappiness boleh dilaras untuk mengurangkannya?"</em></li>
+<li><em>"Tunjukkan cara menulis skrip Shell Bash automatik untuk mengesan dan menamatkan proses yang menggunakan CPU melebihi 90% selama lebih daripada 10 minit."</em></li>
+<li><em>"Jelaskan perbezaan mekasnisme kawalan sumber cgroups v1 dan cgroups v2 dari segi seni bina unified hierarchy dalam kernel Linux moden."</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/cgroup-v2.html">Linux Kernel Documentation - Control Groups v2</a></li>
+<li><a href="https://ubuntu.com/server/docs">Ubuntu Performance Tuning &amp; Diagnostics Guide</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux 10 System Performance &amp; Monitoring Tools</a></li>
+<li><a href="https://www.brendangregg.com/linuxperf.html">Brendan Gregg's Linux Performance Tools &amp; BPF</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Systems Performance: Enterprise and the Cloud (2nd Edition)</strong> oleh Brendan Gregg.</li>
+<li><strong>Linux Observability with BPF</strong> oleh David Calavera &amp; Lorenzo Fontana.</li>
+<li><strong>Pengoptimuman &amp; Diagnostik Prestasi Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />

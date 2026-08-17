@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus pentadbiran pelayan Linux (Apache, SSH, Samba) dipetakan kepada NOSS CU03.">
+        <meta name="description" content="Silibus pentadbiran pelayan Linux, pengurusan perkhidmatan systemd, konfigurasi teras pelayan, dan peranan servis pelayan dipetakan kepada NOSS CU03.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -27,7 +27,7 @@
     
     
       
-        <title>topic-03-linux-server-administration - NOSS Linux Malaysia (DSOM)</title>
+        <title>Topik 3: Pentadbiran Pelayan Linux (CU03) - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              topic-03-linux-server-administration
+              Topik 3: Pentadbiran Pelayan Linux (CU03)
             
           </span>
         </div>
@@ -1066,7 +1066,7 @@
   <a href="#overview-gambaran-keseluruhan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview (Gambaran Keseluruhan)
+        📌 Overview (Gambaran Keseluruhan)
       
     </span>
   </a>
@@ -1077,7 +1077,7 @@
   <a href="#silibus-utama" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Silibus Utama
+        📚 Silibus Utama
       
     </span>
   </a>
@@ -1085,10 +1085,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
+  <a href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pemetaan NOSS (NOSS Mapping)
+        🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
       
     </span>
   </a>
@@ -1503,7 +1536,7 @@
   <a href="#overview-gambaran-keseluruhan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview (Gambaran Keseluruhan)
+        📌 Overview (Gambaran Keseluruhan)
       
     </span>
   </a>
@@ -1514,7 +1547,7 @@
   <a href="#silibus-utama" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Silibus Utama
+        📚 Silibus Utama
       
     </span>
   </a>
@@ -1522,10 +1555,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
+  <a href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pemetaan NOSS (NOSS Mapping)
+        🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
       
     </span>
   </a>
@@ -1550,27 +1616,72 @@
 
 
 <h1 id="topik-3-pentadbiran-pelayan-linux-cu03">Topik 3: Pentadbiran Pelayan Linux (CU03)<a class="headerlink" href="#topik-3-pentadbiran-pelayan-linux-cu03" title="Permanent link">&para;</a></h1>
-<h2 id="overview-gambaran-keseluruhan">Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
-<p>Pusat utama ekosistem Linux adalah pelayannya (Server). Topik ini menerangkan tentang proses perkhidmatan (<em>services</em>) dan peranan pelayan. Ia merupakan pemetaan langsung daripada <strong>CU03 (Server Setup)</strong>.</p>
-<h2 id="silibus-utama">Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Pemasangan OS Pelayan (Server OS)</strong>: </li>
-<li>Membezakan edisi Desktop vs Server (tiada GUI, dikawal CLI penuh).</li>
-<li><em>Static IP Configuration</em> menggunakan Netplan (Ubuntu) atau NetworkManager (RHEL).</li>
-<li><strong>Remote Access &amp; SSH</strong>:</li>
-<li>Pemasangan <code>openssh-server</code>.</li>
-<li>Log masuk jarak jauh dan penggunaan kunci (SSH Keys) <code>/home/user/.ssh/authorized_keys</code>.</li>
-<li><strong>Penyedia Khidmat (Service Roles)</strong>:</li>
-<li><strong>Web Server</strong>: Apache (<code>httpd</code> / <code>apache2</code>) atau Nginx.</li>
-<li><strong>File Sharing</strong>: Samba (SMB) untuk Windows, NFS untuk persekitaran Linux.</li>
-<li><strong>Database</strong>: MariaDB / MySQL.</li>
-</ol>
-<h2 id="pemetaan-noss-noss-mapping">Pemetaan NOSS (NOSS Mapping)<a class="headerlink" href="#pemetaan-noss-noss-mapping" title="Permanent link">&para;</a></h2>
-<p>Silibus ini memandu kemahiran Ejen AI berikut:
-- <code>cu03-wa04-perform-core-server-configurations</code>
-- <code>cu03-wa05-implement-server-roles-and-services</code></p>
+<h2 id="overview-gambaran-keseluruhan">📌 Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
+<p>Pusat utama ekosistem Linux adalah pelayannya (<em>Server</em>). Topik ini menerangkan tentang pengurusan perkhidmatan (<em>services</em>), konfigurasi teras pelayan, dan pelaksanaan peranan pelayan enterprise. Ia merupakan pemetaan langsung daripada <strong>NOSS CU03 (Server Setup)</strong>.</p>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<h2 id="silibus-utama">📚 Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Pemasangan &amp; Persediaan OS Pelayan (Server OS)</strong>: <ul>
+<li>Membezakan edisi Desktop vs Server (pemasangan minimum, CLI penuh).</li>
+<li><em>Static IP Configuration</em> menggunakan Netplan (Ubuntu 26.04 LTS) atau NetworkManager / <code>nmcli</code> (AlmaLinux 10 / Fedora 43).</li>
+</ul>
+</li>
+<li><strong>Konfigurasi Teras Pelayan &amp; Systemd</strong>:<ul>
+<li>Pengurusan perkhidmatan menggunakan <code>systemctl</code> (start, stop, enable, disable, mask, restart, daemon-reload).</li>
+<li>Penulisan fail unit perkhidmatan kustom (<code>/etc/systemd/system/</code>) dengan parameter pengerasan keselamatan.</li>
+<li>Audit log sistem terpusat menggunakan <code>journalctl</code>.</li>
+<li>Penyegerakan masa kebangsaan dan zon masa melalui <code>timedatectl</code> dan <code>chronyd</code>.</li>
+<li>Navigasi dokumentasi sistem dan halaman manual (<code>man</code>, <code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>).</li>
+</ul>
+</li>
+<li><strong>Capaian Jarak Jauh &amp; Pengerasan SSH (Remote Access Hardening)</strong>:<ul>
+<li>Pemasangan dan konfigurasi <code>openssh-server</code>.</li>
+<li>Log masuk tanpa kata laluan menggunakan kunci SSH (<code>ssh-keygen</code>, <code>ssh-copy-id</code>, <code>authorized_keys</code>).</li>
+<li>Pengerasan SSH: penutupan root login (<code>PermitRootLogin no</code>), pertukaran port, dan <code>fail2ban</code>.</li>
+</ul>
+</li>
+<li><strong>Penyedia Khidmat &amp; Peranan Pelayan (Server Roles)</strong>:<ul>
+<li><strong>Pelayan Web</strong>: Apache (<code>httpd</code> / <code>apache2</code>) dan Nginx dengan TLS/SSL Let's Encrypt.</li>
+<li><strong>Perkongsian Fail</strong>: Samba (SMB/CIFS) untuk interoperabiliti Windows dan NFSv4 untuk persekitaran Linux.</li>
+<li><strong>Pangkalan Data</strong>: MariaDB / MySQL enterprise hardening.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="pemetaan-modul-amali-kemahiran-ai-noss-mapping">🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)<a class="headerlink" href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" title="Permanent link">&para;</a></h2>
+<p>Silibus ini memandu modul amali di <code>manual/cu03/</code> dan kemahiran AI di <code>.agents/skills/</code>:</p>
+<ul>
+<li><code>manual/cu03/cu03-wa01-persediaan-pemasangan-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa01-prepare-server-setup/</code></li>
+<li><code>manual/cu03/cu03-wa02-pelaksanaan-pemasangan-fizikal-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa02-carry-out-server-installation/</code></li>
+<li><code>manual/cu03/cu03-wa03-pemasangan-sistem-operasi-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa03-install-server-operating-system/</code></li>
+<li><code>manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa04-perform-core-server-configurations/</code></li>
+<li><code>manual/cu03/cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa05-implement-server-roles-and-services/</code></li>
+<li><code>manual/cu03/cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa06-manage-server-hardware/</code></li>
+</ul>
+<hr />
+<h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
+<ol>
+<li><em>"Apakah perbezaan ketara antara pengurusan unit systemd pada Ubuntu Server 26.04 LTS dan AlmaLinux 10 dari segi kawalan SELinux/AppArmor?"</em></li>
+<li><em>"Hasilkan skrip automasi Bash untuk mengesahkan penyegerakan masa chronyc dan status keaktifan semua perkhidmatan teras pelayan."</em></li>
+<li><em>"Bagaimanakah cara mengkonfigurasikan pelayan web Nginx sebagai reverse proxy bersama modul systemd socket activation?"</em></li>
+</ol>
+<hr />
+<h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://systemd.io/">Dokumentasi Systemd Official</a></li>
+<li><a href="https://ubuntu.com/server/docs">Panduan Pentadbiran Pelayan Ubuntu Server</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux 10 Enterprise Server Administration Wiki</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html">Freedesktop.org Systemd Unit Manual</a></li>
+</ul>
+<hr />
+<h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>UNIX and Linux System Administration Handbook (5th Edition)</strong> oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin.</li>
+<li><strong>Mastering systemd</strong> oleh Anish Nath.</li>
+<li><strong>Panduan Praktikal Pentadbiran Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

@@ -1,16 +1,16 @@
 ---
 okf_version: 0.1
 type: skill
-name: cu06-wa05-perform-system-optimisation-and-disk-management
-title: "CU06 WA05: Perform System Optimisation and Disk Management"
+name: cu06-wa05-optimize-system-performance-and-storage
+title: "CU06 WA05: Optimize System Performance and Storage"
 timestamp: "2026-08-17T00:00:00Z"
 topics: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
 tags: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
-description: "Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls."
-resource: "file:///.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md"
+description: "Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls."
+resource: "file:///.agents/skills/cu06-wa05-optimize-system-performance-and-storage/SKILL.md"
 ---
 
-# CU06 WA05: Perform System Optimisation and Disk Management
+# CU06 WA05: Optimize System Performance and Storage
 
 ## 🎯 Purpose & Scope
 

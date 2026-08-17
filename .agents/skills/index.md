@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T05:22:18Z"
+timestamp: "2026-08-17T06:21:13Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -13,7 +13,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `122`
+**Total Modules Indexed:** `123`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -43,7 +43,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu03-wa01-prepare-server-setup`** <br> *cu03-wa01-prepare-server-setup* | No description provided. | N/A |
 | **`cu03-wa02-carry-out-server-installation`** <br> *cu03-wa02-carry-out-server-installation* | No description provided. | N/A |
 | **`cu03-wa03-install-server-operating-system`** <br> *cu03-wa03-install-server-operating-system* | No description provided. | N/A |
-| **`cu03-wa04-perform-core-server-configurations`** <br> *cu03-wa04-perform-core-server-configurations* | No description provided. | N/A |
+| **`cu03-wa04-perform-core-server-configurations`** <br> *CU03 WA04: Perform Core Server Configurations* | Executes NOSS Work Activity K622-XXX-3:2026-C03 WA04: Perform Core Server Configurations including systemd service management, custom service units, journalctl audit logging, timedatectl/chrony time sync, and system man pages. | "noss", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man" |
 | **`cu03-wa05-implement-server-roles-and-services`** <br> *cu03-wa05-implement-server-roles-and-services* | No description provided. | N/A |
 | **`cu03-wa06-manage-server-hardware`** <br> *cu03-wa06-manage-server-hardware* | No description provided. | N/A |
 | **`cu04-wa01-prepare-backup-recovery-tools`** <br> *cu04-wa01-prepare-backup-recovery-tools* | No description provided. | N/A |
@@ -60,7 +60,8 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** <br> *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
 | **`cu06-wa03-support-hardware-troubleshooting`** <br> *cu06-wa03-support-hardware-troubleshooting* | No description provided. | N/A |
 | **`cu06-wa04-configure-and-troubleshoot-peripheral-connections`** <br> *cu06-wa04-configure-and-troubleshoot-peripheral-connections* | No description provided. | N/A |
-| **`cu06-wa05-perform-system-optimisation-and-disk-management`** <br> *cu06-wa05-perform-system-optimisation-and-disk-management* | No description provided. | N/A |
+| **`cu06-wa05-optimize-system-performance-and-storage`** <br> *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
+| **`cu06-wa05-perform-system-optimisation-and-disk-management`** <br> *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** <br> *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
 | **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *cu06-wa07-resolve-system-anomalies-and-document-rca* | No description provided. | N/A |
 | **`docx-highlight-extractor`** <br> *docx-highlight-extractor* | No description provided. | N/A |
