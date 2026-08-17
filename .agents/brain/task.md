@@ -82,6 +82,11 @@
 
 ---
 
-## 🎯 Roadmap Seterusnya
+## 🎯 Roadmap Seterusnya (Fasa 7: Migrasi & Pemodenan Bab 7 - Sedia untuk Google Jules 🎯)
+- [ ] **Fasa 7: Migrasi & Pemodenan Bab 7 (Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem - CU01, CU03, & CU06):**
+  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_07/` ke `manual/cu06/cu06-wa07`, `manual/cu01/cu01-wa05`, dan `manual/cu03/cu03-wa04` (Vim/Neovim, Nano, `$EDITOR`, `$VISUAL`, `~/.bashrc`, `/etc/environment`, `sudoedit`).
+  - [ ] Kemas kini kemahiran AI `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md`.
+  - [ ] Kemas kini `openwiki/topic-06-troubleshooting-and-logs.md` dan `openwiki/topic-01-linux-desktop-and-basics.md`.
+  - [ ] Tambah ujian unit pengesahan dan sahkan 100% Quality Gate (`run_all_tests.py`).
 - [ ] **Audit Keseluruhan Kurikulum NOSS Linux & Penjana Format Output Pelbagai (DOCX, PPTX, PDF, FastMCP Server)**
 - [ ] **Penyediaan Projek Arkib Khas OSCC MAMPU / MOSC (Dedicated Archive Project)**
