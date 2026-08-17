@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: knowledge-node
 title: "CU02: Pengurusan Storan, Partisi GPT, LVM2 & Sistem Fail Linux"
-timestamp: "2026-08-16T00:00:00Z"
+timestamp: "2026-08-17T00:00:00Z"
 topics: ["noss-linux", "cu02", "storan", "lvm2", "gpt", "sistem-fail"]
 tags: ["cu02", "linux", "noss", "partisi", "gdisk", "parted", "lvm", "ext4", "xfs", "btrfs"]
 description: "Panduan amali komprehesif bagi pengurusan storan fizikal dan logikal, jadual partisi GPT, LVM2 (PV/VG/LV), sistem fail EXT4/XFS/Btrfs, /etc/fstab, dan penyulitan LUKS2 mengikut NOSS CU02."
@@ -243,5 +243,5 @@ df -h /mnt/storan_tersulit
 - **Nota Pentadbiran Storan & Pelayan Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

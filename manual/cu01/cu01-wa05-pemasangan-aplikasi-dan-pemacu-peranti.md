@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
-timestamp: "2026-08-16T00:00:00Z"
+timestamp: "2026-08-17T00:00:00Z"
 topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti"]
 tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver"]
 description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap) dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
@@ -198,5 +198,5 @@ sudo apt install -y linux-firmware                   # Ubuntu
 - **Nota Pentadbiran Sistem Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

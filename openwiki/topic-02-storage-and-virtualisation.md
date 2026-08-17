@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026"
-timestamp: "2026-08-16T00:00:00Z"
+timestamp: "2026-08-17T00:00:00Z"
 topics: ["storage", "virtualisation", "cu02", "gpt", "lvm2", "ext4", "xfs", "btrfs", "kvm"]
 tags: ["linux", "storage", "virtualisation", "cu02", "partisi", "gdisk", "lvm", "luks2"]
 description: "Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs, LUKS2) dan pengmayaan (KVM/QEMU/libvirt) Linux dipetakan kepada NOSS CU02."

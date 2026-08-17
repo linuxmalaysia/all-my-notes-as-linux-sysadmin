@@ -26367,7 +26367,7 @@ graph TD
 okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
-timestamp: "2026-08-16T12:20:00Z"
+timestamp: "2026-08-16T00:00:00Z"
 topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2"]
 tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2"]
 description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan prosedur pemasangan NOSS Level 3."
@@ -26378,7 +26378,7 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ## Gambaran Keseluruhan (Overview)
 
-Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, serta penegasan keselamatan pasca-pemasangan**.
+Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi &amp; pemacu, konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan**.
 
 &gt; **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
 &gt; Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
@@ -26388,6 +26388,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ## Silibus Utama
 
 ### 1. Sejarah &amp; Asal-Usul Linux
+
 - Linus Torvalds, Universiti Helsinki, 1991: Dari hobi kepada infrastruktur global
 - Projek GNU &amp; Richard Stallman: Falsafah 4 Kebebasan Perisian
 - Evolusi isirung: Linux 0.01 (1991) → Linux 6.14 LTS (2026, ~38 juta baris kod)
@@ -26396,6 +26397,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/pengenalan-linux-dan-sejarah.md](../manual/cu01/pengenalan-linux-dan-sejarah.md)
 
 ### 2. Falsafah &amp; Lesen GNU GPL
+
 - Perbezaan antara "perisian bebas" dan "sumber terbuka"
 - GNU GPL v2 (isirung Linux), MIT, Apache, CC BY-SA
 - Hak pengguna di bawah perisian terbuka
@@ -26404,7 +26406,8 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/hakcipta-dan-pelesenan.md](../manual/cu01/hakcipta-dan-pelesenan.md)
 
 ### 3. Ekosistem Distribusi Linux 2026 (Piawaian Kanonik)
-- **Ubuntu 26.04 LTS "Quetzal"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
+
+- **Ubuntu 26.04 LTS "Resolute Raccoon"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
 - **AlmaLinux 10 "Purple Lion"**: Rujukan pelayan &amp; desktop perusahaan (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035)
 - **Fedora 43**: Rujukan teknologi terkini (bleeding-edge workstation)
 - **Distribusi Khusus**: Kali Linux (keselamatan), Alpine Linux (kontena), Raspberry Pi OS (IoT)
@@ -26412,6 +26415,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/pecahan-linux-terkini.md](../manual/cu01/pecahan-linux-terkini.md)
 
 ### 4. Keperluan Perkakasan &amp; Mod Penimbalan BIOS/UEFI
+
 - Spesifikasi minimum &amp; disyorkan (x86_64, ARM64)
 - Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
 - Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
@@ -26419,26 +26423,45 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/keperluan-perkakasan-dan-bios-uefi.md](../manual/cu01/keperluan-perkakasan-dan-bios-uefi.md)
 
 ### 5. Prosedur Pemasangan Sistem Operasi &amp; Storan LVM
+
 - Langkah demi langkah pemasangan Ubuntu 26.04 LTS, AlmaLinux 10, dan Fedora 43
 - Skema pembahagian storan LVM (`/boot/efi`, `/`, `/var`, `/home`, `swap`)
 
 **📖 Baca Lanjut:** [manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md](../manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md)
 
 ### 6. Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 &amp; MAMPU)
+
 - Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS
 - Pengurusan berbilang slot kunci (*multi-user key slots*) untuk pengguna dan pentadbir IT
-- Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) &amp; Pekeliling MAMPU
+- Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) &amp; Pekeliling MAMPU/JDN
 
 **📖 Baca Lanjut:** [manual/cu01/penyulitan-cakera-luks2-pejabat.md](../manual/cu01/penyulitan-cakera-luks2-pejabat.md)
 
-### 7. Tugasan Pasca-Pemasangan, Pemacu Peranti &amp; Hardening
-- Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
-- Pemasangan pemacu grafik proprietary Nvidia / AMD
-- Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
+### 7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)
 
-**📖 Baca Lanjut:** [manual/cu01/pasca-pemasangan-dan-driver.md](../manual/cu01/pasca-pemasangan-dan-driver.md)
+- Pengurusan pakej asli (`apt` pada Ubuntu, `dnf5` pada AlmaLinux/Fedora)
+- Pakej berasaskan kontena universal (`Flatpak`, `Snap`)
+- Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti
 
-### 8. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif
+**📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
+
+### 8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)
+
+- Pengurusan sambungan berwayar dan Wi-Fi menggunakan NetworkManager (`nmcli`) dan `iproute2`
+- Penetapan Alamat IP Statik, DHCP, dan pelayan DNS
+- Pengerasan keselamatan profil sambungan dan resolusi nama DNS
+
+**📖 Baca Lanjut:** [manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md](../manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md)
+
+### 9. Tugasan Pasca-Pemasangan &amp; Hardening
+
+- Konfigurasi tembok api (*firewall*) UFW dan firewalld
+- Pengerasan perkhidmatan SSH daemon dan auditing log keselamatan
+
+**📖 Baca Lanjut:** [manual/cu01/penegasan-keselamatan-sistem.md](../manual/cu01/penegasan-keselamatan-sistem.md)
+
+### 10. Soal Jawab (FAQ) &amp; Direktori Perisian Alternatif
+
 - Soalan lazim pengguna baharu Linux
 - Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
 
@@ -26477,7 +26500,7 @@ Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk
 - [Projek GNU dan Maksud Perisian Bebas](https://www.gnu.org/philosophy/free-sw.ms.html) — (Tersedia dalam Bahasa Melayu)
 - [DistroWatch.com](https://distrowatch.com) — Tangga &amp; statistik distribusi Linux terkini dunia
 - [kernel.org](https://kernel.org) — Repositori rasmi Isirung Linux
-- [MAMPU Malaysia / HKSA](https://www.mampu.gov.my) — Dasar OSS &amp; Pekeliling Keselamatan ICT sektor awam Malaysia
+- [Jabatan Digital Negara (JDN) / MAMPU Malaysia](https://www.jdn.gov.my) — Dasar OSS &amp; Pekeliling Keselamatan ICT sektor awam Malaysia
 - [The Linux Foundation](https://www.linuxfoundation.org)
 
 ---
@@ -26504,39 +26527,115 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
   </file>
   <file path="openwiki/topic-02-storage-and-virtualisation.md">
     <content>
-﻿---
+---
 okf_version: 0.1
 type: documentation
-title: "topic-02-storage-and-virtualisation"
-timestamp: "2026-08-16T08:43:42Z"
-topics: ["storage", "virtualisation", "cu02"]
-tags: ["linux", "storage", "virtualisation", "cu02"]
-description: "Silibus pengurusan storan dan mesin maya (KVM) Linux dipetakan kepada NOSS CU02."
+title: "Topik 2: Pengurusan Storan, Partisi &amp; Pengmayaan (CU02) — Dikemaskini 2026"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["storage", "virtualisation", "cu02", "gpt", "lvm2", "ext4", "xfs", "btrfs", "kvm"]
+tags: ["linux", "storage", "virtualisation", "cu02", "partisi", "gdisk", "lvm", "luks2"]
+description: "Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs, LUKS2) dan pengmayaan (KVM/QEMU/libvirt) Linux dipetakan kepada NOSS CU02."
 resource: "file:///openwiki/topic-02-storage-and-virtualisation.md"
 ---
 
 # Topik 2: Pengurusan Storan &amp; Pengmayaan (CU02)
 
-## Overview (Gambaran Keseluruhan)
-Topik ini meliputi pengurusan ruang storan keras (disk management) serta pengenalan kepada konsep infrastruktur maya di persekitaran Linux. Ia dipetakan daripada **CU02 (Virtualisation Infrastructure)**.
+## Gambaran Keseluruhan (Overview)
+
+Topik ini merangkumi pengurusan ruang storan fizikal dan logikal (*disk management*), skema partisi GPT moden, Pengurusan Volum Logikal (**LVM2**), sistem fail moden (**EXT4**, **XFS**, **Btrfs**), penyulitan **LUKS2**, serta infrastruktur pemayaan (*virtualisation*) berprestasi tinggi di persekitaran Linux. Topik ini dipetakan secara terus kepada piawaian **NOSS Level 3 (CU02: Virtualisation Infrastructure &amp; Storage Management)**.
+
+&gt; **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
+&gt; Daripada sekadar "mencipta partisi dan format cakera" (spesifik) → fahami "bagaimana pangkalan data dan hipervisor menguruskan volum storan secara dinamis dan tersulit" (corak) → hayati "apakah peranan ketahanan data dan fleksibiliti storan dalam seni bina awan sovereign" (prinsip universal).
+
+---
 
 ## Silibus Utama
-1. **Pengurusan Storan Fizikal &amp; Logikal**:
-   - Arahan pemerhatian storan: `lsblk`, `df -h`, `du -sh`
-   - Pemisahan cakera (Partitioning): `fdisk`, `parted`
-   - Membina sistem fail (Filesystem): `mkfs.ext4`, `mkfs.xfs`
-   - LVM (Logical Volume Management): `pvcreate`, `vgcreate`, `lvcreate`
-2. **Mounting &amp; Fstab**:
-   - Pemasangan storan manual: `mount` dan `umount`
-   - Tetapan kekal di `/etc/fstab`
-3. **Pengmayaan (Virtualisation)**:
-   - Hypervisor Type-2 &amp; KVM (Kernel-based Virtual Machine).
-   - Penggunaan QEMU, `libvirt`, dan Virtual Machine Manager.
 
-## Pemetaan NOSS (NOSS Mapping)
-Silibus ini adalah persediaan kepada kemahiran Ejen AI:
-- `cu02-wa02-install-type-2-hypervisor-platform`
-- `cu02-wa03-deploy-guest-virtual-machines-vm`
+### 1. Pengurusan Storan Fizikal &amp; Jadual Partisi GPT
+
+- Pemerhatian peranti blok: `lsblk`, `blkid`, `df -hT`
+- Perbandingan MBR (Legacy) vs **GPT (GUID Partition Table)** moden
+- Pembahagian partisi GPT menggunakan `gdisk` (interaktif) dan `parted` (skrip)
+
+**📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
+
+### 2. Pengurusan Volum Logikal LVM2 (Logical Volume Management)
+
+- Hierarki LVM2: *Physical Volume* (PV) ➔ *Volume Group* (VG) ➔ *Logical Volume* (LV)
+- Arahan pembinaan: `pvcreate`, `vgcreate`, `lvcreate`
+- Peluasan volum secara dalam talian (*online volume expansion*): `lvextend` dan `resize2fs` / `xfs_growfs`
+
+**📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
+
+### 3. Sistem Fail Moden (EXT4, XFS, Btrfs) &amp; Pautan Kekal `/etc/fstab`
+
+- Perbandingan prestasi dan kegunaan EXT4 (Desktop/Linux am), XFS (Enterprise Pelayan AlmaLinux 10), dan Btrfs (Snapshot/Fedora 43)
+- Arahan format: `mkfs.ext4`, `mkfs.xfs`, `mkfs.btrfs`
+- Konfigurasi lekap kekal di `/etc/fstab` menggunakan `UUID` dan parameter `nofail`
+
+**📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
+
+### 4. Penyulitan Storan Blok LUKS2 Pejabat
+
+- Konfigurasi LUKS2 (`cryptsetup luksFormat --type luks2`)
+- Pembukaan dan pemetaan volum tersulit di `/dev/mapper/`
+- Pematuhan piawaian ISO/IEC 27001 &amp; Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU
+
+**📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
+
+### 5. Infrastruktur Pemayaan (KVM Type-1 Hypervisor &amp; Type-2 Desktop Products)
+
+- Konsep **KVM (Kernel-based Virtual Machine)** sebagai **Hipervisor Jenis-1 (Type-1 / Bare-Metal)** yang terintegrasi secara langsung ke dalam isirung Linux, berbeza daripada produk Type-2 berasaskan OS hos seperti VirtualBox
+- Pengurusan mesin maya tetamu (*Guest VMs*) menggunakan `QEMU`, `libvirt`, `virsh`, dan `virt-manager`
+- Penyediaan rekod konfigurasi pemayaan dan pengasingan rangkaian maya (*virtual networks*)
+
+**📖 Baca Lanjut:** [manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md](../manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md)
+
+---
+
+## Pemetaan NOSS &amp; Agent Skills (NOSS Mapping)
+
+| Kod NOSS | Nama Aktiviti Kerja | Status Modul &amp; Skill |
+|----------|----------------------|----------------------|
+| **CU02-WA01** | Keperluan Infrastruktur Pemayaan &amp; Storan | [Lihat Skill](../.agents/skills/cu02-wa01-identify-virtualisation-infrastructure-requirements/SKILL.md) |
+| **CU02-WA02** | Pemasangan Hipervisor Jenis-2 | [Lihat Skill](../.agents/skills/cu02-wa02-install-type-2-hypervisor-platform/SKILL.md) |
+| **CU02-WA03** | Penyebaran Mesin Maya Tetamu (VM) | [Lihat Skill](../.agents/skills/cu02-wa03-deploy-guest-virtual-machines-vm/SKILL.md) |
+| **CU02-WA04** | Penyediaan Rekod Konfigurasi Pemayaan | [Lihat Skill](../.agents/skills/cu02-wa04-prepare-virtualisation-configuration-records/SKILL.md) |
+
+---
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk mendalami topik ini:
+1. &gt; "Bolehkah anda jelaskan perbezaan antara sistem fail EXT4, XFS, dan Btrfs dari segi sokongan saiz maksimum, kecekapan I/O, dan kebolehan salinan snapshot?"
+2. &gt; "Tuliskan skrip Bash untuk membina susunan LVM2 secara automatik berasaskan dua peranti blok baharu, memformatnya ke XFS, dan memasangnya ke /mnt/data dengan tetapan UUID dalam /etc/fstab."
+3. &gt; "Bagaimanakah cara meluaskan saiz Logical Volume (LV) LVM2 dan sistem fail XFS secara dalam talian (online expansion) tanpa perlu menghentikan mesin maya (VM)?"
+4. &gt; "Apakah perbezaan seni bina antara KVM (Kernel-based Virtual Machine) sebagai Type-1 Hypervisor dengan Type-2 Hypervisor seperti VirtualBox dalam persekitaran pelayan perusahaan?"
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+- [Dokumentasi LVM2 Red Hat / AlmaLinux 10](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/10/)
+- [Panduan GNU Parted &amp; GPT Partition Table](https://www.gnu.org/software/parted/)
+- [Dokumentasi Btrfs Wiki Documentation](https://btrfs.readthedocs.io/)
+- [Dokumentasi KVM &amp; Libvirt Virtualization](https://libvirt.org/)
+- [Pekeliling Keselamatan ICT Jabatan Digital Negara (JDN) / MAMPU](https://www.jdn.gov.my/)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
+Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai buku yang disyorkan:
+
+**Bahasa Melayu:**
+1. *Asas Pentadbiran Storan &amp; Pelayan Linux* oleh Harisfazillah Jamel — Panduan amali pengurusan storan dan sistem fail dalam persekitaran Malaysia.
+2. *Panduan Amali Virtualisasi KVM Linux* — Buku latihan amali mesin maya dan LVM.
+
+**English (Antarabangsa):**
+1. *UNIX and Linux System Administration Handbook, 5th Edition* oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin — Kitab rujukan utama pentadbiran storan dan sistem.
+2. *Storage Systems: Organization, Performance, Coding, Reliability, and Statistics* oleh Alexander Thomasian — Rujukan mendalam seni bina storan enterprise.
+3. *Mastering KVM Virtualization* oleh Prasad Mukhedkar, Anil Vettattu, Humble Chirammal — Panduan lengkap hipervisor KVM dan libvirt.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
@@ -27092,72 +27191,204 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pemasangan Aplikasi &amp; Pemacu Peranti Linux"
+title: "CU01-WA05: Pemasangan Aplikasi &amp; Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu01", "panduan-amali", "manual-linux"]
-tags: ["cu01", "linux", "noss", "amali", "standard-malaysia"]
-description: "Pengurusan pakej (APT, DNF, Flatpak) dan pemasangan pemacu proprietari GPU (NVIDIA/AMD)."
+topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti"]
+tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver"]
+description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap) dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
 resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md"
 ---
 
-# Pemasangan Aplikasi &amp; Pemacu Peranti Linux
+# CU01-WA05: Pemasangan Aplikasi &amp; Pemacu Peranti Linux
 
 ## 🎯 Objektif Pembelajaran
-Pengurusan pakej (APT, DNF, Flatpak) dan pemasangan pemacu proprietari GPU (NVIDIA/AMD).
 
-&gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU01**.
+Menguasai prosedur amali pengurusan aplikasi, pakej perisian, serta pemasangan dan konfigurasi pemacu peranti (*device drivers*) pada sistem operasi Linux desktop mengikut piawaian **NOSS Tahap 3 (CU01-WA05)**.
+
+Setelah menyempurnakan modul ini, pelajar akan dapat:
+
+1. Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (**APT** pada Ubuntu 26.04 LTS, **DNF5** pada AlmaLinux 10 dan Fedora 43).
+2. Memasang dan menguruskan aplikasi berasaskan kontena universal (**Flatpak** dan **Snap**).
+3. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).
+4. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (*GPG key verification*).
 
 ---
 
-## 🛠️ Garis Panduan Amali &amp; Prosedur
+## 🛠️ Garis Panduan Amali &amp; Prosedur Kerja
 
-### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Pengurusan Pakej Asli (APT &amp; DNF5)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+#### A. Debian/Ubuntu (APT - Advanced Package Tool)
+
+Pada **Ubuntu 26.04 LTS "Resolute Raccoon"**, pengurusan pakej dilakukan menggunakan arahan `apt`:
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# 1. Kemas kini indeks repositori dan senaraikan pakej yang boleh dinaik taraf
+sudo apt update
+
+# 2. Naik taraf kesemua pakej sistem ke versi terkini secara selamat
+sudo apt upgrade -y
+
+# 3. Cari dan pasang aplikasi (contoh: cURL, Git, VLC)
+sudo apt search vlc
+sudo apt install -y curl git vlc
+
+# 4. Buang pakej yang tidak diperlukan beserta fail konfigurasi sisa
+sudo apt purge -y vlc
+sudo apt autoremove -y
+```
+
+#### B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)
+
+Pada **AlmaLinux 10 "Purple Lion"** dan **Fedora 43**, pengurus pakej generasi baharu **DNF5** digunakan:
+
+```bash
+# 1. Semak kemas kini pakej dan naik taraf sistem
+sudo dnf check-upgrade || true
+sudo dnf upgrade -y
+
+# 2. Pasang aplikasi dan kumpulan perisian (Package Groups)
+sudo dnf install -y htop wget
+sudo dnf groupinstall -y "Development Tools"
+
+# 3. Pengurusan repositori EPEL pada AlmaLinux 10
+sudo dnf install -y epel-release
+sudo dnf config-manager --enable epel
 ```
 
 ---
 
+### 2. Pemasangan Pakej Universal (Flatpak &amp; Snap)
+
+Untuk aplikasi desktop moden yang terpencil (*sandboxed*) demi keselamatan persekitaran pejabat:
+
+#### A. Flatpak (Flathub Repository)
+
+```bash
+# 1. Pastikan perkhidmatan Flatpak terpasang dan tambah repositori Flathub
+sudo apt install -y flatpak   # Ubuntu
+# sudo dnf install -y flatpak # AlmaLinux / Fedora
+
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# 2. Pasang dan jalankan aplikasi (contoh: LibreOffice / GIMP)
+flatpak install flathub org.gimp.GIMP -y
+flatpak run org.gimp.GIMP
+```
+
+#### B. Snap (Ubuntu Canonical Ecosystem)
+
+```bash
+# 1. Semak status dan pasang aplikasi Snap
+snap list
+sudo snap install code --classic  # VS Code
+sudo snap install chromium
+```
+
+---
+
+### 3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)
+
+#### A. Pengesanan Perkakasan Peranti
+
+```bash
+# Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)
+lspci -nnk | grep -A3 -i vga
+lspci -nnk | grep -A3 -i network
+
+# Senaraikan peranti USB
+lsusb
+
+# Semak modul isirung (kernel modules) yang diloadkan
+lsmod | grep -iE 'nvidia|amdgpu|iwlwifi'
+```
+
+#### B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS
+
+```bash
+# 1. Kesan pemacu yang disyorkan oleh peranti
+ubuntu-drivers devices
+
+# 2. Pasang pemacu NVIDIA terkini secara automatik
+sudo ubuntu-drivers install
+
+# 3. Sahkan pemacu NVIDIA berfungsi selepas but semula
+nvidia-smi
+```
+
+#### C. Pemasangan Pemacu NVIDIA pada Fedora 43 &amp; AlmaLinux 10 (RPM Fusion)
+
+```bash
+# Untuk Fedora 43:
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Untuk AlmaLinux 10:
+# sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
+# sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm
+
+# Pasang pemacu akmod-nvidia:
+sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+```
+
+#### D. Pengesanan &amp; Konfigurasi Pemacu AMD Radeon &amp; Kad Rangkaian Tanpa Wayar
+
+```bash
+# Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):
+sudo apt install -y mesa-vulkan-drivers mesa-utils   # Ubuntu
+# sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora
+glxinfo | grep "OpenGL vendor"
+
+# Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):
+sudo apt install -y linux-firmware                   # Ubuntu
+# sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora
+```
+
+---
+
+## 🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+1. **Verifikasi Kunci GPG APT:** Bagi repositori pihak ketiga pada sistem Debian/Ubuntu, gunakan fail kunci tersimpan di `/etc/apt/keyrings/` dengan opsyen `[signed-by=/etc/apt/keyrings/...]` dalam fail `.list` repositori.
+2. **Pengesahan Kunci DNF:** Tetapkan `gpgcheck=1` pada semua repositori DNF untuk mengelakkan suntikan pakej yang tidak disahkan.
+3. **Pakej Berdaftar Sahaja:** HANYA pasang perisian daripada repositori rasmi atau Flathub berverifikasi di komputer pejabat sektor awam.
+4. **Audit Pemasangan:** Simpan log pemasangan di `/var/log/dpkg.log` atau `/var/log/dnf.log` sebagai sebahagian daripada audit keselamatan ISO 27001.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.
+- [ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.
+- [ ] Berjaya mengenal pasti cip grafik dan kad Wi-Fi menggunakan `lspci` serta memasang pemacu peranti berkaitan.
+- [ ] Mengesahkan modul pemacu dimuatkan ke dalam isirung Linux (`lsmod` / `nvidia-smi` / `glxinfo`).
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemasangan Aplikasi &amp; Pemacu Peranti Linux dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pemasangan Aplikasi &amp; Pemacu Peranti Linux menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Bandingkan kelebihan dan kekurangan seni bina pembungkusan pakej APT/RPM berbanding ketersendirian kontena Flatpak dan Snap dari sudut keselamatan sektor awam."*
+2. *"Tuliskan skrip Bash untuk menyemak sama ada pemacu peranti NVIDIA atau AMD telah dimuatkan dengan betul dalam Kernel Linux 6.14."*
+3. *"Bagaimanakah cara menguruskan repositori cermin tempatan (local mirror repository) bagi persekitaran terpencil tanpa internet (air-gapped network)?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Dokumentasi Pengurusan Pakej Ubuntu](https://ubuntu.com/server/docs/package-management)
+- [Dokumentasi Rasmi DNF5 Fedora / AlmaLinux](https://dnf5.readthedocs.io/)
+- [Panduan Pengurusan Flathub](https://flathub.org/)
+- [Garis Panduan Keselamatan Perisian MAMPU / JDN](https://www.jdn.gov.my/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **The Linux Command Line, 2nd Edition** oleh William Shotts.
+- **Nota Pentadbiran Sistem Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -27167,72 +27398,172 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Konfigurasi Sambungan Rangkaian Endpoint"
+title: "CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu01", "panduan-amali", "manual-linux"]
-tags: ["cu01", "linux", "noss", "amali", "standard-malaysia"]
-description: "Konfigurasi NetworkManager, IP statik/DHCP, Wi-Fi, dan DNS pada sistem endpoint."
+topics: ["noss-linux", "cu01", "wa06", "rangkaian", "networkmanager", "iproute2"]
+tags: ["cu01", "wa06", "nmcli", "ip", "dhcp", "wifi", "dns", "endpoint"]
+description: "Panduan amali NOSS CU01-WA06 bagi konfigurasi NetworkManager, IP statik, DHCP, Wi-Fi, dan DNS pada sistem endpoint Linux."
 resource: "file:///manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md"
 ---
 
-# Konfigurasi Sambungan Rangkaian Endpoint
+# CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux
 
 ## 🎯 Objektif Pembelajaran
-Konfigurasi NetworkManager, IP statik/DHCP, Wi-Fi, dan DNS pada sistem endpoint.
 
-&gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU01**.
+Menguasai prosedur amali pengurusan dan konfigurasi sambungan rangkaian berwayar (*Ethernet*) dan tanpa wayar (*Wi-Fi*) pada sistem endpoint Linux mengikut piawaian **NOSS Tahap 3 (CU01-WA06)**.
+
+Setelah menyempurnakan modul ini, pelajar akan dapat:
+
+1. Menguruskan antara muka (*interface*) rangkaian menggunakan perkakas **NetworkManager** (`nmcli`, `nmtui`) dan **iproute2** (`ip`).
+2. Konfigurasi alamat IP secara dinamik (**DHCP**) dan statik (**Static IP**) mengikut skema IPv4 serta penetapan asas IPv6 (SLAAC / DHCPv6).
+3. Menyambungkan endpoint ke rangkaian tanpa wayar (*Wi-Fi*) dengan protokol keselamatan WPA2/WPA3-Personal dan WPA2/WPA3-Enterprise.
+4. Menganalisis dan melakukan penyelesaian masalah (*troubleshooting*) rute (*routing*), resolusi nama DNS, dan ujian ketercapaian pelayan.
 
 ---
 
-## 🛠️ Garis Panduan Amali &amp; Prosedur
+## 🛠️ Garis Panduan Amali &amp; Prosedur Kerja
 
-### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Diagnostik Rangkaian Asas (`iproute2` &amp; Tools)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+Sebelum membuat sebarang perubahan konfigurasi, lakukan semakan antara muka dan status semasa:
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# 1. Senaraikan semua antara muka rangkaian dan alamat IP
+ip addr show
+# atau ringkas:
+ip -c a
+
+# 2. Senaraikan jadual hala tuju (routing table) dan laluan lalai (default gateway)
+ip route show
+
+# 3. Uji ketercapaian rangkaian tempatan dan internet
+ping -c 4 192.168.1.1
+ping -c 4 8.8.8.8
 ```
 
 ---
 
+### 2. Konfigurasi NetworkManager Menggunakan CLI (`nmcli`)
+
+NetworkManager ialah perkhidmatan standard pada **Ubuntu 26.04 LTS**, **AlmaLinux 10**, dan **Fedora 43**.
+
+#### A. Semakan Status Sambungan
+
+```bash
+# Senaraikan peranti fizikal dan status ketersambungan
+nmcli device status
+
+# Senaraikan profil sambungan yang wujud
+nmcli connection show
+```
+
+#### B. Konfigurasi Alamat IP Statik (Berwayar / Ethernet)
+
+Untuk peranti pejabat yang memerlukan alamat IP tetap:
+
+```bash
+# 1. Cipta profil sambungan IP statik baharu bernama 'Pejabat-Statik' pada antaramuka eth0 (atau enp0s3)
+sudo nmcli connection add type ethernet con-name "Pejabat-Statik" ifname eth0 \
+  ip4 192.168.1.150/24 gw4 192.168.1.1
+
+# 2. Menetapkannya pelayan DNS (contoh: DNS Jabatan / Cloudflare / Google)
+sudo nmcli connection modify "Pejabat-Statik" ipv4.dns "192.168.1.10 8.8.8.8"
+
+# 3. Tukar mod carian IPv4 kepada manual
+sudo nmcli connection modify "Pejabat-Statik" ipv4.method manual
+
+# 4. Aktifkan sambungan baharu
+sudo nmcli connection up "Pejabat-Statik"
+```
+
+#### C. Konfigurasi Sambungan DHCP (Dinamik)
+
+Apabila menukar profil sambungan daripada IP statik kepada DHCP dinamik, padamkan parameter statik terlebih dahulu:
+
+```bash
+# 1. Padamkan penetapan alamat IP statik, gateway, dan DNS lama
+sudo nmcli connection modify "Pejabat-Statik" ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+
+# 2. Tukar mod carian IPv4 kepada automatik (DHCP)
+sudo nmcli connection modify "Pejabat-Statik" ipv4.method auto
+
+# 3. Aktifkan semula sambungan
+sudo nmcli connection up "Pejabat-Statik"
+```
+
+---
+
+### 3. Sambungan Rangkaian Tanpa Wayar (Wi-Fi)
+
+```bash
+# 1. Pastikan peranti Wi-Fi diaktifkan
+nmcli radio wifi on
+
+# 2. Imbas SSID Wi-Fi yang wujud berhampiran
+nmcli device wifi list
+
+# 3. Menyambung ke SSID Wi-Fi WPA2/WPA3-Personal dengan meminta kata laluan secara interaktif
+sudo nmcli device wifi connect "Wi-Fi_Pejabat" --ask
+```
+
+---
+
+### 4. Konfigurasi DNS &amp; Resolusi Nama (`/etc/resolv.conf` &amp; systemd-resolved)
+
+Pada sistem moden dengan `systemd-resolved`:
+
+```bash
+# 1. Semak status resolusi DNS semasa
+resolvectl status
+
+# 2. Menguji kelajuan dan ketepatan carian nama domain (DNS lookup)
+dig www.jdn.gov.my
+nslookup www.gov.my
+```
+
+---
+
+## 🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+1. **Penyulitan Wi-Fi Enterprise:** Elakkan penggunaan rangkaian Wi-Fi terbuka tanpa penyulitan di persekitaran kerajaan. Wajibkan standard WPA2-Enterprise / WPA3.
+2. **Kawalan Profil Rangkaian:** Pastikan fail konfigurasi di `/etc/NetworkManager/system-connections/` dilindungi dengan kebenaran cap jari fail `600` (hanya `root` boleh membaca kata laluan Wi-Fi/IP).
+3. **Pemberhentian Perkhidmatan Tidak Selamat:** Matikan antara muka tanpa wayar jika tidak digunakan (`nmcli radio wifi off`) pada pelayan atau endpoint sensitif.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya mengenal pasti nama antaramuka rangkaian menggunakan `ip addr` dan `nmcli dev`.
+- [ ] Berjaya mengkonfigurasi Alamat IP Statik dan Gateway menggunakan `nmcli`.
+- [ ] Berjaya imbas dan menyambung peranti ke Wi-Fi bersekuriti.
+- [ ] Berjaya menjalankan diagnostik resolusi DNS menggunakan `ping`, `dig`, dan `resolvectl`.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Konfigurasi Sambungan Rangkaian Endpoint dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Konfigurasi Sambungan Rangkaian Endpoint menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Bandingkan perbezaan seni bina antara NetworkManager, Netplan (Ubuntu), dan systemd-networkd dalam pentadbiran Linux."*
+2. *"Tuliskan skrip Bash penyelesaian masalah rangkaian yang menguji ping gateway, resolusi DNS, dan port HTTP/HTTPS secara automatik."*
+3. *"Bagaimanakah cara mengkonfigurasi pengikatan rangkaian (network bonding / team) untuk toleransi kelemahan (fault tolerance) di Linux?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Dokumentasi Rasmi NetworkManager](https://networkmanager.dev/docs/)
+- [Panduan Rangkaian Ubuntu 26.04 LTS](https://ubuntu.com/server/docs/network-configuration)
+- [Rujukan iproute2 Linux Documentation](https://wiki.linuxfoundation.org/networking/iproute2)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **Linux Networking Cookbook** oleh Carla Schroder.
+- **UNIX and Linux System Administration Handbook, 5th Edition** oleh Evi Nemeth et al.
+- **Panduan Rangkaian &amp; Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -30295,6 +30626,145 @@ df -h
 
     </content>
   </file>
+  <file path="manual/cu01/penegasan-keselamatan-sistem.md">
+    <content>
+---
+okf_version: 0.1
+type: knowledge-node
+title: "Penegasan Keselamatan Sistem Linux (Hardening)"
+timestamp: "2026-08-16T00:00:00Z"
+topics: ["noss-linux", "cu01", "hardening", "keselamatan", "firewall", "ssh"]
+tags: ["cu01", "hardening", "ufw", "firewalld", "ssh", "security"]
+description: "Panduan amali penegasan keselamatan asas Linux: konfigurasi firewall (UFW/firewalld) dan pengerasan SSH daemon mengikut ISO/IEC 27001 &amp; JDN/MAMPU."
+resource: "file:///manual/cu01/penegasan-keselamatan-sistem.md"
+---
+
+# Penegasan Keselamatan Sistem Linux (Hardening)
+
+## 🎯 Objektif Pembelajaran
+
+Menguasai prosedur amali penegasan keselamatan asas (*initial system hardening*) pada sistem operasi Linux mengikut piawaian **NOSS Tahap 3 (CU01)**, Pekeliling Am **Jabatan Digital Negara (JDN) / MAMPU**, dan **ISO/IEC 27001**.
+
+---
+
+## 🛠️ Garis Panduan Amali &amp; Prosedur Kerja
+
+### 1. Konfigurasi Tembok Api (*Firewall*)
+
+#### A. Ubuntu / Debian (UFW - Uncomplicated Firewall)
+
+```bash
+# Setkan polisi lalai: halang masuk, benarkan keluar
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Benarkan akses SSH pada port 22 secara khusus
+sudo ufw allow 22/tcp comment 'Akses SSH Pejabat'
+
+# Aktifkan firewall dan semak status
+sudo ufw enable
+sudo ufw status verbose
+```
+
+#### B. AlmaLinux 10 / Fedora 43 (firewalld)
+
+```bash
+# Aktifkan perkhidmatan firewalld
+sudo systemctl enable --now firewalld
+
+# Benarkan servis SSH secara kekal
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
+```
+
+---
+
+### 2. Pengerasan Akses Pelayan SSH Daemon (`/etc/ssh/sshd_config.d/99-hardening.conf`)
+
+Cipta fail konfigurasi pengerasan SSH baharu:
+
+```text
+# Lumpuhkan log masuk root secara terus melalui SSH
+PermitRootLogin no
+
+# Hadkan cubaan log masuk gagal kepada maksimum 3 kali
+MaxAuthTries 3
+
+# Nyahaktifkan pengesahan kata laluan selepas memastikan akses kunci SSH telah diuji dan berfungsi
+PasswordAuthentication no
+```
+
+Lakukan semakan sintaks terlebih dahulu sebelum memuat semula perkhidmatan SSH daemon:
+
+```bash
+# 1. Uji kesahan sintaks konfigurasi SSH
+sudo sshd -t
+
+# 2. Jika tiada ralat sintaks, muat semula perkhidmatan mengikut edaran:
+# Untuk Ubuntu / Debian:
+sudo systemctl restart ssh.service
+
+# Untuk AlmaLinux 10 / Fedora 43:
+sudo systemctl restart sshd.service
+```
+
+---
+
+### 3. Auditing &amp; Semakan Log Keselamatan
+
+```bash
+# Semak perkhidmatan sistem yang gagal
+systemctl --failed
+
+# Semak log ralat dan keselamatan sistem
+sudo journalctl -p err..emerg -n 20
+```
+
+---
+
+## 🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+1. **Prinsip Kebenaran Minimum (Least Privilege):** HANYA buka port rangkaian yang diperlukan secara khusus untuk perkhidmatan perniagaan.
+2. **Pengasingan Akaun Root:** Pengguna TIDAK BOLEH log masuk secara terus sebagai `root` melalui SSH; wajib gunakan akaun individu dan `sudo`.
+
+---
+
+## 📋 Senarai Semak Kompetensi (Competency Checklist)
+
+- [ ] Berjaya mengkonfigurasi UFW atau firewalld dengan polisi `deny incoming`.
+- [ ] Berjaya melumpuhkan `PermitRootLogin` dalam konfigurasi SSH daemon.
+- [ ] Berjaya menyemak log ralat sistem menggunakan `journalctl`.
+
+---
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+1. *"Bagaimanakah cara mengkonfigurasi fail2ban untuk melindungi pelayan SSH daripada serangan brute-force secara automatik?"*
+2. *"Terangkan perbezaan antara mod Enforcing dan Permissive pada SELinux / AppArmor."*
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+- [Garis Panduan Pengerasan Keselamatan OpenSSH](https://www.openssh.com/)
+- [Panduan Keselamatan UFW Canonical Ubuntu](https://ubuntu.com/server/docs/security-firewall)
+- [Pekeliling Keselamatan ICT Jabatan Digital Negara (JDN) / MAMPU](https://www.jdn.gov.my/)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
+- **Linux Security Fundamentals** oleh Ben Whaley.
+- **UNIX and Linux System Administration Handbook, 5th Edition** oleh Evi Nemeth et al.
+- **Nota Pentadbiran &amp; Keselamatan Sistem Linux** oleh Harisfazillah Jamel.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
+
+    </content>
+  </file>
   <file path="manual/cu01/pengenalan-linux-dan-sejarah.md">
     <content>
 ---
@@ -30425,72 +30895,249 @@ Linux mempunyai peranan yang signifikan dalam ekosistem teknologi Malaysia:
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pengurusan Storan, Partisi &amp; Sistem Fail Linux"
+title: "CU02: Pengurusan Storan, Partisi GPT, LVM2 &amp; Sistem Fail Linux"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu02", "panduan-amali", "manual-linux"]
-tags: ["cu02", "linux", "noss", "amali", "standard-malaysia"]
-description: "Panduan amali GPT/MBR (fdisk/parted), LVM2 (PV/VG/LV), dan sistem fail EXT4, XFS, serta Btrfs."
+topics: ["noss-linux", "cu02", "storan", "lvm2", "gpt", "sistem-fail"]
+tags: ["cu02", "linux", "noss", "partisi", "gdisk", "parted", "lvm", "ext4", "xfs", "btrfs"]
+description: "Panduan amali komprehesif bagi pengurusan storan fizikal dan logikal, jadual partisi GPT, LVM2 (PV/VG/LV), sistem fail EXT4/XFS/Btrfs, /etc/fstab, dan penyulitan LUKS2 mengikut NOSS CU02."
 resource: "file:///manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md"
 ---
 
-# Pengurusan Storan, Partisi &amp; Sistem Fail Linux
+# CU02: Pengurusan Storan, Partisi GPT, LVM2 &amp; Sistem Fail Linux
 
 ## 🎯 Objektif Pembelajaran
-Panduan amali GPT/MBR (fdisk/parted), LVM2 (PV/VG/LV), dan sistem fail EXT4, XFS, serta Btrfs.
 
-&gt; [!NOTE]
-&gt; Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU02**.
+Menguasai prosedur amali pengurusan storan fizikal dan logikal pada Linux mengikut piawaian **NOSS Tahap 3 (CU02)**.
+
+Setelah menyempurnakan modul amali ini, pelajar akan dapat:
+
+1. Menganalisis dan mengecam peranti storan blok menggunakan alatan `lsblk`, `blkid`, dan `fdisk -l`.
+2. Menjana jadual partisi **GPT (GUID Partition Table)** menggunakan `gdisk` dan `parted` (menggantikan MBR/fdisk lama).
+3. Menguruskan Pengurusan Volum Logikal **LVM2** (*Physical Volumes*, *Volume Groups*, *Logical Volumes*) serta peluasan volum secara dalam talian (*online volume expansion*).
+4. Format sistem fail moden (**EXT4**, **XFS**, **Btrfs**) dan mengkonfigurasi pautan kekal di `/etc/fstab` menggunakan `UUID`.
+5. Melaksanakan penyulitan storan peringkat blok **LUKS2** untuk pematuhan **ISO/IEC 27001** dan **Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU**.
 
 ---
 
-## 🛠️ Garis Panduan Amali &amp; Prosedur
+## 🛠️ Garis Panduan Amali &amp; Prosedur Kerja
 
-### 1. Keperluan Awal &amp; Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Pemerhatian &amp; Analisis Cakera Storan Blok
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+Gunakan arahan berikut untuk memeriksa peranti blok yang disambungkan pada sistem:
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# 1. Senaraikan peranti blok, saiz, dan titik lekap (mount points)
+lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINTS
+
+# 2. Semak UUID (Universally Unique Identifier) bagi setiap blok
+sudo blkid
+
+# 3. Semak saiz penggunaan ruang cakera sistem fail secara mesra manusia
+df -hT
 ```
 
 ---
 
+### 2. Pembahagian Partisi GPT (GUID Partition Table)
+
+Modenkan sistem storan daripada MBR (had 2TB, maksimum 4 partisi utama) kepada **GPT** (menyokong sehingga 9.4 ZB dan 128 partisi):
+
+&gt; [!WARNING]
+&gt; **AMARAN OPERASI MEMUSNAHKAN DATA (DESTRUCTIVE OPERATION WARNING):**
+&gt; Arahan pemartisian (`parted mklabel`, `gdisk`) dan format sistem fail memadamkan semua data pada peranti sasaran secara kekal. Lakukan semakan pra-syarat (*preflight checks*) wajib:
+&gt; 1. Sahkan nama peranti sasaran secara teliti menggunakan `lsblk` (contoh: `/dev/sdb`, BUKAN `/dev/sda`).
+&gt; 2. Pastikan semua partisi sasaran telah dinyahlekap (`sudo umount /dev/sdb*`).
+&gt; 3. Semak tandatangan peranti menggunakan `sudo wipefs /dev/sdb`.
+&gt; 4. Pastikan salinan duaan (backup) data penting telah dibuat.
+
+#### A. Menggunakan `gdisk` (CLI Interaktif untuk GPT)
+
+```bash
+# Buka peranti cakera baharu (contoh: /dev/sdb atau /dev/nvme1n1)
+sudo gdisk /dev/sdb
+
+# Arahan interaktif gdisk:
+# n  -&gt; Tambah partisi baharu
+# Partition number: 1
+# First sector: [Default]
+# Last sector: +20G  (Mencipta partisi 20 GB)
+# Hex code or GUID: 8e00 (Linux LVM) atau 8300 (Linux filesystem)
+# w  -&gt; Tulis jadual partisi ke cakera dan keluar
+```
+
+#### B. Menggunakan `parted` (Mod Skrip / Non-Interactive)
+
+```bash
+# 1. Cipta label jadual partisi GPT baharu pada cakera
+sudo parted /dev/sdb mklabel gpt
+
+# 2. Cipta partisi utama 10GB untuk LVM
+sudo parted -a optimal /dev/sdb mkpart primary 1MiB 10GiB
+sudo parted /dev/sdb set 1 lvm on
+```
+
+---
+
+### 3. Pengurusan Volum Logikal (LVM2 - Logical Volume Management)
+
+LVM2 membolehkan pengurusan storan fleksibel yang boleh digabung, dibesarkan, atau dipotong tanpa menghentikan perkhidmatan.
+
+```
++------------------------------------------------------------------+
+|                   Logical Volume (LV): /dev/vg_data/lv_storan    |
++------------------------------------------------------------------+
+|                     Volume Group (VG): vg_data                   |
++------------------------------------------------------------------+
+| Physical Volume (PV): /dev/sdb1  |  Physical Volume (PV): /dev/sdc1|
++------------------------------------------------------------------+
+```
+
+#### Step 1: Cipta Physical Volumes (PV)
+
+```bash
+sudo pvcreate /dev/sdb1 /dev/sdc1
+sudo pvs
+```
+
+#### Step 2: Cipta Volume Group (VG)
+
+```bash
+# Cipta Volume Group dinamakan 'vg_data' menggabungkan kedua-dua PV
+sudo vgcreate vg_data /dev/sdb1 /dev/sdc1
+sudo vgs
+```
+
+#### Step 3: Cipta Logical Volume (LV) &amp; Luaskan Secara Dinamik
+
+```bash
+# 1. Cipta Logical Volume bernilai 15GB dinamakan 'lv_storan'
+sudo lvcreate -L 15G -n lv_storan vg_data
+sudo lvs
+
+# 2. Peluasan LV secara dalam talian (Online Expansion +10G)
+sudo lvextend -L +10G /dev/vg_data/lv_storan
+```
+
+---
+
+### 4. Format Sistem Fail (EXT4, XFS, Btrfs) &amp; Pemasangan Kekal (`/etc/fstab`)
+
+#### A. Format Sistem Fail
+
+```bash
+# Format EXT4 (Sesuai untuk Linux am/desktop)
+sudo mkfs.ext4 -L "DATA_EXT4" /dev/vg_data/lv_storan
+
+# Format XFS (Sesuai untuk Pelayan Perusahaan AlmaLinux 10 / Pangkalan Data)
+sudo mkfs.xfs -f -L "DATA_XFS" /dev/sdb2
+
+# Format Btrfs (Sesuai untuk Salinan Snapshot &amp; Fedora 43 Workstation)
+sudo mkfs.btrfs -f -L "DATA_BTRFS" /dev/sdc2
+```
+
+#### B. Konfigurasi Pemasangan Kekal (`/etc/fstab`)
+
+Setiap lekap storan kekal **MESTI** menggunakan `UUID` untuk mengelakkan ralat nama peranti yang berubah semasa but.
+
+```bash
+# 1. Dapatkan UUID peranti sebenar menggunakan blkid
+UUID=$(sudo blkid -s UUID -o value /dev/vg_data/lv_storan)
+
+# 2. Cipta direktori titik lekap (mount point)
+sudo mkdir -p /mnt/storan_pejabat
+
+# 3. Semak jika entri telah wujud; jika belum, tambahkan ke /etc/fstab secara kalis ralat
+if ! grep -q "$UUID" /etc/fstab; then
+  echo "UUID=$UUID /mnt/storan_pejabat ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
+fi
+
+# 4. Uji dan sahkan pemasangan fstab tanpa but semula
+sudo mount -a
+df -h /mnt/storan_pejabat
+```
+
+---
+
+### 5. Penyulitan Storan Blok LUKS2 (Standard JDN / MAMPU &amp; ISO 27001)
+
+Untuk persekitaran pejabat/perusahaan yang mengendalikan data sensitif, gunakan Logical Volume berasingan (contoh: `/dev/vg_data/lv_terkunci`):
+
+```bash
+# 1. Cipta Logical Volume berasingan khas untuk penyulitan
+sudo lvcreate -L 10G -n lv_terkunci vg_data
+
+# 2. Format volum dengan penyulitan LUKS2
+sudo cryptsetup luksFormat --type luks2 /dev/vg_data/lv_terkunci
+
+# 3. Buka pemacu tersulit dan cipta pemetaan peranti (device mapper)
+sudo cryptsetup open /dev/vg_data/lv_terkunci storan_terkunci
+
+# 4. Format peranti tersulit yang dibuka (/dev/mapper/storan_terkunci)
+sudo mkfs.ext4 /dev/mapper/storan_terkunci
+
+# 5. Cipta titik lekap dan daftarkan dalam /etc/crypttab serta /etc/fstab
+sudo mkdir -p /mnt/storan_tersulit
+UUID_LUKS=$(sudo blkid -s UUID -o value /dev/vg_data/lv_terkunci)
+
+if ! grep -q "storan_terkunci" /etc/crypttab; then
+  echo "storan_terkunci UUID=$UUID_LUKS none luks,discard" | sudo tee -a /etc/crypttab
+fi
+
+UUID_MAPPER=$(sudo blkid -s UUID -o value /dev/mapper/storan_terkunci)
+if ! grep -q "$UUID_MAPPER" /etc/fstab; then
+  echo "UUID=$UUID_MAPPER /mnt/storan_tersulit ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
+fi
+
+# 6. Uji peranti lekap tersulit
+sudo mount -a
+df -h /mnt/storan_tersulit
+```
+
+---
+
+## 🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+1. **Penggunaan UUID:** Sentiasa gunakan `UUID` dalam `/etc/fstab` dan elakkan rujukan langsung `/dev/sdX` bagi mengelakkan kegagalan but (*boot failure*).
+2. **Flag `nofail`:** Gunakan parameter `nofail` pada disk tambahan dalam `/etc/fstab` supaya pelayan kekal but walaupun disk luaran tidak disambungkan.
+3. **Penyulitan LUKS2:** Storan luaran (USB HDD/SSD) dan volum LVM2 yang menyimpan fail terperingkat Wajib disulitkan menggunakan LUKS2 dengan frasa laluan sekurang-kurangnya 16 aksara.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya memeriksa peranti storan menggunakan `lsblk` dan `blkid`.
+- [ ] Berjaya membina jadual partisi GPT menggunakan `gdisk` atau `parted`.
+- [ ] Berjaya membina struktur LVM2 (PV, VG, LV) dan meluaskan saiz LV.
+- [ ] Berjaya format sistem fail EXT4/XFS/Btrfs dan membuat pautan kekal `/etc/fstab` melalui UUID.
+- [ ] Berjaya membina volum LUKS2 tersulit mengikut piawaian keselamatan.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pengurusan Storan, Partisi &amp; Sistem Fail Linux dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pengurusan Storan, Partisi &amp; Sistem Fail Linux menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Apakah perbezaan prestasi dan ciri ketahanan (redundancy/snapshots) antara sistem fail EXT4, XFS, dan Btrfs dalam persekitaran pelayan enterprise?"*
+2. *"Tuliskan skrip Bash untuk menyemak tahap kesihatan S.M.A.R.T. cakera keras dan menghantar amaran jika terdapat kerosakan sektor fizikal."*
+3. *"Bagaimanakah cara mengkonfigurasi kunci LUKS2 automatik menggunakan TPM2 (Trusted Platform Module) pada Linux?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Dokumentasi LVM2 Linux RedHat/AlmaLinux](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_logical_volumes/index)
+- [Dokumentasi GNU Parted Manual](https://www.gnu.org/software/parted/manual/)
+- [Panduan Btrfs Wiki Documentation](https://btrfs.readthedocs.io/)
+- [Pekeliling Keselamatan ICT JDN / MAMPU](https://www.jdn.gov.my/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **Storage Systems: Organization, Performance, Coding, Reliability, and Statistics** oleh Alexander Thomasian.
+- **UNIX and Linux System Administration Handbook, 5th Edition** oleh Evi Nemeth et al.
+- **Nota Pentadbiran Storan &amp; Pelayan Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -31691,46 +32338,175 @@ Pemasangan dianggap berjaya apabila semua arahan di atas mengembalikan output ya
   </file>
   <file path=".agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md">
     <content>
-﻿---
-okf_version: 0.1
+---
 name: cu01-wa05-install-computer-applications-and-device-drivers
-description: Executes NOSS Work Activity: Install Computer Applications And Device Drivers
-topics: [noss, cu01, wa05]
-type: procedural_skill
+description: "Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Flatpak, Snap, GPU Drivers)"
+topics: [noss, cu01, wa05, package-management, device-drivers]
+tags: [cu01, wa05, apt, dnf, flatpak, snap, nvidia, driver]
+okf_version: 0.1
+type: skill
 ---
 
 # Install Computer Applications And Device Drivers
+
 *Executes NOSS standard K622-XXX-3:2026-C01 WA05*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## Overview
 
+This skill provides automated guidance and execution steps for managing Linux application packages (APT on Ubuntu 26.04 LTS "Resolute Raccoon", DNF5 on AlmaLinux 10 / Fedora 43, Flatpak, Snap) and installing proprietary device drivers (NVIDIA GPU, AMD Radeon, and wireless networking) in accordance with NOSS Level 3 standards.
+
+## Procedure
+
+### 1. Native Package Management
+
+- **Ubuntu 26.04 LTS "Resolute Raccoon" (APT):**
+
+  ```bash
+  sudo apt update
+  sudo apt upgrade -y
+  sudo apt install -y curl git vlc
+  ```
+
+- **AlmaLinux 10 / Fedora 43 (DNF5):**
+
+  ```bash
+  sudo dnf check-upgrade || true
+  sudo dnf upgrade -y
+  sudo dnf install -y htop wget
+  ```
+
+### 2. Universal Containerized Packaging
+
+- **Flatpak (Flathub):**
+
+  ```bash
+  sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  flatpak install flathub org.gimp.GIMP -y
+  ```
+
+- **Snap (Ubuntu):**
+
+  ```bash
+  sudo snap install code --classic
+  ```
+
+### 3. GPU &amp; Device Driver Installation
+
+- **Detect Hardware (GPU &amp; Wireless):**
+
+  ```bash
+  lspci -nnk | grep -A3 -i vga
+  lspci -nnk | grep -A3 -i network
+  ```
+
+- **Ubuntu NVIDIA Drivers:**
+
+  ```bash
+  sudo ubuntu-drivers install
+  nvidia-smi
+  ```
+
+- **Fedora 43 NVIDIA Drivers (RPM Fusion):**
+
+  ```bash
+  sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+  ```
+
+- **AlmaLinux 10 NVIDIA Drivers (RPM Fusion):**
+
+  ```bash
+  sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
+  sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm
+  sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+  ```
+
+## Security &amp; Governance
+
+- For APT third-party repositories, use repository-scoped keyrings under `/etc/apt/keyrings/` with `signed-by=` in `/etc/apt/sources.list.d/`.
+- Retain `gpgcheck=1` for DNF repositories.
+- Adhere to JDN/MAMPU guidelines and ISO/IEC 27001 audit logging (`/var/log/dpkg.log` or `/var/log/dnf.log`).
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
   </file>
   <file path=".agents/skills/cu01-wa06-configure-endpoint-network-connectivity/SKILL.md">
     <content>
-﻿---
-okf_version: 0.1
+---
 name: cu01-wa06-configure-endpoint-network-connectivity
-description: Executes NOSS Work Activity: Configure Endpoint Network Connectivity
-topics: [noss, cu01, wa06]
-type: procedural_skill
+description: "Executes NOSS Work Activity: Configure Endpoint Network Connectivity (NetworkManager, nmcli, iproute2, Static IP, DHCP, Wi-Fi, DNS)"
+topics: [noss, cu01, wa06, networking, networkmanager]
+tags: [cu01, wa06, nmcli, ip, dhcp, wifi, dns, endpoint]
+okf_version: 0.1
+type: skill
 ---
 
 # Configure Endpoint Network Connectivity
+
 *Executes NOSS standard K622-XXX-3:2026-C01 WA06*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## Overview
 
+This skill provides procedural execution steps for configuring wired (Ethernet) and wireless (Wi-Fi) network connections on Linux desktop endpoints using NetworkManager (`nmcli`), `iproute2` (`ip`), and `systemd-resolved` according to NOSS Level 3 standards.
+
+## Procedure
+
+### 1. Network Interface Inspection
+
+```bash
+ip -c a
+ip route show
+nmcli device status
+```
+
+### 2. Static IPv4 Configuration (`nmcli`)
+
+```bash
+sudo nmcli connection add type ethernet con-name "Static-LAN" ifname eth0 ip4 192.168.1.150/24 gw4 192.168.1.1
+sudo nmcli connection modify "Static-LAN" ipv4.dns "192.168.1.10 8.8.8.8"
+sudo nmcli connection modify "Static-LAN" ipv4.method manual
+sudo nmcli connection up "Static-LAN"
+```
+
+### 3. Dynamic DHCP Configuration
+
+When switching an existing connection profile from static to dynamic DHCP, clear static parameters:
+
+```bash
+sudo nmcli connection modify "Static-LAN" ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+sudo nmcli connection modify "Static-LAN" ipv4.method auto
+sudo nmcli connection up "Static-LAN"
+```
+
+### 4. Wi-Fi Connection (WPA2/WPA3 Personal &amp; Enterprise)
+
+```bash
+nmcli radio wifi on
+nmcli device wifi list
+
+# WPA2/WPA3 Personal (interactive password prompt):
+sudo nmcli --ask device wifi connect "Pejabat_WiFi"
+```
+
+### 5. DNS Verification
+
+```bash
+resolvectl status
+dig www.jdn.gov.my
+```
+
+## Security &amp; Governance
+
+- Secure Wi-Fi with WPA2/WPA3 Enterprise authentication.
+- Restrict connection profile read permissions (`/etc/NetworkManager/system-connections/` to `600`).
+- Comply with ISO/IEC 27001 and JDN/MAMPU network access control guidelines.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -31760,23 +32536,77 @@ type: procedural_skill
   </file>
   <file path=".agents/skills/cu02-wa01-identify-virtualisation-infrastructure-requirements/SKILL.md">
     <content>
-﻿---
-okf_version: 0.1
+---
 name: cu02-wa01-identify-virtualisation-infrastructure-requirements
-description: Executes NOSS Work Activity: Identify Virtualisation Infrastructure Requirements
-topics: [noss, cu02, wa01]
-type: procedural_skill
+description: "Executes NOSS Work Activity: Identify Virtualisation Infrastructure &amp; Storage Partitioning Requirements (GPT, LVM2, Filesystems)"
+topics: [noss, cu02, wa01, storage, virtualisation]
+tags: [cu02, wa01, gpt, gdisk, parted, lvm2, ext4, xfs, btrfs]
+okf_version: 0.1
+type: skill
 ---
 
-# Identify Virtualisation Infrastructure Requirements
+# Identify Virtualisation Infrastructure Requirements &amp; Storage Partitioning
+
 *Executes NOSS standard K622-XXX-3:2026-C02 WA01*
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## Overview
 
+This skill executes hardware inspection and storage layout planning for virtualization hosts according to NOSS CU02 standards. It covers GPT partition schemes, LVM2 volume group allocation, and filesystem layout (EXT4/XFS/Btrfs).
+
+&gt; [!WARNING]
+&gt; **AMARAN OPERASI MEMUSNAHKAN DATA (DESTRUCTIVE OPERATION WARNING):**
+&gt; Arahan pemartisian (`parted mklabel`, `gdisk`) dan format sistem fail memadamkan semua data pada peranti sasaran secara kekal. Lakukan semakan pra-syarat (*preflight checks*) wajib:
+&gt; 1. Sahkan nama peranti sasaran secara teliti menggunakan `lsblk` (contoh: `/dev/sdb`, BUKAN `/dev/sda`).
+&gt; 2. Pastikan semua partisi sasaran telah dinyahlekap (`sudo umount /dev/sdb*`).
+&gt; 3. Semak tandatangan peranti menggunakan `sudo wipefs /dev/sdb`.
+&gt; 4. Pastikan salinan duaan (backup) data penting telah dibuat.
+
+## Procedure
+
+### 1. Storage &amp; Host Hardware Audit
+
+```bash
+lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINTS
+sudo blkid
+lscpu | grep -iE 'vt-x|amd-v|virtualization'
+```
+
+### 2. GPT Partitioning (`gdisk` / `parted`)
+
+```bash
+sudo parted /dev/sdb mklabel gpt
+sudo parted -a optimal /dev/sdb mkpart primary 1MiB 20GiB
+sudo parted /dev/sdb set 1 lvm on
+```
+
+### 3. LVM2 Initialization
+
+```bash
+sudo pvcreate /dev/sdb1
+sudo vgcreate vg_virt /dev/sdb1
+sudo lvcreate -L 15G -n lv_kvm_images vg_virt
+```
+
+### 4. Filesystem Formatting &amp; `/etc/fstab` Mounting
+
+```bash
+sudo mkfs.xfs -f /dev/vg_virt/lv_kvm_images
+sudo mkdir -p /var/lib/libvirt/images_custom
+
+UUID=$(sudo blkid -s UUID -o value /dev/vg_virt/lv_kvm_images)
+if ! grep -q "$UUID" /etc/fstab; then
+  echo "UUID=$UUID /var/lib/libvirt/images_custom xfs defaults,nofail 0 2" | sudo tee -a /etc/fstab
+fi
+sudo mount -a
+```
+
+## Security &amp; Governance
+
+- Enforce UUID mounting in `/etc/fstab` to avoid device mapping errors.
+- Secure virtualization storage pools in alignment with ISO/IEC 27001 and JDN/MAMPU guidelines.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -38631,7 +39461,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-16T23:27:43Z"
+timestamp: "2026-08-17T04:06:03Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -38662,10 +39492,10 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu01-wa02-assemble-physical-computer-system-hardware`** &lt;br&gt; *cu01-wa02-assemble-physical-computer-system-hardware* | No description provided. | N/A |
 | **`cu01-wa03-assemble-laptop-hardware-components`** &lt;br&gt; *cu01-wa03-assemble-laptop-hardware-components* | No description provided. | N/A |
 | **`cu01-wa04-install-computer-desktop-operating-systems`** &lt;br&gt; *cu01-wa04-install-computer-desktop-operating-systems* | Kemahiran amali pemasangan sistem operasi Linux desktop — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10. | noss, cu01, wa04, linux-install, ubuntu, fedora, almalinux |
-| **`cu01-wa05-install-computer-applications-and-device-drivers`** &lt;br&gt; *cu01-wa05-install-computer-applications-and-device-drivers* | No description provided. | N/A |
-| **`cu01-wa06-configure-endpoint-network-connectivity`** &lt;br&gt; *cu01-wa06-configure-endpoint-network-connectivity* | No description provided. | N/A |
+| **`cu01-wa05-install-computer-applications-and-device-drivers`** &lt;br&gt; *cu01-wa05-install-computer-applications-and-device-drivers* | Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Flatpak, Snap, GPU Drivers) | noss, cu01, wa05, package-management, device-drivers |
+| **`cu01-wa06-configure-endpoint-network-connectivity`** &lt;br&gt; *cu01-wa06-configure-endpoint-network-connectivity* | Executes NOSS Work Activity: Configure Endpoint Network Connectivity (NetworkManager, nmcli, iproute2, Static IP, DHCP, Wi-Fi, DNS) | noss, cu01, wa06, networking, networkmanager |
 | **`cu01-wa07-prepare-computer-system-installation-records`** &lt;br&gt; *cu01-wa07-prepare-computer-system-installation-records* | No description provided. | N/A |
-| **`cu02-wa01-identify-virtualisation-infrastructure-requirements`** &lt;br&gt; *cu02-wa01-identify-virtualisation-infrastructure-requirements* | No description provided. | N/A |
+| **`cu02-wa01-identify-virtualisation-infrastructure-requirements`** &lt;br&gt; *cu02-wa01-identify-virtualisation-infrastructure-requirements* | Executes NOSS Work Activity: Identify Virtualisation Infrastructure &amp; Storage Partitioning Requirements (GPT, LVM2, Filesystems) | noss, cu02, wa01, storage, virtualisation |
 | **`cu02-wa02-install-type-2-hypervisor-platform`** &lt;br&gt; *cu02-wa02-install-type-2-hypervisor-platform* | No description provided. | N/A |
 | **`cu02-wa03-deploy-guest-virtual-machines-vm`** &lt;br&gt; *cu02-wa03-deploy-guest-virtual-machines-vm* | No description provided. | N/A |
 | **`cu02-wa04-prepare-virtualisation-configuration-records`** &lt;br&gt; *cu02-wa04-prepare-virtualisation-configuration-records* | No description provided. | N/A |
@@ -38770,7 +39600,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** &lt;br&gt; *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>

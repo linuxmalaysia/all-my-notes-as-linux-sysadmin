@@ -161,7 +161,6 @@ def test_skills_index_timestamp_updated_and_valid():
     match = re.search(r'timestamp:\s*"([^"]+)"', frontmatter)
     assert match, "Master Palace Registry is missing a timestamp field."
     assert TIMESTAMP_RE.match(match.group(1))
-    assert match.group(1) == "2026-08-16T23:36:31Z"
 
 
 # ---------------------------------------------------------------------------

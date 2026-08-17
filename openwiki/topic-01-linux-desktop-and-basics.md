@@ -88,7 +88,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md](../manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md)
 
-### 9. Penegasan Keselamatan Sistem Linux (Hardening)
+### 9. Tugasan Pasca-Pemasangan & Hardening
 
 - Konfigurasi tembok api (*firewall*) UFW dan firewalld
 - Pengerasan perkhidmatan SSH daemon dan auditing log keselamatan

@@ -1452,133 +1452,133 @@
     <span class="md-ellipsis">
       
         2. Pembahagian Partisi GPT (GUID Partition Table)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="2. Pembahagian Partisi GPT (GUID Partition Table)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-menggunakan-gdisk-cli-interaktif-untuk-gpt" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A. Menggunakan gdisk (CLI Interaktif untuk GPT)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b-menggunakan-parted-mod-skrip-non-interactive" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B. Menggunakan parted (Mod Skrip / Non-Interactive)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3-pengurusan-volum-logikal-lvm2-logical-volume-management" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3. Pengurusan Volum Logikal (LVM2 - Logical Volume Management)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="3. Pengurusan Volum Logikal (LVM2 - Logical Volume Management)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#step-1-cipta-physical-volumes-pv" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         Step 1: Cipta Physical Volumes (PV)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#step-2-cipta-volume-group-vg" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         Step 2: Cipta Volume Group (VG)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#step-3-cipta-logical-volume-lv-luaskan-secara-dinamik" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         Step 3: Cipta Logical Volume (LV) &amp; Luaskan Secara Dinamik
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4-format-sistem-fail-ext4-xfs-btrfs-pemasangan-kekal-etcfstab" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4. Format Sistem Fail (EXT4, XFS, Btrfs) &amp; Pemasangan Kekal (/etc/fstab)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="4. Format Sistem Fail (EXT4, XFS, Btrfs) &amp; Pemasangan Kekal (/etc/fstab)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-format-sistem-fail" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A. Format Sistem Fail
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b-konfigurasi-pemasangan-kekal-etcfstab" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B. Konfigurasi Pemasangan Kekal (/etc/fstab)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#5-penyulitan-storan-blok-luks2-standard-jdn-mampu-iso-27001" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         5. Penyulitan Storan Blok LUKS2 (Standard JDN / MAMPU &amp; ISO 27001)
       
     </span>
@@ -1590,16 +1590,16 @@
     </nav>
   
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
-
+      
     </span>
   </a>
-
+  
 </li>
       
         <li class="md-nav__item">
@@ -1665,7 +1665,7 @@
 
 <h1 id="cu02-pengurusan-storan-partisi-gpt-lvm2-sistem-fail-linux">CU02: Pengurusan Storan, Partisi GPT, LVM2 &amp; Sistem Fail Linux<a class="headerlink" href="#cu02-pengurusan-storan-partisi-gpt-lvm2-sistem-fail-linux" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Menguasai prosedur amali pengurusan storan fizikal dan logikal pada Linux mengikut piawaian <strong>NOSS Tahap 3 (CU02)</strong>. </p>
+<p>Menguasai prosedur amali pengurusan storan fizikal dan logikal pada Linux mengikut piawaian <strong>NOSS Tahap 3 (CU02)</strong>.</p>
 <p>Setelah menyempurnakan modul amali ini, pelajar akan dapat:</p>
 <ol>
 <li>Menganalisis dan mengecam peranti storan blok menggunakan alatan <code>lsblk</code>, <code>blkid</code>, dan <code>fdisk -l</code>.</li>
@@ -1692,11 +1692,11 @@
 <p>Modenkan sistem storan daripada MBR (had 2TB, maksimum 4 partisi utama) kepada <strong>GPT</strong> (menyokong sehingga 9.4 ZB dan 128 partisi):</p>
 <blockquote>
 <p>[!WARNING]
-<strong>AMARAN OPERASI MEMUSNAHKAN DATA (DESTRUCTIVE OPERATION WARNING):</strong><br />
-Arahan pemartisian (<code>parted mklabel</code>, <code>gdisk</code>) dan format sistem fail memadamkan semua data pada peranti sasaran secara kekal. Lakukan semakan pra-syarat (<em>preflight checks</em>) wajib:<br />
-1. Sahkan nama peranti sasaran secara teliti menggunakan <code>lsblk</code> (contoh: <code>/dev/sdb</code>, BUKAN <code>/dev/sda</code>).<br />
-2. Pastikan semua partisi sasaran telah dinyahlekap (<code>sudo umount /dev/sdb*</code>).<br />
-3. Semak tandatangan peranti menggunakan <code>sudo wipefs /dev/sdb</code>.<br />
+<strong>AMARAN OPERASI MEMUSNAHKAN DATA (DESTRUCTIVE OPERATION WARNING):</strong>
+Arahan pemartisian (<code>parted mklabel</code>, <code>gdisk</code>) dan format sistem fail memadamkan semua data pada peranti sasaran secara kekal. Lakukan semakan pra-syarat (<em>preflight checks</em>) wajib:
+1. Sahkan nama peranti sasaran secara teliti menggunakan <code>lsblk</code> (contoh: <code>/dev/sdb</code>, BUKAN <code>/dev/sda</code>).
+2. Pastikan semua partisi sasaran telah dinyahlekap (<code>sudo umount /dev/sdb*</code>).
+3. Semak tandatangan peranti menggunakan <code>sudo wipefs /dev/sdb</code>.
 4. Pastikan salinan duaan (backup) data penting telah dibuat.</p>
 </blockquote>
 <h4 id="a-menggunakan-gdisk-cli-interaktif-untuk-gpt">A. Menggunakan <code>gdisk</code> (CLI Interaktif untuk GPT)<a class="headerlink" href="#a-menggunakan-gdisk-cli-interaktif-untuk-gpt" title="Permanent link">&para;</a></h4>
@@ -1847,7 +1847,7 @@ Arahan pemartisian (<code>parted mklabel</code>, <code>gdisk</code>) dan format 
 <li><strong>Nota Pentadbiran Storan &amp; Pelayan Linux Malaysia</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
+<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em>
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

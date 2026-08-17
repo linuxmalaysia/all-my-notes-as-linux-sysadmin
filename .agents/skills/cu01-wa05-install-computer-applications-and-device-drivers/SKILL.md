@@ -89,5 +89,5 @@ This skill provides automated guidance and execution steps for managing Linux ap
 - Adhere to JDN/MAMPU guidelines and ISO/IEC 27001 audit logging (`/var/log/dpkg.log` or `/var/log/dnf.log`).
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

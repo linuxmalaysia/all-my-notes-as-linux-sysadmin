@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: knowledge-node
 title: "CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux"
-timestamp: "2026-08-16T00:00:00Z"
+timestamp: "2026-08-17T00:00:00Z"
 topics: ["noss-linux", "cu01", "wa06", "rangkaian", "networkmanager", "iproute2"]
 tags: ["cu01", "wa06", "nmcli", "ip", "dhcp", "wifi", "dns", "endpoint"]
 description: "Panduan amali NOSS CU01-WA06 bagi konfigurasi NetworkManager, IP statik, DHCP, Wi-Fi, dan DNS pada sistem endpoint Linux."
@@ -106,7 +106,7 @@ nmcli radio wifi on
 nmcli device wifi list
 
 # 3. Menyambung ke SSID Wi-Fi WPA2/WPA3-Personal dengan meminta kata laluan secara interaktif
-sudo nmcli --ask device wifi connect "Wi-Fi_Pejabat"
+sudo nmcli device wifi connect "Wi-Fi_Pejabat" --ask
 ```
 
 ---
@@ -166,5 +166,5 @@ nslookup www.gov.my
 - **Panduan Rangkaian & Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
