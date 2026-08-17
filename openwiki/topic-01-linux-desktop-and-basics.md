@@ -88,12 +88,12 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md](../manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md)
 
-### 9. Tugasan Pasca-Pemasangan & Hardening
+### 9. Penegasan Keselamatan Sistem Linux (Hardening)
 
-- Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
-- Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
+- Konfigurasi tembok api (*firewall*) UFW dan firewalld
+- Pengerasan perkhidmatan SSH daemon dan auditing log keselamatan
 
-**📖 Baca Lanjut:** [manual/cu01/pasca-pemasangan-dan-driver.md](../manual/cu01/pasca-pemasangan-dan-driver.md)
+**📖 Baca Lanjut:** [manual/cu01/penegasan-keselamatan-sistem.md](../manual/cu01/penegasan-keselamatan-sistem.md)
 
 ### 10. Soal Jawab (FAQ) & Direktori Perisian Alternatif
 

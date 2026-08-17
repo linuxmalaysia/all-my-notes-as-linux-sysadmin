@@ -149,7 +149,7 @@ def test_openwiki_topic01_title_reflects_2026_update():
         "manual/cu01/keperluan-perkakasan-dan-bios-uefi.md",
         "manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md",
         "manual/cu01/penyulitan-cakera-luks2-pejabat.md",
-        "manual/cu01/pasca-pemasangan-dan-driver.md",
+        "manual/cu01/penegasan-keselamatan-sistem.md",
     ],
 )
 def test_openwiki_topic01_links_to_new_nodes(expected_link):
