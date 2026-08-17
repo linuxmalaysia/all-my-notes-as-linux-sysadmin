@@ -33,20 +33,28 @@
 - [x] **Migrasi Silibus Bab 3: Storan, Partisi & Sistem Fail (`references/manual/bab_03/` ➔ `manual/cu02/`):**
   - Penciptaan nod `manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md` (Partisi GPT `gdisk`/`parted`, LVM2 `pvcreate`/`vgcreate`/`lvcreate`, sistem fail EXT4/XFS/Btrfs, `/etc/fstab`, dan penyulitan LUKS2).
   - Pengemaskinian `openwiki/topic-02-storage-and-virtualisation.md`.
+
+---
+
+## 🌟 Milestone Status: Fasa 4 (Migrasi Silibus Bab 4: Pentadbiran Pengguna & Keselamatan Endpoint CU05) - SELESAI ✅ (Google Jules PR #6 Merged)
+- [x] **Penyempurnaan Modul Amali `manual/cu05/`:**
+  - Penciptaan nod `manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md` (Pengurusan Pengguna/Kumpulan, `/etc/shadow`, `visudo`, `pam_faillock`, `chmod`/`chown`, SUID/SGID/Sticky bit, POSIX ACL `getfacl`/`setfacl`, FHS, pencarian `plocate`/`find`, dan penutupan selamat).
+  - Kemas kini `manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.md` & `manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md`.
+  - Kemas kini `openwiki/topic-05-linux-security.md`.
+- [x] **Porting Kemahiran AI CU05 (`.agents/skills/`):**
+  - Naik taraf `.agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md` ke format `type: skill` penuh.
+  - Naik taraf `.agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md` ke format `type: skill` penuh.
 - [x] **Jaminan Kualiti (100% Quality Gate):**
-  - **902 ujian Python pytest lulus** (penambahan `tests/test_manual_cu01_wa05_wa06_cu02_content.py` dan `tests/test_manual_cu02_storage_content.py`).
+  - **910 ujian Python pytest lulus** (penambahan `tests/test_manual_cu05_user_security_content.py`).
   - **38 ujian Node.js Jest lulus**.
-  - Laman web statik `html/` dibina semula dan disahkan bebas amaran.
+  - Laman web statik `html/` dibina semula dan disegerakkan.
 
 ---
 
 ## 🎯 Roadmap Fasa Seterusnya
-- [ ] **Fasa 4: Transformasi Silibus Bab 4 (Pentadbiran Pengguna & Keselamatan Endpoint - CU01 & CU05):**
-  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_04/` ke `manual/cu05/` (Audit akaun pengguna, kebenaran fail/POSIX ACL, pertahanan antimalware, firewall klien, dan kawalan keselamatan fizikal).
-  - [ ] Porting kemahiran AI CU05 (`cu05-wa01` hingga `cu05-wa05`).
-  - [ ] Kemas kini `openwiki/topic-05-linux-security.md`.
 - [ ] **Fasa 5: Transformasi Silibus Bab 5 (Konfigurasi Rangkaian & Servis Pelayan Teras - CU03):**
-  - [ ] Ekstrak dari `references/manual/bab_05/` ke `manual/cu03/` (Persediaan pelayan, pemasangan OS pelayan AlmaLinux 10/Ubuntu Server, peranan DNS/DHCP/Web/SSH).
+  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_05/` ke `manual/cu03/` (Persediaan pelayan, pemasangan OS pelayan AlmaLinux 10/Ubuntu Server, peranan DNS/DHCP/Web/SSH, firewall, dan pemantauan perkhidmatan).
   - [ ] Porting kemahiran AI CU03 (`cu03-wa01` hingga `cu03-wa06`).
+  - [ ] Kemas kini `openwiki/topic-03-linux-server-administration.md`.
 - [ ] **Fasa 6: Transformasi Silibus Bab 6 (Automasi Skrip Shell & Troubleshooting - CU04 & CU06):**
-  - [ ] Ekstrak dari `references/manual/bab_06/` ke `manual/cu04/` dan `manual/cu06/`.
+  - [ ] Ekstrak dari `references/manual/bab_06/` ke `manual/cu04/` (Sandaran & Pemulihan) dan `manual/cu06/` (Diagnostik & Penyelesaian Masalah).
