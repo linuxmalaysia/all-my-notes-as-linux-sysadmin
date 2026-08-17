@@ -1551,17 +1551,17 @@
 <p>Melaksanakan audit menyeluruh ke atas akaun pengguna sistem, keahlian kumpulan, integriti fail pengesahan (<code>/etc/passwd</code>, <code>/etc/shadow</code>), konfigurasi keistimewaan <code>sudo</code> (<code>visudo</code>), matriks kebenaran fail UGO dan POSIX ACL, serta penguatkuasaan dasar kunci kata laluan (<code>faillock</code>) mengikut piawaian <strong>NOSS CU05 WA01</strong>, <strong>ISO/IEC 27001</strong>, dan Pekeliling <strong>Jabatan Digital Negara (JDN) / MAMPU</strong>.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> bagi Aktiviti Kerja <strong>WA01 (Perform User Account and Permission Audits)</strong> pada platform <strong>Ubuntu 26.04 LTS "Quetzal"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
+Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> bagi Aktiviti Kerja <strong>WA01 (Perform User Account and Permission Audits)</strong> pada platform <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="prosedur-arahan-amali">🛠️ Prosedur &amp; Arahan Amali<a class="headerlink" href="#prosedur-arahan-amali" title="Permanent link">&para;</a></h2>
 <h3 id="1-audit-integriti-fail-pengguna-kumpulan-etcpasswd-etcshadow">1. Audit Integriti Fail Pengguna &amp; Kumpulan (<code>/etc/passwd</code> &amp; <code>/etc/shadow</code>)<a class="headerlink" href="#1-audit-integriti-fail-pengguna-kumpulan-etcpasswd-etcshadow" title="Permanent link">&para;</a></h3>
 <p>Akaun tanpa kata laluan atau UID 0 tidak sah merupakan risiko keselamatan kritikal.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Semak sebarang akaun selain &#39;root&#39; yang mempunyai UID 0 (Akses Superuser Tidak Sah)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">&#39;($3 == &quot;0&quot;) { print $1 }&#39;</span><span class="w"> </span>/etc/passwd
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">&#39;($3 == &quot;0&quot; &amp;&amp; $1 != &quot;root&quot;) { print $1 }&#39;</span><span class="w"> </span>/etc/passwd
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Cari akaun tanpa kata laluan atau akaun terkunci dalam /etc/shadow</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">&#39;($2 == &quot;&quot; || $2 == &quot;!&quot;) { print $1 }&#39;</span><span class="w"> </span>/etc/shadow
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Cari akaun terkunci atau tanpa kata laluan (medan kata laluan kosong atau bermula dengan !)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">&#39;($2 == &quot;&quot; || $2 ~ /^!/) { print $1 }&#39;</span><span class="w"> </span>/etc/shadow
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Semak integriti fail passwd dan shadow dengan alat pwck</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>pwck<span class="w"> </span>-r
@@ -1585,7 +1585,7 @@ Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan E
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:zarith:rw-<span class="w"> </span>/srv/projek_sec/dokumen.pdf
 </span></code></pre></div>
 <h3 id="4-semakan-pemulihan-penguncian-akaun-faillock">4. Semakan &amp; Pemulihan Penguncian Akaun (<code>faillock</code>)<a class="headerlink" href="#4-semakan-pemulihan-penguncian-akaun-faillock" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Semak sejarah kegagalan log masuk pengguna</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Semak sejarah kegagalan log masuk pengguna dan status kuncian</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>ahmad
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Nyahkunci akaun yang terkunci akibat salah kata laluan</span>
@@ -1594,7 +1594,7 @@ Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan E
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Pengesahan tiada akaun UID 0 yang tidak sah.</li>
+<li>[ ] Pengesahan tiada akaun UID 0 yang tidak sah (selain <code>root</code>).</li>
 <li>[ ] Semakan kegagalan pwck melepasi 100%.</li>
 <li>[ ] Audit keistimewaan sudoers menggunakan <code>visudo -c</code>.</li>
 <li>[ ] Penetapan dan verifikasi POSIX ACL menggunakan <code>getfacl</code> / <code>setfacl</code>.</li>

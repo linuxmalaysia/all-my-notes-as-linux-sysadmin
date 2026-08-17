@@ -13,12 +13,14 @@ resource: "file:///.agents/skills/cu05-wa01-perform-user-account-and-permission-
 # 🛡️ Perform User Account and Permission Audits (CU05-WA01)
 
 ## 📌 Executive Overview
-This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and Permission Audits*). It empowers AI agents to inspect, audit, and remediate user accounts, privileged access (`sudoers`), file permissions, special bits (SUID/SGID/Sticky), POSIX ACLs, and PAM lockouts on **Ubuntu 26.04 LTS** and **AlmaLinux 10**.
+
+This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and Permission Audits*). It empowers AI agents to inspect, audit, and remediate user accounts, privileged access (`sudoers`), file permissions, special bits (SUID/SGID/Sticky), POSIX ACLs, and PAM lockouts on **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10**.
 
 ---
 
 ## ⚙️ Prerequisites & Security Governance
-- **Distribution Standard:** Ubuntu 26.04 LTS "Quetzal" & AlmaLinux 10 "Purple Lion".
+
+- **Distribution Standard:** Ubuntu 26.04 LTS "Resolute Raccoon" & AlmaLinux 10 "Purple Lion".
 - **Privilege Mandate:** Must be executed with `sudo` privileges or as a security auditor account.
 - **Compliance Baseline:** ISO/IEC 27001 & Pekeliling Jabatan Digital Negara (JDN) / MAMPU.
 
@@ -27,13 +29,14 @@ This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and P
 ## 🛠️ Step-by-Step Execution Workflows
 
 ### 1. User & Group Identity Verification (`/etc/passwd` & `/etc/shadow`)
-- **Check for Unauthorized Superusers (UID 0):**
+
+- **Check for Unauthorized Superusers (UID 0 except root):**
   ```bash
   awk -F: '($3 == "0" && $1 != "root") { print $1 }' /etc/passwd
   ```
-- **Audit Passwordless or Unlocked Suspicious Accounts:**
+- **Audit Passwordless or Locked Suspicious Accounts (empty or starting with !):**
   ```bash
-  sudo awk -F: '($2 == "" || $2 == "!") { print $1 }' /etc/shadow
+  sudo awk -F: '($2 == "" || $2 ~ /^!/) { print $1 }' /etc/shadow
   ```
 - **Integrity Validation:**
   ```bash
@@ -42,6 +45,7 @@ This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and P
   ```
 
 ### 2. Privileged Access (`sudoers`) Audit via `visudo`
+
 - **Verify Syntax & Structural Integrity of `/etc/sudoers`:**
   ```bash
   sudo visudo -c
@@ -52,6 +56,7 @@ This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and P
   ```
 
 ### 3. File Permissions, Special Bits & POSIX ACL Audit
+
 - **Identify Files with SUID Executable Bit Set:**
   ```bash
   find / -perm -4000 -type f -ls 2>/dev/null
@@ -66,6 +71,7 @@ This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and P
   ```
 
 ### 4. Account Lockout Audit & Remediation (`faillock`)
+
 - **Check Failure Logs for Locked Accounts:**
   ```bash
   sudo faillock --user <username>
@@ -78,7 +84,8 @@ This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and P
 ---
 
 ## 📋 Audit Verification Checklist
-- [ ] Confirmed zero unauthorized UID 0 accounts.
+
+- [ ] Confirmed zero unauthorized UID 0 accounts (excluding root).
 - [ ] Confirmed `/etc/sudoers` passes `visudo -c` validation.
 - [ ] Verified SUID/SGID audit outputs match expected baseline binaries.
 - [ ] Verified `faillock` successfully unlocks valid user accounts.

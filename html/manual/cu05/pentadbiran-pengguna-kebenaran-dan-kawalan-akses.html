@@ -1707,22 +1707,24 @@
 <p>Menguasai pentadbiran pengguna dan kumpulan, kawalan kebenaran fail asas dan lanjutan (POSIX ACL &amp; Bit Khas SUID/SGID/Sticky), pengukuhan dasar kata laluan (<code>faillock</code>), navigasi struktur FHS, pencarian fail, serta kawalan keselamatan fizikal/sesi terminal mengikut piawaian <strong>NOSS CU05 &amp; CU01</strong> serta standard keselamatan <strong>Jabatan Digital Negara (JDN) / MAMPU</strong> dan <strong>ISO/IEC 27001</strong>.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini dipetakan daripada <strong>Bab 4 (Pentadbiran Pengguna, Kebenaran &amp; Pelayaran)</strong> ke dalam Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> dan <strong>CU01 (Aktiviti Asas Linux)</strong> untuk edaran rasmi <strong>Ubuntu 26.04 LTS "Quetzal"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
+Modul ini dipetakan daripada <strong>Bab 4 (Pentadbiran Pengguna, Kebenaran &amp; Pelayaran)</strong> ke dalam Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> dan <strong>CU01 (Aktiviti Asas Linux)</strong> untuk edaran rasmi <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="1-pentadbiran-pengguna-kumpulan-sistem">📐 1. Pentadbiran Pengguna &amp; Kumpulan Sistem<a class="headerlink" href="#1-pentadbiran-pengguna-kumpulan-sistem" title="Permanent link">&para;</a></h2>
 <h3 id="11-struktur-fail-konfigurasi-identiti">1.1 Struktur Fail Konfigurasi Identiti<a class="headerlink" href="#11-struktur-fail-konfigurasi-identiti" title="Permanent link">&para;</a></h3>
-<p>Dalam Linux, maklumat pengguna dan keselamatan disimpan dalam fail sistem teras:
-- <code>/etc/passwd</code>: Menyimpan senarai akaun pengguna, UID, GID, direktori perumah, dan shell log masuk.
-- <code>/etc/shadow</code>: Menyimpan kata laluan terdisi (<em>hashed password</em>) terenkripsi dengan algoritma SHA-512/Yescrypt, tarikh tamat tempoh, dan kawalan akses (hanya boleh dibaca oleh <code>root</code> atau kumpulan <code>shadow</code>).
-- <code>/etc/group</code>: Menyimpan maklumat kumpulan pengguna dan senarai ahli.
-- <code>/etc/gshadow</code>: Menyimpan maklumat keselamatan kumpulan dan kata laluan kumpulan.</p>
+<p>Dalam Linux, maklumat pengguna dan keselamatan disimpan dalam fail sistem teras:</p>
+<ul>
+<li><code>/etc/passwd</code>: Menyimpan senarai akaun pengguna, UID, GID, direktori perumah, dan shell log masuk.</li>
+<li><code>/etc/shadow</code>: Menyimpan kata laluan terdisi (<em>hashed password</em>) terenkripsi dengan algoritma SHA-512/Yescrypt, tarikh tamat tempoh, dan kawalan akses (hanya boleh dibaca oleh <code>root</code> atau kumpulan <code>shadow</code>).</li>
+<li><code>/etc/group</code>: Menyimpan maklumat kumpulan pengguna dan senarai ahli.</li>
+<li><code>/etc/gshadow</code>: Menyimpan maklumat keselamatan kumpulan dan kata laluan kumpulan.</li>
+</ul>
 <h3 id="12-penciptaan-dan-pengurusan-akaun-pengguna-useradd-usermod-userdel">1.2 Penciptaan dan Pengurusan Akaun Pengguna (<code>useradd</code>, <code>usermod</code>, <code>userdel</code>)<a class="headerlink" href="#12-penciptaan-dan-pengurusan-akaun-pengguna-useradd-usermod-userdel" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Cipta kumpulan pentadbir atau projek baharu</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>groupadd<span class="w"> </span>-g<span class="w"> </span><span class="m">2000</span><span class="w"> </span>sysadmin_sec
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>groupadd<span class="w"> </span>sysadmin_sec
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Cipta akaun pengguna baharu dengan direktori perumah dan shell Bash</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-u<span class="w"> </span><span class="m">2001</span><span class="w"> </span>-g<span class="w"> </span><span class="m">2000</span><span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Ahmad Pengawas Sistem&quot;</span><span class="w"> </span>ahmad
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-g<span class="w"> </span>sysadmin_sec<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Ahmad Pengawas Sistem&quot;</span><span class="w"> </span>ahmad
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Tetapkan kata laluan awal untuk pengguna</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>passwd<span class="w"> </span>ahmad
@@ -1845,17 +1847,17 @@ Modul ini dipetakan daripada <strong>Bab 4 (Pentadbiran Pengguna, Kebenaran &amp
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/timeout.sh
 </span></code></pre></div>
 <h3 id="62-pengurusan-had-sumber-pengguna-etcsecuritylimitsconf">6.2 Pengurusan Had Sumber Pengguna (<code>/etc/security/limits.conf</code>)<a class="headerlink" href="#62-pengurusan-had-sumber-pengguna-etcsecuritylimitsconf" title="Permanent link">&para;</a></h3>
-<p>Menghadkan bilangan proses dan penggunaan memori pengguna untuk mementingkan kestabilan sistem:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a># Mengurangkan risiko Serangan Penafian Perkhidmatan (DoS) berasaskan fork bomb
+<p>Menghadkan bilangan proses maksima dan fail terbuka pengguna untuk mementingkan kestabilan sistem:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a># Mengurangkan risiko Serangan Penafian Perkhidmatan (DoS) berasaskan fork bomb dan kehabisan pemegang fail
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>*          hard    nproc          2048
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>ahmad      soft    nofile         4096
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>ahmad      hard    nofile         8192
 </span></code></pre></div></p>
 <h3 id="63-penutupan-dan-ulang-but-selamat">6.3 Penutupan dan Ulang But Selamat<a class="headerlink" href="#63-penutupan-dan-ulang-but-selamat" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Beritahu semua pengguna dan tutup sistem secara selamat</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Beritahu semua pengguna dan jadualkan penutupan sistem secara selamat</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>shutdown<span class="w"> </span>-h<span class="w"> </span>+5<span class="w"> </span><span class="s2">&quot;Sistem akan ditutup untuk penyelenggaraan dalam masa 5 minit.&quot;</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Matikan sistem serta-merta menggunakan systemd</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Atau matikan sistem serta-merta menggunakan systemd</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>poweroff
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Ulang but sistem serta-merta</span>

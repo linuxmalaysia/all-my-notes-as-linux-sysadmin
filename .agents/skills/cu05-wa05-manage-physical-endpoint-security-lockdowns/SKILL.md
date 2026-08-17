@@ -13,12 +13,14 @@ resource: "file:///.agents/skills/cu05-wa05-manage-physical-endpoint-security-lo
 # 🔒 Manage Physical Endpoint Security Lockdowns (CU05-WA05)
 
 ## 📌 Executive Overview
-This skill executes **NOSS Level 3 Unit CU05 WA05** (*Manage Physical Endpoint Security Lockdowns*). It guides AI agents in hardening Linux endpoints against physical tampering, unauthorized bootloader parameter modifications, abandoned active shell sessions, and uncontrolled system shutdowns on **Ubuntu 26.04 LTS** and **AlmaLinux 10**.
+
+This skill executes **NOSS Level 3 Unit CU05 WA05** (*Manage Physical Endpoint Security Lockdowns*). It guides AI agents in hardening Linux endpoints against physical tampering, unauthorized bootloader parameter modifications, abandoned active shell sessions, and uncontrolled system shutdowns on **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10**.
 
 ---
 
 ## ⚙️ Prerequisites & Security Governance
-- **Distribution Standard:** Ubuntu 26.04 LTS "Quetzal" & AlmaLinux 10 "Purple Lion".
+
+- **Distribution Standard:** Ubuntu 26.04 LTS "Resolute Raccoon" & AlmaLinux 10 "Purple Lion".
 - **Privilege Mandate:** Requires full `sudo` privileges.
 - **Compliance Baseline:** CIS Benchmarks, ISO/IEC 27001 & Pekeliling Jabatan Digital Negara (JDN) / MAMPU.
 
@@ -27,17 +29,28 @@ This skill executes **NOSS Level 3 Unit CU05 WA05** (*Manage Physical Endpoint S
 ## 🛠️ Step-by-Step Execution Workflows
 
 ### 1. Bootloader GRUB2 Password Protection
-- **Protect Boot Menu Parameters from Unauthorized Single-User Mode Edits:**
-  ```bash
-  # On AlmaLinux 10 / Fedora 43:
-  sudo grub2-setpassword
-  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-  # On Ubuntu 26.04 LTS:
-  # Generate PBKDF2 hash using grub-mkpasswd-pbkdf2 and add user superusers to /etc/grub.d/40_custom
-  ```
+- **Protect Boot Menu Parameters from Unauthorized Single-User Mode Edits:**
+  - **On AlmaLinux 10 / Fedora 43:**
+    ```bash
+    sudo grub2-setpassword
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+  - **On Ubuntu 26.04 LTS "Resolute Raccoon":**
+    ```bash
+    # Generate PBKDF2 hash using grub-mkpasswd-pbkdf2
+    grub-mkpasswd-pbkdf2
+
+    # Add superusers configuration to /etc/grub.d/40_custom
+    # set superusers="admin"
+    # password_pbkdf2 admin grub.pbkdf2.sha512...
+
+    # Regenerate GRUB2 configuration using update-grub
+    sudo update-grub
+    ```
 
 ### 2. Mandatory Session Idle Timeout Configuration (`TMOUT`)
+
 - **Enforce Automatic Shell Termination After 15 Minutes Inactivity:**
   ```bash
   cat << 'EOF' | sudo tee /etc/profile.d/timeout.sh
@@ -48,8 +61,12 @@ This skill executes **NOSS Level 3 Unit CU05 WA05** (*Manage Physical Endpoint S
   ```
 
 ### 3. Resource Limits & Console Hardening
-- **Restrict Core Dumps & Maximum Simultaneous Logins (`/etc/security/limits.conf`):**
+
+- **Disable Unused Virtual Terminals (getty) & Set Limits:**
   ```bash
+  sudo systemctl disable --now getty@tty3.service
+  sudo systemctl mask getty@tty3.service
+
   cat << 'EOF' | sudo tee -a /etc/security/limits.conf
   *          hard    core            0
   *          hard    maxlogins       3
@@ -57,19 +74,25 @@ This skill executes **NOSS Level 3 Unit CU05 WA05** (*Manage Physical Endpoint S
   ```
 
 ### 4. Safe Graceful System Shutdown Procedures
-- **Schedule Broadcast Message and System Power Off:**
-  ```bash
-  sudo shutdown -h +2 "System undergoing physical maintenance in 2 minutes."
-  sudo systemctl poweroff
-  ```
+
+- **Scheduled Broadcast Shutdown vs Immediate Poweroff (Alternatives):**
+  - *Option A (Scheduled grace period):*
+    ```bash
+    sudo shutdown -h +2 "System undergoing physical maintenance in 2 minutes."
+    ```
+  - *Option B (Immediate systemd poweroff):*
+    ```bash
+    sudo systemctl poweroff
+    ```
 
 ---
 
 ## 📋 Audit Verification Checklist
+
 - [ ] Confirmed GRUB2 configuration mandates credentials for boot parameter modifications.
 - [ ] Verified `TMOUT` environment variable is set and read-only in active sessions.
 - [ ] Verified `/etc/security/limits.conf` prevents core dumps and limits logins.
-- [ ] Verified graceful shutdown and reboot commands execute via `systemctl`.
+- [ ] Verified graceful shutdown commands execute via `shutdown` or `systemctl poweroff`.
 
 ---
 *Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
