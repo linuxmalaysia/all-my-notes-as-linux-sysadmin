@@ -26965,43 +26965,90 @@ Silibus ini memandu kemahiran Ejen AI berikut:
 <!-- BEGIN FILE: openwiki/topic-05-linux-security.md -->
 ## File: openwiki/topic-05-linux-security.md
 
-﻿---
+---
 okf_version: 0.1
 type: documentation
-title: "topic-05-linux-security"
-timestamp: "2026-08-16T08:43:42Z"
-topics: ["security", "firewall", "cu05"]
-tags: ["linux", "security", "cu05"]
-description: "Silibus keselamatan OS Linux (Kebenaran fail, Firewall, Polisi) dipetakan kepada NOSS CU05."
+title: "Topik 5: Keselamatan Linux & Kawalan Akses (CU05)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["security", "firewall", "cu05", "users", "permissions", "acl"]
+tags: ["linux", "security", "cu05", "noss", "faillock", "visudo"]
+description: "Silibus keselamatan OS Linux komprehesif merangkumi Pentadbiran Pengguna & Kumpulan, Kebenaran Fail & POSIX ACL, Firewall, dan Kawalan Lockdowns."
 resource: "file:///openwiki/topic-05-linux-security.md"
 ---
 
-# Topik 5: Keselamatan Linux (CU05)
+# Topik 5: Keselamatan Linux & Kawalan Akses Endpoint (CU05)
 
 ## Overview (Gambaran Keseluruhan)
-Keselamatan merangkumi sekatan pengguna, perlindungan sistem fail, dan dinding api (firewall) pada tahap pelayan. Ia dipetakan secara eksklusif daripada **CU05 (User Account and Permissions Audits / Security Lockdowns)**.
+
+Keselamatan Linux merangkumi pentadbiran identiti pengguna, sekatan kebenaran fail asas dan lanjutan, penegasan dasar kata laluan, kawalan keistimewaan `sudo`, dinding api (*firewall*), serta perlindungan fizikal konsol. Silibus ini dipetakan secara terperinci kepada Unit Kompetensi **CU05 (User Account and Permissions Audits / Security Lockdowns)** dan **CU01 (Aktiviti Asas Linux)** mengikut standard NOSS Tahap 3 dan piawaian **ISO/IEC 27001** & Pekeliling **Jabatan Digital Negara (JDN) / MAMPU**.
 
 ## Silibus Utama
-1. **Pengurusan Pengguna & Kumpulan (User & Group Management)**:
-   - `useradd`, `usermod`, `groupadd`, fail `/etc/passwd` dan `/etc/shadow`.
-2. **Kebenaran Sistem Fail (File Permissions & Ownership)**:
-   - Konsep UGO (User, Group, Others).
-   - Pengubahsuaian dengan `chmod` dan `chown`.
-   - Konsep SUID, SGID, dan Sticky Bit.
-3. **Dinding Api (Firewall & Port Security)**:
-   - Konfigurasi Uncomplicated Firewall (`ufw`) di Ubuntu.
-   - Konfigurasi `firewalld` di sistem berasaskan Red Hat.
-4. **Sistem Kawalan Mandatori (MAC)**:
-   - Pengenalan kepada SELinux (Enforcing, Permissive, Disabled).
-   - Pengenalan kepada AppArmor.
+
+1. **Pengurusan Pengguna, Kumpulan & Fail Identiti**:
+    - Penciptaan dan pengurusan akaun (`useradd`, `usermod`, `userdel`, `groupadd`).
+    - Struktur fail sistem teras `/etc/passwd`, `/etc/shadow`, `/etc/group`, dan `/etc/gshadow`.
+2. **Kebenaran Sistem Fail & Bit Khas (UGO, SUID, SGID, Sticky Bit)**:
+    - Konsep UGO (User, Group, Others) dengan `chmod`, `chown`, dan `chgrp`.
+    - Tetapan Bit Khas: SUID (Set User ID), SGID (Set Group ID), dan Sticky Bit.
+    - Konfigurasi `umask` selamat (`027`).
+3. **Senarai Kawalan Akses Lanjutan (POSIX ACL)**:
+    - Pengurusan kawalan akses khusus individu/kumpulan dengan `getfacl` dan `setfacl`.
+4. **Keistimewaan Pentadbir & Perlindungan Kata Laluan (`visudo` & `faillock`)**:
+    - Konfigurasi keistimewaan terhad `sudo` melalui `visudo`.
+    - Perlindungan serangan brute-force dan penguncian akaun otomatik dengan `faillock`.
+5. **Navigasi Standard FHS, Pencarian Fail & Dokumentasi**:
+    - Hierarki sistem fail FHS, pencarian pantas `plocate`, `find`, dan halaman manual `man-db`.
+6. **Kawalan Keselamatan Konsol, Sesi Terminal & Penutupan Selamat**:
+    - Penetapan pembolehubah `TMOUT` untuk tamat masa sesi tidak aktif.
+    - Sekatan kawalan sumber sistem dalam `/etc/security/limits.conf`.
+    - Perlindungan bootloader GRUB2 dan prosedur penutupan selamat (`systemctl poweroff`/`shutdown`).
+7. **Dinding Api (Firewall & Port Security)**:
+    - Konfigurasi Uncomplicated Firewall (`ufw`) di Ubuntu.
+    - Konfigurasi `firewalld` di sistem berasaskan Red Hat / AlmaLinux.
+8. **Sistem Kawalan Mandatori (MAC)**:
+    - Pengenalan dan mod SELinux (Enforcing, Permissive, Disabled) di AlmaLinux/Fedora.
+    - Pengenalan kepada AppArmor di Ubuntu.
+
+## Modul Amali Terkait
+
+- [Pentadbiran Pengguna, Kebenaran Fail & Kawalan Akses Endpoint Linux](../manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md)
+- [Audit Akaun Pengguna & Kebenaran Akses Linux (CU05-WA01)](../manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.md)
+- [Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)](../manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md)
 
 ## Pemetaan NOSS (NOSS Mapping)
+
 Silibus ini memandu kemahiran Ejen AI berikut:
+
 - `cu05-wa01-perform-user-account-and-permission-audits`
 - `cu05-wa03-configure-client-firewall-profiles`
+- `cu05-wa05-manage-physical-endpoint-security-lockdowns`
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+1. *"Apakah amalan terbaik untuk mengaudit kebenaran POSIX ACL dan bit SUID pada sistem Ubuntu 26.04 LTS?"*
+2. *"Jelaskan cara mengonfigurasi faillock dan pam_tally2 bagi mematuhi penanda aras CIS Benchmark."*
+3. *"Tunjukkan contoh skrip Bash untuk menyemak akaun pengguna yang tidak aktif dan menguncinya secara automatik."*
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+- [Ubuntu Security Handbook - User Account & Permission Audits](https://ubuntu.com/server/docs/security-users)
+- [AlmaLinux 10 System Security and Hardening Guide](https://wiki.almalinux.org/)
+- [Red Hat Enterprise Linux 10 Security Guide](https://access.redhat.com/documentation/)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
+- **UNIX and Linux System Administration Handbook (5th Edition)** oleh Evi Nemeth et al.
+- **Linux Security Cookbook** oleh Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes.
+- **Panduan Praktikal Audit & Keselamatan Linux** oleh Harisfazillah Jamel.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: openwiki/topic-05-linux-security.md -->
@@ -29036,69 +29083,108 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Audit Akaun Pengguna & Kebenaran Akses Linux"
+title: "Audit Akaun Pengguna & Kebenaran Akses Linux (CU05-WA01)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu05", "panduan-amali", "manual-linux"]
-tags: ["cu05", "linux", "noss", "amali", "standard-malaysia"]
-description: "Pengurusan dasar kata laluan, akses sudoers, semakan fail /etc/passwd dan kawalan PAM."
+topics: ["noss-linux", "cu05", "wa01", "panduan-amali", "manual-linux", "security-audit"]
+tags: ["cu05", "wa01", "linux", "noss", "amali", "user-audit", "permissions", "visudo", "faillock"]
+description: "Panduan amali audit akaun pengguna, pemeriksaan /etc/passwd dan /etc/shadow, pengurusan privilesej sudoers, kebenaran UGO/POSIX ACL, serta penguncian faillock."
 resource: "file:///manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.md"
 ---
 
-# Audit Akaun Pengguna & Kebenaran Akses Linux
+# Audit Akaun Pengguna & Kebenaran Akses Linux (CU05-WA01)
 
 ## 🎯 Objektif Pembelajaran
-Pengurusan dasar kata laluan, akses sudoers, semakan fail /etc/passwd dan kawalan PAM.
+
+Melaksanakan audit menyeluruh ke atas akaun pengguna sistem, keahlian kumpulan, integriti fail pengesahan (`/etc/passwd`, `/etc/shadow`), konfigurasi keistimewaan `sudo` (`visudo`), matriks kebenaran fail UGO dan POSIX ACL, serta penguatkuasaan dasar kunci kata laluan (`faillock`) mengikut piawaian **NOSS CU05 WA01**, **ISO/IEC 27001**, dan Pekeliling **Jabatan Digital Negara (JDN) / MAMPU**.
 
 > [!NOTE]
-> Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU05**.
+> Modul ini dipetakan daripada Unit Kompetensi **CU05 (Kawalan Keselamatan Endpoint & Audit)** bagi Aktiviti Kerja **WA01 (Perform User Account and Permission Audits)** pada platform **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
-## 🛠️ Garis Panduan Amali & Prosedur
+## 🛠️ Prosedur & Arahan Amali
 
-### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Audit Integriti Fail Pengguna & Kumpulan (`/etc/passwd` & `/etc/shadow`)
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+Akaun tanpa kata laluan atau UID 0 tidak sah merupakan risiko keselamatan kritikal.
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# 1. Semak sebarang akaun selain 'root' yang mempunyai UID 0 (Akses Superuser Tidak Sah)
+awk -F: '($3 == "0" && $1 != "root") { print $1 }' /etc/passwd
+
+# 2. Cari akaun terkunci atau tanpa kata laluan (medan kata laluan kosong atau bermula dengan !)
+sudo awk -F: '($2 == "" || $2 ~ /^!/) { print $1 }' /etc/shadow
+
+# 3. Semak integriti fail passwd dan shadow dengan alat pwck
+sudo pwck -r
+```
+
+### 2. Audit & Pengurusan Kebenaran Privilesej Pentadbir (`visudo`)
+
+Log masuk terus sebagai `root` dilarang. Semua tindakan pentadbiran mesti diaudit menerusi `sudo`.
+
+```bash
+# Audit fail konfigurasi /etc/sudoers dan direktori /etc/sudoers.d/
+sudo visudo -c
+
+# Senaraikan keistimewaan sudo untuk pengguna semasa atau pengguna tertentu
+sudo -l -U ahmad
+```
+
+### 3. Audit Kebenaran Fail & POSIX ACL
+
+```bash
+# Semak kebenaran fail asas dan pemilik
+ls -la /srv/projek_sec/
+
+# Semak Senarai Kawalan Akses POSIX (POSIX ACL)
+getfacl /srv/projek_sec/dokumen.pdf
+
+# Tetapkan kebenaran ACL khusus pengguna
+sudo setfacl -m u:zarith:rw- /srv/projek_sec/dokumen.pdf
+```
+
+### 4. Semakan & Pemulihan Penguncian Akaun (`faillock`)
+
+```bash
+# Semak sejarah kegagalan log masuk pengguna dan status kuncian
+sudo faillock --user ahmad
+
+# Nyahkunci akaun yang terkunci akibat salah kata laluan
+sudo faillock --user ahmad --reset
 ```
 
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Pengesahan tiada akaun UID 0 yang tidak sah (selain `root`).
+- [ ] Semakan kegagalan pwck melepasi 100%.
+- [ ] Audit keistimewaan sudoers menggunakan `visudo -c`.
+- [ ] Penetapan dan verifikasi POSIX ACL menggunakan `getfacl` / `setfacl`.
+- [ ] Pentadbiran kunci kata laluan `faillock`.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Audit Akaun Pengguna & Kebenaran Akses Linux dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Audit Akaun Pengguna & Kebenaran Akses Linux menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Tulis skrip audit Bash untuk mengesan pengguna sistem dengan shell log masuk aktif yang tidak pernah log masuk."*
+2. *"Jelaskan cara mengonfigurasi faillock supaya mengunci akaun selama 30 minit selepas 3 percubaan berturut-turut gagal."*
+3. *"Bagaimanakah cara mengaudit perubahan pada /etc/passwd menggunakan auditd?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Ubuntu Security Handbook - User Auditing](https://ubuntu.com/server/docs/security-users)
+- [AlmaLinux PAM & Security Audit Guide](https://wiki.almalinux.org/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **Linux Auditing and Hardening** oleh Master Technical Series.
+- **Panduan Praktikal Audit Keselamatan Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -29340,69 +29426,136 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI"
+title: "Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu05", "panduan-amali", "manual-linux"]
-tags: ["cu05", "linux", "noss", "amali", "standard-malaysia"]
-description: "Pencegahan but tanpa kebenaran, kata laluan GRUB2, dan dasar penyulitan storan mudah alih."
+topics: ["noss-linux", "cu05", "wa05", "panduan-amali", "manual-linux", "security-lockdown"]
+tags: ["cu05", "wa05", "linux", "noss", "amali", "physical-security", "lockdown", "tmout", "grub", "systemd", "luks2", "uefi"]
+description: "Panduan amali kawalan keselamatan fizikal, penguncian firmware UEFI/BIOS, penyulitan LUKS2, bootloader GRUB2, kawalan konsol maya VT, tamat masa sesi TMOUT, dan penutupan selamat."
 resource: "file:///manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md"
 ---
 
-# Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI
+# Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)
 
 ## 🎯 Objektif Pembelajaran
-Pencegahan but tanpa kebenaran, kata laluan GRUB2, dan dasar penyulitan storan mudah alih.
+
+Mengurangkan risiko capaian fizikal tidak sah menerusi penegasan firmware UEFI/BIOS, penyulitan cakera penuh LUKS2, perlindungan bootloader GRUB2, sekatan konsol maya (Virtual Terminals getty@tty), kawalan tamat masa sesi shell (`TMOUT`), dan kawalan penutupan sistem selamat mengikut piawaian **NOSS CU05 WA05** dan penanda aras **CIS Benchmarks / JDN MAMPU**.
 
 > [!NOTE]
-> Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU05**.
+> Modul ini dipetakan daripada Unit Kompetensi **CU05 (Kawalan Keselamatan Endpoint & Audit)** bagi Aktiviti Kerja **WA05 (Manage Physical Endpoint Security Lockdowns)** pada **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
-## 🛠️ Garis Panduan Amali & Prosedur
+## 🛠️ Prosedur & Arahan Amali
 
-### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Penegasan Firmware UEFI/BIOS & Penyulitan Cakera LUKS2
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+- **Penguncian Firmware UEFI/BIOS:** Tetapkan kata laluan pentadbir UEFI/BIOS dan matikan kebolehan boot dari USB/peranti luaran untuk menghalang pelancaran live OS tanpa kebenaran.
+- **Penyulitan Cakera Penuh LUKS2:** Pastikan partition sistem disulitkan dengan LUKS2 untuk melindungi data berehat (*data-at-rest*).
+  ```bash
+  # Semak status penyulitan LUKS2 pada peranti blok sistem
+  sudo cryptsetup status /dev/mapper/dm_crypt-0
+  ```
+
+### 2. Perlindungan Bootloader GRUB2 dengan Kata Laluan
+
+Melarang pengubahsuaian parameter isirung (`init=/bin/bash` atau `single`) di menu bootloader tanpa pengesahan pentadbir.
+
+- **Pada AlmaLinux 10 / Fedora 43:**
+  ```bash
+  sudo grub2-setpassword
+  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+  ```
+
+- **Pada Ubuntu 26.04 LTS:**
+  ```bash
+  # Hasilkan PBKDF2 hash kata laluan
+  grub-mkpasswd-pbkdf2
+
+  # Tambahkan konfigurasi pengguna superuser di /etc/grub.d/40_custom
+  # cat << 'EOF' | sudo tee -a /etc/grub.d/40_custom
+  # set superusers="admin"
+  # password_pbkdf2 admin grub.pbkdf2.sha512...
+  # EOF
+
+  # Kemas kini konfigurasi GRUB2
+  sudo update-grub
+  ```
+
+### 3. Penguatkuasaan Tamat Masa Sesi Terminal Otomatik (`TMOUT`)
+
+Mengunci atau menamatkan sesi terminal tidak aktif secara automatik selepas 15 minit (900 saat).
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Cipta fail skrip penguatkuasaan TMOUT secara global
+cat << 'EOF' | sudo tee /etc/profile.d/timeout.sh
+readonly TMOUT=900
+export TMOUT
+EOF
+sudo chmod +x /etc/profile.d/timeout.sh
+```
+
+### 4. Kawalan Konsol Maya (Virtual Terminals) & Had Sumber
+
+```bash
+# Matikan perkhidmatan getty pada VT yang tidak digunakan (contoh: tty3)
+sudo systemctl disable --now getty@tty3.service
+sudo systemctl mask getty@tty3.service
+
+# Prosedur pemulihan (rollback) jika tty3 diperlukan semula:
+# sudo systemctl unmask getty@tty3.service
+# sudo systemctl enable --now getty@tty3.service
+
+# Konfigurasi had sumber sistem di /etc/security/limits.conf
+# Menyertakan larangan coredump dan had maxlogins
+cat << 'EOF' | sudo tee -a /etc/security/limits.conf
+*          hard    core            0
+*          hard    maxlogins       3
+EOF
+```
+
+### 5. Prosedur Penutupan & Ulang But Selamat
+
+Arahan penutupan terjadual dan penutupan serta-merta adalah pilihan alternatif mengikut keperluan operasi:
+
+```bash
+# Pilihan A: Hantar mesej amaran dan jadualkan penutupan sistem secara teratur
+sudo shutdown -h +2 "Penyelenggaraan sistem fizikal dalam masa 2 minit."
+
+# Pilihan B: Matikan sistem serta-merta menggunakan systemd
+sudo systemctl poweroff
 ```
 
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Verifikasi kuncian UEFI/BIOS dan penyulitan cakera LUKS2.
+- [ ] Pengesahan perlindungan kata laluan pada menu bootloader GRUB2.
+- [ ] Penguatkuasaan pembolehubah `TMOUT` terbukti berfungsi pada shell bash.
+- [ ] Pengurusan unit `getty@ttyN.service` dan penegasan `/etc/security/limits.conf`.
+- [ ] Penggunaan alternatif prosedur penutupan selamat (`shutdown` vs `systemctl poweroff`).
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Bagaimanakah cara mengunci firmware UEFI/BIOS pada perkakasan pelayan pelbagai vendor (Dell, HP, Lenovo) secara automatik?"*
+2. *"Terangkan kesan penetapan maxlogins dalam /etc/security/limits.conf terhadap sesi SSH dan Konsol."*
+3. *"Tulis skrip periksa pematuhan CIS Benchmark untuk keselamatan bootloader dan kawalan konsol fizikal."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Ubuntu Security Lockdowns Guide](https://ubuntu.com/server/docs/security)
+- [AlmaLinux Hardening & Physical Security](https://wiki.almalinux.org/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **Hardening Linux System Security** oleh Chey Cobb.
+- **Panduan Penegasan Keselamatan Fizikal Pelayan Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -31431,6 +31584,274 @@ df -h /mnt/storan_tersulit
 
 <!-- END FILE: manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md -->
 
+<!-- BEGIN FILE: manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md -->
+## File: manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md
+
+---
+okf_version: 0.1
+type: knowledge-node
+title: "Pentadbiran Pengguna, Kebenaran Fail & Kawalan Akses Endpoint Linux"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["noss-linux", "cu05", "cu01", "panduan-amali", "manual-linux", "security"]
+tags: ["cu05", "cu01", "linux", "noss", "amali", "users", "permissions", "acl", "faillock"]
+description: "Panduan amali komprehesif pentadbiran pengguna, kumpulan, /etc/shadow, visudo, kebenaran fail chmod/chown, SUID/SGID/Sticky bit, POSIX ACL, faillock, FHS, dan penutupan sistem selamat."
+resource: "file:///manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md"
+---
+
+# Pentadbiran Pengguna, Kebenaran Fail & Kawalan Akses Endpoint Linux
+
+## 🎯 Objektif Pembelajaran
+
+Menguasai pentadbiran pengguna dan kumpulan, kawalan kebenaran fail asas dan lanjutan (POSIX ACL & Bit Khas SUID/SGID/Sticky), pengukuhan dasar kata laluan (`faillock`), navigasi struktur FHS, pencarian fail, serta kawalan keselamatan fizikal/sesi terminal mengikut piawaian **NOSS CU05 & CU01** serta standard keselamatan **Jabatan Digital Negara (JDN) / MAMPU** dan **ISO/IEC 27001**.
+
+> [!NOTE]
+> Modul ini dipetakan daripada **Bab 4 (Pentadbiran Pengguna, Kebenaran & Pelayaran)** ke dalam Unit Kompetensi **CU05 (Kawalan Keselamatan Endpoint & Audit)** dan **CU01 (Aktiviti Asas Linux)** untuk edaran rasmi **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
+
+---
+
+## 📐 1. Pentadbiran Pengguna & Kumpulan Sistem
+
+### 1.1 Struktur Fail Konfigurasi Identiti
+
+Dalam Linux, maklumat pengguna dan keselamatan disimpan dalam fail sistem teras:
+
+- `/etc/passwd`: Menyimpan senarai akaun pengguna, UID, GID, direktori perumah, dan shell log masuk.
+- `/etc/shadow`: Menyimpan kata laluan terdisi (*hashed password*) terenkripsi dengan algoritma SHA-512/Yescrypt, tarikh tamat tempoh, dan kawalan akses (hanya boleh dibaca oleh `root` atau kumpulan `shadow`).
+- `/etc/group`: Menyimpan maklumat kumpulan pengguna dan senarai ahli.
+- `/etc/gshadow`: Menyimpan maklumat keselamatan kumpulan dan kata laluan kumpulan.
+
+### 1.2 Penciptaan dan Pengurusan Akaun Pengguna (`useradd`, `usermod`, `userdel`)
+
+```bash
+# Cipta kumpulan pentadbir atau projek baharu
+sudo groupadd sysadmin_sec
+
+# Cipta akaun pengguna baharu dengan direktori perumah dan shell Bash
+sudo useradd -m -g sysadmin_sec -s /bin/bash -c "Ahmad Pengawas Sistem" ahmad
+
+# Tetapkan kata laluan awal untuk pengguna
+sudo passwd ahmad
+
+# Tambahkan pengguna ke kumpulan tambahan (contohnya kumpulan sudo/wheel)
+# Pada Ubuntu 26.04 LTS:
+sudo usermod -aG sudo ahmad
+
+# Pada AlmaLinux 10 / Fedora 43:
+sudo usermod -aG wheel ahmad
+
+# Semak identiti dan keahlian kumpulan pengguna
+id ahmad
+```
+
+---
+
+## 🔒 2. Polisi Kebolehan Keistimewaan Sistem (`visudo`) & Dasar Kata Laluan (`faillock`)
+
+### 2.1 Konfigurasi Privilesej Pentadbir dengan `visudo`
+
+Penggunaan log masuk terus sebagai `root` adalah **DILARANG** di bawah garis panduan JDN/MAMPU. Sebaliknya, pentadbiran MESTI dilaksanakan melalui `sudo` dengan audit log lengkap.
+
+```bash
+# Buka fail /etc/sudoers dengan selamat menggunakan visudo
+sudo visudo
+```
+
+Tambah peraturan khusus keistimewaan minimum (*Principle of Least Privilege*):
+```text
+# Membenarkan kumpulan sysadmin_sec menjalankan arahan pentadbiran dengan pengesahan
+%sysadmin_sec ALL=(ALL:ALL) ALL
+
+# Membenarkan pentadbiran perkhidmatan tanpa kata laluan untuk akaun tertentu jika diperlukan
+ahmad ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart nginx
+```
+
+### 2.2 Perlindungan Brute-Force & Penguncian Akaun (`faillock`)
+
+Untuk mematuhi standard ISO/IEC 27001, sistem perlu mengunci akaun secara automatik selepas percubaan log masuk gagal yang berturut-turut.
+
+```bash
+# Semak status log kegagalan akaun pengguna
+sudo faillock --user ahmad
+
+# Buka kunci akaun pengguna yang terkunci akibat percubaan kata laluan salah
+sudo faillock --user ahmad --reset
+```
+
+Konfigurasi di `/etc/security/faillock.conf`:
+```text
+deny = 5
+unlock_time = 900
+fail_interval = 900
+silent
+```
+
+---
+
+## 📁 3. Kebenaran Fail Asas & Bit Khas (SUID, SGID, Sticky Bit)
+
+### 3.1 Kebenaran Asas UGO (`chmod`, `chown`, `chgrp`, `umask`)
+
+Kebenaran Linux berasaskan tiga entiti: **User (u)**, **Group (g)**, dan **Others (o)** dengan mod **Read (4)**, **Write (2)**, dan **Execute (1)**.
+
+```bash
+# Ubah pemilikan fail dan direktori kepada ahmad:sysadmin_sec
+sudo chown ahmad:sysadmin_sec /srv/projek_sec/
+sudo chown -R ahmad:sysadmin_sec /srv/projek_sec/
+
+# Tetapkan kebenaran rwx untuk pemilik, r-x untuk kumpulan, dan tiada akses untuk yang lain (750)
+sudo chmod 750 /srv/projek_sec/
+
+# Tetapkan umask laluan keistimewaan selamat (027) dalam /etc/profile atau ~/.bashrc
+umask 027
+```
+
+### 3.2 Bit Kebenaran Khas (SUID, SGID, Sticky Bit)
+
+- **SUID (Set User ID - 4000 / `u+s`):** Melaksanakan fail binaan (*executable*) dengan hak keistimewaan pemilik fail (contoh: `/usr/bin/passwd`).
+- **SGID (Set Group ID - 2000 / `g+s`):** Apabila ditetapkan pada direktori, semua fail baharu yang dicipta dalam direktori tersebut akan mewarisi kumpulan direktori asal.
+- **Sticky Bit (1000 / `t`):** Apabila ditetapkan pada direktori kongsian (seperti `/tmp`), hanya pemilik fail sahaja yang boleh memadam fail mereka sendiri.
+
+```bash
+# Tetapkan SGID pada direktori projek kongsian
+sudo chmod g+s /srv/projek_sec/
+
+# Tetapkan Sticky Bit pada direktori kongsian umum
+sudo chmod +t /srv/kongsi_awam/
+
+# Cari fail dalam sistem yang mempunyai bit SUID ditetapkan (Audit Keselamatan)
+find / -perm -4000 -type f -ls 2>/dev/null
+```
+
+---
+
+## 🎛️ 4. Senarai Kawalan Akses POSIX (POSIX ACL - `getfacl` & `setfacl`)
+
+Apabila kebenaran UGO tidak cukup fleksibel untuk menetapkan hak akses kepada berbilang pengguna atau kumpulan secara individu, POSIX Access Control Lists (ACL) digunakan.
+
+```bash
+# Semak ACL sedia ada pada fail/direktori
+getfacl /srv/projek_sec/dokumen.pdf
+
+# Berikan kebenaran membaca dan menulis kepada pengguna 'zarith' secara khusus
+setfacl -m u:zarith:rw- /srv/projek_sec/dokumen.pdf
+
+# Berikan kebenaran laluan (default ACL) supaya fail baharu mewarisi ACL secara automatik
+setfacl -d -m u:zarith:rwx /srv/projek_sec/
+
+# Padam semua tetapan ACL khusus pada fail
+setfacl -b /srv/projek_sec/dokumen.pdf
+```
+
+---
+
+## 🧭 5. Navigasi FHS, Pencarian Fail & Dokumentasi (`find`, `plocate`, `man-db`)
+
+### 5.1 Hierarki Standard Sistem Fail (FHS)
+
+- `/etc`: Fail konfigurasi sistem.
+- `/var`: Data berubah (log `/var/log`, laman web `/var/www`).
+- `/home`: Direktori perumah pengguna biasa.
+- `/root`: Direktori perumah pengguna pentadbir.
+- `/usr`: Binaan perisian dan pustaka pengguna (`/usr/bin`, `/usr/sbin`).
+
+### 5.2 Alat Pencarian & Dokumentasi
+
+```bash
+# Kemas kini pangkalan data plocate
+sudo updatedb
+
+# Cari fail dengan pantas menggunakan plocate
+plocate sudoers
+
+# Cari fail menggunakan find mengikut saiz dan kriteria
+find /var/log -type f -name "*.log" -mtime -7
+
+# Capaian halaman panduan manual rasmi
+man 5 shadow
+man 8 usermod
+```
+
+---
+
+## 🚪 6. Kawalan Keselamatan Sesi & Penutupan Selamat (`TMOUT`, `limits.conf`, `systemctl`)
+
+### 6.1 Tamat Masa Sesi Shell Otomatik (`TMOUT`)
+
+Bagi mengelakkan sesi terminal ditinggalkan tanpa kawalan fizikal, tetapkan pembolehubah `TMOUT` di `/etc/profile.d/timeout.sh`:
+
+```bash
+# Cipta fail skrip penguatkuasaan tamat masa sesi (15 minit / 900 saat)
+cat << 'EOF' | sudo tee /etc/profile.d/timeout.sh
+readonly TMOUT=900
+export TMOUT
+EOF
+sudo chmod +x /etc/profile.d/timeout.sh
+```
+
+### 6.2 Pengurusan Had Sumber Pengguna (`/etc/security/limits.conf`)
+
+Menghadkan bilangan proses maksima dan fail terbuka pengguna untuk mementingkan kestabilan sistem:
+```text
+# Mengurangkan risiko Serangan Penafian Perkhidmatan (DoS) berasaskan fork bomb dan kehabisan pemegang fail
+*          hard    nproc          2048
+ahmad      soft    nofile         4096
+ahmad      hard    nofile         8192
+```
+
+### 6.3 Penutupan dan Ulang But Selamat
+
+```bash
+# Beritahu semua pengguna dan jadualkan penutupan sistem secara selamat
+sudo shutdown -h +5 "Sistem akan ditutup untuk penyelenggaraan dalam masa 5 minit."
+
+# Atau matikan sistem serta-merta menggunakan systemd
+sudo systemctl poweroff
+
+# Ulang but sistem serta-merta
+sudo systemctl reboot
+```
+
+---
+
+## 📋 Senarai Semak Kompetensi (Competency Checklist)
+
+- [ ] Berjaya mencipta pengguna dan kumpulan mengikut penamaan standard NOSS.
+- [ ] Mengesahkan bahawa fail `/etc/shadow` tidak boleh dibaca oleh pengguna biasa.
+- [ ] Mampu mengonfigurasi privilesej `sudo` menggunakan `visudo`.
+- [ ] Berjaya menetapkan kebenaran UGO, bit khas (SUID/SGID/Sticky Bit), dan POSIX ACL.
+- [ ] Mampu memulihkan akaun yang terkunci dengan `faillock`.
+- [ ] Mengonfigurasi `TMOUT` untuk keselamatan sesi terminal.
+
+---
+
+## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+1. *"Apakah perbezaan mendalam antara algoritma enkrpsi SHA-512 dan Yescrypt dalam fail `/etc/shadow` pada Linux moden 2026?"*
+2. *"Tunjukkan cara mengaudit keseluruhan fail binaan yang mempunyai bit SUID dan SGID serta cara menghapuskan bit keistimewaan yang tidak diperlukan."*
+3. *"Tulis skrip Bash automatik untuk menyemak ketidakpatuhan kebenaran fail sistem mengikut penanda aras CIS Benchmark."*
+
+---
+
+## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+- [Ubuntu Server Security Handbook - User Management](https://ubuntu.com/server/docs/security-users)
+- [AlmaLinux 10 Hardening Guide & PAM Faillock](https://wiki.almalinux.org/)
+- [POSIX Access Control Lists in Linux - Red Hat Documentation](https://access.redhat.com/documentation/)
+
+---
+
+## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
+- **UNIX and Linux System Administration Handbook (5th Edition)** oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin.
+- **Linux Security Cookbook** oleh Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes.
+- **Panduan Pentadbiran Sistem & Keselamatan Linux** oleh Harisfazillah Jamel.
+
+---
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
+
+<!-- END FILE: manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md -->
+
 <!-- BEGIN FILE: manual/cu01/penyulitan-cakera-luks2-pejabat.md -->
 ## File: manual/cu01/penyulitan-cakera-luks2-pejabat.md
 
@@ -33262,23 +33683,100 @@ type: procedural_skill
 <!-- BEGIN FILE: .agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md -->
 ## File: .agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md
 
-﻿---
+---
+name: "cu05-wa01-perform-user-account-and-permission-audits"
 okf_version: 0.1
-name: cu05-wa01-perform-user-account-and-permission-audits
-description: Executes NOSS Work Activity: Perform User Account And Permission Audits
-topics: [noss, cu05, wa01]
-type: procedural_skill
+type: skill
+title: "Perform User Account and Permission Audits (CU05-WA01)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["noss", "cu05", "wa01", "user-audit", "permissions", "visudo", "faillock"]
+tags: ["noss", "cu05", "wa01", "security", "linux", "permissions", "acl"]
+description: "Executes NOSS Work Activity CU05-WA01: Audit user accounts, group memberships, authentication files (/etc/passwd, /etc/shadow), sudoers configuration, file permissions, POSIX ACLs, and faillock."
+resource: "file:///.agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md"
 ---
 
-# Perform User Account And Permission Audits
-*Executes NOSS standard K622-XXX-3:2026-C05 WA01*
+# 🛡️ Perform User Account and Permission Audits (CU05-WA01)
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## 📌 Executive Overview
 
+This skill executes **NOSS Level 3 Unit CU05 WA01** (*Perform User Account and Permission Audits*). It empowers AI agents to inspect, audit, and remediate user accounts, privileged access (`sudoers`), file permissions, special bits (SUID/SGID/Sticky), POSIX ACLs, and PAM lockouts on **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## ⚙️ Prerequisites & Security Governance
+
+- **Distribution Standard:** Ubuntu 26.04 LTS "Resolute Raccoon" & AlmaLinux 10 "Purple Lion".
+- **Privilege Mandate:** Must be executed with `sudo` privileges or as a security auditor account.
+- **Compliance Baseline:** ISO/IEC 27001 & Pekeliling Jabatan Digital Negara (JDN) / MAMPU.
+
+---
+
+## 🛠️ Step-by-Step Execution Workflows
+
+### 1. User & Group Identity Verification (`/etc/passwd` & `/etc/shadow`)
+
+- **Check for Unauthorized Superusers (UID 0 except root):**
+  ```bash
+  awk -F: '($3 == "0" && $1 != "root") { print $1 }' /etc/passwd
+  ```
+- **Audit Passwordless or Locked Suspicious Accounts (empty or starting with !):**
+  ```bash
+  sudo awk -F: '($2 == "" || $2 ~ /^!/) { print $1 }' /etc/shadow
+  ```
+- **Integrity Validation:**
+  ```bash
+  sudo pwck -r
+  sudo grpck -r
+  ```
+
+### 2. Privileged Access (`sudoers`) Audit via `visudo`
+
+- **Verify Syntax & Structural Integrity of `/etc/sudoers`:**
+  ```bash
+  sudo visudo -c
+  ```
+- **Audit Specific User Privileges:**
+  ```bash
+  sudo -l -U <username>
+  ```
+
+### 3. File Permissions, Special Bits & POSIX ACL Audit
+
+- **Identify Files with SUID Executable Bit Set:**
+  ```bash
+  find / -perm -4000 -type f -ls 2>/dev/null
+  ```
+- **Inspect POSIX ACLs on Sensitive Target Directories:**
+  ```bash
+  getfacl /srv/projek_sec/
+  ```
+- **Grant Controlled Access via POSIX ACL:**
+  ```bash
+  sudo setfacl -m u:zarith:rw- /srv/projek_sec/dokumen.pdf
+  ```
+
+### 4. Account Lockout Audit & Remediation (`faillock`)
+
+- **Check Failure Logs for Locked Accounts:**
+  ```bash
+  sudo faillock --user <username>
+  ```
+- **Reset Lockout Status:**
+  ```bash
+  sudo faillock --user <username> --reset
+  ```
+
+---
+
+## 📋 Audit Verification Checklist
+
+- [ ] Confirmed zero unauthorized UID 0 accounts (excluding root).
+- [ ] Confirmed `/etc/sudoers` passes `visudo -c` validation.
+- [ ] Verified SUID/SGID audit outputs match expected baseline binaries.
+- [ ] Verified `faillock` successfully unlocks valid user accounts.
+
+---
+*Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md -->
@@ -33358,23 +33856,104 @@ type: procedural_skill
 <!-- BEGIN FILE: .agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md -->
 ## File: .agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md
 
-﻿---
+---
+name: "cu05-wa05-manage-physical-endpoint-security-lockdowns"
 okf_version: 0.1
-name: cu05-wa05-manage-physical-endpoint-security-lockdowns
-description: Executes NOSS Work Activity: Manage Physical Endpoint Security Lockdowns
-topics: [noss, cu05, wa05]
-type: procedural_skill
+type: skill
+title: "Manage Physical Endpoint Security Lockdowns (CU05-WA05)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["noss", "cu05", "wa05", "physical-security", "lockdown", "grub", "tmout", "systemd"]
+tags: ["noss", "cu05", "wa05", "security", "linux", "physical-security", "tmout", "limits"]
+description: "Executes NOSS Work Activity CU05-WA05: Manage physical endpoint lockdowns, bootloader GRUB2 password protection, session timeout (TMOUT), virtual terminal limits, and safe shutdown procedures."
+resource: "file:///.agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md"
 ---
 
-# Manage Physical Endpoint Security Lockdowns
-*Executes NOSS standard K622-XXX-3:2026-C05 WA05*
+# 🔒 Manage Physical Endpoint Security Lockdowns (CU05-WA05)
 
-## Procedure
-1. *Pending implementation based on JTPS 2 document.*
+## 📌 Executive Overview
 
+This skill executes **NOSS Level 3 Unit CU05 WA05** (*Manage Physical Endpoint Security Lockdowns*). It guides AI agents in hardening Linux endpoints against physical tampering, unauthorized bootloader parameter modifications, abandoned active shell sessions, and uncontrolled system shutdowns on **Ubuntu 26.04 LTS "Resolute Raccoon"** and **AlmaLinux 10**.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+
+## ⚙️ Prerequisites & Security Governance
+
+- **Distribution Standard:** Ubuntu 26.04 LTS "Resolute Raccoon" & AlmaLinux 10 "Purple Lion".
+- **Privilege Mandate:** Requires full `sudo` privileges.
+- **Compliance Baseline:** CIS Benchmarks, ISO/IEC 27001 & Pekeliling Jabatan Digital Negara (JDN) / MAMPU.
+
+---
+
+## 🛠️ Step-by-Step Execution Workflows
+
+### 1. Bootloader GRUB2 Password Protection
+
+- **Protect Boot Menu Parameters from Unauthorized Single-User Mode Edits:**
+  - **On AlmaLinux 10 / Fedora 43:**
+    ```bash
+    sudo grub2-setpassword
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+  - **On Ubuntu 26.04 LTS "Resolute Raccoon":**
+    ```bash
+    # Generate PBKDF2 hash using grub-mkpasswd-pbkdf2
+    grub-mkpasswd-pbkdf2
+
+    # Add superusers configuration to /etc/grub.d/40_custom
+    # set superusers="admin"
+    # password_pbkdf2 admin grub.pbkdf2.sha512...
+
+    # Regenerate GRUB2 configuration using update-grub
+    sudo update-grub
+    ```
+
+### 2. Mandatory Session Idle Timeout Configuration (`TMOUT`)
+
+- **Enforce Automatic Shell Termination After 15 Minutes Inactivity:**
+  ```bash
+  cat << 'EOF' | sudo tee /etc/profile.d/timeout.sh
+  readonly TMOUT=900
+  export TMOUT
+  EOF
+  sudo chmod +x /etc/profile.d/timeout.sh
+  ```
+
+### 3. Resource Limits & Console Hardening
+
+- **Disable Unused Virtual Terminals (getty) & Set Limits:**
+  ```bash
+  sudo systemctl disable --now getty@tty3.service
+  sudo systemctl mask getty@tty3.service
+
+  cat << 'EOF' | sudo tee -a /etc/security/limits.conf
+  *          hard    core            0
+  *          hard    maxlogins       3
+  EOF
+  ```
+
+### 4. Safe Graceful System Shutdown Procedures
+
+- **Scheduled Broadcast Shutdown vs Immediate Poweroff (Alternatives):**
+  - *Option A (Scheduled grace period):*
+    ```bash
+    sudo shutdown -h +2 "System undergoing physical maintenance in 2 minutes."
+    ```
+  - *Option B (Immediate systemd poweroff):*
+    ```bash
+    sudo systemctl poweroff
+    ```
+
+---
+
+## 📋 Audit Verification Checklist
+
+- [ ] Confirmed GRUB2 configuration mandates credentials for boot parameter modifications.
+- [ ] Verified `TMOUT` environment variable is set and read-only in active sessions.
+- [ ] Verified `/etc/security/limits.conf` prevents core dumps and limits logins.
+- [ ] Verified graceful shutdown commands execute via `shutdown` or `systemctl poweroff`.
+
+---
+*Linux for NOSS Malaysia (Sovereign AI Skill) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md -->
@@ -39881,7 +40460,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T04:17:23Z"
+timestamp: "2026-08-17T05:22:18Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -39930,11 +40509,11 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu04-wa03-perform-network-based-backup`** <br> *cu04-wa03-perform-network-based-backup* | No description provided. | N/A |
 | **`cu04-wa04-restore-endpoint-data`** <br> *cu04-wa04-restore-endpoint-data* | No description provided. | N/A |
 | **`cu04-wa05-perform-endpoint-bare-metal-recovery`** <br> *cu04-wa05-perform-endpoint-bare-metal-recovery* | No description provided. | N/A |
-| **`cu05-wa01-perform-user-account-and-permission-audits`** <br> *cu05-wa01-perform-user-account-and-permission-audits* | No description provided. | N/A |
+| **`cu05-wa01-perform-user-account-and-permission-audits`** <br> *Perform User Account and Permission Audits (CU05-WA01)* | Executes NOSS Work Activity CU05-WA01: Audit user accounts, group memberships, authentication files (/etc/passwd, /etc/shadow), sudoers configuration, file permissions, POSIX ACLs, and faillock. | "noss", "cu05", "wa01", "user-audit", "permissions", "visudo", "faillock" |
 | **`cu05-wa02-configure-endpoint-antivirus-anti-malware-defences`** <br> *cu05-wa02-configure-endpoint-antivirus-anti-malware-defences* | No description provided. | N/A |
 | **`cu05-wa03-configure-client-firewall-profiles`** <br> *cu05-wa03-configure-client-firewall-profiles* | No description provided. | N/A |
 | **`cu05-wa04-conduct-application-security-patching`** <br> *cu05-wa04-conduct-application-security-patching* | No description provided. | N/A |
-| **`cu05-wa05-manage-physical-endpoint-security-lockdowns`** <br> *cu05-wa05-manage-physical-endpoint-security-lockdowns* | No description provided. | N/A |
+| **`cu05-wa05-manage-physical-endpoint-security-lockdowns`** <br> *Manage Physical Endpoint Security Lockdowns (CU05-WA05)* | Executes NOSS Work Activity CU05-WA05: Manage physical endpoint lockdowns, bootloader GRUB2 password protection, session timeout (TMOUT), virtual terminal limits, and safe shutdown procedures. | "noss", "cu05", "wa05", "physical-security", "lockdown", "grub", "tmout", "systemd" |
 | **`cu06-wa01-prepare-end-user-support-service-requirements`** <br> *cu06-wa01-prepare-end-user-support-service-requirements* | No description provided. | N/A |
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** <br> *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
 | **`cu06-wa03-support-hardware-troubleshooting`** <br> *cu06-wa03-support-hardware-troubleshooting* | No description provided. | N/A |
@@ -40570,6 +41149,8 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #4 — Audit Bab 1-2, Porting Kemahiran CU01/CU02, Migrasi Bab 3 Storan (GPT/LVM2/LUKS2), dan penambahan 902 ujian Python.
 - **2026-08-17:** Pemaktuban Protokol Orkestrasi Ujian Bukan-Interaktif (Non-Interactive CI Execution) ke dalam Peraturan 14 Perlembagaan AI.
 - **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 4 (Migrasi Silibus Bab 4: Pentadbiran Pengguna & Keselamatan Endpoint CU05).
+- **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #6 — Migrasi Bab 4 (Pentadbiran Pengguna, /etc/shadow, visudo, faillock, chmod/chown, SUID/SGID/Sticky bit, POSIX ACL getfacl/setfacl, FHS, pencarian plocate/find), Porting Kemahiran CU05, dan peningkatan kepada 910 ujian Python.
+- **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 5 (Migrasi Silibus Bab 5: Konfigurasi Teras Pelayan CU03 & Pemantauan Prestasi CU06).
 
 <!-- END FILE: .agents/brain/wings/wing_dsom_core/hall_events/room_ledger/closet.md -->
 

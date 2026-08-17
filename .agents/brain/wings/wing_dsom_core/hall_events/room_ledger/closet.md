@@ -23,3 +23,5 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #4 — Audit Bab 1-2, Porting Kemahiran CU01/CU02, Migrasi Bab 3 Storan (GPT/LVM2/LUKS2), dan penambahan 902 ujian Python.
 - **2026-08-17:** Pemaktuban Protokol Orkestrasi Ujian Bukan-Interaktif (Non-Interactive CI Execution) ke dalam Peraturan 14 Perlembagaan AI.
 - **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 4 (Migrasi Silibus Bab 4: Pentadbiran Pengguna & Keselamatan Endpoint CU05).
+- **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #6 — Migrasi Bab 4 (Pentadbiran Pengguna, /etc/shadow, visudo, faillock, chmod/chown, SUID/SGID/Sticky bit, POSIX ACL getfacl/setfacl, FHS, pencarian plocate/find), Porting Kemahiran CU05, dan peningkatan kepada 910 ujian Python.
+- **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 5 (Migrasi Silibus Bab 5: Konfigurasi Teras Pelayan CU03 & Pemantauan Prestasi CU06).
