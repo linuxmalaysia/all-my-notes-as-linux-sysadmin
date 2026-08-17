@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Konfigurasi pencetak CUPS, pengimbas SANE, dan penyelesaian masalah peranti USB/Thunderbolt.">
+        <meta name="description" content="Panduan amali konfigurasi pelekapan storan, penangguhan media luaran, pengurusan entri /etc/fstab dengan parameter pengerasan keselamatan JDN/MAMPU, dan diagnostik peranti luaran.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Troubleshooting Peranti Luaran & Pencetak - NOSS Linux Malaysia (DSOM)</title>
+        <title>Konfigurasi Pelekapan Storan, Peranti Luaran & Pengoperasian Media - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-peranti-luaran-pencetak" class="md-skip">
+        <a href="#konfigurasi-pelekapan-storan-peranti-luaran-pengoperasian-media" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting Peranti Luaran & Pencetak
+              Konfigurasi Pelekapan Storan, Peranti Luaran & Pengoperasian Media
             
           </span>
         </div>
@@ -1437,10 +1437,111 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-pengecaman-peranti-storan-struktur-nod-dev" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
+        1. Pengecaman Peranti Storan &amp; Struktur Nod (/dev/)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="1. Pengecaman Peranti Storan &amp; Struktur Nod (/dev/)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-konvensyen-penamaan-nod-peranti-moden-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Konvensyen Penamaan Nod Peranti Moden (2026):
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-pemeriksaan-peranti-storan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Pemeriksaan Peranti Storan
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#2-pelekapan-penangguhan-storan-manual-mount-umount-findmnt" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. Pelekapan &amp; Penangguhan Storan Manual (mount, umount, findmnt)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="2. Pelekapan &amp; Penangguhan Storan Manual (mount, umount, findmnt)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-melakukan-pelekapan-sistem-fail" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Melakukan Pelekapan Sistem Fail
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-penangguhan-media-luaran-mengeluarkan-disk-umount-eject" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Penangguhan Media Luaran &amp; Mengeluarkan Disk (umount, eject)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-konfigurasi-pelekapan-automatik-kekal-etcfstab" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Konfigurasi Pelekapan Automatik Kekal (/etc/fstab)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="3. Konfigurasi Pelekapan Automatik Kekal (/etc/fstab)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-dapatkan-uuid-partisi" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Dapatkan UUID Partisi
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-menambah-entri-dalam-etcfstab-dengan-opsi-keselamatan-jdnmampu" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Menambah Entri Dalam /etc/fstab dengan Opsi Keselamatan JDN/MAMPU
       
     </span>
   </a>
@@ -1448,10 +1549,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#c-menguji-konfigurasi-etcfstab" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        C. menguji Konfigurasi /etc/fstab
       
     </span>
   </a>
@@ -1461,6 +1562,11 @@
       </ul>
     </nav>
   
+</li>
+
+      </ul>
+    </nav>
+
 </li>
       
         <li class="md-nav__item">
@@ -1524,58 +1630,104 @@
 
 
 
-<h1 id="troubleshooting-peranti-luaran-pencetak">Troubleshooting Peranti Luaran &amp; Pencetak<a class="headerlink" href="#troubleshooting-peranti-luaran-pencetak" title="Permanent link">&para;</a></h1>
+<h1 id="konfigurasi-pelekapan-storan-peranti-luaran-pengoperasian-media">Konfigurasi Pelekapan Storan, Peranti Luaran &amp; Pengoperasian Media<a class="headerlink" href="#konfigurasi-pelekapan-storan-peranti-luaran-pengoperasian-media" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Konfigurasi pencetak CUPS, pengimbas SANE, dan penyelesaian masalah peranti USB/Thunderbolt.</p>
+<p>Di akhir modul amali ini, pelatih dapat:
+1. Memahami penamaan nod peranti moden dalam Linux (<code>/dev/nvmeXn1</code>, <code>/dev/sdX</code>, <code>/dev/sr0</code>, USB) berpandukan piawaian Filesystem Hierarchy Standard (FHS).
+2. Melaksanakan pelekapan (<em>mounting</em>) dan penangguhan (<em>unmounting</em>) sistem fail secara manual menggunakan <code>mount</code>, <code>umount</code>, dan <code>findmnt</code>.
+3. Mengkonfigurasi entri pelekapan kekal automatik dalam <code>/etc/fstab</code> menggunakan UUID (<em>Universally Unique Identifier</em>).
+4. Menerapkan pilihan pengerasan keselamatan storan (<code>nodev,nosuid,noexec</code>) mengikut Pekeliling Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU06</strong>.</p>
+Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; System Maintenance) - WA04: Configure and Troubleshoot Peripheral Connections</strong>. Edaran Linux rujukan merangkumi <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
+<h3 id="1-pengecaman-peranti-storan-struktur-nod-dev">1. Pengecaman Peranti Storan &amp; Struktur Nod (<code>/dev/</code>)<a class="headerlink" href="#1-pengecaman-peranti-storan-struktur-nod-dev" title="Permanent link">&para;</a></h3>
+<h4 id="a-konvensyen-penamaan-nod-peranti-moden-2026">A. Konvensyen Penamaan Nod Peranti Moden (2026):<a class="headerlink" href="#a-konvensyen-penamaan-nod-peranti-moden-2026" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
+<li><strong>NVMe SSD</strong>: <code>/dev/nvme0n1</code> (Pemacu 1), <code>/dev/nvme0n1p1</code> (Partisi 1).</li>
+<li><strong>SATA / USB Storage</strong>: <code>/dev/sda</code> (Pemacu A), <code>/dev/sdb1</code> (Partisi 1 Pemacu B).</li>
+<li><strong>Pemacu Optik (CD/DVD)</strong>: <code>/dev/sr0</code> (pautan simbolik <code>/dev/cdrom</code>).</li>
+<li><strong>Media Luaran</strong>: Terlekap di bawah <code>/media/$USER/</code> atau <code>/mnt/</code>.</li>
 </ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<h4 id="b-pemeriksaan-peranti-storan">B. Pemeriksaan Peranti Storan<a class="headerlink" href="#b-pemeriksaan-peranti-storan" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Menyenaraikan semua blok peranti beserta UUID dan sistem fail</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>lsblk<span class="w"> </span>-f
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Menganalisis UUID khusus bagi partisi storan luaran /dev/sdb1</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>blkid<span class="w"> </span>/dev/sdb1
+</span></code></pre></div>
+<hr />
+<h3 id="2-pelekapan-penangguhan-storan-manual-mount-umount-findmnt">2. Pelekapan &amp; Penangguhan Storan Manual (<code>mount</code>, <code>umount</code>, <code>findmnt</code>)<a class="headerlink" href="#2-pelekapan-penangguhan-storan-manual-mount-umount-findmnt" title="Permanent link">&para;</a></h3>
+<h4 id="a-melakukan-pelekapan-sistem-fail">A. Melakukan Pelekapan Sistem Fail<a class="headerlink" href="#a-melakukan-pelekapan-sistem-fail" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Cipta titik pelekap (mount point) di bawah /mnt</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/usb_flash
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Pelekap sistem fail vfat / exfat / ext4</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>ext4<span class="w"> </span>/dev/sdb1<span class="w"> </span>/mnt/usb_flash
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Verifikasi status pelekapan dan hierarki</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>findmnt<span class="w"> </span>/mnt/usb_flash
+</span></code></pre></div>
+<h4 id="b-penangguhan-media-luaran-mengeluarkan-disk-umount-eject">B. Penangguhan Media Luaran &amp; Mengeluarkan Disk (<code>umount</code>, <code>eject</code>)<a class="headerlink" href="#b-penangguhan-media-luaran-mengeluarkan-disk-umount-eject" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Memastikan tiada proses sedang menggunakan direktori sebelum umount</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/usb_flash
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Jika direktori &#39;busy&#39;, kesan proses yang halang umount menggunakan lsof/fuser:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>lsof<span class="w"> </span>+D<span class="w"> </span>/mnt/usb_flash
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Mengeluarkan pemacu optik CD/DVD atau pen drive</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>eject<span class="w"> </span>/dev/sr0
+</span></code></pre></div>
+<hr />
+<h3 id="3-konfigurasi-pelekapan-automatik-kekal-etcfstab">3. Konfigurasi Pelekapan Automatik Kekal (<code>/etc/fstab</code>)<a class="headerlink" href="#3-konfigurasi-pelekapan-automatik-kekal-etcfstab" title="Permanent link">&para;</a></h3>
+<p>Fail <code>/etc/fstab</code> (<em>File System Table</em>) mengawal pelekapan partition semasa proses but sistem.</p>
+<h4 id="a-dapatkan-uuid-partisi">A. Dapatkan UUID Partisi<a class="headerlink" href="#a-dapatkan-uuid-partisi" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>blkid<span class="w"> </span>/dev/nvme0n1p3
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Contoh UUID: 550e8400-e29b-41d4-a716-446655440000</span>
+</span></code></pre></div>
+<h4 id="b-menambah-entri-dalam-etcfstab-dengan-opsi-keselamatan-jdnmampu">B. Menambah Entri Dalam <code>/etc/fstab</code> dengan Opsi Keselamatan JDN/MAMPU<a class="headerlink" href="#b-menambah-entri-dalam-etcfstab-dengan-opsi-keselamatan-jdnmampu" title="Permanent link">&para;</a></h4>
+<p>Pengerasan keselamatan mewajibkan tetapan <code>nodev,nosuid,noexec</code> pada media luaran atau partition muat naik data bagi menghalang pelaksanaan binari berbahaya:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Edit /etc/fstab</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># &lt;file system&gt;                           &lt;mount point&gt;     &lt;type&gt;  &lt;options&gt;                   &lt;dump&gt;  &lt;pass&gt;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">UUID</span><span class="o">=</span><span class="s">550e8400-e29b-41d4-a716-446655440000 /mnt/sec_storage   ext4    defaults,nodev,nosuid,noexec  0       2</span>
+</span></code></pre></div>
+<h4 id="c-menguji-konfigurasi-etcfstab">C. menguji Konfigurasi <code>/etc/fstab</code><a class="headerlink" href="#c-menguji-konfigurasi-etcfstab" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Uji entri fstab baharu tanpa mereboot sistem (ELAKKAN ralat but!)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-a
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Sahkan titik pelekapan baharu aktif</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>findmnt<span class="w"> </span>/mnt/sec_storage
 </span></code></pre></div>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya mengenal pasti nod peranti NVMe, SATA, dan USB menggunakan <code>lsblk</code> &amp; <code>blkid</code>.</li>
+<li>[ ] Berjaya melekap dan menangguhkan peranti storan menggunakan <code>mount</code> dan <code>umount</code>.</li>
+<li>[ ] Berjaya mengkonfigurasi entri automatik kekal dalam <code>/etc/fstab</code> menggunakan UUID.</li>
+<li>[ ] Berjaya menerapkan opsi pengerasan keselamatan <code>nodev,nosuid,noexec</code> mengikut standard JDN/MAMPU.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Troubleshooting Peranti Luaran &amp; Pencetak dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Troubleshooting Peranti Luaran &amp; Pencetak menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Mengapakah penggunaan UUID lebih selamat berbanding nama nod peranti /dev/sdb1 di dalam fail /etc/fstab?"</em></li>
+<li><em>"Apakah langkah penyelesaian masalah jika sistem gagal but (enter emergency mode) disebabkan ralat sintaks pada /etc/fstab?"</em></li>
+<li><em>"Bagaimanakah cara melekap imej fail ISO secara loop device menggunakan arahan mount -o loop?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://ubuntu.com/server/docs">Ubuntu Storage &amp; FHS Management Guide</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.mount.html">Systemd Mount Units &amp; fstab Documentation</a></li>
+<li><a href="https://wiki.archlinux.org/title/fstab">Arch Linux fstab &amp; UUID Reference</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Linux Filesystem Essentials</strong> oleh Practical Linux Series.</li>
+<li><strong>System Modernization and Storage Management in Linux</strong> oleh W. John.</li>
+<li><strong>Pentadbiran Storan &amp; Sistem Fail Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
