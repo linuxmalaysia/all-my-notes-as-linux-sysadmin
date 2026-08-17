@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
-timestamp: "2026-08-17T00:00:00Z"
+timestamp: "2026-08-16T00:00:00Z"
 topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2"]
 tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2"]
 description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan prosedur pemasangan NOSS Level 3."
@@ -23,6 +23,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ## Silibus Utama
 
 ### 1. Sejarah & Asal-Usul Linux
+
 - Linus Torvalds, Universiti Helsinki, 1991: Dari hobi kepada infrastruktur global
 - Projek GNU & Richard Stallman: Falsafah 4 Kebebasan Perisian
 - Evolusi isirung: Linux 0.01 (1991) → Linux 6.14 LTS (2026, ~38 juta baris kod)
@@ -31,6 +32,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/pengenalan-linux-dan-sejarah.md](../manual/cu01/pengenalan-linux-dan-sejarah.md)
 
 ### 2. Falsafah & Lesen GNU GPL
+
 - Perbezaan antara "perisian bebas" dan "sumber terbuka"
 - GNU GPL v2 (isirung Linux), MIT, Apache, CC BY-SA
 - Hak pengguna di bawah perisian terbuka
@@ -39,7 +41,8 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/hakcipta-dan-pelesenan.md](../manual/cu01/hakcipta-dan-pelesenan.md)
 
 ### 3. Ekosistem Distribusi Linux 2026 (Piawaian Kanonik)
-- **Ubuntu 26.04 LTS "Quetzal"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
+
+- **Ubuntu 26.04 LTS "Resolute Raccoon"**: Rujukan utama desktop, latihan, dan awan (Isirung 6.14 LTS, GNOME 48)
 - **AlmaLinux 10 "Purple Lion"**: Rujukan pelayan & desktop perusahaan (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035)
 - **Fedora 43**: Rujukan teknologi terkini (bleeding-edge workstation)
 - **Distribusi Khusus**: Kali Linux (keselamatan), Alpine Linux (kontena), Raspberry Pi OS (IoT)
@@ -47,6 +50,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/pecahan-linux-terkini.md](../manual/cu01/pecahan-linux-terkini.md)
 
 ### 4. Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI
+
 - Spesifikasi minimum & disyorkan (x86_64, ARM64)
 - Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
 - Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
@@ -54,12 +58,14 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/keperluan-perkakasan-dan-bios-uefi.md](../manual/cu01/keperluan-perkakasan-dan-bios-uefi.md)
 
 ### 5. Prosedur Pemasangan Sistem Operasi & Storan LVM
+
 - Langkah demi langkah pemasangan Ubuntu 26.04 LTS, AlmaLinux 10, dan Fedora 43
 - Skema pembahagian storan LVM (`/boot/efi`, `/`, `/var`, `/home`, `swap`)
 
 **📖 Baca Lanjut:** [manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md](../manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md)
 
 ### 6. Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 & MAMPU)
+
 - Konfigurasi LUKS2 FDE dengan algoritma AES-256-XTS
 - Pengurusan berbilang slot kunci (*multi-user key slots*) untuk pengguna dan pentadbir IT
 - Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) & Pekeliling MAMPU/JDN
@@ -67,6 +73,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/penyulitan-cakera-luks2-pejabat.md](../manual/cu01/penyulitan-cakera-luks2-pejabat.md)
 
 ### 7. Pemasangan Aplikasi & Pemacu Peranti Linux (CU01-WA05)
+
 - Pengurusan pakej asli (`apt` pada Ubuntu, `dnf5` pada AlmaLinux/Fedora)
 - Pakej berasaskan kontena universal (`Flatpak`, `Snap`)
 - Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti
@@ -74,6 +81,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
 
 ### 8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)
+
 - Pengurusan sambungan berwayar dan Wi-Fi menggunakan NetworkManager (`nmcli`) dan `iproute2`
 - Penetapan Alamat IP Statik, DHCP, dan pelayan DNS
 - Pengerasan keselamatan profil sambungan dan resolusi nama DNS
@@ -81,12 +89,14 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md](../manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md)
 
 ### 9. Tugasan Pasca-Pemasangan & Hardening
+
 - Kemaskini repositori dan pengurusan pakej (`apt`, `dnf`)
 - Pengurusan pengguna, kumpulan `sudo`/`wheel`, serta penegasan keselamatan firewall (`ufw`, `firewalld`, SSH)
 
 **📖 Baca Lanjut:** [manual/cu01/pasca-pemasangan-dan-driver.md](../manual/cu01/pasca-pemasangan-dan-driver.md)
 
 ### 10. Soal Jawab (FAQ) & Direktori Perisian Alternatif
+
 - Soalan lazim pengguna baharu Linux
 - Padanan aplikasi Windows ke Linux (CAD, Pelayar Web, RDBMS)
 
@@ -145,5 +155,5 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
 4. *Just for Fun: The Story of an Accidental Revolutionary* oleh Linus Torvalds & David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

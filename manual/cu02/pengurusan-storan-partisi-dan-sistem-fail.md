@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: knowledge-node
 title: "CU02: Pengurusan Storan, Partisi GPT, LVM2 & Sistem Fail Linux"
-timestamp: "2026-08-17T00:00:00Z"
+timestamp: "2026-08-16T00:00:00Z"
 topics: ["noss-linux", "cu02", "storan", "lvm2", "gpt", "sistem-fail"]
 tags: ["cu02", "linux", "noss", "partisi", "gdisk", "parted", "lvm", "ext4", "xfs", "btrfs"]
 description: "Panduan amali komprehesif bagi pengurusan storan fizikal dan logikal, jadual partisi GPT, LVM2 (PV/VG/LV), sistem fail EXT4/XFS/Btrfs, /etc/fstab, dan penyulitan LUKS2 mengikut NOSS CU02."
@@ -12,9 +12,11 @@ resource: "file:///manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md"
 # CU02: Pengurusan Storan, Partisi GPT, LVM2 & Sistem Fail Linux
 
 ## 🎯 Objektif Pembelajaran
+
 Menguasai prosedur amali pengurusan storan fizikal dan logikal pada Linux mengikut piawaian **NOSS Tahap 3 (CU02)**.
 
 Setelah menyempurnakan modul amali ini, pelajar akan dapat:
+
 1. Menganalisis dan mengecam peranti storan blok menggunakan alatan `lsblk`, `blkid`, dan `fdisk -l`.
 2. Menjana jadual partisi **GPT (GUID Partition Table)** menggunakan `gdisk` dan `parted` (menggantikan MBR/fdisk lama).
 3. Menguruskan Pengurusan Volum Logikal **LVM2** (*Physical Volumes*, *Volume Groups*, *Logical Volumes*) serta peluasan volum secara dalam talian (*online volume expansion*).
@@ -26,6 +28,7 @@ Setelah menyempurnakan modul amali ini, pelajar akan dapat:
 ## 🛠️ Garis Panduan Amali & Prosedur Kerja
 
 ### 1. Pemerhatian & Analisis Cakera Storan Blok
+
 Gunakan arahan berikut untuk memeriksa peranti blok yang disambungkan pada sistem:
 
 ```bash
@@ -42,9 +45,19 @@ df -hT
 ---
 
 ### 2. Pembahagian Partisi GPT (GUID Partition Table)
+
 Modenkan sistem storan daripada MBR (had 2TB, maksimum 4 partisi utama) kepada **GPT** (menyokong sehingga 9.4 ZB dan 128 partisi):
 
+> [!WARNING]
+> **AMARAN OPERASI MEMUSNAHKAN DATA (DESTRUCTIVE OPERATION WARNING):**
+> Arahan pemartisian (`parted mklabel`, `gdisk`) dan format sistem fail memadamkan semua data pada peranti sasaran secara kekal. Lakukan semakan pra-syarat (*preflight checks*) wajib:
+> 1. Sahkan nama peranti sasaran secara teliti menggunakan `lsblk` (contoh: `/dev/sdb`, BUKAN `/dev/sda`).
+> 2. Pastikan semua partisi sasaran telah dinyahlekap (`sudo umount /dev/sdb*`).
+> 3. Semak tandatangan peranti menggunakan `sudo wipefs /dev/sdb`.
+> 4. Pastikan salinan duaan (backup) data penting telah dibuat.
+
 #### A. Menggunakan `gdisk` (CLI Interaktif untuk GPT)
+
 ```bash
 # Buka peranti cakera baharu (contoh: /dev/sdb atau /dev/nvme1n1)
 sudo gdisk /dev/sdb
@@ -59,6 +72,7 @@ sudo gdisk /dev/sdb
 ```
 
 #### B. Menggunakan `parted` (Mod Skrip / Non-Interactive)
+
 ```bash
 # 1. Cipta label jadual partisi GPT baharu pada cakera
 sudo parted /dev/sdb mklabel gpt
@@ -85,12 +99,14 @@ LVM2 membolehkan pengurusan storan fleksibel yang boleh digabung, dibesarkan, at
 ```
 
 #### Step 1: Cipta Physical Volumes (PV)
+
 ```bash
 sudo pvcreate /dev/sdb1 /dev/sdc1
 sudo pvs
 ```
 
 #### Step 2: Cipta Volume Group (VG)
+
 ```bash
 # Cipta Volume Group dinamakan 'vg_data' menggabungkan kedua-dua PV
 sudo vgcreate vg_data /dev/sdb1 /dev/sdc1
@@ -98,6 +114,7 @@ sudo vgs
 ```
 
 #### Step 3: Cipta Logical Volume (LV) & Luaskan Secara Dinamik
+
 ```bash
 # 1. Cipta Logical Volume bernilai 15GB dinamakan 'lv_storan'
 sudo lvcreate -L 15G -n lv_storan vg_data
@@ -112,6 +129,7 @@ sudo lvextend -L +10G /dev/vg_data/lv_storan
 ### 4. Format Sistem Fail (EXT4, XFS, Btrfs) & Pemasangan Kekal (`/etc/fstab`)
 
 #### A. Format Sistem Fail
+
 ```bash
 # Format EXT4 (Sesuai untuk Linux am/desktop)
 sudo mkfs.ext4 -L "DATA_EXT4" /dev/vg_data/lv_storan
@@ -124,20 +142,22 @@ sudo mkfs.btrfs -f -L "DATA_BTRFS" /dev/sdc2
 ```
 
 #### B. Konfigurasi Pemasangan Kekal (`/etc/fstab`)
+
 Setiap lekap storan kekal **MESTI** menggunakan `UUID` untuk mengelakkan ralat nama peranti yang berubah semasa but.
 
 ```bash
-# 1. Dapatkan UUID peranti
-sudo blkid /dev/vg_data/lv_storan
-# Contoh Output: UUID="a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+# 1. Dapatkan UUID peranti sebenar menggunakan blkid
+UUID=$(sudo blkid -s UUID -o value /dev/vg_data/lv_storan)
 
 # 2. Cipta direktori titik lekap (mount point)
 sudo mkdir -p /mnt/storan_pejabat
 
-# 3. Tambahkan rekod ke /etc/fstab
-echo 'UUID=a1b2c3d4-e5f6-7890-abcd-ef1234567890 /mnt/storan_pejabat ext4 defaults,nofail 0 2' | sudo tee -a /etc/fstab
+# 3. Semak jika entri telah wujud; jika belum, tambahkan ke /etc/fstab secara kalis ralat
+if ! grep -q "$UUID" /etc/fstab; then
+  echo "UUID=$UUID /mnt/storan_pejabat ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
+fi
 
-# 4. Uji pemasangan fstab tanpa but semula
+# 4. Uji dan sahkan pemasangan fstab tanpa but semula
 sudo mount -a
 df -h /mnt/storan_pejabat
 ```
@@ -146,22 +166,43 @@ df -h /mnt/storan_pejabat
 
 ### 5. Penyulitan Storan Blok LUKS2 (Standard JDN / MAMPU & ISO 27001)
 
-Untuk persekitaran pejabat/perusahaan yang mengendalikan data sensitif:
+Untuk persekitaran pejabat/perusahaan yang mengendalikan data sensitif, gunakan Logical Volume berasingan (contoh: `/dev/vg_data/lv_terkunci`):
 
 ```bash
-# 1. Format pemacu/volum dengan LUKS2
-sudo cryptsetup luksFormat --type luks2 /dev/vg_data/lv_storan
+# 1. Cipta Logical Volume berasingan khas untuk penyulitan
+sudo lvcreate -L 10G -n lv_terkunci vg_data
 
-# 2. Buka pemacu tersulit dan cipta pemetaan peranti (device mapper)
-sudo cryptsetup open /dev/vg_data/lv_storan storan_terkunci
+# 2. Format volum dengan penyulitan LUKS2
+sudo cryptsetup luksFormat --type luks2 /dev/vg_data/lv_terkunci
 
-# 3. Format peranti tersulit yang dibuka (/dev/mapper/storan_terkunci)
+# 3. Buka pemacu tersulit dan cipta pemetaan peranti (device mapper)
+sudo cryptsetup open /dev/vg_data/lv_terkunci storan_terkunci
+
+# 4. Format peranti tersulit yang dibuka (/dev/mapper/storan_terkunci)
 sudo mkfs.ext4 /dev/mapper/storan_terkunci
+
+# 5. Cipta titik lekap dan daftarkan dalam /etc/crypttab serta /etc/fstab
+sudo mkdir -p /mnt/storan_tersulit
+UUID_LUKS=$(sudo blkid -s UUID -o value /dev/vg_data/lv_terkunci)
+
+if ! grep -q "storan_terkunci" /etc/crypttab; then
+  echo "storan_terkunci UUID=$UUID_LUKS none luks,discard" | sudo tee -a /etc/crypttab
+fi
+
+UUID_MAPPER=$(sudo blkid -s UUID -o value /dev/mapper/storan_terkunci)
+if ! grep -q "$UUID_MAPPER" /etc/fstab; then
+  echo "UUID=$UUID_MAPPER /mnt/storan_tersulit ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
+fi
+
+# 6. Uji peranti lekap tersulit
+sudo mount -a
+df -h /mnt/storan_tersulit
 ```
 
 ---
 
 ## 🔒 Pematuhan Keselamatan JDN / MAMPU & ISO/IEC 27001
+
 1. **Penggunaan UUID:** Sentiasa gunakan `UUID` dalam `/etc/fstab` dan elakkan rujukan langsung `/dev/sdX` bagi mengelakkan kegagalan but (*boot failure*).
 2. **Flag `nofail`:** Gunakan parameter `nofail` pada disk tambahan dalam `/etc/fstab` supaya pelayan kekal but walaupun disk luaran tidak disambungkan.
 3. **Penyulitan LUKS2:** Storan luaran (USB HDD/SSD) dan volum LVM2 yang menyimpan fail terperingkat Wajib disulitkan menggunakan LUKS2 dengan frasa laluan sekurang-kurangnya 16 aksara.
@@ -169,6 +210,7 @@ sudo mkfs.ext4 /dev/mapper/storan_terkunci
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
+
 - [ ] Berjaya memeriksa peranti storan menggunakan `lsblk` dan `blkid`.
 - [ ] Berjaya membina jadual partisi GPT menggunakan `gdisk` atau `parted`.
 - [ ] Berjaya membina struktur LVM2 (PV, VG, LV) dan meluaskan saiz LV.
@@ -178,6 +220,7 @@ sudo mkfs.ext4 /dev/mapper/storan_terkunci
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
 1. *"Apakah perbezaan prestasi dan ciri ketahanan (redundancy/snapshots) antara sistem fail EXT4, XFS, dan Btrfs dalam persekitaran pelayan enterprise?"*
 2. *"Tuliskan skrip Bash untuk menyemak tahap kesihatan S.M.A.R.T. cakera keras dan menghantar amaran jika terdapat kerosakan sektor fizikal."*
 3. *"Bagaimanakah cara mengkonfigurasi kunci LUKS2 automatik menggunakan TPM2 (Trusted Platform Module) pada Linux?"*
@@ -185,6 +228,7 @@ sudo mkfs.ext4 /dev/mapper/storan_terkunci
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
 - [Dokumentasi LVM2 Linux RedHat/AlmaLinux](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_logical_volumes/index)
 - [Dokumentasi GNU Parted Manual](https://www.gnu.org/software/parted/manual/)
 - [Panduan Btrfs Wiki Documentation](https://btrfs.readthedocs.io/)
@@ -193,10 +237,11 @@ sudo mkfs.ext4 /dev/mapper/storan_terkunci
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **Storage Systems: Organization, Performance, Coding, Reliability, and Statistics** oleh Alexander Thomasian.
 - **UNIX and Linux System Administration Handbook, 5th Edition** oleh Evi Nemeth et al.
 - **Nota Pentadbiran Storan & Pelayan Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

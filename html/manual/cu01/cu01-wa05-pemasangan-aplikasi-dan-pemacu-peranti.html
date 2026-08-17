@@ -1515,15 +1515,15 @@
 </li>
 
           <li class="md-nav__item">
-  <a href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-perkakasan" class="md-nav__link">
+  <a href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" class="md-nav__link">
     <span class="md-ellipsis">
 
-        3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Perkakasan)
+        3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)
 
     </span>
   </a>
 
-    <nav class="md-nav" aria-label="3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Perkakasan)">
+    <nav class="md-nav" aria-label="3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)">
       <ul class="md-nav__list">
 
           <li class="md-nav__item">
@@ -1549,10 +1549,21 @@
 </li>
 
           <li class="md-nav__item">
-  <a href="#c-pemasangan-pemacu-nvidia-pada-almalinux-10-fedora-43" class="md-nav__link">
+  <a href="#c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion" class="md-nav__link">
     <span class="md-ellipsis">
 
-        C. Pemasangan Pemacu NVIDIA pada AlmaLinux 10 / Fedora 43
+        C. Pemasangan Pemacu NVIDIA pada Fedora 43 &amp; AlmaLinux 10 (RPM Fusion)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        D. Pengesanan &amp; Konfigurasi Pemacu AMD Radeon &amp; Kad Rangkaian Tanpa Wayar
 
     </span>
   </a>
@@ -1644,16 +1655,18 @@
 <h1 id="cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux">CU01-WA05: Pemasangan Aplikasi &amp; Pemacu Peranti Linux<a class="headerlink" href="#cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
 <p>Menguasai prosedur amali pengurusan aplikasi, pakej perisian, serta pemasangan dan konfigurasi pemacu peranti (<em>device drivers</em>) pada sistem operasi Linux desktop mengikut piawaian <strong>NOSS Tahap 3 (CU01-WA05)</strong>.</p>
-<p>Setelah menyempurnakan modul ini, pelajar akan dapat:
-1. Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (<strong>APT</strong> pada Ubuntu 26.04 LTS, <strong>DNF5</strong> pada AlmaLinux 10 dan Fedora 43).
-2. Memasang dan menguruskan aplikasi berasaskan kontena universal (<strong>Flatpak</strong> dan <strong>Snap</strong>).
-3. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari (terutamanya GPU NVIDIA dan AMD Radeon) serta kad peranti rangkaian tanpa wayar.
-4. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (<em>GPG key verification</em>).</p>
+<p>Setelah menyempurnakan modul ini, pelajar akan dapat:</p>
+<ol>
+<li>Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (<strong>APT</strong> pada Ubuntu 26.04 LTS, <strong>DNF5</strong> pada AlmaLinux 10 dan Fedora 43).</li>
+<li>Memasang dan menguruskan aplikasi berasaskan kontena universal (<strong>Flatpak</strong> dan <strong>Snap</strong>).</li>
+<li>Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).</li>
+<li>Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (<em>GPG key verification</em>).</li>
+</ol>
 <hr />
 <h2 id="garis-panduan-amali-prosedur-kerja">🛠️ Garis Panduan Amali &amp; Prosedur Kerja<a class="headerlink" href="#garis-panduan-amali-prosedur-kerja" title="Permanent link">&para;</a></h2>
 <h3 id="1-pengurusan-pakej-asli-apt-dnf5">1. Pengurusan Pakej Asli (APT &amp; DNF5)<a class="headerlink" href="#1-pengurusan-pakej-asli-apt-dnf5" title="Permanent link">&para;</a></h3>
 <h4 id="a-debianubuntu-apt-advanced-package-tool">A. Debian/Ubuntu (APT - Advanced Package Tool)<a class="headerlink" href="#a-debianubuntu-apt-advanced-package-tool" title="Permanent link">&para;</a></h4>
-<p>Pada <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, pengurusan pakej dilakukan menggunakan arahan <code>apt</code>:</p>
+<p>Pada <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>, pengurusan pakej dilakukan menggunakan arahan <code>apt</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Kemas kini indeks repositori dan senaraikan pakej yang boleh dinaik taraf</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -1670,15 +1683,15 @@
 </span></code></pre></div>
 <h4 id="b-red-hatalmalinuxfedora-dnf5-dnf">B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)<a class="headerlink" href="#b-red-hatalmalinuxfedora-dnf5-dnf" title="Permanent link">&para;</a></h4>
 <p>Pada <strong>AlmaLinux 10 "Purple Lion"</strong> dan <strong>Fedora 43</strong>, pengurus pakej generasi baharu <strong>DNF5</strong> digunakan:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Kemas kini indeks pakej dan sistem</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>check-update
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Semak kemas kini pakej dan naik taraf sistem</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>check-upgrade<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2. Pasang aplikasi dan kumpulan perisian (Package Groups)</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>htop<span class="w"> </span>wget
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 3. Pengurusan repositori EPEL (Extra Packages for Enterprise Linux) pada AlmaLinux 10</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 3. Pengurusan repositori EPEL pada AlmaLinux 10</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>config-manager<span class="w"> </span>--enable<span class="w"> </span>epel
 </span></code></pre></div>
@@ -1703,16 +1716,17 @@
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>chromium
 </span></code></pre></div>
 <hr />
-<h3 id="3-pengesanan-pemasangan-pemacu-peranti-gpu-perkakasan">3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Perkakasan)<a class="headerlink" href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-perkakasan" title="Permanent link">&para;</a></h3>
+<h3 id="3-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar">3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)<a class="headerlink" href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h3>
 <h4 id="a-pengesanan-perkakasan-peranti">A. Pengesanan Perkakasan Peranti<a class="headerlink" href="#a-pengesanan-perkakasan-peranti" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>vga
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Senaraikan peranti USB</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>lsusb
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>nvidia
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>network
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Senaraikan peranti USB</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>lsusb
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;nvidia|amdgpu|iwlwifi&#39;</span>
 </span></code></pre></div>
 <h4 id="b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts">B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS<a class="headerlink" href="#b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Kesan pemacu yang disyorkan oleh peranti</span>
@@ -1724,18 +1738,33 @@
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 3. Sahkan pemacu NVIDIA berfungsi selepas but semula</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>nvidia-smi
 </span></code></pre></div>
-<h4 id="c-pemasangan-pemacu-nvidia-pada-almalinux-10-fedora-43">C. Pemasangan Pemacu NVIDIA pada AlmaLinux 10 / Fedora 43<a class="headerlink" href="#c-pemasangan-pemacu-nvidia-pada-almalinux-10-fedora-43" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. Tambah repositori RPM Fusion Non-Free</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm
+<h4 id="c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion">C. Pemasangan Pemacu NVIDIA pada Fedora 43 &amp; AlmaLinux 10 (RPM Fusion)<a class="headerlink" href="#c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Untuk Fedora 43:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 2. Pasang pemacu kmod-nvidia</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Untuk AlmaLinux 10:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Pasang pemacu akmod-nvidia:</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
+</span></code></pre></div>
+<h4 id="d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar">D. Pengesanan &amp; Konfigurasi Pemacu AMD Radeon &amp; Kad Rangkaian Tanpa Wayar<a class="headerlink" href="#d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mesa-vulkan-drivers<span class="w"> </span>mesa-utils<span class="w">   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;OpenGL vendor&quot;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>linux-firmware<span class="w">                   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora</span>
 </span></code></pre></div>
 <hr />
 <h2 id="pematuhan-keselamatan-jdn-mampu-isoiec-27001">🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001<a class="headerlink" href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Verifikasi Kunci GPG:</strong> Sentiasa pastikan pengesahan kunci cryptographic GPG diaktifkan pada repositori (<code>gpgcheck=1</code> dalam DNF / APT) untuk mengelakkan serangan man-in-the-middle atau suntikan pakej palsu.</li>
+<li><strong>Verifikasi Kunci GPG APT:</strong> Bagi repositori pihak ketiga pada sistem Debian/Ubuntu, gunakan fail kunci tersimpan di <code>/etc/apt/keyrings/</code> dengan opsyen <code>[signed-by=/etc/apt/keyrings/...]</code> dalam fail <code>.list</code> repositori.</li>
+<li><strong>Pengesahan Kunci DNF:</strong> Tetapkan <code>gpgcheck=1</code> pada semua repositori DNF untuk mengelakkan suntikan pakej yang tidak disahkan.</li>
 <li><strong>Pakej Berdaftar Sahaja:</strong> HANYA pasang perisian daripada repositori rasmi atau Flathub berverifikasi di komputer pejabat sektor awam.</li>
 <li><strong>Audit Pemasangan:</strong> Simpan log pemasangan di <code>/var/log/dpkg.log</code> atau <code>/var/log/dnf.log</code> sebagai sebahagian daripada audit keselamatan ISO 27001.</li>
 </ol>
@@ -1744,8 +1773,8 @@
 <ul>
 <li>[ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.</li>
 <li>[ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.</li>
-<li>[ ] Berjaya mengenal pasti cip grafik menggunakan <code>lspci</code> dan memasang pemacu GPU rasmi.</li>
-<li>[ ] Mengesahkan modul pemacu dimuatkan ke dalam isirung Linux (<code>lsmod</code> / <code>nvidia-smi</code>).</li>
+<li>[ ] Berjaya mengenal pasti cip grafik dan kad Wi-Fi menggunakan <code>lspci</code> serta memasang pemacu peranti berkaitan.</li>
+<li>[ ] Mengesahkan modul pemacu dimuatkan ke dalam isirung Linux (<code>lsmod</code> / <code>nvidia-smi</code> / <code>glxinfo</code>).</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
@@ -1770,7 +1799,7 @@
 <li><strong>Nota Pentadbiran Sistem Linux Malaysia</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
+<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

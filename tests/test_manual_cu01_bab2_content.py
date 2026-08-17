@@ -159,7 +159,7 @@ def test_openwiki_topic01_links_to_new_nodes(expected_link):
 
 def test_openwiki_topic01_has_numbered_sections():
     content = read(OPENWIKI_TOPIC_01)
-    for n in range(1, 9):
+    for n in range(1, 11):
         assert re.search(rf"^### {n}\. ", content, re.MULTILINE), (
             f"Expected numbered section heading '### {n}. ...' in syllabus."
         )

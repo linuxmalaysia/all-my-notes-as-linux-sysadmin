@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026"
-timestamp: "2026-08-17T00:00:00Z"
+timestamp: "2026-08-16T00:00:00Z"
 topics: ["storage", "virtualisation", "cu02", "gpt", "lvm2", "ext4", "xfs", "btrfs", "kvm"]
 tags: ["linux", "storage", "virtualisation", "cu02", "partisi", "gdisk", "lvm", "luks2"]
 description: "Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs, LUKS2) dan pengmayaan (KVM/QEMU/libvirt) Linux dipetakan kepada NOSS CU02."
@@ -23,6 +23,7 @@ Topik ini merangkumi pengurusan ruang storan fizikal dan logikal (*disk manageme
 ## Silibus Utama
 
 ### 1. Pengurusan Storan Fizikal & Jadual Partisi GPT
+
 - Pemerhatian peranti blok: `lsblk`, `blkid`, `df -hT`
 - Perbandingan MBR (Legacy) vs **GPT (GUID Partition Table)** moden
 - Pembahagian partisi GPT menggunakan `gdisk` (interaktif) dan `parted` (skrip)
@@ -30,6 +31,7 @@ Topik ini merangkumi pengurusan ruang storan fizikal dan logikal (*disk manageme
 **📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
 
 ### 2. Pengurusan Volum Logikal LVM2 (Logical Volume Management)
+
 - Hierarki LVM2: *Physical Volume* (PV) ➔ *Volume Group* (VG) ➔ *Logical Volume* (LV)
 - Arahan pembinaan: `pvcreate`, `vgcreate`, `lvcreate`
 - Peluasan volum secara dalam talian (*online volume expansion*): `lvextend` dan `resize2fs` / `xfs_growfs`
@@ -37,6 +39,7 @@ Topik ini merangkumi pengurusan ruang storan fizikal dan logikal (*disk manageme
 **📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
 
 ### 3. Sistem Fail Moden (EXT4, XFS, Btrfs) & Pautan Kekal `/etc/fstab`
+
 - Perbandingan prestasi dan kegunaan EXT4 (Desktop/Linux am), XFS (Enterprise Pelayan AlmaLinux 10), dan Btrfs (Snapshot/Fedora 43)
 - Arahan format: `mkfs.ext4`, `mkfs.xfs`, `mkfs.btrfs`
 - Konfigurasi lekap kekal di `/etc/fstab` menggunakan `UUID` dan parameter `nofail`
@@ -44,14 +47,16 @@ Topik ini merangkumi pengurusan ruang storan fizikal dan logikal (*disk manageme
 **📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
 
 ### 4. Penyulitan Storan Blok LUKS2 Pejabat
+
 - Konfigurasi LUKS2 (`cryptsetup luksFormat --type luks2`)
 - Pembukaan dan pemetaan volum tersulit di `/dev/mapper/`
 - Pematuhan piawaian ISO/IEC 27001 & Pekeliling Am Jabatan Digital Negara (JDN) / MAMPU
 
 **📖 Baca Lanjut:** [manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md](../manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md)
 
-### 5. Infrastruktur Pemayaan (Virtualisation & KVM Hypervisor)
-- Konsep Hipervisor Jenis-2 & KVM (*Kernel-based Virtual Machine*)
+### 5. Infrastruktur Pemayaan (KVM Type-1 Hypervisor & Type-2 Desktop Products)
+
+- Konsep **KVM (Kernel-based Virtual Machine)** sebagai **Hipervisor Jenis-1 (Type-1 / Bare-Metal)** yang terintegrasi secara langsung ke dalam isirung Linux, berbeza daripada produk Type-2 berasaskan OS hos seperti VirtualBox
 - Pengurusan mesin maya tetamu (*Guest VMs*) menggunakan `QEMU`, `libvirt`, `virsh`, dan `virt-manager`
 - Penyediaan rekod konfigurasi pemayaan dan pengasingan rangkaian maya (*virtual networks*)
 
@@ -76,7 +81,7 @@ Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk
 1. > "Bolehkah anda jelaskan perbezaan antara sistem fail EXT4, XFS, dan Btrfs dari segi sokongan saiz maksimum, kecekapan I/O, dan kebolehan salinan snapshot?"
 2. > "Tuliskan skrip Bash untuk membina susunan LVM2 secara automatik berasaskan dua peranti blok baharu, memformatnya ke XFS, dan memasangnya ke /mnt/data dengan tetapan UUID dalam /etc/fstab."
 3. > "Bagaimanakah cara meluaskan saiz Logical Volume (LV) LVM2 dan sistem fail XFS secara dalam talian (online expansion) tanpa perlu menghentikan mesin maya (VM)?"
-4. > "Apakah perbezaan seni bina antara KVM (Kernel-based Virtual Machine) dengan Type-2 Hypervisor seperti VirtualBox dalam persekitaran pelayan perusahaan?"
+4. > "Apakah perbezaan seni bina antara KVM (Kernel-based Virtual Machine) sebagai Type-1 Hypervisor dengan Type-2 Hypervisor seperti VirtualBox dalam persekitaran pelayan perusahaan?"
 
 ---
 
@@ -104,5 +109,5 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
 3. *Mastering KVM Virtualization* oleh Prasad Mukhedkar, Anil Vettattu, Humble Chirammal — Panduan lengkap hipervisor KVM dan libvirt.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
