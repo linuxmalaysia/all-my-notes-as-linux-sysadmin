@@ -44,17 +44,27 @@
 - [x] **Porting Kemahiran AI CU05 (`.agents/skills/`):**
   - Naik taraf `.agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md` ke format `type: skill` penuh.
   - Naik taraf `.agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md` ke format `type: skill` penuh.
+
+---
+
+## 🌟 Milestone Status: Fasa 5 (Migrasi Silibus Bab 5: Konfigurasi Teras Pelayan CU03 & Pemantauan Prestasi CU06) - SELESAI ✅ (Google Jules PR #9 Merged)
+- [x] **Penyempurnaan Modul Amali `manual/cu03/` & `manual/cu06/`:**
+  - Penyempurnaan `manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md` (Pengurusan unit servis `systemd`, `systemctl`, `journalctl`, `timedatectl`/`chrony`, FHS, dan halaman `man`).
+  - Penyempurnaan `manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md` (Pemantauan proses `ps`/`top`/`htop`/`vmstat`/`iostat`, penamatan isyarat SIGTERM/SIGKILL, penalaan keutamaan `nice`/`renice`, dan cgroups v2).
+  - Kemas kini `openwiki/topic-03-linux-server-administration.md` & `openwiki/topic-06-troubleshooting-and-logs.md`.
+- [x] **Porting Kemahiran AI CU03 & CU06 (`.agents/skills/`):**
+  - Naik taraf `.agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md` ke format `type: skill` penuh.
+  - Cipta `.agents/skills/cu06-wa05-optimize-system-performance-and-storage/SKILL.md` ke format `type: skill` penuh.
+  - Naik taraf `.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md` ke format `type: skill` penuh.
 - [x] **Jaminan Kualiti (100% Quality Gate):**
-  - **910 ujian Python pytest lulus** (penambahan `tests/test_manual_cu05_user_security_content.py`).
+  - **917 ujian Python pytest lulus** (penambahan `tests/test_manual_cu03_cu06_process_server_content.py`).
   - **38 ujian Node.js Jest lulus**.
   - Laman web statik `html/` dibina semula dan disegerakkan.
 
 ---
 
 ## 🎯 Roadmap Fasa Seterusnya
-- [ ] **Fasa 5: Transformasi Silibus Bab 5 (Konfigurasi Rangkaian & Servis Pelayan Teras - CU03):**
-  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_05/` ke `manual/cu03/` (Persediaan pelayan, pemasangan OS pelayan AlmaLinux 10/Ubuntu Server, peranan DNS/DHCP/Web/SSH, firewall, dan pemantauan perkhidmatan).
-  - [ ] Porting kemahiran AI CU03 (`cu03-wa01` hingga `cu03-wa06`).
-  - [ ] Kemas kini `openwiki/topic-03-linux-server-administration.md`.
-- [ ] **Fasa 6: Transformasi Silibus Bab 6 (Automasi Skrip Shell & Troubleshooting - CU04 & CU06):**
-  - [ ] Ekstrak dari `references/manual/bab_06/` ke `manual/cu04/` (Sandaran & Pemulihan) dan `manual/cu06/` (Diagnostik & Penyelesaian Masalah).
+- [ ] **Fasa 6: Transformasi Silibus Bab 6 (Automasi Skrip Shell, Sandaran & Troubleshooting - CU04 & CU06):**
+  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_06/` ke `manual/cu04/` (Sandaran `rsync`/`tar`/`restic`, Automasi Cron/Systemd Timers, Pemulihan Data) dan `manual/cu06/` (Diagnostik Anomali, Analisis Log, RCA).
+  - [ ] Porting kemahiran AI CU04 (`cu04-wa01` hingga `cu04-wa05`) dan CU06 (`cu06-wa01` hingga `cu06-wa07`).
+  - [ ] Kemas kini `openwiki/topic-04-automation-and-backup.md` dan `openwiki/topic-06-troubleshooting-and-logs.md`.
