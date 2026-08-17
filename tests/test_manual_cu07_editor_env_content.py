@@ -17,15 +17,49 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
+    """
+    Read a repository file as UTF-8 text.
+    
+    Parameters:
+    	relative_path: Path to the file relative to the repository root.
+    
+    Returns:
+    	str: The file contents.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 
 def extract_frontmatter(content):
+    """
+    Extract the YAML frontmatter content from a document.
+    
+    Parameters:
+    	content (str): Document text beginning with YAML frontmatter delimited by `---` markers.
+    
+    Returns:
+    	str: The text between the opening and closing frontmatter delimiters.
+    
+    Raises:
+    	AssertionError: If the document does not contain frontmatter with the expected delimiters.
+    """
     match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
     assert match, "Expected YAML frontmatter delimited by '---' markers"
     return match.group(1)
 
 def frontmatter_field(content, field):
+    """
+    Retrieve a named field value from YAML frontmatter.
+    
+    Parameters:
+    	content (str): Text containing the frontmatter.
+    	field (str): Name of the frontmatter field to retrieve.
+    
+    Returns:
+    	str: The trimmed value of the specified field.
+    
+    Raises:
+    	AssertionError: If the specified field is not present in the frontmatter.
+    """
     fm = extract_frontmatter(content)
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)
     assert match, f"Frontmatter field '{field}' not found"
