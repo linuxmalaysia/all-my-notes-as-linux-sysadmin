@@ -15,6 +15,15 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
+    """
+    Read a repository file as UTF-8 text, removing any leading byte-order mark.
+    
+    Parameters:
+    	relative_path (str): Path to the file relative to the repository root.
+    
+    Returns:
+    	str: The file contents.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 
