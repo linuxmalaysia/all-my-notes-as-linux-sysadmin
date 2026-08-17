@@ -14,7 +14,16 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _import_script(module_name: str, relative_path: str):
-    """Helper to dynamically import scripts outside python package path."""
+    """
+    Dynamically load a Python script from a repository-relative path.
+    
+    Parameters:
+        module_name (str): Name to assign to the imported module.
+        relative_path (str): Path to the script relative to the repository root.
+    
+    Returns:
+        module: The dynamically imported Python module.
+    """
     script_path = REPO_ROOT / relative_path
     spec = importlib.util.spec_from_file_location(module_name, script_path)
     module = importlib.util.module_from_spec(spec)
