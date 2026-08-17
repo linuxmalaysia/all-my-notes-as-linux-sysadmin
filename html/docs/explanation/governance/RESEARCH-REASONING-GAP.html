@@ -1693,22 +1693,22 @@ DSOM with the Sovereign Markdown Palace addresses the <strong>state persistence<
 </ul>
 <h3 id="example-scenario">Example Scenario<a class="headerlink" href="#example-scenario" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Session Day 1:
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  Human: &quot;Why are we using Macvlan instead of bridge networking?&quot;
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  AI: &quot;Because Elasticsearch nodes needed their own routable IPs for 
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  Human: "Why are we using Macvlan instead of bridge networking?"
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  AI: "Because Elasticsearch nodes needed their own routable IPs for 
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       cluster discovery. Bridge networking caused split-brain under 
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       load. We tested this in Phase 42 and it failed with 3 nodes.&quot;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       load. We tested this in Phase 42 and it failed with 3 nodes."
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Session Day 180 (new AI, same repo):
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Human: &quot;Why are we using Macvlan?&quot;
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  AI: &quot;I don&#39;t know. The config shows Macvlan but there&#39;s no reasoning 
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>       documented. Do you want to reconsider?&quot;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Human: "Why are we using Macvlan?"
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  AI: "I don't know. The config shows Macvlan but there's no reasoning 
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>       documented. Do you want to reconsider?"
 </span></code></pre></div>
 <p>The outcome (Macvlan config) is in Git. The <em>reasoning</em> is gone.</p>
 <hr />
 <hr />
 <h2 id="current-mitigation-hibernation-notes">🔧 Current Mitigation: Hibernation Notes<a class="headerlink" href="#current-mitigation-hibernation-notes" title="Permanent link">&para;</a></h2>
 <p>The existing EOD ritual includes the <strong>Hibernation Notes export prompt</strong>, which asks the AI to dump its full in-session memory before the session ends:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&quot;List every memory you have stored about our progress and our chats of 
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>this project... Cover: reasoning, tradeoffs, what failed and why...&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>"List every memory you have stored about our progress and our chats of 
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>this project... Cover: reasoning, tradeoffs, what failed and why..."
 </span></code></pre></div>
 <p><strong>Limitation:</strong> This relies on the AI's <strong>in-session memory at that moment</strong>. If the session was long, context was refreshed mid-session, or the AI forgot earlier reasoning, the export is incomplete.</p>
 <p>Hibernation Notes mitigate the gap — they do not close it.</p>
@@ -1717,16 +1717,16 @@ DSOM with the Sovereign Markdown Palace addresses the <strong>state persistence<
 <h3 id="the-principle">The Principle<a class="headerlink" href="#the-principle" title="Permanent link">&para;</a></h3>
 <p><strong>Capture reasoning in the moment, not at EOD.</strong> At every significant architectural decision, constraint, or failure, immediately ask the AI to log it:</p>
 <h3 id="the-command">The Command<a class="headerlink" href="#the-command" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&quot;Log this decision to walkthrough.md:
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> Decision: [what] | Alternatives rejected: [what and why] | Reason: [why this]&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>"Log this decision to walkthrough.md:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> Decision: [what] | Alternatives rejected: [what and why] | Reason: [why this]"
 </span></code></pre></div>
 <h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&quot;Log this decision to walkthrough.md:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>"Log this decision to walkthrough.md:
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> Decision: Macvlan networking for Elasticsearch nodes
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> Alternatives: Bridge networking (tested Phase 42), Host networking (security risk)
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> Reason: Nodes need routable IPs for cluster discovery. Bridge caused split-brain 
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>          under 3-node load test on 2026-03-15.
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> Context: Revisit if we move to Kubernetes (CNI handles this differently).&quot;
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> Context: Revisit if we move to Kubernetes (CNI handles this differently)."
 </span></code></pre></div>
 <p>This entry lands in Git <strong>during the session</strong>, not hours later in a summary that may lose fidelity.</p>
 <h3 id="when-to-trigger-a-decision-log">When to Trigger a Decision Log<a class="headerlink" href="#when-to-trigger-a-decision-log" title="Permanent link">&para;</a></h3>

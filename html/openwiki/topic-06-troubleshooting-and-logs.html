@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, editor vim/nano, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06.">
+        <meta name="description" content="Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, penyunting teks Vim/Neovim/Nano, penyuntingan selamat sudoedit/visudo, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -1633,10 +1633,11 @@
 <li>Entri pelekapan kekal dalam <code>/etc/fstab</code> dengan pilihan keselamatan JDN/MAMPU (<code>nodev,nosuid,noexec</code>).</li>
 </ul>
 </li>
-<li><strong>Pemprosesan Teks Aluran &amp; Editor CLI (Text Filters &amp; CLI Editors)</strong>:<ul>
+<li><strong>Pemprosesan Teks Aluran, Penyunting CLI &amp; Amalan Keselamatan (Text Filters, CLI Editors &amp; Security)</strong>:<ul>
 <li>Penapis teks: <code>grep</code> / <code>ripgrep</code>, <code>sed</code> (stream editor), <code>awk</code> (pattern scanning), <code>cut</code>, <code>sort</code>, <code>uniq</code>, <code>wc</code>, <code>tr</code>.</li>
 <li>Operator pengalihan I/O (<code>&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;</code>, <code>2&gt;&amp;1</code>, <code>|</code> piping, <code>tee</code>).</li>
-<li>Penyunting teks CLI pentadbiran: <code>vim</code> (mod Command/Insert/Visual/Ex) dan <code>nano</code>.</li>
+<li>Penyunting teks CLI pentadbiran: <strong>Vim / Neovim</strong> (mod Normal/Insert/Visual/Ex, regex search/replace <code>%s/old/new/g</code>, makro) dan <strong>GNU Nano</strong> (<code>.nanorc</code>).</li>
+<li>Penyuntingan selamat fail konfigurasi sistem: <code>sudoedit</code> (<code>sudo -e</code>), <code>visudo</code>, dan semakan sintaks <code>visudo -c</code>.</li>
 </ul>
 </li>
 <li><strong>Pembacaan Log Sistem &amp; Laporan RCA (Log Analysis &amp; Root Cause Analysis)</strong>:<ul>
@@ -1661,7 +1662,7 @@
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
 <li><em>"Bagaimanakah cara menggunakan awk dan sort untuk mengekstrak alamat IP terbanyak yang membuat percubaan akses SSH gagal daripada log auth.log?"</em></li>
-<li><em>"Apakah langkah penyelesaian masalah apabila arahan umount melaporkan 'target is busy'?"</em></li>
+<li><em>"Apakah kelebihan keselamatan menggunakan sudoedit berbanding sudo vim semasa menyunting fail /etc/environment?"</em></li>
 <li><em>"Tunjukkan contoh persediaan laporan RCA (Root Cause Analysis) yang lengkap bagi insiden kegagalan perkhidmatan pelayan."</em></li>
 </ol>
 <hr />
@@ -1680,7 +1681,7 @@
 <li><strong>Pengoptimuman &amp; Diagnostik Prestasi Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em>
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

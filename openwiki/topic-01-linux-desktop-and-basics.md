@@ -2,10 +2,10 @@
 okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
-timestamp: "2026-08-16T00:00:00Z"
-topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2"]
-tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2"]
-description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan prosedur pemasangan NOSS Level 3."
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2", "editor", "bashrc"]
+tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2", "editor", "bashrc"]
+description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, konfigurasi $EDITOR/$VISUAL, dan prosedur pemasangan NOSS Level 3."
 resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 ---
 
@@ -13,7 +13,7 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ## Gambaran Keseluruhan (Overview)
 
-Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi & pemacu, konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan**.
+Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi & pemacu, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan**.
 
 > **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
 > Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
@@ -72,10 +72,11 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 **📖 Baca Lanjut:** [manual/cu01/penyulitan-cakera-luks2-pejabat.md](../manual/cu01/penyulitan-cakera-luks2-pejabat.md)
 
-### 7. Pemasangan Aplikasi & Pemacu Peranti Linux (CU01-WA05)
+### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)
 
 - Pengurusan pakej asli (`apt` pada Ubuntu, `dnf5` pada AlmaLinux/Fedora)
 - Pakej berasaskan kontena universal (`Flatpak`, `Snap`)
+- Penyesuaian pemboleh ubah persekitaran shell (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`)
 - Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti
 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
@@ -155,5 +156,5 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
 4. *Just for Fun: The Story of an Accidental Revolutionary* oleh Linus Torvalds & David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

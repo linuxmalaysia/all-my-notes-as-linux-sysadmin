@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, dan sistem dokumentasi man.">
+        <meta name="description" content="Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, penyesuaian $EDITOR/$VISUAL, dan sistem dokumentasi man.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -1537,15 +1537,26 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony" class="md-nav__link">
+  <a href="#5-penyesuaian-pemboleh-ubah-persekitaran-shell-pentadbiran-editor-visual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Konfigurasi Zon Masa &amp; Penyegerakan Masa (timedatectl &amp; chrony)
+        5. Penyesuaian Pemboleh Ubah Persekitaran Shell Pentadbiran ($EDITOR &amp; $VISUAL)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Konfigurasi Zon Masa &amp; Penyegerakan Masa (timedatectl &amp; chrony)">
+</li>
+
+          <li class="md-nav__item">
+  <a href="#6-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        6. Konfigurasi Zon Masa &amp; Penyegerakan Masa (timedatectl &amp; chrony)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="6. Konfigurasi Zon Masa &amp; Penyegerakan Masa (timedatectl &amp; chrony)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1576,15 +1587,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-bantuan-dokumentasi-navigasi-sistem-linux" class="md-nav__link">
+  <a href="#7-bantuan-dokumentasi-navigasi-sistem-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Bantuan Dokumentasi &amp; Navigasi Sistem Linux
+        7. Bantuan Dokumentasi &amp; Navigasi Sistem Linux
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Bantuan Dokumentasi &amp; Navigasi Sistem Linux">
+    <nav class="md-nav" aria-label="7. Bantuan Dokumentasi &amp; Navigasi Sistem Linux">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1699,6 +1710,7 @@
 <li>Membina dan menguruskan fail unit perkhidmatan kustom <code>systemd</code> (<code>/etc/systemd/system/*.service</code>) dengan penerapan parameter pengerasan keselamatan.</li>
 <li>Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan <code>journalctl</code>.</li>
 <li>Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui <code>timedatectl</code> dan <code>chronyd</code>.</li>
+<li>Menyelaraskan pemboleh ubah persekitaran shell pentadbiran pelayan (<code>$EDITOR</code>, <code>$VISUAL</code>, <code>/etc/environment</code>, <code>~/.bashrc</code>).</li>
 <li>Memanfaatkan utiliti bantuan dokumentasi sistem Linux (<code>man</code>, <code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>).</li>
 </ol>
 <blockquote>
@@ -1711,7 +1723,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 <ul>
 <li>Pelayan beroperasi pada <strong>Ubuntu 26.04 LTS</strong> atau <strong>AlmaLinux 10</strong>.</li>
 <li>Akses terminal sebagai pengguna yang mempunyai hak arahan <code>sudo</code>.</li>
-<li>Pakej perisian terpasang: <code>systemd</code>, <code>chrony</code>, <code>man-db</code>, <code>plocate</code>.</li>
+<li>Pakej perisian terpasang: <code>systemd</code>, <code>chrony</code>, <code>man-db</code>, <code>plocate</code>, <code>vim</code>, <code>nano</code>.</li>
 </ul>
 <hr />
 <h3 id="2-pengurusan-perkhidmatan-unit-servis-dengan-systemctl">2. Pengurusan Perkhidmatan &amp; Unit Servis dengan <code>systemctl</code><a class="headerlink" href="#2-pengurusan-perkhidmatan-unit-servis-dengan-systemctl" title="Permanent link">&para;</a></h3>
@@ -1797,7 +1809,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>sshd<span class="w"> </span>-f
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Filter log mengikut selang masa tertentu</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;2026-08-17 00:00:00&quot;</span><span class="w"> </span>--until<span class="w"> </span><span class="s2">&quot;2026-08-17 12:00:00&quot;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">"2026-08-17 00:00:00"</span><span class="w"> </span>--until<span class="w"> </span><span class="s2">"2026-08-17 12:00:00"</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Memaparkan log berkaitan ralat sahaja (Priority level 3 / ERR)</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>-p<span class="w"> </span>err..emerg
@@ -1810,43 +1822,65 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>--vacuum-size<span class="o">=</span>500M
 </span></code></pre></div>
 <hr />
-<h3 id="5-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony">5. Konfigurasi Zon Masa &amp; Penyegerakan Masa (<code>timedatectl</code> &amp; <code>chrony</code>)<a class="headerlink" href="#5-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony" title="Permanent link">&para;</a></h3>
+<h3 id="5-penyesuaian-pemboleh-ubah-persekitaran-shell-pentadbiran-editor-visual">5. Penyesuaian Pemboleh Ubah Persekitaran Shell Pentadbiran (<code>$EDITOR</code> &amp; <code>$VISUAL</code>)<a class="headerlink" href="#5-penyesuaian-pemboleh-ubah-persekitaran-shell-pentadbiran-editor-visual" title="Permanent link">&para;</a></h3>
+<p>Dalam pentadbiran pelayan, utiliti sistem menentukan penyunting pilihan mengikut susunan keutamaan yang khusus:
+- <strong><code>systemctl edit</code></strong>: Mengutuk <code>SYSTEMD_EDITOR</code>, diikuti oleh <code>EDITOR</code>, dan seterusnya <code>VISUAL</code>.
+- <strong><code>visudo</code></strong>: Mengutuk <code>SUDO_EDITOR</code>, diikuti oleh <code>VISUAL</code>, dan seterusnya <code>EDITOR</code> (hanya jika tetapan <code>Defaults env_editor</code> diaktifkan dalam sudoers).</p>
+<p>Kerana arahan <code>sudo</code> secara lalai membersihkan pemboleh ubah persekitaran (<code>env_reset</code>), pemboleh ubah persekitaran pengguna tidak diwarisi melainkan dieksport secara eksplisit atau dikekalkan menerusi polisi sudoers (seperti <code>Defaults env_keep += "EDITOR VISUAL SYSTEMD_EDITOR"</code>).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Penetapan profil pentadbir tempatan dalam ~/.bashrc:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VISUAL</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SYSTEMD_EDITOR</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/profile.d/editor.sh<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">export EDITOR=/usr/bin/vim</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">export VISUAL=/usr/bin/vim</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">export SYSTEMD_EDITOR=/usr/bin/vim</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">EOF</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/editor.sh
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># 3. Menguji penyuntingan unit servis di bawah hak akses sudo dengan mengekalkan persekitaran proses:</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>sudo<span class="w"> </span><span class="nv">SYSTEMD_EDITOR</span><span class="o">=</span>/usr/bin/vim<span class="w"> </span>systemctl<span class="w"> </span>edit<span class="w"> </span>myapp.service
+</span></code></pre></div>
+<hr />
+<h3 id="6-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony">6. Konfigurasi Zon Masa &amp; Penyegerakan Masa (<code>timedatectl</code> &amp; <code>chrony</code>)<a class="headerlink" href="#6-konfigurasi-zon-masa-penyegerakan-masa-timedatectl-chrony" title="Permanent link">&para;</a></h3>
 <p>Ketepatan masa adalah kritikal bagi audit keselamatan ISO/IEC 27001 dan pengesyoran Jabatan Digital Negara (JDN).</p>
 <h4 id="a-operasi-arahan-timedatectl">A. Operasi Arahan <code>timedatectl</code><a class="headerlink" href="#a-operasi-arahan-timedatectl" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Semak status masa, zon masa, dan status NTP</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>timedatectl<span class="w"> </span>status
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Senaraikan zon masa yang sedia ada</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>timedatectl<span class="w"> </span>list-timezones<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Asia/Kuala_Lumpur
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Tetapkan zon masa rasmi Malaysia</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Asia/Kuala_Lumpur
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Aktifkan penyegerakan masa berasaskan rangkaian (NTP)</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-ntp<span class="w"> </span><span class="nb">true</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Semak status masa, zon masa, dan status NTP</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>timedatectl<span class="w"> </span>status
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Senaraikan zon masa yang sedia ada</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>timedatectl<span class="w"> </span>list-timezones<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Asia/Kuala_Lumpur
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Tetapkan zon masa rasmi Malaysia</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Asia/Kuala_Lumpur
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Aktifkan penyegerakan masa berasaskan rangkaian (NTP)</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-ntp<span class="w"> </span><span class="nb">true</span>
 </span></code></pre></div>
 <h4 id="b-konfigurasi-daemon-chrony-chronyd">B. Konfigurasi Daemon Chrony (<code>chronyd</code>)<a class="headerlink" href="#b-konfigurasi-daemon-chrony-chronyd" title="Permanent link">&para;</a></h4>
 <p>Fail konfigurasi <code>/etc/chrony/chrony.conf</code> (Ubuntu) atau <code>/etc/chrony.conf</code> (AlmaLinux):</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Rujukan Pelayan Masa Kebangsaan / Standard Pool</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">server my.pool.ntp.org iburst</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">server 0.asia.pool.ntp.org iburst</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">server 1.asia.pool.ntp.org iburst</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Kebenaran audit keselamatan &amp; penyesuaian drift</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="na">driftfile /var/lib/chrony/drift</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="na">makestep 1.0 3</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="na">rtcsync</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Rujukan Pelayan Masa Kebangsaan / Standard Pool</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">server my.pool.ntp.org iburst</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">server 0.asia.pool.ntp.org iburst</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">server 1.asia.pool.ntp.org iburst</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Kebenaran audit keselamatan &amp; penyesuaian drift</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="na">driftfile /var/lib/chrony/drift</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="na">makestep 1.0 3</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="na">rtcsync</span>
 </span></code></pre></div>
 <p>Semakan status penyegerakan:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Pastikan perkhidmatan chrony aktif</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>chronyd
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Semak sumber pelayan masa dan status ralat penyegerakan</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>chronyc<span class="w"> </span>sources<span class="w"> </span>-v
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>chronyc<span class="w"> </span>tracking
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Pastikan perkhidmatan chrony aktif</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>chronyd
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Semak sumber pelayan masa dan status ralat penyegerakan</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>chronyc<span class="w"> </span>sources<span class="w"> </span>-v
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>chronyc<span class="w"> </span>tracking
 </span></code></pre></div>
 <hr />
-<h3 id="6-bantuan-dokumentasi-navigasi-sistem-linux">6. Bantuan Dokumentasi &amp; Navigasi Sistem Linux<a class="headerlink" href="#6-bantuan-dokumentasi-navigasi-sistem-linux" title="Permanent link">&para;</a></h3>
+<h3 id="7-bantuan-dokumentasi-navigasi-sistem-linux">7. Bantuan Dokumentasi &amp; Navigasi Sistem Linux<a class="headerlink" href="#7-bantuan-dokumentasi-navigasi-sistem-linux" title="Permanent link">&para;</a></h3>
 <p>Sistem Linux menyediakan utiliti dokumentasi luar talian (<em>offline documentation</em>) yang komprehensif.</p>
 <h4 id="a-halaman-panduan-man-manual-pages">A. Halaman Panduan <code>man</code> (Manual Pages)<a class="headerlink" href="#a-halaman-panduan-man-manual-pages" title="Permanent link">&para;</a></h4>
 <p>Halaman manual dibahagikan kepada 9 seksyen standard:
@@ -1859,31 +1893,31 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 - <strong>Seksyen 7:</strong> Format Makro &amp; Standard Sistem.
 - <strong>Seksyen 8:</strong> Arahan Pentadbiran Sistem &amp; Root (cth: <code>systemctl</code>, <code>fdisk</code>).
 - <strong>Seksyen 9:</strong> Rutin Isirung (Kernel Routines).</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Membaca halaman man bagi perkhidmatan systemctl</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>man<span class="w"> </span>systemctl
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Membaca format fail konfigurasi fstab (Seksyen 5)</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>man<span class="w"> </span><span class="m">5</span><span class="w"> </span>fstab
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Membaca arahan pentadbiran useradd (Seksyen 8)</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>man<span class="w"> </span><span class="m">8</span><span class="w"> </span>useradd
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Membaca halaman man bagi perkhidmatan systemctl</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>man<span class="w"> </span>systemctl
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Membaca format fail konfigurasi fstab (Seksyen 5)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>man<span class="w"> </span><span class="m">5</span><span class="w"> </span>fstab
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Membaca arahan pentadbiran useradd (Seksyen 8)</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>man<span class="w"> </span><span class="m">8</span><span class="w"> </span>useradd
 </span></code></pre></div>
 <h4 id="b-utiliti-carian-bantuan-apropos-whatis-whereis-plocate">B. Utiliti Carian Bantuan (<code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>)<a class="headerlink" href="#b-utiliti-carian-bantuan-apropos-whatis-whereis-plocate" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Cari arahan berkaitan kata kunci menggunakan pangkalan data whatis</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>apropos<span class="w"> </span><span class="s2">&quot;systemctl&quot;</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>apropos<span class="w"> </span><span class="s2">&quot;network configuration&quot;</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Dapatkan gambaran ringkas satu baris fungsi arahan</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>whatis<span class="w"> </span>systemctl
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>whatis<span class="w"> </span>chronyd
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Cari lokasi fail binari, sumber, dan halaman man bagi sesuatu arahan</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>whereis<span class="w"> </span>systemctl
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>whereis<span class="w"> </span>chronyc
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1"># Kemas kini pangkalan data fail dan cari lokasi fail dengan pantas</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>sudo<span class="w"> </span>updatedb
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>plocate<span class="w"> </span>chrony.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Cari arahan berkaitan kata kunci menggunakan pangkalan data whatis</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>apropos<span class="w"> </span><span class="s2">"systemctl"</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>apropos<span class="w"> </span><span class="s2">"network configuration"</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Dapatkan gambaran ringkas satu baris fungsi arahan</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>whatis<span class="w"> </span>systemctl
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>whatis<span class="w"> </span>chronyd
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Cari lokasi fail binari, sumber, dan halaman man bagi sesuatu arahan</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>whereis<span class="w"> </span>systemctl
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>whereis<span class="w"> </span>chronyc
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># Kemas kini pangkalan data fail dan cari lokasi fail dengan pantas</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>sudo<span class="w"> </span>updatedb
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>plocate<span class="w"> </span>chrony.conf
 </span></code></pre></div>
 <hr />
 <h2 id="pengerasan-keselamatan-pematuhan-jdn-mampu">🔒 Pengerasan Keselamatan &amp; Pematuhan JDN / MAMPU<a class="headerlink" href="#pengerasan-keselamatan-pematuhan-jdn-mampu" title="Permanent link">&para;</a></h2>
@@ -1899,6 +1933,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 <li>[ ] Berjaya menetapkan sasaran boot sistem (<code>multi-user.target</code>).</li>
 <li>[ ] Berjaya menulis, menguji, dan memuat semula fail unit servis kustom di <code>/etc/systemd/system/</code>.</li>
 <li>[ ] Berjaya membuat analisis log perkhidmatan secara terperinci berasaskan julat masa menggunakan <code>journalctl</code>.</li>
+<li>[ ] Berjaya mengkonfigurasi pemboleh ubah <code>$EDITOR</code> dan <code>$VISUAL</code> bagi perkhidmatan pentadbiran pelayan.</li>
 <li>[ ] Berjaya menetapkan zon masa <code>Asia/Kuala_Lumpur</code> dan mengesahkan penyegerakan masa <code>chronyc tracking</code>.</li>
 <li>[ ] Berjaya mengendalikan carian dokumentasi sistem menggunakan <code>man</code>, <code>apropos</code>, <code>whatis</code>, dan <code>plocate</code>.</li>
 </ul>
@@ -1906,7 +1941,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
 <li><em>"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."</em></li>
-<li><em>"Apakah perbezaan mendalam antara penyegerakan masa NTP melalui systemd-timesyncd dan chronyd untuk persekitaran pelayan perusahaan?"</em></li>
+<li><em>"Bagaimanakah pemboleh ubah persekitaran SYSTEMD_EDITOR, EDITOR dan VISUAL mempengaruhi tingkah laku arahan systemctl edit dan visudo di bawah sudoers env_reset?"</em></li>
 <li><em>"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."</em></li>
 </ol>
 <hr />

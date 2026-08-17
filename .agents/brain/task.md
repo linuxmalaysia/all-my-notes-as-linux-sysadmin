@@ -63,8 +63,30 @@
 
 ---
 
-## 🎯 Roadmap Fasa Seterusnya
-- [ ] **Fasa 6: Transformasi Silibus Bab 6 (Automasi Skrip Shell, Sandaran & Troubleshooting - CU04 & CU06):**
-  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_06/` ke `manual/cu04/` (Sandaran `rsync`/`tar`/`restic`, Automasi Cron/Systemd Timers, Pemulihan Data) dan `manual/cu06/` (Diagnostik Anomali, Analisis Log, RCA).
-  - [ ] Porting kemahiran AI CU04 (`cu04-wa01` hingga `cu04-wa05`) dan CU06 (`cu06-wa01` hingga `cu06-wa07`).
-  - [ ] Kemas kini `openwiki/topic-04-automation-and-backup.md` dan `openwiki/topic-06-troubleshooting-and-logs.md`.
+## 🌟 Milestone Status: Fasa 6 (Migrasi Silibus Bab 6: Sandaran, Pemampatan, Pelekapan Storan & Troubleshooting CU04 & CU06 - Kemuncak Siri Manual) - SELESAI ✅ (Google Jules PR #12 & PR #13 Merged)
+- [x] **Penyempurnaan Modul Amali `manual/cu04/` & `manual/cu06/`:**
+  - Penyempurnaan `manual/cu04/cu04-wa02-operasi-sandaran-tempatan.md` (Arkib `tar` dengan pemampatan moden `zstd`/`gzip`, sinkronisasi penambahan `rsync -avz --delete`, automasi `systemd.timer` & `crontab`, penyulitan gpg).
+  - Penyempurnaan `manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.md` (Verifikasi integriti hash kriptografi `sha256sum`, pengekstrakan arkib terpilih, pemulihan atribut fail).
+  - Penyempurnaan `manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md` (Pengecaman pemacu blok `lsblk`/`blkid`, pelekapan storan `mount`/`umount`, pengesahan `findmnt`, pengerasan opsyen keselamatan `/etc/fstab` seperti `nosuid`, `nodev`, `noexec`).
+  - Penyempurnaan `manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md` (Penapisan teks teras `grep`/`sed`/`awk`/`cut`/`sort`/`uniq`, pengalihan I/O saluran paip `|`, `<`, `>`, `>>`, penyunting fail `vim`/`nano`, dan pelaporan punca masalah / RCA).
+  - Pengemaskinian `openwiki/topic-04-automation-and-backup.md` & `openwiki/topic-06-troubleshooting-and-logs.md`.
+- [x] **Porting Kemahiran AI CU04 & CU06 (`.agents/skills/`):**
+  - Naik taraf `.agents/skills/cu04-wa02-perform-local-backup-operations/SKILL.md` ke format `type: skill` penuh.
+  - Naik taraf `.agents/skills/cu04-wa04-restore-endpoint-data/SKILL.md` ke format `type: skill` penuh.
+  - Naik taraf `.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md` ke format `type: skill` penuh.
+  - Naik taraf `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md` ke format `type: skill` penuh.
+- [x] **Jaminan Kualiti (100% Quality Gate):**
+  - **982 ujian Python pytest lulus** (penambahan `tests/test_manual_cu04_cu06_backup_troubleshooting_content.py` dengan 65 ujian baharu).
+  - **38 ujian Node.js Jest lulus**.
+  - Laman web statik `html/` dibina semula dan disegerakkan.
+
+---
+
+## 🎯 Roadmap Seterusnya (Fasa 7: Migrasi & Pemodenan Bab 7 - Sedia untuk Google Jules 🎯)
+- [ ] **Fasa 7: Migrasi & Pemodenan Bab 7 (Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem - CU01, CU03, & CU06):**
+  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_07/` ke `manual/cu06/cu06-wa07`, `manual/cu01/cu01-wa05`, dan `manual/cu03/cu03-wa04` (Vim/Neovim, Nano, `$EDITOR`, `$VISUAL`, `~/.bashrc`, `/etc/environment`, `sudoedit`).
+  - [ ] Kemas kini kemahiran AI `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md`.
+  - [ ] Kemas kini `openwiki/topic-06-troubleshooting-and-logs.md` dan `openwiki/topic-01-linux-desktop-and-basics.md`.
+  - [ ] Tambah ujian unit pengesahan dan sahkan 100% Quality Gate (`run_all_tests.py`).
+- [ ] **Audit Keseluruhan Kurikulum NOSS Linux & Penjana Format Output Pelbagai (DOCX, PPTX, PDF, FastMCP Server)**
+- [ ] **Penyediaan Projek Arkib Khas OSCC MAMPU / MOSC (Dedicated Archive Project)**

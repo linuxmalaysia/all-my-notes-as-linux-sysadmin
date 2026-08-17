@@ -1452,66 +1452,66 @@
     <span class="md-ellipsis">
       
         2. Pengekstrakan &amp; Pemulihan Data Terpilih (Selective Restore)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="2. Pengekstrakan &amp; Pemulihan Data Terpilih (Selective Restore)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-memeriksa-kandungan-arkib-tanpa-mengekstrak" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A. Memeriksa Kandungan Arkib Tanpa Mengekstrak
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b-mengekstrak-fail-terpilih-ke-direktori-sasar" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B. Mengekstrak Fail Terpilih ke Direktori Sasar
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#c-memelihara-pemilikan-dan-kebenaran-fail-same-owner-p" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         C. Memelihara Pemilikan dan Kebenaran Fail (--same-owner, -p)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3-pemulihan-arkib-tersulit-gpg" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3. Pemulihan Arkib Tersulit (gpg)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4-tatacara-pemulihan-bencana-bare-metal-bare-metal-recovery" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4. Tatacara Pemulihan Bencana Bare-Metal (Bare-Metal Recovery)
       
     </span>
@@ -1614,7 +1614,7 @@ Modul amali ini dipetakan kepada <strong>NOSS CU04 (Backup &amp; Recovery Tools)
 <h3 id="2-pengekstrakan-pemulihan-data-terpilih-selective-restore">2. Pengekstrakan &amp; Pemulihan Data Terpilih (<em>Selective Restore</em>)<a class="headerlink" href="#2-pengekstrakan-pemulihan-data-terpilih-selective-restore" title="Permanent link">&para;</a></h3>
 <h4 id="a-memeriksa-kandungan-arkib-tanpa-mengekstrak">A. Memeriksa Kandungan Arkib Tanpa Mengekstrak<a class="headerlink" href="#a-memeriksa-kandungan-arkib-tanpa-mengekstrak" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Menyenaraikan semua fail dalam arkib dan menapis fail khusus</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar<span class="w"> </span>-tvf<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;netplan&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar<span class="w"> </span>-tvf<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"netplan"</span>
 </span></code></pre></div>
 <h4 id="b-mengekstrak-fail-terpilih-ke-direktori-sasar">B. Mengekstrak Fail Terpilih ke Direktori Sasar<a class="headerlink" href="#b-mengekstrak-fail-terpilih-ke-direktori-sasar" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Cipta direktori sementara pemulihan untuk mengelakkan penimpaan tidak sengaja</span>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan prosedur pemasangan NOSS Level 3.">
+        <meta name="description" content="Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, konfigurasi $EDITOR/$VISUAL, dan prosedur pemasangan NOSS Level 3.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -1096,10 +1096,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05" class="md-nav__link">
+  <a href="#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)
+        7. Pemasangan Aplikasi, Pemacu Peranti &amp; Persekitaran Shell (CU01-WA05)
       
     </span>
   </a>
@@ -1738,10 +1738,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05" class="md-nav__link">
+  <a href="#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)
+        7. Pemasangan Aplikasi, Pemacu Peranti &amp; Persekitaran Shell (CU01-WA05)
       
     </span>
   </a>
@@ -1849,7 +1849,7 @@
 
 <h1 id="topik-1-pengenalan-asas-ekosistem-linux-cu01">Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01)<a class="headerlink" href="#topik-1-pengenalan-asas-ekosistem-linux-cu01" title="Permanent link">&para;</a></h1>
 <h2 id="gambaran-keseluruhan-overview">Gambaran Keseluruhan (Overview)<a class="headerlink" href="#gambaran-keseluruhan-overview" title="Permanent link">&para;</a></h2>
-<p>Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian <strong>NOSS Level 3 (CU01)</strong>. Ia menggabungkan <strong>konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi &amp; pemacu, konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan</strong>.</p>
+<p>Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian <strong>NOSS Level 3 (CU01)</strong>. Ia menggabungkan <strong>konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi &amp; pemacu, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan</strong>.</p>
 <blockquote>
 <p><strong>💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:</strong>
 Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).</p>
@@ -1900,10 +1900,11 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <li>Pematuhan piawaian keselamatan ISO/IEC 27001 (A.8.24) &amp; Pekeliling MAMPU/JDN</li>
 </ul>
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/penyulitan-cakera-luks2-pejabat.html">manual/cu01/penyulitan-cakera-luks2-pejabat.md</a></p>
-<h3 id="7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05">7. Pemasangan Aplikasi &amp; Pemacu Peranti Linux (CU01-WA05)<a class="headerlink" href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05" title="Permanent link">&para;</a></h3>
+<h3 id="7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05">7. Pemasangan Aplikasi, Pemacu Peranti &amp; Persekitaran Shell (CU01-WA05)<a class="headerlink" href="#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Pengurusan pakej asli (<code>apt</code> pada Ubuntu, <code>dnf5</code> pada AlmaLinux/Fedora)</li>
 <li>Pakej berasaskan kontena universal (<code>Flatpak</code>, <code>Snap</code>)</li>
+<li>Penyesuaian pemboleh ubah persekitaran shell (<code>$EDITOR</code>, <code>$VISUAL</code>, <code>/etc/environment</code>, <code>~/.bashrc</code>)</li>
 <li>Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti</li>
 </ul>
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.html">manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md</a></p>
@@ -1992,7 +1993,7 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 3. <em>UNIX and Linux System Administration Handbook, 5th Edition</em> oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin — Kitab rujukan utama pentadbir sistem profesional.
 4. <em>Just for Fun: The Story of an Accidental Revolutionary</em> oleh Linus Torvalds &amp; David Diamond — Autobiografi pencipta Linux yang santai dan memberi inspirasi.</p>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em>
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

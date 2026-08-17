@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T07:20:39Z"
+timestamp: "2026-08-17T21:29:00Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -63,7 +63,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa05-optimize-system-performance-and-storage`** <br> *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa05-perform-system-optimisation-and-disk-management`** <br> *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** <br> *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
-| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *Resolve System Anomalies and Document RCA (CU06-WA07)* | Executes NOSS Work Activity CU06-WA07 - Resolve System Anomalies and Document RCA using text filters (grep, sed, awk, cut, sort, uniq), I/O redirection, vim/nano, and RCA reporting. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, nano, rca |
+| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** <br> *Resolve System Anomalies and Document RCA (CU06-WA07)* | Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal (regex Vim %s/asal/ganti/g, Nano), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca |
 | **`docx-highlight-extractor`** <br> *docx-highlight-extractor* | No description provided. | N/A |
 | **`dsom-bootstrap`** <br> *dsom-bootstrap* | No description provided. | N/A |
 | **`dsom-diataxis-pipeline`** <br> *dsom-diataxis-pipeline* | No description provided. | N/A |

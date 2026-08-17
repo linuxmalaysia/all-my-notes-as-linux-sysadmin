@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Panduan amali pemprosesan teks aluran menggunakan penapis Linux (grep, sed, awk, cut, sort, uniq), pengalihan I/O dan piping, penyuntingan fail konfigurasi menggunakan vim/nano, serta dokumentasi laporan RCA.">
+        <meta name="description" content="Panduan amali pemprosesan teks aluran menggunakan penapis Linux (grep, sed, awk, cut, sort, uniq), pengalihan I/O dan piping, penyuntingan fail konfigurasi selamat menggunakan Vim/Neovim, GNU Nano, sudoedit/visudo, serta dokumentasi laporan RCA.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -1441,18 +1441,18 @@
     <span class="md-ellipsis">
       
         1. Penapis Teks Berprestasi Tinggi (Text Processing Utilities)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="1. Penapis Teks Berprestasi Tinggi (Text Processing Utilities)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#a-carian-corak-dengan-grep-ripgrep" class="md-nav__link">
     <span class="md-ellipsis">
-
-        A. carian Corak dengan grep / ripgrep
+      
+        A. Carian Corak dengan grep / ripgrep
       
     </span>
   </a>
@@ -1464,16 +1464,16 @@
     <span class="md-ellipsis">
       
         B. Pemprosesan Jalur &amp; Pengasingan Medan (cut, sort, uniq, wc)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#c-editor-aluran-bahasa-pemprosesan-corak-sed-awk" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         C. Editor Aluran &amp; Bahasa Pemprosesan Corak (sed &amp; awk)
       
     </span>
@@ -1485,35 +1485,46 @@
     </nav>
   
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2-pengalihan-inputoutput-io-redirection-saluran-paip-piping" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2. Pengalihan Input/Output (I/O Redirection) &amp; Saluran Paip (Piping)
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
-  <a href="#3-penyuntingan-fail-konfigurasi-cli-vim-nano" class="md-nav__link">
+  <a href="#3-penyuntingan-fail-konfigurasi-terminal-cli-amalan-keselamatan" class="md-nav__link">
     <span class="md-ellipsis">
-
-        3. Penyuntingan Fail Konfigurasi CLI (vim &amp; nano)
-
+      
+        3. Penyuntingan Fail Konfigurasi Terminal CLI &amp; Amalan Keselamatan
+      
     </span>
   </a>
-
-    <nav class="md-nav" aria-label="3. Penyuntingan Fail Konfigurasi CLI (vim &amp; nano)">
+  
+    <nav class="md-nav" aria-label="3. Penyuntingan Fail Konfigurasi Terminal CLI &amp; Amalan Keselamatan">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
-  <a href="#a-penyunting-teks-nano-mesra-pemula" class="md-nav__link">
+  <a href="#a-gnu-nano-penyunting-teks-mudah-pantas" class="md-nav__link">
     <span class="md-ellipsis">
-
-        A. Penyunting Teks nano (Mesra Pemula):
+      
+        A. GNU Nano (Penyunting Teks Mudah &amp; Pantas)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
 
     </span>
   </a>
@@ -1521,52 +1532,52 @@
 </li>
 
           <li class="md-nav__item">
-  <a href="#b-penyunting-teks-vim-standard-pentadbir-sistem" class="md-nav__link">
+  <a href="#c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" class="md-nav__link">
     <span class="md-ellipsis">
 
-        B. Penyunting Teks vim (Standard Pentadbir Sistem):
-
+        C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (sudoedit &amp; visudo)
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4-penyediaan-laporan-analisis-punca-utama-root-cause-analysis-rca" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4. Penyediaan Laporan Analisis Punca Utama (Root Cause Analysis - RCA)
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="4. Penyediaan Laporan Analisis Punca Utama (Root Cause Analysis - RCA)">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#format-laporan-rca-standard-jdnmampu" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         Format Laporan RCA Standard JDN/MAMPU:
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
       
         <li class="md-nav__item">
@@ -1635,7 +1646,7 @@
 <p>Di akhir modul amali ini, pelatih dapat:
 1. Menguasai alat penapis teks berprestasi tinggi (<code>grep</code> / <code>ripgrep</code>, <code>sed</code>, <code>awk</code>, <code>cut</code>, <code>sort</code>, <code>uniq</code>, <code>wc</code>, <code>tr</code>) untuk menganalisis fail log sistem.
 2. Mengaplikasikan pengalihan I/O (<code>&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;</code>, <code>2&gt;&amp;1</code>, <code>|</code> piping, <code>tee</code>) dan pengurusan ralat aluran skrip Bash.
-3. Menyunting fail konfigurasi pentadbiran menggunakan penyunting teks CLI (<code>vim</code> dan <code>nano</code>).
+3. Menyunting fail konfigurasi pentadbiran menggunakan penyunting teks CLI (<strong>Vim / Neovim</strong> dan <strong>GNU Nano</strong>) serta amalan penyuntingan selamat (<code>sudoedit</code>, <code>visudo</code>).
 4. Menyediakan laporan Analisis Punca Utama (<em>Root Cause Analysis - RCA</em>) bagi insiden anomali sistem yang mematuhi standard ISO/IEC 27001 dan JDN/MAMPU.</p>
 <blockquote>
 <p>[!NOTE]
@@ -1644,23 +1655,23 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
 <h3 id="1-penapis-teks-berprestasi-tinggi-text-processing-utilities">1. Penapis Teks Berprestasi Tinggi (<em>Text Processing Utilities</em>)<a class="headerlink" href="#1-penapis-teks-berprestasi-tinggi-text-processing-utilities" title="Permanent link">&para;</a></h3>
-<h4 id="a-carian-corak-dengan-grep-ripgrep">A. carian Corak dengan <code>grep</code> / <code>ripgrep</code><a class="headerlink" href="#a-carian-corak-dengan-grep-ripgrep" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mencari ralat &#39;FAILED&#39; dalam auth.log tanpa mengira huruf besar/kecil (-i) beserta nombor baris (-n)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>grep<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;failed&quot;</span><span class="w"> </span>/var/log/auth.log
+<h4 id="a-carian-corak-dengan-grep-ripgrep">A. Carian Corak dengan <code>grep</code> / <code>ripgrep</code><a class="headerlink" href="#a-carian-corak-dengan-grep-ripgrep" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mencari ralat 'FAILED' dalam auth.log tanpa mengira huruf besar/kecil (-i) beserta nombor baris (-n)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>grep<span class="w"> </span>-in<span class="w"> </span><span class="s2">"failed"</span><span class="w"> </span>/var/log/auth.log
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Mengira jumlah percubaan log masuk gagal</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Failed password&quot;</span><span class="w"> </span>/var/log/auth.log
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">"Failed password"</span><span class="w"> </span>/var/log/auth.log
 </span></code></pre></div>
 <h4 id="b-pemprosesan-jalur-pengasingan-medan-cut-sort-uniq-wc">B. Pemprosesan Jalur &amp; Pengasingan Medan (<code>cut</code>, <code>sort</code>, <code>uniq</code>, <code>wc</code>)<a class="headerlink" href="#b-pemprosesan-jalur-pengasingan-medan-cut-sort-uniq-wc" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Ekstrak senarai alamat IP daripada log percubaan SSH gagal, susun, dan kira frekuensi</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>grep<span class="w"> </span><span class="s2">&quot;Failed password&quot;</span><span class="w"> </span>/var/log/auth.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span>-f11<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>grep<span class="w"> </span><span class="s2">"Failed password"</span><span class="w"> </span>/var/log/auth.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">' '</span><span class="w"> </span>-f11<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr
 </span></code></pre></div>
 <h4 id="c-editor-aluran-bahasa-pemprosesan-corak-sed-awk">C. Editor Aluran &amp; Bahasa Pemprosesan Corak (<code>sed</code> &amp; <code>awk</code>)<a class="headerlink" href="#c-editor-aluran-bahasa-pemprosesan-corak-sed-awk" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># sed: Menggantikan teks secara aluran (contoh: tukar Port 22 ke 2222 dalam sshd_config)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/#Port 22/Port 2222/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/#Port 22/Port 2222/'</span><span class="w"> </span>/etc/ssh/sshd_config
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># awk: Menganalisis log dan memaparkan medan khusus (Contoh: Cetak Kolom 1 dan Kolom 5 dari log)</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>awk<span class="w"> </span><span class="s1">&#39;{print $1, $5}&#39;</span><span class="w"> </span>/var/log/syslog<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>awk<span class="w"> </span><span class="s1">'{print $1, $5}'</span><span class="w"> </span>/var/log/syslog<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
 </span></code></pre></div>
 <hr />
 <h3 id="2-pengalihan-inputoutput-io-redirection-saluran-paip-piping">2. Pengalihan Input/Output (I/O Redirection) &amp; Saluran Paip (<em>Piping</em>)<a class="headerlink" href="#2-pengalihan-inputoutput-io-redirection-saluran-paip-piping" title="Permanent link">&para;</a></h3>
@@ -1702,24 +1713,89 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>/tmp/nginx_error_audit.log
 </span></code></pre></div>
 <hr />
-<h3 id="3-penyuntingan-fail-konfigurasi-cli-vim-nano">3. Penyuntingan Fail Konfigurasi CLI (<code>vim</code> &amp; <code>nano</code>)<a class="headerlink" href="#3-penyuntingan-fail-konfigurasi-cli-vim-nano" title="Permanent link">&para;</a></h3>
-<h4 id="a-penyunting-teks-nano-mesra-pemula">A. Penyunting Teks <code>nano</code> (Mesra Pemula):<a class="headerlink" href="#a-penyunting-teks-nano-mesra-pemula" title="Permanent link">&para;</a></h4>
+<h3 id="3-penyuntingan-fail-konfigurasi-terminal-cli-amalan-keselamatan">3. Penyuntingan Fail Konfigurasi Terminal CLI &amp; Amalan Keselamatan<a class="headerlink" href="#3-penyuntingan-fail-konfigurasi-terminal-cli-amalan-keselamatan" title="Permanent link">&para;</a></h3>
+<p>Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI serta amalan keselamatan penyuntingan berhak milik <code>root</code>.</p>
+<h4 id="a-gnu-nano-penyunting-teks-mudah-pantas">A. GNU Nano (Penyunting Teks Mudah &amp; Pantas)<a class="headerlink" href="#a-gnu-nano-penyunting-teks-mudah-pantas" title="Permanent link">&para;</a></h4>
+<p>GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.</p>
 <ul>
+<li><strong>Pintasan Papan Kekunci Utama</strong>:</li>
 <li><code>Ctrl + O</code>: Menyimpan fail (<em>WriteOut</em>).</li>
 <li><code>Ctrl + X</code>: Keluar dari editor.</li>
-<li><code>Ctrl + W</code>: Carian teks.</li>
+<li><code>Ctrl + W</code>: Carian teks (<em>Where Is</em>).</li>
+<li><code>Ctrl + \</code>: Carian dan penggantian teks (<em>Replace</em>).</li>
+<li><code>Ctrl + K</code>: Memotong (<em>cut</em>) baris semasa.</li>
+<li><code>Ctrl + U</code>: Menampal (<em>uncut</em>) baris.</li>
+<li>
+<p><code>Alt + G</code> / <code>Ctrl + _</code>: Lompat ke nombor baris tertentu.</p>
+</li>
+<li>
+<p><strong>Konfigurasi Penyesuaian <code>~/.nanorc</code></strong>:
+  <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Menandakan nombor baris dan mengaktifkan penyerlahan sintaks</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">set linenumbers</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">set softwrap</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">set tabsize 4</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">set tabstospaces</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="na">include "/usr/share/nano/*.nanorc"</span>
+</span></code></pre></div></p>
+</li>
 </ul>
-<h4 id="b-penyunting-teks-vim-standard-pentadbir-sistem">B. Penyunting Teks <code>vim</code> (Standard Pentadbir Sistem):<a class="headerlink" href="#b-penyunting-teks-vim-standard-pentadbir-sistem" title="Permanent link">&para;</a></h4>
+<h4 id="b-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem">B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)<a class="headerlink" href="#b-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem" title="Permanent link">&para;</a></h4>
+<p>Vim (<em>Vi Improved</em>) dan Neovim (<code>nvim</code>) adalah standard industri untuk pengaturcaraan dan pentadbiran sistem Linux.</p>
 <ul>
-<li><strong>Mod Arahan (Command Mode)</strong>:</li>
-<li><code>i</code>: Masuk ke Mod Sisipan (<em>Insert Mode</em>).</li>
-<li><code>dd</code>: Memadam satu baris.</li>
-<li><code>yy</code> / <code>p</code>: Menyalin baris / Menampal baris.</li>
-<li><code>/paten</code>: Carian teks ke hadapan.</li>
-<li><strong>Mod Ex / Terakhir (Ex Mode)</strong>:</li>
-<li><code>:w</code>: Menyimpan fail.</li>
-<li><code>:q!</code>: Keluar tanpa menyimpan.</li>
-<li><code>:wq</code> / <code>:x</code>: Menyimpan dan keluar.</li>
+<li><strong>4 Mod Operasi Utama Vim</strong>:</li>
+<li><strong>Mod Arahan / Normalkan (Command / Normal Mode)</strong>: Mod sedia ada selepas membuka Vim (<code>Esc</code> untuk kembali ke mod ini).<ul>
+<li>Pergerakan kursor: <code>h</code> (kiri), <code>j</code> (bawah), <code>k</code> (atas), <code>l</code> (kanan), <code>w</code> (perkataan seterusnya), <code>b</code> (perkataan sebelumnya), <code>0</code> (awal baris), <code>$</code> (akhir baris), <code>gg</code> (awal fail), <code>G</code> (akhir fail).</li>
+<li>Penyuntingan asas: <code>x</code> (padam aksara), <code>dd</code> (padam/potong satu baris), <code>yy</code> (salin baris), <code>p</code> (tampal selepas kursor), <code>u</code> (undo), <code>Ctrl + r</code> (redo).</li>
+</ul>
+</li>
+<li><strong>Mod Sisipan (Insert Mode)</strong>: Ditekan <code>i</code> (sisip sebelum kursor), <code>a</code> (sisip selepas kursor), <code>o</code> (buka baris baharu di bawah), <code>O</code> (buka baris baharu di atas).</li>
+<li><strong>Mod Visual (Visual Mode)</strong>: Ditekan <code>v</code> (pilihan aksara), <code>V</code> (pilihan baris), <code>Ctrl + v</code> (pilihan blok lajur). Digunakan untuk menyalin/memadam blok teks.</li>
+<li>
+<p><strong>Mod Ex / Terakhir (Ex / Command-line Mode)</strong>: Ditekan <code>:</code> daripada Mod Arahan.</p>
+<ul>
+<li><code>:w</code> (simpan), <code>:q</code> (keluar), <code>:wq</code> atau <code>:x</code> (simpan dan keluar), <code>:q!</code> (keluar tanpa simpan).</li>
+<li><code>:set nu</code> (papar nombor baris), <code>:set nonu</code> (sorok nombor baris).</li>
+</ul>
+</li>
+<li>
+<p><strong>Carian &amp; Penggantian Expression Teratur (Regex Search &amp; Replace)</strong>:
+  Dalam Mod Ex, gunakan sintaks <code>%s/corak_asal/teks_baharu/g</code>:
+  <div class="language-vim highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c">" Menggantikan semua perkataan 'temp' kepada 'tmp' dalam keseluruhan fail:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">:</span>%s<span class="sr">/temp/</span>tmp/<span class="k">g</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c">" Menggantikan 'Port 22' kepada 'Port 2222' secara interaktif dengan pengesahan (c):</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">:</span>%s<span class="sr">/Port 22/</span>Port <span class="m">2222</span>/gc
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Perekaman &amp; Pelaksanaan Makro Vim</strong>:</p>
+</li>
+<li><code>qa</code>: Mula merekod makro ke dalam daftar <code>a</code>.</li>
+<li><em>(Laksanakan siri arahan penyuntingan)</em>.</li>
+<li><code>q</code>: Hentikan rakaman.</li>
+<li><code>@a</code>: Jalankan makro dalam daftar <code>a</code>.</li>
+<li><code>5@a</code>: Jalankan makro sebanyak 5 kali berturut-turut.</li>
+</ul>
+<h4 id="c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo">C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (<code>sudoedit</code> &amp; <code>visudo</code>)<a class="headerlink" href="#c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" title="Permanent link">&para;</a></h4>
+<p>Menggunakan <code>sudo vim</code> atau <code>sudo nano</code> secara terus menjalankan keseluruhan proses penyunting teks sebagai pengguna <code>root</code>. Ini mendedahkan sistem kepada risiko keistimewaan editor berlebihan (<em>excessive editor privilege</em>), contohnya melalui keupayaan <em>shell escape</em> dalam Vim (<code>:sh</code> atau <code>:!bash</code>) yang membuka kelompang <code>root</code> tanpa kawalan audit log yang jelas.</p>
+<ul>
+<li>
+<p><strong>Menggunakan <code>sudoedit</code> (<code>sudo -e</code>)</strong>:
+  <code>sudoedit</code> melancarkan persekitaran penyunting teks di bawah akaun pengguna biasa yang tidak berkeistimewaan (<em>unprivileged user</em>) untuk menyunting salinan sementara fail. Hanya komponen <code>sudo</code> yang berkeistimewaan akan menyalin semula fail sementara itu ke lokasi sistem sasaran selepas penyuntingan diselesaikan dan fail disimpan dengan selamat.
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Menyunting fail konfigurasi Rangkaian Netplan secara selamat</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudoedit<span class="w"> </span>/etc/netplan/01-netcfg.yaml
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Menggunakan <code>visudo</code> untuk Pengurusan Sudoers</strong>:
+  <code>visudo</code> mengunci fail <code>/etc/sudoers</code> secara eksklusif semasa penyuntingan dan mengesahkan sintaks secara automatik sebelum menyimpan perubahan bagi mengelakkan ralat sintaks yang boleh menyebabkan kebuntuan akses root sistem (<em>lockout</em>).
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Menyunting fail sudoers dengan semakan sintaks automatik</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>visudo
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Mengesahkan sintaks fail sudoers tanpa membuat perubahan</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>visudo<span class="w"> </span>-c
+</span></code></pre></div></p>
+</li>
 </ul>
 <hr />
 <h3 id="4-penyediaan-laporan-analisis-punca-utama-root-cause-analysis-rca">4. Penyediaan Laporan Analisis Punca Utama (<em>Root Cause Analysis - RCA</em>)<a class="headerlink" href="#4-penyediaan-laporan-analisis-punca-utama-root-cause-analysis-rca" title="Permanent link">&para;</a></h3>
@@ -1737,15 +1813,16 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <ul>
 <li>[ ] Berjaya menapis dan menganalisis log menggunakan <code>grep</code>, <code>sed</code>, <code>awk</code>, <code>cut</code>, <code>sort</code>, dan <code>uniq</code>.</li>
 <li>[ ] Berjaya menggunakan operator pengalihan I/O (<code>&gt;</code>, <code>&gt;&gt;</code>, <code>2&gt;&amp;1</code>, <code>|</code>, <code>tee</code>) dalam aluran skrip Bash.</li>
-<li>[ ] Berjaya menyunting fail konfigurasi sistem menggunakan <code>vim</code> dan <code>nano</code>.</li>
+<li>[ ] Berjaya menyunting fail konfigurasi sistem menggunakan <code>vim</code> / <code>nvim</code> (mod operasi, regex <code>%s/old/new/g</code>, makro) dan <code>nano</code> (<code>.nanorc</code>).</li>
+<li>[ ] Berjaya mengamalkan penyuntingan selamat sistem menggunakan <code>sudoedit</code> dan <code>visudo</code>.</li>
 <li>[ ] Mampu mendokumentasikan laporan RCA rasmi bagi insiden anomali sistem.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
 <li><em>"Tunjukkan satu arahan awk sebaris (one-liner) untuk mengira jumlah saiz pemindahan fail dalam log akses Nginx."</em></li>
-<li><em>"Apakah perbezaan antara sed -i (in-place) dengan penyuntingan menerusi paip aluran?"</em></li>
-<li><em>"Berikan templat laporan RCA (Root Cause Analysis) ringkas bagi insiden kegagalan perkhidmatan disebabkan kehabisan nod i-node pada sistem fail."</em></li>
+<li><em>"Bagaimanakah cara membina regex Vim untuk menggantikan semua baris ulasan (#) dalam fail sshd_config secara pukal?"</em></li>
+<li><em>"Mengapakah penggunaan sudoedit lebih selamat berbanding sudo vim dari sudut risiko shell escape dan prinsip keselamatan least privilege?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>

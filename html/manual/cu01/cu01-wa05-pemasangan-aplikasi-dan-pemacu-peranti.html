@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap) dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux.">
+        <meta name="description" content="Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -1515,15 +1515,54 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" class="md-nav__link">
+  <a href="#3-konfigurasi-pemboleh-ubah-persekitaran-editor-visual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)
+        3. Konfigurasi Pemboleh Ubah Persekitaran $EDITOR &amp; $VISUAL
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)">
+    <nav class="md-nav" aria-label="3. Konfigurasi Pemboleh Ubah Persekitaran $EDITOR &amp; $VISUAL">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-konfigurasi-persekitaran-pengguna-individu-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Konfigurasi Persekitaran Pengguna Individu (~/.bashrc)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-konfigurasi-persekitaran-sistem-global-etcenvironment-etcprofilededitorsh" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Konfigurasi Persekitaran Sistem Global (/etc/environment &amp; /etc/profile.d/editor.sh)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="4. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1654,11 +1693,12 @@
 
 <h1 id="cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux">CU01-WA05: Pemasangan Aplikasi &amp; Pemacu Peranti Linux<a class="headerlink" href="#cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Menguasai prosedur amali pengurusan aplikasi, pakej perisian, serta pemasangan dan konfigurasi pemacu peranti (<em>device drivers</em>) pada sistem operasi Linux desktop mengikut piawaian <strong>NOSS Tahap 3 (CU01-WA05)</strong>.</p>
+<p>Menguasai prosedur amali pengurusan aplikasi, pakej perisian, penyesuaian persekitaran shell, serta pemasangan dan konfigurasi pemacu peranti (<em>device drivers</em>) pada sistem operasi Linux desktop mengikut piawaian <strong>NOSS Tahap 3 (CU01-WA05)</strong>.</p>
 <p>Setelah menyempurnakan modul ini, pelajar akan dapat:</p>
 <ol>
 <li>Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (<strong>APT</strong> pada Ubuntu 26.04 LTS, <strong>DNF5</strong> pada AlmaLinux 10 dan Fedora 43).</li>
 <li>Memasang dan menguruskan aplikasi berasaskan kontena universal (<strong>Flatpak</strong> dan <strong>Snap</strong>).</li>
+<li>Menguruskan pemboleh ubah persekitaran shell pengguna dan sistem (<code>$EDITOR</code>, <code>$VISUAL</code>, <code>/etc/environment</code>, <code>~/.bashrc</code>).</li>
 <li>Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).</li>
 <li>Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (<em>GPG key verification</em>).</li>
 </ol>
@@ -1673,9 +1713,9 @@
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Naik taraf kesemua pakej sistem ke versi terkini secara selamat</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Cari dan pasang aplikasi (contoh: cURL, Git, VLC)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Cari dan pasang aplikasi (contoh: cURL, Git, VLC, Vim, Nano)</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>apt<span class="w"> </span>search<span class="w"> </span>vlc
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl<span class="w"> </span>git<span class="w"> </span>vlc
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl<span class="w"> </span>git<span class="w"> </span>vlc<span class="w"> </span>vim<span class="w"> </span>nano
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># 4. Buang pakej yang tidak diperlukan beserta fail konfigurasi sisa</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sudo<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>-y<span class="w"> </span>vlc
@@ -1688,8 +1728,8 @@
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2. Pasang aplikasi dan kumpulan perisian (Package Groups)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>htop<span class="w"> </span>wget
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>htop<span class="w"> </span>wget<span class="w"> </span>vim<span class="w"> </span>nano
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">"Development Tools"</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 3. Pengurusan repositori EPEL pada AlmaLinux 10</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
@@ -1716,49 +1756,94 @@
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>chromium
 </span></code></pre></div>
 <hr />
-<h3 id="3-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar">3. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)<a class="headerlink" href="#3-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h3>
-<h4 id="a-pengesanan-perkakasan-peranti">A. Pengesanan Perkakasan Peranti<a class="headerlink" href="#a-pengesanan-perkakasan-peranti" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>vga
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>network
+<h3 id="3-konfigurasi-pemboleh-ubah-persekitaran-editor-visual">3. Konfigurasi Pemboleh Ubah Persekitaran <code>$EDITOR</code> &amp; <code>$VISUAL</code><a class="headerlink" href="#3-konfigurasi-pemboleh-ubah-persekitaran-editor-visual" title="Permanent link">&para;</a></h3>
+<p>Pemboleh ubah persekitaran menentukan aplikasi lalai yang digunakan oleh utiliti sistem (seperti <code>git</code>, <code>crontab</code>, <code>visudo</code>) apabila membuka editor teks.</p>
+<h4 id="a-konfigurasi-persekitaran-pengguna-individu-bashrc">A. Konfigurasi Persekitaran Pengguna Individu (<code>~/.bashrc</code>)<a class="headerlink" href="#a-konfigurasi-persekitaran-pengguna-individu-bashrc" title="Permanent link">&para;</a></h4>
+<p>Gunakan penyunting teks untuk menambah eksport pemboleh ubah dalam fail profil pengguna:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Tetapkan Vim atau Nano sebagai editor CLI lalai pengguna</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VISUAL</span><span class="o">=</span>/usr/bin/vim
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Senaraikan peranti USB</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>lsusb
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Muat semula fail .bashrc untuk menguji perubahan</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;nvidia|amdgpu|iwlwifi&#39;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Sahkan nilai pemboleh ubah persekitaran</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$EDITOR</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$VISUAL</span>
+</span></code></pre></div>
+<h4 id="b-konfigurasi-persekitaran-sistem-global-etcenvironment-etcprofilededitorsh">B. Konfigurasi Persekitaran Sistem Global (<code>/etc/environment</code> &amp; <code>/etc/profile.d/editor.sh</code>)<a class="headerlink" href="#b-konfigurasi-persekitaran-sistem-global-etcenvironment-etcprofilededitorsh" title="Permanent link">&para;</a></h4>
+<p>Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:</p>
+<ol>
+<li>
+<p>Gunakan <code>sudoedit</code> untuk membuka fail <code>/etc/environment</code> secara selamat:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudoedit<span class="w"> </span>/etc/environment
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Masukkan baris pemboleh ubah persekitaran berikut di dalam fail <code>/etc/environment</code> (format penetapan pasangan nama=nilai):
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="na">EDITOR</span><span class="o">=</span><span class="s">"/usr/bin/vim"</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">VISUAL</span><span class="o">=</span><span class="s">"/usr/bin/vim"</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Sebagai alternatif bagi persekitaran shell interaktif, cipta skrip profil global di <code>/etc/profile.d/editor.sh</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/profile.d/editor.sh<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">export EDITOR=/usr/bin/vim</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">export VISUAL=/usr/bin/vim</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">EOF</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/editor.sh
+</span></code></pre></div></p>
+</li>
+</ol>
+<blockquote>
+<p>[!NOTE]
+Secara lalai, arahan <code>sudo</code> menjalankan pembersihan persekitaran (<code>env_reset</code>). Pemboleh ubah <code>$EDITOR</code> atau <code>$VISUAL</code> pengguna hanya diwariskan semasa <code>sudo</code> jika konfigurasi <code>/etc/sudoers</code> membenarkannya (contohnya melalui arahan <code>Defaults env_keep += "EDITOR VISUAL"</code>).</p>
+</blockquote>
+<hr />
+<h3 id="4-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar">4. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)<a class="headerlink" href="#4-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h3>
+<h4 id="a-pengesanan-perkakasan-peranti">A. Pengesanan Perkakasan Peranti<a class="headerlink" href="#a-pengesanan-perkakasan-peranti" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>vga
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>network
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Senaraikan peranti USB</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>lsusb
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">'nvidia|amdgpu|iwlwifi'</span>
 </span></code></pre></div>
 <h4 id="b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts">B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS<a class="headerlink" href="#b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Kesan pemacu yang disyorkan oleh peranti</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ubuntu-drivers<span class="w"> </span>devices
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. Pasang pemacu NVIDIA terkini secara automatik</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>ubuntu-drivers<span class="w"> </span>install
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 3. Sahkan pemacu NVIDIA berfungsi selepas but semula</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>nvidia-smi
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Kesan pemacu yang disyorkan oleh peranti</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ubuntu-drivers<span class="w"> </span>devices
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 2. Pasang pemacu NVIDIA terkini secara automatik</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>ubuntu-drivers<span class="w"> </span>install
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># 3. Sahkan pemacu NVIDIA berfungsi selepas but semula</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>nvidia-smi
 </span></code></pre></div>
 <h4 id="c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion">C. Pemasangan Pemacu NVIDIA pada Fedora 43 &amp; AlmaLinux 10 (RPM Fusion)<a class="headerlink" href="#c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Untuk Fedora 43:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Untuk AlmaLinux 10:</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Pasang pemacu akmod-nvidia:</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Untuk Fedora 43:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Untuk AlmaLinux 10:</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Pasang pemacu akmod-nvidia:</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
 </span></code></pre></div>
 <h4 id="d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar">D. Pengesanan &amp; Konfigurasi Pemacu AMD Radeon &amp; Kad Rangkaian Tanpa Wayar<a class="headerlink" href="#d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mesa-vulkan-drivers<span class="w"> </span>mesa-utils<span class="w">   </span><span class="c1"># Ubuntu</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;OpenGL vendor&quot;</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>linux-firmware<span class="w">                   </span><span class="c1"># Ubuntu</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mesa-vulkan-drivers<span class="w"> </span>mesa-utils<span class="w">   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"OpenGL vendor"</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>linux-firmware<span class="w">                   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora</span>
 </span></code></pre></div>
 <hr />
 <h2 id="pematuhan-keselamatan-jdn-mampu-isoiec-27001">🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001<a class="headerlink" href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" title="Permanent link">&para;</a></h2>
@@ -1773,6 +1858,7 @@
 <ul>
 <li>[ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.</li>
 <li>[ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.</li>
+<li>[ ] Berjaya menetapkan pemboleh ubah persekitaran <code>$EDITOR</code> dan <code>$VISUAL</code> dalam <code>~/.bashrc</code> dan <code>/etc/environment</code>.</li>
 <li>[ ] Berjaya mengenal pasti cip grafik dan kad Wi-Fi menggunakan <code>lspci</code> serta memasang pemacu peranti berkaitan.</li>
 <li>[ ] Mengesahkan modul pemacu dimuatkan ke dalam isirung Linux (<code>lsmod</code> / <code>nvidia-smi</code> / <code>glxinfo</code>).</li>
 </ul>
@@ -1780,8 +1866,8 @@
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
 <li><em>"Bandingkan kelebihan dan kekurangan seni bina pembungkusan pakej APT/RPM berbanding ketersendirian kontena Flatpak dan Snap dari sudut keselamatan sektor awam."</em></li>
+<li><em>"Apakah perbezaan antara pemboleh ubah persekitaran $EDITOR dan $VISUAL mengikut standard POSIX dan utiliti Linux?"</em></li>
 <li><em>"Tuliskan skrip Bash untuk menyemak sama ada pemacu peranti NVIDIA atau AMD telah dimuatkan dengan betul dalam Kernel Linux 6.14."</em></li>
-<li><em>"Bagaimanakah cara menguruskan repositori cermin tempatan (local mirror repository) bagi persekitaran terpencil tanpa internet (air-gapped network)?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
@@ -1799,7 +1885,7 @@
 <li><strong>Nota Pentadbiran Sistem Linux Malaysia</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em>
+<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

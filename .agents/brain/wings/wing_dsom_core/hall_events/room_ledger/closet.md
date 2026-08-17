@@ -29,3 +29,6 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Pemaktuban Protokol Panggilan Langsung Node.js Jest (Direct Jest Execution) ke dalam Peraturan 14 Perlembagaan AI.
 - **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 6 (Migrasi Silibus Bab 6: Sandaran, Pemampatan, Pelekapan Storan, dan Pemprosesan Teks CU04 & CU06 - Kemuncak Siri Manual).
 - **2026-08-17:** Pembetulan kod nama kanonik rasmi Ubuntu 26.04 LTS "Resolute Raccoon" di seluruh dokumen sumber, kemahiran AI, perlembagaan, dan janaan semula manual web statik HTML.
+- **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #12 & PR #13 — Migrasi Silibus Bab 6 (Sandaran tar/rsync/zstd, Automasi systemd.timer/cron, Pemulihan Data sha256sum, Pelekapan Storan mount/umount/findmnt/fstab, Penapis Teks grep/sed/awk, dan RCA), Porting Kemahiran CU04/CU06, peningkatan kepada 982 ujian Python, dan penyempurnaan menyeluruh siri kurikulum Fasa 1–6.
+- **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 7 (Migrasi & Pemodenan Bab 7: Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem - CU01, CU03, & CU06).
+
