@@ -9,6 +9,10 @@ Covers:
   - .agents/skills/cu04-wa04-restore-endpoint-data/SKILL.md
   - .agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md
   - .agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md
+  - openwiki/topic-04-automation-and-backup.md
+  - openwiki/topic-06-troubleshooting-and-logs.md
+"""
+
   - .agents/skills/index.md
   - openwiki/topic-04-automation-and-backup.md
   - openwiki/topic-06-troubleshooting-and-logs.md

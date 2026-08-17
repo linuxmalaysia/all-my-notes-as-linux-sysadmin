@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus automasi skrip dan sandaran Linux (Cron, Bash, Rsync) dipetakan kepada NOSS CU04.">
+        <meta name="description" content="Silibus automasi skrip Bash, pengarkiban dan pemampatan tar/zstd, penyegerakan rsync, automasi berkala cron/systemd-timer, dan pemulihan data dipetakan kepada NOSS CU04.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -27,7 +27,7 @@
     
     
       
-        <title>topic-04-automation-and-backup - NOSS Linux Malaysia (DSOM)</title>
+        <title>Topik 4: Automasi Skrip, Sandaran Data & Pemulihan Sistem (CU04) - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#topik-4-automasi-sandaran-cu04" class="md-skip">
+        <a href="#topik-4-automasi-skrip-sandaran-data-pemulihan-sistem-cu04" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              topic-04-automation-and-backup
+              Topik 4: Automasi Skrip, Sandaran Data & Pemulihan Sistem (CU04)
             
           </span>
         </div>
@@ -1094,7 +1094,7 @@
   <a href="#overview-gambaran-keseluruhan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview (Gambaran Keseluruhan)
+        📌 Overview (Gambaran Keseluruhan)
       
     </span>
   </a>
@@ -1105,7 +1105,7 @@
   <a href="#silibus-utama" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Silibus Utama
+        📚 Silibus Utama
       
     </span>
   </a>
@@ -1113,10 +1113,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
+  <a href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pemetaan NOSS (NOSS Mapping)
+        🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
       
     </span>
   </a>
@@ -1503,7 +1536,7 @@
   <a href="#overview-gambaran-keseluruhan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview (Gambaran Keseluruhan)
+        📌 Overview (Gambaran Keseluruhan)
       
     </span>
   </a>
@@ -1514,7 +1547,7 @@
   <a href="#silibus-utama" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Silibus Utama
+        📚 Silibus Utama
       
     </span>
   </a>
@@ -1522,10 +1555,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
+  <a href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pemetaan NOSS (NOSS Mapping)
+        🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
       
     </span>
   </a>
@@ -1549,28 +1615,61 @@
 
 
 
-<h1 id="topik-4-automasi-sandaran-cu04">Topik 4: Automasi &amp; Sandaran (CU04)<a class="headerlink" href="#topik-4-automasi-sandaran-cu04" title="Permanent link">&para;</a></h1>
-<h2 id="overview-gambaran-keseluruhan">Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
-<p>Sistem Linux terkenal dengan keupayaan automasinya. Topik ini menyentuh asas penulisan skrip (shell scripting) dan penggunaan utiliti sandaran data (backup). Dipetakan daripada <strong>CU04 (Backup &amp; Recovery Tools)</strong>.</p>
-<h2 id="silibus-utama">Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Arkib &amp; Pemampatan (Archiving &amp; Compression)</strong>:</li>
-<li>Penggunaan <code>tar</code>, <code>gzip</code>, <code>zip</code>.</li>
-<li><strong>Bash Scripting Basics</strong>:</li>
-<li>Pembolehubah (Variables).</li>
-<li>Struktur kawalan (If-else, For loops).</li>
-<li>Kebenaran pelaksanaan (<code>chmod +x script.sh</code>).</li>
-<li><strong>Penyelarasan Masa (Job Scheduling)</strong>:</li>
-<li>Menggunakan <code>cron</code> dan penyuntingan jadual menerusi <code>crontab -e</code>.</li>
-<li><strong>Alatan Sandaran Berpusat Rangkaian (Network Backup)</strong>:</li>
-<li>Penggunaan <code>rsync</code> untuk menyegerak fail antara pelayan berbeza (<code>rsync -avz /source/ user@server:/destination/</code>).</li>
-</ol>
-<h2 id="pemetaan-noss-noss-mapping">Pemetaan NOSS (NOSS Mapping)<a class="headerlink" href="#pemetaan-noss-noss-mapping" title="Permanent link">&para;</a></h2>
-<p>Silibus ini memandu kemahiran Ejen AI berikut:
-- <code>cu04-wa02-perform-local-backup-operations</code>
-- <code>cu04-wa03-perform-network-based-backup</code></p>
+<h1 id="topik-4-automasi-skrip-sandaran-data-pemulihan-sistem-cu04">Topik 4: Automasi Skrip, Sandaran Data &amp; Pemulihan Sistem (CU04)<a class="headerlink" href="#topik-4-automasi-skrip-sandaran-data-pemulihan-sistem-cu04" title="Permanent link">&para;</a></h1>
+<h2 id="overview-gambaran-keseluruhan">📌 Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
+<p>Sistem Linux terkenal dengan keupayaan automasi dan keutuhan integriti data. Topik ini merangkumi pengarkiban moden, penyegerakan direktori pintar, automasi pemasa berjadual, serta strategi pemulihan data dan bencana. Dipetakan daripada <strong>NOSS CU04 (Backup &amp; Recovery Tools)</strong>.</p>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<h2 id="silibus-utama">📚 Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Pengarkiban &amp; Pemampatan Data Moden (Archiving &amp; Compression)</strong>:</li>
+<li>Utiliti pengarkiban <code>tar</code>.</li>
+<li>Pemampat moden berprestasi tinggi <code>zstd</code> (<em>Zstandard multi-threaded</em>), <code>xz</code>, <code>gzip</code>, dan <code>bzip2</code>.</li>
+<li>Menjalankan penyulitan arkib tersulit <code>gpg</code> (AES-256) mengikut garis panduan JDN/MAMPU.</li>
+<li><strong>Penyegerakan Data Pintar (Incremental Synchronization)</strong>:</li>
+<li>Penggunaan <code>rsync</code> untuk penyegerakan direktori tempatan dan rangkaian (<code>rsync -avzP --delete-after</code>).</li>
+<li>Penerapan Strategi Sandaran <strong>3-2-1</strong> (3 salinan, 2 media, 1 offsite) &amp; pematuhan ISO/IEC 27001.</li>
+<li><strong>Automasi Penjadualan Tugasan (Job Scheduling)</strong>:</li>
+<li>Automasi <code>cron</code> dan penyuntingan jadual menerusi <code>crontab -e</code>.</li>
+<li>Automasi moden berasaskan unit <code>systemd.service</code> dan <code>systemd.timer</code>.</li>
+<li><strong>Pemulihan Data &amp; Verifikasi Integriti (Recovery &amp; Verification)</strong>:</li>
+<li>Pengesahan integriti checksum cryptographic <code>sha256sum</code>.</li>
+<li>Pengekstrakan data terpilih (<em>selective restoration</em>) daripada arkib termampat.</li>
+<li>Prosedur dan alur kerja pemulihan bencana sistem <em>bare-metal</em>.</li>
+</ol>
+<hr />
+<h2 id="pemetaan-modul-amali-kemahiran-ai-noss-mapping">🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)<a class="headerlink" href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" title="Permanent link">&para;</a></h2>
+<p>Silibus ini memandu modul amali di <code>manual/cu04/</code> dan kemahiran AI di <code>.agents/skills/</code>:</p>
+<ul>
+<li><code>manual/cu04/cu04-wa01-persediaan-alatan-sandaran-dan-pemulihan.md</code> ➔ <code>.agents/skills/cu04-wa01-prepare-backup-recovery-tools/</code></li>
+<li><code>manual/cu04/cu04-wa02-operasi-sandaran-tempatan.md</code> ➔ <code>.agents/skills/cu04-wa02-perform-local-backup-operations/</code></li>
+<li><code>manual/cu04/cu04-wa03-sandaran-berasaskan-rangkaian.md</code> ➔ <code>.agents/skills/cu04-wa03-perform-network-based-backup/</code></li>
+<li><code>manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.md</code> ➔ <code>.agents/skills/cu04-wa04-restore-endpoint-data/</code></li>
+<li><code>manual/cu04/cu04-wa05-pemulihan-bare-metal-endpoint.md</code> ➔ <code>.agents/skills/cu04-wa05-perform-endpoint-bare-metal-recovery/</code></li>
+</ul>
+<hr />
+<h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
+<ol>
+<li><em>"Apakah perbezaan kelajuan dan kecekapan nisbah mampatan antara tar -I zstd berbanding tar -czvf bagi fail bersaiz besar?"</em></li>
+<li><em>"Bagaimanakah cara membina skrip Bash automasi sandaran rsync yang menghantar makluman kegagalan terus ke log systemd journalctl?"</em></li>
+<li><em>"Tunjukkan kaedah mengesahkan fail sha256sum secara berkelompok sebelum melancarkan proses pemulihan data pelayan."</em></li>
+</ol>
+<hr />
+<h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.gnu.org/software/tar/manual/">GNU Tar Official Manual</a></li>
+<li><a href="https://facebook.github.io/zstd/">Zstandard Compression Algorithm Guide</a></li>
+<li><a href="https://rsync.samba.org/">Rsync Documentation &amp; User Manual</a></li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html">Systemd Timers Documentation</a></li>
+</ul>
+<hr />
+<h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Linux Administration Handbook</strong> oleh Evi Nemeth et al.</li>
+<li><strong>Automating Linux with Bash and Python</strong> oleh R. W.</li>
+<li><strong>Panduan Praktikal Sandaran &amp; Automasi Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Automasi skrip sandaran data tempatan menggunakan Bash dan systemd timers / cron.">
+        <meta name="description" content="Panduan amali pelaksanaan operasi sandaran sistem tempatan, arkib berformat tar dengan pemampat moden zstd/gzip/xz, penyegerakan rsync, automasi cron & systemd.timer, serta pematuhan standard ISO/IEC 27001 dan JDN/MAMPU.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Pelaksanaan Operasi Sandaran Tempatan - NOSS Linux Malaysia (DSOM)</title>
+        <title>Pelaksanaan Operasi Sandaran Tempatan & Pemampatan Data - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pelaksanaan-operasi-sandaran-tempatan" class="md-skip">
+        <a href="#pelaksanaan-operasi-sandaran-tempatan-pemampatan-data" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pelaksanaan Operasi Sandaran Tempatan
+              Pelaksanaan Operasi Sandaran Tempatan & Pemampatan Data
             
           </span>
         </div>
@@ -1448,10 +1448,133 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-pengarkiban-pemampatan-data-moden-tar-zstd-gzip-xz" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        2. Pengarkiban &amp; Pemampatan Data Moden (tar, zstd, gzip, xz)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="2. Pengarkiban &amp; Pemampatan Data Moden (tar, zstd, gzip, xz)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-konsep-operator-tar" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Konsep &amp; Operator tar
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-pelaksanaan-amali-pemampatan-zstd-standard-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Pelaksanaan Amali Pemampatan zstd (Standard 2026)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#c-pemampat-tradisional-moden-lain" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Pemampat Tradisional &amp; Moden lain
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-penyegerakan-data-pintar-incremental-backup-rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Penyegerakan Data Pintar &amp; Incremental Backup (rsync)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-strategi-sandaran-3-2-1-pengerasan-keselamatan-jdnmampu" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Strategi Sandaran 3-2-1 &amp; Pengerasan Keselamatan JDN/MAMPU
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="4. Strategi Sandaran 3-2-1 &amp; Pengerasan Keselamatan JDN/MAMPU">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-prinsip-3-2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Prinsip 3-2-1:
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-penyulitan-arkib-sandaran" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Penyulitan Arkib Sandaran
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#5-automasi-jadual-sandaran-cron-systemdtimer" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5. Automasi Jadual Sandaran (cron &amp; systemd.timer)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="5. Automasi Jadual Sandaran (cron &amp; systemd.timer)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-automasi-tradisional-menerusi-crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Automasi Tradisional menerusi crontab
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-automasi-moden-menerusi-unit-systemdservice-systemdtimer" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Automasi Moden menerusi Unit systemd.service &amp; systemd.timer
       
     </span>
   </a>
@@ -1461,6 +1584,11 @@
       </ul>
     </nav>
   
+</li>
+
+      </ul>
+    </nav>
+
 </li>
       
         <li class="md-nav__item">
@@ -1524,58 +1652,142 @@
 
 
 
-<h1 id="pelaksanaan-operasi-sandaran-tempatan">Pelaksanaan Operasi Sandaran Tempatan<a class="headerlink" href="#pelaksanaan-operasi-sandaran-tempatan" title="Permanent link">&para;</a></h1>
+<h1 id="pelaksanaan-operasi-sandaran-tempatan-pemampatan-data">Pelaksanaan Operasi Sandaran Tempatan &amp; Pemampatan Data<a class="headerlink" href="#pelaksanaan-operasi-sandaran-tempatan-pemampatan-data" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Automasi skrip sandaran data tempatan menggunakan Bash dan systemd timers / cron.</p>
+<p>Di akhir modul amali ini, pelatih dapat:
+1. Menguasai penciptaan dan pengekstrakan arkib data menggunakan utiliti <code>tar</code> berasaskan algoritma pemampatan moden seperti <code>zstd</code>, <code>xz</code>, <code>gzip</code>, dan <code>bzip2</code>.
+2. Melaksanakan penyegerakan direktori berprestasi tinggi menggunakan <code>rsync -avzP --delete-after</code> bagi operasi sandaran berperingkat (<em>incremental backup</em>).
+3. Mengaplikasikan strategi sandaran <strong>3-2-1</strong> mengikut Pekeliling Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001.
+4. Mengautomasikan tugasan sandaran berkala menggunakan <code>cron</code> dan unit pemasa <code>systemd.timer</code>.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU04</strong>.</p>
+Modul amali ini dipetakan kepada <strong>NOSS CU04 (Backup &amp; Recovery Tools) - WA02: Perform Local Backup Operations</strong>. Edaran Linux rujukan merangkumi <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
 <h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
+<li>Persekitaran Linux beroperasi (Ubuntu 26.04 LTS / AlmaLinux 10 / Fedora 43).</li>
 <li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
+<li>Ruang storan mencukupi pada pemacu sandaran atau partition dedicated (contoh: <code>/mnt/backup</code>).</li>
 </ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<hr />
+<h3 id="2-pengarkiban-pemampatan-data-moden-tar-zstd-gzip-xz">2. Pengarkiban &amp; Pemampatan Data Moden (<code>tar</code>, <code>zstd</code>, <code>gzip</code>, <code>xz</code>)<a class="headerlink" href="#2-pengarkiban-pemampatan-data-moden-tar-zstd-gzip-xz" title="Permanent link">&para;</a></h3>
+<h4 id="a-konsep-operator-tar">A. Konsep &amp; Operator <code>tar</code><a class="headerlink" href="#a-konsep-operator-tar" title="Permanent link">&para;</a></h4>
+<p>Utiliti <code>tar</code> (<em>Tape Archive</em>) digabungkan dengan alatan pemampatan untuk mengecilkan saiz arkib data:
+- <code>-c</code> (<em>create</em>): Membina arkib baharu.
+- <code>-x</code> (<em>extract</em>): Mengekstrak kandungan arkib.
+- <code>-v</code> (<em>verbose</em>): Memaparkan maklumat terperinci semasa proses.
+- <code>-f</code> (<em>file</em>): Menentukan nama fail arkib output.
+- <code>-z</code> (<em>gzip</em>), <code>-j</code> (<em>bzip2</em>), <code>-J</code> (<em>xz</em>), <code>--zstd</code> (<em>zstandard</em>): Pilihan algoritma pemampatan.</p>
+<h4 id="b-pelaksanaan-amali-pemampatan-zstd-standard-2026">B. Pelaksanaan Amali Pemampatan <code>zstd</code> (Standard 2026)<a class="headerlink" href="#b-pelaksanaan-amali-pemampatan-zstd-standard-2026" title="Permanent link">&para;</a></h4>
+<p><code>zstd</code> (Zstandard) merupakan algoritma pemampatan masa nyata berasaskan bebenang berbilang (<em>multi-threaded</em>) berprestasi tinggi.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Membina arkib terpatat zstd daripada direktori /var/log</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-I<span class="w"> </span><span class="s1">&#39;zstd -T0 -19&#39;</span><span class="w"> </span>-cvf<span class="w"> </span>/mnt/backup/logs_backup_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.tar.zst<span class="w"> </span>/var/log
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Memeriksa kandungan fail arkib tanpa mengekstrak</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>tar<span class="w"> </span>-tvf<span class="w"> </span>/mnt/backup/logs_backup_*.tar.zst
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Mengekstrak arkib zstd ke direktori sasaran</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-I<span class="w"> </span>zstd<span class="w"> </span>-xvf<span class="w"> </span>/mnt/backup/logs_backup_*.tar.zst<span class="w"> </span>-C<span class="w"> </span>/tmp/restored_logs/
 </span></code></pre></div>
+<h4 id="c-pemampat-tradisional-moden-lain">C. Pemampat Tradisional &amp; Moden lain<a class="headerlink" href="#c-pemampat-tradisional-moden-lain" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Pemampatan Gzip (.tar.gz)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar<span class="w"> </span>-czvf<span class="w"> </span>/mnt/backup/etc_backup.tar.gz<span class="w"> </span>/etc
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Pemampatan XZ (.tar.xz) - kadar mampatan tinggi</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>tar<span class="w"> </span>-cJvf<span class="w"> </span>/mnt/backup/etc_backup.tar.xz<span class="w"> </span>/etc
+</span></code></pre></div>
+<hr />
+<h3 id="3-penyegerakan-data-pintar-incremental-backup-rsync">3. Penyegerakan Data Pintar &amp; Incremental Backup (<code>rsync</code>)<a class="headerlink" href="#3-penyegerakan-data-pintar-incremental-backup-rsync" title="Permanent link">&para;</a></h3>
+<p><code>rsync</code> (<em>Remote Sync</em>) hanya menyalin blok fail yang telah berubah, menjimatkan masa dan penggunaan I/O cakera.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Parameter utama rsync:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># -a (archive mode): Memelihara kebenaran, pemilik, dan pautan simbolik</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># -v (verbose): Memaparkan perincian</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># -z (compress): Mermampatkan data semasa pemindahan</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># -P (progress &amp; partial): Memaparkan bar kemajuan dan membolehkan resume</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># --delete-after: Memadam fail di destinasi jika ia dipadam di sumber (penyegerakan tepat)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>rsync<span class="w"> </span>-avzP<span class="w"> </span>--delete-after<span class="w"> </span>/home/user/documents/<span class="w"> </span>/mnt/backup/documents_mirror/
+</span></code></pre></div>
+<hr />
+<h3 id="4-strategi-sandaran-3-2-1-pengerasan-keselamatan-jdnmampu">4. Strategi Sandaran 3-2-1 &amp; Pengerasan Keselamatan JDN/MAMPU<a class="headerlink" href="#4-strategi-sandaran-3-2-1-pengerasan-keselamatan-jdnmampu" title="Permanent link">&para;</a></h3>
+<h4 id="a-prinsip-3-2-1">A. Prinsip 3-2-1:<a class="headerlink" href="#a-prinsip-3-2-1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>3</strong> salinan data (1 data asal + 2 salinan sandaran).</li>
+<li><strong>2</strong> jenis media storan berbeza (contoh: NVMe SSD tempatan + NAS/LUKS Encrypted External Volume).</li>
+<li><strong>1</strong> salinan ditempatkan di luar premis (<em>offsite / cloud / secondary DC</em>).</li>
+</ul>
+<h4 id="b-penyulitan-arkib-sandaran">B. Penyulitan Arkib Sandaran<a class="headerlink" href="#b-penyulitan-arkib-sandaran" title="Permanent link">&para;</a></h4>
+<p>Mengikut Pekeliling Am JDN/MAMPU, data sensitif mesti disulitkan sebelum disimpan:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Menyalurkan arkib tar zstd terus ke penyulitan Symmetric GPG</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>tar<span class="w"> </span>-I<span class="w"> </span>zstd<span class="w"> </span>-cvf<span class="w"> </span>-<span class="w"> </span>/etc<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--symmetric<span class="w"> </span>--cipher-algo<span class="w"> </span>AES256<span class="w"> </span>-o<span class="w"> </span>/mnt/backup/etc_encrypted.tar.zst.gpg
+</span></code></pre></div></p>
+<hr />
+<h3 id="5-automasi-jadual-sandaran-cron-systemdtimer">5. Automasi Jadual Sandaran (<code>cron</code> &amp; <code>systemd.timer</code>)<a class="headerlink" href="#5-automasi-jadual-sandaran-cron-systemdtimer" title="Permanent link">&para;</a></h3>
+<h4 id="a-automasi-tradisional-menerusi-crontab">A. Automasi Tradisional menerusi <code>crontab</code><a class="headerlink" href="#a-automasi-tradisional-menerusi-crontab" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Menyunting jadual cron pengguna root</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>crontab<span class="w"> </span>-e
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Format crontab: [Minit] [Jam] [Hari/Bulan] [Bulan] [Hari/Minggu] [Arahan]</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Contoh: Menjalankan skrip sandaran setiap hari pada jam 2:00 pagi</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/usr/local/bin/system_backup.sh<span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/log/backup.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></code></pre></div>
+<h4 id="b-automasi-moden-menerusi-unit-systemdservice-systemdtimer">B. Automasi Moden menerusi Unit <code>systemd.service</code> &amp; <code>systemd.timer</code><a class="headerlink" href="#b-automasi-moden-menerusi-unit-systemdservice-systemdtimer" title="Permanent link">&para;</a></h4>
+<p>Mewujudkan servis sandaran di <code>/etc/systemd/system/local-backup.service</code>:
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[Unit]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Servis Sandaran Sistem Tempatan CU04</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">[Service]</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/local/bin/system_backup.sh</span>
+</span></code></pre></div></p>
+<p>Mewujudkan pemasa di <code>/etc/systemd/system/local-backup.timer</code>:
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[Unit]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Pemasa Sandaran Harian CU04</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">[Timer]</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="na">OnCalendar</span><span class="o">=</span><span class="s">*-*-* 02:00:00</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="na">Persistent</span><span class="o">=</span><span class="s">true</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">[Install]</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">timers.target</span>
+</span></code></pre></div></p>
+<p>Mengaktifkan pemasa <code>systemd</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>local-backup.timer
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>list-timers
+</span></code></pre></div></p>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya membina dan mengekstrak arkib <code>.tar.zst</code> dan <code>.tar.gz</code>.</li>
+<li>[ ] Berjaya menyegerakkan direktori menggunakan <code>rsync</code> dengan opsi <code>--delete-after</code>.</li>
+<li>[ ] Memahami dan mengaplikasikan prinsip sandaran 3-2-1.</li>
+<li>[ ] Mampu mengkonfigurasi automasi sandaran berkala menerusi <code>cron</code> atau <code>systemd.timer</code>.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pelaksanaan Operasi Sandaran Tempatan dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Pelaksanaan Operasi Sandaran Tempatan menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Apakah perbezaan prestasi dari segi saiz dan masa pemprosesan antara zstd, xz, dan gzip apabila mermampatkan log bersaiz 10GB?"</em></li>
+<li><em>"Tunjukkan skrip Bash lengkap yang merangkumi pengarkiban tar.zst, semakan integriti sha256sum, dan penghantaran laporan e-mel/journalctl."</em></li>
+<li><em>"Bagaimanakah cara mengkonfigurasi systemd.timer untuk menjalankan sandaran hanya apabila sistem berada dalam keadaan idle?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://www.gnu.org/software/tar/manual/">Dokumentasi Rasmi GNU Tar</a></li>
+<li><a href="https://facebook.github.io/zstd/">Panduan Pemampatan Zstandard (zstd)</a></li>
+<li><a href="https://rsync.samba.org/">Rsync Official Documentation &amp; Manual</a></li>
+<li><a href="https://wiki.archlinux.org/title/Systemd/Timers">Systemd Timers Wiki &amp; Guide</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Linux Administration Handbook (5th Edition)</strong> oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley.</li>
+<li><strong>Mastering Linux System Administration</strong> oleh Christine Bresnahan &amp; Richard Blum.</li>
+<li><strong>Panduan Praktikal Pentadbiran &amp; Sandaran Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />

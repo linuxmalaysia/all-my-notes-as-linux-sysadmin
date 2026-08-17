@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Prosedur verifikasi integriti integriti sandaran dan pemulihan data terpilih.">
+        <meta name="description" content="Panduan amali prosedur pemulihan data tempatan dan sistem fail, pengesahan integriti checksum SHA-256, pengekstrakan fail terpilih daripada arkib tar/zstd, dan tatacara pemulihan bare-metal.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Pemulihan Data & Sistem Fail - NOSS Linux Malaysia (DSOM)</title>
+        <title>Pemulihan Data & Verifikasi Integriti Sistem Fail - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pemulihan-data-sistem-fail" class="md-skip">
+        <a href="#pemulihan-data-verifikasi-integriti-sistem-fail" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pemulihan Data & Sistem Fail
+              Pemulihan Data & Verifikasi Integriti Sistem Fail
             
           </span>
         </div>
@@ -1437,10 +1437,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-verifikasi-integriti-arkib-sandaran-sha256sum" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
+        1. Verifikasi Integriti Arkib Sandaran (sha256sum)
       
     </span>
   </a>
@@ -1448,10 +1448,71 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-pengekstrakan-pemulihan-data-terpilih-selective-restore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        2. Pengekstrakan &amp; Pemulihan Data Terpilih (Selective Restore)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="2. Pengekstrakan &amp; Pemulihan Data Terpilih (Selective Restore)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-memeriksa-kandungan-arkib-tanpa-mengekstrak" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Memeriksa Kandungan Arkib Tanpa Mengekstrak
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-mengekstrak-fail-terpilih-ke-direktori-sasar" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Mengekstrak Fail Terpilih ke Direktori Sasar
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#c-memelihara-pemilikan-dan-kebenaran-fail-same-owner-p" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Memelihara Pemilikan dan Kebenaran Fail (--same-owner, -p)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-pemulihan-arkib-tersulit-gpg" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Pemulihan Arkib Tersulit (gpg)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-tatacara-pemulihan-bencana-bare-metal-bare-metal-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Tatacara Pemulihan Bencana Bare-Metal (Bare-Metal Recovery)
       
     </span>
   </a>
@@ -1524,58 +1585,112 @@
 
 
 
-<h1 id="pemulihan-data-sistem-fail">Pemulihan Data &amp; Sistem Fail<a class="headerlink" href="#pemulihan-data-sistem-fail" title="Permanent link">&para;</a></h1>
+<h1 id="pemulihan-data-verifikasi-integriti-sistem-fail">Pemulihan Data &amp; Verifikasi Integriti Sistem Fail<a class="headerlink" href="#pemulihan-data-verifikasi-integriti-sistem-fail" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Prosedur verifikasi integriti integriti sandaran dan pemulihan data terpilih.</p>
+<p>Di akhir modul amali ini, pelatih dapat:
+1. Melaksanakan verifikasi integriti arkib sandaran menggunakan algoritma hash cryptographic <code>sha256sum</code> sebelum proses pemulihan.
+2. Mengekstrak data terpilih (<em>selective restoration</em>) daripada arkib termampat <code>tar.zst</code> / <code>tar.gz</code> tanpa menimpa (<em>overwrite</em>) data sedia ada secara tidak sengaja.
+3. Melaksanakan pemulihan kebenaran (<em>permissions</em>) dan pemilikan fail POSIX (<code>chown</code>, <code>chmod</code>) selepas data dipulihkan.
+4. Memahami alur kerja pemulihan <em>bare-metal disaster recovery</em> untuk persekitaran endpoint dan pelayan.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU04</strong>.</p>
+Modul amali ini dipetakan kepada <strong>NOSS CU04 (Backup &amp; Recovery Tools) - WA04: Perform Data and Filesystem Recovery</strong>. Edaran Linux rujukan merangkumi <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
-</ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<h3 id="1-verifikasi-integriti-arkib-sandaran-sha256sum">1. Verifikasi Integriti Arkib Sandaran (<code>sha256sum</code>)<a class="headerlink" href="#1-verifikasi-integriti-arkib-sandaran-sha256sum" title="Permanent link">&para;</a></h3>
+<p>Sebelum memulakan pemulihan data, pengesahan integriti adalah kritikal bagi memastikan arkib sandaran tidak rosak atau diubah suai (<em>tampered</em>).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># A. Menjana nilai checksum SHA-256 semasa pembinaan sandaran</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sha256sum<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst<span class="w"> </span>&gt;<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst.sha256
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># B. Mengesahkan integriti fail arkib sebelum pemulihan</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">cd</span><span class="w"> </span>/mnt/backup/
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sha256sum<span class="w"> </span>-c<span class="w"> </span>etc_backup_20260817.tar.zst.sha256
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Output yang sah:</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># etc_backup_20260817.tar.zst: OK</span>
 </span></code></pre></div>
+<hr />
+<h3 id="2-pengekstrakan-pemulihan-data-terpilih-selective-restore">2. Pengekstrakan &amp; Pemulihan Data Terpilih (<em>Selective Restore</em>)<a class="headerlink" href="#2-pengekstrakan-pemulihan-data-terpilih-selective-restore" title="Permanent link">&para;</a></h3>
+<h4 id="a-memeriksa-kandungan-arkib-tanpa-mengekstrak">A. Memeriksa Kandungan Arkib Tanpa Mengekstrak<a class="headerlink" href="#a-memeriksa-kandungan-arkib-tanpa-mengekstrak" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Menyenaraikan semua fail dalam arkib dan menapis fail khusus</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar<span class="w"> </span>-tvf<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;netplan&quot;</span>
+</span></code></pre></div>
+<h4 id="b-mengekstrak-fail-terpilih-ke-direktori-sasar">B. Mengekstrak Fail Terpilih ke Direktori Sasar<a class="headerlink" href="#b-mengekstrak-fail-terpilih-ke-direktori-sasar" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Cipta direktori sementara pemulihan untuk mengelakkan penimpaan tidak sengaja</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/recovery_staging
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Mengekstrak hanya fail netplan/01-netcfg.yaml daripada arkib</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-I<span class="w"> </span>zstd<span class="w"> </span>-xvf<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>-C<span class="w"> </span>/tmp/recovery_staging<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>etc/netplan/01-netcfg.yaml
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Semak kandungan fail yang dipulihkan</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>ls<span class="w"> </span>-la<span class="w"> </span>/tmp/recovery_staging/etc/netplan/
+</span></code></pre></div>
+<h4 id="c-memelihara-pemilikan-dan-kebenaran-fail-same-owner-p">C. Memelihara Pemilikan dan Kebenaran Fail (<code>--same-owner</code>, <code>-p</code>)<a class="headerlink" href="#c-memelihara-pemilikan-dan-kebenaran-fail-same-owner-p" title="Permanent link">&para;</a></h4>
+<p>Secara lalai, pengekstrakan oleh pengguna <code>root</code> mengekalkan pemilikan asal:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-I<span class="w"> </span>zstd<span class="w"> </span>--same-owner<span class="w"> </span>-p<span class="w"> </span>-xvf<span class="w"> </span>/mnt/backup/etc_backup_20260817.tar.zst<span class="w"> </span>-C<span class="w"> </span>/
+</span></code></pre></div></p>
+<hr />
+<h3 id="3-pemulihan-arkib-tersulit-gpg">3. Pemulihan Arkib Tersulit (<code>gpg</code>)<a class="headerlink" href="#3-pemulihan-arkib-tersulit-gpg" title="Permanent link">&para;</a></h3>
+<p>Jika arkib disulitkan dengan GPG (AES-256) mengikut garis panduan JDN/MAMPU:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Dekripsikan dan ekstrak aluran tar terus secara paip</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>gpg<span class="w"> </span>--decrypt<span class="w"> </span>/mnt/backup/etc_encrypted.tar.zst.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tar<span class="w"> </span>-I<span class="w"> </span>zstd<span class="w"> </span>-xvf<span class="w"> </span>-<span class="w"> </span>-C<span class="w"> </span>/tmp/recovery_staging/
+</span></code></pre></div></p>
+<hr />
+<h3 id="4-tatacara-pemulihan-bencana-bare-metal-bare-metal-recovery">4. Tatacara Pemulihan Bencana Bare-Metal (<em>Bare-Metal Recovery</em>)<a class="headerlink" href="#4-tatacara-pemulihan-bencana-bare-metal-bare-metal-recovery" title="Permanent link">&para;</a></h3>
+<p>Pemulihan bare-metal dilaksanakan apabila sistem mengalami kegagalan penuh peranti storan utama:</p>
+<ol>
+<li><strong>But menggunakan Persekitaran Live ISO</strong>:</li>
+<li>But komputer sasaran menggunakan USB Live Ubuntu 26.04 LTS atau AlmaLinux 10.</li>
+<li><strong>Penyediaan Partisi &amp; Sistem Fail Sasar</strong>:</li>
+<li>Bina skema partisi GPT dan penyulitan LUKS2 / LVM2 (jika berkaitan):
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>cryptsetup<span class="w"> </span>luksOpen<span class="w"> </span>/dev/nvme0n1p3<span class="w"> </span>cryptroot
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>vgchange<span class="w"> </span>-ay
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv<span class="w"> </span>/mnt
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/nvme0n1p2<span class="w"> </span>/mnt/boot
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/nvme0n1p1<span class="w"> </span>/mnt/boot/efi
+</span></code></pre></div></li>
+<li><strong>Pengekstrakan Arkib Bare-Metal Sistem</strong>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-I<span class="w"> </span>zstd<span class="w"> </span>-xvf<span class="w"> </span>/mnt/backup/full_system_baremetal.tar.zst<span class="w"> </span>-C<span class="w"> </span>/mnt
+</span></code></pre></div></li>
+<li><strong>Pemasangan Semula Bootloader GRUB2 &amp; Chroot</strong>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">for</span><span class="w"> </span>dir<span class="w"> </span><span class="k">in</span><span class="w"> </span>/dev<span class="w"> </span>/dev/pts<span class="w"> </span>/proc<span class="w"> </span>/sys<span class="w"> </span>/run<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>--bind<span class="w"> </span><span class="nv">$dir</span><span class="w"> </span>/mnt<span class="nv">$dir</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>chroot<span class="w"> </span>/mnt
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>grub-install<span class="w"> </span>/dev/nvme0n1
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>update-grub
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">exit</span>
+</span></code></pre></div></li>
+</ol>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya menjana dan mengesahkan nilai hash <code>sha256sum</code> untuk fail arkib.</li>
+<li>[ ] Berjaya menyenarai dan mengekstrak fail terpilih tanpa mengekstrak keseluruhan arkib.</li>
+<li>[ ] Berjaya melaksanakan dekripsi arkib tersulit <code>gpg</code> ke lokasi pemulihan.</li>
+<li>[ ] Memahami alur kerja dan langkah asas pemulihan sistem bare-metal.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemulihan Data &amp; Sistem Fail dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Pemulihan Data &amp; Sistem Fail menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Bagaimanakah cara membina skrip pengesahan sha256sum automatik yang menolak pengekstrakan jika nilai checksum tidak sepadan?"</em></li>
+<li><em>"Apakah langkah-langkah pemulihan data untuk sistem fail Btrfs atau ZFS snapshot apabila berlaku kegagalan integriti data?"</em></li>
+<li><em>"Tunjukkan kaedah memulihkan pangkalan data PostgreSQL daripada fail tar.zst dump tanpa mengganggu perkhidmatan hidup."</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://www.gnu.org/software/tar/manual/html_section/transform.html">GNU Tar Restore &amp; Extraction Manual</a></li>
+<li><a href="https://help.ubuntu.com/community/LiveCdRecovery">Ubuntu Live ISO System Recovery Guide</a></li>
+<li><a href="https://csrc.nist.gov/publications/detail/sp/800-34/rev-1/final">NIST Special Publication 800-34: Contingency Planning Guide for IT Systems</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Linux Incident Response and Forensics</strong> oleh Kristinn Gudjonsson.</li>
+<li><strong>Disaster Recovery and Business Continuity</strong> oleh The Open Group.</li>
+<li><strong>Panduan Pemulihan Data &amp; Pemantauan Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
