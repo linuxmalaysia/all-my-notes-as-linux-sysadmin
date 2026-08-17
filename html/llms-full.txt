@@ -46,6 +46,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
     - Use `uvx ruff check .` as the primary static analysis and auto-fixing tool for codebase health audits.
     - **Windows Terminal Unicode Safe**: Always include `if hasattr(sys.stdout, 'reconfigure'): sys.stdout.reconfigure(encoding='utf-8')` in CLI scripts to prevent `UnicodeEncodeError` when printing emojis or special characters on Windows.
     - **Subprocess Execution**: When running Python submodules via `subprocess` from within an isolated script, exclusively use `[sys.executable, "-m", "module_name"]` instead of nested `uv run` commands to prevent pathing failures.
+    - **Non-Interactive CI Execution**: When orchestrating multi-language test runners (such as `npm test` or `jest` from Python), always pass `CI=true` and explicit non-interactive flags (`--ci`) to prevent TTY or stdin blocking on Windows and automated runners.
     - **Cross-Platform Filesystem Testing**: When testing filesystem linking (symlinks vs Windows NTFS junctions), write platform-aware assertions. Do not rely solely on `Path.is_symlink()` on Windows (use `is_junction()` or resolution matching) to ensure 100% test compatibility across both Windows and POSIX environments.
 15. **Piawaian Distribusi Linux Kanonik & Dasar Penyulitan Pejabat**: Apabila menulis atau mengemaskini sebarang kemahiran, dokumentasi, atau kandungan silibus yang melibatkan distribusi Linux:
     - Gunakan **Ubuntu 26.04 LTS "Quetzal"** (Isirung 6.14 LTS, GNOME 48, sokongan sehingga April 2031) sebagai distribusi rujukan utama untuk desktop dan persekitaran latihan.
@@ -39880,7 +39881,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T04:06:03Z"
+timestamp: "2026-08-17T04:17:23Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -40566,6 +40567,9 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Pemaktuban Peraturan 21 (Deep Web Research & CU/WA Mapping Mandate) dan Pengayaan Keselamatan Jabatan Digital Negara (JDN) / MAMPU & ISO/IEC 27001 serta Penalaan Prestasi ke dalam Perlembagaan AI.
 - **2026-08-17:** Pengukuhan Dwi-Identiti Ejen AI (Pakar Linux NOSS Malaysia & Harisfazillah Jamel - LinuxMalaysia) dan Mandat Porting Pengetahuan ke Kemahiran AI (Knowledge-to-Skill Porting Mandate).
 - **2026-08-17:** Penyediaan lejar penyerahan sesi (Handover) untuk Google Jules bagi Audit Bab 1–2 dan Migrasi Bab 3 (CU02).
+- **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #4 — Audit Bab 1-2, Porting Kemahiran CU01/CU02, Migrasi Bab 3 Storan (GPT/LVM2/LUKS2), dan penambahan 902 ujian Python.
+- **2026-08-17:** Pemaktuban Protokol Orkestrasi Ujian Bukan-Interaktif (Non-Interactive CI Execution) ke dalam Peraturan 14 Perlembagaan AI.
+- **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 4 (Migrasi Silibus Bab 4: Pentadbiran Pengguna & Keselamatan Endpoint CU05).
 
 <!-- END FILE: .agents/brain/wings/wing_dsom_core/hall_events/room_ledger/closet.md -->
 
