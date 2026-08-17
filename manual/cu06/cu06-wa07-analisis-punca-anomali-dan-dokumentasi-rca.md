@@ -3,9 +3,9 @@ okf_version: 0.1
 type: knowledge-node
 title: "Pemprosesan Teks Aluran, Saluran Paip, Editor CLI & Analisis Punca Utama (RCA)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu06", "grep", "sed", "awk", "cut", "sort", "uniq", "vim", "nano", "rca"]
-tags: ["cu06", "linux", "noss", "grep", "sed", "awk", "vim", "nano", "rca", "standard-malaysia"]
-description: "Panduan amali pemprosesan teks aluran menggunakan penapis Linux (grep, sed, awk, cut, sort, uniq), pengalihan I/O dan piping, penyuntingan fail konfigurasi menggunakan vim/nano, serta dokumentasi laporan RCA."
+topics: ["noss-linux", "cu06", "grep", "sed", "awk", "cut", "sort", "uniq", "vim", "neovim", "nano", "sudoedit", "visudo", "rca"]
+tags: ["cu06", "linux", "noss", "grep", "sed", "awk", "vim", "neovim", "nano", "sudoedit", "visudo", "rca", "standard-malaysia"]
+description: "Panduan amali pemprosesan teks aluran menggunakan penapis Linux (grep, sed, awk, cut, sort, uniq), pengalihan I/O dan piping, penyuntingan fail konfigurasi selamat menggunakan Vim/Neovim, GNU Nano, sudoedit/visudo, serta dokumentasi laporan RCA."
 resource: "file:///manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md"
 ---
 
@@ -15,7 +15,7 @@ resource: "file:///manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-
 Di akhir modul amali ini, pelatih dapat:
 1. Menguasai alat penapis teks berprestasi tinggi (`grep` / `ripgrep`, `sed`, `awk`, `cut`, `sort`, `uniq`, `wc`, `tr`) untuk menganalisis fail log sistem.
 2. Mengaplikasikan pengalihan I/O (`>`, `>>`, `<`, `2>&1`, `|` piping, `tee`) dan pengurusan ralat aluran skrip Bash.
-3. Menyunting fail konfigurasi pentadbiran menggunakan penyunting teks CLI (`vim` dan `nano`).
+3. Menyunting fail konfigurasi pentadbiran menggunakan penyunting teks CLI (**Vim / Neovim** dan **GNU Nano**) serta amalan penyuntingan selamat (`sudoedit`, `visudo`).
 4. Menyediakan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*) bagi insiden anomali sistem yang mematuhi standard ISO/IEC 27001 dan JDN/MAMPU.
 
 > [!NOTE]
@@ -27,7 +27,7 @@ Di akhir modul amali ini, pelatih dapat:
 
 ### 1. Penapis Teks Berprestasi Tinggi (*Text Processing Utilities*)
 
-#### A. carian Corak dengan `grep` / `ripgrep`
+#### A. Carian Corak dengan `grep` / `ripgrep`
 ```bash
 # Mencari ralat 'FAILED' dalam auth.log tanpa mengira huruf besar/kecil (-i) beserta nombor baris (-n)
 grep -in "failed" /var/log/auth.log
@@ -71,23 +71,81 @@ sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 
 ---
 
-### 3. Penyuntingan Fail Konfigurasi CLI (`vim` & `nano`)
+### 3. Penyuntingan Fail Konfigurasi Terminal CLI & Amalan Keselamatan
 
-#### A. Penyunting Teks `nano` (Mesra Pemula):
-- `Ctrl + O`: Menyimpan fail (*WriteOut*).
-- `Ctrl + X`: Keluar dari editor.
-- `Ctrl + W`: Carian teks.
+Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI serta amalan keselamatan penyuntingan berhak milik `root`.
 
-#### B. Penyunting Teks `vim` (Standard Pentadbir Sistem):
-- **Mod Arahan (Command Mode)**:
-  - `i`: Masuk ke Mod Sisipan (*Insert Mode*).
-  - `dd`: Memadam satu baris.
-  - `yy` / `p`: Menyalin baris / Menampal baris.
-  - `/paten`: Carian teks ke hadapan.
-- **Mod Ex / Terakhir (Ex Mode)**:
-  - `:w`: Menyimpan fail.
-  - `:q!`: Keluar tanpa menyimpan.
-  - `:wq` / `:x`: Menyimpan dan keluar.
+#### A. GNU Nano (Penyunting Teks Mudah & Pantas)
+GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
+
+- **Pintasan Papan Kekunci Utama**:
+  - `Ctrl + O`: Menyimpan fail (*WriteOut*).
+  - `Ctrl + X`: Keluar dari editor.
+  - `Ctrl + W`: Carian teks (*Where Is*).
+  - `Ctrl + \`: Carian dan penggantian teks (*Replace*).
+  - `Ctrl + K`: Memotong (*cut*) baris semasa.
+  - `Ctrl + U`: Menampal (*uncut*) baris.
+  - `Alt + G` / `Ctrl + _`: Lompat ke nombor baris tertentu.
+
+- **Konfigurasi Penyesuaian `~/.nanorc`**:
+  ```ini
+  # Menandakan nombor baris dan mengaktifkan penyerlahan sintaks
+  set linenumbers
+  set softwrap
+  set tabsize 4
+  set tabstospaces
+  include "/usr/share/nano/*.nanorc"
+  ```
+
+#### B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
+Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturcaraan dan pentadbiran sistem Linux.
+
+- **4 Mod Operasi Utama Vim**:
+  1. **Mod Arahan / Normalkan (Command / Normal Mode)**: Mod sedia ada selepas membuka Vim (`Esc` untuk kembali ke mod ini).
+     - Pergerakan kursor: `h` (kiri), `j` (bawah), `k` (atas), `l` (kanan), `w` (perkataan seterusnya), `b` (perkataan sebelumnya), `0` (awal baris), `$` (akhir baris), `gg` (awal fail), `G` (akhir fail).
+     - Penyuntingan asas: `x` (padam aksara), `dd` (padam/potong satu baris), `yy` (salin baris), `p` (tampal selepas kursor), `u` (undo), `Ctrl + r` (redo).
+  2. **Mod Sisipan (Insert Mode)**: Ditekan `i` (sisip sebelum kursor), `a` (sisip selepas kursor), `o` (buka baris baharu di bawah), `O` (buka baris baharu di atas).
+  3. **Mod Visual (Visual Mode)**: Ditekan `v` (pilihan aksara), `V` (pilihan baris), `Ctrl + v` (pilihan blok lajur). Digunakan untuk menyalin/memadam blok teks.
+  4. **Mod Ex / Terakhir (Ex / Command-line Mode)**: Ditekan `:` daripada Mod Arahan.
+     - `:w` (simpan), `:q` (keluar), `:wq` atau `:x` (simpan dan keluar), `:q!` (keluar tanpa simpan).
+     - `:set nu` (papar nombor baris), `:set nonu` (sorok nombor baris).
+
+- **Carian & Penggantian Expression Teratur (Regex Search & Replace)**:
+  Dalam Mod Ex, gunakan sintaks `%s/corak_asal/teks_baharu/g`:
+  ```vim
+  " Menggantikan semua perkataan 'temp' kepada 'tmp' dalam keseluruhan fail:
+  :%s/temp/tmp/g
+
+  " Menggantikan 'Port 22' kepada 'Port 2222' secara interaktif dengan pengesahan (c):
+  :%s/Port 22/Port 2222/gc
+  ```
+
+- **Perekaman & Pelaksanaan Makro Vim**:
+  - `qa`: Mula merekod makro ke dalam daftar `a`.
+  - *(Laksanakan siri arahan penyuntingan)*.
+  - `q`: Hentikan rakaman.
+  - `@a`: Jalankan makro dalam daftar `a`.
+  - `5@a`: Jalankan makro sebanyak 5 kali berturut-turut.
+
+#### C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (`sudoedit` & `visudo`)
+Menggunakan `sudo vim` atau `sudo nano` secara terus ke atas fail sistem berisiko meninggalkan penimbal atau kebenaran fail yang rosak jika terminal terputus.
+
+- **Menggunakan `sudoedit` (`sudo -e`)**:
+  `sudoedit` membuat salinan sementara fail konfigurasi di bawah akaun pengguna biasa, dan menyalin semula ke lokasi sistem secara selamat selepas disahkan.
+  ```bash
+  # Menyunting fail konfigurasi rangkaian dengan selamat
+  sudoedit /etc/netplan/01-netcfg.yaml
+  ```
+
+- **Menggunakan `visudo` untuk Pengurusan Sudoers**:
+  `visudo` mengunci fail `/etc/sudoers` dan mengesahkan sintaks secara automatik sebelum menyimpan bagi mengelakkan kebuntuan akses root sistem (*lockout*).
+  ```bash
+  # Menyunting fail sudoers dengan semakan sintaks automatik
+  sudo visudo
+
+  # Mengesahkan sintaks fail sudoers tanpa membuat perubahan
+  sudo visudo -c
+  ```
 
 ---
 
@@ -107,15 +165,16 @@ Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA ber
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
 - [ ] Berjaya menapis dan menganalisis log menggunakan `grep`, `sed`, `awk`, `cut`, `sort`, dan `uniq`.
 - [ ] Berjaya menggunakan operator pengalihan I/O (`>`, `>>`, `2>&1`, `|`, `tee`) dalam aluran skrip Bash.
-- [ ] Berjaya menyunting fail konfigurasi sistem menggunakan `vim` dan `nano`.
+- [ ] Berjaya menyunting fail konfigurasi sistem menggunakan `vim` / `nvim` (mod operasi, regex `%s/old/new/g`, makro) dan `nano` (`.nanorc`).
+- [ ] Berjaya mengamalkan penyuntingan selamat sistem menggunakan `sudoedit` dan `visudo`.
 - [ ] Mampu mendokumentasikan laporan RCA rasmi bagi insiden anomali sistem.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
 1. *"Tunjukkan satu arahan awk sebaris (one-liner) untuk mengira jumlah saiz pemindahan fail dalam log akses Nginx."*
-2. *"Apakah perbezaan antara sed -i (in-place) dengan penyuntingan menerusi paip aluran?"*
-3. *"Berikan templat laporan RCA (Root Cause Analysis) ringkas bagi insiden kegagalan perkhidmatan disebabkan kehabisan nod i-node pada sistem fail."*
+2. *"Bagaimanakah cara membina regex Vim untuk menggantikan semua baris ulasan (#) dalam fail sshd_config secara pukal?"*
+3. *"Mengapakah penggunaan sudoedit lebih selamat berbanding sudo vim dari sudut prinsip keselamatan paling kurang keistimewaan (least privilege)?"*
 
 ---
 
