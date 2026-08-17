@@ -31,7 +31,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
     - **Non-Interactive CI & Direct Jest Execution**: When orchestrating multi-language test runners from Python, always pass `CI=true`, non-interactive flags (`--ci`), and `stdin=subprocess.DEVNULL`. Prefer invoking the Jest binary directly via Node (`node ./node_modules/jest/bin/jest.js --ci`) to eliminate shell wrapper layering overhead on Windows.
     - **Cross-Platform Filesystem Testing**: When testing filesystem linking (symlinks vs Windows NTFS junctions), write platform-aware assertions. Do not rely solely on `Path.is_symlink()` on Windows (use `is_junction()` or resolution matching) to ensure 100% test compatibility across both Windows and POSIX environments.
 15. **Piawaian Distribusi Linux Kanonik & Dasar Penyulitan Pejabat**: Apabila menulis atau mengemaskini sebarang kemahiran, dokumentasi, atau kandungan silibus yang melibatkan distribusi Linux:
-    - Gunakan **Ubuntu 26.04 LTS "Quetzal"** (Isirung 6.14 LTS, GNOME 48, sokongan sehingga April 2031) sebagai distribusi rujukan utama untuk desktop dan persekitaran latihan.
+    - Gunakan **Ubuntu 26.04 LTS "Resolute Raccoon"** (Isirung 6.14 LTS, GNOME 48, sokongan sehingga April 2031) sebagai distribusi rujukan utama untuk desktop dan persekitaran latihan.
     - Gunakan **Fedora 43** sebagai rujukan untuk senario teknologi terkini (bleeding-edge).
     - Gunakan **AlmaLinux 10 "Purple Lion"** (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035) sebagai rujukan untuk senario pelayan dan desktop perusahaan (enterprise).
     - Gunakan **Rocky Linux 9** sebagai alternatif pelayan perusahaan jika AlmaLinux 10 tidak tersedia.

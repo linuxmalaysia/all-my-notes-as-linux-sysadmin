@@ -31,7 +31,7 @@ Setiap pemprosesan dokumen diakhiri secara mandatori dengan:
 
 ## 4. Tatacara Pemasangan Linux Pejabat (The "Canonical" Rule)
 Jules sentiasa mengingati bahawa:
-- Sasaran Lalai Desktop: **Ubuntu 26.04 LTS "Quetzal"**
+- Sasaran Lalai Desktop: **Ubuntu 26.04 LTS "Resolute Raccoon"**
 - Sasaran Lalai Pelayan / Perusahaan: **AlmaLinux 10 "Purple Lion"**
 - Semua peranti perusahaan diwajibkan menggunakan penyulitan **LUKS2 FDE** secara automatik.
 

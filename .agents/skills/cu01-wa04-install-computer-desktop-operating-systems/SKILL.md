@@ -32,7 +32,7 @@ Kemahiran ini melengkapkan pelajar dengan prosedur pemasangan sistem operasi Lin
 ```bash
 # Pilihan distribusi yang disyorkan:
 
-# [1] Ubuntu 26.04 LTS "Quetzal" — DISYORKAN untuk latihan & pengguna umum
+# [1] Ubuntu 26.04 LTS "Resolute Raccoon" — DISYORKAN untuk latihan & pengguna umum
 # URL: https://ubuntu.com/download/desktop
 # SHA256: semak di https://ubuntu.com/download/desktop#verify
 # Isirung: Linux 6.14 LTS | Persekitaran Meja: GNOME 48
@@ -89,7 +89,7 @@ sudo dd if=ubuntu-26.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress sync
 
 ---
 
-### Fasa 3: Pemasangan Ubuntu 26.04 LTS "Quetzal"
+### Fasa 3: Pemasangan Ubuntu 26.04 LTS "Resolute Raccoon"
 
 **Langkah 4: Mulakan pemasangan**
 ```
@@ -102,7 +102,7 @@ sudo dd if=ubuntu-26.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress sync
    - ☑ Download updates while installing
    - ☑ Install third-party software (penting untuk pemacu!)
 
-Nota Ubuntu 26.04 LTS (Quetzal):
+Nota Ubuntu 26.04 LTS (Resolute Raccoon):
   - Antara muka pemasang: Subiquity (versi terkini, lebih pantas)
   - Sokongan TPM-based Full Disk Encryption diaktifkan secara lalai
   - GNOME 48 dengan Wallpaper AI Generatif (opsional)

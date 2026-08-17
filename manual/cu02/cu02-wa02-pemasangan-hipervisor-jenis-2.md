@@ -22,7 +22,7 @@ Pemasangan KVM/QEMU, virt-manager, dan hypervisor desktop pada Linux.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 

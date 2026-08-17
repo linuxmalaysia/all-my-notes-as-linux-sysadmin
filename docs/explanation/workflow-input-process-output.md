@@ -82,7 +82,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 
 ### Langkah 2.3: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
 - **Distribusi Rujukan Rasmi:**
-  - **Desktop / Persekitaran Latihan:** Ubuntu 26.04 LTS "Quetzal" (Kernel 6.14 LTS, GNOME 48).
+  - **Desktop / Persekitaran Latihan:** Ubuntu 26.04 LTS "Resolute Raccoon" (Kernel 6.14 LTS, GNOME 48).
   - **Teknologi Terkini (*Bleeding-Edge*):** Fedora 43.
   - **Pelayan & Desktop Perusahaan (*Enterprise*):** AlmaLinux 10 "Purple Lion" (Kernel 6.12 LTS, GNOME 47).
 - **Pengerasan Keselamatan Mandatori:**

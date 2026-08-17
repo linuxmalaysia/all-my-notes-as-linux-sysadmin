@@ -13,6 +13,6 @@ resource: "file:///.agents/brain/wings/wing_noss_linux/hall_curriculum/room_cu01
 
 ## Mapping & Status
 - **Lokasi Manual:** `manual/cu01/`
-- **Distribusi Rujukan 2026:** Ubuntu 26.04 LTS "Quetzal", Fedora 43, AlmaLinux 10 "Purple Lion".
+- **Distribusi Rujukan 2026:** Ubuntu 26.04 LTS "Resolute Raccoon", Fedora 43, AlmaLinux 10 "Purple Lion".
 - **Keselamatan Mandatori:** Penyulitan Penuh Cakera LUKS2 (ISO/IEC 27001 & Pekeliling Am MAMPU).
 - **Status Kandungan:** Lengkap (Bab 1 & Bab 2 asal selesai dimodenkan ke standard 2026).

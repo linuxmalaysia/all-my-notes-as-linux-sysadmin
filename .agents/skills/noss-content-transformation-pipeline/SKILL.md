@@ -43,7 +43,7 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
      - Istilah rasmi Dewan Bahasa dan Pustaka (DBP).
    - **DILARANG** berhalusinasi atau mengekalkan konfigurasi lapuk yang tidak disahkan.
 3. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
-   - Distribusi Desktop: **Ubuntu 26.04 LTS "Quetzal"** & **Fedora 43**.
+   - Distribusi Desktop: **Ubuntu 26.04 LTS "Resolute Raccoon"** & **Fedora 43**.
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
    - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & Pekeliling JDN/MAMPU).

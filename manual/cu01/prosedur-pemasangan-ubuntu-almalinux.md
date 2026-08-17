@@ -13,7 +13,7 @@ resource: "file:///manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md"
 
 > *"Langkah pertama pentadbir sistem profesional ialah mereka bentuk skema pembahagian storan yang mampan dan boleh dikembangkan."*
 
-Dokumen ini menyediakan panduan terperinci langkah demi langkah untuk proses pemasangan sistem operasi Linux menggunakan tiga edaran kanonik rujukan utama NOSS Malaysia: **Ubuntu 26.04 LTS "Quetzal"** (Desktop/Latihan), **AlmaLinux 10 "Purple Lion"** (Pelayan Perusahaan), dan **Fedora 43** (Bleeding-Edge Workstation).
+Dokumen ini menyediakan panduan terperinci langkah demi langkah untuk proses pemasangan sistem operasi Linux menggunakan tiga edaran kanonik rujukan utama NOSS Malaysia: **Ubuntu 26.04 LTS "Resolute Raccoon"** (Desktop/Latihan), **AlmaLinux 10 "Purple Lion"** (Pelayan Perusahaan), dan **Fedora 43** (Bleeding-Edge Workstation).
 
 ---
 
@@ -34,7 +34,7 @@ Dalam persekitaran latihan NOSS Level 3 dan pengeluaran pejabat, penggunaan **LV
 
 ---
 
-## 2. Prosedur Pemasangan Ubuntu 26.04 LTS "Quetzal"
+## 2. Prosedur Pemasangan Ubuntu 26.04 LTS "Resolute Raccoon"
 
 1. **Boot daripada USB Live:**
    - Masukkan pemacu USB Live Ubuntu 26.04 LTS dan pilih menu `Try or Install Ubuntu`.

@@ -37,7 +37,7 @@ Lakukan carian web berautoriti untuk mengesahkan kesahihan teknikal:
 
 ### Langkah 3: Modenkan Kandungan ke Standard 2026
 Semak dan kemas kini parameter berikut:
-1. **Distribusi Kanonik:** Gantikan versi lapuk dengan **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+1. **Distribusi Kanonik:** Gantikan versi lapuk dengan **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 2. **Pengurusan Cakera & Storan:** Gunakan partisi **GPT** (`gdisk` / `parted`), pengurusan volum **LVM2**, dan format sistem fail **EXT4**, **XFS**, atau **Btrfs**.
 3. **Penyulitan Mandatori:** Sertakan prosedur **LUKS2** bagi persekitaran pejabat/perusahaan.
 4. **Bahasa:** Pastikan teks penjelasan menggunakan Bahasa Melayu baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.

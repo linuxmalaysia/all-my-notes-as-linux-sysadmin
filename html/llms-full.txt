@@ -49,7 +49,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
     - **Non-Interactive CI & Direct Jest Execution**: When orchestrating multi-language test runners from Python, always pass `CI=true`, non-interactive flags (`--ci`), and `stdin=subprocess.DEVNULL`. Prefer invoking the Jest binary directly via Node (`node ./node_modules/jest/bin/jest.js --ci`) to eliminate shell wrapper layering overhead on Windows.
     - **Cross-Platform Filesystem Testing**: When testing filesystem linking (symlinks vs Windows NTFS junctions), write platform-aware assertions. Do not rely solely on `Path.is_symlink()` on Windows (use `is_junction()` or resolution matching) to ensure 100% test compatibility across both Windows and POSIX environments.
 15. **Piawaian Distribusi Linux Kanonik & Dasar Penyulitan Pejabat**: Apabila menulis atau mengemaskini sebarang kemahiran, dokumentasi, atau kandungan silibus yang melibatkan distribusi Linux:
-    - Gunakan **Ubuntu 26.04 LTS "Quetzal"** (Isirung 6.14 LTS, GNOME 48, sokongan sehingga April 2031) sebagai distribusi rujukan utama untuk desktop dan persekitaran latihan.
+    - Gunakan **Ubuntu 26.04 LTS "Resolute Raccoon"** (Isirung 6.14 LTS, GNOME 48, sokongan sehingga April 2031) sebagai distribusi rujukan utama untuk desktop dan persekitaran latihan.
     - Gunakan **Fedora 43** sebagai rujukan untuk senario teknologi terkini (bleeding-edge).
     - Gunakan **AlmaLinux 10 "Purple Lion"** (Isirung 6.12 LTS, GNOME 47, sokongan sehingga 2035) sebagai rujukan untuk senario pelayan dan desktop perusahaan (enterprise).
     - Gunakan **Rocky Linux 9** sebagai alternatif pelayan perusahaan jika AlmaLinux 10 tidak tersedia.
@@ -21707,7 +21707,7 @@ Lakukan carian web berautoriti untuk mengesahkan kesahihan teknikal:
 
 ### Langkah 3: Modenkan Kandungan ke Standard 2026
 Semak dan kemas kini parameter berikut:
-1. **Distribusi Kanonik:** Gantikan versi lapuk dengan **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+1. **Distribusi Kanonik:** Gantikan versi lapuk dengan **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 2. **Pengurusan Cakera & Storan:** Gunakan partisi **GPT** (`gdisk` / `parted`), pengurusan volum **LVM2**, dan format sistem fail **EXT4**, **XFS**, atau **Btrfs**.
 3. **Penyulitan Mandatori:** Sertakan prosedur **LUKS2** bagi persekitaran pejabat/perusahaan.
 4. **Bahasa:** Pastikan teks penjelasan menggunakan Bahasa Melayu baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
@@ -26428,7 +26428,7 @@ Fasa ini merupakan jantung transformasi pengetahuan. Setiap maklumat yang diteri
 
 ### Langkah 2.3: Pemodenan Silibus ke Piawaian 2026 (Peraturan 15)
 - **Distribusi Rujukan Rasmi:**
-  - **Desktop / Persekitaran Latihan:** Ubuntu 26.04 LTS "Quetzal" (Kernel 6.14 LTS, GNOME 48).
+  - **Desktop / Persekitaran Latihan:** Ubuntu 26.04 LTS "Resolute Raccoon" (Kernel 6.14 LTS, GNOME 48).
   - **Teknologi Terkini (*Bleeding-Edge*):** Fedora 43.
   - **Pelayan & Desktop Perusahaan (*Enterprise*):** AlmaLinux 10 "Purple Lion" (Kernel 6.12 LTS, GNOME 47).
 - **Pengerasan Keselamatan Mandatori:**
@@ -27211,7 +27211,7 @@ Pendedahan falsafah sumber terbuka, sejarah kernel Linux, pengenalan distribusi 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -27287,7 +27287,7 @@ Prosedur keselamatan ESD, penyediaan alatan kerja dan spesifikasi perkakasan.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -27363,7 +27363,7 @@ Pemasangan papan induk, CPU, memori RAM, pemacu storan NVMe/SSD, dan bekalan kua
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -27439,7 +27439,7 @@ Prosedur pembongkaran dan penggantian modul komputer riba (RAM, storan, bateri).
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -27515,7 +27515,7 @@ Prosedur pemasangan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10 dengan penyuli
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -27975,7 +27975,7 @@ Dokumentasi inventori aset IT, senarai semak pentauliahan, dan log penyerahan si
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28051,7 +28051,7 @@ Analisis keperluan CPU virtualization (VT-x/AMD-V), RAM, dan storan bagi perseki
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28127,7 +28127,7 @@ Pemasangan KVM/QEMU, virt-manager, dan hypervisor desktop pada Linux.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28203,7 +28203,7 @@ Penyediaan imej ISO, konfigurasi perkakasan maya, pemacu VirtIO, dan rangkaian b
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28279,7 +28279,7 @@ Penyusunan log topologi VM, rekod peruntukan sumber storan dan alamat IP VM.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28355,7 +28355,7 @@ Penilaian spesifikasi pelayan rak/menara, perancangan RAID perkakasan/perisian, 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28431,7 +28431,7 @@ Pemasangan pelayan ke rak kabinet, kabel rangkaian berstruktur, dan bekalan kuas
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28507,7 +28507,7 @@ Pemasangan mod pelayan minimum (AlmaLinux 10 Server / Ubuntu Server 26.04 LTS).
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28891,7 +28891,7 @@ Konfigurasi Nginx/Apache, BIND9 DNS, Kea DHCP, dan Samba/NFS file server.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -28967,7 +28967,7 @@ Pemantauan kesihatan IPMI/iDRAC/iLO, penderia suhu, dan log perkakasan menerusi 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29043,7 +29043,7 @@ Pemilihan utiliti sandaran Linux (rsync, BorgBackup, Restic, tar) dan media stor
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29119,7 +29119,7 @@ Automasi skrip sandaran data tempatan menggunakan Bash dan systemd timers / cron
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29195,7 +29195,7 @@ Konfigurasi sandaran selamat melalui SSH/SFTP dan penyegerakan ke storan NAS/Clo
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29271,7 +29271,7 @@ Prosedur verifikasi integriti integriti sandaran dan pemulihan data terpilih.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29347,7 +29347,7 @@ Prosedur pemulihan imej sistem menyeluruh menggunakan Rescue Live USB dan Clonez
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29538,7 +29538,7 @@ Pemasangan dan pengimbasan ClamAV, rkhunter, dan audit fail integriti AIDE.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29614,7 +29614,7 @@ Pengurusan zon firewall, penutupan port tidak diperlukan, dan mitigasi serangan 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29690,7 +29690,7 @@ Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE.
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29909,7 +29909,7 @@ Etika khidmat bantuan pengguna, penerimaan aduan teknikal, dan definisi skop sok
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -29985,7 +29985,7 @@ Klasifikasi keutamaan insiden (Severity), pengasingan masalah, dan komunikasi pe
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -30061,7 +30061,7 @@ Pemeriksaan diagnostik memori (memtest86+), kesihatan storan (smartctl), dan pem
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -30137,7 +30137,7 @@ Konfigurasi pencetak CUPS, pengimbas SANE, dan penyelesaian masalah peranti USB/
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -30465,7 +30465,7 @@ Penyelenggaraan rekod penyelesaian isu IT, pematuhan SLA, dan kemas kini pangkal
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -30541,7 +30541,7 @@ Penyediaan laporan analisis punca (Root Cause Analysis - RCA) untuk insiden beru
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
+- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
@@ -32505,7 +32505,7 @@ resource: "file:///manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md"
 
 > *"Langkah pertama pentadbir sistem profesional ialah mereka bentuk skema pembahagian storan yang mampan dan boleh dikembangkan."*
 
-Dokumen ini menyediakan panduan terperinci langkah demi langkah untuk proses pemasangan sistem operasi Linux menggunakan tiga edaran kanonik rujukan utama NOSS Malaysia: **Ubuntu 26.04 LTS "Quetzal"** (Desktop/Latihan), **AlmaLinux 10 "Purple Lion"** (Pelayan Perusahaan), dan **Fedora 43** (Bleeding-Edge Workstation).
+Dokumen ini menyediakan panduan terperinci langkah demi langkah untuk proses pemasangan sistem operasi Linux menggunakan tiga edaran kanonik rujukan utama NOSS Malaysia: **Ubuntu 26.04 LTS "Resolute Raccoon"** (Desktop/Latihan), **AlmaLinux 10 "Purple Lion"** (Pelayan Perusahaan), dan **Fedora 43** (Bleeding-Edge Workstation).
 
 ---
 
@@ -32526,7 +32526,7 @@ Dalam persekitaran latihan NOSS Level 3 dan pengeluaran pejabat, penggunaan **LV
 
 ---
 
-## 2. Prosedur Pemasangan Ubuntu 26.04 LTS "Quetzal"
+## 2. Prosedur Pemasangan Ubuntu 26.04 LTS "Resolute Raccoon"
 
 1. **Boot daripada USB Live:**
    - Masukkan pemacu USB Live Ubuntu 26.04 LTS dan pilih menu `Try or Install Ubuntu`.
@@ -33153,7 +33153,7 @@ Kemahiran ini melengkapkan pelajar dengan prosedur pemasangan sistem operasi Lin
 ```bash
 # Pilihan distribusi yang disyorkan:
 
-# [1] Ubuntu 26.04 LTS "Quetzal" — DISYORKAN untuk latihan & pengguna umum
+# [1] Ubuntu 26.04 LTS "Resolute Raccoon" — DISYORKAN untuk latihan & pengguna umum
 # URL: https://ubuntu.com/download/desktop
 # SHA256: semak di https://ubuntu.com/download/desktop#verify
 # Isirung: Linux 6.14 LTS | Persekitaran Meja: GNOME 48
@@ -33210,7 +33210,7 @@ sudo dd if=ubuntu-26.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress sync
 
 ---
 
-### Fasa 3: Pemasangan Ubuntu 26.04 LTS "Quetzal"
+### Fasa 3: Pemasangan Ubuntu 26.04 LTS "Resolute Raccoon"
 
 **Langkah 4: Mulakan pemasangan**
 ```
@@ -33223,7 +33223,7 @@ sudo dd if=ubuntu-26.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress sync
    - ☑ Download updates while installing
    - ☑ Install third-party software (penting untuk pemacu!)
 
-Nota Ubuntu 26.04 LTS (Quetzal):
+Nota Ubuntu 26.04 LTS (Resolute Raccoon):
   - Antara muka pemasang: Subiquity (versi terkini, lebih pantas)
   - Sokongan TPM-based Full Disk Encryption diaktifkan secara lalai
   - GNOME 48 dengan Wallpaper AI Generatif (opsional)
@@ -35826,7 +35826,7 @@ Setiap pemprosesan dokumen diakhiri secara mandatori dengan:
 
 ## 4. Tatacara Pemasangan Linux Pejabat (The "Canonical" Rule)
 Jules sentiasa mengingati bahawa:
-- Sasaran Lalai Desktop: **Ubuntu 26.04 LTS "Quetzal"**
+- Sasaran Lalai Desktop: **Ubuntu 26.04 LTS "Resolute Raccoon"**
 - Sasaran Lalai Pelayan / Perusahaan: **AlmaLinux 10 "Purple Lion"**
 - Semua peranti perusahaan diwajibkan menggunakan penyulitan **LUKS2 FDE** secara automatik.
 
@@ -36192,7 +36192,7 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
      - Istilah rasmi Dewan Bahasa dan Pustaka (DBP).
    - **DILARANG** berhalusinasi atau mengekalkan konfigurasi lapuk yang tidak disahkan.
 3. **Penguatkuasaan Piawaian Moden 2026 (Rule 15):**
-   - Distribusi Desktop: **Ubuntu 26.04 LTS "Quetzal"** & **Fedora 43**.
+   - Distribusi Desktop: **Ubuntu 26.04 LTS "Resolute Raccoon"** & **Fedora 43**.
    - Distribusi Pelayan / Enterprise: **AlmaLinux 10 "Purple Lion"** (alternatif: Rocky Linux 9).
    - Gantikan teknologi lapuk (MBR, ext2, sysvinit) dengan teknologi moden (GPT, LVM2, systemd, Btrfs/XFS/EXT4).
    - Sertakan panduan **Penyulitan LUKS2** (ISO/IEC 27001 & Pekeliling JDN/MAMPU).
@@ -41262,7 +41262,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T07:04:57Z"
+timestamp: "2026-08-17T07:09:39Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -42049,7 +42049,7 @@ resource: "file:///.agents/brain/wings/wing_noss_linux/hall_curriculum/room_cu01
 
 ## Mapping & Status
 - **Lokasi Manual:** `manual/cu01/`
-- **Distribusi Rujukan 2026:** Ubuntu 26.04 LTS "Quetzal", Fedora 43, AlmaLinux 10 "Purple Lion".
+- **Distribusi Rujukan 2026:** Ubuntu 26.04 LTS "Resolute Raccoon", Fedora 43, AlmaLinux 10 "Purple Lion".
 - **Keselamatan Mandatori:** Penyulitan Penuh Cakera LUKS2 (ISO/IEC 27001 & Pekeliling Am MAMPU).
 - **Status Kandungan:** Lengkap (Bab 1 & Bab 2 asal selesai dimodenkan ke standard 2026).
 
