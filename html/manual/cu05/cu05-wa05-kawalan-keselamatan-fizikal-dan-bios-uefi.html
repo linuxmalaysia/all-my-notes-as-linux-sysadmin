@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pencegahan but tanpa kebenaran, kata laluan GRUB2, dan dasar penyulitan storan mudah alih.">
+        <meta name="description" content="Panduan amali kawalan keselamatan fizikal, penguncian firmware UEFI/BIOS, penyulitan LUKS2, bootloader GRUB2, kawalan konsol maya VT, tamat masa sesi TMOUT, dan penutupan selamat.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI - NOSS Linux Malaysia (DSOM)</title>
+        <title>Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05) - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kawalan-keselamatan-fizikal-kunci-biosuefi" class="md-skip">
+        <a href="#kawalan-keselamatan-fizikal-persekitaran-console-endpoint-linux-cu05-wa05" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI
+              Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)
             
           </span>
         </div>
@@ -1425,22 +1425,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#garis-panduan-amali-prosedur" class="md-nav__link">
+  <a href="#prosedur-arahan-amali" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Garis Panduan Amali &amp; Prosedur
+        🛠️ Prosedur &amp; Arahan Amali
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur">
+    <nav class="md-nav" aria-label="🛠️ Prosedur &amp; Arahan Amali">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-penegasan-firmware-uefibios-penyulitan-cakera-luks2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
+        1. Penegasan Firmware UEFI/BIOS &amp; Penyulitan Cakera LUKS2
       
     </span>
   </a>
@@ -1448,10 +1448,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-perlindungan-bootloader-grub2-dengan-kata-laluan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        2. Perlindungan Bootloader GRUB2 dengan Kata Laluan
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-penguatkuasaan-tamat-masa-sesi-terminal-otomatik-tmout" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Penguatkuasaan Tamat Masa Sesi Terminal Otomatik (TMOUT)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-kawalan-konsol-maya-virtual-terminals-had-sumber" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Kawalan Konsol Maya (Virtual Terminals) &amp; Had Sumber
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#5-prosedur-penutupan-ulang-but-selamat" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5. Prosedur Penutupan &amp; Ulang But Selamat
       
     </span>
   </a>
@@ -1524,58 +1557,108 @@
 
 
 
-<h1 id="kawalan-keselamatan-fizikal-kunci-biosuefi">Kawalan Keselamatan Fizikal &amp; Kunci BIOS/UEFI<a class="headerlink" href="#kawalan-keselamatan-fizikal-kunci-biosuefi" title="Permanent link">&para;</a></h1>
+<h1 id="kawalan-keselamatan-fizikal-persekitaran-console-endpoint-linux-cu05-wa05">Kawalan Keselamatan Fizikal &amp; Persekitaran Console Endpoint Linux (CU05-WA05)<a class="headerlink" href="#kawalan-keselamatan-fizikal-persekitaran-console-endpoint-linux-cu05-wa05" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Pencegahan but tanpa kebenaran, kata laluan GRUB2, dan dasar penyulitan storan mudah alih.</p>
+<p>Mengurangkan risiko capaian fizikal tidak sah menerusi penegasan firmware UEFI/BIOS, penyulitan cakera penuh LUKS2, perlindungan bootloader GRUB2, sekatan konsol maya (Virtual Terminals getty@tty), kawalan tamat masa sesi shell (<code>TMOUT</code>), dan kawalan penutupan sistem selamat mengikut piawaian <strong>NOSS CU05 WA05</strong> dan penanda aras <strong>CIS Benchmarks / JDN MAMPU</strong>.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU05</strong>.</p>
+Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> bagi Aktiviti Kerja <strong>WA05 (Manage Physical Endpoint Security Lockdowns)</strong> pada <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
-<h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
+<h2 id="prosedur-arahan-amali">🛠️ Prosedur &amp; Arahan Amali<a class="headerlink" href="#prosedur-arahan-amali" title="Permanent link">&para;</a></h2>
+<h3 id="1-penegasan-firmware-uefibios-penyulitan-cakera-luks2">1. Penegasan Firmware UEFI/BIOS &amp; Penyulitan Cakera LUKS2<a class="headerlink" href="#1-penegasan-firmware-uefibios-penyulitan-cakera-luks2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
+<li><strong>Penguncian Firmware UEFI/BIOS:</strong> Tetapkan kata laluan pentadbir UEFI/BIOS dan matikan kebolehan boot dari USB/peranti luaran untuk menghalang pelancaran live OS tanpa kebenaran.</li>
+<li><strong>Penyulitan Cakera Penuh LUKS2:</strong> Pastikan partition sistem disulitkan dengan LUKS2 untuk melindungi data berehat (<em>data-at-rest</em>).
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Semak status penyulitan LUKS2 pada peranti blok sistem</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>cryptsetup<span class="w"> </span>status<span class="w"> </span>/dev/mapper/dm_crypt-0
+</span></code></pre></div></li>
 </ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<h3 id="2-perlindungan-bootloader-grub2-dengan-kata-laluan">2. Perlindungan Bootloader GRUB2 dengan Kata Laluan<a class="headerlink" href="#2-perlindungan-bootloader-grub2-dengan-kata-laluan" title="Permanent link">&para;</a></h3>
+<p>Melarang pengubahsuaian parameter isirung (<code>init=/bin/bash</code> atau <code>single</code>) di menu bootloader tanpa pengesahan pentadbir.</p>
+<ul>
+<li>
+<p><strong>Pada AlmaLinux 10 / Fedora 43:</strong>
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>grub2-setpassword
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>grub2-mkconfig<span class="w"> </span>-o<span class="w"> </span>/boot/grub2/grub.cfg
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Pada Ubuntu 26.04 LTS:</strong>
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Hasilkan PBKDF2 hash kata laluan</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>grub-mkpasswd-pbkdf2
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Tambahkan konfigurasi pengguna superuser di /etc/grub.d/40_custom</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># cat &lt;&lt; &#39;EOF&#39; | sudo tee -a /etc/grub.d/40_custom</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># set superusers=&quot;admin&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># password_pbkdf2 admin grub.pbkdf2.sha512...</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># EOF</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Kemas kini konfigurasi GRUB2</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>sudo<span class="w"> </span>update-grub
+</span></code></pre></div></p>
+</li>
+</ul>
+<h3 id="3-penguatkuasaan-tamat-masa-sesi-terminal-otomatik-tmout">3. Penguatkuasaan Tamat Masa Sesi Terminal Otomatik (<code>TMOUT</code>)<a class="headerlink" href="#3-penguatkuasaan-tamat-masa-sesi-terminal-otomatik-tmout" title="Permanent link">&para;</a></h3>
+<p>Mengunci atau menamatkan sesi terminal tidak aktif secara automatik selepas 15 minit (900 saat).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Cipta fail skrip penguatkuasaan TMOUT secara global</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; | sudo tee /etc/profile.d/timeout.sh</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">readonly TMOUT=900</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">export TMOUT</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">EOF</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/timeout.sh
+</span></code></pre></div>
+<h3 id="4-kawalan-konsol-maya-virtual-terminals-had-sumber">4. Kawalan Konsol Maya (Virtual Terminals) &amp; Had Sumber<a class="headerlink" href="#4-kawalan-konsol-maya-virtual-terminals-had-sumber" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Matikan perkhidmatan getty pada VT yang tidak digunakan (contoh: tty3)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>getty@tty3.service
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>getty@tty3.service
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Prosedur pemulihan (rollback) jika tty3 diperlukan semula:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># sudo systemctl unmask getty@tty3.service</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># sudo systemctl enable --now getty@tty3.service</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Konfigurasi had sumber sistem di /etc/security/limits.conf</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Menyertakan larangan coredump dan had maxlogins</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; | sudo tee -a /etc/security/limits.conf</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">*          hard    core            0</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">*          hard    maxlogins       3</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<h3 id="5-prosedur-penutupan-ulang-but-selamat">5. Prosedur Penutupan &amp; Ulang But Selamat<a class="headerlink" href="#5-prosedur-penutupan-ulang-but-selamat" title="Permanent link">&para;</a></h3>
+<p>Arahan penutupan terjadual dan penutupan serta-merta adalah pilihan alternatif mengikut keperluan operasi:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Pilihan A: Hantar mesej amaran dan jadualkan penutupan sistem secara teratur</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>shutdown<span class="w"> </span>-h<span class="w"> </span>+2<span class="w"> </span><span class="s2">&quot;Penyelenggaraan sistem fizikal dalam masa 2 minit.&quot;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Pilihan B: Matikan sistem serta-merta menggunakan systemd</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>poweroff
 </span></code></pre></div>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Verifikasi kuncian UEFI/BIOS dan penyulitan cakera LUKS2.</li>
+<li>[ ] Pengesahan perlindungan kata laluan pada menu bootloader GRUB2.</li>
+<li>[ ] Penguatkuasaan pembolehubah <code>TMOUT</code> terbukti berfungsi pada shell bash.</li>
+<li>[ ] Pengurusan unit <code>getty@ttyN.service</code> dan penegasan <code>/etc/security/limits.conf</code>.</li>
+<li>[ ] Penggunaan alternatif prosedur penutupan selamat (<code>shutdown</code> vs <code>systemctl poweroff</code>).</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Kawalan Keselamatan Fizikal &amp; Kunci BIOS/UEFI dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Kawalan Keselamatan Fizikal &amp; Kunci BIOS/UEFI menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Bagaimanakah cara mengunci firmware UEFI/BIOS pada perkakasan pelayan pelbagai vendor (Dell, HP, Lenovo) secara automatik?"</em></li>
+<li><em>"Terangkan kesan penetapan maxlogins dalam /etc/security/limits.conf terhadap sesi SSH dan Konsol."</em></li>
+<li><em>"Tulis skrip periksa pematuhan CIS Benchmark untuk keselamatan bootloader dan kawalan konsol fizikal."</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://ubuntu.com/server/docs/security">Ubuntu Security Lockdowns Guide</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux Hardening &amp; Physical Security</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Hardening Linux System Security</strong> oleh Chey Cobb.</li>
+<li><strong>Panduan Penegasan Keselamatan Fizikal Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />

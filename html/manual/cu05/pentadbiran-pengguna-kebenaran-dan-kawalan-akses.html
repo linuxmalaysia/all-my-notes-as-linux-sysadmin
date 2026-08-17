@@ -1,0 +1,1964 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <meta name="description" content="Panduan amali komprehesif pentadbiran pengguna, kumpulan, /etc/shadow, visudo, kebenaran fail chmod/chown, SUID/SGID/Sticky bit, POSIX ACL, faillock, FHS, dan penutupan sistem selamat.">
+
+
+        <meta name="author" content="Harisfazillah Jamel">
+
+
+
+
+
+
+
+
+      <link rel="icon" href="../../material/brain">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+
+
+
+        <title>Pentadbiran Pengguna, Kebenaran Fail & Kawalan Akses Endpoint Linux - NOSS Linux Malaysia (DSOM)</title>
+
+
+
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+
+
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+
+
+
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+
+
+
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+
+
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+
+
+        <a href="#pentadbiran-pengguna-kebenaran-fail-kawalan-akses-endpoint-linux" class="md-skip">
+          Skip to content
+        </a>
+
+    </div>
+    <div data-md-component="announce">
+
+    </div>
+
+
+
+
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-header__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+
+  <img src="../../material/brain" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NOSS Linux Malaysia (DSOM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+
+              Pentadbiran Pengguna, Kebenaran Fail & Kawalan Akses Endpoint Linux
+
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+        <form class="md-header__option" data-md-component="palette">
+
+
+
+
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Gelap"  type="radio" name="__palette" id="__palette_0">
+
+      <label class="md-header__button md-icon" title="Tukar ke Mod Gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+
+
+
+
+
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Tukar ke Mod Siang"  type="radio" name="__palette" id="__palette_1">
+
+      <label class="md-header__button md-icon" title="Tukar ke Mod Siang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+
+
+</form>
+
+
+
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+
+
+
+
+
+        <label class="md-header__button md-icon" for="__search">
+
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </nav>
+
+</header>
+
+    <div class="md-container" data-md-component="container">
+
+
+
+
+
+
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+
+
+
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="NOSS Linux Malaysia (DSOM)" class="md-nav__button md-logo" aria-label="NOSS Linux Malaysia (DSOM)" data-md-component="logo">
+
+  <img src="../../material/brain" alt="logo">
+
+    </a>
+    NOSS Linux Malaysia (DSOM)
+  </label>
+
+  <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Laman Utama (NOSS Linux)
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../START-HERE.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Mula Di Sini
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item md-nav__item--nested">
+
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+
+
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+
+
+
+  <span class="md-ellipsis">
+
+
+    1. Pembelajaran (Tutorials)
+
+
+
+  </span>
+
+
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+
+
+    1. Pembelajaran (Tutorials)
+
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/tutorials/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Pengenalan & Onboarding
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/tutorials/getting-started.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Langkah Mula Linux
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+          </ul>
+        </nav>
+
+    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item md-nav__item--nested">
+
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+
+
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+
+
+
+  <span class="md-ellipsis">
+
+
+    2. Panduan Operasi (How-To Guides)
+
+
+
+  </span>
+
+
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+
+
+    2. Panduan Operasi (How-To Guides)
+
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/how-to/execute-noss-content-transformation.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Transformasi Kandungan NOSS (IPO)
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/how-to/deploy-and-serve-html.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Penggunaan & Binaan HTML
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/how-to/audit-and-apply-frontmatter.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Audit Pematuhan OKF
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/how-to/run-fastmcp-server.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Pelayan FastMCP
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/how-to/generate-sitemaps-seo.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Penjanaan Peta Tapak SEO
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+          </ul>
+        </nav>
+
+    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item md-nav__item--nested">
+
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+
+
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+
+
+
+  <span class="md-ellipsis">
+
+
+    3. Manual Amali NOSS (Reference)
+
+
+
+  </span>
+
+
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+
+
+    3. Manual Amali NOSS (Reference)
+
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Pusat Rujukan Manual
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../cu01/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    CU01 - Sistem Komputer & Desktop
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../cu02/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    CU02 - Storan & Pemayaan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../cu03/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    CU03 - Pentadbiran Pelayan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../cu04/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    CU04 - Automasi & Sandaran
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    CU05 - Keselamatan & Pengerasan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../cu06/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    CU06 - Troubleshooting & Sokongan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/reference/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Spesifikasi Alatan DSOM
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+          </ul>
+        </nav>
+
+    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item md-nav__item--nested">
+
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+
+
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+
+
+
+  <span class="md-ellipsis">
+
+
+    4. Kefahaman & Silibus (Explanation)
+
+
+
+  </span>
+
+
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+
+
+    4. Kefahaman & Silibus (Explanation)
+
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/index.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Peta Graf OpenWiki
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-01-linux-desktop-and-basics.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Topik 1: Desktop & Asas
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-02-storage-and-virtualisation.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Topik 2: Storan & Pemayaan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-03-linux-server-administration.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Topik 3: Pentadbiran Pelayan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-04-automation-and-backup.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Topik 4: Skrip & Automasi
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-05-linux-security.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Topik 5: Keselamatan Linux
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../openwiki/topic-06-troubleshooting-and-logs.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Topik 6: Diagnostik & Log
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/explanation/workflow-input-process-output.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Aliran Kerja IPO (Input-Proses-Output)
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/explanation/diataxis-architecture.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Seni Bina Diátaxis & Web
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/explanation/sejarah-dokumen-asal-linux-kpm.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Sejarah Manual Asal KPM
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/explanation/sejarah-oscc-mampu-malaysia.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Sejarah OSCC MAMPU
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/explanation/sejarah-mosc-malaysia.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Sejarah MOSC / MOSCMY
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+          </ul>
+        </nav>
+
+    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item md-nav__item--nested">
+
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+
+
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Tadbir Urus & Perlembagaan
+
+
+
+  </span>
+
+
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+
+
+    Tadbir Urus & Perlembagaan
+
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/SECURITY.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Polisi Keselamatan
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../docs/LEGAL-NOTICE.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Notis & Penafian
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    <li class="md-nav__item">
+      <a href="../../AGENTS.html" class="md-nav__link">
+
+
+
+  <span class="md-ellipsis">
+
+
+    Garis Panduan Agen AI
+
+
+
+  </span>
+
+
+
+      </a>
+    </li>
+
+
+
+
+          </ul>
+        </nav>
+
+    </li>
+
+
+
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+
+
+
+
+
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
+        <li class="md-nav__item">
+  <a href="#objektif-pembelajaran" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🎯 Objektif Pembelajaran
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#1-pentadbiran-pengguna-kumpulan-sistem" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📐 1. Pentadbiran Pengguna &amp; Kumpulan Sistem
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="📐 1. Pentadbiran Pengguna &amp; Kumpulan Sistem">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#11-struktur-fail-konfigurasi-identiti" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        1.1 Struktur Fail Konfigurasi Identiti
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#12-penciptaan-dan-pengurusan-akaun-pengguna-useradd-usermod-userdel" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        1.2 Penciptaan dan Pengurusan Akaun Pengguna (useradd, usermod, userdel)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#2-polisi-kebolehan-keistimewaan-sistem-visudo-dasar-kata-laluan-faillock" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔒 2. Polisi Kebolehan Keistimewaan Sistem (visudo) &amp; Dasar Kata Laluan (faillock)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="🔒 2. Polisi Kebolehan Keistimewaan Sistem (visudo) &amp; Dasar Kata Laluan (faillock)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#21-konfigurasi-privilesej-pentadbir-dengan-visudo" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2.1 Konfigurasi Privilesej Pentadbir dengan visudo
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#22-perlindungan-brute-force-penguncian-akaun-faillock" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2.2 Perlindungan Brute-Force &amp; Penguncian Akaun (faillock)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#3-kebenaran-fail-asas-bit-khas-suid-sgid-sticky-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📁 3. Kebenaran Fail Asas &amp; Bit Khas (SUID, SGID, Sticky Bit)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="📁 3. Kebenaran Fail Asas &amp; Bit Khas (SUID, SGID, Sticky Bit)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#31-kebenaran-asas-ugo-chmod-chown-chgrp-umask" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3.1 Kebenaran Asas UGO (chmod, chown, chgrp, umask)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#32-bit-kebenaran-khas-suid-sgid-sticky-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3.2 Bit Kebenaran Khas (SUID, SGID, Sticky Bit)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#4-senarai-kawalan-akses-posix-posix-acl-getfacl-setfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🎛️ 4. Senarai Kawalan Akses POSIX (POSIX ACL - getfacl &amp; setfacl)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#5-navigasi-fhs-pencarian-fail-dokumentasi-find-plocate-man-db" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🧭 5. Navigasi FHS, Pencarian Fail &amp; Dokumentasi (find, plocate, man-db)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="🧭 5. Navigasi FHS, Pencarian Fail &amp; Dokumentasi (find, plocate, man-db)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#51-hierarki-standard-sistem-fail-fhs" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5.1 Hierarki Standard Sistem Fail (FHS)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#52-alat-pencarian-dokumentasi" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        5.2 Alat Pencarian &amp; Dokumentasi
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#6-kawalan-keselamatan-sesi-penutupan-selamat-tmout-limitsconf-systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🚪 6. Kawalan Keselamatan Sesi &amp; Penutupan Selamat (TMOUT, limits.conf, systemctl)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="🚪 6. Kawalan Keselamatan Sesi &amp; Penutupan Selamat (TMOUT, limits.conf, systemctl)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#61-tamat-masa-sesi-shell-otomatik-tmout" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        6.1 Tamat Masa Sesi Shell Otomatik (TMOUT)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#62-pengurusan-had-sumber-pengguna-etcsecuritylimitsconf" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        6.2 Pengurusan Had Sumber Pengguna (/etc/security/limits.conf)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#63-penutupan-dan-ulang-but-selamat" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        6.3 Penutupan dan Ulang But Selamat
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#senarai-semak-kompetensi-competency-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📋 Senarai Semak Kompetensi (Competency Checklist)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
+
+    </span>
+  </a>
+
+</li>
+
+    </ul>
+
+</nav>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <div class="md-content" data-md-component="content">
+
+              <article class="md-content__inner md-typeset">
+
+
+
+
+
+<h1 id="pentadbiran-pengguna-kebenaran-fail-kawalan-akses-endpoint-linux">Pentadbiran Pengguna, Kebenaran Fail &amp; Kawalan Akses Endpoint Linux<a class="headerlink" href="#pentadbiran-pengguna-kebenaran-fail-kawalan-akses-endpoint-linux" title="Permanent link">&para;</a></h1>
+<h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
+<p>Menguasai pentadbiran pengguna dan kumpulan, kawalan kebenaran fail asas dan lanjutan (POSIX ACL &amp; Bit Khas SUID/SGID/Sticky), pengukuhan dasar kata laluan (<code>faillock</code>), navigasi struktur FHS, pencarian fail, serta kawalan keselamatan fizikal/sesi terminal mengikut piawaian <strong>NOSS CU05 &amp; CU01</strong> serta standard keselamatan <strong>Jabatan Digital Negara (JDN) / MAMPU</strong> dan <strong>ISO/IEC 27001</strong>.</p>
+<blockquote>
+<p>[!NOTE]
+Modul ini dipetakan daripada <strong>Bab 4 (Pentadbiran Pengguna, Kebenaran &amp; Pelayaran)</strong> ke dalam Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> dan <strong>CU01 (Aktiviti Asas Linux)</strong> untuk edaran rasmi <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="1-pentadbiran-pengguna-kumpulan-sistem">📐 1. Pentadbiran Pengguna &amp; Kumpulan Sistem<a class="headerlink" href="#1-pentadbiran-pengguna-kumpulan-sistem" title="Permanent link">&para;</a></h2>
+<h3 id="11-struktur-fail-konfigurasi-identiti">1.1 Struktur Fail Konfigurasi Identiti<a class="headerlink" href="#11-struktur-fail-konfigurasi-identiti" title="Permanent link">&para;</a></h3>
+<p>Dalam Linux, maklumat pengguna dan keselamatan disimpan dalam fail sistem teras:</p>
+<ul>
+<li><code>/etc/passwd</code>: Menyimpan senarai akaun pengguna, UID, GID, direktori perumah, dan shell log masuk.</li>
+<li><code>/etc/shadow</code>: Menyimpan kata laluan terdisi (<em>hashed password</em>) terenkripsi dengan algoritma SHA-512/Yescrypt, tarikh tamat tempoh, dan kawalan akses (hanya boleh dibaca oleh <code>root</code> atau kumpulan <code>shadow</code>).</li>
+<li><code>/etc/group</code>: Menyimpan maklumat kumpulan pengguna dan senarai ahli.</li>
+<li><code>/etc/gshadow</code>: Menyimpan maklumat keselamatan kumpulan dan kata laluan kumpulan.</li>
+</ul>
+<h3 id="12-penciptaan-dan-pengurusan-akaun-pengguna-useradd-usermod-userdel">1.2 Penciptaan dan Pengurusan Akaun Pengguna (<code>useradd</code>, <code>usermod</code>, <code>userdel</code>)<a class="headerlink" href="#12-penciptaan-dan-pengurusan-akaun-pengguna-useradd-usermod-userdel" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Cipta kumpulan pentadbir atau projek baharu</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>groupadd<span class="w"> </span>sysadmin_sec
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Cipta akaun pengguna baharu dengan direktori perumah dan shell Bash</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-g<span class="w"> </span>sysadmin_sec<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Ahmad Pengawas Sistem&quot;</span><span class="w"> </span>ahmad
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Tetapkan kata laluan awal untuk pengguna</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>passwd<span class="w"> </span>ahmad
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Tambahkan pengguna ke kumpulan tambahan (contohnya kumpulan sudo/wheel)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Pada Ubuntu 26.04 LTS:</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>ahmad
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># Pada AlmaLinux 10 / Fedora 43:</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>wheel<span class="w"> </span>ahmad
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Semak identiti dan keahlian kumpulan pengguna</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>id<span class="w"> </span>ahmad
+</span></code></pre></div>
+<hr />
+<h2 id="2-polisi-kebolehan-keistimewaan-sistem-visudo-dasar-kata-laluan-faillock">🔒 2. Polisi Kebolehan Keistimewaan Sistem (<code>visudo</code>) &amp; Dasar Kata Laluan (<code>faillock</code>)<a class="headerlink" href="#2-polisi-kebolehan-keistimewaan-sistem-visudo-dasar-kata-laluan-faillock" title="Permanent link">&para;</a></h2>
+<h3 id="21-konfigurasi-privilesej-pentadbir-dengan-visudo">2.1 Konfigurasi Privilesej Pentadbir dengan <code>visudo</code><a class="headerlink" href="#21-konfigurasi-privilesej-pentadbir-dengan-visudo" title="Permanent link">&para;</a></h3>
+<p>Penggunaan log masuk terus sebagai <code>root</code> adalah <strong>DILARANG</strong> di bawah garis panduan JDN/MAMPU. Sebaliknya, pentadbiran MESTI dilaksanakan melalui <code>sudo</code> dengan audit log lengkap.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Buka fail /etc/sudoers dengan selamat menggunakan visudo</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>visudo
+</span></code></pre></div>
+<p>Tambah peraturan khusus keistimewaan minimum (<em>Principle of Least Privilege</em>):
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># Membenarkan kumpulan sysadmin_sec menjalankan arahan pentadbiran dengan pengesahan
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>%sysadmin_sec ALL=(ALL:ALL) ALL
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a># Membenarkan pentadbiran perkhidmatan tanpa kata laluan untuk akaun tertentu jika diperlukan
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ahmad ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart nginx
+</span></code></pre></div></p>
+<h3 id="22-perlindungan-brute-force-penguncian-akaun-faillock">2.2 Perlindungan Brute-Force &amp; Penguncian Akaun (<code>faillock</code>)<a class="headerlink" href="#22-perlindungan-brute-force-penguncian-akaun-faillock" title="Permanent link">&para;</a></h3>
+<p>Untuk mematuhi standard ISO/IEC 27001, sistem perlu mengunci akaun secara automatik selepas percubaan log masuk gagal yang berturut-turut.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Semak status log kegagalan akaun pengguna</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>ahmad
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Buka kunci akaun pengguna yang terkunci akibat percubaan kata laluan salah</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>ahmad<span class="w"> </span>--reset
+</span></code></pre></div>
+<p>Konfigurasi di <code>/etc/security/faillock.conf</code>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>deny = 5
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>unlock_time = 900
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>fail_interval = 900
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>silent
+</span></code></pre></div></p>
+<hr />
+<h2 id="3-kebenaran-fail-asas-bit-khas-suid-sgid-sticky-bit">📁 3. Kebenaran Fail Asas &amp; Bit Khas (SUID, SGID, Sticky Bit)<a class="headerlink" href="#3-kebenaran-fail-asas-bit-khas-suid-sgid-sticky-bit" title="Permanent link">&para;</a></h2>
+<h3 id="31-kebenaran-asas-ugo-chmod-chown-chgrp-umask">3.1 Kebenaran Asas UGO (<code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>umask</code>)<a class="headerlink" href="#31-kebenaran-asas-ugo-chmod-chown-chgrp-umask" title="Permanent link">&para;</a></h3>
+<p>Kebenaran Linux berasaskan tiga entiti: <strong>User (u)</strong>, <strong>Group (g)</strong>, dan <strong>Others (o)</strong> dengan mod <strong>Read (4)</strong>, <strong>Write (2)</strong>, dan <strong>Execute (1)</strong>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Ubah pemilikan fail dan direktori kepada ahmad:sysadmin_sec</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span>ahmad:sysadmin_sec<span class="w"> </span>/srv/projek_sec/
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>ahmad:sysadmin_sec<span class="w"> </span>/srv/projek_sec/
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Tetapkan kebenaran rwx untuk pemilik, r-x untuk kumpulan, dan tiada akses untuk yang lain (750)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span>/srv/projek_sec/
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Tetapkan umask laluan keistimewaan selamat (027) dalam /etc/profile atau ~/.bashrc</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nb">umask</span><span class="w"> </span><span class="m">027</span>
+</span></code></pre></div>
+<h3 id="32-bit-kebenaran-khas-suid-sgid-sticky-bit">3.2 Bit Kebenaran Khas (SUID, SGID, Sticky Bit)<a class="headerlink" href="#32-bit-kebenaran-khas-suid-sgid-sticky-bit" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>SUID (Set User ID - 4000 / <code>u+s</code>):</strong> Melaksanakan fail binaan (<em>executable</em>) dengan hak keistimewaan pemilik fail (contoh: <code>/usr/bin/passwd</code>).</li>
+<li><strong>SGID (Set Group ID - 2000 / <code>g+s</code>):</strong> Apabila ditetapkan pada direktori, semua fail baharu yang dicipta dalam direktori tersebut akan mewarisi kumpulan direktori asal.</li>
+<li><strong>Sticky Bit (1000 / <code>t</code>):</strong> Apabila ditetapkan pada direktori kongsian (seperti <code>/tmp</code>), hanya pemilik fail sahaja yang boleh memadam fail mereka sendiri.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Tetapkan SGID pada direktori projek kongsian</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>g+s<span class="w"> </span>/srv/projek_sec/
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Tetapkan Sticky Bit pada direktori kongsian umum</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+t<span class="w"> </span>/srv/kongsi_awam/
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Cari fail dalam sistem yang mempunyai bit SUID ditetapkan (Audit Keselamatan)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>find<span class="w"> </span>/<span class="w"> </span>-perm<span class="w"> </span>-4000<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-ls<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span></code></pre></div>
+<hr />
+<h2 id="4-senarai-kawalan-akses-posix-posix-acl-getfacl-setfacl">🎛️ 4. Senarai Kawalan Akses POSIX (POSIX ACL - <code>getfacl</code> &amp; <code>setfacl</code>)<a class="headerlink" href="#4-senarai-kawalan-akses-posix-posix-acl-getfacl-setfacl" title="Permanent link">&para;</a></h2>
+<p>Apabila kebenaran UGO tidak cukup fleksibel untuk menetapkan hak akses kepada berbilang pengguna atau kumpulan secara individu, POSIX Access Control Lists (ACL) digunakan.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Semak ACL sedia ada pada fail/direktori</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>getfacl<span class="w"> </span>/srv/projek_sec/dokumen.pdf
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Berikan kebenaran membaca dan menulis kepada pengguna &#39;zarith&#39; secara khusus</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>setfacl<span class="w"> </span>-m<span class="w"> </span>u:zarith:rw-<span class="w"> </span>/srv/projek_sec/dokumen.pdf
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Berikan kebenaran laluan (default ACL) supaya fail baharu mewarisi ACL secara automatik</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>setfacl<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span>u:zarith:rwx<span class="w"> </span>/srv/projek_sec/
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Padam semua tetapan ACL khusus pada fail</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>setfacl<span class="w"> </span>-b<span class="w"> </span>/srv/projek_sec/dokumen.pdf
+</span></code></pre></div>
+<hr />
+<h2 id="5-navigasi-fhs-pencarian-fail-dokumentasi-find-plocate-man-db">🧭 5. Navigasi FHS, Pencarian Fail &amp; Dokumentasi (<code>find</code>, <code>plocate</code>, <code>man-db</code>)<a class="headerlink" href="#5-navigasi-fhs-pencarian-fail-dokumentasi-find-plocate-man-db" title="Permanent link">&para;</a></h2>
+<h3 id="51-hierarki-standard-sistem-fail-fhs">5.1 Hierarki Standard Sistem Fail (FHS)<a class="headerlink" href="#51-hierarki-standard-sistem-fail-fhs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>/etc</code>: Fail konfigurasi sistem.</li>
+<li><code>/var</code>: Data berubah (log <code>/var/log</code>, laman web <code>/var/www</code>).</li>
+<li><code>/home</code>: Direktori perumah pengguna biasa.</li>
+<li><code>/root</code>: Direktori perumah pengguna pentadbir.</li>
+<li><code>/usr</code>: Binaan perisian dan pustaka pengguna (<code>/usr/bin</code>, <code>/usr/sbin</code>).</li>
+</ul>
+<h3 id="52-alat-pencarian-dokumentasi">5.2 Alat Pencarian &amp; Dokumentasi<a class="headerlink" href="#52-alat-pencarian-dokumentasi" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Kemas kini pangkalan data plocate</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>updatedb
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Cari fail dengan pantas menggunakan plocate</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>plocate<span class="w"> </span>sudoers
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Cari fail menggunakan find mengikut saiz dan kriteria</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>find<span class="w"> </span>/var/log<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.log&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>-7
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># Capaian halaman panduan manual rasmi</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>man<span class="w"> </span><span class="m">5</span><span class="w"> </span>shadow
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>man<span class="w"> </span><span class="m">8</span><span class="w"> </span>usermod
+</span></code></pre></div>
+<hr />
+<h2 id="6-kawalan-keselamatan-sesi-penutupan-selamat-tmout-limitsconf-systemctl">🚪 6. Kawalan Keselamatan Sesi &amp; Penutupan Selamat (<code>TMOUT</code>, <code>limits.conf</code>, <code>systemctl</code>)<a class="headerlink" href="#6-kawalan-keselamatan-sesi-penutupan-selamat-tmout-limitsconf-systemctl" title="Permanent link">&para;</a></h2>
+<h3 id="61-tamat-masa-sesi-shell-otomatik-tmout">6.1 Tamat Masa Sesi Shell Otomatik (<code>TMOUT</code>)<a class="headerlink" href="#61-tamat-masa-sesi-shell-otomatik-tmout" title="Permanent link">&para;</a></h3>
+<p>Bagi mengelakkan sesi terminal ditinggalkan tanpa kawalan fizikal, tetapkan pembolehubah <code>TMOUT</code> di <code>/etc/profile.d/timeout.sh</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Cipta fail skrip penguatkuasaan tamat masa sesi (15 minit / 900 saat)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; | sudo tee /etc/profile.d/timeout.sh</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">readonly TMOUT=900</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s">export TMOUT</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s">EOF</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/timeout.sh
+</span></code></pre></div>
+<h3 id="62-pengurusan-had-sumber-pengguna-etcsecuritylimitsconf">6.2 Pengurusan Had Sumber Pengguna (<code>/etc/security/limits.conf</code>)<a class="headerlink" href="#62-pengurusan-had-sumber-pengguna-etcsecuritylimitsconf" title="Permanent link">&para;</a></h3>
+<p>Menghadkan bilangan proses maksima dan fail terbuka pengguna untuk mementingkan kestabilan sistem:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a># Mengurangkan risiko Serangan Penafian Perkhidmatan (DoS) berasaskan fork bomb dan kehabisan pemegang fail
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>*          hard    nproc          2048
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>ahmad      soft    nofile         4096
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>ahmad      hard    nofile         8192
+</span></code></pre></div></p>
+<h3 id="63-penutupan-dan-ulang-but-selamat">6.3 Penutupan dan Ulang But Selamat<a class="headerlink" href="#63-penutupan-dan-ulang-but-selamat" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Beritahu semua pengguna dan jadualkan penutupan sistem secara selamat</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>shutdown<span class="w"> </span>-h<span class="w"> </span>+5<span class="w"> </span><span class="s2">&quot;Sistem akan ditutup untuk penyelenggaraan dalam masa 5 minit.&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Atau matikan sistem serta-merta menggunakan systemd</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>poweroff
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Ulang but sistem serta-merta</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reboot
+</span></code></pre></div>
+<hr />
+<h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Berjaya mencipta pengguna dan kumpulan mengikut penamaan standard NOSS.</li>
+<li>[ ] Mengesahkan bahawa fail <code>/etc/shadow</code> tidak boleh dibaca oleh pengguna biasa.</li>
+<li>[ ] Mampu mengonfigurasi privilesej <code>sudo</code> menggunakan <code>visudo</code>.</li>
+<li>[ ] Berjaya menetapkan kebenaran UGO, bit khas (SUID/SGID/Sticky Bit), dan POSIX ACL.</li>
+<li>[ ] Mampu memulihkan akaun yang terkunci dengan <code>faillock</code>.</li>
+<li>[ ] Mengonfigurasi <code>TMOUT</code> untuk keselamatan sesi terminal.</li>
+</ul>
+<hr />
+<h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
+<ol>
+<li><em>"Apakah perbezaan mendalam antara algoritma enkrpsi SHA-512 dan Yescrypt dalam fail <code>/etc/shadow</code> pada Linux moden 2026?"</em></li>
+<li><em>"Tunjukkan cara mengaudit keseluruhan fail binaan yang mempunyai bit SUID dan SGID serta cara menghapuskan bit keistimewaan yang tidak diperlukan."</em></li>
+<li><em>"Tulis skrip Bash automatik untuk menyemak ketidakpatuhan kebenaran fail sistem mengikut penanda aras CIS Benchmark."</em></li>
+</ol>
+<hr />
+<h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://ubuntu.com/server/docs/security-users">Ubuntu Server Security Handbook - User Management</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux 10 Hardening Guide &amp; PAM Faillock</a></li>
+<li><a href="https://access.redhat.com/documentation/">POSIX Access Control Lists in Linux - Red Hat Documentation</a></li>
+</ul>
+<hr />
+<h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>UNIX and Linux System Administration Handbook (5th Edition)</strong> oleh Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin.</li>
+<li><strong>Linux Security Cookbook</strong> oleh Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes.</li>
+<li><strong>Panduan Pentadbiran Sistem &amp; Keselamatan Linux</strong> oleh Harisfazillah Jamel.</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
+<em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </article>
+            </div>
+
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+
+      </main>
+
+        <footer class="md-footer">
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+
+    <div class="md-copyright__highlight">
+      All costs, designs, unit amounts, and scenarios detailed within this document are based entirely on assumptions. This project and its accompanying documentation are compiled strictly for training, educational, and planning proposal purposes. Use at your own risk. We will not be responsible. We have done our best to protect anyone and organisation. <a href="https://linuxmalaysia.github.io/deep-state-of-mind-for-my-ai/LEGAL-NOTICE/">Legal Notice & Disclaimer</a>
+
+    </div>
+
+
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+
+</div>
+
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+
+
+
+
+
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+
+
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+
+
+  </body>
+</html>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pengurusan dasar kata laluan, akses sudoers, semakan fail /etc/passwd dan kawalan PAM.">
+        <meta name="description" content="Panduan amali audit akaun pengguna, pemeriksaan /etc/passwd dan /etc/shadow, pengurusan privilesej sudoers, kebenaran UGO/POSIX ACL, serta penguncian faillock.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Audit Akaun Pengguna & Kebenaran Akses Linux - NOSS Linux Malaysia (DSOM)</title>
+        <title>Audit Akaun Pengguna & Kebenaran Akses Linux (CU05-WA01) - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#audit-akaun-pengguna-kebenaran-akses-linux" class="md-skip">
+        <a href="#audit-akaun-pengguna-kebenaran-akses-linux-cu05-wa01" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Audit Akaun Pengguna & Kebenaran Akses Linux
+              Audit Akaun Pengguna & Kebenaran Akses Linux (CU05-WA01)
             
           </span>
         </div>
@@ -1425,22 +1425,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#garis-panduan-amali-prosedur" class="md-nav__link">
+  <a href="#prosedur-arahan-amali" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Garis Panduan Amali &amp; Prosedur
+        🛠️ Prosedur &amp; Arahan Amali
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur">
+    <nav class="md-nav" aria-label="🛠️ Prosedur &amp; Arahan Amali">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-audit-integriti-fail-pengguna-kumpulan-etcpasswd-etcshadow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
+        1. Audit Integriti Fail Pengguna &amp; Kumpulan (/etc/passwd &amp; /etc/shadow)
       
     </span>
   </a>
@@ -1448,10 +1448,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-audit-pengurusan-kebenaran-privilesej-pentadbir-visudo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Langkah-Langkah Operasi
+        2. Audit &amp; Pengurusan Kebenaran Privilesej Pentadbir (visudo)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-audit-kebenaran-fail-posix-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Audit Kebenaran Fail &amp; POSIX ACL
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4-semakan-pemulihan-penguncian-akaun-faillock" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. Semakan &amp; Pemulihan Penguncian Akaun (faillock)
       
     </span>
   </a>
@@ -1524,58 +1546,78 @@
 
 
 
-<h1 id="audit-akaun-pengguna-kebenaran-akses-linux">Audit Akaun Pengguna &amp; Kebenaran Akses Linux<a class="headerlink" href="#audit-akaun-pengguna-kebenaran-akses-linux" title="Permanent link">&para;</a></h1>
+<h1 id="audit-akaun-pengguna-kebenaran-akses-linux-cu05-wa01">Audit Akaun Pengguna &amp; Kebenaran Akses Linux (CU05-WA01)<a class="headerlink" href="#audit-akaun-pengguna-kebenaran-akses-linux-cu05-wa01" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Pengurusan dasar kata laluan, akses sudoers, semakan fail /etc/passwd dan kawalan PAM.</p>
+<p>Melaksanakan audit menyeluruh ke atas akaun pengguna sistem, keahlian kumpulan, integriti fail pengesahan (<code>/etc/passwd</code>, <code>/etc/shadow</code>), konfigurasi keistimewaan <code>sudo</code> (<code>visudo</code>), matriks kebenaran fail UGO dan POSIX ACL, serta penguatkuasaan dasar kunci kata laluan (<code>faillock</code>) mengikut piawaian <strong>NOSS CU05 WA01</strong>, <strong>ISO/IEC 27001</strong>, dan Pekeliling <strong>Jabatan Digital Negara (JDN) / MAMPU</strong>.</p>
 <blockquote>
 <p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU05</strong>.</p>
+Modul ini dipetakan daripada Unit Kompetensi <strong>CU05 (Kawalan Keselamatan Endpoint &amp; Audit)</strong> bagi Aktiviti Kerja <strong>WA01 (Perform User Account and Permission Audits)</strong> pada platform <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
-<h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Quetzal"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
-</ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<h2 id="prosedur-arahan-amali">🛠️ Prosedur &amp; Arahan Amali<a class="headerlink" href="#prosedur-arahan-amali" title="Permanent link">&para;</a></h2>
+<h3 id="1-audit-integriti-fail-pengguna-kumpulan-etcpasswd-etcshadow">1. Audit Integriti Fail Pengguna &amp; Kumpulan (<code>/etc/passwd</code> &amp; <code>/etc/shadow</code>)<a class="headerlink" href="#1-audit-integriti-fail-pengguna-kumpulan-etcpasswd-etcshadow" title="Permanent link">&para;</a></h3>
+<p>Akaun tanpa kata laluan atau UID 0 tidak sah merupakan risiko keselamatan kritikal.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Semak sebarang akaun selain &#39;root&#39; yang mempunyai UID 0 (Akses Superuser Tidak Sah)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">&#39;($3 == &quot;0&quot; &amp;&amp; $1 != &quot;root&quot;) { print $1 }&#39;</span><span class="w"> </span>/etc/passwd
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Cari akaun terkunci atau tanpa kata laluan (medan kata laluan kosong atau bermula dengan !)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">&#39;($2 == &quot;&quot; || $2 ~ /^!/) { print $1 }&#39;</span><span class="w"> </span>/etc/shadow
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Semak integriti fail passwd dan shadow dengan alat pwck</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>pwck<span class="w"> </span>-r
+</span></code></pre></div>
+<h3 id="2-audit-pengurusan-kebenaran-privilesej-pentadbir-visudo">2. Audit &amp; Pengurusan Kebenaran Privilesej Pentadbir (<code>visudo</code>)<a class="headerlink" href="#2-audit-pengurusan-kebenaran-privilesej-pentadbir-visudo" title="Permanent link">&para;</a></h3>
+<p>Log masuk terus sebagai <code>root</code> dilarang. Semua tindakan pentadbiran mesti diaudit menerusi <code>sudo</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Audit fail konfigurasi /etc/sudoers dan direktori /etc/sudoers.d/</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>visudo<span class="w"> </span>-c
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Senaraikan keistimewaan sudo untuk pengguna semasa atau pengguna tertentu</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>-l<span class="w"> </span>-U<span class="w"> </span>ahmad
+</span></code></pre></div>
+<h3 id="3-audit-kebenaran-fail-posix-acl">3. Audit Kebenaran Fail &amp; POSIX ACL<a class="headerlink" href="#3-audit-kebenaran-fail-posix-acl" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Semak kebenaran fail asas dan pemilik</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ls<span class="w"> </span>-la<span class="w"> </span>/srv/projek_sec/
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Semak Senarai Kawalan Akses POSIX (POSIX ACL)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>getfacl<span class="w"> </span>/srv/projek_sec/dokumen.pdf
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Tetapkan kebenaran ACL khusus pengguna</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:zarith:rw-<span class="w"> </span>/srv/projek_sec/dokumen.pdf
+</span></code></pre></div>
+<h3 id="4-semakan-pemulihan-penguncian-akaun-faillock">4. Semakan &amp; Pemulihan Penguncian Akaun (<code>faillock</code>)<a class="headerlink" href="#4-semakan-pemulihan-penguncian-akaun-faillock" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Semak sejarah kegagalan log masuk pengguna dan status kuncian</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>ahmad
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Nyahkunci akaun yang terkunci akibat salah kata laluan</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>ahmad<span class="w"> </span>--reset
 </span></code></pre></div>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Pengesahan tiada akaun UID 0 yang tidak sah (selain <code>root</code>).</li>
+<li>[ ] Semakan kegagalan pwck melepasi 100%.</li>
+<li>[ ] Audit keistimewaan sudoers menggunakan <code>visudo -c</code>.</li>
+<li>[ ] Penetapan dan verifikasi POSIX ACL menggunakan <code>getfacl</code> / <code>setfacl</code>.</li>
+<li>[ ] Pentadbiran kunci kata laluan <code>faillock</code>.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Audit Akaun Pengguna &amp; Kebenaran Akses Linux dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Audit Akaun Pengguna &amp; Kebenaran Akses Linux menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Tulis skrip audit Bash untuk mengesan pengguna sistem dengan shell log masuk aktif yang tidak pernah log masuk."</em></li>
+<li><em>"Jelaskan cara mengonfigurasi faillock supaya mengunci akaun selama 30 minit selepas 3 percubaan berturut-turut gagal."</em></li>
+<li><em>"Bagaimanakah cara mengaudit perubahan pada /etc/passwd menggunakan auditd?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://ubuntu.com/server/docs/security-users">Ubuntu Security Handbook - User Auditing</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux PAM &amp; Security Audit Guide</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>Linux Auditing and Hardening</strong> oleh Master Technical Series.</li>
+<li><strong>Panduan Praktikal Audit Keselamatan Linux</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />

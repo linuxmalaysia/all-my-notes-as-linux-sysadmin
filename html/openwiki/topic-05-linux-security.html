@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus keselamatan OS Linux (Kebenaran fail, Firewall, Polisi) dipetakan kepada NOSS CU05.">
+        <meta name="description" content="Silibus keselamatan OS Linux komprehesif merangkumi Pentadbiran Pengguna & Kumpulan, Kebenaran Fail & POSIX ACL, Firewall, dan Kawalan Lockdowns.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -27,7 +27,7 @@
     
     
       
-        <title>topic-05-linux-security - NOSS Linux Malaysia (DSOM)</title>
+        <title>Topik 5: Keselamatan Linux & Kawalan Akses (CU05) - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#topik-5-keselamatan-linux-cu05" class="md-skip">
+        <a href="#topik-5-keselamatan-linux-kawalan-akses-endpoint-cu05" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              topic-05-linux-security
+              Topik 5: Keselamatan Linux & Kawalan Akses (CU05)
             
           </span>
         </div>
@@ -1139,6 +1139,17 @@
   </a>
   
 </li>
+
+        <li class="md-nav__item">
+  <a href="#modul-amali-terkait" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        Modul Amali Terkait
+
+    </span>
+  </a>
+
+</li>
       
         <li class="md-nav__item">
   <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
@@ -1149,6 +1160,39 @@
     </span>
   </a>
   
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
+
+    </span>
+  </a>
+
 </li>
       
     </ul>
@@ -1520,6 +1564,17 @@
   </a>
   
 </li>
+
+        <li class="md-nav__item">
+  <a href="#modul-amali-terkait" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        Modul Amali Terkait
+
+    </span>
+  </a>
+
+</li>
       
         <li class="md-nav__item">
   <a href="#pemetaan-noss-noss-mapping" class="md-nav__link">
@@ -1530,6 +1585,39 @@
     </span>
   </a>
   
+</li>
+
+        <li class="md-nav__item">
+  <a href="#eksplorasi-lanjut-bersama-ai-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#bahan-bacaan-lanjut-rujukan-url" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#buku-boleh-dibeli-syor-bacaan" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        📚 Buku Boleh Dibeli (Syor Bacaan)
+
+    </span>
+  </a>
+
 </li>
       
     </ul>
@@ -1549,30 +1637,88 @@
 
 
 
-<h1 id="topik-5-keselamatan-linux-cu05">Topik 5: Keselamatan Linux (CU05)<a class="headerlink" href="#topik-5-keselamatan-linux-cu05" title="Permanent link">&para;</a></h1>
+<h1 id="topik-5-keselamatan-linux-kawalan-akses-endpoint-cu05">Topik 5: Keselamatan Linux &amp; Kawalan Akses Endpoint (CU05)<a class="headerlink" href="#topik-5-keselamatan-linux-kawalan-akses-endpoint-cu05" title="Permanent link">&para;</a></h1>
 <h2 id="overview-gambaran-keseluruhan">Overview (Gambaran Keseluruhan)<a class="headerlink" href="#overview-gambaran-keseluruhan" title="Permanent link">&para;</a></h2>
-<p>Keselamatan merangkumi sekatan pengguna, perlindungan sistem fail, dan dinding api (firewall) pada tahap pelayan. Ia dipetakan secara eksklusif daripada <strong>CU05 (User Account and Permissions Audits / Security Lockdowns)</strong>.</p>
+<p>Keselamatan Linux merangkumi pentadbiran identiti pengguna, sekatan kebenaran fail asas dan lanjutan, penegasan dasar kata laluan, kawalan keistimewaan <code>sudo</code>, dinding api (<em>firewall</em>), serta perlindungan fizikal konsol. Silibus ini dipetakan secara terperinci kepada Unit Kompetensi <strong>CU05 (User Account and Permissions Audits / Security Lockdowns)</strong> dan <strong>CU01 (Aktiviti Asas Linux)</strong> mengikut standard NOSS Tahap 3 dan piawaian <strong>ISO/IEC 27001</strong> &amp; Pekeliling <strong>Jabatan Digital Negara (JDN) / MAMPU</strong>.</p>
 <h2 id="silibus-utama">Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Pengurusan Pengguna &amp; Kumpulan (User &amp; Group Management)</strong>:</li>
-<li><code>useradd</code>, <code>usermod</code>, <code>groupadd</code>, fail <code>/etc/passwd</code> dan <code>/etc/shadow</code>.</li>
-<li><strong>Kebenaran Sistem Fail (File Permissions &amp; Ownership)</strong>:</li>
-<li>Konsep UGO (User, Group, Others).</li>
-<li>Pengubahsuaian dengan <code>chmod</code> dan <code>chown</code>.</li>
-<li>Konsep SUID, SGID, dan Sticky Bit.</li>
-<li><strong>Dinding Api (Firewall &amp; Port Security)</strong>:</li>
+<li><strong>Pengurusan Pengguna, Kumpulan &amp; Fail Identiti</strong>:<ul>
+<li>Penciptaan dan pengurusan akaun (<code>useradd</code>, <code>usermod</code>, <code>userdel</code>, <code>groupadd</code>).</li>
+<li>Struktur fail sistem teras <code>/etc/passwd</code>, <code>/etc/shadow</code>, <code>/etc/group</code>, dan <code>/etc/gshadow</code>.</li>
+</ul>
+</li>
+<li><strong>Kebenaran Sistem Fail &amp; Bit Khas (UGO, SUID, SGID, Sticky Bit)</strong>:<ul>
+<li>Konsep UGO (User, Group, Others) dengan <code>chmod</code>, <code>chown</code>, dan <code>chgrp</code>.</li>
+<li>Tetapan Bit Khas: SUID (Set User ID), SGID (Set Group ID), dan Sticky Bit.</li>
+<li>Konfigurasi <code>umask</code> selamat (<code>027</code>).</li>
+</ul>
+</li>
+<li><strong>Senarai Kawalan Akses Lanjutan (POSIX ACL)</strong>:<ul>
+<li>Pengurusan kawalan akses khusus individu/kumpulan dengan <code>getfacl</code> dan <code>setfacl</code>.</li>
+</ul>
+</li>
+<li><strong>Keistimewaan Pentadbir &amp; Perlindungan Kata Laluan (<code>visudo</code> &amp; <code>faillock</code>)</strong>:<ul>
+<li>Konfigurasi keistimewaan terhad <code>sudo</code> melalui <code>visudo</code>.</li>
+<li>Perlindungan serangan brute-force dan penguncian akaun otomatik dengan <code>faillock</code>.</li>
+</ul>
+</li>
+<li><strong>Navigasi Standard FHS, Pencarian Fail &amp; Dokumentasi</strong>:<ul>
+<li>Hierarki sistem fail FHS, pencarian pantas <code>plocate</code>, <code>find</code>, dan halaman manual <code>man-db</code>.</li>
+</ul>
+</li>
+<li><strong>Kawalan Keselamatan Konsol, Sesi Terminal &amp; Penutupan Selamat</strong>:<ul>
+<li>Penetapan pembolehubah <code>TMOUT</code> untuk tamat masa sesi tidak aktif.</li>
+<li>Sekatan kawalan sumber sistem dalam <code>/etc/security/limits.conf</code>.</li>
+<li>Perlindungan bootloader GRUB2 dan prosedur penutupan selamat (<code>systemctl poweroff</code>/<code>shutdown</code>).</li>
+</ul>
+</li>
+<li><strong>Dinding Api (Firewall &amp; Port Security)</strong>:<ul>
 <li>Konfigurasi Uncomplicated Firewall (<code>ufw</code>) di Ubuntu.</li>
-<li>Konfigurasi <code>firewalld</code> di sistem berasaskan Red Hat.</li>
-<li><strong>Sistem Kawalan Mandatori (MAC)</strong>:</li>
-<li>Pengenalan kepada SELinux (Enforcing, Permissive, Disabled).</li>
-<li>Pengenalan kepada AppArmor.</li>
+<li>Konfigurasi <code>firewalld</code> di sistem berasaskan Red Hat / AlmaLinux.</li>
+</ul>
+</li>
+<li><strong>Sistem Kawalan Mandatori (MAC)</strong>:<ul>
+<li>Pengenalan dan mod SELinux (Enforcing, Permissive, Disabled) di AlmaLinux/Fedora.</li>
+<li>Pengenalan kepada AppArmor di Ubuntu.</li>
+</ul>
+</li>
 </ol>
+<h2 id="modul-amali-terkait">Modul Amali Terkait<a class="headerlink" href="#modul-amali-terkait" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.html">Pentadbiran Pengguna, Kebenaran Fail &amp; Kawalan Akses Endpoint Linux</a></li>
+<li><a href="../manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.html">Audit Akaun Pengguna &amp; Kebenaran Akses Linux (CU05-WA01)</a></li>
+<li><a href="../manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.html">Kawalan Keselamatan Fizikal &amp; Persekitaran Console Endpoint Linux (CU05-WA05)</a></li>
+</ul>
 <h2 id="pemetaan-noss-noss-mapping">Pemetaan NOSS (NOSS Mapping)<a class="headerlink" href="#pemetaan-noss-noss-mapping" title="Permanent link">&para;</a></h2>
-<p>Silibus ini memandu kemahiran Ejen AI berikut:
-- <code>cu05-wa01-perform-user-account-and-permission-audits</code>
-- <code>cu05-wa03-configure-client-firewall-profiles</code></p>
+<p>Silibus ini memandu kemahiran Ejen AI berikut:</p>
+<ul>
+<li><code>cu05-wa01-perform-user-account-and-permission-audits</code></li>
+<li><code>cu05-wa03-configure-client-firewall-profiles</code></li>
+<li><code>cu05-wa05-manage-physical-endpoint-security-lockdowns</code></li>
+</ul>
 <hr />
-<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16</em>
+<h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
+<ol>
+<li><em>"Apakah amalan terbaik untuk mengaudit kebenaran POSIX ACL dan bit SUID pada sistem Ubuntu 26.04 LTS?"</em></li>
+<li><em>"Jelaskan cara mengonfigurasi faillock dan pam_tally2 bagi mematuhi penanda aras CIS Benchmark."</em></li>
+<li><em>"Tunjukkan contoh skrip Bash untuk menyemak akaun pengguna yang tidak aktif dan menguncinya secara automatik."</em></li>
+</ol>
+<hr />
+<h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://ubuntu.com/server/docs/security-users">Ubuntu Security Handbook - User Account &amp; Permission Audits</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux 10 System Security and Hardening Guide</a></li>
+<li><a href="https://access.redhat.com/documentation/">Red Hat Enterprise Linux 10 Security Guide</a></li>
+</ul>
+<hr />
+<h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>UNIX and Linux System Administration Handbook (5th Edition)</strong> oleh Evi Nemeth et al.</li>
+<li><strong>Linux Security Cookbook</strong> oleh Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes.</li>
+<li><strong>Panduan Praktikal Audit &amp; Keselamatan Linux</strong> oleh Harisfazillah Jamel.</li>
+</ul>
+<hr />
+<p><em>Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />
 <em>Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | <a href="/docs/legal-notice.md">Notis Perundangan, Privasi &amp; Penafian</a></em></p>
 
 
