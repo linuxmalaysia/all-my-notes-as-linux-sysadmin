@@ -26,7 +26,7 @@ def run_step(step_name, command, cwd):
         # Use shell=True on Windows for npm since it's a cmd/bat wrapper
         is_shell = sys.platform.startswith('win') and command[0] == 'npm'
         env = {**os.environ, "CI": "true"}
-        result = subprocess.run(command, cwd=cwd, check=True, shell=is_shell, env=env)
+        result = subprocess.run(command, cwd=cwd, check=True, shell=is_shell, env=env, stdin=subprocess.DEVNULL)
         print(f"{GREEN}✔ {step_name} passed.{RESET}")
     except subprocess.CalledProcessError as e:
         print(f"{RED}✘ {step_name} failed! Check output above.{RESET}")
@@ -46,11 +46,19 @@ def main():
     )
     
     # 2. Run Node.js Jest
-    run_step(
-        "JavaScript Jest Tests (npm test)",
-        ["npm", "test"],
-        root_dir
-    )
+    jest_bin = root_dir / "node_modules" / "jest" / "bin" / "jest.js"
+    if jest_bin.exists():
+        run_step(
+            "JavaScript Jest Tests (Jest CI)",
+            ["node", str(jest_bin), "--ci"],
+            root_dir
+        )
+    else:
+        run_step(
+            "JavaScript Jest Tests (npm test)",
+            ["npm", "test"],
+            root_dir
+        )
     
     print(f"\n{GREEN}======================================{RESET}")
     print(f"{GREEN}🎉 100% COMPLIANCE ACHIEVED!{RESET}")
