@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-17T04:17:23Z"
+timestamp: "2026-08-17T04:28:15Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -51,11 +51,11 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu04-wa03-perform-network-based-backup`** <br> *cu04-wa03-perform-network-based-backup* | No description provided. | N/A |
 | **`cu04-wa04-restore-endpoint-data`** <br> *cu04-wa04-restore-endpoint-data* | No description provided. | N/A |
 | **`cu04-wa05-perform-endpoint-bare-metal-recovery`** <br> *cu04-wa05-perform-endpoint-bare-metal-recovery* | No description provided. | N/A |
-| **`cu05-wa01-perform-user-account-and-permission-audits`** <br> *cu05-wa01-perform-user-account-and-permission-audits* | No description provided. | N/A |
+| **`cu05-wa01-perform-user-account-and-permission-audits`** <br> *Perform User Account and Permission Audits (CU05-WA01)* | Executes NOSS Work Activity CU05-WA01: Audit user accounts, group memberships, authentication files (/etc/passwd, /etc/shadow), sudoers configuration, file permissions, POSIX ACLs, and faillock. | "noss", "cu05", "wa01", "user-audit", "permissions", "visudo", "faillock" |
 | **`cu05-wa02-configure-endpoint-antivirus-anti-malware-defences`** <br> *cu05-wa02-configure-endpoint-antivirus-anti-malware-defences* | No description provided. | N/A |
 | **`cu05-wa03-configure-client-firewall-profiles`** <br> *cu05-wa03-configure-client-firewall-profiles* | No description provided. | N/A |
 | **`cu05-wa04-conduct-application-security-patching`** <br> *cu05-wa04-conduct-application-security-patching* | No description provided. | N/A |
-| **`cu05-wa05-manage-physical-endpoint-security-lockdowns`** <br> *cu05-wa05-manage-physical-endpoint-security-lockdowns* | No description provided. | N/A |
+| **`cu05-wa05-manage-physical-endpoint-security-lockdowns`** <br> *Manage Physical Endpoint Security Lockdowns (CU05-WA05)* | Executes NOSS Work Activity CU05-WA05: Manage physical endpoint lockdowns, bootloader GRUB2 password protection, session timeout (TMOUT), virtual terminal limits, and safe shutdown procedures. | "noss", "cu05", "wa05", "physical-security", "lockdown", "grub", "tmout", "systemd" |
 | **`cu06-wa01-prepare-end-user-support-service-requirements`** <br> *cu06-wa01-prepare-end-user-support-service-requirements* | No description provided. | N/A |
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** <br> *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
 | **`cu06-wa03-support-hardware-troubleshooting`** <br> *cu06-wa03-support-hardware-troubleshooting* | No description provided. | N/A |

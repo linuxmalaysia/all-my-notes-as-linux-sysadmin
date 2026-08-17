@@ -1,69 +1,99 @@
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI"
+title: "Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu05", "panduan-amali", "manual-linux"]
-tags: ["cu05", "linux", "noss", "amali", "standard-malaysia"]
-description: "Pencegahan but tanpa kebenaran, kata laluan GRUB2, dan dasar penyulitan storan mudah alih."
+topics: ["noss-linux", "cu05", "wa05", "panduan-amali", "manual-linux", "security-lockdown"]
+tags: ["cu05", "wa05", "linux", "noss", "amali", "physical-security", "lockdown", "tmout", "grub", "systemd"]
+description: "Panduan amali kawalan keselamatan fizikal, penguncian bootloader GRUB2, kawalan konsol maya VT, tamat masa sesi TMOUT, dan penutupan selamat."
 resource: "file:///manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md"
 ---
 
-# Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI
+# Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)
 
 ## 🎯 Objektif Pembelajaran
-Pencegahan but tanpa kebenaran, kata laluan GRUB2, dan dasar penyulitan storan mudah alih.
+Mengurangkan risiko capaian fizikal tidak sah menerusi penegasan bootloader GRUB2/UEFI, penyulitan cakera LUKS2, sekatan konsol maya (Virtual Terminals), kawalan tamat masa sesi shell (`TMOUT`), dan kawalan penutupan sistem selamat mengikut piawaian **NOSS CU05 WA05** dan penanda aras **CIS Benchmarks / JDN MAMPU**.
 
 > [!NOTE]
-> Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU05**.
+> Modul ini dipetakan daripada Unit Kompetensi **CU05 (Kawalan Keselamatan Endpoint & Audit)** bagi Aktiviti Kerja **WA05 (Manage Physical Endpoint Security Lockdowns)** pada **Ubuntu 26.04 LTS "Quetzal"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
-## 🛠️ Garis Panduan Amali & Prosedur
+## 🛠️ Prosedur & Arahan Amali
 
-### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Quetzal"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
-
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+### 1. Perlindungan Bootloader GRUB2 dengan Kata Laluan
+Melarang pengubahsuaian parameter isirung (`init=/bin/bash` atau `single`) di menu bootloader tanpa pengesahan pentadbir.
 
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Hasilkan hasing kata laluan GRUB2 terenkripsi
+sudo grub2-setpassword   # Pada AlmaLinux 10 / Fedora 43
+# Atau pada Ubuntu 26.04 LTS:
+# sudo grub-mkpasswd-pbkdf2
+
+# Kemas kini konfigurasi GRUB2
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+### 2. Penguatkuasaan Tamat Masa Sesi Terminal Otomatik (`TMOUT`)
+Mengunci atau menamatkan sesi terminal tidak aktif secara automatik selepas 15 minit (900 saat).
+
+```bash
+# Cipta fail skrip penguatkuasaan TMOUT secara global
+cat << 'EOF' | sudo tee /etc/profile.d/timeout.sh
+readonly TMOUT=900
+export TMOUT
+EOF
+sudo chmod +x /etc/profile.d/timeout.sh
+```
+
+### 3. Kawalan Penggunaan Had Proses & Konsol Maya
+```bash
+# Hadkan perkhidmatan getty pada VT yang tidak digunakan dalam systemd
+sudo systemctl mask logind.service  # jika sesuai untuk persekitaran pelayan khusus
+
+# Konfigurasi had sumber sistem di /etc/security/limits.conf
+# Menyertakan larangan coredump dan had maxlogins
+cat << 'EOF' | sudo tee -a /etc/security/limits.conf
+*          hard    core            0
+*          hard    maxlogins       3
+EOF
+```
+
+### 4. Prosedur Penutupan & Ulang But Selamat
+```bash
+# Hantar mesej amaran dan matikan sistem secara teratur
+sudo shutdown -h +2 "Penyelenggaraan sistem fizikal dalam masa 2 minit."
+
+# Penggunaan arahan systemd rasmi
+sudo systemctl poweroff
 ```
 
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+- [ ] Pengesahan perlindungan kata laluan pada menu bootloader GRUB2.
+- [ ] Penguatkuasaan pembolehubah `TMOUT` terbukti berfungsi pada shell bash.
+- [ ] Penegasan `/etc/security/limits.conf` untuk mengehadkan `maxlogins` dan `core`.
+- [ ] Penggunaan prosedur penutupan selamat `systemctl poweroff`.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Kawalan Keselamatan Fizikal & Kunci BIOS/UEFI menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+1. *"Bagaimanakah cara mengunci firmware UEFI/BIOS pada perkakasan pelayan pelbagai vendor (Dell, HP, Lenovo) secara automatik?"*
+2. *"Terangkan kesan penetapan maxlogins dalam /etc/security/limits.conf terhadap sesi SSH dan Konsol."*
+3. *"Tulis skrip periksa pematuhan CIS Benchmark untuk keselamatan bootloader dan kawalan konsol fizikal."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+- [Ubuntu Security Lockdowns Guide](https://ubuntu.com/server/docs/security)
+- [AlmaLinux Hardening & Physical Security](https://wiki.almalinux.org/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+- **Hardening Linux System Security** oleh Chey Cobb.
+- **Panduan Penegasan Keselamatan Fizikal Pelayan Linux** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
