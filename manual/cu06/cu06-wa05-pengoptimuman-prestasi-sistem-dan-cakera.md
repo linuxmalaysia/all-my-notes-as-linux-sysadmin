@@ -12,7 +12,9 @@ resource: "file:///manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-caker
 # Pengoptimuman Prestasi Sistem, Pemantauan Proses & Kawalan Sumber
 
 ## 🎯 Objektif Pembelajaran
+
 Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
+
 1. Memantau dan menganalisis status proses sistem secara deskriptif dan interaktif menggunakan `ps aux`, `top`, `htop`, dan `pidstat`.
 2. Menganalisis prestasi pemprosesan CPU, memori maya, dan statistik I/O cakera menggunakan `vmstat`, `iostat`, `free -h`, dan `uptime`.
 3. Mengurus dan mengawal kitaran hayat proses termasuk hantar isyarat penamatan POSIX (`SIGTERM`, `SIGKILL`, `SIGHUP`) menggunakan `kill`, `killall`, dan `pkill`.
@@ -20,22 +22,24 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 5. Melaksanakan kawalan dan penghadan sumber sistem (*resource limits*) melalui `cgroups v2` dan `systemd-run`.
 
 > [!NOTE]
-> Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C06 (End-User Support & System Maintenance) WA05: Perform System Optimisation and Disk Management**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Quetzal"** dan **AlmaLinux 10 "Purple Lion"**.
+> Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C06 (End-User Support & System Maintenance) WA05: Perform System Optimisation and Disk Management**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
+
 - Persekitaran Linux beroperasi pada **Ubuntu 26.04 LTS** atau **AlmaLinux 10**.
 - Akses terminal dengan hak pentadbir (`sudo`).
-- Pakej perisian terpasang: `procps`, `sysstat`, `htop`, `util-linux`.
+- Pakej perisian terpasang: `procps`, `psmisc`, `sysstat`, `htop`, `util-linux`.
 
 ---
 
 ### 2. Pemantauan & Analisis Status Proses Sistem
 
 #### A. Pemeriksaan Statik Menggunakan `ps`
+
 ```bash
 # Paparkan kesemua proses sistem yang sedang berjalan secara terperinci
 ps aux
@@ -54,6 +58,7 @@ ps aux --sort=-%cpu | head -n 10
 ```
 
 #### B. Pemantauan Masa Nyata Menggunakan `top` dan `htop`
+
 ```bash
 # Jalankan pemantauan masa nyata standard
 top
@@ -73,6 +78,7 @@ htop
 ### 3. Analisis Kesihatan Memori, CPU & I/O Cakera
 
 #### A. Analisis Memori & Beban Purata (`free` & `uptime`)
+
 ```bash
 # Semak beban purata sistem (1 minit, 5 minit, 15 minit)
 uptime
@@ -82,16 +88,19 @@ free -h
 ```
 
 #### B. Analisis Memori Maya & Isirung (`vmstat`)
+
 ```bash
 # Paparkan statistik memori maya, swap in/out, IO, dan konteks CPU setiap 1 saat sebanyak 5 kali
 vmstat 1 5
 ```
+
 *Petunjuk Penting vmstat:*
 - `r`: Jumlah proses yang menunggu giliran CPU (run queue).
 - `b`: Jumlah proses terhalang dalam ketersediaan I/O (blocked).
 - `si` / `so`: Swap-in dan Swap-out. Sekiranya angka ini sentiasa tinggi, sistem mengalami kekurangan memori RAM fizikal (*thrashing*).
 
 #### C. Analisis Prestasi I/O Peranti Storan (`iostat` & `pidstat`)
+
 ```bash
 # Menganalisis kadar pembacaan/penulisan I/O cakera secara terperinci
 iostat -xz 1 5
@@ -107,6 +116,7 @@ sudo pidstat -d 1 5
 Proses berkomunikasi dengan isirung kernel melalui **Isyarat POSIX (POSIX Signals)**.
 
 #### A. Jadual Isyarat Utama POSIX
+
 | Nombor Isyarat | Nama Isyarat | Penerangan & Tindakan |
 | :---: | :--- | :--- |
 | **1** | `SIGHUP` | Hangup - Digunakan untuk mengarahkan daemon memuat semula konfigurasi tanpa restart. |
@@ -115,6 +125,7 @@ Proses berkomunikasi dengan isirung kernel melalui **Isyarat POSIX (POSIX Signal
 | **15** | `SIGTERM` | Terminate - Isyarat penamatan anggun (graceful shutdown) lalai. Membolehkan proses menyimpan data dan menutup pautan. |
 
 #### B. Operasi Penamatan Proses (`kill`, `killall`, `pkill`)
+
 ```bash
 # Hantar isyarat penamatan anggun SIGTERM (15) berdasarkan PID
 kill -15 4821
@@ -135,6 +146,7 @@ sudo pkill -f "python3 script.py"
 ### 5. Penalaan Keutamaan CPU & I/O (`nice`, `renice`, `ionice`)
 
 #### A. Penalaan Keutamaan CPU (`nice` & `renice`)
+
 Skala nilai *nice* adalah dari **-20 (Keutamaan Tertinggi)** hingga **19 (Keutamaan Terendah)**. Nilai lalai ialah **0**.
 
 ```bash
@@ -149,7 +161,9 @@ sudo renice -n 5 -p 4821
 ```
 
 #### B. Penalaan Keutamaan I/O Cakera (`ionice`)
+
 Class I/O: 1 (Realtime), 2 (Best-effort), 3 (Idle).
+
 ```bash
 # Jalankan proses sandaran dengan kelas I/O Idle (hanya guna cakera apabila I/O kosong)
 sudo ionice -c 3 /usr/local/bin/backup-job.sh
@@ -162,12 +176,14 @@ sudo ionice -c 3 /usr/local/bin/backup-job.sh
 Dalam persekitaran Linux moden 2026, `cgroups v2` disepadukan secara langsung dengan `systemd` untuk mengehadkan penggunaan CPU dan memori aplikasi bagi mengelakkan sistem daripada tergantung (*system freeze*).
 
 #### A. Membataskan Sumber Menggunakan `systemd-run`
+
 ```bash
 # Jalankan aplikasi berat dengan had memori maksimum 500MB dan CPU maksimum 50%
 sudo systemd-run --scope -p MemoryMax=500M -p CPUQuota=50% /usr/local/bin/heavy-app
 ```
 
 #### B. Membataskan Sumber Melalui Unit Drop-in Override (`/etc/systemd/system/myapp.service.d/override.conf`)
+
 ```ini
 [Service]
 MemoryMax=1G
@@ -185,6 +201,7 @@ sudo systemctl restart myapp.service
 ---
 
 ## 🔒 Pengerasan Keselamatan & Pematuhan JDN / MAMPU
+
 1. **Perlindungan Terhadap DoS & Fork Bomb:** Tetapkan had maksimum proses per pengguna dalam `/etc/security/limits.conf` (`nproc` & `nofile`) bagi menghalang serangan pengeluaran sumber (*resource exhaustion*).
 2. **Pengawasan Proses Luar Biasa:** Pantau proses bermula dari `/tmp` atau `/dev/shm` yang kerap digunakan oleh malwer untuk melakukan perlombongan kripto (*crypto-mining*).
 3. **Pemberhentian Paksa Anggun:** Sentiasa amalkan penamatan isyarat `SIGTERM (15)` terlebih dahulu sebelum menggunakan `SIGKILL (9)` bagi mengelakkan kerosakan fail pangkalan data dan sistem fail.
@@ -192,6 +209,7 @@ sudo systemctl restart myapp.service
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
+
 - [ ] Berjaya memeriksa status dan menyusun proses mengikut penggunaan sumber menggunakan `ps aux`, `top`, dan `htop`.
 - [ ] Berjaya menganalisis statistik kesihatan memori maya dan I/O menggunakan `vmstat`, `iostat`, dan `free -h`.
 - [ ] Berjaya menamatkan proses terhang menggunakan isyarat `SIGTERM (15)` dan `SIGKILL (9)`.
@@ -201,13 +219,15 @@ sudo systemctl restart myapp.service
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
 1. *"Apakah tanda-tanda awal memory thrashing dalam laporan vmstat dan bagaimanakah parameter sysctl vm.swappiness boleh dilaras untuk mengurangkannya?"*
 2. *"Tunjukkan cara menulis skrip Shell Bash automatik untuk mengesan dan menamatkan proses yang menggunakan CPU melebihi 90% selama lebih daripada 10 minit."*
-3. *"Jelaskan perbezaan mekanisme kawalan sumber cgroups v1 dan cgroups v2 dari segi seni bina unified hierarchy dalam kernel Linux moden."*
+3. *"Jelaskan perbezaan mekasnisme kawalan sumber cgroups v1 dan cgroups v2 dari segi seni bina unified hierarchy dalam kernel Linux moden."*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
 - [Linux Kernel Documentation - Control Groups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html)
 - [Ubuntu Performance Tuning & Diagnostics Guide](https://ubuntu.com/server/docs)
 - [AlmaLinux 10 System Performance & Monitoring Tools](https://wiki.almalinux.org/)
@@ -216,6 +236,7 @@ sudo systemctl restart myapp.service
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **Systems Performance: Enterprise and the Cloud (2nd Edition)** oleh Brendan Gregg.
 - **Linux Observability with BPF** oleh David Calavera & Lorenzo Fontana.
 - **Pengoptimuman & Diagnostik Prestasi Pelayan Linux** oleh Harisfazillah Jamel.

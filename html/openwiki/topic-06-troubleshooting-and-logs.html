@@ -1621,34 +1621,44 @@
 <hr />
 <h2 id="silibus-utama">📚 Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Pemantauan Proses &amp; Sumber Sistem (Resource &amp; Process Monitoring)</strong>:</li>
+<li><strong>Pemantauan Proses &amp; Sumber Sistem (Resource &amp; Process Monitoring)</strong>:<ul>
 <li>Arahan pemerhatian statik dan interaktif masa nyata: <code>ps aux</code>, <code>top</code>, <code>htop</code>, <code>pidstat</code>.</li>
 <li>Analisis beban purata (<em>load average</em>), penggunaan memori fizikal &amp; swap: <code>uptime</code>, <code>free -h</code>.</li>
 <li>Menganalisis memori maya dan I/O cakera: <code>vmstat 1 5</code>, <code>iostat -xz 1 5</code>.</li>
-<li><strong>Kitaran Hayat Proses &amp; Penalaan Keutamaan (Process Lifecycle &amp; Tuning)</strong>:</li>
+</ul>
+</li>
+<li><strong>Kitaran Hayat Proses &amp; Penalaan Keutamaan (Process Lifecycle &amp; Tuning)</strong>:<ul>
 <li>Penghantaran isyarat POSIX (<code>kill -15</code> SIGTERM, <code>kill -9</code> SIGKILL, <code>kill -1</code> SIGHUP, <code>killall</code>, <code>pkill</code>).</li>
 <li>Penalaan keutamaan penjadualan CPU (<em>nice value</em> -20 hingga 19): <code>nice</code>, <code>renice</code>.</li>
 <li>Penalaan keutamaan I/O cakera: <code>ionice</code>.</li>
 <li>Penghadan sumber sistem melalui <code>cgroups v2</code> dan <code>systemd-run</code>.</li>
-<li><strong>Penyelesaian Masalah Rangkaian &amp; Sambungan (Network Troubleshooting)</strong>:</li>
+</ul>
+</li>
+<li><strong>Penyelesaian Masalah Rangkaian &amp; Sambungan (Network Troubleshooting)</strong>:<ul>
 <li>Pemeriksaan IP &amp; Antaramuka: <code>ip a</code>, <code>ip route</code>.</li>
 <li>Menguji capaian &amp; laluan: <code>ping</code>, <code>traceroute</code>, <code>tracepath</code>, <code>curl</code>, <code>dig</code>.</li>
 <li>Pemerhatian port &amp; soket aktif: <code>ss -tulpn</code>.</li>
-<li><strong>Pembacaan &amp; Analisis Log Sistem (Log Analysis &amp; Auditing)</strong>:</li>
+</ul>
+</li>
+<li><strong>Pembacaan &amp; Analisis Log Sistem (Log Analysis &amp; Auditing)</strong>:<ul>
 <li>Audit log sistem terpusat menggunakan <code>journalctl</code> (parameter <code>-u</code>, <code>-f</code>, <code>--since</code>, <code>-p err</code>).</li>
 <li>Menyelidik fail log sistem tradisional di <code>/var/log/</code> (<code>syslog</code>, <code>auth.log</code>, <code>messages</code>, <code>secure</code>).</li>
 <li>Penyiasatan punca kegagalan sistem (<em>Root Cause Analysis - RCA</em>).</li>
+</ul>
+</li>
 </ol>
 <hr />
 <h2 id="pemetaan-modul-amali-kemahiran-ai-noss-mapping">🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)<a class="headerlink" href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" title="Permanent link">&para;</a></h2>
-<p>Silibus ini memandu modul amali di <code>manual/cu06/</code> dan kemahiran AI di <code>.agents/skills/</code>:
-- <code>manual/cu06/cu06-wa01-keperluan-perkhidmatan-sokongan-pengguna.md</code> ➔ <code>.agents/skills/cu06-wa01-prepare-end-user-support-service-requirements/</code>
-- <code>manual/cu06/cu06-wa02-pengendalian-aduan-dan-insiden-pengguna.md</code> ➔ <code>.agents/skills/cu06-wa02-handle-end-user-requests-and-incidents/</code>
-- <code>manual/cu06/cu06-wa03-diagnostik-dan-troubleshooting-perkakasan.md</code> ➔ <code>.agents/skills/cu06-wa03-support-hardware-troubleshooting/</code>
-- <code>manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md</code> ➔ <code>.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/</code>
-- <code>manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md</code> ➔ <code>.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/</code>
-- <code>manual/cu06/cu06-wa06-pengurusan-tiket-sokongan-dan-sla.md</code> ➔ <code>.agents/skills/cu06-wa06-manage-support-tickets-and-slas/</code>
-- <code>manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md</code> ➔ <code>.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/</code></p>
+<p>Silibus ini memandu modul amali di <code>manual/cu06/</code> dan kemahiran AI di <code>.agents/skills/</code>:</p>
+<ul>
+<li><code>manual/cu06/cu06-wa01-keperluan-perkhidmatan-sokongan-pengguna.md</code> ➔ <code>.agents/skills/cu06-wa01-prepare-end-user-support-service-requirements/</code></li>
+<li><code>manual/cu06/cu06-wa02-pengendalian-aduan-dan-insiden-pengguna.md</code> ➔ <code>.agents/skills/cu06-wa02-handle-end-user-requests-and-incidents/</code></li>
+<li><code>manual/cu06/cu06-wa03-diagnostik-dan-troubleshooting-perkakasan.md</code> ➔ <code>.agents/skills/cu06-wa03-support-hardware-troubleshooting/</code></li>
+<li><code>manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md</code> ➔ <code>.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/</code></li>
+<li><code>manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md</code> ➔ <code>.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/</code></li>
+<li><code>manual/cu06/cu06-wa06-pengurusan-tiket-sokongan-dan-sla.md</code> ➔ <code>.agents/skills/cu06-wa06-manage-support-tickets-and-slas/</code></li>
+<li><code>manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md</code> ➔ <code>.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/</code></li>
+</ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>

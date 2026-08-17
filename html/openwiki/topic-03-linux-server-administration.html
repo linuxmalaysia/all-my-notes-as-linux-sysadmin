@@ -1621,33 +1621,43 @@
 <hr />
 <h2 id="silibus-utama">📚 Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Pemasangan &amp; Persediaan OS Pelayan (Server OS)</strong>: </li>
+<li><strong>Pemasangan &amp; Persediaan OS Pelayan (Server OS)</strong>: <ul>
 <li>Membezakan edisi Desktop vs Server (pemasangan minimum, CLI penuh).</li>
 <li><em>Static IP Configuration</em> menggunakan Netplan (Ubuntu 26.04 LTS) atau NetworkManager / <code>nmcli</code> (AlmaLinux 10 / Fedora 43).</li>
-<li><strong>Konfigurasi Teras Pelayan &amp; Systemd</strong>:</li>
+</ul>
+</li>
+<li><strong>Konfigurasi Teras Pelayan &amp; Systemd</strong>:<ul>
 <li>Pengurusan perkhidmatan menggunakan <code>systemctl</code> (start, stop, enable, disable, mask, restart, daemon-reload).</li>
 <li>Penulisan fail unit perkhidmatan kustom (<code>/etc/systemd/system/</code>) dengan parameter pengerasan keselamatan.</li>
 <li>Audit log sistem terpusat menggunakan <code>journalctl</code>.</li>
 <li>Penyegerakan masa kebangsaan dan zon masa melalui <code>timedatectl</code> dan <code>chronyd</code>.</li>
 <li>Navigasi dokumentasi sistem dan halaman manual (<code>man</code>, <code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>).</li>
-<li><strong>Capaian Jarak Jauh &amp; Pengerasan SSH (Remote Access Hardening)</strong>:</li>
+</ul>
+</li>
+<li><strong>Capaian Jarak Jauh &amp; Pengerasan SSH (Remote Access Hardening)</strong>:<ul>
 <li>Pemasangan dan konfigurasi <code>openssh-server</code>.</li>
 <li>Log masuk tanpa kata laluan menggunakan kunci SSH (<code>ssh-keygen</code>, <code>ssh-copy-id</code>, <code>authorized_keys</code>).</li>
 <li>Pengerasan SSH: penutupan root login (<code>PermitRootLogin no</code>), pertukaran port, dan <code>fail2ban</code>.</li>
-<li><strong>Penyedia Khidmat &amp; Peranan Pelayan (Server Roles)</strong>:</li>
+</ul>
+</li>
+<li><strong>Penyedia Khidmat &amp; Peranan Pelayan (Server Roles)</strong>:<ul>
 <li><strong>Pelayan Web</strong>: Apache (<code>httpd</code> / <code>apache2</code>) dan Nginx dengan TLS/SSL Let's Encrypt.</li>
 <li><strong>Perkongsian Fail</strong>: Samba (SMB/CIFS) untuk interoperabiliti Windows dan NFSv4 untuk persekitaran Linux.</li>
 <li><strong>Pangkalan Data</strong>: MariaDB / MySQL enterprise hardening.</li>
+</ul>
+</li>
 </ol>
 <hr />
 <h2 id="pemetaan-modul-amali-kemahiran-ai-noss-mapping">🗺️ Pemetaan Modul Amali &amp; Kemahiran AI (NOSS Mapping)<a class="headerlink" href="#pemetaan-modul-amali-kemahiran-ai-noss-mapping" title="Permanent link">&para;</a></h2>
-<p>Silibus ini memandu modul amali di <code>manual/cu03/</code> dan kemahiran AI di <code>.agents/skills/</code>:
-- <code>manual/cu03/cu03-wa01-persediaan-pemasangan-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa01-prepare-server-setup/</code>
-- <code>manual/cu03/cu03-wa02-pelaksanaan-pemasangan-fizikal-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa02-carry-out-server-installation/</code>
-- <code>manual/cu03/cu03-wa03-pemasangan-sistem-operasi-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa03-install-server-operating-system/</code>
-- <code>manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa04-perform-core-server-configurations/</code>
-- <code>manual/cu03/cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa05-implement-server-roles-and-services/</code>
-- <code>manual/cu03/cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa06-manage-server-hardware/</code></p>
+<p>Silibus ini memandu modul amali di <code>manual/cu03/</code> dan kemahiran AI di <code>.agents/skills/</code>:</p>
+<ul>
+<li><code>manual/cu03/cu03-wa01-persediaan-pemasangan-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa01-prepare-server-setup/</code></li>
+<li><code>manual/cu03/cu03-wa02-pelaksanaan-pemasangan-fizikal-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa02-carry-out-server-installation/</code></li>
+<li><code>manual/cu03/cu03-wa03-pemasangan-sistem-operasi-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa03-install-server-operating-system/</code></li>
+<li><code>manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa04-perform-core-server-configurations/</code></li>
+<li><code>manual/cu03/cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa05-implement-server-roles-and-services/</code></li>
+<li><code>manual/cu03/cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md</code> ➔ <code>.agents/skills/cu03-wa06-manage-server-hardware/</code></li>
+</ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>

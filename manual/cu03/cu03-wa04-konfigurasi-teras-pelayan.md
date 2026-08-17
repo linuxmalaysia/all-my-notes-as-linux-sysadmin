@@ -12,7 +12,9 @@ resource: "file:///manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md"
 # Konfigurasi Teras Pelayan Linux & Pengurusan Perkhidmatan Systemd
 
 ## 🎯 Objektif Pembelajaran
+
 Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
+
 1. Menguruskan perkhidmatan teras pelayan menggunakan utiliti `systemctl` (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).
 2. Membina dan menguruskan fail unit perkhidmatan kustom `systemd` (`/etc/systemd/system/*.service`) dengan penerapan parameter pengerasan keselamatan.
 3. Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
@@ -20,13 +22,14 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 5. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
 
 > [!NOTE]
-> Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C03 (Server Setup) WA04: Perform Core Server Configurations**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Quetzal"** dan **AlmaLinux 10 "Purple Lion"**.
+> Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C03 (Server Setup) WA04: Perform Core Server Configurations**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
 
 ---
 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
 ### 1. Keperluan Awal & Pra-Syarat
+
 - Pelayan beroperasi pada **Ubuntu 26.04 LTS** atau **AlmaLinux 10**.
 - Akses terminal sebagai pengguna yang mempunyai hak arahan `sudo`.
 - Pakej perisian terpasang: `systemd`, `chrony`, `man-db`, `plocate`.
@@ -38,6 +41,7 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 Pengurus sistem `systemd` merupakan daemon init utama dalam Linux moden. Semua perkhidmatan, sasaran boot, dan soket diuruskan sebagai unit.
 
 #### A. Arahan Asas Kawalan Perkhidmatan (`systemctl`)
+
 ```bash
 # Semak status perkhidmatan SSH
 sudo systemctl status sshd   # AlmaLinux / Fedora
@@ -63,7 +67,9 @@ sudo systemctl unmask legacy-service
 ```
 
 #### B. Pengurusan Sasaran Boot (Target Units)
+
 `systemd` menggantikan tahap larian (runlevel) tradisional dengan **Target Units**:
+
 ```bash
 # Semak sasaran boot semasa
 systemctl get-default
@@ -82,10 +88,11 @@ sudo systemctl isolate multi-user.target
 Pembangunan aplikasi enterprise memerlukan penulisan unit servis terkawal di `/etc/systemd/system/`.
 
 #### A. Contoh Fail Unit Servis Kustom dengan Pengerasan Keselamatan (`/etc/systemd/system/myapp.service`)
+
 ```ini
 [Unit]
 Description=Aplikasi Pengurusan Teras NOSS App
-After=network.target remote-fs.target nss-lookup.target
+After=network.target remote-fs.target network-online.target nss-lookup.target
 Wants=network-online.target
 
 [Service]
@@ -110,6 +117,7 @@ WantedBy=multi-user.target
 ```
 
 #### B. Mengaktifkan Unit Servis Baharu
+
 ```bash
 # Buat pengguna sistem khas tanpa akses kelompang interaktif
 sudo useradd -r -s /sbin/nologin nossapp
@@ -153,6 +161,7 @@ sudo journalctl --vacuum-size=500M
 Ketepatan masa adalah kritikal bagi audit keselamatan ISO/IEC 27001 dan pengesyoran Jabatan Digital Negara (JDN).
 
 #### A. Operasi Arahan `timedatectl`
+
 ```bash
 # Semak status masa, zon masa, dan status NTP
 timedatectl status
@@ -168,7 +177,9 @@ sudo timedatectl set-ntp true
 ```
 
 #### B. Konfigurasi Daemon Chrony (`chronyd`)
+
 Fail konfigurasi `/etc/chrony/chrony.conf` (Ubuntu) atau `/etc/chrony.conf` (AlmaLinux):
+
 ```ini
 # Rujukan Pelayan Masa Kebangsaan / Standard Pool
 server my.pool.ntp.org iburst
@@ -182,6 +193,7 @@ rtcsync
 ```
 
 Semakan status penyegerakan:
+
 ```bash
 # Pastikan perkhidmatan chrony aktif
 sudo systemctl enable --now chronyd
@@ -198,6 +210,7 @@ chronyc tracking
 Sistem Linux menyediakan utiliti dokumentasi luar talian (*offline documentation*) yang komprehensif.
 
 #### A. Halaman Panduan `man` (Manual Pages)
+
 Halaman manual dibahagikan kepada 9 seksyen standard:
 - **Seksyen 1:** Arahan Pengguna Global (cth: `ls`, `cd`, `ps`).
 - **Seksyen 2:** Panggilan Sistem Isirung Kernel (cth: `fork`, `exec`).
@@ -221,6 +234,7 @@ man 8 useradd
 ```
 
 #### B. Utiliti Carian Bantuan (`apropos`, `whatis`, `whereis`, `plocate`)
+
 ```bash
 # Cari arahan berkaitan kata kunci menggunakan pangkalan data whatis
 apropos "systemctl"
@@ -242,6 +256,7 @@ plocate chrony.conf
 ---
 
 ## 🔒 Pengerasan Keselamatan & Pematuhan JDN / MAMPU
+
 1. **Prinsip Perkhidmatan Minimum (Service Minimisation):** Matikan dan *mask* semua perkhidmatan yang tidak diperlukan (seperti `telnet`, `ftp`, `rsh`) untuk mengurangkan permukaan serangan (*attack surface*).
 2. **Pengasingan Hak Akses Unit Servis:** Setiap perkhidmatan kustom MESTI dijalankan di bawah akaun pengguna sistem berasingan (`/sbin/nologin` atau `/bin/false`).
 3. **Audit Log Berpusat:** Log `journalctl` hendaklah dipastikan mempunyai kebenaran akses terhad (`/var/log/journal/`) dan dihantar ke pelayan log berpusat (Syslog/SIEM) untuk pematuhan ISO/IEC 27001.
@@ -249,6 +264,7 @@ plocate chrony.conf
 ---
 
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
+
 - [ ] Berjaya menguruskan status, mula, henti, dan auto-start perkhidmatan dengan `systemctl`.
 - [ ] Berjaya menetapkan sasaran boot sistem (`multi-user.target`).
 - [ ] Berjaya menulis, menguji, dan memuat semula fail unit servis kustom di `/etc/systemd/system/`.
@@ -259,6 +275,7 @@ plocate chrony.conf
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
 1. *"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."*
 2. *"Apakah perbezaan mendalam antara penyegerakan masa NTP melalui systemd-timesyncd dan chronyd untuk persekitaran pelayan perusahaan?"*
 3. *"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."*
@@ -266,6 +283,7 @@ plocate chrony.conf
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
 - [Systemd Official Documentation & Index](https://systemd.io/)
 - [Ubuntu Server Guide - Systemd Services](https://ubuntu.com/server/docs)
 - [AlmaLinux 10 System Administration & Chrony Guide](https://wiki.almalinux.org/)
@@ -274,6 +292,7 @@ plocate chrony.conf
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **Linux System Programming** oleh Robert Love.
 - **The Linux Command Line (2nd Edition)** oleh William Shotts.
 - **Panduan Praktikal Pentadbiran Pelayan Linux** oleh Harisfazillah Jamel.

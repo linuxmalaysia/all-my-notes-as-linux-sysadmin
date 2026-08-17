@@ -1514,15 +1514,15 @@
     <span class="md-ellipsis">
 
         B. Mengaktifkan Unit Servis Baharu
-      
+
     </span>
   </a>
-  
+
 </li>
-        
+
       </ul>
     </nav>
-  
+
 </li>
 
           <li class="md-nav__item">
@@ -1693,15 +1693,17 @@
 
 <h1 id="konfigurasi-teras-pelayan-linux-pengurusan-perkhidmatan-systemd">Konfigurasi Teras Pelayan Linux &amp; Pengurusan Perkhidmatan Systemd<a class="headerlink" href="#konfigurasi-teras-pelayan-linux-pengurusan-perkhidmatan-systemd" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
-1. Menguruskan perkhidmatan teras pelayan menggunakan utiliti <code>systemctl</code> (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).
-2. Membina dan menguruskan fail unit perkhidmatan kustom <code>systemd</code> (<code>/etc/systemd/system/*.service</code>) dengan penerapan parameter pengerasan keselamatan.
-3. Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan <code>journalctl</code>.
-4. Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui <code>timedatectl</code> dan <code>chronyd</code>.
-5. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (<code>man</code>, <code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>).</p>
+<p>Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:</p>
+<ol>
+<li>Menguruskan perkhidmatan teras pelayan menggunakan utiliti <code>systemctl</code> (mulakan, hentikan, daftar masuk automatik, sekat, dan muat semula pemula).</li>
+<li>Membina dan menguruskan fail unit perkhidmatan kustom <code>systemd</code> (<code>/etc/systemd/system/*.service</code>) dengan penerapan parameter pengerasan keselamatan.</li>
+<li>Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan <code>journalctl</code>.</li>
+<li>Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui <code>timedatectl</code> dan <code>chronyd</code>.</li>
+<li>Memanfaatkan utiliti bantuan dokumentasi sistem Linux (<code>man</code>, <code>apropos</code>, <code>whatis</code>, <code>whereis</code>, <code>plocate</code>).</li>
+</ol>
 <blockquote>
 <p>[!NOTE]
-Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C03 (Server Setup) WA04: Perform Core Server Configurations</strong>. Persekitaran rujukan utama ialah <strong>Ubuntu 26.04 LTS "Quetzal"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
+Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C03 (Server Setup) WA04: Perform Core Server Configurations</strong>. Persekitaran rujukan utama ialah <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
@@ -1738,7 +1740,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>unmask<span class="w"> </span>legacy-service
 </span></code></pre></div>
 <h4 id="b-pengurusan-sasaran-boot-target-units">B. Pengurusan Sasaran Boot (Target Units)<a class="headerlink" href="#b-pengurusan-sasaran-boot-target-units" title="Permanent link">&para;</a></h4>
-<p><code>systemd</code> menggantikan tahap larian (runlevel) tradisional dengan <strong>Target Units</strong>:
+<p><code>systemd</code> menggantikan tahap larian (runlevel) tradisional dengan <strong>Target Units</strong>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Semak sasaran boot semasa</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>systemctl<span class="w"> </span>get-default
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -1747,14 +1749,14 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Tukar sasaran boot serta-merta tanpa reboot</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>isolate<span class="w"> </span>multi-user.target
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
 <h3 id="3-pembinaan-fail-unit-perkhidmatan-kustom-systemd">3. Pembinaan Fail Unit Perkhidmatan Kustom (<code>systemd</code>)<a class="headerlink" href="#3-pembinaan-fail-unit-perkhidmatan-kustom-systemd" title="Permanent link">&para;</a></h3>
 <p>Pembangunan aplikasi enterprise memerlukan penulisan unit servis terkawal di <code>/etc/systemd/system/</code>.</p>
 <h4 id="a-contoh-fail-unit-servis-kustom-dengan-pengerasan-keselamatan-etcsystemdsystemmyappservice">A. Contoh Fail Unit Servis Kustom dengan Pengerasan Keselamatan (<code>/etc/systemd/system/myapp.service</code>)<a class="headerlink" href="#a-contoh-fail-unit-servis-kustom-dengan-pengerasan-keselamatan-etcsystemdsystemmyappservice" title="Permanent link">&para;</a></h4>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[Unit]</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Aplikasi Pengurusan Teras NOSS App</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target remote-fs.target nss-lookup.target</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target remote-fs.target network-online.target nss-lookup.target</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">[Service]</span>
@@ -1824,7 +1826,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-ntp<span class="w"> </span><span class="nb">true</span>
 </span></code></pre></div>
 <h4 id="b-konfigurasi-daemon-chrony-chronyd">B. Konfigurasi Daemon Chrony (<code>chronyd</code>)<a class="headerlink" href="#b-konfigurasi-daemon-chrony-chronyd" title="Permanent link">&para;</a></h4>
-<p>Fail konfigurasi <code>/etc/chrony/chrony.conf</code> (Ubuntu) atau <code>/etc/chrony.conf</code> (AlmaLinux):
+<p>Fail konfigurasi <code>/etc/chrony/chrony.conf</code> (Ubuntu) atau <code>/etc/chrony.conf</code> (AlmaLinux):</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Rujukan Pelayan Masa Kebangsaan / Standard Pool</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">server my.pool.ntp.org iburst</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">server 0.asia.pool.ntp.org iburst</span>
@@ -1834,15 +1836,15 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="na">driftfile /var/lib/chrony/drift</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="na">makestep 1.0 3</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="na">rtcsync</span>
-</span></code></pre></div></p>
-<p>Semakan status penyegerakan:
+</span></code></pre></div>
+<p>Semakan status penyegerakan:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Pastikan perkhidmatan chrony aktif</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>chronyd
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Semak sumber pelayan masa dan status ralat penyegerakan</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>chronyc<span class="w"> </span>sources<span class="w"> </span>-v
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>chronyc<span class="w"> </span>tracking
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
 <h3 id="6-bantuan-dokumentasi-navigasi-sistem-linux">6. Bantuan Dokumentasi &amp; Navigasi Sistem Linux<a class="headerlink" href="#6-bantuan-dokumentasi-navigasi-sistem-linux" title="Permanent link">&para;</a></h3>
 <p>Sistem Linux menyediakan utiliti dokumentasi luar talian (<em>offline documentation</em>) yang komprehensif.</p>

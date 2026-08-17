@@ -1603,15 +1603,15 @@
     <span class="md-ellipsis">
 
         B. Penalaan Keutamaan I/O Cakera (ionice)
-      
+
     </span>
   </a>
-  
+
 </li>
-        
+
       </ul>
     </nav>
-  
+
 </li>
 
           <li class="md-nav__item">
@@ -1732,15 +1732,17 @@
 
 <h1 id="pengoptimuman-prestasi-sistem-pemantauan-proses-kawalan-sumber">Pengoptimuman Prestasi Sistem, Pemantauan Proses &amp; Kawalan Sumber<a class="headerlink" href="#pengoptimuman-prestasi-sistem-pemantauan-proses-kawalan-sumber" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
-1. Memantau dan menganalisis status proses sistem secara deskriptif dan interaktif menggunakan <code>ps aux</code>, <code>top</code>, <code>htop</code>, dan <code>pidstat</code>.
-2. Menganalisis prestasi pemprosesan CPU, memori maya, dan statistik I/O cakera menggunakan <code>vmstat</code>, <code>iostat</code>, <code>free -h</code>, dan <code>uptime</code>.
-3. Mengurus dan mengawal kitaran hayat proses termasuk hantar isyarat penamatan POSIX (<code>SIGTERM</code>, <code>SIGKILL</code>, <code>SIGHUP</code>) menggunakan <code>kill</code>, <code>killall</code>, dan <code>pkill</code>.
-4. Melaraskan keutamaan penjadualan CPU proses (<em>nice value</em>) menggunakan <code>nice</code>, <code>renice</code>, dan keutamaan I/O <code>ionice</code>.
-5. Melaksanakan kawalan dan penghadan sumber sistem (<em>resource limits</em>) melalui <code>cgroups v2</code> dan <code>systemd-run</code>.</p>
+<p>Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:</p>
+<ol>
+<li>Memantau dan menganalisis status proses sistem secara deskriptif dan interaktif menggunakan <code>ps aux</code>, <code>top</code>, <code>htop</code>, dan <code>pidstat</code>.</li>
+<li>Menganalisis prestasi pemprosesan CPU, memori maya, dan statistik I/O cakera menggunakan <code>vmstat</code>, <code>iostat</code>, <code>free -h</code>, dan <code>uptime</code>.</li>
+<li>Mengurus dan mengawal kitaran hayat proses termasuk hantar isyarat penamatan POSIX (<code>SIGTERM</code>, <code>SIGKILL</code>, <code>SIGHUP</code>) menggunakan <code>kill</code>, <code>killall</code>, dan <code>pkill</code>.</li>
+<li>Melaraskan keutamaan penjadualan CPU proses (<em>nice value</em>) menggunakan <code>nice</code>, <code>renice</code>, dan keutamaan I/O <code>ionice</code>.</li>
+<li>Melaksanakan kawalan dan penghadan sumber sistem (<em>resource limits</em>) melalui <code>cgroups v2</code> dan <code>systemd-run</code>.</li>
+</ol>
 <blockquote>
 <p>[!NOTE]
-Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C06 (End-User Support &amp; System Maintenance) WA05: Perform System Optimisation and Disk Management</strong>. Persekitaran rujukan utama ialah <strong>Ubuntu 26.04 LTS "Quetzal"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
+Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C06 (End-User Support &amp; System Maintenance) WA05: Perform System Optimisation and Disk Management</strong>. Persekitaran rujukan utama ialah <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong> dan <strong>AlmaLinux 10 "Purple Lion"</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
@@ -1748,7 +1750,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 <ul>
 <li>Persekitaran Linux beroperasi pada <strong>Ubuntu 26.04 LTS</strong> atau <strong>AlmaLinux 10</strong>.</li>
 <li>Akses terminal dengan hak pentadbir (<code>sudo</code>).</li>
-<li>Pakej perisian terpasang: <code>procps</code>, <code>sysstat</code>, <code>htop</code>, <code>util-linux</code>.</li>
+<li>Pakej perisian terpasang: <code>procps</code>, <code>psmisc</code>, <code>sysstat</code>, <code>htop</code>, <code>util-linux</code>.</li>
 </ul>
 <hr />
 <h3 id="2-pemantauan-analisis-status-proses-sistem">2. Pemantauan &amp; Analisis Status Proses Sistem<a class="headerlink" href="#2-pemantauan-analisis-status-proses-sistem" title="Permanent link">&para;</a></h3>
@@ -1791,10 +1793,10 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>free<span class="w"> </span>-h
 </span></code></pre></div>
 <h4 id="b-analisis-memori-maya-isirung-vmstat">B. Analisis Memori Maya &amp; Isirung (<code>vmstat</code>)<a class="headerlink" href="#b-analisis-memori-maya-isirung-vmstat" title="Permanent link">&para;</a></h4>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Paparkan statistik memori maya, swap in/out, IO, dan konteks CPU setiap 1 saat sebanyak 5 kali</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Paparkan statistik memori maya, swap in/out, IO, dan konteks CPU setiap 1 saat sebanyak 5 kali</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vmstat<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
 </span></code></pre></div>
-<em>Petunjuk Penting vmstat:</em>
+<p><em>Petunjuk Penting vmstat:</em>
 - <code>r</code>: Jumlah proses yang menunggu giliran CPU (run queue).
 - <code>b</code>: Jumlah proses terhalang dalam ketersediaan I/O (blocked).
 - <code>si</code> / <code>so</code>: Swap-in dan Swap-out. Sekiranya angka ini sentiasa tinggi, sistem mengalami kekurangan memori RAM fizikal (<em>thrashing</em>).</p>
@@ -1868,10 +1870,10 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>sudo<span class="w"> </span>renice<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span>-p<span class="w"> </span><span class="m">4821</span>
 </span></code></pre></div>
 <h4 id="b-penalaan-keutamaan-io-cakera-ionice">B. Penalaan Keutamaan I/O Cakera (<code>ionice</code>)<a class="headerlink" href="#b-penalaan-keutamaan-io-cakera-ionice" title="Permanent link">&para;</a></h4>
-<p>Class I/O: 1 (Realtime), 2 (Best-effort), 3 (Idle).
+<p>Class I/O: 1 (Realtime), 2 (Best-effort), 3 (Idle).</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Jalankan proses sandaran dengan kelas I/O Idle (hanya guna cakera apabila I/O kosong)</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>ionice<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>/usr/local/bin/backup-job.sh
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
 <h3 id="6-kawalan-sumber-sistem-melalui-control-groups-v2-cgroups-v2">6. Kawalan Sumber Sistem Melalui Control Groups v2 (<code>cgroups v2</code>)<a class="headerlink" href="#6-kawalan-sumber-sistem-melalui-control-groups-v2-cgroups-v2" title="Permanent link">&para;</a></h3>
 <p>Dalam persekitaran Linux moden 2026, <code>cgroups v2</code> disepadukan secara langsung dengan <code>systemd</code> untuk mengehadkan penggunaan CPU dan memori aplikasi bagi mengelakkan sistem daripada tergantung (<em>system freeze</em>).</p>
@@ -1911,7 +1913,7 @@ Modul ini dipetakan secara terus kepada standard NOSS <strong>K622-XXX-3:2026-C0
 <ol>
 <li><em>"Apakah tanda-tanda awal memory thrashing dalam laporan vmstat dan bagaimanakah parameter sysctl vm.swappiness boleh dilaras untuk mengurangkannya?"</em></li>
 <li><em>"Tunjukkan cara menulis skrip Shell Bash automatik untuk mengesan dan menamatkan proses yang menggunakan CPU melebihi 90% selama lebih daripada 10 minit."</em></li>
-<li><em>"Jelaskan perbezaan mekanisme kawalan sumber cgroups v1 dan cgroups v2 dari segi seni bina unified hierarchy dalam kernel Linux moden."</em></li>
+<li><em>"Jelaskan perbezaan mekasnisme kawalan sumber cgroups v1 dan cgroups v2 dari segi seni bina unified hierarchy dalam kernel Linux moden."</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
