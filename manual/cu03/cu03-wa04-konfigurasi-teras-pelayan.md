@@ -3,9 +3,9 @@ okf_version: 0.1
 type: knowledge-node
 title: "Konfigurasi Teras Pelayan Linux & Pengurusan Perkhidmatan Systemd"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man"]
-tags: ["cu03", "systemd", "systemctl", "journalctl", "chrony", "timedatectl", "man", "noss", "amali"]
-description: "Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, dan sistem dokumentasi man."
+topics: ["noss-linux", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man", "editor", "bashrc"]
+tags: ["cu03", "systemd", "systemctl", "journalctl", "chrony", "timedatectl", "man", "editor", "bashrc", "noss", "amali"]
+description: "Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, penyesuaian $EDITOR/$VISUAL, dan sistem dokumentasi man."
 resource: "file:///manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md"
 ---
 
@@ -19,7 +19,8 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 2. Membina dan menguruskan fail unit perkhidmatan kustom `systemd` (`/etc/systemd/system/*.service`) dengan penerapan parameter pengerasan keselamatan.
 3. Melaksanakan pengauditan dan analisis log perkhidmatan secara terperinci menggunakan `journalctl`.
 4. Menguruskan zon masa sistem dan penyegerakan masa berprestasi tinggi melalui `timedatectl` dan `chronyd`.
-5. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
+5. Menyelaraskan pemboleh ubah persekitaran shell pentadbiran pelayan (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
+6. Memanfaatkan utiliti bantuan dokumentasi sistem Linux (`man`, `apropos`, `whatis`, `whereis`, `plocate`).
 
 > [!NOTE]
 > Modul ini dipetakan secara terus kepada standard NOSS **K622-XXX-3:2026-C03 (Server Setup) WA04: Perform Core Server Configurations**. Persekitaran rujukan utama ialah **Ubuntu 26.04 LTS "Resolute Raccoon"** dan **AlmaLinux 10 "Purple Lion"**.
@@ -32,7 +33,7 @@ Di akhir modul amali ini, pelatih TVET/NOSS akan dapat:
 
 - Pelayan beroperasi pada **Ubuntu 26.04 LTS** atau **AlmaLinux 10**.
 - Akses terminal sebagai pengguna yang mempunyai hak arahan `sudo`.
-- Pakej perisian terpasang: `systemd`, `chrony`, `man-db`, `plocate`.
+- Pakej perisian terpasang: `systemd`, `chrony`, `man-db`, `plocate`, `vim`, `nano`.
 
 ---
 
@@ -156,7 +157,35 @@ sudo journalctl --vacuum-size=500M
 
 ---
 
-### 5. Konfigurasi Zon Masa & Penyegerakan Masa (`timedatectl` & `chrony`)
+### 5. Penyesuaian Pemboleh Ubah Persekitaran Shell Pentadbiran (`$EDITOR` & `$VISUAL`)
+
+Dalam pentadbiran pelayan, utiliti sistem menentukan penyunting pilihan mengikut susunan keutamaan yang khusus:
+- **`systemctl edit`**: Mengutuk `SYSTEMD_EDITOR`, diikuti oleh `EDITOR`, dan seterusnya `VISUAL`.
+- **`visudo`**: Mengutuk `SUDO_EDITOR`, diikuti oleh `VISUAL`, dan seterusnya `EDITOR` (hanya jika tetapan `Defaults env_editor` diaktifkan dalam sudoers).
+
+Kerana arahan `sudo` secara lalai membersihkan pemboleh ubah persekitaran (`env_reset`), pemboleh ubah persekitaran pengguna tidak diwarisi melainkan dieksport secara eksplisit atau dikekalkan menerusi polisi sudoers (seperti `Defaults env_keep += "EDITOR VISUAL SYSTEMD_EDITOR"`).
+
+```bash
+# 1. Penetapan profil pentadbir tempatan dalam ~/.bashrc:
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export SYSTEMD_EDITOR=/usr/bin/vim
+
+# 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
+sudo tee /etc/profile.d/editor.sh << 'EOF'
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export SYSTEMD_EDITOR=/usr/bin/vim
+EOF
+sudo chmod +x /etc/profile.d/editor.sh
+
+# 3. Menguji penyuntingan unit servis di bawah hak akses sudo dengan mengekalkan persekitaran proses:
+sudo SYSTEMD_EDITOR=/usr/bin/vim systemctl edit myapp.service
+```
+
+---
+
+### 6. Konfigurasi Zon Masa & Penyegerakan Masa (`timedatectl` & `chrony`)
 
 Ketepatan masa adalah kritikal bagi audit keselamatan ISO/IEC 27001 dan pengesyoran Jabatan Digital Negara (JDN).
 
@@ -205,7 +234,7 @@ chronyc tracking
 
 ---
 
-### 6. Bantuan Dokumentasi & Navigasi Sistem Linux
+### 7. Bantuan Dokumentasi & Navigasi Sistem Linux
 
 Sistem Linux menyediakan utiliti dokumentasi luar talian (*offline documentation*) yang komprehensif.
 
@@ -269,6 +298,7 @@ plocate chrony.conf
 - [ ] Berjaya menetapkan sasaran boot sistem (`multi-user.target`).
 - [ ] Berjaya menulis, menguji, dan memuat semula fail unit servis kustom di `/etc/systemd/system/`.
 - [ ] Berjaya membuat analisis log perkhidmatan secara terperinci berasaskan julat masa menggunakan `journalctl`.
+- [ ] Berjaya mengkonfigurasi pemboleh ubah `$EDITOR` dan `$VISUAL` bagi perkhidmatan pentadbiran pelayan.
 - [ ] Berjaya menetapkan zon masa `Asia/Kuala_Lumpur` dan mengesahkan penyegerakan masa `chronyc tracking`.
 - [ ] Berjaya mengendalikan carian dokumentasi sistem menggunakan `man`, `apropos`, `whatis`, dan `plocate`.
 
@@ -277,7 +307,7 @@ plocate chrony.conf
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
 
 1. *"Jelaskan langkah-langkah mereka bentuk fail unit systemd drop-in override (/etc/systemd/system/service.d/override.conf) untuk mengubah had memori tanpa mengubah fail unit asal."*
-2. *"Apakah perbezaan mendalam antara penyegerakan masa NTP melalui systemd-timesyncd dan chronyd untuk persekitaran pelayan perusahaan?"*
+2. *"Bagaimanakah pemboleh ubah persekitaran SYSTEMD_EDITOR, EDITOR dan VISUAL mempengaruhi tingkah laku arahan systemctl edit dan visudo di bawah sudoers env_reset?"*
 3. *"Berikan arahan journalctl komprehensif untuk mengesan percubaan pencerobohan SSH yang gagal pada persekitaran pelayan Ubuntu 26.04 LTS."*
 
 ---

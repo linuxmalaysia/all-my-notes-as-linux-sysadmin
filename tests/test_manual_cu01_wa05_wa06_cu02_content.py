@@ -296,7 +296,7 @@ def test_openwiki_topic01_has_ten_numbered_syllabus_sections():
 
 def test_openwiki_topic01_section_7_is_wa05_and_section_8_is_wa06():
     content = read(OPENWIKI_TOPIC_01)
-    assert "### 7. Pemasangan Aplikasi & Pemacu Peranti Linux (CU01-WA05)" in content
+    assert "### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)" in content
     assert "### 8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)" in content
 
 
@@ -385,8 +385,8 @@ HTML_MANUAL_PAGES = {
         "title": "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux - NOSS Linux Malaysia (DSOM)",
         "description": (
             "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian "
-            "(APT, DNF, Flatpak, Snap) dan pemasangan pemacu peranti "
-            "GPU/pemacu proprietari di Linux."
+            "(APT, DNF, Flatpak, Snap), penyesuaian pemboleh ubah persekitaran "
+            "$EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
         ),
         "h1_id": "cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux",
         "header_topic": "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux",
@@ -451,7 +451,7 @@ def test_html_manual_page_header_topic_matches_title(relpath, expected):
 
 def test_html_openwiki_topic01_nav_has_renumbered_sections():
     content = read("html/openwiki/topic-01-linux-desktop-and-basics.html")
-    assert 'href="#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05"' in content
+    assert 'href="#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05"' in content
     assert 'href="#8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06"' in content
     assert 'href="#9-tugasan-pasca-pemasangan-hardening"' in content
     assert 'href="#10-soal-jawab-faq-direktori-perisian-alternatif"' in content
@@ -524,7 +524,7 @@ def test_search_index_contains_new_skill_reference_entries(search_index):
 def test_search_index_contains_topic01_renumbered_section_anchors(search_index):
     locations = {doc["location"] for doc in search_index["docs"]}
     assert (
-        "openwiki/topic-01-linux-desktop-and-basics.html#7-pemasangan-aplikasi-pemacu-peranti-linux-cu01-wa05"
+        "openwiki/topic-01-linux-desktop-and-basics.html#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05"
         in locations
     )
     assert (

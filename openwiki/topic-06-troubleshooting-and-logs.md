@@ -3,9 +3,9 @@ okf_version: 0.1
 type: documentation
 title: "Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks & Analisis Log (CU06)"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["troubleshooting", "logs", "mount", "grep", "sed", "awk", "vim", "cu06", "openwiki", "noss"]
-tags: ["linux", "troubleshooting", "logs", "mount", "fstab", "grep", "sed", "awk", "vim", "rca", "cu06"]
-description: "Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, editor vim/nano, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06."
+topics: ["troubleshooting", "logs", "mount", "grep", "sed", "awk", "vim", "neovim", "nano", "sudoedit", "visudo", "cu06", "openwiki", "noss"]
+tags: ["linux", "troubleshooting", "logs", "mount", "fstab", "grep", "sed", "awk", "vim", "neovim", "nano", "sudoedit", "visudo", "rca", "cu06"]
+description: "Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, penyunting teks Vim/Neovim/Nano, penyuntingan selamat sudoedit/visudo, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06."
 resource: "file:///openwiki/topic-06-troubleshooting-and-logs.md"
 ---
 
@@ -27,10 +27,11 @@ Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshootin
     - Nod peranti moden (`/dev/nvmeXn1`, `/dev/sdX`, `/dev/sr0`, USB) berpandukan FHS.
     - Pelekapan manual dan penangguhan: `mount`, `umount`, `findmnt`, `lsblk`, `eject`.
     - Entri pelekapan kekal dalam `/etc/fstab` dengan pilihan keselamatan JDN/MAMPU (`nodev,nosuid,noexec`).
-3. **Pemprosesan Teks Aluran & Editor CLI (Text Filters & CLI Editors)**:
+3. **Pemprosesan Teks Aluran, Penyunting CLI & Amalan Keselamatan (Text Filters, CLI Editors & Security)**:
     - Penapis teks: `grep` / `ripgrep`, `sed` (stream editor), `awk` (pattern scanning), `cut`, `sort`, `uniq`, `wc`, `tr`.
     - Operator pengalihan I/O (`>`, `>>`, `<`, `2>&1`, `|` piping, `tee`).
-    - Penyunting teks CLI pentadbiran: `vim` (mod Command/Insert/Visual/Ex) dan `nano`.
+    - Penyunting teks CLI pentadbiran: **Vim / Neovim** (mod Normal/Insert/Visual/Ex, regex search/replace `%s/old/new/g`, makro) dan **GNU Nano** (`.nanorc`).
+    - Penyuntingan selamat fail konfigurasi sistem: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
 4. **Pembacaan Log Sistem & Laporan RCA (Log Analysis & Root Cause Analysis)**:
     - Audit log sistem terpusat menggunakan `journalctl` dan fail `/var/log/`.
     - Penyediaan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*) mengikut standard ISO/IEC 27001 dan JDN/MAMPU.
@@ -54,7 +55,7 @@ Silibus ini memandu modul amali di `manual/cu06/` dan kemahiran AI di `.agents/s
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
 
 1. *"Bagaimanakah cara menggunakan awk dan sort untuk mengekstrak alamat IP terbanyak yang membuat percubaan akses SSH gagal daripada log auth.log?"*
-2. *"Apakah langkah penyelesaian masalah apabila arahan umount melaporkan 'target is busy'?"*
+2. *"Apakah kelebihan keselamatan menggunakan sudoedit berbanding sudo vim semasa menyunting fail /etc/environment?"*
 3. *"Tunjukkan contoh persediaan laporan RCA (Root Cause Analysis) yang lengkap bagi insiden kegagalan perkhidmatan pelayan."*
 
 ---
