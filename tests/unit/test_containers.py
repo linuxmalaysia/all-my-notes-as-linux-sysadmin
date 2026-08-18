@@ -81,6 +81,7 @@ def test_containerfile_compliance_accepts_valid_dockerfile(tmp_path):
 
 def test_containerfile_compliance_rejects_missing_file():
     with pytest.raises(AssertionError, match=r"(Container file missing|tidak wujud)"):
+    with pytest.raises(AssertionError, match="Container file missing"):
         containers_mod.test_containerfile_security_and_structure("no/such/Dockerfile")
 
 
@@ -88,6 +89,7 @@ def test_containerfile_compliance_rejects_empty_dockerfile(tmp_path):
     dockerfile = tmp_path / "Dockerfile"
     dockerfile.write_text("", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(is empty|adalah kosong)"):
+    with pytest.raises(AssertionError, match="is empty"):
         containers_mod.test_containerfile_security_and_structure(str(dockerfile))
 
 
@@ -95,6 +97,7 @@ def test_containerfile_compliance_rejects_missing_from_instruction(tmp_path):
     dockerfile = tmp_path / "Dockerfile"
     dockerfile.write_text("RUN echo hello\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(FROM instruction|arahan FROM)"):
+    with pytest.raises(AssertionError, match="FROM instruction"):
         containers_mod.test_containerfile_security_and_structure(str(dockerfile))
 
 
@@ -138,6 +141,7 @@ def test_quadlet_compliance_rejects_empty_file(tmp_path):
     quadlet = tmp_path / "app.container"
     quadlet.write_text("   \n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(is empty|adalah kosong)"):
+    with pytest.raises(AssertionError, match="is empty"):
         containers_mod.test_containerfile_security_and_structure(str(quadlet))
 
 
@@ -175,6 +179,7 @@ def test_yaml_manifest_compliance_rejects_compose_missing_services(tmp_path):
     manifest = tmp_path / "docker-compose.yml"
     manifest.write_text("version: '3'\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(must define 'services'|mesti mentakrifkan 'services')"):
+    with pytest.raises(AssertionError, match="must define 'services'"):
         containers_mod.test_containerfile_security_and_structure(str(manifest))
 
 
@@ -190,6 +195,7 @@ def test_yaml_manifest_compliance_rejects_invalid_kube_kind(tmp_path):
     manifest = tmp_path / "configmap.yml"
     manifest.write_text("kind: ConfigMap\napiVersion: v1\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(invalid kind|jenis tidak sah)"):
+    with pytest.raises(AssertionError, match="invalid kind"):
         containers_mod.test_containerfile_security_and_structure(str(manifest))
 
 
@@ -198,4 +204,6 @@ def test_yaml_manifest_compliance_rejects_empty_manifest(tmp_path):
     manifest = tmp_path / "empty.yml"
     manifest.write_text("", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(empty or invalid YAML|kosong atau YAML tidak sah)"):
+        containers_mod.test_containerfile_security_and_structure(str(manifest))
+    with pytest.raises(AssertionError, match="empty or invalid YAML"):
         containers_mod.test_containerfile_security_and_structure(str(manifest))

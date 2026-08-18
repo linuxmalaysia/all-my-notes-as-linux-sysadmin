@@ -70,6 +70,7 @@ def test_sitemaps_consistency_rejects_wrong_root_element(tmp_path, monkeypatch):
     )
 
     with pytest.raises(AssertionError, match=r"(root element must be 'urlset'|mestilah 'urlset')"):
+    with pytest.raises(AssertionError, match="root element must be 'urlset'"):
         sitemaps_mod.test_sitemaps_consistency()
 
 
@@ -79,6 +80,7 @@ def test_sitemaps_consistency_rejects_docs_sitemap_with_no_locs(tmp_path, monkey
     (tmp_path / "docs" / "sitemap.xml").write_text(EMPTY_URLSET, encoding="utf-8")
 
     with pytest.raises(AssertionError, match=r"(contains no valid|tidak mengandungi elemen <loc>)"):
+    with pytest.raises(AssertionError, match="contains no valid"):
         sitemaps_mod.test_sitemaps_consistency()
 
 
@@ -98,6 +100,7 @@ def test_sitemaps_consistency_rejects_empty_sitemap_txt(tmp_path, monkeypatch):
     (tmp_path / "html" / "docs" / "sitemap.txt").write_text("", encoding="utf-8")
 
     with pytest.raises(AssertionError, match=r"(is empty|adalah kosong)"):
+    with pytest.raises(AssertionError, match="is empty"):
         sitemaps_mod.test_sitemaps_consistency()
 
 
@@ -118,6 +121,7 @@ def test_sitemaps_consistency_accepts_non_empty_sitemap_txt(tmp_path, monkeypatc
 def test_context7_configuration_rejects_missing_mkdocs_yml(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     with pytest.raises(AssertionError, match=r"(MkDocs configuration file missing|tidak wujud)"):
+    with pytest.raises(AssertionError, match="MkDocs configuration file missing"):
         sitemaps_mod.test_context7_configuration()
 
 
@@ -163,6 +167,7 @@ def test_context7_configuration_rejects_context_xml_wrong_root(tmp_path, monkeyp
     )
 
     with pytest.raises(AssertionError, match=r"(root element must be <context>|mestilah <context>)"):
+    with pytest.raises(AssertionError, match="root element must be <context>"):
         sitemaps_mod.test_context7_configuration()
 
 
@@ -176,6 +181,7 @@ def test_context7_configuration_rejects_context_xml_with_no_file_entries(tmp_pat
     )
 
     with pytest.raises(AssertionError, match=r"(contains no <file> entries|tidak mengandungi sebarang entri <file>)"):
+    with pytest.raises(AssertionError, match="contains no <file> entries"):
         sitemaps_mod.test_context7_configuration()
 
 
@@ -191,4 +197,5 @@ def test_context7_configuration_propagates_xml_parse_error_for_malformed_context
     (tmp_path / "llms_context.xml").write_text("<context><unclosed>", encoding="utf-8")
 
     with pytest.raises(ET.ParseError):
+        sitemaps_mod.test_context7_configuration()
         sitemaps_mod.test_context7_configuration()
