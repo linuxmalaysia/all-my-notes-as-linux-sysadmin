@@ -1,73 +1,85 @@
-"""Unit tests for sitemaps consistency and Context7 configuration.
+"""Ujian unit untuk ketekalan 'sitemap' dan konfigurasi Context7.
 
-Validates sitemap XML/text files for well-formedness and consistency, as well as Context7
-and MkDocs documentation environment configuration.
+Mengesahkan fail XML/teks 'sitemap' untuk keabsahan dan ketekalan, serta konfigurasi persekitaran
+dokumentasi Context7 dan MkDocs.
 """
 
 import os
 import re
-import xml.etree.ElementTree as ET
+import yaml
+import defusedxml.ElementTree as ET
 import pytest
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
+
+class CustomSafeLoader(yaml.SafeLoader):
+    """Pemuat YAML selamat yang menyokong tag khas pymdownx.superfences."""
+    pass
+
+
+def _fence_code_format_constructor(loader, node):
+    return loader.construct_scalar(node)
+
+
+CustomSafeLoader.add_constructor(
+    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+    _fence_code_format_constructor,
+)
 
 
 def test_sitemaps_consistency():
-    """Verify existence, XML validity, and link consistency across sitemaps."""
+    """Mengesahkan kewujudan, keabsahan XML, dan ketekalan pautan di seluruh 'sitemap'."""
     sitemap_xml_paths = ["docs/sitemap.xml", "html/sitemap.xml"]
 
     for path in sitemap_xml_paths:
         if os.path.exists(path):
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
-            sanitized = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", content)
-            root = ET.fromstring(sanitized)
-            assert root.tag.endswith("urlset") or root.tag == "urlset", f"Sitemap {path} root element must be 'urlset'."
 
-            # Parse any loc URLs inside url entries
+            # Sahkan kandungan asal tidak mengandungi aksara kawalan tidak sah
+            invalid_ctrls = re.findall(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", content)
+            assert not invalid_ctrls, f"Fail sitemap {path} mengandungi aksara kawalan tidak sah: {invalid_ctrls}"
+
+            root = ET.fromstring(content)
+            assert root.tag.endswith("urlset") or root.tag == "urlset", f"Elemen akar Sitemap {path} mestilah 'urlset'."
+
             locs = [elem.text for elem in root.iter() if elem.tag.endswith("loc") and elem.text]
             if path == "docs/sitemap.xml":
-                assert len(locs) > 0, f"Sitemap {path} contains no valid <loc> elements."
+                assert len(locs) > 0, f"Sitemap {path} tidak mengandungi elemen <loc> yang sah."
 
     sitemap_txt_path = "html/docs/sitemap.txt"
     if os.path.exists(sitemap_txt_path):
         with open(sitemap_txt_path, "r", encoding="utf-8") as f:
             lines = [line.strip() for line in f if line.strip()]
-        assert len(lines) > 0, f"Sitemap txt file {sitemap_txt_path} is empty."
+        assert len(lines) > 0, f"Fail sitemap txt {sitemap_txt_path} adalah kosong."
 
 
 def test_context7_configuration():
-    """Verify MkDocs and Context7 AI knowledge context configurations."""
+    """Mengesahkan konfigurasi konteks pengetahuan AI MkDocs dan Context7."""
     mkdocs_path = "mkdocs.yml"
-    assert os.path.exists(mkdocs_path), f"MkDocs configuration file missing: {mkdocs_path}"
+    assert os.path.exists(mkdocs_path), f"Fail konfigurasi MkDocs tidak wujud: {mkdocs_path}"
 
     with open(mkdocs_path, "r", encoding="utf-8") as f:
         content = f.read()
-        assert "site_name:" in content, "mkdocs.yml missing required key 'site_name'."
-        assert "docs_dir:" in content, "mkdocs.yml missing required key 'docs_dir'."
+        assert "site_name:" in content, "mkdocs.yml kehilangan kunci wajib 'site_name'."
+        assert "docs_dir:" in content, "mkdocs.yml kehilangan kunci wajib 'docs_dir'."
 
-        if yaml is not None:
-            try:
-                mkdocs_config = yaml.load(content, Loader=yaml.FullLoader)
-                if isinstance(mkdocs_config, dict):
-                    assert "site_name" in mkdocs_config
-                    assert "docs_dir" in mkdocs_config
-            except Exception:
-                # Fallback if custom python tags aren't loaded by PyYAML
-                pass
+        if "pymdownx.superfences" in content or "python/name:" in content:
+            mkdocs_config = yaml.load(content, Loader=CustomSafeLoader)
+        else:
+            mkdocs_config = yaml.safe_load(content)
 
-    # Check Context7 XML context files
+        assert isinstance(mkdocs_config, dict), "mkdocs.yml mesti diuraikan menjadi kamus YAML."
+        assert "site_name" in mkdocs_config, "mkdocs.yml kehilangan kunci 'site_name'."
+        assert "docs_dir" in mkdocs_config, "mkdocs.yml kehilangan kunci 'docs_dir'."
+
     xml_context_paths = ["llms_context.xml", "html/llms_context.xml"]
     for path in xml_context_paths:
         if os.path.exists(path):
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
                 raw_xml = f.read()
-            # Strip invalid XML 1.0 control characters
-            sanitized = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", raw_xml)
-            root = ET.fromstring(sanitized)
-            assert root.tag == "context", f"Context7 XML file {path} root element must be <context>."
+
+            sanitized_xml = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", raw_xml)
+            root = ET.fromstring(sanitized_xml)
+            assert root.tag == "context", f"Elemen akar fail Context7 XML {path} mestilah <context>."
             files = root.findall("file")
-            assert len(files) > 0, f"Context7 XML file {path} contains no <file> entries."
+            assert len(files) > 0, f"Fail Context7 XML {path} tidak mengandungi sebarang entri <file>."

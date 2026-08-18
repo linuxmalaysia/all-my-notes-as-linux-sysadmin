@@ -1,1 +1,1 @@
-"""Unit tests package for DSOM NOSS Linux project."""
+"""Pakej ujian unit untuk projek DSOM NOSS Linux."""
