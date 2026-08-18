@@ -12,6 +12,13 @@ Covers:
   - openwiki/topic-04-automation-and-backup.md
   - openwiki/topic-06-troubleshooting-and-logs.md
   - .agents/skills/index.md
+  - html/manual/cu04/cu04-wa02-operasi-sandaran-tempatan.html
+  - html/manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.html
+  - html/manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.html
+  - html/manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.html
+  - html/openwiki/topic-04-automation-and-backup.html
+  - html/openwiki/topic-06-troubleshooting-and-logs.html
+  - html/search/search_index.json
 """
 
 import html as html_module
@@ -540,3 +547,68 @@ def test_search_index_manual_cu06_wa07_tags_match_frontmatter(search_index):
     doc = find_doc(search_index, "manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.html")
     for expected_tag in ["grep", "sed", "awk", "vim", "nano", "rca"]:
         assert expected_tag in doc.get("tags", []), doc.get("tags")
+
+
+# ---------------------------------------------------------------------------
+# Regression checks for the module docstring itself
+#
+# The docstring previously contained a stray closing ``"""`` followed by a
+# duplicated tail of the covered-files bullet list. That left the duplicated
+# lines outside of the string literal, which is a syntax error (e.g.
+# "- .agents/skills/index.md" is not valid Python outside of a string).
+# ---------------------------------------------------------------------------
+
+def test_module_source_has_valid_syntax():
+    """The module must remain syntactically valid Python (regression guard for
+    the previously stray closing '\"\"\"' that split the docstring in two and
+    left bullet-list lines as bare, invalid statements)."""
+    import ast
+
+    source = REPO_ROOT.joinpath(
+        "tests", "test_manual_cu04_cu06_backup_troubleshooting_content.py"
+    ).read_text(encoding="utf-8")
+    ast.parse(source)
+
+
+def test_module_docstring_covered_files_list_has_no_duplicates():
+    """Every bullet entry in the module docstring's 'Covers:' list must appear
+    exactly once."""
+    import ast
+
+    source = REPO_ROOT.joinpath(
+        "tests", "test_manual_cu04_cu06_backup_troubleshooting_content.py"
+    ).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    docstring = ast.get_docstring(tree)
+    assert docstring is not None
+
+    bullet_lines = [line.strip() for line in docstring.splitlines() if line.strip().startswith("- ")]
+    assert bullet_lines, "Expected at least one bullet entry in the module docstring."
+    assert len(bullet_lines) == len(set(bullet_lines)), (
+        f"Docstring contains duplicate bullet entries: {bullet_lines}"
+    )
+
+
+@pytest.mark.parametrize(
+    "expected_entry",
+    [
+        "- openwiki/topic-04-automation-and-backup.md",
+        "- openwiki/topic-06-troubleshooting-and-logs.md",
+        "- .agents/skills/index.md",
+        "- html/search/search_index.json",
+    ],
+)
+def test_module_docstring_contains_each_expected_entry_exactly_once(expected_entry):
+    """Spot-check the specific entries that were duplicated / dropped by the bug
+    this file's diff fixed."""
+    import ast
+
+    source = REPO_ROOT.joinpath(
+        "tests", "test_manual_cu04_cu06_backup_troubleshooting_content.py"
+    ).read_text(encoding="utf-8")
+    docstring = ast.get_docstring(ast.parse(source))
+
+    bullet_lines = [line.strip() for line in docstring.splitlines() if line.strip().startswith("- ")]
+    assert bullet_lines.count(expected_entry) == 1, (
+        f"Expected exactly one occurrence of {expected_entry!r}, found {bullet_lines.count(expected_entry)}"
+    )
