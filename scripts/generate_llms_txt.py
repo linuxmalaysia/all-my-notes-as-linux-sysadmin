@@ -4,9 +4,8 @@
 # ]
 # ///
 
-import os
-import re
 from pathlib import Path
+
 
 def get_markdown_title(filepath: Path) -> str:
     """Extracts the first H1 heading from a markdown file to use as the title."""

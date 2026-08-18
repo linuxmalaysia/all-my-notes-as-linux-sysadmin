@@ -7,13 +7,13 @@
 # ]
 # ///
 
-import os
 import re
 import shutil
-import yaml
 from pathlib import Path
+
 import markdown
-from jinja2 import Environment, FileSystemLoader, Template
+import yaml
+from jinja2 import Template
 
 # Basic CSS for the static site
 CSS_CONTENT = """

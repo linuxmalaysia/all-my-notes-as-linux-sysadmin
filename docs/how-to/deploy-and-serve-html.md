@@ -146,7 +146,27 @@ Rujuk fail lengkap di [`deploy/apache/httpd.conf`](../../deploy/apache/httpd.con
 
 ---
 
-## 5. Automasi Penyebaran Menggunakan Ansible Playbook
+## 5. Pengehosan GitHub Pages & Automasi Bina Semula (GitHub Actions Workflow)
+
+Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions di `.github/workflows/static.yml` untuk menerbitkan laman web statik secara terus ke GitHub Pages:
+
+### A. Punca Sasaran & Penyelesaian Ralat 404
+
+- **Direktori Punca (Document Root):** GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori `html/` (bukan direktori punca repositori `.`).
+- **Standard URL Relatif:** Dengan tetapan `use_directory_urls: false` dalam `mkdocs.yml`, pautan halaman dalaman dijanakan secara relatif bersama akhiran `.html` (contohnya `docs/tutorials/index.html`), memudahkan navigasi struktur dokumen merentas pelbagai persekitaran pengehosan statik.
+- **Fail `.nojekyll`:** Fail `.nojekyll` dijanakan secara automatik di dalam `html/` bagi menghalang GitHub Pages daripada memproses semula aset dengan enjin Jekyll.
+
+### B. Kemas Kini Automatik pada Setiap *Push*
+
+Setiap kali perubahan atau komit baharu ditolak (*push*) ke cawangan `main`:
+1. GitHub Actions melancarkan alur kerja `.github/workflows/static.yml` (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
+2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@f94383a0937a0cbf73cf3ea5a6c965610f135bdf` (dengan versi UV khusus `0.6.5`).
+3. Arahan `uv run scripts/serve_mkdocs.py --build-only` dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (`docs/`, `manual/`, `openwiki/`).
+4. Artifak `html/` dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.
+
+---
+
+## 6. Automasi Penyebaran Menggunakan Ansible Playbook
 
 Fail playbook Ansible rasmi disediakan di [`deploy/ansible/`](../../deploy/ansible/) bagi mengautomasikan penyebaran ke pelbagai pelayan Linux secara serentak (**Ubuntu 26.04/24.04 LTS**, **AlmaLinux 10**, **Fedora 43**, atau **Rocky Linux 9**):
 
@@ -180,7 +200,7 @@ Playbook ini menguruskan secara automatik penyalinan dokumen `html/`, pemasangan
 
 ---
 
-## 6. Prosedur Mengemas Kini & Membina Semula HTML (Untuk Penulis/Penyumbang)
+## 7. Prosedur Mengemas Kini & Membina Semula HTML (Untuk Penulis/Penyumbang)
 
 Sekiranya anda telah menambah modul kemahiran baharu dalam `manual/`, menyunting `openwiki/`, atau mengubah dokumentasi `docs/`, bina semula folder `html/`:
 
@@ -197,7 +217,7 @@ Pelayan tempatan akan dibuka secara automatik pada alamat `http://127.0.0.1:8000
 
 ---
 
-## 7. Pengesahan Kualiti Sebelum Komit (Quality Gate)
+## 8. Pengesahan Kualiti Sebelum Komit (Quality Gate)
 
 Berasaskan **Peraturan 12 & 19 Perlembagaan AI DSOM**, setelah membina semula fail HTML, sentiasa jalankan suite ujian penuh dan komit perubahan:
 ```bash

@@ -38,13 +38,13 @@ def test_markdown_okf_compliance(filepath):
     has_okf = "okf_version:" in frontmatter or "dsom_governance:" in frontmatter
     assert has_okf, f"'Frontmatter' fail {filepath} mesti mengandungi kunci metadata OKF atau DSOM."
 
-    has_title = "title:" in frontmatter or "name:" in frontmatter
-    assert has_title, f"Fail {filepath} kehilangan 'title' atau 'name' dalam 'frontmatter'."
+    has_title_or_name = "title:" in frontmatter or "name:" in frontmatter
+    assert has_title_or_name, f"Fail {filepath} kehilangan 'title' atau 'name' dalam 'frontmatter'."
 
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
 def test_markdown_governance_footers(filepath):
-    """Mengesahkan fail markdown mengandungi pengaki tadbir urus DSOM dan atribu pengarang."""
+    """Mengesahkan fail markdown mengandungi pengaki tadbir urus DSOM berdaulat dan pautan notis perundangan."""
     assert os.path.exists(filepath), f"Fail Markdown tidak wujud: {filepath}"
 
     with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:
@@ -57,9 +57,19 @@ def test_markdown_governance_footers(filepath):
         "Dwi-Lesen" in content
         or "Dual-License" in content
         or "CC BY-SA 4.0" in content
+        or "MIT" in content
         or "GNU" in content
     )
     assert has_license, f"Fail {filepath} kehilangan piawaian Pelesenan dalam pengaki tadbir urus."
+
+    has_notice_link = (
+        "[Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)" in content
+        or "legal-notice.md" in content
+        or "LEGAL-NOTICE" in content
+    )
+    assert has_notice_link, (
+        f"Fail {filepath} kehilangan pautan pengaki rasmi [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)."
+    )
 
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
@@ -67,19 +77,37 @@ def test_uk_english_documentation_spellings(filepath):
     """Mengesahkan pematuhan dasar dokumentasi Bahasa Melayu Baku dan ejaan bahasa Inggeris yang dibenarkan."""
     assert os.path.exists(filepath), f"Fail Markdown tidak wujud: {filepath}"
 
+    norm_path = filepath.replace("\\", "/")
+    is_syllabus_or_test_doc = (
+        norm_path.startswith("manual/")
+        or norm_path.startswith("openwiki/")
+        or "pytest-" in norm_path
+        or "tmp" in norm_path
+        or norm_path.endswith("/doc.md")
+    )
+    if not is_syllabus_or_test_doc:
+        return
+
     with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:
         content = f.read()
 
     lines = content.splitlines()
+    in_code_block = False
+
     for i, line in enumerate(lines, 1):
         line_str = line.strip()
-        # Abaikan blok kod, arahan CLI, dan baris pautan URL/fail
-        if line_str.startswith("```") or line_str.startswith("sudo ") or line_str.startswith("$ "):
+        if line_str.startswith("```"):
+            in_code_block = not in_code_block
             continue
-        # Semak perkataan yang tidak dibenarkan dalam prosa dokumentasi mengikut dasar projek
-        # Memastikan prosa penerangan tidak menggunakan ejaan Inggeris yang tidak dibenarkan
-        match_disallowed = re.search(r"\b(e\.g\.|i\.e\.|etc\.)\b", line_str)
-        # Jika ada perkataan tidak sah dalam prosa bukan kod
+
+        if in_code_block:
+            continue
+
+        if line_str.startswith("sudo ") or line_str.startswith("$ ") or line_str.startswith("# "):
+            continue
+
+        match_disallowed = re.search(r"(?:\be\.g\.|\bi\.e\.|\betc\.)", line_str, re.IGNORECASE)
         if match_disallowed and not line_str.startswith("http") and not line_str.startswith("["):
-            # Luluskan semakan penemuan fail dan pematuhan pembacaan UTF-8
-            pass
+            assert False, (
+                f"Istilah tidak dibenarkan '{match_disallowed.group(0)}' ditemui pada baris {i} dalam {filepath}: {line_str}"
+            )

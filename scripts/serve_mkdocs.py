@@ -1,11 +1,12 @@
 # /// script
 # requires-python = ">=3.12"
 # ///
-import sys
 import os
-import subprocess
 import shutil
+import subprocess
+import sys
 from pathlib import Path
+
 
 def create_junction(src: Path, dest: Path):
     if dest.exists() or dest.is_symlink():
@@ -77,7 +78,7 @@ def main():
         if "--clean" not in args:
             args.append("--clean")
         
-    print(f"?? Menyiapkan symlinks untuk DSOM (docs_dir: mkdocs_src)...")
+    print("?? Menyiapkan symlinks untuk DSOM (docs_dir: mkdocs_src)...")
     prepare_docs_dir(root_dir, build_dir)
     
     print(f"?? Memulakan MkDocs Material (Mod: {command.upper()})")

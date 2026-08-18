@@ -44,22 +44,28 @@ def test_containerfile_security_and_structure(filepath):
             lines = f.readlines()
 
         assert len(lines) > 0, f"Containerfile {filepath} adalah kosong."
-        has_from = any(line.strip().startswith("FROM") for line in lines)
-        assert has_from, f"Containerfile {filepath} mesti mengandungi arahan FROM."
+        has_from = False
 
         for line in lines:
             line_str = line.strip()
-            # Semakan keselamatan: larang chmod 777
-            assert "chmod 777" not in line_str, f"Insecure chmod 777 found in {filepath}: {line_str}"
+            if not line_str or line_str.startswith("#"):
+                continue
 
-            # Semakan arahan FROM: semak tag imej dan elakkan penggunaan implicit/explicit latest
-            if line_str.startswith("FROM"):
-                parts = [p for p in line_str.split() if not p.startswith("--")]
+            tokens = line_str.split()
+            if tokens and tokens[0].upper() == "FROM":
+                has_from = True
+                parts = [p for p in tokens if not p.startswith("--")]
                 if len(parts) >= 2:
                     img_ref = parts[1]
                     if "@sha256:" not in img_ref:
-                        if ":" not in img_ref or img_ref.endswith(":latest") or ":latest" in img_ref:
-                            assert False, f"Avoid using ':latest' image tag in {filepath}: {line_str}"
+                        image_component = img_ref.split("/")[-1]
+                        if ":" not in image_component or image_component.endswith(":latest") or ":latest" in image_component:
+                            assert False, f"Elakkan penggunaan tag imej ':latest' atau implisit dalam {filepath}: {line_str}"
+
+            # Semakan keselamatan: larang chmod 777
+            assert "chmod 777" not in line_str, f"chmod 777 tidak selamat ditemui dalam {filepath}: {line_str}"
+
+        assert has_from, f"Containerfile {filepath} mesti mengandungi arahan FROM."
 
     elif filepath.endswith(".container") or filepath.endswith(".pod"):
         with open(filepath, "r", encoding="utf-8") as f:
@@ -79,6 +85,11 @@ def test_containerfile_security_and_structure(filepath):
             data = yaml.safe_load(f)
 
         assert data is not None, f"Manifes kontena {filepath} adalah kosong atau YAML tidak sah."
+        assert isinstance(data, dict), f"Manifes kontena {filepath} mestilah kamus (mapping) YAML."
+
+        has_valid_keys = "services" in data or "kind" in data
+        assert has_valid_keys, f"Manifes kontena {filepath} mesti mentakrifkan 'services' atau 'kind' yang sah."
+
         if "version" in data or "services" in data:
             assert "services" in data, f"Fail Docker compose {filepath} mesti mentakrifkan 'services'."
         elif "kind" in data:

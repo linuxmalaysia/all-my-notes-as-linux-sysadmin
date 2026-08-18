@@ -1,9 +1,9 @@
-"""Tests for the repository's pytest.ini configuration.
+"""Ujian untuk konfigurasi pytest.ini repositori.
 
-Validates that pytest.ini declares the python_files / python_functions patterns
-required to discover the tests/unit/*.py compliance-test modules (ansible.py,
-containers.py, markdown.py, sitemaps.py, llms.py), which intentionally do not
-use the conventional 'test_' filename prefix.
+Mengesahkan bahawa pytest.ini mengisytiharkan corak python_files / python_functions
+yang diperlukan untuk menemui modul ujian pematuhan tests/unit/*.py (ansible.py,
+containers.py, markdown.py, sitemaps.py, llms.py), yang secara sengaja tidak
+menggunakan awalan nama fail konvensional 'test_'.
 """
 
 import configparser
@@ -17,19 +17,19 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PYTEST_INI = REPO_ROOT / "pytest.ini"
 
 
-def _read_pytest_ini():
+def _read_pytest_ini() -> configparser.ConfigParser:
     config = configparser.ConfigParser()
     config.read(PYTEST_INI)
     return config
 
 
 def test_pytest_ini_exists_at_repo_root():
-    assert PYTEST_INI.exists(), "pytest.ini must exist at the repository root."
+    assert PYTEST_INI.exists(), "pytest.ini mesti wujud di punca repositori."
 
 
 def test_pytest_ini_has_pytest_section():
     config = _read_pytest_ini()
-    assert config.has_section("pytest"), "pytest.ini must contain a [pytest] section."
+    assert config.has_section("pytest"), "pytest.ini mesti mengandungi seksyen [pytest]."
 
 
 def test_pytest_ini_declares_expected_python_files_patterns():
@@ -53,9 +53,9 @@ def test_pytest_ini_declares_expected_python_functions_pattern():
 
 
 def test_pytest_ini_python_files_cover_every_non_test_prefixed_unit_module():
-    """Every module under tests/unit that does not start with 'test_' (and is not
-    the package initializer) must be explicitly listed in python_files, otherwise
-    pytest's default discovery rules would silently skip it."""
+    """Setiap modul di bawah tests/unit yang tidak bermula dengan 'test_' (dan bukan
+    penyulita pakej) mesti disenaraikan secara eksplisit dalam python_files, jika tidak
+    peraturan penemuan lalai pytest akan melangkaunya secara senyap."""
     config = _read_pytest_ini()
     python_files = set(config.get("pytest", "python_files").split())
 
@@ -66,17 +66,17 @@ def test_pytest_ini_python_files_cover_every_non_test_prefixed_unit_module():
         if p.name != "__init__.py" and not p.name.startswith("test_")
     ]
 
-    assert custom_modules, "Expected at least one non-'test_'-prefixed module under tests/unit."
+    assert custom_modules, "Dijangkakan sekurang-kurangnya satu modul tanpa awalan 'test_' di bawah tests/unit."
     for module_name in custom_modules:
         assert module_name in python_files, (
-            f"{module_name} is not listed in pytest.ini's python_files and would not be discovered."
+            f"{module_name} tidak disenaraikan dalam python_files pytest.ini dan tidak akan ditemui."
         )
 
 
 def test_pytest_ini_enables_discovery_of_non_test_prefixed_module(tmp_path):
-    """Functional/integration check: running pytest with this exact pytest.ini
-    actually collects a non-'test_'-prefixed module such as 'ansible.py', while a
-    module that isn't listed and doesn't match 'test_*.py' remains undiscovered.
+    """Semakan fungsi/integrasi: menjalankan pytest dengan pytest.ini yang tepat ini
+    sebenarnya mengumpul modul tanpa awalan 'test_' seperti 'ansible.py', manakala
+    modul yang tidak disenaraikan dan tidak sepadan dengan 'test_*.py' kekal tidak ditemui.
     """
     (tmp_path / "pytest.ini").write_text(PYTEST_INI.read_text(encoding="utf-8"), encoding="utf-8")
     (tmp_path / "ansible.py").write_text(
@@ -102,8 +102,8 @@ def test_pytest_ini_enables_discovery_of_non_test_prefixed_module(tmp_path):
 
 
 def test_pytest_ini_python_functions_pattern_ignores_non_test_prefixed_functions(tmp_path):
-    """A helper function such as 'get_playbook_files' (used by ansible.py) must
-    not itself be collected as a test, even though its containing file is."""
+    """Fungsi pembantu seperti 'get_playbook_files' (yang digunakan oleh ansible.py) mesti
+    tidak dikumpul sebagai ujian, walaupun fail yang mengandunginya dikumpul."""
     (tmp_path / "pytest.ini").write_text(PYTEST_INI.read_text(encoding="utf-8"), encoding="utf-8")
     (tmp_path / "markdown.py").write_text(
         "def get_markdown_files():\n"

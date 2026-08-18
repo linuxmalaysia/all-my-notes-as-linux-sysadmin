@@ -25,6 +25,7 @@ import html as html_module
 import json
 import re
 from pathlib import Path
+
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -558,9 +559,7 @@ def test_search_index_manual_cu06_wa07_tags_match_frontmatter(search_index):
 # ---------------------------------------------------------------------------
 
 def test_module_source_has_valid_syntax():
-    """The module must remain syntactically valid Python (regression guard for
-    the previously stray closing '\"\"\"' that split the docstring in two and
-    left bullet-list lines as bare, invalid statements)."""
+    """Modul mesti kekal sebagai Python yang sah dari segi sintaks."""
     import ast
 
     source = REPO_ROOT.joinpath(
@@ -570,8 +569,7 @@ def test_module_source_has_valid_syntax():
 
 
 def test_module_docstring_covered_files_list_has_no_duplicates():
-    """Every bullet entry in the module docstring's 'Covers:' list must appear
-    exactly once."""
+    """Setiap entri poin dalam senarai 'Covers:' docstring modul mesti muncul tepat sekali."""
     import ast
 
     source = REPO_ROOT.joinpath(
@@ -582,9 +580,9 @@ def test_module_docstring_covered_files_list_has_no_duplicates():
     assert docstring is not None
 
     bullet_lines = [line.strip() for line in docstring.splitlines() if line.strip().startswith("- ")]
-    assert bullet_lines, "Expected at least one bullet entry in the module docstring."
+    assert bullet_lines, "Dijangkakan sekurang-kurangnya satu entri poin dalam docstring modul."
     assert len(bullet_lines) == len(set(bullet_lines)), (
-        f"Docstring contains duplicate bullet entries: {bullet_lines}"
+        f"Docstring mengandungi entri poin berulang: {bullet_lines}"
     )
 
 
@@ -598,8 +596,7 @@ def test_module_docstring_covered_files_list_has_no_duplicates():
     ],
 )
 def test_module_docstring_contains_each_expected_entry_exactly_once(expected_entry):
-    """Spot-check the specific entries that were duplicated / dropped by the bug
-    this file's diff fixed."""
+    """Semak entri spesifik yang dipastikan tidak berulang."""
     import ast
 
     source = REPO_ROOT.joinpath(
@@ -609,5 +606,5 @@ def test_module_docstring_contains_each_expected_entry_exactly_once(expected_ent
 
     bullet_lines = [line.strip() for line in docstring.splitlines() if line.strip().startswith("- ")]
     assert bullet_lines.count(expected_entry) == 1, (
-        f"Expected exactly one occurrence of {expected_entry!r}, found {bullet_lines.count(expected_entry)}"
+        f"Dijangkakan tepat satu kemunculan untuk {expected_entry!r}, ditemui {bullet_lines.count(expected_entry)}"
     )

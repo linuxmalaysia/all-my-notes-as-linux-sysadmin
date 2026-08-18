@@ -4,10 +4,10 @@
 # ]
 # ///
 
-import os
-import re
 import argparse
+import re
 from pathlib import Path
+
 
 def parse_llms_txt(llms_txt_path: Path) -> list[str]:
     """Extracts valid file paths from an llms.txt markdown file."""

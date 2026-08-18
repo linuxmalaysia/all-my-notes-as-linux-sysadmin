@@ -56,3 +56,23 @@ def test_podman_yaml_syntax(filepath):
 def test_infrastructure_scaffold_exists():
     """Dummy test to ensure the infrastructure test suite runs even if no files exist."""
     assert True
+
+def test_github_pages_workflow_configuration():
+    """Pengesahan konfigurasi Direktori Punca (Document Root) html/ dan alur kerja pembinaan semula bagi .github/workflows/static.yml."""
+    workflow_path = ".github/workflows/static.yml"
+    assert os.path.exists(workflow_path), f"Fail alur kerja {workflow_path} tidak wujud."
+
+    with open(workflow_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    build_idx = content.find("serve_mkdocs.py --build-only")
+    upload_idx = content.find("upload-pages-artifact")
+
+    assert build_idx != -1, "static.yml mesti mengandungi langkah pembinaan semula laman web statik."
+    assert upload_idx != -1, "static.yml mesti menggunakan tindakan actions/upload-pages-artifact."
+    assert build_idx < upload_idx, \
+        "Langkah pembinaan semula (serve_mkdocs.py) MESTI dilaksanakan sebelum langkah muat naik artifak (upload-pages-artifact)."
+
+    upload_section = content[upload_idx:]
+    assert "path: 'html'" in upload_section or 'path: "html"' in upload_section or "path: html" in upload_section, \
+        "Langkah actions/upload-pages-artifact mesti menetapkan Direktori Punca (Document Root) sasaran ke 'html'."
