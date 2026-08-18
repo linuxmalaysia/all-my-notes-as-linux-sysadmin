@@ -2201,7 +2201,7 @@ Buka pelayar web di <code>http://localhost:8080</code>.</p>
 <h3 id="a-punca-sasaran-penyelesaian-ralat-404">A. Punca Sasaran &amp; Penyelesaian Ralat 404<a class="headerlink" href="#a-punca-sasaran-penyelesaian-ralat-404" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Direktori Punca (Document Root):</strong> GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori <code>html/</code> (bukan direktori punca repositori <code>.</code>).</li>
-<li><strong>Standard URL Relatif:</strong> Oleh sebab <code>use_directory_urls: false</code> dikonfigurasikan dalam <code>mkdocs.yml</code>, semua pautan dijanakan sebagai pautan relatif (contohnya <code>docs/tutorials/index.html</code>). Ini memastikan laman web berfungsi dengan sempurna di mana-mana pelantar sama ada laluan subdomain GitHub Pages (contohnya <code>https://username.github.io/repo-name/</code>), domain tersuai, atau pelayan tempatan.</li>
+<li><strong>Standard URL Relatif:</strong> Dengan tetapan <code>use_directory_urls: false</code> dalam <code>mkdocs.yml</code>, pautan halaman dalaman dijanakan secara relatif bersama akhiran <code>.html</code> (contohnya <code>docs/tutorials/index.html</code>), memudahkan navigasi struktur dokumen merentas pelbagai persekitaran pengehosan statik.</li>
 <li><strong>Fail <code>.nojekyll</code>:</strong> Fail <code>.nojekyll</code> dijanakan secara automatik di dalam <code>html/</code> bagi menghalang GitHub Pages daripada memproses semula aset dengan enjin Jekyll.</li>
 </ul>
 <h3 id="b-kemas-kini-automatik-pada-setiap-push">B. Kemas Kini Automatik pada Setiap <em>Push</em><a class="headerlink" href="#b-kemas-kini-automatik-pada-setiap-push" title="Permanent link">&para;</a></h3>

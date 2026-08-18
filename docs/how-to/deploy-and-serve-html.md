@@ -153,7 +153,7 @@ Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions
 ### A. Punca Sasaran & Penyelesaian Ralat 404
 
 - **Direktori Punca (Document Root):** GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori `html/` (bukan direktori punca repositori `.`).
-- **Standard URL Relatif:** Oleh sebab `use_directory_urls: false` dikonfigurasikan dalam `mkdocs.yml`, semua pautan dijanakan sebagai pautan relatif (contohnya `docs/tutorials/index.html`). Ini memastikan laman web berfungsi dengan sempurna di mana-mana pelantar sama ada laluan subdomain GitHub Pages (contohnya `https://username.github.io/repo-name/`), domain tersuai, atau pelayan tempatan.
+- **Standard URL Relatif:** Dengan tetapan `use_directory_urls: false` dalam `mkdocs.yml`, pautan halaman dalaman dijanakan secara relatif bersama akhiran `.html` (contohnya `docs/tutorials/index.html`), memudahkan navigasi struktur dokumen merentas pelbagai persekitaran pengehosan statik.
 - **Fail `.nojekyll`:** Fail `.nojekyll` dijanakan secara automatik di dalam `html/` bagi menghalang GitHub Pages daripada memproses semula aset dengan enjin Jekyll.
 
 ### B. Kemas Kini Automatik pada Setiap *Push*
