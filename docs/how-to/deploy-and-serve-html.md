@@ -151,14 +151,14 @@ Rujuk fail lengkap di [`deploy/apache/httpd.conf`](../../deploy/apache/httpd.con
 Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions di `.github/workflows/static.yml` untuk menerbitkan laman web statik secara terus ke GitHub Pages:
 
 ### A. Punca Sasaran & Penyelesaian Ralat 404
-- **Punyi Akses (Root Document):** GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori `html/` (bukan direktori punca repositori `.`).
+- **Direktori Punca (Document Root):** GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori `html/` (bukan direktori punca repositori `.`).
 - **Standard URL Relatif:** Oleh sebab `use_directory_urls: false` dikonfigurasikan dalam `mkdocs.yml`, semua pautan dijanakan sebagai pautan relatif (contohnya `docs/tutorials/index.html`). Ini memastikan laman web berfungsi dengan sempurna di mana-mana pelantar sama ada laluan subdomain GitHub Pages (contohnya `https://username.github.io/repo-name/`), domain tersuai, atau pelayan tempatan.
 - **Fail `.nojekyll`:** Fail `.nojekyll` dijanakan secara automatik di dalam `html/` bagi menghalang GitHub Pages daripada memproses semula aset dengan enjin Jekyll.
 
 ### B. Kemas Kini Automatik pada Setiap *Push*
 Setiap kali perubahan atau komit baharu ditolak (*push*) ke cawangan `main`:
-1. GitHub Actions melancarkan alur kerja `.github/workflows/static.yml`.
-2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@v5`.
+1. GitHub Actions melancarkan alur kerja `.github/workflows/static.yml` (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
+2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@f94383a0937a0cbf73cf3ea5a6c965610f135bdf` (dengan versi UV khusus `0.6.5`).
 3. Arahan `uv run scripts/serve_mkdocs.py --build-only` dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (`docs/`, `manual/`, `openwiki/`).
 4. Artifak `html/` dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.
 

@@ -2200,14 +2200,14 @@ Buka pelayar web di <code>http://localhost:8080</code>.</p>
 <p>Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions di <code>.github/workflows/static.yml</code> untuk menerbitkan laman web statik secara terus ke GitHub Pages:</p>
 <h3 id="a-punca-sasaran-penyelesaian-ralat-404">A. Punca Sasaran &amp; Penyelesaian Ralat 404<a class="headerlink" href="#a-punca-sasaran-penyelesaian-ralat-404" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Punyi Akses (Root Document):</strong> GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori <code>html/</code> (bukan direktori punca repositori <code>.</code>).</li>
+<li><strong>Direktori Punca (Document Root):</strong> GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori <code>html/</code> (bukan direktori punca repositori <code>.</code>).</li>
 <li><strong>Standard URL Relatif:</strong> Oleh sebab <code>use_directory_urls: false</code> dikonfigurasikan dalam <code>mkdocs.yml</code>, semua pautan dijanakan sebagai pautan relatif (contohnya <code>docs/tutorials/index.html</code>). Ini memastikan laman web berfungsi dengan sempurna di mana-mana pelantar sama ada laluan subdomain GitHub Pages (contohnya <code>https://username.github.io/repo-name/</code>), domain tersuai, atau pelayan tempatan.</li>
 <li><strong>Fail <code>.nojekyll</code>:</strong> Fail <code>.nojekyll</code> dijanakan secara automatik di dalam <code>html/</code> bagi menghalang GitHub Pages daripada memproses semula aset dengan enjin Jekyll.</li>
 </ul>
 <h3 id="b-kemas-kini-automatik-pada-setiap-push">B. Kemas Kini Automatik pada Setiap <em>Push</em><a class="headerlink" href="#b-kemas-kini-automatik-pada-setiap-push" title="Permanent link">&para;</a></h3>
 <p>Setiap kali perubahan atau komit baharu ditolak (<em>push</em>) ke cawangan <code>main</code>:
-1. GitHub Actions melancarkan alur kerja <code>.github/workflows/static.yml</code>.
-2. Persekitaran Python &amp; UV disiapkan menggunakan <code>astral-sh/setup-uv@v5</code>.
+1. GitHub Actions melancarkan alur kerja <code>.github/workflows/static.yml</code> (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
+2. Persekitaran Python &amp; UV disiapkan menggunakan <code>astral-sh/setup-uv@f94383a0937a0cbf73cf3ea5a6c965610f135bdf</code> (dengan versi UV khusus <code>0.6.5</code>).
 3. Arahan <code>uv run scripts/serve_mkdocs.py --build-only</code> dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (<code>docs/</code>, <code>manual/</code>, <code>openwiki/</code>).
 4. Artifak <code>html/</code> dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.</p>
 <hr />
