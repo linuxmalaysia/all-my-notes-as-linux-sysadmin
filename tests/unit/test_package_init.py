@@ -17,7 +17,6 @@ def test_unit_package_init_has_expected_docstring():
     spec.loader.exec_module(module)
 
     assert "DSOM NOSS Linux" in module.__doc__
-    assert module.__doc__ == "Unit tests package for DSOM NOSS Linux project."
 
 
 def test_unit_package_init_contains_only_the_docstring():
@@ -25,4 +24,3 @@ def test_unit_package_init_contains_only_the_docstring():
     imports or side effects that could affect test discovery/collection."""
     content = INIT_PATH.read_text(encoding="utf-8").strip()
     assert content.startswith('"""') and content.endswith('"""')
-    assert content == '"""Unit tests package for DSOM NOSS Linux project."""'

@@ -31,26 +31,26 @@ def test_sitemaps_consistency():
     sitemap_xml_paths = ["docs/sitemap.xml", "html/sitemap.xml"]
 
     for path in sitemap_xml_paths:
-        if os.path.exists(path):
-            with open(path, "r", encoding="utf-8", errors="ignore") as f:
-                content = f.read()
+        assert os.path.exists(path), f"Fail sitemap tidak wujud: {path}"
+        with open(path, "r", encoding="utf-8", errors="ignore") as f:
+            content = f.read()
 
-            # Sahkan kandungan asal tidak mengandungi aksara kawalan tidak sah
-            invalid_ctrls = re.findall(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", content)
-            assert not invalid_ctrls, f"Fail sitemap {path} mengandungi aksara kawalan tidak sah: {invalid_ctrls}"
+        # Sahkan kandungan asal tidak mengandungi aksara kawalan tidak sah
+        invalid_ctrls = re.findall(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", content)
+        assert not invalid_ctrls, f"Fail sitemap {path} mengandungi aksara kawalan tidak sah: {invalid_ctrls}"
 
-            root = ET.fromstring(content)
-            assert root.tag.endswith("urlset") or root.tag == "urlset", f"Elemen akar Sitemap {path} mestilah 'urlset'."
+        root = ET.fromstring(content)
+        assert root.tag.endswith("urlset") or root.tag == "urlset", f"Elemen akar Sitemap {path} mestilah 'urlset'."
 
-            locs = [elem.text for elem in root.iter() if elem.tag.endswith("loc") and elem.text]
-            if path == "docs/sitemap.xml":
-                assert len(locs) > 0, f"Sitemap {path} tidak mengandungi elemen <loc> yang sah."
+        locs = [elem.text for elem in root.iter() if elem.tag.endswith("loc") and elem.text]
+        if path == "docs/sitemap.xml":
+            assert len(locs) > 0, f"Sitemap {path} tidak mengandungi elemen <loc> yang sah."
 
     sitemap_txt_path = "html/docs/sitemap.txt"
-    if os.path.exists(sitemap_txt_path):
-        with open(sitemap_txt_path, "r", encoding="utf-8") as f:
-            lines = [line.strip() for line in f if line.strip()]
-        assert len(lines) > 0, f"Fail sitemap txt {sitemap_txt_path} adalah kosong."
+    assert os.path.exists(sitemap_txt_path), f"Fail sitemap txt tidak wujud: {sitemap_txt_path}"
+    with open(sitemap_txt_path, "r", encoding="utf-8") as f:
+        lines = [line.strip() for line in f if line.strip()]
+    assert len(lines) > 0, f"Fail sitemap txt {sitemap_txt_path} adalah kosong."
 
 
 def test_context7_configuration():

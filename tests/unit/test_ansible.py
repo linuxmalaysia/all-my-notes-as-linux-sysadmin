@@ -1,9 +1,8 @@
-"""Unit tests for tests/unit/ansible.py (Ansible playbook compliance validators).
+"""Ujian unit untuk tests/unit/ansible.py (pengesah pematuhan buku main Ansible).
 
-Loads the module directly from disk (bypassing normal package import) so that
-these tests remain independent of how pytest resolves the 'tests.unit.ansible'
-module path, and so the module name never collides with any third-party
-'ansible' package that might be installed.
+Memuatkan modul terus dari cakera supaya ujian ini kekal bebas daripada
+penyelesaian laluan modul pytest, dan nama modul tidak berlanggar dengan
+pakej 'ansible' pihak ketiga.
 """
 
 import importlib.util
@@ -25,14 +24,13 @@ def _load_ansible_module():
 
 ansible_mod = _load_ansible_module()
 
-pytestmark = pytest.mark.skipif(ansible_mod.yaml is None, reason="PyYAML not installed")
+pytestmark = pytest.mark.skipif(ansible_mod.yaml is None, reason="PyYAML tidak dipasang")
 
 
 @pytest.fixture(autouse=True)
 def _disable_ansible_playbook_binary(monkeypatch):
-    """Force the optional 'ansible-playbook --syntax-check' subprocess branch to
-    be skipped, so these unit tests stay deterministic regardless of whether the
-    ansible-playbook binary happens to be installed on the host."""
+    """Memaksa cawangan subproses 'ansible-playbook --syntax-check' dilangkau,
+    supaya ujian unit kekal deterministik tanpa bergantung pada binari ansible-playbook."""
     monkeypatch.setattr(shutil, "which", lambda _cmd: None)
 
 
@@ -89,15 +87,15 @@ def test_ansible_playbook_compliance_accepts_import_playbook_directive(tmp_path)
     ansible_mod.test_ansible_playbook_compliance(str(playbook))
 
 
-def test_ansible_playbook_compliance_accepts_include_playbook_directive(tmp_path):
+def test_ansible_playbook_compliance_rejects_include_playbook_directive(tmp_path):
     playbook = tmp_path / "include.yml"
     playbook.write_text("- include_playbook: other.yml\n", encoding="utf-8")
-    ansible_mod.test_ansible_playbook_compliance(str(playbook))
+    with pytest.raises(AssertionError, match=r"(hosts|import_playbook)"):
+        ansible_mod.test_ansible_playbook_compliance(str(playbook))
 
 
 def test_ansible_playbook_compliance_rejects_missing_file():
     with pytest.raises(AssertionError, match=r"(does not exist|tidak wujud)"):
-    with pytest.raises(AssertionError, match="does not exist"):
         ansible_mod.test_ansible_playbook_compliance("does/not/exist.yml")
 
 
@@ -105,7 +103,6 @@ def test_ansible_playbook_compliance_rejects_empty_yaml(tmp_path):
     playbook = tmp_path / "empty.yml"
     playbook.write_text("", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(empty or invalid YAML|kosong atau YAML tidak sah)"):
-    with pytest.raises(AssertionError, match="empty or invalid YAML"):
         ansible_mod.test_ansible_playbook_compliance(str(playbook))
 
 
@@ -113,7 +110,6 @@ def test_ansible_playbook_compliance_rejects_non_list_top_level(tmp_path):
     playbook = tmp_path / "dict.yml"
     playbook.write_text("hosts: all\ntasks: []\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(top-level YAML list|senarai play YAML)"):
-    with pytest.raises(AssertionError, match="top-level YAML list"):
         ansible_mod.test_ansible_playbook_compliance(str(playbook))
 
 
@@ -132,14 +128,10 @@ def test_ansible_playbook_compliance_rejects_non_dict_play_item(tmp_path):
     playbook = tmp_path / "list_of_strings.yml"
     playbook.write_text("- just_a_string\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(must be a dictionary|kamus \(dictionary\))"):
-    with pytest.raises(AssertionError, match="must be a dictionary"):
         ansible_mod.test_ansible_playbook_compliance(str(playbook))
 
 
 def test_get_playbook_files_helper_is_used_by_the_parametrized_test_signature():
-    """Sanity check that the module wires get_playbook_files() into the
-    parametrized test via pytest.mark.parametrize, as opposed to some other
-    unrelated fixture/collection mechanism."""
+    """Semakan kewarasan bahawa fungsi get_playbook_files() disambung dengan betul."""
     assert callable(ansible_mod.get_playbook_files)
-    assert callable(ansible_mod.test_ansible_playbook_compliance)
     assert callable(ansible_mod.test_ansible_playbook_compliance)

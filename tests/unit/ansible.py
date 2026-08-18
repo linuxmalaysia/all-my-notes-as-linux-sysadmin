@@ -46,9 +46,9 @@ def test_ansible_playbook_compliance(filepath):
 
     for item in data:
         assert isinstance(item, dict), f"Item play dalam {filepath} mestilah kamus (dictionary)."
-        has_hosts_or_import = "hosts" in item or "import_playbook" in item or "include_playbook" in item
+        has_hosts_or_import = "hosts" in item or "import_playbook" in item
         assert has_hosts_or_import, (
-            f"Item buku main dalam {filepath} mesti menetapkan 'hosts', 'import_playbook', atau 'include_playbook'."
+            f"Item buku main dalam {filepath} mesti menetapkan 'hosts' atau 'import_playbook'."
         )
 
     # Jika binari ansible-playbook dipasang, jalankan semakan sintaks

@@ -1,6 +1,5 @@
-"""Additional boundary/negative-case unit tests for scripts/llms_to_xml.py and
-scripts/generate_llms_txt.py, complementing the happy-path checks already
-exercised by tests/unit/llms.py.
+"""Ujian unit tambahan untuk kes sempadan/negatif bagi scripts/llms_to_xml.py dan
+scripts/generate_llms_txt.py.
 """
 
 import importlib.util
@@ -13,7 +12,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _import_script(module_name: str, relative_path: str):
-    """Helper to dynamically import scripts outside the python package path."""
+    """Pembantu untuk mengimport skrip di luar laluan pakej python secara dinamik."""
     script_path = REPO_ROOT / relative_path
     spec = importlib.util.spec_from_file_location(module_name, script_path)
     module = importlib.util.module_from_spec(spec)
@@ -50,8 +49,7 @@ def test_parse_llms_txt_ignores_links_to_non_markdown_targets(tmp_path, llms_to_
 
 
 def test_parse_llms_txt_captures_full_urls_ending_in_md(tmp_path, llms_to_xml):
-    """The link_pattern regex only requires the target to end in '.md'; it does
-    not distinguish relative repo paths from absolute URLs."""
+    """Corak pautan regex hanya memerlukan sasaran berakhir dengan '.md'."""
     llms_txt = tmp_path / "llms.txt"
     llms_txt.write_text("- [External](https://example.org/readme.md)\n", encoding="utf-8")
 
@@ -68,9 +66,7 @@ def test_parse_llms_txt_returns_empty_list_for_file_with_no_links(tmp_path, llms
 
 
 def test_parse_llms_txt_only_captures_first_link_per_line(tmp_path, llms_to_xml):
-    """parse_llms_txt uses re.search (not findall) per line, so if a single line
-    contains two markdown links only the first is captured. This locks in that
-    documented behaviour as a regression guard."""
+    """parse_llms_txt menggunakan re.search setiap baris."""
     llms_txt = tmp_path / "llms.txt"
     llms_txt.write_text(
         "- [First](docs/first.md) and also [Second](docs/second.md)\n",
@@ -83,10 +79,7 @@ def test_parse_llms_txt_only_captures_first_link_per_line(tmp_path, llms_to_xml)
 
 
 def test_parse_llms_txt_strips_leading_whitespace_inside_link_target(tmp_path, llms_to_xml):
-    """The captured path is passed through .strip(), so leading whitespace
-    immediately inside the parentheses (before the ".md" suffix) is removed.
-    Note the closing ')' must immediately follow the ".md" suffix for the
-    regex to match at all."""
+    """Laluan yang ditangkap dibersihkan dengan .strip()."""
     llms_txt = tmp_path / "llms.txt"
     llms_txt.write_text("- [Padded](  docs/padded.md)\n", encoding="utf-8")
 
@@ -130,7 +123,7 @@ def test_generate_xml_context_escapes_special_xml_characters(tmp_path, llms_to_x
     assert "&lt;script&gt;" in raw_output
     assert "&amp;" in raw_output
 
-    # The escaped output must still be well-formed XML.
+    # Output terlepas mesti kekal XML yang sah.
     ET.parse(out_xml)
 
 
@@ -149,9 +142,7 @@ def test_generate_xml_context_with_empty_file_list_produces_empty_context(tmp_pa
 # ---------------------------------------------------------------------------
 
 def test_get_markdown_title_returns_filename_fallback_for_missing_file(tmp_path, generate_llms_txt):
-    """Exercises the bare 'except' fallback branch (distinct from the 'no H1
-    heading present' branch already covered elsewhere): a file that cannot be
-    opened at all must still fall back to the filename."""
+    """Pengujian cawangan 'except' sandaran."""
     missing_path = tmp_path / "missing.md"
 
     title = generate_llms_txt.get_markdown_title(missing_path)

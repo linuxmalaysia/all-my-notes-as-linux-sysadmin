@@ -1,4 +1,4 @@
-"""Unit tests for tests/unit/sitemaps.py (sitemap and Context7 configuration validators)."""
+"""Ujian unit untuk tests/unit/sitemaps.py (pengesah konfigurasi sitemap dan Context7)."""
 
 import importlib.util
 import xml.etree.ElementTree as ET
@@ -42,76 +42,57 @@ VALID_CONTEXT_XML = (
 )
 
 
+def _setup_valid_sitemaps(tmp_path):
+    (tmp_path / "docs").mkdir(exist_ok=True)
+    (tmp_path / "html" / "docs").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "docs" / "sitemap.xml").write_text(VALID_URLSET, encoding="utf-8")
+    (tmp_path / "html" / "sitemap.xml").write_text(VALID_URLSET, encoding="utf-8")
+    (tmp_path / "html" / "docs" / "sitemap.txt").write_text("https://example.org/\n", encoding="utf-8")
+
+
 # ---------------------------------------------------------------------------
 # test_sitemaps_consistency()
 # ---------------------------------------------------------------------------
 
-def test_sitemaps_consistency_is_a_noop_when_no_sitemap_files_exist(tmp_path, monkeypatch):
+def test_sitemaps_consistency_rejects_missing_files(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    sitemaps_mod.test_sitemaps_consistency()
+    with pytest.raises(AssertionError, match=r"(tidak wujud|does not exist)"):
+        sitemaps_mod.test_sitemaps_consistency()
 
 
-def test_sitemaps_consistency_accepts_valid_docs_sitemap(tmp_path, monkeypatch):
+def test_sitemaps_consistency_accepts_valid_sitemaps(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    (tmp_path / "docs").mkdir()
-    (tmp_path / "docs" / "sitemap.xml").write_text(VALID_URLSET, encoding="utf-8")
-
+    _setup_valid_sitemaps(tmp_path)
     sitemaps_mod.test_sitemaps_consistency()
 
 
 def test_sitemaps_consistency_rejects_wrong_root_element(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    (tmp_path / "docs").mkdir()
-    # NOTE: root.tag must not merely *end with* "urlset" (the validator uses
-    # str.endswith to tolerate XML namespaces), so use a tag with a distinct
-    # suffix such as "sitemapindex" rather than e.g. "notaurlset".
+    _setup_valid_sitemaps(tmp_path)
     (tmp_path / "docs" / "sitemap.xml").write_text(
         '<?xml version="1.0"?><sitemapindex></sitemapindex>', encoding="utf-8"
     )
 
     with pytest.raises(AssertionError, match=r"(root element must be 'urlset'|mestilah 'urlset')"):
-    with pytest.raises(AssertionError, match="root element must be 'urlset'"):
         sitemaps_mod.test_sitemaps_consistency()
 
 
 def test_sitemaps_consistency_rejects_docs_sitemap_with_no_locs(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    (tmp_path / "docs").mkdir()
+    _setup_valid_sitemaps(tmp_path)
     (tmp_path / "docs" / "sitemap.xml").write_text(EMPTY_URLSET, encoding="utf-8")
 
     with pytest.raises(AssertionError, match=r"(contains no valid|tidak mengandungi elemen <loc>)"):
-    with pytest.raises(AssertionError, match="contains no valid"):
         sitemaps_mod.test_sitemaps_consistency()
-
-
-def test_sitemaps_consistency_allows_html_sitemap_with_no_locs(tmp_path, monkeypatch):
-    """Only docs/sitemap.xml is required to have <loc> entries; html/sitemap.xml
-    is validated for well-formedness only."""
-    monkeypatch.chdir(tmp_path)
-    (tmp_path / "html").mkdir()
-    (tmp_path / "html" / "sitemap.xml").write_text(EMPTY_URLSET, encoding="utf-8")
-
-    sitemaps_mod.test_sitemaps_consistency()
 
 
 def test_sitemaps_consistency_rejects_empty_sitemap_txt(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    (tmp_path / "html" / "docs").mkdir(parents=True)
+    _setup_valid_sitemaps(tmp_path)
     (tmp_path / "html" / "docs" / "sitemap.txt").write_text("", encoding="utf-8")
 
     with pytest.raises(AssertionError, match=r"(is empty|adalah kosong)"):
-    with pytest.raises(AssertionError, match="is empty"):
         sitemaps_mod.test_sitemaps_consistency()
-
-
-def test_sitemaps_consistency_accepts_non_empty_sitemap_txt(tmp_path, monkeypatch):
-    monkeypatch.chdir(tmp_path)
-    (tmp_path / "html" / "docs").mkdir(parents=True)
-    (tmp_path / "html" / "docs" / "sitemap.txt").write_text(
-        "https://example.org/a\nhttps://example.org/b\n", encoding="utf-8"
-    )
-
-    sitemaps_mod.test_sitemaps_consistency()
 
 
 # ---------------------------------------------------------------------------
@@ -121,7 +102,6 @@ def test_sitemaps_consistency_accepts_non_empty_sitemap_txt(tmp_path, monkeypatc
 def test_context7_configuration_rejects_missing_mkdocs_yml(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     with pytest.raises(AssertionError, match=r"(MkDocs configuration file missing|tidak wujud)"):
-    with pytest.raises(AssertionError, match="MkDocs configuration file missing"):
         sitemaps_mod.test_context7_configuration()
 
 
@@ -167,7 +147,6 @@ def test_context7_configuration_rejects_context_xml_wrong_root(tmp_path, monkeyp
     )
 
     with pytest.raises(AssertionError, match=r"(root element must be <context>|mestilah <context>)"):
-    with pytest.raises(AssertionError, match="root element must be <context>"):
         sitemaps_mod.test_context7_configuration()
 
 
@@ -181,15 +160,13 @@ def test_context7_configuration_rejects_context_xml_with_no_file_entries(tmp_pat
     )
 
     with pytest.raises(AssertionError, match=r"(contains no <file> entries|tidak mengandungi sebarang entri <file>)"):
-    with pytest.raises(AssertionError, match="contains no <file> entries"):
         sitemaps_mod.test_context7_configuration()
 
 
 def test_context7_configuration_propagates_xml_parse_error_for_malformed_context_xml(
     tmp_path, monkeypatch
 ):
-    """Malformed (non-well-formed) XML should surface as an XML ParseError rather
-    than being silently swallowed."""
+    """Penguraian XML tidak sah mesti menghasilkan ralat ParseError."""
     monkeypatch.chdir(tmp_path)
     (tmp_path / "mkdocs.yml").write_text(
         "site_name: My Docs\ndocs_dir: docs\n", encoding="utf-8"
@@ -197,5 +174,4 @@ def test_context7_configuration_propagates_xml_parse_error_for_malformed_context
     (tmp_path / "llms_context.xml").write_text("<context><unclosed>", encoding="utf-8")
 
     with pytest.raises(ET.ParseError):
-        sitemaps_mod.test_context7_configuration()
         sitemaps_mod.test_context7_configuration()

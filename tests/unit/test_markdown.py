@@ -1,4 +1,4 @@
-"""Unit tests for tests/unit/markdown.py (OKF/DSOM markdown compliance validators)."""
+"""Ujian unit untuk tests/unit/markdown.py (pengesah pematuhan markdown OKF/DSOM)."""
 
 import importlib.util
 from pathlib import Path
@@ -92,7 +92,6 @@ def test_okf_compliance_accepts_dsom_governance_and_name(tmp_path):
 
 def test_okf_compliance_rejects_missing_file():
     with pytest.raises(AssertionError, match=r"(Markdown file missing|tidak wujud)"):
-    with pytest.raises(AssertionError, match="Markdown file missing"):
         markdown_mod.test_markdown_okf_compliance("no/such/doc.md")
 
 
@@ -100,7 +99,6 @@ def test_okf_compliance_rejects_file_without_leading_frontmatter(tmp_path):
     md = tmp_path / "doc.md"
     md.write_text("# Just a heading\n\nNo frontmatter here.\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(must start with YAML frontmatter|mesti bermula dengan 'frontmatter')"):
-    with pytest.raises(AssertionError, match="must start with YAML frontmatter"):
         markdown_mod.test_markdown_okf_compliance(str(md))
 
 
@@ -108,7 +106,6 @@ def test_okf_compliance_rejects_malformed_frontmatter_closure(tmp_path):
     md = tmp_path / "doc.md"
     md.write_text("---\nokf_version: 0.1\ntitle: X\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(malformed YAML closure|penutup YAML '---' yang tidak sah)"):
-    with pytest.raises(AssertionError, match="malformed YAML closure"):
         markdown_mod.test_markdown_okf_compliance(str(md))
 
 
@@ -116,7 +113,6 @@ def test_okf_compliance_rejects_missing_okf_or_dsom_keys(tmp_path):
     md = tmp_path / "doc.md"
     md.write_text("---\ntitle: X\n---\n\nBody.\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(OKF or DSOM|OKF atau DSOM)"):
-    with pytest.raises(AssertionError, match="OKF or DSOM"):
         markdown_mod.test_markdown_okf_compliance(str(md))
 
 
@@ -134,35 +130,32 @@ def test_okf_compliance_rejects_missing_title_or_name(tmp_path):
 
 def test_governance_footer_accepts_author_and_cc_license(tmp_path):
     md = tmp_path / "doc.md"
-    md.write_text("Body.\n\nAuthor: Harisfazillah Jamel — CC BY-SA 4.0\n", encoding="utf-8")
+    md.write_text("Body.\n\nAuthor: Harisfazillah Jamel — CC BY-SA 4.0\n[Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)\n", encoding="utf-8")
     markdown_mod.test_markdown_governance_footers(str(md))
 
 
 def test_governance_footer_accepts_linuxmalaysia_and_gnu_license(tmp_path):
     md = tmp_path / "doc.md"
-    md.write_text("Body.\n\n(c) LinuxMalaysia — GNU license\n", encoding="utf-8")
+    md.write_text("Body.\n\n(c) LinuxMalaysia — GNU license\n[Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)\n", encoding="utf-8")
     markdown_mod.test_markdown_governance_footers(str(md))
 
 
 def test_governance_footer_rejects_missing_author(tmp_path):
     md = tmp_path / "doc.md"
-    md.write_text("Body.\n\nCC BY-SA 4.0\n", encoding="utf-8")
+    md.write_text("Body.\n\nCC BY-SA 4.0\n[Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(Author attribution|Pengarang dalam pengaki)"):
-    with pytest.raises(AssertionError, match="Author attribution"):
         markdown_mod.test_markdown_governance_footers(str(md))
 
 
 def test_governance_footer_rejects_missing_license(tmp_path):
     md = tmp_path / "doc.md"
-    md.write_text("Body.\n\nAuthor: Harisfazillah Jamel\n", encoding="utf-8")
+    md.write_text("Body.\n\nAuthor: Harisfazillah Jamel\n[Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(Licensing standard|Pelesenan dalam pengaki)"):
-    with pytest.raises(AssertionError, match="Licensing standard"):
         markdown_mod.test_markdown_governance_footers(str(md))
 
 
 def test_governance_footer_rejects_missing_file():
     with pytest.raises(AssertionError, match=r"(Markdown file missing|tidak wujud)"):
-    with pytest.raises(AssertionError, match="Markdown file missing"):
         markdown_mod.test_markdown_governance_footers("no/such/doc.md")
 
 
@@ -185,40 +178,20 @@ def test_uk_english_spellings_passes_when_all_terms_present(tmp_path, monkeypatc
     markdown_mod.test_uk_english_documentation_spellings(doc)
 
 
-def test_uk_english_spellings_fails_when_a_term_is_missing(tmp_path, monkeypatch):
-    monkeypatch.setattr(markdown_mod, "get_markdown_files", lambda: [doc])
-
-    markdown_mod.test_uk_english_documentation_spellings()
-
-
-def test_uk_english_spellings_fails_when_a_term_is_missing(tmp_path, monkeypatch):
-    # Missing 'behaviour' from the required UK-English term set.
+def test_uk_english_spellings_fails_when_disallowed_term_present(tmp_path):
     doc = _write_doc(
         tmp_path,
         "doc.md",
-        "This covers virtualisation, optimisation, organisation and licence.\n",
+        "Prosa mengandungi e.g. istilah yang tidak dibenarkan.\n",
     )
-    markdown_mod.test_uk_english_documentation_spellings(doc)
-    monkeypatch.setattr(markdown_mod, "get_markdown_files", lambda: [doc])
-
-    with pytest.raises(AssertionError, match="behaviour"):
-        markdown_mod.test_uk_english_documentation_spellings()
+    with pytest.raises(AssertionError, match=r"(e\.g\.|Istilah tidak dibenarkan)"):
+        markdown_mod.test_uk_english_documentation_spellings(doc)
 
 
-def test_uk_english_spellings_fails_when_no_markdown_files_found(monkeypatch):
-    monkeypatch.setattr(markdown_mod, "get_markdown_files", lambda: [])
-
-    with pytest.raises(AssertionError, match="No markdown files discovered"):
-        markdown_mod.test_uk_english_documentation_spellings()
-
-
-def test_uk_english_spellings_is_case_insensitive(tmp_path, monkeypatch):
+def test_uk_english_spellings_is_case_insensitive(tmp_path):
     doc = _write_doc(
         tmp_path,
         "doc.md",
         "VIRTUALISATION, Optimisation, ORGANISATION, Licence, BEHAVIOUR.\n",
     )
     markdown_mod.test_uk_english_documentation_spellings(doc)
-    monkeypatch.setattr(markdown_mod, "get_markdown_files", lambda: [doc])
-
-    markdown_mod.test_uk_english_documentation_spellings()

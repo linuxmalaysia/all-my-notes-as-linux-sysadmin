@@ -1,4 +1,4 @@
-"""Unit tests for tests/unit/containers.py (container file security/structure validators)."""
+"""Ujian unit untuk tests/unit/containers.py (pengesah keselamatan dan struktur fail kontena)."""
 
 import importlib.util
 from pathlib import Path
@@ -81,7 +81,6 @@ def test_containerfile_compliance_accepts_valid_dockerfile(tmp_path):
 
 def test_containerfile_compliance_rejects_missing_file():
     with pytest.raises(AssertionError, match=r"(Container file missing|tidak wujud)"):
-    with pytest.raises(AssertionError, match="Container file missing"):
         containers_mod.test_containerfile_security_and_structure("no/such/Dockerfile")
 
 
@@ -89,7 +88,6 @@ def test_containerfile_compliance_rejects_empty_dockerfile(tmp_path):
     dockerfile = tmp_path / "Dockerfile"
     dockerfile.write_text("", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(is empty|adalah kosong)"):
-    with pytest.raises(AssertionError, match="is empty"):
         containers_mod.test_containerfile_security_and_structure(str(dockerfile))
 
 
@@ -97,7 +95,13 @@ def test_containerfile_compliance_rejects_missing_from_instruction(tmp_path):
     dockerfile = tmp_path / "Dockerfile"
     dockerfile.write_text("RUN echo hello\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(FROM instruction|arahan FROM)"):
-    with pytest.raises(AssertionError, match="FROM instruction"):
+        containers_mod.test_containerfile_security_and_structure(str(dockerfile))
+
+
+def test_containerfile_compliance_rejects_fromm_instruction(tmp_path):
+    dockerfile = tmp_path / "Dockerfile"
+    dockerfile.write_text("FROMM python:3.12-slim\n", encoding="utf-8")
+    with pytest.raises(AssertionError, match=r"(FROM instruction|arahan FROM)"):
         containers_mod.test_containerfile_security_and_structure(str(dockerfile))
 
 
@@ -111,13 +115,26 @@ def test_containerfile_compliance_rejects_chmod_777(tmp_path):
 def test_containerfile_compliance_rejects_latest_tag(tmp_path):
     dockerfile = tmp_path / "Dockerfile"
     dockerfile.write_text("FROM ubuntu:latest\n", encoding="utf-8")
-    with pytest.raises(AssertionError, match="latest"):
+    with pytest.raises(AssertionError, match=r"(latest|implisit)"):
+        containers_mod.test_containerfile_security_and_structure(str(dockerfile))
+
+
+def test_containerfile_compliance_rejects_registry_port_without_tag(tmp_path):
+    dockerfile = tmp_path / "Dockerfile"
+    dockerfile.write_text("FROM localhost:5000/myimage\n", encoding="utf-8")
+    with pytest.raises(AssertionError, match=r"(latest|implisit)"):
         containers_mod.test_containerfile_security_and_structure(str(dockerfile))
 
 
 def test_containerfile_compliance_accepts_pinned_from_tag(tmp_path):
     dockerfile = tmp_path / "Containerfile"
     dockerfile.write_text("FROM registry.access.redhat.com/ubi9:9.3\n", encoding="utf-8")
+    containers_mod.test_containerfile_security_and_structure(str(dockerfile))
+
+
+def test_containerfile_compliance_accepts_registry_port_with_tag(tmp_path):
+    dockerfile = tmp_path / "Containerfile"
+    dockerfile.write_text("FROM localhost:5000/myimage:v1.0\n", encoding="utf-8")
     containers_mod.test_containerfile_security_and_structure(str(dockerfile))
 
 
@@ -141,7 +158,6 @@ def test_quadlet_compliance_rejects_empty_file(tmp_path):
     quadlet = tmp_path / "app.container"
     quadlet.write_text("   \n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(is empty|adalah kosong)"):
-    with pytest.raises(AssertionError, match="is empty"):
         containers_mod.test_containerfile_security_and_structure(str(quadlet))
 
 
@@ -164,7 +180,7 @@ def test_quadlet_compliance_rejects_container_unit_missing_image(tmp_path):
 # test_containerfile_security_and_structure() - YAML manifests (compose / kube)
 # ---------------------------------------------------------------------------
 
-@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML not installed")
+@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML tidak dipasang")
 def test_yaml_manifest_compliance_accepts_valid_docker_compose(tmp_path):
     manifest = tmp_path / "docker-compose.yml"
     manifest.write_text(
@@ -174,36 +190,40 @@ def test_yaml_manifest_compliance_accepts_valid_docker_compose(tmp_path):
     containers_mod.test_containerfile_security_and_structure(str(manifest))
 
 
-@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML not installed")
+@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML tidak dipasang")
 def test_yaml_manifest_compliance_rejects_compose_missing_services(tmp_path):
     manifest = tmp_path / "docker-compose.yml"
     manifest.write_text("version: '3'\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(must define 'services'|mesti mentakrifkan 'services')"):
-    with pytest.raises(AssertionError, match="must define 'services'"):
         containers_mod.test_containerfile_security_and_structure(str(manifest))
 
 
-@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML not installed")
+@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML tidak dipasang")
+def test_yaml_manifest_compliance_rejects_arbitrary_yaml_mapping(tmp_path):
+    manifest = tmp_path / "docker-compose.yml"
+    manifest.write_text("foo: bar\n", encoding="utf-8")
+    with pytest.raises(AssertionError, match=r"(services|kind)"):
+        containers_mod.test_containerfile_security_and_structure(str(manifest))
+
+
+@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML tidak dipasang")
 def test_yaml_manifest_compliance_accepts_valid_kube_pod(tmp_path):
     manifest = tmp_path / "pod.yml"
     manifest.write_text("kind: Pod\napiVersion: v1\n", encoding="utf-8")
     containers_mod.test_containerfile_security_and_structure(str(manifest))
 
 
-@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML not installed")
+@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML tidak dipasang")
 def test_yaml_manifest_compliance_rejects_invalid_kube_kind(tmp_path):
     manifest = tmp_path / "configmap.yml"
     manifest.write_text("kind: ConfigMap\napiVersion: v1\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(invalid kind|jenis tidak sah)"):
-    with pytest.raises(AssertionError, match="invalid kind"):
         containers_mod.test_containerfile_security_and_structure(str(manifest))
 
 
-@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML not installed")
+@pytest.mark.skipif(containers_mod.yaml is None, reason="PyYAML tidak dipasang")
 def test_yaml_manifest_compliance_rejects_empty_manifest(tmp_path):
     manifest = tmp_path / "empty.yml"
     manifest.write_text("", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(empty or invalid YAML|kosong atau YAML tidak sah)"):
-        containers_mod.test_containerfile_security_and_structure(str(manifest))
-    with pytest.raises(AssertionError, match="empty or invalid YAML"):
         containers_mod.test_containerfile_security_and_structure(str(manifest))
