@@ -27,6 +27,27 @@ Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca 
 
 ---
 
+## 📖 Di Mana Mahu Bermula Untuk Manual Linux?
+
+Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempelajari silibus amali Linux, berikut adalah panduan titik mula (*entry points*) untuk manual Linux:
+
+1. **Pusat Rujukan Utama Manual**:
+   - [`manual/index.md`](manual/index.md) — **Pusat Rujukan Manual NOSS Linux Malaysia**. Ini adalah indeks induk yang memetakan keseluruhan 6 Unit Kompetensi (CU01 hingga CU06) dengan Kerangka Diátaxis.
+
+2. **Laluan Mengikut Tahap & Keperluan**:
+   - 🔰 **Pemula & Pengguna Baru Desktop**:
+     - Mula dengan [**CU01: Persediaan Sistem Komputer & Desktop Linux**](manual/cu01/index.md).
+     - Rujuk juga panduan onboarding amali di [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md).
+   - 🖥️ **Pentadbir Sistem & Infrastruktur Pelayan**:
+     - **Storan & Pemayaan**: Rujuk [**CU02: Pengurusan Storan & Hipervisor Pemayaan**](manual/cu02/index.md).
+     - **Pelayan & Servis**: Rujuk [**CU03: Pentadbiran & Perkhidmatan Pelayan Linux**](manual/cu03/index.md).
+   - ⚙️ **Automasi, Keselamatan & Khidmat Sokongan**:
+     - **Sandaran & Automasi**: Rujuk [**CU04: Automasi, Sandaran & Pemulihan Sistem**](manual/cu04/index.md).
+     - **Keselamatan & Hardening**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Hardening**](manual/cu05/index.md).
+     - **Troubleshooting & Log**: Rujuk [**CU06: Sokongan Pengguna & Troubleshooting**](manual/cu06/index.md).
+
+---
+
 ## 🌟 Kenapa Linux NOSS & DSOM?
 
 - **Penyusunan Sistematik (NOSS)**: Pengetahuan Linux dipetakan terus kepada unit-unit kompetensi piawai industri dalam `manual/`.
