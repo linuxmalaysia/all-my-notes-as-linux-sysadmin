@@ -378,11 +378,11 @@ Objektif utama repositori ini adalah untuk **memanfaatkan ilmu Sistem Operasi Li
 ---
 okf_version: 0.1
 type: documentation
-title: "START HERE: Linux NOSS Malaysia & DSOM Entry Points"
+title: "START HERE: Titik Mula Linux NOSS Malaysia & DSOM"
 topics: ["onboarding", "entry-points", "dsom", "sovereign", "linux", "noss", "malaysia"]
-description: "The primary onboarding document for human operators and AI agents adopting the DSOM framework into the Linux NOSS Malaysia project."
+description: "Dokumen panduan permulaan utama untuk pengendali manusia dan ejen AI yang menggunakan kerangka DSOM dalam projek Linux NOSS Malaysia."
 ---
-# START HERE: Linux NOSS Malaysia & DSOM Entry Points
+# START HERE: Titik Mula Linux NOSS Malaysia & DSOM
 
 Selamat datang ke **Sovereign Markdown Palace: Pangkalan Pengetahuan Linux NOSS Malaysia** menggunakan kerangka **Deep State of Mind (DSOM)**.
 
@@ -390,7 +390,7 @@ Sistem ini direka bentuk sebagai pangkalan pengetahuan Linux tidak rasmi yang be
 
 ---
 
-## 🌐 Entry Points (Titik Masuk)
+## 🌐 Titik Mula (Entry Points)
 
 Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca fail-fail lain:
 
@@ -406,7 +406,7 @@ Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca 
 
 ## 📖 Di Mana Mahu Bermula Untuk Manual Linux?
 
-Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempelajari sukatan pelajaran amali Linux, berikut adalah panduan titik mula (*entry points* / panduan permulaan) untuk manual Linux:
+Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempelajari sukatan pelajaran amali Linux, berikut adalah panduan titik mula untuk manual Linux:
 
 1. **Pusat Rujukan Utama Manual**:
    - [`manual/index.md`](manual/index.md) — **Pusat Rujukan Manual NOSS Linux Malaysia**. Ini adalah indeks induk yang memetakan keseluruhan 6 Unit Kompetensi (CU01 hingga CU06) dengan Kerangka Diátaxis.
@@ -414,14 +414,14 @@ Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempela
 2. **Laluan Mengikut Tahap & Keperluan**:
    - 🔰 **Pemula & Pengguna Baharu Desktop**:
      - Mula dengan [**CU01: Persediaan Sistem Komputer & Desktop Linux**](manual/cu01/index.md).
-     - Rujuk juga panduan permulaan (*onboarding*) amali di [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md).
+     - Rujuk juga panduan permulaan amali di [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md).
    - 🖥️ **Pentadbir Sistem & Infrastruktur Pelayan**:
      - **Storan & Pemayaan**: Rujuk [**CU02: Pengurusan Storan & Hipervisor Pemayaan**](manual/cu02/index.md).
      - **Pelayan & Servis**: Rujuk [**CU03: Pentadbiran & Perkhidmatan Pelayan Linux**](manual/cu03/index.md).
    - ⚙️ **Automasi, Keselamatan & Khidmat Sokongan**:
      - **Sandaran & Automasi**: Rujuk [**CU04: Automasi, Sandaran & Pemulihan Sistem**](manual/cu04/index.md).
-     - **Keselamatan & Pengerasan (*Hardening*)**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Hardening**](manual/cu05/index.md).
-     - **Penyelesaian Masalah (*Troubleshooting*) & Log**: Rujuk [**CU06: Sokongan Pengguna & Troubleshooting**](manual/cu06/index.md).
+     - **Keselamatan & Pengerasan Sistem**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Pengerasan Sistem**](manual/cu05/index.md).
+     - **Penyelesaian Masalah & Log**: Rujuk [**CU06: Sokongan Pengguna & Penyelesaian Masalah**](manual/cu06/index.md).
 
 ---
 
