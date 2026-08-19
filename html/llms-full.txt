@@ -406,22 +406,22 @@ Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca 
 
 ## 📖 Di Mana Mahu Bermula Untuk Manual Linux?
 
-Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempelajari silibus amali Linux, berikut adalah panduan titik mula (*entry points*) untuk manual Linux:
+Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempelajari sukatan pelajaran amali Linux, berikut adalah panduan titik mula (*entry points* / panduan permulaan) untuk manual Linux:
 
 1. **Pusat Rujukan Utama Manual**:
    - [`manual/index.md`](manual/index.md) — **Pusat Rujukan Manual NOSS Linux Malaysia**. Ini adalah indeks induk yang memetakan keseluruhan 6 Unit Kompetensi (CU01 hingga CU06) dengan Kerangka Diátaxis.
 
 2. **Laluan Mengikut Tahap & Keperluan**:
-   - 🔰 **Pemula & Pengguna Baru Desktop**:
+   - 🔰 **Pemula & Pengguna Baharu Desktop**:
      - Mula dengan [**CU01: Persediaan Sistem Komputer & Desktop Linux**](manual/cu01/index.md).
-     - Rujuk juga panduan onboarding amali di [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md).
+     - Rujuk juga panduan permulaan (*onboarding*) amali di [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md).
    - 🖥️ **Pentadbir Sistem & Infrastruktur Pelayan**:
      - **Storan & Pemayaan**: Rujuk [**CU02: Pengurusan Storan & Hipervisor Pemayaan**](manual/cu02/index.md).
      - **Pelayan & Servis**: Rujuk [**CU03: Pentadbiran & Perkhidmatan Pelayan Linux**](manual/cu03/index.md).
    - ⚙️ **Automasi, Keselamatan & Khidmat Sokongan**:
      - **Sandaran & Automasi**: Rujuk [**CU04: Automasi, Sandaran & Pemulihan Sistem**](manual/cu04/index.md).
-     - **Keselamatan & Hardening**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Hardening**](manual/cu05/index.md).
-     - **Troubleshooting & Log**: Rujuk [**CU06: Sokongan Pengguna & Troubleshooting**](manual/cu06/index.md).
+     - **Keselamatan & Pengerasan (*Hardening*)**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Hardening**](manual/cu05/index.md).
+     - **Penyelesaian Masalah (*Troubleshooting*) & Log**: Rujuk [**CU06: Sokongan Pengguna & Troubleshooting**](manual/cu06/index.md).
 
 ---
 
@@ -20706,7 +20706,7 @@ Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions
 
 Setiap kali perubahan atau komit baharu ditolak (*push*) ke cawangan `main`:
 1. GitHub Actions melancarkan alur kerja `.github/workflows/static.yml` (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
-2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@f94383a0937a0cbf73cf3ea5a6c965610f135bdf` (dengan versi UV khusus `0.6.5`).
+2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287` (dengan versi UV khusus `0.6.5`).
 3. Arahan `uv run scripts/serve_mkdocs.py --build-only` dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (`docs/`, `manual/`, `openwiki/`).
 4. Artifak `html/` dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.
 
