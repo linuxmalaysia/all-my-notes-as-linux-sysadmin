@@ -2207,7 +2207,7 @@ Buka pelayar web di <code>http://localhost:8080</code>.</p>
 <h3 id="b-kemas-kini-automatik-pada-setiap-push">B. Kemas Kini Automatik pada Setiap <em>Push</em><a class="headerlink" href="#b-kemas-kini-automatik-pada-setiap-push" title="Permanent link">&para;</a></h3>
 <p>Setiap kali perubahan atau komit baharu ditolak (<em>push</em>) ke cawangan <code>main</code>:
 1. GitHub Actions melancarkan alur kerja <code>.github/workflows/static.yml</code> (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
-2. Persekitaran Python &amp; UV disiapkan menggunakan <code>astral-sh/setup-uv@f94383a0937a0cbf73cf3ea5a6c965610f135bdf</code> (dengan versi UV khusus <code>0.6.5</code>).
+2. Persekitaran Python &amp; UV disiapkan menggunakan <code>astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287</code> (dengan versi UV khusus <code>0.6.5</code>).
 3. Arahan <code>uv run scripts/serve_mkdocs.py --build-only</code> dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (<code>docs/</code>, <code>manual/</code>, <code>openwiki/</code>).
 4. Artifak <code>html/</code> dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.</p>
 <hr />

@@ -8,7 +8,7 @@
 - [Legal Notice & Disclaimer](LEGAL-NOTICE.md)
 - [Notis Hak Cipta & Atribusi Pihak Ketiga (Third-Party Attributions)](NOTICE.md)
 - [Sovereign Markdown Palace: Linux NOSS Malaysia (DSOM)](README.md)
-- [START HERE: Linux NOSS Malaysia & DSOM Entry Points](START-HERE.md)
+- [START HERE: Titik Mula Linux NOSS Malaysia & DSOM](START-HERE.md)
 
 ## Documentation (docs)
 - [How to add skills support to your agent](docs/ADDING-SKILLS-SUPPORT.md)

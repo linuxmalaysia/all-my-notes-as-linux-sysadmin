@@ -370,19 +370,22 @@ Objektif utama repositori ini adalah untuk **memanfaatkan ilmu Sistem Operasi Li
 ---
 okf_version: 0.1
 type: documentation
-title: "START HERE: Linux NOSS Malaysia &amp; DSOM Entry Points"
+title: "START HERE: Titik Mula Linux NOSS Malaysia &amp; DSOM"
 topics: ["onboarding", "entry-points", "dsom", "sovereign", "linux", "noss", "malaysia"]
-description: "The primary onboarding document for human operators and AI agents adopting the DSOM framework into the Linux NOSS Malaysia project."
+description: "Dokumen panduan permulaan utama untuk pengendali manusia dan ejen AI yang menggunakan kerangka DSOM dalam projek Linux NOSS Malaysia."
 ---
-# START HERE: Linux NOSS Malaysia &amp; DSOM Entry Points
+# START HERE: Titik Mula Linux NOSS Malaysia &amp; DSOM
 
 Selamat datang ke **Sovereign Markdown Palace: Pangkalan Pengetahuan Linux NOSS Malaysia** menggunakan kerangka **Deep State of Mind (DSOM)**.
 
-Sistem ini direka bentuk sebagai pangkalan pengetahuan Linux tidak rasmi yang berasaskan *National Occupational Skills Standard (NOSS)* Malaysia. Ia disusun rapi untuk kecekapan AI membaca konteks secara spasial dan modular.
+Sistem ini direka bentuk sebagai pangkalan pengetahuan Linux tidak rasmi yang berasaskan *National Occupational Skills Standard (NOSS)* Malaysia. Ia disusun rapi mengikut kerangka dokumentasi **Diátaxis** untuk kecekapan manusia dan ejen AI membaca konteks secara spasial dan modular.
+
+!!! tip "💡 Falsafah Titik Mula (Prinsip Diátaxis)"
+    **Anda tidak perlu membaca keseluruhan pangkalan pengetahuan ini untuk memahami atau mula menggunakannya secara praktikal.** Malah, kami mengesyorkan agar anda tidak berbuat demikian. Cara terbaik untuk bermula adalah dengan terus mengaplikasikannya — pada satu tugas atau modul amali, sekecil mana sekalipun.
 
 ---
 
-## 🌐 Entry Points (Titik Masuk)
+## 🌐 Titik Mula (Entry Points)
 
 Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca fail-fail lain:
 
@@ -393,6 +396,27 @@ Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca 
 | **Sitemap AI (LLMs)** | [`llms.txt`](llms.txt) - Peta tapak ringkas untuk perangkak AI (AI crawler) luaran. |
 | **Penafian Perundangan** | [`LEGAL-NOTICE.md`](LEGAL-NOTICE.md) - Notis penafian bahawa projek ini adalah tidak rasmi (untuk tujuan pembelajaran sahaja). |
 | **Notis Hak Cipta &amp; Pihak Ketiga** | [`NOTICE.md`](NOTICE.md) - Kredit kepada OpenSkills, DSOM, dan AgentSkills. |
+
+---
+
+## 📖 Di Mana Mahu Bermula Untuk Manual Linux?
+
+Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempelajari sukatan pelajaran amali Linux, berikut adalah panduan titik mula untuk manual Linux:
+
+1. **Pusat Rujukan Utama Manual**:
+   - [`manual/index.md`](manual/index.md) — **Pusat Rujukan Manual NOSS Linux Malaysia**. Ini adalah indeks induk yang memetakan keseluruhan 6 Unit Kompetensi (CU01 hingga CU06) dengan Kerangka Diátaxis.
+
+2. **Laluan Mengikut Tahap &amp; Keperluan**:
+   - 🔰 **Pemula &amp; Pengguna Baharu Desktop**:
+     - Mula dengan [**CU01: Persediaan Sistem Komputer &amp; Desktop Linux**](manual/cu01/index.md).
+     - Rujuk juga panduan permulaan amali di [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md).
+   - 🖥️ **Pentadbir Sistem &amp; Infrastruktur Pelayan**:
+     - **Storan &amp; Pemayaan**: Rujuk [**CU02: Pengurusan Storan &amp; Hipervisor Pemayaan**](manual/cu02/index.md).
+     - **Pelayan &amp; Servis**: Rujuk [**CU03: Pentadbiran &amp; Perkhidmatan Pelayan Linux**](manual/cu03/index.md).
+   - ⚙️ **Automasi, Keselamatan &amp; Khidmat Sokongan**:
+     - **Sandaran &amp; Automasi**: Rujuk [**CU04: Automasi, Sandaran &amp; Pemulihan Sistem**](manual/cu04/index.md).
+     - **Keselamatan &amp; Pengerasan Sistem**: Rujuk [**CU05: Kawalan Keselamatan Endpoint &amp; Pengerasan Sistem**](manual/cu05/index.md).
+     - **Penyelesaian Masalah &amp; Log**: Rujuk [**CU06: Sokongan Pengguna &amp; Penyelesaian Masalah**](manual/cu06/index.md).
 
 ---
 
@@ -20509,7 +20533,27 @@ Rujuk fail lengkap di [`deploy/apache/httpd.conf`](../../deploy/apache/httpd.con
 
 ---
 
-## 5. Automasi Penyebaran Menggunakan Ansible Playbook
+## 5. Pengehosan GitHub Pages &amp; Automasi Bina Semula (GitHub Actions Workflow)
+
+Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions di `.github/workflows/static.yml` untuk menerbitkan laman web statik secara terus ke GitHub Pages:
+
+### A. Punca Sasaran &amp; Penyelesaian Ralat 404
+
+- **Direktori Punca (Document Root):** GitHub Pages ditetapkan untuk memuat naik dan menerbitkan direktori `html/` (bukan direktori punca repositori `.`).
+- **Standard URL Relatif:** Dengan tetapan `use_directory_urls: false` dalam `mkdocs.yml`, pautan halaman dalaman dijanakan secara relatif bersama akhiran `.html` (contohnya `docs/tutorials/index.html`), memudahkan navigasi struktur dokumen merentas pelbagai persekitaran pengehosan statik.
+- **Fail `.nojekyll`:** Fail `.nojekyll` dijanakan secara automatik di dalam `html/` bagi menghalang GitHub Pages daripada memproses semula aset dengan enjin Jekyll.
+
+### B. Kemas Kini Automatik pada Setiap *Push*
+
+Setiap kali perubahan atau komit baharu ditolak (*push*) ke cawangan `main`:
+1. GitHub Actions melancarkan alur kerja `.github/workflows/static.yml` (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
+2. Persekitaran Python &amp; UV disiapkan menggunakan `astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287` (dengan versi UV khusus `0.6.5`).
+3. Arahan `uv run scripts/serve_mkdocs.py --build-only` dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (`docs/`, `manual/`, `openwiki/`).
+4. Artifak `html/` dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.
+
+---
+
+## 6. Automasi Penyebaran Menggunakan Ansible Playbook
 
 Fail playbook Ansible rasmi disediakan di [`deploy/ansible/`](../../deploy/ansible/) bagi mengautomasikan penyebaran ke pelbagai pelayan Linux secara serentak (**Ubuntu 26.04/24.04 LTS**, **AlmaLinux 10**, **Fedora 43**, atau **Rocky Linux 9**):
 
@@ -20543,7 +20587,7 @@ Playbook ini menguruskan secara automatik penyalinan dokumen `html/`, pemasangan
 
 ---
 
-## 6. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)
+## 7. Prosedur Mengemas Kini &amp; Membina Semula HTML (Untuk Penulis/Penyumbang)
 
 Sekiranya anda telah menambah modul kemahiran baharu dalam `manual/`, menyunting `openwiki/`, atau mengubah dokumentasi `docs/`, bina semula folder `html/`:
 
@@ -20560,7 +20604,7 @@ Pelayan tempatan akan dibuka secara automatik pada alamat `http://127.0.0.1:8000
 
 ---
 
-## 7. Pengesahan Kualiti Sebelum Komit (Quality Gate)
+## 8. Pengesahan Kualiti Sebelum Komit (Quality Gate)
 
 Berasaskan **Peraturan 12 &amp; 19 Perlembagaan AI DSOM**, setelah membina semula fail HTML, sentiasa jalankan suite ujian penuh dan komit perubahan:
 ```bash

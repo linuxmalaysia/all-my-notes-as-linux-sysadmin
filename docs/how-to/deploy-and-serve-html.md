@@ -160,7 +160,7 @@ Repositori ini telah dikonfigurasikan dengan alur kerja automatik GitHub Actions
 
 Setiap kali perubahan atau komit baharu ditolak (*push*) ke cawangan `main`:
 1. GitHub Actions melancarkan alur kerja `.github/workflows/static.yml` (semua tindakan dilindungi dengan komit SHA tidak boleh ubah).
-2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@f94383a0937a0cbf73cf3ea5a6c965610f135bdf` (dengan versi UV khusus `0.6.5`).
+2. Persekitaran Python & UV disiapkan menggunakan `astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287` (dengan versi UV khusus `0.6.5`).
 3. Arahan `uv run scripts/serve_mkdocs.py --build-only` dijalankan untuk membina semula fail HTML statik terkini daripada fail-fail Markdown sumber (`docs/`, `manual/`, `openwiki/`).
 4. Artifak `html/` dimuat naik dan diterbitkan secara automatik ke persekitaran GitHub Pages, memastikan laman web sentiasa diperbaharui tanpa langkah manual.
 
