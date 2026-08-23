@@ -67,6 +67,66 @@ sudo dnf install -y epel-release
 sudo dnf config-manager --enable epel
 ```
 
+#### C. Pengurusan Pakej RPM & Kompilasi Kod Sumber (Red Hat Package Manager & Tarball)
+
+Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu menguasai utiliti asas `rpm` dan kaedah pengompilan perisian daripada kod sumber:
+
+1. **Operasi & Opsyen Asas Arahan `rpm`:**
+   - Sintaks asas: `rpm [operasi] [opsyen] [pakej-fail / nama-pakej]`
+   - `-i` (Install): Memasang pakej RPM baharu.
+   - `-U` (Upgrade): Memasang pakej baharu atau menaik taraf pakej sedia ada (pilihan paling disyorkan).
+   - `-F` (Freshen): Menaik taraf pakej HANYA jika versi terdahulu telah sedia terpasang.
+   - `-q` (Query): Menyoal status pakej (`rpm -qa` untuk semua pakej, `rpm -qi <pakej>` untuk maklumat, `rpm -ql <pakej>` untuk senarai fail).
+   - `-V` (Verify): Membuktikan kesahihan dan integriti pakej terhadap pangkalan data RPM.
+   - `-e` (Erase): Membuang/nyahpasang pakej daripada sistem.
+   - `--rebuilddb`: Membina semula pangkalan data RPM sekiranya berlaku kerosakan pangkalan data indeks.
+   - `--nodeps`: Memaksa pemasangan atau pembuangan pakej dengan mengabaikan semakan kebergantungan (*dependency check*) — *gunakan dengan berhati-hati dalam kecemasan sahaja*.
+
+   ```bash
+   # Pemasangan / Naik taraf pakej RPM berserta kemajuan hash (#)
+   sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
+
+   # Semak maklumat dan fail yang dimiliki oleh sesuatu pakej
+   rpm -qi nmap
+   rpm -ql nmap
+
+   # Cari pakej RPM yang memiliki fail spesifik di dalam sistem
+   rpm -qf /usr/bin/nmap
+
+   # Pengesahan integriti fail pakej
+   rpm -V nmap
+   ```
+
+2. **Pengompilan Kod Sumber daripada Pakej Sumber RPM (`.src.rpm`):**
+   - Fail `.src.rpm` mengandungi kod sumber asal dan fail spesifikasi `.spec` untuk membina pakej binari RPM.
+   - Gunakan arahan `rpmbuild --rebuild` untuk mengompil semula sumber RPM mengikut persekitaran pustaka sistem semasa:
+
+   ```bash
+   # Pasang alatan pembangunan binaan RPM
+   sudo dnf install -y rpm-build rpmdevtools gcc make
+
+   # Mengompil pakej sumber RPM kepada pakej binari RPM
+   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
+   ```
+
+3. **Pengompilan Manual daripada Arkib Kod Sumber Tarball (`.tar.gz` / `.tar.zst`):**
+   - Apabila tiada pakej binari disediakan atau apabila tetapan kompilasi khas diperlukan:
+
+   ```bash
+   # 1. Ekstrak arkib kod sumber
+   tar -xvf sampel-aplikasi-1.0.tar.gz
+   cd sampel-aplikasi-1.0
+
+   # 2. Semak dan sediakan skrip konfigurasi persekitaran
+   ./configure --prefix=/usr/local
+
+   # 3. Kompilkan kod sumber menggunakan pengkompil C/C++ (make)
+   make -j$(nproc)
+
+   # 4. Pasang binari yang terhasil ke dalam sistem
+   sudo make install
+   ```
+
 ---
 
 ### 2. Pemasangan Pakej Universal (Flatpak & Snap)

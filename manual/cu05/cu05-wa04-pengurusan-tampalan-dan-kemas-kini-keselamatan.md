@@ -31,10 +31,65 @@ Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE.
 2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
 3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
 
+### 2. Automasi Tampalan Keselamatan Pakej (Unattended Upgrades & DNF Automatic)
+
+#### A. Debian / Ubuntu (unattended-upgrades)
+
+Pada **Ubuntu 26.04 LTS**, automasi pemutakhiran tampalan keselamatan dipasang dan dikonfigurasikan seperti berikut:
+
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# 1. Pasang pakej unattended-upgrades
+sudo apt update
+sudo apt install -y unattended-upgrades apt-config-auto-update
+
+# 2. Aktifkan perkhidmatan automasi tampalan keselamatan secara interaktif atau pemprosesan automatik
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+
+# 3. Pengesahan fail konfigurasi di /etc/apt/apt.conf.d/50unattended-upgrades dan /etc/apt/apt.conf.d/20auto-upgrades
+cat /etc/apt/apt.conf.d/20auto-upgrades
+
+# 4. Semak log aktiviti kemas kini automatik
+sudo tail -n 50 /var/log/unattended-upgrades/unattended-upgrades.log
+```
+
+#### B. Red Hat / AlmaLinux / Fedora (dnf-automatic)
+
+Pada **AlmaLinux 10** dan **Fedora 43**, kemas kini keselamatan secara automatik dilaksanakan menggunakan `dnf-automatic`:
+
+```bash
+# 1. Pasang pakej dnf-automatic
+sudo dnf install -y dnf-automatic
+
+# 2. Sunting konfigurasi di /etc/dnf/automatic.conf untuk mengaplikasikan kemas kini keselamatan
+# Tetapkan apply_updates = yes dan upgrade_type = security
+sudo sed -i 's/upgrade_type = default/upgrade_type = security/' /etc/dnf/automatic.conf
+sudo sed -i 's/apply_updates = no/apply_updates = yes/' /etc/dnf/automatic.conf
+
+# 3. Aktifkan dan jalankan Systemd timer bagi dnf-automatic
+sudo systemctl enable --now dnf-automatic.timer
+sudo systemctl status dnf-automatic.timer
+```
+
+---
+
+### 3. Semakan Integriti Fail Pakej & Audit CVE (`rpm -V` & `dpkg --verify`)
+
+Untuk memastikan fail biner dan fail konfigurasi perisian tidak diubah atau dicemari oleh sebarang pencerobohan:
+
+```bash
+# A. Semakan integriti pada sistem berasaskan Red Hat / AlmaLinux / Fedora:
+# Semak kesemua pakej terpasang bagi sebarang perubahan saiz, checksum MD5/SHA256, atau kebenaran fail
+sudo rpm -Va
+
+# Semak integriti fail bagi pakej spesifik (contoh: openssh-server)
+sudo rpm -V openssh-server
+
+# B. Semakan integriti pada sistem berasaskan Debian / Ubuntu:
+sudo dpkg --verify
+
+# C. Audit kelemahan dan keselamatan pakej (CVE auditing):
+# Menggunakan debsecan / dnf audit jika tersedia
+sudo dnf updateinfo list security
 ```
 
 ---

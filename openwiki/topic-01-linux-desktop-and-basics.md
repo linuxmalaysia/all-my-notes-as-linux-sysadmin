@@ -74,10 +74,13 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 ### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)
 
-- Pengurusan pakej asli (`apt` pada Ubuntu, `dnf5` pada AlmaLinux/Fedora)
-- Pakej berasaskan kontena universal (`Flatpak`, `Snap`)
-- Penyesuaian pemboleh ubah persekitaran shell (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`)
-- Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti
+- **Perbandingan Format Pembungkusan**:
+  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`, `--nodeps`.
+  - Pakej Kontena Universal: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
+  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst` (`./configure && make && make install`).
+  - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild`.
+- **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
+- **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**: `lspci`, `ubuntu-drivers`, `akmod-nvidia`.
 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
 

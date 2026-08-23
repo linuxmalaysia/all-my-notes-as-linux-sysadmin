@@ -1469,6 +1469,17 @@
   </a>
   
 </li>
+
+          <li class="md-nav__item">
+  <a href="#c-pengurusan-pakej-rpm-kompilasi-kod-sumber-red-hat-package-manager-tarball" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Pengurusan Pakej RPM &amp; Kompilasi Kod Sumber (Red Hat Package Manager &amp; Tarball)
+
+    </span>
+  </a>
+
+</li>
         
       </ul>
     </nav>
@@ -1735,64 +1746,119 @@
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>config-manager<span class="w"> </span>--enable<span class="w"> </span>epel
 </span></code></pre></div>
+<h4 id="c-pengurusan-pakej-rpm-kompilasi-kod-sumber-red-hat-package-manager-tarball">C. Pengurusan Pakej RPM &amp; Kompilasi Kod Sumber (Red Hat Package Manager &amp; Tarball)<a class="headerlink" href="#c-pengurusan-pakej-rpm-kompilasi-kod-sumber-red-hat-package-manager-tarball" title="Permanent link">&para;</a></h4>
+<p>Selain pengurus pakej peringkat tinggi (<code>dnf5</code>/<code>apt</code>), pentadbir sistem perlu menguasai utiliti asas <code>rpm</code> dan kaedah pengompilan perisian daripada kod sumber:</p>
+<ol>
+<li><strong>Operasi &amp; Opsyen Asas Arahan <code>rpm</code>:</strong></li>
+<li>Sintaks asas: <code>rpm [operasi] [opsyen] [pakej-fail / nama-pakej]</code></li>
+<li><code>-i</code> (Install): Memasang pakej RPM baharu.</li>
+<li><code>-U</code> (Upgrade): Memasang pakej baharu atau menaik taraf pakej sedia ada (pilihan paling disyorkan).</li>
+<li><code>-F</code> (Freshen): Menaik taraf pakej HANYA jika versi terdahulu telah sedia terpasang.</li>
+<li><code>-q</code> (Query): Menyoal status pakej (<code>rpm -qa</code> untuk semua pakej, <code>rpm -qi &lt;pakej&gt;</code> untuk maklumat, <code>rpm -ql &lt;pakej&gt;</code> untuk senarai fail).</li>
+<li><code>-V</code> (Verify): Membuktikan kesahihan dan integriti pakej terhadap pangkalan data RPM.</li>
+<li><code>-e</code> (Erase): Membuang/nyahpasang pakej daripada sistem.</li>
+<li><code>--rebuilddb</code>: Membina semula pangkalan data RPM sekiranya berlaku kerosakan pangkalan data indeks.</li>
+<li><code>--nodeps</code>: Memaksa pemasangan atau pembuangan pakej dengan mengabaikan semakan kebergantungan (<em>dependency check</em>) — <em>gunakan dengan berhati-hati dalam kecemasan sahaja</em>.</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Pemasangan / Naik taraf pakej RPM berserta kemajuan hash (#)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-Uvh<span class="w"> </span>nmap-7.95-1.x86_64.rpm
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Semak maklumat dan fail yang dimiliki oleh sesuatu pakej</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>rpm<span class="w"> </span>-qi<span class="w"> </span>nmap
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>rpm<span class="w"> </span>-ql<span class="w"> </span>nmap
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># Cari pakej RPM yang memiliki fail spesifik di dalam sistem</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>rpm<span class="w"> </span>-qf<span class="w"> </span>/usr/bin/nmap
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># Pengesahan integriti fail pakej</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>rpm<span class="w"> </span>-V<span class="w"> </span>nmap
+</span></code></pre></div>
+<ol>
+<li><strong>Pengompilan Kod Sumber daripada Pakej Sumber RPM (<code>.src.rpm</code>):</strong></li>
+<li>Fail <code>.src.rpm</code> mengandungi kod sumber asal dan fail spesifikasi <code>.spec</code> untuk membina pakej binari RPM.</li>
+<li>Gunakan arahan <code>rpmbuild --rebuild</code> untuk mengompil semula sumber RPM mengikut persekitaran pustaka sistem semasa:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Pasang alatan pembangunan binaan RPM</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>rpm-build<span class="w"> </span>rpmdevtools<span class="w"> </span>gcc<span class="w"> </span>make
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Mengompil pakej sumber RPM kepada pakej binari RPM</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>rpmbuild<span class="w"> </span>--rebuild<span class="w"> </span>openssh-9.8p1-1.src.rpm
+</span></code></pre></div>
+<ol>
+<li><strong>Pengompilan Manual daripada Arkib Kod Sumber Tarball (<code>.tar.gz</code> / <code>.tar.zst</code>):</strong></li>
+<li>Apabila tiada pakej binari disediakan atau apabila tetapan kompilasi khas diperlukan:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Ekstrak arkib kod sumber</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>tar<span class="w"> </span>-xvf<span class="w"> </span>sampel-aplikasi-1.0.tar.gz
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">cd</span><span class="w"> </span>sampel-aplikasi-1.0
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># 2. Semak dan sediakan skrip konfigurasi persekitaran</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>./configure<span class="w"> </span>--prefix<span class="o">=</span>/usr/local
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># 3. Kompilkan kod sumber menggunakan pengkompil C/C++ (make)</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># 4. Pasang binari yang terhasil ke dalam sistem</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
+</span></code></pre></div>
 <hr />
 <h3 id="2-pemasangan-pakej-universal-flatpak-snap">2. Pemasangan Pakej Universal (Flatpak &amp; Snap)<a class="headerlink" href="#2-pemasangan-pakej-universal-flatpak-snap" title="Permanent link">&para;</a></h3>
 <p>Untuk aplikasi desktop moden yang terpencil (<em>sandboxed</em>) demi keselamatan persekitaran pejabat:</p>
 <h4 id="a-flatpak-flathub-repository">A. Flatpak (Flathub Repository)<a class="headerlink" href="#a-flatpak-flathub-repository" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Pastikan perkhidmatan Flatpak terpasang dan tambah repositori Flathub</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>flatpak<span class="w">   </span><span class="c1"># Ubuntu</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># sudo dnf install -y flatpak # AlmaLinux / Fedora</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>flatpak<span class="w"> </span>remote-add<span class="w"> </span>--if-not-exists<span class="w"> </span>flathub<span class="w"> </span>https://dl.flathub.org/repo/flathub.flatpakrepo
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 2. Pasang dan jalankan aplikasi (contoh: LibreOffice / GIMP)</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>flatpak<span class="w"> </span>install<span class="w"> </span>flathub<span class="w"> </span>org.gimp.GIMP<span class="w"> </span>-y
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>flatpak<span class="w"> </span>run<span class="w"> </span>org.gimp.GIMP
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Pastikan perkhidmatan Flatpak terpasang dan tambah repositori Flathub</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>flatpak<span class="w">   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># sudo dnf install -y flatpak # AlmaLinux / Fedora</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>flatpak<span class="w"> </span>remote-add<span class="w"> </span>--if-not-exists<span class="w"> </span>flathub<span class="w"> </span>https://dl.flathub.org/repo/flathub.flatpakrepo
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 2. Pasang dan jalankan aplikasi (contoh: LibreOffice / GIMP)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>flatpak<span class="w"> </span>install<span class="w"> </span>flathub<span class="w"> </span>org.gimp.GIMP<span class="w"> </span>-y
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>flatpak<span class="w"> </span>run<span class="w"> </span>org.gimp.GIMP
 </span></code></pre></div>
 <h4 id="b-snap-ubuntu-canonical-ecosystem">B. Snap (Ubuntu Canonical Ecosystem)<a class="headerlink" href="#b-snap-ubuntu-canonical-ecosystem" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Semak status dan pasang aplikasi Snap</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>snap<span class="w"> </span>list
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>code<span class="w"> </span>--classic<span class="w">  </span><span class="c1"># VS Code</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>chromium
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. Semak status dan pasang aplikasi Snap</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>snap<span class="w"> </span>list
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>code<span class="w"> </span>--classic<span class="w">  </span><span class="c1"># VS Code</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>chromium
 </span></code></pre></div>
 <hr />
 <h3 id="3-konfigurasi-pemboleh-ubah-persekitaran-editor-visual">3. Konfigurasi Pemboleh Ubah Persekitaran <code>$EDITOR</code> &amp; <code>$VISUAL</code><a class="headerlink" href="#3-konfigurasi-pemboleh-ubah-persekitaran-editor-visual" title="Permanent link">&para;</a></h3>
 <p>Pemboleh ubah persekitaran menentukan aplikasi lalai yang digunakan oleh utiliti sistem (seperti <code>git</code>, <code>crontab</code>, <code>visudo</code>) apabila membuka editor teks.</p>
 <h4 id="a-konfigurasi-persekitaran-pengguna-individu-bashrc">A. Konfigurasi Persekitaran Pengguna Individu (<code>~/.bashrc</code>)<a class="headerlink" href="#a-konfigurasi-persekitaran-pengguna-individu-bashrc" title="Permanent link">&para;</a></h4>
 <p>Gunakan penyunting teks untuk menambah eksport pemboleh ubah dalam fail profil pengguna:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Tetapkan Vim atau Nano sebagai editor CLI lalai pengguna</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>/usr/bin/vim
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VISUAL</span><span class="o">=</span>/usr/bin/vim
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Muat semula fail .bashrc untuk menguji perubahan</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Sahkan nilai pemboleh ubah persekitaran</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$EDITOR</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$VISUAL</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Tetapkan Vim atau Nano sebagai editor CLI lalai pengguna</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VISUAL</span><span class="o">=</span>/usr/bin/vim
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># Muat semula fail .bashrc untuk menguji perubahan</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Sahkan nilai pemboleh ubah persekitaran</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$EDITOR</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$VISUAL</span>
 </span></code></pre></div>
 <h4 id="b-konfigurasi-persekitaran-sistem-global-etcenvironment-etcprofilededitorsh">B. Konfigurasi Persekitaran Sistem Global (<code>/etc/environment</code> &amp; <code>/etc/profile.d/editor.sh</code>)<a class="headerlink" href="#b-konfigurasi-persekitaran-sistem-global-etcenvironment-etcprofilededitorsh" title="Permanent link">&para;</a></h4>
 <p>Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:</p>
 <ol>
 <li>
 <p>Gunakan <code>sudoedit</code> untuk membuka fail <code>/etc/environment</code> secara selamat:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudoedit<span class="w"> </span>/etc/environment
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudoedit<span class="w"> </span>/etc/environment
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Masukkan baris pemboleh ubah persekitaran berikut di dalam fail <code>/etc/environment</code> (format penetapan pasangan nama=nilai):
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="na">EDITOR</span><span class="o">=</span><span class="s">"/usr/bin/vim"</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">VISUAL</span><span class="o">=</span><span class="s">"/usr/bin/vim"</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="na">EDITOR</span><span class="o">=</span><span class="s">"/usr/bin/vim"</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">VISUAL</span><span class="o">=</span><span class="s">"/usr/bin/vim"</span>
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Sebagai alternatif bagi persekitaran shell interaktif, cipta skrip profil global di <code>/etc/profile.d/editor.sh</code>:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/profile.d/editor.sh<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">export EDITOR=/usr/bin/vim</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">export VISUAL=/usr/bin/vim</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">EOF</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/editor.sh
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/profile.d/editor.sh<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s">export EDITOR=/usr/bin/vim</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s">export VISUAL=/usr/bin/vim</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s">EOF</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/profile.d/editor.sh
 </span></code></pre></div></p>
 </li>
 </ol>
@@ -1803,47 +1869,47 @@ Secara lalai, arahan <code>sudo</code> menjalankan pembersihan persekitaran (<co
 <hr />
 <h3 id="4-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar">4. Pengesanan &amp; Pemasangan Pemacu Peranti (GPU &amp; Rangkaian Tanpa Wayar)<a class="headerlink" href="#4-pengesanan-pemasangan-pemacu-peranti-gpu-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h3>
 <h4 id="a-pengesanan-perkakasan-peranti">A. Pengesanan Perkakasan Peranti<a class="headerlink" href="#a-pengesanan-perkakasan-peranti" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>vga
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>network
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Senaraikan peranti USB</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>lsusb
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">'nvidia|amdgpu|iwlwifi'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Senaraikan peranti PCI (GPU, Rangkaian, Pengawal Storan)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>vga
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>lspci<span class="w"> </span>-nnk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span>-i<span class="w"> </span>network
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Senaraikan peranti USB</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>lsusb
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># Semak modul isirung (kernel modules) yang diloadkan</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">'nvidia|amdgpu|iwlwifi'</span>
 </span></code></pre></div>
 <h4 id="b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts">B. Pemasangan Pemacu NVIDIA GPU pada Ubuntu 26.04 LTS<a class="headerlink" href="#b-pemasangan-pemacu-nvidia-gpu-pada-ubuntu-2604-lts" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Kesan pemacu yang disyorkan oleh peranti</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ubuntu-drivers<span class="w"> </span>devices
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 2. Pasang pemacu NVIDIA terkini secara automatik</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>ubuntu-drivers<span class="w"> </span>install
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># 3. Sahkan pemacu NVIDIA berfungsi selepas but semula</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>nvidia-smi
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 1. Kesan pemacu yang disyorkan oleh peranti</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ubuntu-drivers<span class="w"> </span>devices
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># 2. Pasang pemacu NVIDIA terkini secara automatik</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>sudo<span class="w"> </span>ubuntu-drivers<span class="w"> </span>install
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># 3. Sahkan pemacu NVIDIA berfungsi selepas but semula</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>nvidia-smi
 </span></code></pre></div>
 <h4 id="c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion">C. Pemasangan Pemacu NVIDIA pada Fedora 43 &amp; AlmaLinux 10 (RPM Fusion)<a class="headerlink" href="#c-pemasangan-pemacu-nvidia-pada-fedora-43-almalinux-10-rpm-fusion" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Untuk Fedora 43:</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Untuk AlmaLinux 10:</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Pasang pemacu akmod-nvidia:</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Untuk Fedora 43:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="k">$(</span>rpm<span class="w"> </span>-E<span class="w"> </span>%fedora<span class="k">)</span>.noarch.rpm
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Untuk AlmaLinux 10:</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-10.noarch.rpm</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># Pasang pemacu akmod-nvidia:</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>akmod-nvidia<span class="w"> </span>xorg-x11-drv-nvidia-cuda
 </span></code></pre></div>
 <h4 id="d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar">D. Pengesanan &amp; Konfigurasi Pemacu AMD Radeon &amp; Kad Rangkaian Tanpa Wayar<a class="headerlink" href="#d-pengesanan-konfigurasi-pemacu-amd-radeon-kad-rangkaian-tanpa-wayar" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mesa-vulkan-drivers<span class="w"> </span>mesa-utils<span class="w">   </span><span class="c1"># Ubuntu</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"OpenGL vendor"</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>linux-firmware<span class="w">                   </span><span class="c1"># Ubuntu</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Pemacu AMD Radeon (Sumber Terbuka disertakan secara asal dalam Isirung Linux):</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mesa-vulkan-drivers<span class="w"> </span>mesa-utils<span class="w">   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># sudo dnf install -y mesa-dri-drivers mesa-vulkan-drivers # AlmaLinux / Fedora</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"OpenGL vendor"</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># Pemacu Kad Rangkaian Tanpa Wayar (Wi-Fi Firmwares):</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>linux-firmware<span class="w">                   </span><span class="c1"># Ubuntu</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># sudo dnf install -y linux-firmware                 # AlmaLinux / Fedora</span>
 </span></code></pre></div>
 <hr />
 <h2 id="pematuhan-keselamatan-jdn-mampu-isoiec-27001">🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001<a class="headerlink" href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" title="Permanent link">&para;</a></h2>

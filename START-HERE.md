@@ -16,7 +16,7 @@ Sistem ini direka bentuk sebagai pangkalan pengetahuan Linux tidak rasmi yang be
 
 ---
 
-## 🌐 Titik Mula (Entry Points)
+## 🌐 Entry Points (Titik Masuk)
 
 Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca fail-fail lain:
 
@@ -46,8 +46,8 @@ Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempela
      - **Pelayan & Servis**: Rujuk [**CU03: Pentadbiran & Perkhidmatan Pelayan Linux**](manual/cu03/index.md).
    - ⚙️ **Automasi, Keselamatan & Khidmat Sokongan**:
      - **Sandaran & Automasi**: Rujuk [**CU04: Automasi, Sandaran & Pemulihan Sistem**](manual/cu04/index.md).
-     - **Keselamatan & Pengerasan Sistem**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Pengerasan Sistem**](manual/cu05/index.md).
-     - **Penyelesaian Masalah & Log**: Rujuk [**CU06: Sokongan Pengguna & Penyelesaian Masalah**](manual/cu06/index.md).
+     - **Keselamatan & Pengerasan Sistem**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Hardening**](manual/cu05/index.md).
+     - **Penyelesaian Masalah & Log**: Rujuk [**CU06: Sokongan Pengguna & Troubleshooting**](manual/cu06/index.md).
 
 ---
 

@@ -35,6 +35,26 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf install -y htop wget
   ```
 
+- **RPM Package Operations & Source Compilation:**
+
+  ```bash
+  # Install / Upgrade RPM package with hash progress (#)
+  sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
+  rpm -qi nmap
+  rpm -ql nmap
+  rpm -V nmap
+
+  # Rebuild binary RPM from source RPM (.src.rpm)
+  rpmbuild --rebuild openssh-9.8p1-1.src.rpm
+
+  # Manual compilation from tarball (.tar.gz)
+  tar -xvf sample-app-1.0.tar.gz
+  cd sample-app-1.0
+  ./configure --prefix=/usr/local
+  make -j$(nproc)
+  sudo make install
+  ```
+
 ### 2. Universal Containerized Packaging
 
 - **Flatpak (Flathub):**
