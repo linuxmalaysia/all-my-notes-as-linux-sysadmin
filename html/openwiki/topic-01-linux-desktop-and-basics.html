@@ -1902,10 +1902,17 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/penyulitan-cakera-luks2-pejabat.html">manual/cu01/penyulitan-cakera-luks2-pejabat.md</a></p>
 <h3 id="7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05">7. Pemasangan Aplikasi, Pemacu Peranti &amp; Persekitaran Shell (CU01-WA05)<a class="headerlink" href="#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Pengurusan pakej asli (<code>apt</code> pada Ubuntu, <code>dnf5</code> pada AlmaLinux/Fedora)</li>
-<li>Pakej berasaskan kontena universal (<code>Flatpak</code>, <code>Snap</code>)</li>
-<li>Penyesuaian pemboleh ubah persekitaran shell (<code>$EDITOR</code>, <code>$VISUAL</code>, <code>/etc/environment</code>, <code>~/.bashrc</code>)</li>
-<li>Pengesanan dan pemasangan pemacu GPU (NVIDIA/AMD) dan kad peranti</li>
+<li><strong>Perbandingan Format Pembungkusan</strong>:</li>
+<li>Pakej Binari Asli: Debian/Ubuntu (<code>.deb</code> / DEB via <code>apt</code>/<code>dpkg</code>), Red Hat/AlmaLinux/Fedora (<code>.rpm</code> / RPM via <code>dnf5</code>/<code>rpm</code>). Operasi asas <code>rpm</code>: <code>-ivh</code>, <code>-Uvh</code>, <code>-q</code>, <code>-V</code>, <code>-e</code>, <code>--rebuilddb</code>.</li>
+<li>Pakej aplikasi universal dengan pengasingan: <code>Flatpak</code> (Flathub) dan <code>Snap</code> (Canonical) untuk pengasingan persekitaran pejabat.</li>
+<li>Kod Sumber Tarball: Arkib <code>.tar.gz</code> / <code>.tar.zst</code>. Semak README/INSTALL untuk sistem binaan (seperti Autotools <code>./configure</code>, CMake, atau Meson).</li>
+<li>Pakej Sumber RPM (<code>.src.rpm</code>): Binaan semula <code>rpmbuild --rebuild</code> selepas penyelesaian <code>BuildRequires</code>.</li>
+<li><strong>Penyesuaian Pemboleh Ubah Persekitaran Shell</strong>: <code>$EDITOR</code> &amp; <code>$VISUAL</code> dalam <code>~/.bashrc</code>, <code>/etc/environment</code>, <code>/etc/profile.d/editor.sh</code>.</li>
+<li><strong>Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) &amp; Kad Peranti</strong>:</li>
+<li>Deteksi perkakasan: <code>lspci</code>.</li>
+<li>Ubuntu/NVIDIA: <code>ubuntu-drivers</code> dan <code>nvidia-smi</code>.</li>
+<li>Fedora/AlmaLinux/NVIDIA: RPM Fusion, <code>dnf install akmod-nvidia</code>, dan <code>nvidia-smi</code>.</li>
+<li>AMD Radeon: Pemacu sumber terbuka <code>Mesa</code>/<code>amdgpu</code> dengan pengesahan <code>glxinfo</code>.</li>
 </ul>
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.html">manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md</a></p>
 <h3 id="8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06">8. Konfigurasi Sambungan Rangkaian Endpoint (CU01-WA06)<a class="headerlink" href="#8-konfigurasi-sambungan-rangkaian-endpoint-cu01-wa06" title="Permanent link">&para;</a></h3>

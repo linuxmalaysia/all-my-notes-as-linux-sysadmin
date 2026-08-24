@@ -1448,14 +1448,53 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#2-automasi-tampalan-keselamatan-pakej-unattended-upgrades-dnf-automatic" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        2. Langkah-Langkah Operasi
-      
+
+        2. Automasi Tampalan Keselamatan Pakej (Unattended Upgrades &amp; DNF Automatic)
+
     </span>
   </a>
-  
+
+    <nav class="md-nav" aria-label="2. Automasi Tampalan Keselamatan Pakej (Unattended Upgrades &amp; DNF Automatic)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-debian-ubuntu-unattended-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Debian / Ubuntu (unattended-upgrades)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-red-hat-almalinux-fedora-dnf-automatic" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Red Hat / AlmaLinux / Fedora (dnf-automatic)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3-semakan-integriti-fail-pakej-audit-cve-rpm-v-dpkg-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. Semakan Integriti Fail Pakej &amp; Audit CVE (rpm -V &amp; dpkg --verify)
+
+    </span>
+  </a>
+
 </li>
         
       </ul>
@@ -1539,15 +1578,59 @@ Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Mala
 <li>Hak akses pentadbir (<code>sudo</code>).</li>
 <li>Dokumentasi dan rekod inventori yang teratur.</li>
 </ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<h3 id="2-automasi-tampalan-keselamatan-pakej-unattended-upgrades-dnf-automatic">2. Automasi Tampalan Keselamatan Pakej (Unattended Upgrades &amp; DNF Automatic)<a class="headerlink" href="#2-automasi-tampalan-keselamatan-pakej-unattended-upgrades-dnf-automatic" title="Permanent link">&para;</a></h3>
+<h4 id="a-debian-ubuntu-unattended-upgrades">A. Debian / Ubuntu (unattended-upgrades)<a class="headerlink" href="#a-debian-ubuntu-unattended-upgrades" title="Permanent link">&para;</a></h4>
+<p>Pada <strong>Ubuntu 26.04 LTS</strong>, automasi pemutakhiran tampalan keselamatan dipasang dan dikonfigurasikan seperti berikut:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Pasang pakej unattended-upgrades</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>unattended-upgrades
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 2. Aktifkan perkhidmatan automasi tampalan keselamatan secara interaktif atau pemprosesan automatik</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>--priority<span class="o">=</span>low<span class="w"> </span>unattended-upgrades
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># 3. Pengesahan fail konfigurasi di /etc/apt/apt.conf.d/50unattended-upgrades dan /etc/apt/apt.conf.d/20auto-upgrades</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>cat<span class="w"> </span>/etc/apt/apt.conf.d/20auto-upgrades
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># 4. Semak log aktiviti kemas kini automatik</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>/var/log/unattended-upgrades/unattended-upgrades.log
+</span></code></pre></div>
+<h4 id="b-red-hat-almalinux-fedora-dnf-automatic">B. Red Hat / AlmaLinux / Fedora (dnf-automatic)<a class="headerlink" href="#b-red-hat-almalinux-fedora-dnf-automatic" title="Permanent link">&para;</a></h4>
+<p>Pada <strong>AlmaLinux 10</strong> dan <strong>Fedora 43</strong>, kemas kini keselamatan secara automatik dilaksanakan menggunakan <code>dnf-automatic</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Pasang pakej dnf-automatic</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>dnf-automatic
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 2. Tetapkan konfigurasi secara penentu (deterministic) di /etc/dnf/automatic.conf</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/^upgrade_type =.*/upgrade_type = security/'</span><span class="w"> </span>/etc/dnf/automatic.conf
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/^apply_updates =.*/apply_updates = yes/'</span><span class="w"> </span>/etc/dnf/automatic.conf
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># 3. Sahkan tetapan berkesan sebelum mengaktifkan timer</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'^(upgrade_type|apply_updates)'</span><span class="w"> </span>/etc/dnf/automatic.conf
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># 4. Aktifkan dan jalankan Systemd timer bagi dnf-automatic</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>dnf-automatic.timer
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>dnf-automatic.timer
+</span></code></pre></div>
+<hr />
+<h3 id="3-semakan-integriti-fail-pakej-audit-cve-rpm-v-dpkg-verify">3. Semakan Integriti Fail Pakej &amp; Audit CVE (<code>rpm -V</code> &amp; <code>dpkg --verify</code>)<a class="headerlink" href="#3-semakan-integriti-fail-pakej-audit-cve-rpm-v-dpkg-verify" title="Permanent link">&para;</a></h3>
+<p>Untuk memastikan fail biner dan fail konfigurasi perisian terpasang tidak diubah atau dicemari oleh sebarang pencerobohan (Nota: <code>rpm -Va</code> membandingkan fail terpasang dengan metadata pangkalan data RPM tempatan):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># A. Semakan integriti pada sistem berasaskan Red Hat / AlmaLinux / Fedora:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Semak kesemua pakej terpasang berbanding pangkalan data RPM tempatan</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-Va
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Semak integriti fail bagi pakej spesifik (contoh: openssh-server)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-V<span class="w"> </span>openssh-server
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># B. Semakan integriti pada sistem berasaskan Debian / Ubuntu:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>--verify
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># C. Audit kelemahan dan advisori keselamatan pakej (CVE auditing):</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Debian/Ubuntu (audit kelemahanCVE):</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>debsecan
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>debsecan<span class="w"> </span>--suite<span class="w"> </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1"># Red Hat / AlmaLinux / Fedora (butiran advisori keselamatan CVE):</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>updateinfo<span class="w"> </span>list<span class="w"> </span>security
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>updateinfo<span class="w"> </span>info<span class="w"> </span>security
 </span></code></pre></div>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>

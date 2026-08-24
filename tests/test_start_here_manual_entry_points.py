@@ -46,8 +46,8 @@ CU_LABELS = [
     "CU02: Pengurusan Storan & Hipervisor Pemayaan",
     "CU03: Pentadbiran & Perkhidmatan Pelayan Linux",
     "CU04: Automasi, Sandaran & Pemulihan Sistem",
-    "CU05: Kawalan Keselamatan Endpoint & Hardening",
-    "CU06: Sokongan Pengguna & Troubleshooting",
+    "CU05: Kawalan Keselamatan Endpoint & Pengerasan Sistem",
+    "CU06: Sokongan Pengguna & Penyelesaian Masalah",
 ]
 
 
@@ -87,7 +87,7 @@ def test_start_here_md_new_section_between_entry_points_and_why_sections():
     """The new section must sit between '🌐 Entry Points' and
     '🌟 Kenapa Linux NOSS & DSOM?' as introduced by this PR."""
     content = read("START-HERE.md")
-    entry_points_idx = content.index("## 🌐 Entry Points (Titik Masuk)")
+    entry_points_idx = content.index("## 🌐 Titik Masuk (Entry Points)")
     new_section_idx = content.index(HEADING_MD)
     why_idx = content.index("## 🌟 Kenapa Linux NOSS & DSOM?")
     assert entry_points_idx < new_section_idx < why_idx

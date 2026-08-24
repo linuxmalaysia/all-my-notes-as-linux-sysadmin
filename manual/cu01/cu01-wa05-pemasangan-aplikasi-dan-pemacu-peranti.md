@@ -67,6 +67,97 @@ sudo dnf install -y epel-release
 sudo dnf config-manager --enable epel
 ```
 
+#### C. Pengurusan Pakej RPM & Kompilasi Kod Sumber (Red Hat Package Manager & Tarball)
+
+Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu menguasai utiliti asas `rpm` dan kaedah pengompilan perisian daripada kod sumber:
+
+1. **Pengesahan Tandatangan Pakej & Operasi Asas Arahan `rpm`:**
+   - Dapatkan kunci awam GPG vendor daripada saluran rasmi, bandingkan cap jarinya (*fingerprint*), dan import menggunakan `sudo rpm --import <gpg-key-file>`.
+   - Sahkan tandatangan digital GPG pada pakej RPM luar menggunakan `rpmkeys --checksig` atau `rpm -K`. Pemasangan **MESTI DIHENTIKAN** sekiranya hasil semakan mengandungi status `NOKEY` atau pengesahan gagal.
+   - Disyorkan memasang pakej RPM melalui pengurus pakej (`sudo dnf install ./nmap-7.95-1.x86_64.rpm`) kerana `dnf` menyelesaikan kebergantungan secara automatik. Arahan `rpm -Uvh` mengekalkan kaedah operasi aras rendah (*low-level*).
+   - Sintaks asas: `rpm [operasi] [opsyen] [pakej-fail / nama-pakej]`
+   - `-i` (Install): Memasang pakej RPM baharu.
+   - `-U` (Upgrade): Memasang pakej baharu atau menaik taraf pakej sedia ada (pilihan paling disyorkan).
+   - `-F` (Freshen): Menaik taraf pakej HANYA jika versi terdahulu telah sedia terpasang.
+   - `-q` (Query): Menyoal status pakej (`rpm -qa` untuk semua pakej, `rpm -qi <pakej>` untuk maklumat, `rpm -ql <pakej>` memaparkan senarai fail).
+   - `-V` (Verify): Mengesan perbezaan fail terpasang berbanding pangkalan data RPM tempatan (nota: ini menyemak integriti metadata tempatan, bukan menjamin sistem bebas pencerobohan luar).
+   - `-e` (Erase): Membuang/nyahpasang pakej daripada sistem.
+   - `--rebuilddb`: Membina semula pangkalan data RPM sekiranya berlaku kerosakan pangkalan data indeks.
+
+   ```bash
+   # 1. Import kunci awam GPG rasmi vendor mengikut edaran (contoh: AlmaLinux/Fedora) dan sahkan tandatangan digital pakej RPM
+   sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-AlmaLinux
+   rpmkeys --checksig nmap-7.95-1.x86_64.rpm || { echo "Pengesahan GPG gagal atau NOKEY!"; exit 1; }
+
+   # 2. KAEDAH A (Disyorkan): Pemasangan melalui DNF (DNF menyelesaikan kebergantungan automatik)
+   sudo dnf install -y ./nmap-7.95-1.x86_64.rpm
+
+   # ATAU KAEDAH B (Alternatif Aras Rendah): Pemasangan terus menggunakan arahan RPM (PILIH SATU KAEDAH SAHAJA)
+   # sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
+
+   # 3. Semak maklumat dan fail yang dimiliki oleh sesuatu pakej
+   rpm -qi nmap
+   rpm -ql nmap
+
+   # 4. Cari pakej RPM yang memiliki fail spesifik di dalam sistem
+   rpm -qf /usr/bin/nmap
+
+   # 5. Pengesahan integriti fail terpasang berbanding pangkalan data RPM tempatan
+   rpm -V nmap
+   rpm -Va
+   ```
+
+2. **Pengompilan Kod Sumber daripada Pakej Sumber RPM (`.src.rpm`):**
+   - Fail `.src.rpm` mengandungi kod sumber asal dan fail spesifikasi `.spec` untuk membina pakej binari RPM.
+   - Langkah prasyarat memasang perkakasan pembangunan: `rpm-build`, `rpmdevtools`, `gcc`, `gcc-c++`, `make`, serta pemalam `dnf-plugins-core` (AlmaLinux/RHEL) atau `dnf5-plugins` (Fedora 43).
+   - Gunakan `dnf builddep` (pada AlmaLinux 10 / RHEL) atau `dnf5 builddep` (pada Fedora 43) untuk menyelesaikan kebergantungan binaan `BuildRequires`:
+
+   ```bash
+   # 1. Pasang alatan pembangunan binaan RPM (termasuk pemalam dnf/dnf5)
+   # Pada AlmaLinux 10 / RHEL:
+   sudo dnf install -y rpm-build rpmdevtools gcc gcc-c++ make dnf-plugins-core
+   # Pada Fedora 43 (DNF5):
+   # sudo dnf5 install -y rpm-build rpmdevtools gcc gcc-c++ make dnf5-plugins
+
+   # 2. Sahkan tandatangan pada fail SRPM (.src.rpm)
+   rpmkeys --checksig openssh-9.8p1-1.src.rpm || exit 1
+
+   # 3. Selesaikan kebergantungan binaan (BuildRequires mengikut edaran)
+   # Pada AlmaLinux 10 / RHEL 10:
+   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
+   # Pada Fedora 43 (DNF5):
+   # sudo dnf5 builddep -y openssh-9.8p1-1.src.rpm
+
+   # 4. Mengompil pakej sumber RPM kepada pakej binari RPM
+   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
+   ```
+
+3. **Pengompilan Manual daripada Arkib Kod Sumber Tarball (`.tar.gz` / `.tar.zst`):**
+   - Pengompilan manual hanya dilakukan sekiranya tiada pakej binari atau apabila pengubahsuaian kod sumber diperlukan.
+   - **Penting:** Sentiasa semak fail `README` atau `INSTALL` di dalam arkib untuk menentukan sistem binaan yang digunakan (seperti Autotools `./configure`, CMake `cmake`, atau Meson `meson`). Arahan `./configure` hanya terhad untuk projek berasaskan Autotools.
+   - **Langkah Keselamatan:** Dapatkan fail checksum (`sha256sum`) dan kunci GPG rasmi vendor. Sahkan tandatangan manifesto menggunakan kunci rasmi (contoh: `gpgv` atau `gpg --verify`) sebelum menjalankan `sha256sum -c`.
+   - **Amaran:** Penggunaan `sudo make install` tidak dijejak oleh pangkalan data pakej sistem (`dpkg`/`rpm`). Adalah disyorkan untuk menguruskan inventori di `/usr/local` atau membina pakej binari rasmi.
+
+   ```bash
+   # 1. Sahkan kunci GPG rasmi vendor & integriti checksum sha256sum daripada saluran rasmi
+   gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256
+   sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256 || exit 1
+
+   # 2. Ekstrak arkib kod sumber
+   tar -xvf sampel-aplikasi-1.0.tar.gz
+   cd sampel-aplikasi-1.0
+
+   # 3. Semak dokumen README/INSTALL untuk mengenal pasti sistem binaan
+   cat README || cat INSTALL
+
+   # 4. Bagi projek Autotools, sediakan persekitaran dan kompilkan
+   ./configure --prefix=/usr/local
+   make -j$(nproc)
+
+   # 5. Pasang binari secara terurus ke /usr/local
+   sudo make install
+   ```
+
 ---
 
 ### 2. Pemasangan Pakej Universal (Flatpak & Snap)

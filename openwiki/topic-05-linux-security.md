@@ -41,11 +41,15 @@ Keselamatan Linux merangkumi pentadbiran identiti pengguna, sekatan kebenaran fa
 8. **Sistem Kawalan Mandatori (MAC)**:
     - Pengenalan dan mod SELinux (Enforcing, Permissive, Disabled) di AlmaLinux/Fedora.
     - Pengenalan kepada AppArmor di Ubuntu.
+9. **Automasi Tampalan Keselamatan & Audit Integriti Pakej (CU05-WA04)**:
+    - Automasi kemas kini keselamatan pakej: `unattended-upgrades` (Ubuntu 26.04) dan `dnf-automatic` (AlmaLinux 10 / Fedora 43).
+    - Audit integriti fail pakej dan pengesahan checksum: `rpm -V`, `rpm -Va`, dan `dpkg --verify`.
 
 ## Modul Amali Terkait
 
 - [Pentadbiran Pengguna, Kebenaran Fail & Kawalan Akses Endpoint Linux](../manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md)
 - [Audit Akaun Pengguna & Kebenaran Akses Linux (CU05-WA01)](../manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.md)
+- [Pengurusan Tampalan & Kemas Kini Keselamatan (CU05-WA04)](../manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md)
 - [Kawalan Keselamatan Fizikal & Persekitaran Console Endpoint Linux (CU05-WA05)](../manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md)
 
 ## Pemetaan NOSS (NOSS Mapping)

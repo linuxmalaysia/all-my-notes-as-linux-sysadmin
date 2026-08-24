@@ -35,6 +35,35 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf install -y htop wget
   ```
 
+- **RPM Package Operations & Source Compilation:**
+
+  ```bash
+  # 1. Verify GPG digital signature before installation
+  rpmkeys --checksig nmap-7.95-1.x86_64.rpm
+
+  # 2. Install / Upgrade RPM package with hash progress (#)
+  sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
+  rpm -qi nmap
+  rpm -ql nmap
+  rpm -V nmap
+
+  # 3. Install build tools and resolve BuildRequires before SRPM rebuild
+  sudo dnf install -y rpm-build rpmdevtools gcc gcc-c++ make dnf-plugins-core
+  rpmkeys --checksig openssh-9.8p1-1.src.rpm
+  sudo dnf builddep -y openssh-9.8p1-1.src.rpm
+  rpmbuild --rebuild openssh-9.8p1-1.src.rpm
+
+  # 4. Manual compilation from tarball (verify checksums first, inspect README/INSTALL)
+  sha256sum -c sample-app-1.0.tar.gz.sha256
+  tar -xvf sample-app-1.0.tar.gz
+  cd sample-app-1.0
+  cat README || cat INSTALL
+  # For Autotools-based projects:
+  ./configure --prefix=/usr/local
+  make -j$(nproc)
+  sudo make install
+  ```
+
 ### 2. Universal Containerized Packaging
 
 - **Flatpak (Flathub):**
