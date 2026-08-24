@@ -301,7 +301,7 @@
 - [Soal Jawab Asas Linux (FAQ)](manual/cu01/soal-jawab-linux.md)
 
 ## Agent Skills
-- [Conduct Application Security Patching](.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md)
+- [Pelaksanaan Tampalan Keselamatan Aplikasi](.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md)
 - [Prepare Computer System Installation Records](.agents/skills/cu01-wa07-prepare-computer-system-installation-records/SKILL.md)
 - [🔍 Git Commit Resolver Skill](.agents/skills/git-commit-resolver/SKILL.md)
 - [TVET Competency Weightage Auditor Skill](.agents/skills/tvet-competency-weightage-auditor/SKILL.md)

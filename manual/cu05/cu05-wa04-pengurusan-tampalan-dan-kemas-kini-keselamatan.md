@@ -26,11 +26,6 @@ Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
-
 ### 2. Automasi Tampalan Keselamatan Pakej (Unattended Upgrades & DNF Automatic)
 
 #### A. Debian / Ubuntu (unattended-upgrades)
@@ -40,7 +35,7 @@ Pada **Ubuntu 26.04 LTS**, automasi pemutakhiran tampalan keselamatan dipasang d
 ```bash
 # 1. Pasang pakej unattended-upgrades
 sudo apt update
-sudo apt install -y unattended-upgrades apt-config-auto-update
+sudo apt install -y unattended-upgrades
 
 # 2. Aktifkan perkhidmatan automasi tampalan keselamatan secara interaktif atau pemprosesan automatik
 sudo dpkg-reconfigure --priority=low unattended-upgrades
@@ -60,12 +55,14 @@ Pada **AlmaLinux 10** dan **Fedora 43**, kemas kini keselamatan secara automatik
 # 1. Pasang pakej dnf-automatic
 sudo dnf install -y dnf-automatic
 
-# 2. Sunting konfigurasi di /etc/dnf/automatic.conf untuk mengaplikasikan kemas kini keselamatan
-# Tetapkan apply_updates = yes dan upgrade_type = security
-sudo sed -i 's/upgrade_type = default/upgrade_type = security/' /etc/dnf/automatic.conf
-sudo sed -i 's/apply_updates = no/apply_updates = yes/' /etc/dnf/automatic.conf
+# 2. Tetapkan konfigurasi secara penentu (deterministic) di /etc/dnf/automatic.conf
+sudo sed -i 's/^upgrade_type =.*/upgrade_type = security/' /etc/dnf/automatic.conf
+sudo sed -i 's/^apply_updates =.*/apply_updates = yes/' /etc/dnf/automatic.conf
 
-# 3. Aktifkan dan jalankan Systemd timer bagi dnf-automatic
+# 3. Sahkan tetapan berkesan sebelum mengaktifkan timer
+grep -E '^(upgrade_type|apply_updates)' /etc/dnf/automatic.conf
+
+# 4. Aktifkan dan jalankan Systemd timer bagi dnf-automatic
 sudo systemctl enable --now dnf-automatic.timer
 sudo systemctl status dnf-automatic.timer
 ```
@@ -74,11 +71,11 @@ sudo systemctl status dnf-automatic.timer
 
 ### 3. Semakan Integriti Fail Pakej & Audit CVE (`rpm -V` & `dpkg --verify`)
 
-Untuk memastikan fail biner dan fail konfigurasi perisian tidak diubah atau dicemari oleh sebarang pencerobohan:
+Untuk memastikan fail biner dan fail konfigurasi perisian terpasang tidak diubah atau dicemari oleh sebarang pencerobohan (Nota: `rpm -Va` membandingkan fail terpasang dengan metadata pangkalan data RPM tempatan):
 
 ```bash
 # A. Semakan integriti pada sistem berasaskan Red Hat / AlmaLinux / Fedora:
-# Semak kesemua pakej terpasang bagi sebarang perubahan saiz, checksum MD5/SHA256, atau kebenaran fail
+# Semak kesemua pakej terpasang berbanding pangkalan data RPM tempatan
 sudo rpm -Va
 
 # Semak integriti fail bagi pakej spesifik (contoh: openssh-server)
@@ -87,9 +84,14 @@ sudo rpm -V openssh-server
 # B. Semakan integriti pada sistem berasaskan Debian / Ubuntu:
 sudo dpkg --verify
 
-# C. Audit kelemahan dan keselamatan pakej (CVE auditing):
-# Menggunakan debsecan / dnf audit jika tersedia
+# C. Audit kelemahan dan advisori keselamatan pakej (CVE auditing):
+# Debian/Ubuntu (audit kelemahanCVE):
+sudo apt install -y debsecan
+debsecan --suite $(lsb_release -cs)
+
+# Red Hat / AlmaLinux / Fedora (butiran advisori keselamatan CVE):
 sudo dnf updateinfo list security
+sudo dnf updateinfo info security
 ```
 
 ---

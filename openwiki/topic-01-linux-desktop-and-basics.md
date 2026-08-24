@@ -75,12 +75,16 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)
 
 - **Perbandingan Format Pembungkusan**:
-  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`, `--nodeps`.
-  - Pakej Kontena Universal: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
-  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst` (`./configure && make && make install`).
-  - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild`.
+  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`.
+  - Pakej aplikasi universal dengan pengasingan: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
+  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, CMake, atau Meson).
+  - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild` selepas penyelesaian `BuildRequires`.
 - **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
-- **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**: `lspci`, `ubuntu-drivers`, `akmod-nvidia`.
+- **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**:
+  - Deteksi perkakasan: `lspci`.
+  - Ubuntu/NVIDIA: `ubuntu-drivers` dan `nvidia-smi`.
+  - Fedora/AlmaLinux/NVIDIA: RPM Fusion, `dnf install akmod-nvidia`, dan `nvidia-smi`.
+  - AMD Radeon: Pemacu sumber terbuka `Mesa`/`amdgpu` dengan pengesahan `glxinfo`.
 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
 

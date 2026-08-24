@@ -393,7 +393,7 @@ Sistem ini direka bentuk sebagai pangkalan pengetahuan Linux tidak rasmi yang be
 
 ---
 
-## 🌐 Entry Points (Titik Masuk)
+## 🌐 Titik Masuk (Entry Points)
 
 Bergantung kepada peranan anda, sila rujuk dokumen berikut sebelum mula membaca fail-fail lain:
 
@@ -423,8 +423,8 @@ Jika anda pembaca manusia, pelajar TVET, atau pentadbir sistem yang mahu mempela
      - **Pelayan & Servis**: Rujuk [**CU03: Pentadbiran & Perkhidmatan Pelayan Linux**](manual/cu03/index.md).
    - ⚙️ **Automasi, Keselamatan & Khidmat Sokongan**:
      - **Sandaran & Automasi**: Rujuk [**CU04: Automasi, Sandaran & Pemulihan Sistem**](manual/cu04/index.md).
-     - **Keselamatan & Pengerasan Sistem**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Hardening**](manual/cu05/index.md).
-     - **Penyelesaian Masalah & Log**: Rujuk [**CU06: Sokongan Pengguna & Troubleshooting**](manual/cu06/index.md).
+     - **Keselamatan & Pengerasan Sistem**: Rujuk [**CU05: Kawalan Keselamatan Endpoint & Pengerasan Sistem**](manual/cu05/index.md).
+     - **Penyelesaian Masalah & Log**: Rujuk [**CU06: Sokongan Pengguna & Penyelesaian Masalah**](manual/cu06/index.md).
 
 ---
 
@@ -26718,12 +26718,16 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)
 
 - **Perbandingan Format Pembungkusan**:
-  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`, `--nodeps`.
-  - Pakej Kontena Universal: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
-  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst` (`./configure && make && make install`).
-  - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild`.
+  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`.
+  - Pakej aplikasi universal dengan pengasingan: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
+  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, CMake, atau Meson).
+  - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild` selepas penyelesaian `BuildRequires`.
 - **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
-- **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**: `lspci`, `ubuntu-drivers`, `akmod-nvidia`.
+- **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**:
+  - Deteksi perkakasan: `lspci`.
+  - Ubuntu/NVIDIA: `ubuntu-drivers` dan `nvidia-smi`.
+  - Fedora/AlmaLinux/NVIDIA: RPM Fusion, `dnf install akmod-nvidia`, dan `nvidia-smi`.
+  - AMD Radeon: Pemacu sumber terbuka `Mesa`/`amdgpu` dengan pengesahan `glxinfo`.
 
 **📖 Baca Lanjut:** [manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md](../manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md)
 
@@ -27726,59 +27730,76 @@ sudo dnf config-manager --enable epel
 
 Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu menguasai utiliti asas `rpm` dan kaedah pengompilan perisian daripada kod sumber:
 
-1. **Operasi & Opsyen Asas Arahan `rpm`:**
+1. **Pengesahan Tandatangan Pakej & Operasi Asas Arahan `rpm`:**
+   - Sebelum memasang sebarang pakej RPM luar, sahkan tandatangan digital GPG menggunakan `rpmkeys --checksig` atau `rpm -K`.
    - Sintaks asas: `rpm [operasi] [opsyen] [pakej-fail / nama-pakej]`
    - `-i` (Install): Memasang pakej RPM baharu.
    - `-U` (Upgrade): Memasang pakej baharu atau menaik taraf pakej sedia ada (pilihan paling disyorkan).
    - `-F` (Freshen): Menaik taraf pakej HANYA jika versi terdahulu telah sedia terpasang.
    - `-q` (Query): Menyoal status pakej (`rpm -qa` untuk semua pakej, `rpm -qi <pakej>` untuk maklumat, `rpm -ql <pakej>` untuk senarai fail).
-   - `-V` (Verify): Membuktikan kesahihan dan integriti pakej terhadap pangkalan data RPM.
+   - `-V` (Verify): Membuktikan kesahihan dan integriti fail yang telah terpasang berbanding pangkalan data RPM tempatan.
    - `-e` (Erase): Membuang/nyahpasang pakej daripada sistem.
    - `--rebuilddb`: Membina semula pangkalan data RPM sekiranya berlaku kerosakan pangkalan data indeks.
-   - `--nodeps`: Memaksa pemasangan atau pembuangan pakej dengan mengabaikan semakan kebergantungan (*dependency check*) — *gunakan dengan berhati-hati dalam kecemasan sahaja*.
 
    ```bash
-   # Pemasangan / Naik taraf pakej RPM berserta kemajuan hash (#)
+   # 1. Sahkan tandatangan digital GPG pada pakej RPM sebelum pemasangan
+   rpmkeys --checksig nmap-7.95-1.x86_64.rpm
+
+   # 2. Pemasangan / Naik taraf pakej RPM berserta kemajuan hash (#)
    sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
 
-   # Semak maklumat dan fail yang dimiliki oleh sesuatu pakej
+   # 3. Semak maklumat dan fail yang dimiliki oleh sesuatu pakej
    rpm -qi nmap
    rpm -ql nmap
 
-   # Cari pakej RPM yang memiliki fail spesifik di dalam sistem
+   # 4. Cari pakej RPM yang memiliki fail spesifik di dalam sistem
    rpm -qf /usr/bin/nmap
 
-   # Pengesahan integriti fail pakej
+   # 5. Pengesahan integriti fail terpasang
    rpm -V nmap
    ```
 
 2. **Pengompilan Kod Sumber daripada Pakej Sumber RPM (`.src.rpm`):**
    - Fail `.src.rpm` mengandungi kod sumber asal dan fail spesifikasi `.spec` untuk membina pakej binari RPM.
-   - Gunakan arahan `rpmbuild --rebuild` untuk mengompil semula sumber RPM mengikut persekitaran pustaka sistem semasa:
+   - Langkah prasyarat memasang perkakasan pembangunan: `rpm-build`, `rpmdevtools`, `gcc`, `gcc-c++`, dan `make`.
+   - Gunakan `dnf builddep` untuk menyelesaikan semua `BuildRequires` sebelum melepaskan arahan `rpmbuild --rebuild`:
 
    ```bash
-   # Pasang alatan pembangunan binaan RPM
-   sudo dnf install -y rpm-build rpmdevtools gcc make
+   # 1. Pasang alatan pembangunan binaan RPM
+   sudo dnf install -y rpm-build rpmdevtools gcc gcc-c++ make dnf-plugins-core
 
-   # Mengompil pakej sumber RPM kepada pakej binari RPM
+   # 2. Sahkan tandatangan pada fail SRPM (.src.rpm)
+   rpmkeys --checksig openssh-9.8p1-1.src.rpm
+
+   # 3. Selesaikan kebergantungan binaan (BuildRequires)
+   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
+
+   # 4. Mengompil pakej sumber RPM kepada pakej binari RPM
    rpmbuild --rebuild openssh-9.8p1-1.src.rpm
    ```
 
 3. **Pengompilan Manual daripada Arkib Kod Sumber Tarball (`.tar.gz` / `.tar.zst`):**
-   - Apabila tiada pakej binari disediakan atau apabila tetapan kompilasi khas diperlukan:
+   - Pengompilan manual hanya dilakukan sekiranya tiada pakej binari atau apabila pengubahsuaian kod sumber diperlukan.
+   - **Penting:** Sentiasa semak fail `README` atau `INSTALL` di dalam arkib untuk menentukan sistem binaan yang digunakan (seperti Autotools `./configure`, CMake `cmake`, atau Meson `meson`). Arahan `./configure` hanya terhad untuk projek berasaskan Autotools.
+   - **Langkah Keselamatan:** Sahkan integriti checksum (`sha256sum`) atau tandatangan GPG (`gpg --verify`) arkib sebelum pengekstrakan dan pemasangan.
+   - **Amaran:** Penggunaan `sudo make install` tidak dijejak oleh pangkalan data pakej sistem (`dpkg`/`rpm`). Adalah disyorkan untuk menguruskan inventori di `/usr/local` atau membina pakej binari rasmi.
 
    ```bash
-   # 1. Ekstrak arkib kod sumber
+   # 1. Pengesahan checksum sha256sum sebelum pengekstrakan
+   sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256
+
+   # 2. Ekstrak arkib kod sumber
    tar -xvf sampel-aplikasi-1.0.tar.gz
    cd sampel-aplikasi-1.0
 
-   # 2. Semak dan sediakan skrip konfigurasi persekitaran
-   ./configure --prefix=/usr/local
+   # 3. Semak dokumen README/INSTALL untuk mengenal pasti sistem binaan
+   cat README || cat INSTALL
 
-   # 3. Kompilkan kod sumber menggunakan pengkompil C/C++ (make)
+   # 4. Bagi projek Autotools, sediakan persekitaran dan kompilkan
+   ./configure --prefix=/usr/local
    make -j$(nproc)
 
-   # 4. Pasang binari yang terhasil ke dalam sistem
+   # 5. Pasang binari secara terurus ke /usr/local
    sudo make install
    ```
 
@@ -30107,11 +30128,6 @@ Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
-
 ### 2. Automasi Tampalan Keselamatan Pakej (Unattended Upgrades & DNF Automatic)
 
 #### A. Debian / Ubuntu (unattended-upgrades)
@@ -30121,7 +30137,7 @@ Pada **Ubuntu 26.04 LTS**, automasi pemutakhiran tampalan keselamatan dipasang d
 ```bash
 # 1. Pasang pakej unattended-upgrades
 sudo apt update
-sudo apt install -y unattended-upgrades apt-config-auto-update
+sudo apt install -y unattended-upgrades
 
 # 2. Aktifkan perkhidmatan automasi tampalan keselamatan secara interaktif atau pemprosesan automatik
 sudo dpkg-reconfigure --priority=low unattended-upgrades
@@ -30141,12 +30157,14 @@ Pada **AlmaLinux 10** dan **Fedora 43**, kemas kini keselamatan secara automatik
 # 1. Pasang pakej dnf-automatic
 sudo dnf install -y dnf-automatic
 
-# 2. Sunting konfigurasi di /etc/dnf/automatic.conf untuk mengaplikasikan kemas kini keselamatan
-# Tetapkan apply_updates = yes dan upgrade_type = security
-sudo sed -i 's/upgrade_type = default/upgrade_type = security/' /etc/dnf/automatic.conf
-sudo sed -i 's/apply_updates = no/apply_updates = yes/' /etc/dnf/automatic.conf
+# 2. Tetapkan konfigurasi secara penentu (deterministic) di /etc/dnf/automatic.conf
+sudo sed -i 's/^upgrade_type =.*/upgrade_type = security/' /etc/dnf/automatic.conf
+sudo sed -i 's/^apply_updates =.*/apply_updates = yes/' /etc/dnf/automatic.conf
 
-# 3. Aktifkan dan jalankan Systemd timer bagi dnf-automatic
+# 3. Sahkan tetapan berkesan sebelum mengaktifkan timer
+grep -E '^(upgrade_type|apply_updates)' /etc/dnf/automatic.conf
+
+# 4. Aktifkan dan jalankan Systemd timer bagi dnf-automatic
 sudo systemctl enable --now dnf-automatic.timer
 sudo systemctl status dnf-automatic.timer
 ```
@@ -30155,11 +30173,11 @@ sudo systemctl status dnf-automatic.timer
 
 ### 3. Semakan Integriti Fail Pakej & Audit CVE (`rpm -V` & `dpkg --verify`)
 
-Untuk memastikan fail biner dan fail konfigurasi perisian tidak diubah atau dicemari oleh sebarang pencerobohan:
+Untuk memastikan fail biner dan fail konfigurasi perisian terpasang tidak diubah atau dicemari oleh sebarang pencerobohan (Nota: `rpm -Va` membandingkan fail terpasang dengan metadata pangkalan data RPM tempatan):
 
 ```bash
 # A. Semakan integriti pada sistem berasaskan Red Hat / AlmaLinux / Fedora:
-# Semak kesemua pakej terpasang bagi sebarang perubahan saiz, checksum MD5/SHA256, atau kebenaran fail
+# Semak kesemua pakej terpasang berbanding pangkalan data RPM tempatan
 sudo rpm -Va
 
 # Semak integriti fail bagi pakej spesifik (contoh: openssh-server)
@@ -30168,9 +30186,14 @@ sudo rpm -V openssh-server
 # B. Semakan integriti pada sistem berasaskan Debian / Ubuntu:
 sudo dpkg --verify
 
-# C. Audit kelemahan dan keselamatan pakej (CVE auditing):
-# Menggunakan debsecan / dnf audit jika tersedia
+# C. Audit kelemahan dan advisori keselamatan pakej (CVE auditing):
+# Debian/Ubuntu (audit kelemahanCVE):
+sudo apt install -y debsecan
+debsecan --suite $(lsb_release -cs)
+
+# Red Hat / AlmaLinux / Fedora (butiran advisori keselamatan CVE):
 sudo dnf updateinfo list security
+sudo dnf updateinfo info security
 ```
 
 ---
@@ -33323,32 +33346,33 @@ Secara asasnya, binari `.exe` Windows tidak boleh dijalankan terus pada Linux. N
 
 ﻿---
 name: cu05-wa04-conduct-application-security-patching
-description: "Executes NOSS Work Activity: Conduct Application Security Patching (unattended-upgrades, dnf-automatic, rpm -V, dpkg --verify)"
+description: "Melaksanakan Aktiviti Kerja NOSS: Pelaksanaan Tampalan Keselamatan Aplikasi (unattended-upgrades, dnf-automatic, rpm -V, dpkg --verify)"
 topics: [noss, cu05, wa04, security-patching, unattended-upgrades, dnf-automatic]
 tags: [cu05, wa04, security, patching, unattended-upgrades, dnf-automatic, rpm]
 okf_version: 0.1
 type: skill
-title: "Conduct Application Security Patching"
+title: "Pelaksanaan Tampalan Keselamatan Aplikasi"
 timestamp: "2026-08-17T00:00:00Z"
 resource: "file:///.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md"
 ---
 
-# Conduct Application Security Patching
-*Executes NOSS standard K622-XXX-3:2026-C05 WA04*
+# Pelaksanaan Tampalan Keselamatan Aplikasi
 
-## Overview
+*Melaksanakan standard NOSS K622-001-3:2026-C05 WA04 (Sementara: Kod Sementara Standard NOSS)*
 
-This skill provides operational procedures for automating security patch installation (`unattended-upgrades` on Debian/Ubuntu 26.04 LTS, `dnf-automatic` on Red Hat/AlmaLinux 10 / Fedora 43), verifying package integrity (`rpm -V`, `dpkg --verify`), and auditing CVE vulnerabilities in compliance with NOSS Level 3 and ISO/IEC 27001 security standards.
+## Gambaran Keseluruhan (Overview)
 
-## Procedure
+Kemahiran ini menyediakan prosedur operasi bagi mengautomasikan pemasangan tampalan keselamatan (`unattended-upgrades` pada Debian/Ubuntu 26.04 LTS, `dnf-automatic` pada Red Hat/AlmaLinux 10 / Fedora 43), mengesahkan integriti fail pakej terpasang (`rpm -V`, `dpkg --verify`), dan mengaudit kelemahan CVE mengikut piawaian NOSS Tahap 3 serta standard keselamatan ISO/IEC 27001.
 
-### 1. Automated Security Patching
+## Prosedur (Procedure)
+
+### 1. Automasi Tampalan Keselamatan
 
 - **Debian / Ubuntu 26.04 LTS (`unattended-upgrades`):**
 
   ```bash
   sudo apt update
-  sudo apt install -y unattended-upgrades apt-config-auto-update
+  sudo apt install -y unattended-upgrades
   sudo dpkg-reconfigure --priority=low unattended-upgrades
   sudo tail -n 50 /var/log/unattended-upgrades/unattended-upgrades.log
   ```
@@ -33357,31 +33381,34 @@ This skill provides operational procedures for automating security patch install
 
   ```bash
   sudo dnf install -y dnf-automatic
-  sudo sed -i 's/upgrade_type = default/upgrade_type = security/' /etc/dnf/automatic.conf
-  sudo sed -i 's/apply_updates = no/apply_updates = yes/' /etc/dnf/automatic.conf
+  sudo sed -i 's/^upgrade_type =.*/upgrade_type = security/' /etc/dnf/automatic.conf
+  sudo sed -i 's/^apply_updates =.*/apply_updates = yes/' /etc/dnf/automatic.conf
+  grep -E '^(upgrade_type|apply_updates)' /etc/dnf/automatic.conf
   sudo systemctl enable --now dnf-automatic.timer
   sudo systemctl status dnf-automatic.timer
   ```
 
-### 2. Package Integrity & Security Auditing
+### 2. Integriti Pakej & Audit CVE
 
-- **Red Hat / AlmaLinux / Fedora Package Integrity:**
+- **Integriti Pakej Red Hat / AlmaLinux / Fedora:**
 
   ```bash
   sudo rpm -Va
   sudo rpm -V openssh-server
   sudo dnf updateinfo list security
+  sudo dnf updateinfo info security
   ```
 
-- **Debian / Ubuntu Package Integrity:**
+- **Integriti Pakej & Audit CVE Debian / Ubuntu:**
 
   ```bash
   sudo dpkg --verify
+  sudo apt install -y debsecan
+  debsecan --suite $(lsb_release -cs)
   ```
 
-
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md -->
@@ -37999,18 +38026,27 @@ This skill provides automated guidance and execution steps for managing Linux ap
 - **RPM Package Operations & Source Compilation:**
 
   ```bash
-  # Install / Upgrade RPM package with hash progress (#)
+  # 1. Verify GPG digital signature before installation
+  rpmkeys --checksig nmap-7.95-1.x86_64.rpm
+
+  # 2. Install / Upgrade RPM package with hash progress (#)
   sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
   rpm -qi nmap
   rpm -ql nmap
   rpm -V nmap
 
-  # Rebuild binary RPM from source RPM (.src.rpm)
+  # 3. Install build tools and resolve BuildRequires before SRPM rebuild
+  sudo dnf install -y rpm-build rpmdevtools gcc gcc-c++ make dnf-plugins-core
+  rpmkeys --checksig openssh-9.8p1-1.src.rpm
+  sudo dnf builddep -y openssh-9.8p1-1.src.rpm
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
-  # Manual compilation from tarball (.tar.gz)
+  # 4. Manual compilation from tarball (verify checksums first, inspect README/INSTALL)
+  sha256sum -c sample-app-1.0.tar.gz.sha256
   tar -xvf sample-app-1.0.tar.gz
   cd sample-app-1.0
+  cat README || cat INSTALL
+  # For Autotools-based projects:
   ./configure --prefix=/usr/local
   make -j$(nproc)
   sudo make install
@@ -42187,7 +42223,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-23T23:25:24Z"
+timestamp: "2026-08-24T15:43:39Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -42327,7 +42363,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-23*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-24*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/index.md -->

@@ -71,59 +71,76 @@ sudo dnf config-manager --enable epel
 
 Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu menguasai utiliti asas `rpm` dan kaedah pengompilan perisian daripada kod sumber:
 
-1. **Operasi & Opsyen Asas Arahan `rpm`:**
+1. **Pengesahan Tandatangan Pakej & Operasi Asas Arahan `rpm`:**
+   - Sebelum memasang sebarang pakej RPM luar, sahkan tandatangan digital GPG menggunakan `rpmkeys --checksig` atau `rpm -K`.
    - Sintaks asas: `rpm [operasi] [opsyen] [pakej-fail / nama-pakej]`
    - `-i` (Install): Memasang pakej RPM baharu.
    - `-U` (Upgrade): Memasang pakej baharu atau menaik taraf pakej sedia ada (pilihan paling disyorkan).
    - `-F` (Freshen): Menaik taraf pakej HANYA jika versi terdahulu telah sedia terpasang.
    - `-q` (Query): Menyoal status pakej (`rpm -qa` untuk semua pakej, `rpm -qi <pakej>` untuk maklumat, `rpm -ql <pakej>` untuk senarai fail).
-   - `-V` (Verify): Membuktikan kesahihan dan integriti pakej terhadap pangkalan data RPM.
+   - `-V` (Verify): Membuktikan kesahihan dan integriti fail yang telah terpasang berbanding pangkalan data RPM tempatan.
    - `-e` (Erase): Membuang/nyahpasang pakej daripada sistem.
    - `--rebuilddb`: Membina semula pangkalan data RPM sekiranya berlaku kerosakan pangkalan data indeks.
-   - `--nodeps`: Memaksa pemasangan atau pembuangan pakej dengan mengabaikan semakan kebergantungan (*dependency check*) — *gunakan dengan berhati-hati dalam kecemasan sahaja*.
 
    ```bash
-   # Pemasangan / Naik taraf pakej RPM berserta kemajuan hash (#)
+   # 1. Sahkan tandatangan digital GPG pada pakej RPM sebelum pemasangan
+   rpmkeys --checksig nmap-7.95-1.x86_64.rpm
+
+   # 2. Pemasangan / Naik taraf pakej RPM berserta kemajuan hash (#)
    sudo rpm -Uvh nmap-7.95-1.x86_64.rpm
 
-   # Semak maklumat dan fail yang dimiliki oleh sesuatu pakej
+   # 3. Semak maklumat dan fail yang dimiliki oleh sesuatu pakej
    rpm -qi nmap
    rpm -ql nmap
 
-   # Cari pakej RPM yang memiliki fail spesifik di dalam sistem
+   # 4. Cari pakej RPM yang memiliki fail spesifik di dalam sistem
    rpm -qf /usr/bin/nmap
 
-   # Pengesahan integriti fail pakej
+   # 5. Pengesahan integriti fail terpasang
    rpm -V nmap
    ```
 
 2. **Pengompilan Kod Sumber daripada Pakej Sumber RPM (`.src.rpm`):**
    - Fail `.src.rpm` mengandungi kod sumber asal dan fail spesifikasi `.spec` untuk membina pakej binari RPM.
-   - Gunakan arahan `rpmbuild --rebuild` untuk mengompil semula sumber RPM mengikut persekitaran pustaka sistem semasa:
+   - Langkah prasyarat memasang perkakasan pembangunan: `rpm-build`, `rpmdevtools`, `gcc`, `gcc-c++`, dan `make`.
+   - Gunakan `dnf builddep` untuk menyelesaikan semua `BuildRequires` sebelum melepaskan arahan `rpmbuild --rebuild`:
 
    ```bash
-   # Pasang alatan pembangunan binaan RPM
-   sudo dnf install -y rpm-build rpmdevtools gcc make
+   # 1. Pasang alatan pembangunan binaan RPM
+   sudo dnf install -y rpm-build rpmdevtools gcc gcc-c++ make dnf-plugins-core
 
-   # Mengompil pakej sumber RPM kepada pakej binari RPM
+   # 2. Sahkan tandatangan pada fail SRPM (.src.rpm)
+   rpmkeys --checksig openssh-9.8p1-1.src.rpm
+
+   # 3. Selesaikan kebergantungan binaan (BuildRequires)
+   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
+
+   # 4. Mengompil pakej sumber RPM kepada pakej binari RPM
    rpmbuild --rebuild openssh-9.8p1-1.src.rpm
    ```
 
 3. **Pengompilan Manual daripada Arkib Kod Sumber Tarball (`.tar.gz` / `.tar.zst`):**
-   - Apabila tiada pakej binari disediakan atau apabila tetapan kompilasi khas diperlukan:
+   - Pengompilan manual hanya dilakukan sekiranya tiada pakej binari atau apabila pengubahsuaian kod sumber diperlukan.
+   - **Penting:** Sentiasa semak fail `README` atau `INSTALL` di dalam arkib untuk menentukan sistem binaan yang digunakan (seperti Autotools `./configure`, CMake `cmake`, atau Meson `meson`). Arahan `./configure` hanya terhad untuk projek berasaskan Autotools.
+   - **Langkah Keselamatan:** Sahkan integriti checksum (`sha256sum`) atau tandatangan GPG (`gpg --verify`) arkib sebelum pengekstrakan dan pemasangan.
+   - **Amaran:** Penggunaan `sudo make install` tidak dijejak oleh pangkalan data pakej sistem (`dpkg`/`rpm`). Adalah disyorkan untuk menguruskan inventori di `/usr/local` atau membina pakej binari rasmi.
 
    ```bash
-   # 1. Ekstrak arkib kod sumber
+   # 1. Pengesahan checksum sha256sum sebelum pengekstrakan
+   sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256
+
+   # 2. Ekstrak arkib kod sumber
    tar -xvf sampel-aplikasi-1.0.tar.gz
    cd sampel-aplikasi-1.0
 
-   # 2. Semak dan sediakan skrip konfigurasi persekitaran
-   ./configure --prefix=/usr/local
+   # 3. Semak dokumen README/INSTALL untuk mengenal pasti sistem binaan
+   cat README || cat INSTALL
 
-   # 3. Kompilkan kod sumber menggunakan pengkompil C/C++ (make)
+   # 4. Bagi projek Autotools, sediakan persekitaran dan kompilkan
+   ./configure --prefix=/usr/local
    make -j$(nproc)
 
-   # 4. Pasang binari yang terhasil ke dalam sistem
+   # 5. Pasang binari secara terurus ke /usr/local
    sudo make install
    ```
 
