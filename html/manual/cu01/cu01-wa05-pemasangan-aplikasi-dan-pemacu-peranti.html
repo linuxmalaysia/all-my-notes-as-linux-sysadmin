@@ -1757,62 +1757,65 @@
 <li><code>-i</code> (Install): Memasang pakej RPM baharu.</li>
 <li><code>-U</code> (Upgrade): Memasang pakej baharu atau menaik taraf pakej sedia ada (pilihan paling disyorkan).</li>
 <li><code>-F</code> (Freshen): Menaik taraf pakej HANYA jika versi terdahulu telah sedia terpasang.</li>
-<li><code>-q</code> (Query): Menyoal status pakej (<code>rpm -qa</code> untuk semua pakej, <code>rpm -qi &lt;pakej&gt;</code> untuk maklumat, <code>rpm -ql &lt;pakej&gt;</code> melepaskan senarai fail).</li>
-<li><code>-V</code> (Verify): Mengesan perbezaan fail terpasang berbanding pangkalan data RPM tempatan.</li>
+<li><code>-q</code> (Query): Menyoal status pakej (<code>rpm -qa</code> untuk semua pakej, <code>rpm -qi &lt;pakej&gt;</code> untuk maklumat, <code>rpm -ql &lt;pakej&gt;</code> memaparkan senarai fail).</li>
+<li><code>-V</code> (Verify): Mengesan perbezaan fail terpasang berbanding pangkalan data RPM tempatan (nota: ini menyemak integriti metadata tempatan, bukan menjamin sistem bebas pencerobohan luar).</li>
 <li><code>-e</code> (Erase): Membuang/nyahpasang pakej daripada sistem.</li>
 <li><code>--rebuilddb</code>: Membina semula pangkalan data RPM sekiranya berlaku kerosakan pangkalan data indeks.</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Import kunci awam GPG rasmi dan sahkan tandatangan digital pakej RPM</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>--import<span class="w"> </span>/etc/pki/rpm-gpg/RPM-GPG-KEY-official
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Import kunci awam GPG rasmi vendor mengikut edaran (contoh: AlmaLinux/Fedora) dan sahkan tandatangan digital pakej RPM</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>--import<span class="w"> </span>/etc/pki/rpm-gpg/RPM-GPG-KEY-AlmaLinux
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>rpmkeys<span class="w"> </span>--checksig<span class="w"> </span>nmap-7.95-1.x86_64.rpm<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Pengesahan GPG gagal atau NOKEY!"</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 2. Pemasangan disyorkan (DNF menyelesaikan kebergantungan automatik)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 2. KAEDAH A (Disyorkan): Pemasangan melalui DNF (DNF menyelesaikan kebergantungan automatik)</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>./nmap-7.95-1.x86_64.rpm
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># 3. Pemasangan aras rendah (RPM)</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-Uvh<span class="w"> </span>nmap-7.95-1.x86_64.rpm
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># ATAU KAEDAH B (Alternatif Aras Rendah): Pemasangan terus menggunakan arahan RPM (PILIH SATU KAEDAH SAHAJA)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># sudo rpm -Uvh nmap-7.95-1.x86_64.rpm</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># 4. Semak maklumat dan fail yang dimiliki oleh sesuatu pakej</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># 3. Semak maklumat dan fail yang dimiliki oleh sesuatu pakej</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>rpm<span class="w"> </span>-qi<span class="w"> </span>nmap
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>rpm<span class="w"> </span>-ql<span class="w"> </span>nmap
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># 5. Cari pakej RPM yang memiliki fail spesifik di dalam sistem</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># 4. Cari pakej RPM yang memiliki fail spesifik di dalam sistem</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>rpm<span class="w"> </span>-qf<span class="w"> </span>/usr/bin/nmap
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># 6. Pengesahan integriti fail terpasang berbanding pangkalan data RPM tempatan</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># 5. Pengesahan integriti fail terpasang berbanding pangkalan data RPM tempatan</span>
 </span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>rpm<span class="w"> </span>-V<span class="w"> </span>nmap
 </span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>rpm<span class="w"> </span>-Va
 </span></code></pre></div>
 <ol>
 <li><strong>Pengompilan Kod Sumber daripada Pakej Sumber RPM (<code>.src.rpm</code>):</strong></li>
 <li>Fail <code>.src.rpm</code> mengandungi kod sumber asal dan fail spesifikasi <code>.spec</code> untuk membina pakej binari RPM.</li>
-<li>Langkah prasyarat memasang perkakasan pembangunan: <code>rpm-build</code>, <code>rpmdevtools</code>, <code>gcc</code>, <code>gcc-c++</code>, dan <code>make</code>.</li>
+<li>Langkah prasyarat memasang perkakasan pembangunan: <code>rpm-build</code>, <code>rpmdevtools</code>, <code>gcc</code>, <code>gcc-c++</code>, <code>make</code>, serta pemalam <code>dnf-plugins-core</code> (AlmaLinux/RHEL) atau <code>dnf5-plugins</code> (Fedora 43).</li>
 <li>Gunakan <code>dnf builddep</code> (pada AlmaLinux 10 / RHEL) atau <code>dnf5 builddep</code> (pada Fedora 43) untuk menyelesaikan kebergantungan binaan <code>BuildRequires</code>:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Pasang alatan pembangunan binaan RPM</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>rpm-build<span class="w"> </span>rpmdevtools<span class="w"> </span>gcc<span class="w"> </span>gcc-c++<span class="w"> </span>make<span class="w"> </span>dnf-plugins-core
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 2. Sahkan tandatangan pada fail SRPM (.src.rpm)</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>rpmkeys<span class="w"> </span>--checksig<span class="w"> </span>openssh-9.8p1-1.src.rpm<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Pasang alatan pembangunan binaan RPM (termasuk pemalam dnf/dnf5)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Pada AlmaLinux 10 / RHEL:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>rpm-build<span class="w"> </span>rpmdevtools<span class="w"> </span>gcc<span class="w"> </span>gcc-c++<span class="w"> </span>make<span class="w"> </span>dnf-plugins-core
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Pada Fedora 43 (DNF5):</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># sudo dnf5 install -y rpm-build rpmdevtools gcc gcc-c++ make dnf5-plugins</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># 3. Selesaikan kebergantungan binaan (BuildRequires mengikut edaran)</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Pada AlmaLinux 10 / RHEL 10:</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>builddep<span class="w"> </span>-y<span class="w"> </span>openssh-9.8p1-1.src.rpm
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Pada Fedora 43 (DNF5):</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># sudo dnf5 builddep -y openssh-9.8p1-1.src.rpm</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># 4. Mengompil pakej sumber RPM kepada pakej binari RPM</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>rpmbuild<span class="w"> </span>--rebuild<span class="w"> </span>openssh-9.8p1-1.src.rpm
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># 2. Sahkan tandatangan pada fail SRPM (.src.rpm)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>rpmkeys<span class="w"> </span>--checksig<span class="w"> </span>openssh-9.8p1-1.src.rpm<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># 3. Selesaikan kebergantungan binaan (BuildRequires mengikut edaran)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Pada AlmaLinux 10 / RHEL 10:</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>builddep<span class="w"> </span>-y<span class="w"> </span>openssh-9.8p1-1.src.rpm
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># Pada Fedora 43 (DNF5):</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># sudo dnf5 builddep -y openssh-9.8p1-1.src.rpm</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1"># 4. Mengompil pakej sumber RPM kepada pakej binari RPM</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>rpmbuild<span class="w"> </span>--rebuild<span class="w"> </span>openssh-9.8p1-1.src.rpm
 </span></code></pre></div>
 <ol>
 <li><strong>Pengompilan Manual daripada Arkib Kod Sumber Tarball (<code>.tar.gz</code> / <code>.tar.zst</code>):</strong></li>
 <li>Pengompilan manual hanya dilakukan sekiranya tiada pakej binari atau apabila pengubahsuaian kod sumber diperlukan.</li>
 <li><strong>Penting:</strong> Sentiasa semak fail <code>README</code> atau <code>INSTALL</code> di dalam arkib untuk menentukan sistem binaan yang digunakan (seperti Autotools <code>./configure</code>, CMake <code>cmake</code>, atau Meson <code>meson</code>). Arahan <code>./configure</code> hanya terhad untuk projek berasaskan Autotools.</li>
-<li><strong>Langkah Keselamatan:</strong> Dapatkan fail checksum (<code>sha256sum</code>) dan kunci GPG daripada saluran rasmi yang disahkan. Sahkan tandatangan manifesto/kunci sebelum menjalankan <code>sha256sum -c</code>.</li>
+<li><strong>Langkah Keselamatan:</strong> Dapatkan fail checksum (<code>sha256sum</code>) dan kunci GPG rasmi vendor. Sahkan tandatangan manifesto menggunakan kunci rasmi (contoh: <code>gpgv</code> atau <code>gpg --verify</code>) sebelum menjalankan <code>sha256sum -c</code>.</li>
 <li><strong>Amaran:</strong> Penggunaan <code>sudo make install</code> tidak dijejak oleh pangkalan data pakej sistem (<code>dpkg</code>/<code>rpm</code>). Adalah disyorkan untuk menguruskan inventori di <code>/usr/local</code> atau membina pakej binari rasmi.</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Sahkan kunci GPG &amp; integriti checksum sha256sum daripada saluran rasmi</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>gpg<span class="w"> </span>--verify<span class="w"> </span>sampel-aplikasi-1.0.tar.gz.sha256.asc<span class="w"> </span>sampel-aplikasi-1.0.tar.gz.sha256
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Sahkan kunci GPG rasmi vendor &amp; integriti checksum sha256sum daripada saluran rasmi</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>gpg<span class="w"> </span>--keyring<span class="w"> </span>/etc/apt/trusted.gpg.d/vendor.gpg<span class="w"> </span>--verify<span class="w"> </span>sampel-aplikasi-1.0.tar.gz.sha256.asc<span class="w"> </span>sampel-aplikasi-1.0.tar.gz.sha256
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sha256sum<span class="w"> </span>-c<span class="w"> </span>sampel-aplikasi-1.0.tar.gz.sha256<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># 2. Ekstrak arkib kod sumber</span>
