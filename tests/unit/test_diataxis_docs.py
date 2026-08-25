@@ -2,17 +2,16 @@
 
 import importlib.util
 from pathlib import Path
-
-import pytest
+from types import ModuleType
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _import_diataxis_docs_script():
-    """Muat naik skrip build_diataxis_docs.py secara dinamik untuk ujian terasing.
+def _import_diataxis_docs_script() -> ModuleType:
+    """Muatkan skrip build_diataxis_docs.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Instans modul build_diataxis_docs yang dimuatkan.
+        ModuleType: Instans modul build_diataxis_docs yang dimuatkan.
     """
     script_path = REPO_ROOT / "scripts" / "build_diataxis_docs.py"
     spec = importlib.util.spec_from_file_location("diataxis_docs_mod", script_path)

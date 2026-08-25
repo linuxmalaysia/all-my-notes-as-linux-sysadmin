@@ -10,7 +10,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _load_sitemaps_module():
-    """Muat naik modul tests/unit/sitemaps.py secara dinamik untuk ujian terasing.
+    """Muatkan modul tests/unit/sitemaps.py secara dinamik untuk ujian terasing.
 
     Returns:
         module: Instans modul ujian sitemap yang dimuatkan.

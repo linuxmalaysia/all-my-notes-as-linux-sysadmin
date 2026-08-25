@@ -2,6 +2,7 @@
 
 import importlib.util
 from pathlib import Path
+from types import ModuleType
 
 import pytest
 
@@ -11,11 +12,11 @@ jinja2 = pytest.importorskip("jinja2")
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _import_html_site_script():
-    """Muat naik skrip generate_html_site.py secara dinamik untuk ujian terasing.
+def _import_html_site_script() -> ModuleType:
+    """Muatkan skrip generate_html_site.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Instans modul generate_html_site yang dimuatkan.
+        ModuleType: Instans modul generate_html_site yang dimuatkan.
     """
     script_path = REPO_ROOT / "scripts" / "generate_html_site.py"
     spec = importlib.util.spec_from_file_location("html_site_mod", script_path)
@@ -56,6 +57,6 @@ def test_strip_frontmatter_and_get_title_from_frontmatter():
 def test_strip_frontmatter_and_get_title_fallback_to_h1():
     """Mengesahkan pengekstrakan tajuk daripada tajuk H1 pertama jika tiada frontmatter."""
     raw_md = "# Tajuk H1 Pertama\n\nKandungan prosa."
-    title, clean, fm = html_mod.strip_frontmatter_and_get_title(raw_md, "default.md")
+    title, _clean, fm = html_mod.strip_frontmatter_and_get_title(raw_md, "default.md")
     assert title == "Tajuk H1 Pertama"
     assert fm == ""

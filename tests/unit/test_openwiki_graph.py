@@ -2,17 +2,16 @@
 
 import importlib.util
 from pathlib import Path
-
-import pytest
+from types import ModuleType
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _import_openwiki_graph_script():
-    """Muat naik skrip generate_openwiki_graph.py secara dinamik untuk ujian terasing.
+def _import_openwiki_graph_script() -> ModuleType:
+    """Muatkan skrip generate_openwiki_graph.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Instans modul generate_openwiki_graph yang dimuatkan.
+        ModuleType: Instans modul generate_openwiki_graph yang dimuatkan.
     """
     script_path = REPO_ROOT / "scripts" / "generate_openwiki_graph.py"
     spec = importlib.util.spec_from_file_location("openwiki_graph_mod", script_path)
@@ -25,7 +24,7 @@ openwiki_mod = _import_openwiki_graph_script()
 
 
 def test_extract_metadata_from_topic_file(tmp_path):
-    """Mengesahkan ekstraksi tajuk, penerangan, dan CU daripada fail topik OpenWiki."""
+    """Mengesahkan pengekstrakan tajuk, penerangan, dan CU daripada fail topik OpenWiki."""
     topic_file = tmp_path / "topic-01-test.md"
     topic_file.write_text(
         '---\ntitle: "Topik 1: Test"\ndescription: "Penerangan Ujian"\n---\n\nKandungan merujuk CU01.\n',

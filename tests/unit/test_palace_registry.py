@@ -2,17 +2,16 @@
 
 import importlib.util
 from pathlib import Path
-
-import pytest
+from types import ModuleType
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _import_palace_registry_script():
-    """Muat naik skrip generate_palace_registry.py secara dinamik untuk ujian terasing.
+def _import_palace_registry_script() -> ModuleType:
+    """Muatkan skrip generate_palace_registry.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Instans modul generate_palace_registry yang dimuatkan.
+        ModuleType: Instans modul generate_palace_registry yang dimuatkan.
     """
     script_path = REPO_ROOT / "scripts" / "generate_palace_registry.py"
     spec = importlib.util.spec_from_file_location("palace_registry_mod", script_path)
@@ -25,7 +24,7 @@ palace_mod = _import_palace_registry_script()
 
 
 def test_extract_yaml_frontmatter_valid():
-    """Mengesahkan ekstraksi YAML frontmatter daripada kandungan Markdown yang sah."""
+    """Mengesahkan pengekstrakan YAML frontmatter daripada kandungan Markdown yang sah."""
     content = "---\nokf_version: 0.2\ntitle: Sample Skill\n---\n# Heading\n"
     fm = palace_mod.extract_yaml_frontmatter(content)
     assert "okf_version: 0.2" in fm

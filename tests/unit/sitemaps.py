@@ -6,14 +6,13 @@ dokumentasi Context7 dan MkDocs.
 
 import os
 import re
-import yaml
+
 import defusedxml.ElementTree as ET
-import pytest
+import yaml
 
 
 class CustomSafeLoader(yaml.SafeLoader):
     """Pemuat YAML selamat yang menyokong tag khas pymdownx.superfences."""
-    pass
 
 
 def _fence_code_format_constructor(loader, node):

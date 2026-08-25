@@ -15,7 +15,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _load_ansible_module():
-    """Muat naik modul tests/unit/ansible.py secara dinamik untuk ujian terasing.
+    """Muatkan modul tests/unit/ansible.py secara dinamik untuk ujian terasing.
 
     Returns:
         module: Instans modul ujian ansible yang dimuatkan.
