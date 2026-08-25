@@ -3,6 +3,11 @@
 # dependencies = [
 # ]
 # ///
+"""Penjana Konteks XML daripada llms.txt.
+
+Modul ini mengurai pautan Markdown daripada llms.txt dan membina fail XML
+suapan konteks terstruktur (llms_context.xml) untuk perkongsian konteks AI.
+"""
 
 import argparse
 import re

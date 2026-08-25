@@ -1,6 +1,12 @@
 # /// script
 # requires-python = ">=3.12"
 # ///
+"""Pengurus Pelayan dan Pembinaan MkDocs Material.
+
+Modul ini menyiapkan pautan pementasan direktori mkdocs_src dan menguruskan
+pelaksanaan MkDocs Material untuk pembangunan dan pembinaan tapak web statik.
+"""
+
 import os
 import shutil
 import subprocess

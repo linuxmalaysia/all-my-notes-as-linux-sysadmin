@@ -6,6 +6,11 @@
 #     "pyyaml"
 # ]
 # ///
+"""Penjana Tapak Web HTML Statik.
+
+Modul ini mengurai fail indeks llms.txt dan menukar semua nod Markdown kepada
+halaman HTML statik berserta gaya CSS dan templat Jinja2.
+"""
 
 import re
 import shutil

@@ -3,6 +3,11 @@
 # dependencies = [
 # ]
 # ///
+"""Penjana Fail Indeks Konteks AI llms.txt dan llms-full.txt.
+
+Modul ini mengumpul kesemua fail Markdown utama di dalam repositori dan
+menjana peta indeks terstruktur serta kompilasi teks penuh untuk ejen AI.
+"""
 
 from pathlib import Path
 
