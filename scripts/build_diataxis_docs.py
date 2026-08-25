@@ -1,9 +1,9 @@
-"""Builds the Diátaxis-compliant documentation structure.
+"""Bina struktur dokumentasi yang mematuhi kerangka Diátaxis.
 
-This module automates the reorganization of the docs/ directory into the
-four Diátaxis quadrants (tutorials, how-to, reference, explanation), applies
-Google OKF v0.1 YAML frontmatter, and generates required index files like
-llms.txt and SUMMARY.md.
+Modul ini mengautomasikan penyusunan semula direktori docs/ kepada empat
+kuadran Diátaxis (tutorials, how-to, reference, explanation), mengaplikasikan
+YAML frontmatter Google OKF v0.2, serta menjana fail indeks seperti
+llms.txt dan SUMMARY.md.
 """
 
 import os
@@ -21,11 +21,11 @@ QUADRANTS = {
 }
 
 def init_quadrants():
-    """Initializes the four Diátaxis quadrants.
+    """Basuh dan sediakan empat kuadran Diátaxis.
 
-    Creates the required directories (tutorials, how-to, reference, explanation)
-    and migrates non-conforming directories like 'governance' and 'tools' into
-    their appropriate quadrants.
+    Mencipta direktori yang diperlukan (tutorials, how-to, reference, explanation)
+    dan memindahkan direktori yang tidak mengikut struktur seperti 'governance' dan 'tools'
+    ke kuadran yang sesuai.
     """
     for quad in QUADRANTS:
         os.makedirs(os.path.join(DOCS_DIR, quad), exist_ok=True)
@@ -45,19 +45,19 @@ def init_quadrants():
             shutil.move(src, dst)
 
 def get_yaml_template(title, description, doc_type, file_id, domain="AI", tier="L2-Operational", tags=None):
-    """Generates an OKF v0.1 compliant YAML frontmatter string.
+    """Jana rentetan YAML frontmatter yang mematuhi standard OKF v0.2.
 
     Args:
-        title (str): The document title.
-        description (str): A brief description of the document.
-        doc_type (str): The Diátaxis quadrant type (concept, guide, reference, tutorial).
-        file_id (str): The unique file path identifier.
-        domain (str, optional): The operational domain. Defaults to "AI".
-        tier (str, optional): The context tier. Defaults to "L2-Operational".
-        tags (list, optional): List of tags. Defaults to ["dsom-protocol", "diataxis-quadrant"].
+        title (str): Tajuk dokumen.
+        description (str): Penerangan ringkas mengenai dokumen.
+        doc_type (str): Jenis kuadran Diátaxis (concept, guide, reference, tutorial).
+        file_id (str): Pengecam unik laluan fail.
+        domain (str, optional): Domain operasi. Lalai kepada "AI".
+        tier (str, optional): Tetingkat konteks. Lalai kepada "L2-Operational".
+        tags (list, optional): Senarai tag. Lalai kepada ["dsom-protocol", "diataxis-quadrant"].
 
     Returns:
-        str: A fully formatted YAML frontmatter string.
+        str: Rentetan YAML frontmatter yang berformat lengkap.
     """
     tags_str = "\n".join([f'  - "{t}"' for t in (tags or ["dsom-protocol", "diataxis-quadrant"])])
     return f"""---
@@ -79,13 +79,13 @@ layout: "default"
 """
 
 def strip_old_frontmatter(content):
-    """Strips existing YAML frontmatter from a markdown string.
+    """Saring YAML frontmatter sedia ada daripada rentetan Markdown.
 
     Args:
-        content (str): The raw markdown content.
+        content (str): Kandungan mentah Markdown.
 
     Returns:
-        str: The markdown content without its leading YAML block.
+        str: Kandungan Markdown tanpa blok YAML di bahagian awal.
     """
     parts = content.split("---")
     if len(parts) >= 3 and content.startswith("---"):
@@ -93,13 +93,13 @@ def strip_old_frontmatter(content):
     return content
 
 def get_doc_type(filepath):
-    """Determines the Diátaxis document type based on the file path.
+    """Tentukan jenis dokumen Diátaxis berdasarkan laluan fail.
 
     Args:
-        filepath (str): The path to the markdown file.
+        filepath (str): Laluan ke fail Markdown.
 
     Returns:
-        str: The inferred document type ('tutorial', 'guide', 'reference', or 'concept').
+        str: Jenis dokumen yang disimpulkan ('tutorial', 'guide', 'reference', atau 'concept').
     """
     path_str = filepath.lower()
     if "tutorial" in path_str: return "tutorial"
@@ -109,10 +109,10 @@ def get_doc_type(filepath):
     return "guide"
 
 def process_existing_docs():
-    """Processes all existing markdown documents in the docs directory.
+    """Proses kesemua dokumen Markdown sedia ada di dalam direktori docs.
 
-    Replaces old frontmatter with the new strict OKF schema while preserving
-    the document body.
+    Gantikan frontmatter lama dengan skema OKF baharu sambil mengekalkan
+    badan utama dokumen.
     """
     for root, dirs, files in os.walk(DOCS_DIR):
         for file in files:
@@ -133,11 +133,10 @@ def process_existing_docs():
                     f.write(new_frontmatter + "\n" + body)
 
 def generate_tool_references():
-    """Generates reference documents for all AI skills and scripts.
+    """Jana dokumen rujukan untuk kesemua kemahiran AI dan skrip.
 
-    Iterates through the .agents/skills/ and scripts/ directories to create
-    individual markdown reference files in docs/reference/ for zero-context
-    LLM understanding.
+    Ulang lelar direktori .agents/skills/ dan scripts/ untuk mencipta
+    fail rujukan Markdown individu di docs/reference/ untuk kefahaman LLM.
     """
     ref_dir = os.path.join(DOCS_DIR, "reference", "skills")
     os.makedirs(ref_dir, exist_ok=True)
@@ -175,10 +174,9 @@ def generate_tool_references():
                     f.write(new_frontmatter + "\n" + body)
 
 def generate_summary():
-    """Generates the GitBook / mkdocs SUMMARY.md navigation file.
+    """Jana fail navigasi SUMMARY.md untuk GitBook / MkDocs.
 
-    Builds a static Markdown link tree that complies with the Diátaxis
-    quadrant structure.
+    Bina pokok pautan Markdown statik yang mematuhi struktur kuadran Diátaxis.
     """
     summary_path = os.path.join(DOCS_DIR, "SUMMARY.md")
     content = """# Summary
@@ -203,10 +201,10 @@ def generate_summary():
         f.write(content)
 
 def generate_llmstxt():
-    """Generates the llms.txt index file.
+    """Jana fail indeks llms.txt.
 
-    Creates an optimized markdown index at the project root intended for
-    autonomous agent ingestion and navigation.
+    Cipta indeks Markdown yang dioptimumkan di punca projek bagi kegunaan
+    penerimaan dan navigasi ejen AI.
     """
     llmstxt_path = "llms.txt"
     content = """# Project Name - DSOM AI Knowledge Base
