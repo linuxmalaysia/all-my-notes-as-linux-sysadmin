@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: documentation
 title: "Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026"
 timestamp: "2026-08-17T00:00:00Z"

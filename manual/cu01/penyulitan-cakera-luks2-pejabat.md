@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: knowledge_node
 title: "Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 & MAMPU)"
 timestamp: "2026-08-16T12:10:00Z"

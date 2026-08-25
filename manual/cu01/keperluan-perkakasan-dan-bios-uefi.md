@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: knowledge_node
 title: "Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI"
 timestamp: "2026-08-16T12:00:00Z"

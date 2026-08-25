@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: documentation
 title: "Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks & Analisis Log (CU06)"
 timestamp: "2026-08-17T00:00:00Z"

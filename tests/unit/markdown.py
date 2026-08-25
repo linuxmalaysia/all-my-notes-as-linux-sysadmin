@@ -1,6 +1,6 @@
 """Ujian unit untuk fail Markdown.
 
-Mengesahkan pematuhan skema Open Knowledge Framework (OKF) v0.1, pengaki tadbir urus DSOM,
+Mengesahkan pematuhan skema Open Knowledge Framework (OKF) v0.2, pengaki tadbir urus DSOM,
 dan dasar dokumentasi Bahasa Melayu Baku di seluruh dokumentasi repositori.
 """
 
@@ -23,7 +23,7 @@ def get_markdown_files():
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
 def test_markdown_okf_compliance(filepath):
-    """Mengesahkan fail markdown bermula dengan 'frontmatter' YAML OKF v0.1 yang sah."""
+    """Mengesahkan fail markdown bermula dengan 'frontmatter' YAML OKF v0.2 yang sah."""
     assert os.path.exists(filepath), f"Fail Markdown tidak wujud: {filepath}"
 
     with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:

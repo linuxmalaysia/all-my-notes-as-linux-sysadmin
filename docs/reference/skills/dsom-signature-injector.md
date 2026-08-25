@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Dsom Signature Injector"
 description: "DSOM Reference document for Dsom Signature Injector."
 type: "reference"
@@ -16,7 +16,7 @@ layout: "default"
 ---
 
 ﻿---
-okf_version: 0.1
+okf_version: 0.2
 type: skill
 title: "Universal Sovereign Signature Injector"
 name: "dsom-signature-injector"

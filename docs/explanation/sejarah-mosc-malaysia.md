@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: concept
 title: "Sejarah Malaysia Open Source Conference (MOSC / MOSCMY / OSSCONF)"
 timestamp: "2026-08-16T22:52:00Z"

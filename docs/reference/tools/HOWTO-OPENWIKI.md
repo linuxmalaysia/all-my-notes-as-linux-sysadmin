@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Howto Openwiki"
 description: "DSOM Reference document for Howto Openwiki."
 type: "reference"
@@ -160,7 +160,7 @@ Requirements:
    - Subsystem folders for architecture, governance, memory, automation, integrations, publishing, quality.
    - `openwiki/.last-update.json` (Containing ISO timestamp and compilation status).
 4. Include CLI arguments: `--init`, `--update`, `--search "<query>"`, and `--export-graph`.
-5. All generated markdown files MUST include OKF v0.1 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
+5. All generated markdown files MUST include OKF v0.2 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
 6. The script MUST run non-interactively without Node.js binaries, npm packages, or external API keys."
 ================================================================================
 

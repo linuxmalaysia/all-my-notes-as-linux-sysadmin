@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Audit And Apply Frontmatter"
 description: "DSOM Guide document for Audit And Apply Frontmatter."
 type: "guide"
@@ -17,7 +17,7 @@ layout: "default"
 
 # Check and apply OKF compliance
 
-This guide explains how to audit, standardise, and auto-correct Markdown files to ensure compliance with the **Open Knowledge Format (OKF v0.1)**.
+This guide explains how to audit, standardise, and auto-correct Markdown files to ensure compliance with the **Open Knowledge Format (OKF v0.2)**.
 
 ## Prerequisites
 

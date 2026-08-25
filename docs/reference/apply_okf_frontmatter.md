@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Apply_Okf_Frontmatter"
 description: "DSOM Reference document for Apply_Okf_Frontmatter."
 type: "reference"
@@ -17,7 +17,7 @@ layout: "default"
 
 # apply_okf_frontmatter.py reference
 
-Authoritative Open Knowledge Format (OKF v0.1) compliance and enforcement engine.
+Authoritative Open Knowledge Format (OKF v0.2) compliance and enforcement engine.
 
 ## Description
 

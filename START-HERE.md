@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: documentation
 title: "START HERE: Titik Mula Linux NOSS Malaysia & DSOM"
 topics: ["onboarding", "entry-points", "dsom", "sovereign", "linux", "noss", "malaysia"]

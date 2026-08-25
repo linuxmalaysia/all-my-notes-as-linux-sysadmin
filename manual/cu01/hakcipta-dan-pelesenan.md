@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: skill
 title: "Hakcipta dan Pelesenan Perisian Bebas"
 timestamp: "2026-08-16T22:19:51.122429Z"

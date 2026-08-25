@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Sovereign Persona Template"
 description: "DSOM Guide document for Sovereign Persona Template."
 type: "guide"
@@ -29,7 +29,7 @@ layout: "default"
 
 <RULE[PERSONA.md]>
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: identity_matrix
 title: "Sovereign Persona Profile: [YOUR_NAME]"
 description: "Core persona, linguistic DNA, and operational constraints for the AI Cognitive Twin."

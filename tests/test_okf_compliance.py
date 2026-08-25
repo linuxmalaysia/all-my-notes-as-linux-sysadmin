@@ -1,7 +1,7 @@
 """Integration tests for OKF Markdown Compliance.
 
 This test suite scans all markdown files across the repository to ensure
-strict compliance with the Google OKF v0.1 YAML Frontmatter standard and
+strict compliance with the Google OKF v0.2 YAML Frontmatter standard and
 the mandatory Sovereign Markdown Palace dual-license footer.
 """
 

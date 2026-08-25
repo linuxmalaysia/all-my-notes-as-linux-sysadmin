@@ -2,7 +2,7 @@
 
 This module automates the reorganization of the docs/ directory into the
 four Diátaxis quadrants (tutorials, how-to, reference, explanation), applies
-Google OKF v0.1 YAML frontmatter, and generates required index files like
+Google OKF v0.2 YAML frontmatter, and generates required index files like
 llms.txt and SUMMARY.md.
 """
 
@@ -45,7 +45,7 @@ def init_quadrants():
             shutil.move(src, dst)
 
 def get_yaml_template(title, description, doc_type, file_id, domain="AI", tier="L2-Operational", tags=None):
-    """Generates an OKF v0.1 compliant YAML frontmatter string.
+    """Generates an OKF v0.2 compliant YAML frontmatter string.
 
     Args:
         title (str): The document title.
@@ -210,7 +210,7 @@ def generate_llmstxt():
     llmstxt_path = "llms.txt"
     content = """# Project Name - DSOM AI Knowledge Base
 
-> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs.
+> DSOM-governed, OKF v0.2 compliant documentation index for AI Agents and LLMs.
 
 ## Core Governance & Architecture
 - [DSOM Governance](docs/explanation/governance/DIGITAL-SOVEREIGNTY-MODEL.md): Metacognitive context management and protocol standards.

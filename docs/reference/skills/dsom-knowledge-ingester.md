@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Dsom Knowledge Ingester"
 description: "DSOM Reference document for Dsom Knowledge Ingester."
 type: "reference"
@@ -28,7 +28,7 @@ Use this skill when the user provides a new external source (PDF, Markdown, Web 
 3. **Wiki Integration (The Palace):**
    - Create a new `.md` file in the appropriate directory (e.g., `docs/governance/`, `hall_facts/`).
    - Format the file according to DSOM Generative Engine Optimization (GEO) standards (atomic chunks, H2 headers, expert tone).
-   - Inject the OKF v0.1 frontmatter and the Sovereign Signature using `dsom-signature-injector`.
+   - Inject the OKF v0.2 frontmatter and the Sovereign Signature using `dsom-signature-injector`.
 4. **Ledger & Index Updates:**
    - Add the new file to `SUMMARY.md` and `mkdocs.yml` (Dual Documentation Sync).
    - Add the new file to `.agents/brain/palace_registry.md`.

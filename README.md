@@ -56,7 +56,7 @@ Kandungan repositori ini menyokong secara natif pelbagai sasaran penerbitan:
 - **GitBook:** Disokong melalui indeks navigasi Diátaxis [`docs/SUMMARY.md`](docs/SUMMARY.md).
 - **Pelayan Nginx & Apache:** Halakan *DocumentRoot* terus ke direktori `html/` (disokong penuh oleh mod URL berkait luar talian).
 - **Panduan Terperinci:** Rujuk panduan operasi amali di [**`docs/how-to/deploy-and-serve-html.md`**](docs/how-to/deploy-and-serve-html.md).
-- **Konteks AI / LLM:** Disokong melalui [`llms.txt`](llms.txt), `llms-full.txt`, dan skema **Google OKF v0.1**.
+- **Konteks AI / LLM:** Disokong melalui [`llms.txt`](llms.txt), `llms-full.txt`, dan skema **Google OKF v0.2**.
 
 ---
 

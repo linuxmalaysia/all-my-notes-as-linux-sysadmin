@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Getting Started"
 description: "DSOM Tutorial document for Getting Started."
 type: "tutorial"
@@ -23,7 +23,7 @@ A step-by-step tutorial guiding you through running, auditing, and integrating t
 
 By completing this tutorial, you will:
 - **Initialise** the local OpenWiki documentation hub.
-- **Audit and repair** OKF v0.1 metadata frontmatter.
+- **Audit and repair** OKF v0.2 metadata frontmatter.
 - **Spin up** and test the local Model Context Protocol (MCP) server.
 
 ---
@@ -45,7 +45,7 @@ Let's start by materialising the local OpenWiki workspace and knowledge graphs.
 
 ## Lesson 2: Audit and repair frontmatter metadata
 
-Now we will verify that all Markdown documentation satisfies the strict Open Knowledge Format (OKF v0.1).
+Now we will verify that all Markdown documentation satisfies the strict Open Knowledge Format (OKF v0.2).
 
 1. Execute the compliance scanning command:
 

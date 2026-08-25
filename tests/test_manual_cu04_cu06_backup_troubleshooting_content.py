@@ -167,7 +167,7 @@ MANUAL_MD_PATHS = {
 @pytest.mark.parametrize("key,rel_path", MANUAL_MD_PATHS.items())
 def test_manual_md_frontmatter_is_well_formed(key, rel_path):
     content = read(rel_path)
-    assert frontmatter_field(content, "okf_version") == "0.1"
+    assert frontmatter_field(content, "okf_version") == "0.2"
     assert frontmatter_field(content, "type") == "knowledge-node"
     timestamp = frontmatter_field(content, "timestamp")
     assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
@@ -290,7 +290,7 @@ def test_skill_md_no_leading_byte_order_mark(key, rel_path):
 @pytest.mark.parametrize("key,rel_path", SKILL_MD_PATHS.items())
 def test_skill_md_frontmatter_fields(key, rel_path):
     content = read(rel_path)
-    assert frontmatter_field(content, "okf_version") == "0.1"
+    assert frontmatter_field(content, "okf_version") == "0.2"
     assert frontmatter_field(content, "type") == "skill"
     assert frontmatter_field(content, "name") == SKILL_NAMES[key]
     # description should be a substantive sentence, not the old generic placeholder.

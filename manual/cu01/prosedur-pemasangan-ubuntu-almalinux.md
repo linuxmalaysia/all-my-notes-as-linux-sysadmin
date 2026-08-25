@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: knowledge_node
 title: "Prosedur Pemasangan Ubuntu 26.04 LTS, AlmaLinux 10 & Fedora 43"
 timestamp: "2026-08-16T12:05:00Z"

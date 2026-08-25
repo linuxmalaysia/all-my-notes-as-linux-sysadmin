@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: knowledge-node
 title: "Penegasan Keselamatan Sistem Linux (Hardening)"
 timestamp: "2026-08-16T00:00:00Z"

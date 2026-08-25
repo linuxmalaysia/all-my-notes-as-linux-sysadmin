@@ -65,7 +65,7 @@ def test_skill_frontmatter_is_well_formed(relpath):
     assert "description:" in frontmatter, f"{relpath} missing description key."
     assert "topics:" in frontmatter, f"{relpath} missing topics key."
     assert "tags:" in frontmatter, f"{relpath} missing tags key."
-    assert "okf_version: 0.1" in frontmatter, f"{relpath} must declare okf_version: 0.1."
+    assert "okf_version: 0.2" in frontmatter, f"{relpath} must declare okf_version: 0.2."
     assert "type: skill" in frontmatter, f"{relpath} should declare type: skill."
 
 
@@ -183,7 +183,7 @@ def test_manual_node_exists(relpath):
 def test_manual_node_has_okf_frontmatter(relpath):
     content = read(relpath)
     frontmatter, _ = split_frontmatter(content)
-    assert "okf_version: 0.1" in frontmatter
+    assert "okf_version: 0.2" in frontmatter
     assert "type: knowledge-node" in frontmatter
     assert "title:" in frontmatter
     assert 'timestamp: "2026-08-17T00:00:00Z"' in frontmatter
@@ -344,7 +344,7 @@ OPENWIKI_TOPIC_02 = "openwiki/topic-02-storage-and-virtualisation.md"
 def test_openwiki_topic02_exists_with_okf_frontmatter():
     content = read(OPENWIKI_TOPIC_02)
     frontmatter, _ = split_frontmatter(content)
-    assert "okf_version: 0.1" in frontmatter
+    assert "okf_version: 0.2" in frontmatter
     assert "type: documentation" in frontmatter
     assert 'timestamp: "2026-08-17T00:00:00Z"' in frontmatter
     assert "cu02" in frontmatter.lower()

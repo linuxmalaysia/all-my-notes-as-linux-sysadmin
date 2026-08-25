@@ -29,16 +29,26 @@ Historically, AI agents struggle because organizational knowledge is scattered o
 
 In the **Linux for NOSS Malaysia** project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS). 
 
-To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.1 across our **Sovereign Markdown Palace** architecture.
+To ensure AI agents can navigate our massive syllabus, we have strictly adopted **OKF v0.2** across our **Sovereign Markdown Palace** architecture.
+
+### OKF v0.2 Trust Signals
+
+OKF v0.2 adds essential provenance and trust signal fields to frontmatter so agents and human operators can evaluate knowledge quality without reading the entire file body:
+- **`okf_version`**: Must be set to `0.2`.
+- **`generated`**: Records creation/modification metadata (`{ by: "...", at: "ISO-timestamp" }`).
+- **`verified`**: List of verification entries (`[ { by: "...", at: "ISO-timestamp" } ]`).
+- **`status`**: Lifecycle state (`stable`, `draft`, or `deprecated`).
+- **`stale_after`**: Absolute expiration date (`YYYY-MM-DD`).
+- **`sources`**: List of source materials with provenance metadata (`id`, `resource`, `title`, `author`, etc.).
 
 ### 1. The Public Knowledge Base (`openwiki/`)
 
-Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Competency Unit (CU) is distilled into a single markdown node. To be OKF-compliant, every node must begin with a structured YAML frontmatter block.
+Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Competency Unit (CU) is distilled into a single markdown node. To be OKF v0.2 compliant, every node begins with structured YAML frontmatter.
 
 **Example implementation in `openwiki/topic-01-linux-desktop-and-basics.md`:**
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: documentation
 title: "topic-01-linux-desktop-and-basics"
 timestamp: "2026-08-16T08:00:00Z"
@@ -46,25 +56,35 @@ topics: ["linux-desktop", "cu01"]
 tags: ["linux", "desktop", "cu01"]
 description: "Silibus asas Sistem Operasi Linux (Desktop, FHS, APT/YUM) dipetakan kepada NOSS CU01."
 resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
+generated:
+  by: "human:harisfazillah"
+  at: "2026-08-16T08:00:00Z"
+verified:
+  - by: "human:harisfazillah"
+    at: "2026-08-16T08:00:00Z"
+status: "stable"
+stale_after: "2027-12-31"
 ---
 ```
 
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant. 
+The repository also houses functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF v0.2 compliant.
 
 We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
 
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: skill
+name: "cu03-wa04-perform-core-server-configurations"
 title: "cu03-wa04-perform-core-server-configurations"
 timestamp: "2026-08-16T08:00:00Z"
 topics: ["linux-server", "cu03"]
 tags: ["linux", "server", "cu03"]
 description: "Skill to perform core Linux server configuration."
 resource: "file:///.agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md"
+status: "stable"
 ---
 ```
 
@@ -85,7 +105,7 @@ To maintain legal compliance and verify that an AI generated the content correct
 
 ## Conclusion
 
-By adopting OKF v0.1 alongside our strict Dual-License footers, the **Linux for NOSS Malaysia** repository is more than just a collection of Markdown files. It is a highly optimized, machine-readable knowledge graph that allows external AI agents to digest, update, and contribute to the national skills syllabus with extreme accuracy and minimal context loss.
+By adopting OKF v0.2 alongside our strict Dual-License footers, the **Linux for NOSS Malaysia** repository is more than just a collection of Markdown files. It is a highly optimized, machine-readable knowledge graph that allows external AI agents to digest, update, and contribute to the national skills syllabus with extreme accuracy, trust verification, and minimal context loss.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

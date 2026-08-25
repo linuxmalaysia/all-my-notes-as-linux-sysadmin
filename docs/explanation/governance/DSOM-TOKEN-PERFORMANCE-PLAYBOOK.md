@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Dsom Token Performance Playbook"
 description: "DSOM Concept document for Dsom Token Performance Playbook."
 type: "concept"
@@ -101,7 +101,7 @@ Every `SKILL.md` must contain these five fields in this order:
 
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: skill
 title: "Skill Title"
 description: "Single-sentence description of what this skill does."

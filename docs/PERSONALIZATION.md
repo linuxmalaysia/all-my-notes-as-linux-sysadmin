@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Personalization"
 description: "DSOM Guide document for Personalization."
 type: "guide"
@@ -46,7 +46,7 @@ To ensure high-fidelity reanimation, our personalisation blocks are mapped to th
 >
 > 1. **NOSS Trademark Respect:** Always acknowledge that 'NOSS' is a trademark of JPK, MOHR Malaysia. All generated materials are unofficial and for educational Fair Use.
 > 2. **Sovereign Dual-License:** You must append the Sovereign Markdown Palace Footer to every OKF node, acknowledging CC BY-SA 4.0 for content and MIT for code.
-> 3. **OKF v0.1 Mandate:** Never generate unstructured text for documentation. Every knowledge file must have YAML Frontmatter (`okf_version`, `topics`, `tags`, etc.).
+> 3. **OKF v0.2 Mandate:** Never generate unstructured text for documentation. Every knowledge file must have YAML Frontmatter (`okf_version`, `topics`, `tags`, etc.).
 > 4. **Linux-First Philosophy:** All server and infrastructure curriculum must prioritize Open Source, Linux-native solutions.
 > 5. **Pedagogical Logic:** Always explain the 'Why' (logic/security/performance) before the 'What' (code/curriculum)."
 

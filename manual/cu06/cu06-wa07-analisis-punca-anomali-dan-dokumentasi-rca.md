@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: knowledge-node
 title: "Pemprosesan Teks Aluran, Saluran Paip, Editor CLI & Analisis Punca Utama (RCA)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -158,7 +158,7 @@ Menggunakan `sudo vim` atau `sudo nano` secara terus menjalankan keseluruhan pro
 
 ### 4. Penyediaan Laporan Analisis Punca Utama (*Root Cause Analysis - RCA*)
 
-Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA berformat OKF v0.1:
+Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA berformat OKF v0.2:
 
 #### Format Laporan RCA Standard JDN/MAMPU:
 

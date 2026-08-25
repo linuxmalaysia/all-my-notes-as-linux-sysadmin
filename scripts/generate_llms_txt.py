@@ -67,7 +67,7 @@ def main():
     print("Generating llms.txt...")
     with open(llms_txt_path, 'w', encoding='utf-8') as f:
         f.write("# DSOM AI Knowledge Base\n\n")
-        f.write("> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.\n\n")
+        f.write("> DSOM-governed, OKF v0.2 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.\n\n")
         
         for section_name, files in sections.items():
             if not files:

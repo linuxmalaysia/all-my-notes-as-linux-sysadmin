@@ -1,5 +1,5 @@
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: knowledge-node
 title: "Mengenal Pasti Keperluan Infrastruktur Pemayaan"
 timestamp: "2026-08-17T00:00:00Z"
