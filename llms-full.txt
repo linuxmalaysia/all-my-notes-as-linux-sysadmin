@@ -13459,7 +13459,7 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant. 
+The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant.
 
 We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
 
@@ -26633,7 +26633,7 @@ graph TD
 - 💡 **[Explanation (Seni Bina Diátaxis)](../docs/explanation/diataxis-architecture.md):** Analisis teori dan tatakelola sistem.
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: openwiki/index.md -->

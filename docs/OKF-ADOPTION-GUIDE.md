@@ -29,7 +29,7 @@ Historically, AI agents struggle because organizational knowledge is scattered o
 
 In the **Linux for NOSS Malaysia** project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS). 
 
-To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.1 across our **Sovereign Markdown Palace** architecture.
+To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.2 across our **Sovereign Markdown Palace** architecture.
 
 ### 1. The Public Knowledge Base (`openwiki/`)
 
@@ -38,7 +38,7 @@ Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Compe
 **Example implementation in `openwiki/topic-01-linux-desktop-and-basics.md`:**
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: documentation
 title: "topic-01-linux-desktop-and-basics"
 timestamp: "2026-08-16T08:00:00Z"
@@ -51,13 +51,13 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant. 
+Repositori ini turut menyimpan kemahiran AI berfungsi yang dipetakan kepada modul NOSS Tahap 3. Arahan yang mengawal cara AI melaksanakan tugasan (fail `SKILL.md`) juga mematuhi standard OKF v0.2 secara ketat.
 
 We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
 
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: skill
 title: "cu03-wa04-perform-core-server-configurations"
 timestamp: "2026-08-16T08:00:00Z"

@@ -1,4 +1,10 @@
 
+"""Pelaksana Ujian Keseluruhan.
+
+Modul ini menjalankan ujian pematuhan Python (pytest) dan ujian integrasi
+JavaScript (Jest) bagi memastikan 100% pematuhan kualiti repositori.
+"""
+
 import subprocess
 import sys
 from pathlib import Path
@@ -14,6 +20,11 @@ RED = '\033[91m'
 RESET = '\033[0m'
 
 def print_banner(text):
+    """Cetak sepanduk berformat terminal dengan warna CYAN.
+
+    Args:
+        text (str): Teks tajuk yang ingin dipaparkan.
+    """
     print(f"{CYAN}======================================{RESET}")
     print(f"{CYAN}{text}{RESET}")
     print(f"{CYAN}======================================{RESET}")
@@ -22,6 +33,13 @@ import os
 
 
 def run_step(step_name, command, cwd):
+    """Laksanakan langkah ujian subproses dan sahkan status keluar (kod keluar 0).
+
+    Args:
+        step_name (str): Nama langkah ujian.
+        command (list[str]): Arahan terminal untuk dijalankan.
+        cwd (Path): Direktori kerja pelaksanaan.
+    """
     print(f"\n{CYAN}[*] Executing: {step_name}...{RESET}")
     try:
         # Use shell=True on Windows for npm since it's a cmd/bat wrapper
@@ -34,6 +52,7 @@ def run_step(step_name, command, cwd):
         sys.exit(e.returncode)
 
 def main():
+    """Laksanakan fungsi utama untuk menjalankan kesemua ujian Python dan JavaScript."""
     root_dir = Path.cwd()
     
     print_banner("🚀 INITIALIZING FULL TEST SUITE")

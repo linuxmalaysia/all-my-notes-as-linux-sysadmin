@@ -30,6 +30,14 @@ TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 
 def read(relative_path):
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
+
+    Args:
+        relative_path (str): Laluan relatif daripada punca repositori.
+
+    Returns:
+        str: Kandungan rentetan fail UTF-8.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 
@@ -475,6 +483,7 @@ SEARCH_INDEX_PATH = "html/search/search_index.json"
 
 @pytest.fixture(scope="module")
 def search_index():
+    """Fikstur yang menyediakan data JSON terurai untuk search_index.json."""
     with open(REPO_ROOT / SEARCH_INDEX_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 

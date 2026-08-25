@@ -3,13 +3,19 @@
 import importlib.util
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from types import ModuleType
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _load_sitemaps_module():
+def _load_sitemaps_module() -> ModuleType:
+    """Muatkan modul tests/unit/sitemaps.py secara dinamik untuk ujian terasing.
+
+    Returns:
+        ModuleType: Instans modul ujian sitemap yang dimuatkan.
+    """
     module_path = REPO_ROOT / "tests" / "unit" / "sitemaps.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_sitemaps", module_path)
     module = importlib.util.module_from_spec(spec)
@@ -43,6 +49,11 @@ VALID_CONTEXT_XML = (
 
 
 def _setup_valid_sitemaps(tmp_path):
+    """Sediakan fail sitemap olokan sementara untuk ujian unit.
+
+    Args:
+        tmp_path (Path): Laluan direktori sementara.
+    """
     (tmp_path / "docs").mkdir(exist_ok=True)
     (tmp_path / "html" / "docs").mkdir(parents=True, exist_ok=True)
     (tmp_path / "docs" / "sitemap.xml").write_text(VALID_URLSET, encoding="utf-8")

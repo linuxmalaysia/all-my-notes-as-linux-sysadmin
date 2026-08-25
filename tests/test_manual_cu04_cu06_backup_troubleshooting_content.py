@@ -31,6 +31,14 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
+
+    Args:
+        relative_path (str): Laluan relatif daripada punca repositori.
+
+    Returns:
+        str: Kandungan rentetan fail UTF-8.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 
@@ -47,6 +55,15 @@ def extract_frontmatter(content):
     return match.group(1)
 
 def frontmatter_field(content, field):
+    """Ekstrak nilai medan frontmatter tertentu.
+
+    Args:
+        content (str): Rentetan kandungan penuh fail.
+        field (str): Nama medan yang ingin diekstrak.
+
+    Returns:
+        str: Nilai medan frontmatter.
+    """
     fm = extract_frontmatter(content)
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)
     assert match, f"Frontmatter field '{field}' not found"
@@ -54,9 +71,19 @@ def frontmatter_field(content, field):
 
 @pytest.fixture(scope="module")
 def search_index():
+    """Fikstur yang menyediakan data JSON terurai untuk search_index.json."""
     return json.loads(read("html/search/search_index.json"))
 
 def find_doc(search_index, location):
+    """Cari entri dokumen indeks carian yang sepadan dengan URL lokasi tertentu.
+
+    Args:
+        search_index (dict): Objek search_index.json terurai.
+        location (str): Laluan URL lokasi.
+
+    Returns:
+        dict: Objek dokumen yang sepadan.
+    """
     matches = [d for d in search_index["docs"] if d.get("location") == location]
     assert matches, f"No search_index.json doc entry found for location={location!r}"
     return matches[0]

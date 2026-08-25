@@ -52,6 +52,14 @@ CU_LABELS = [
 
 
 def read(relative_path):
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
+
+    Args:
+        relative_path (str): Laluan relatif daripada punca repositori.
+
+    Returns:
+        str: Kandungan rentetan fail UTF-8.
+    """
     return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
 
 

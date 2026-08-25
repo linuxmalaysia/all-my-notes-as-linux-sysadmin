@@ -3,6 +3,11 @@
 # dependencies = [
 # ]
 # ///
+"""Penjana Konteks XML daripada llms.txt.
+
+Modul ini mengurai pautan Markdown daripada llms.txt dan membina fail XML
+suapan konteks berstruktur (llms_context.xml) untuk perkongsian konteks AI.
+"""
 
 import argparse
 import re
@@ -55,6 +60,7 @@ def generate_xml_context(root_dir: Path, file_paths: list[str], output_path: Pat
         out.write('</context>\n')
 
 def main():
+    """Laksanakan fungsi utama untuk mengurai llms.txt dan menjana fail konteks XML."""
     parser = argparse.ArgumentParser(description="Parse llms.txt and generate an XML context file.")
     parser.add_argument("--input", "-i", type=str, default="llms.txt", help="Path to llms.txt")
     parser.add_argument("--output", "-o", type=str, default="llms_context.xml", help="Output XML file path")

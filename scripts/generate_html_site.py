@@ -6,6 +6,11 @@
 #     "pyyaml"
 # ]
 # ///
+"""Penjana Tapak Web HTML Statik.
+
+Modul ini mengurai fail indeks llms.txt dan menukar semua nod Markdown kepada
+halaman HTML statik berserta gaya CSS dan templat Jinja2.
+"""
 
 import re
 import shutil
@@ -94,6 +99,14 @@ HTML_TEMPLATE = """
 """
 
 def parse_llms_txt(llms_txt_path: Path) -> list[str]:
+    """Urai fail indeks llms.txt dan ekstrak laluan fail Markdown relatif.
+
+    Args:
+        llms_txt_path (Path): Laluan ke fail indeks llms.txt.
+
+    Returns:
+        list[str]: Senarai laluan fail relatif yang diekstrak daripada pautan Markdown.
+    """
     paths = []
     link_pattern = re.compile(r'\[.*?\]\((.*?\.md)\)')
     if not llms_txt_path.exists():
@@ -106,12 +119,27 @@ def parse_llms_txt(llms_txt_path: Path) -> list[str]:
     return paths
 
 def fix_internal_links(markdown_text: str) -> str:
-    # Menggantikan pautan .md kepada .html untuk navigasi dalam web
-    # match [text](path/to/file.md) or [text](path/to/file.md#anchor)
+    """Gantikan penamat pautan dalaman Markdown (.md) kepada penamat HTML (.html).
+
+    Args:
+        markdown_text (str): Teks Markdown mentah atau yang telah dibersihkan.
+
+    Returns:
+        str: Teks Markdown yang dikemas kini dengan sasaran pautan .html untuk navigasi web.
+    """
     pattern = re.compile(r'(\[[^\]]+\]\([^)]+?)\.md([#)])')
     return pattern.sub(r'\1.html\2', markdown_text)
 
 def strip_frontmatter_and_get_title(markdown_text: str, filename: str) -> tuple[str, str, str]:
+    """Saring YAML frontmatter daripada teks mentah Markdown dan tentukan tajuk dokumen.
+
+    Args:
+        markdown_text (str): Kandungan rentetan mentah fail Markdown.
+        filename (str): Nama fail lalai sebagai sandaran untuk tajuk.
+
+    Returns:
+        tuple[str, str, str]: Tigaan bagi (tajuk, markdown_bersih, yaml_frontmatter).
+    """
     title = filename
     frontmatter_text = ""
     stripped_text = markdown_text.lstrip()
@@ -138,6 +166,7 @@ def strip_frontmatter_and_get_title(markdown_text: str, filename: str) -> tuple[
     return title, markdown_text, frontmatter_text
 
 def main():
+    """Laksanakan fungsi utama untuk membina tapak web dokumentasi HTML statik."""
     root_dir = Path.cwd()
     html_dir = root_dir / 'html'
     llms_txt = root_dir / 'llms.txt'

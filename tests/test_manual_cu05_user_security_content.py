@@ -14,6 +14,14 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
+
+    Args:
+        relative_path (str): Laluan relatif daripada punca repositori.
+
+    Returns:
+        str: Kandungan rentetan fail UTF-8.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 

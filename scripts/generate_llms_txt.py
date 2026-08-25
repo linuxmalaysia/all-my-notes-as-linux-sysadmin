@@ -3,6 +3,11 @@
 # dependencies = [
 # ]
 # ///
+"""Penjana Fail Indeks Konteks AI llms.txt dan llms-full.txt.
+
+Modul ini mengumpul kesemua fail Markdown utama di dalam repositori dan
+menjana peta indeks berstruktur serta kompilasi teks penuh untuk ejen AI.
+"""
 
 from pathlib import Path
 
@@ -19,6 +24,7 @@ def get_markdown_title(filepath: Path) -> str:
     return filepath.name
 
 def main():
+    """Jana fail konteks llms.txt dan llms-full.txt untuk ejen AI."""
     root_dir = Path(__file__).parent.parent.resolve()
     target_dirs = ['docs', 'openwiki', 'manual', '.agents/skills', '.agents/brain/wings']
     root_files = ['README.md', 'START-HERE.md', 'AGENTS.md', 'CHANGELOG.md', 'NOTICE.md', 'LEGAL-NOTICE.md']

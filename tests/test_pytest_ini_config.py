@@ -11,13 +11,16 @@ import subprocess
 import sys
 from pathlib import Path
 
-import pytest
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PYTEST_INI = REPO_ROOT / "pytest.ini"
 
 
 def _read_pytest_ini() -> configparser.ConfigParser:
+    """Baca dan urai fail konfigurasi pytest.ini repositori.
+
+    Returns:
+        configparser.ConfigParser: Instans ConfigParser yang telah diurai.
+    """
     config = configparser.ConfigParser()
     config.read(PYTEST_INI)
     return config

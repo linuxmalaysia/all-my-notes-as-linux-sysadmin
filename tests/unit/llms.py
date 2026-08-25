@@ -5,10 +5,9 @@ scripts/generate_llms_txt.py (get_markdown_title, penjanaan llms.txt & llms-full
 """
 
 import importlib.util
-import os
 from pathlib import Path
+
 import defusedxml.ElementTree as ET
-import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 

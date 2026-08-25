@@ -8,13 +8,19 @@ pakej 'ansible' pihak ketiga.
 import importlib.util
 import shutil
 from pathlib import Path
+from types import ModuleType
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _load_ansible_module():
+def _load_ansible_module() -> ModuleType:
+    """Muatkan modul tests/unit/ansible.py secara dinamik untuk ujian terasing.
+
+    Returns:
+        ModuleType: Instans modul ujian Ansible yang dimuatkan.
+    """
     module_path = REPO_ROOT / "tests" / "unit" / "ansible.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_ansible", module_path)
     module = importlib.util.module_from_spec(spec)

@@ -7,6 +7,7 @@ dan dasar dokumentasi Bahasa Melayu Baku di seluruh dokumentasi repositori.
 import glob
 import os
 import re
+
 import pytest
 
 TARGET_DIRS = ["docs/**/*.md", "openwiki/**/*.md", "manual/**/*.md", ".agents/skills/*/SKILL.md"]
