@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Mass Okf Migrator"
 description: "DSOM Reference document for Dsom Mass Okf Migrator."
 type: "reference"
@@ -41,7 +41,7 @@ uv run .agents/skills/dsom-mass-okf-migrator/scripts/migrate.py "<SOURCE_DIR>" "
 *Note: The script automatically skips overwriting `PERSONALIZATION.md`, `OKF-ADOPTION-GUIDE.md`, and `SKILL-FORMAT.md`.*
 
 ## Verification
-After the script completes, use the `list_dir` tool to verify the destination directory and `view_file` to ensure the YAML frontmatter (`okf_version: 0.2`) and Sovereign footer were injected correctly.
+After the script completes, use the `list_dir` tool to verify the destination directory and `view_file` to ensure the YAML frontmatter (`okf_version: 0.1`) and Sovereign footer were injected correctly.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

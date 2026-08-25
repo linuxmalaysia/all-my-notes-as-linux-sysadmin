@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: concept
 title: "Sejarah & Asal-Usul Dokumen Manual Linux KPM (2004–2026)"
 timestamp: "2026-08-16T22:36:00Z"
@@ -74,7 +74,7 @@ graph TD
 | **Sistem Rujukan** | Red Hat 9.0 (Isirung 2.4, era 2003) | **Ubuntu 26.04 LTS**, **AlmaLinux 10**, **Fedora 43** |
 | **Persekitaran Grafik** | XFree86 / GNOME 2.2 | **GNOME 48 / Wayland** |
 | **Penyulitan & Storan** | ext2 / ext3 biasa | **LUKS2 (Full Disk Encryption)**, **LVM**, **XFS/ext4** |
-| **Format Dokumen** | Manual latihan bercetak / PDF | **Markdown-First**, **Kerangka Diátaxis**, **Google OKF v0.2** |
+| **Format Dokumen** | Manual latihan bercetak / PDF | **Markdown-First**, **Kerangka Diátaxis**, **Google OKF v0.1** |
 | **Penyampaian Web** | Tidak tersedia secara terpusat | **HTML Statik:** GitHub/GitLab Pages, Read the Docs, GitBook, Nginx, Apache |
 | **Sasaran Pengguna** | Guru Penyelaras ICT Sekolah | Pelajar TVET, Pentadbir Sistem (SysAdmin), & **Ejen AI Autonomi** |
 | **Penjajaran** | Inisiatif Makmal Komputer KPM | **National Occupational Skills Standard (NOSS Level 3)** |

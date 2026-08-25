@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Policy Adopter"
 description: "DSOM Reference document for Dsom Policy Adopter."
 type: "reference"
@@ -16,7 +16,7 @@ layout: "default"
 ---
 
 ﻿---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "DSOM Policy Adopter"
 name: "dsom-policy-adopter"
@@ -40,7 +40,7 @@ timestamp: 2026-07-11T23:19:45Z
 
 2. **Draft Governance Document**
    - Create a dedicated, highly-structured Markdown file in the docs/governance/ directory.
-   - The file must contain OKF v0.2 YAML frontmatter (with okf_version, 	ype: documentation, 	itle, and 	imestamp).
+   - The file must contain OKF v0.1 YAML frontmatter (with okf_version, 	ype: documentation, 	itle, and 	imestamp).
    - Format the document strictly following the Generative Engine Optimization (GEO) standard: Authoritative tone, verifiable statistics/quotes, H2 user-centric headings, and 200-400 word chunks.
 
 3. **Core Engine Injection (AGENTS.md)**

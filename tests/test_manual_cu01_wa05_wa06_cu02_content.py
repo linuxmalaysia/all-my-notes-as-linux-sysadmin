@@ -30,6 +30,14 @@ TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 
 def read(relative_path):
+    """Reads a file relative to repository root into string.
+
+    Args:
+        relative_path (str): Relative path from repo root.
+
+    Returns:
+        str: UTF-8 file content string.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 
@@ -65,7 +73,7 @@ def test_skill_frontmatter_is_well_formed(relpath):
     assert "description:" in frontmatter, f"{relpath} missing description key."
     assert "topics:" in frontmatter, f"{relpath} missing topics key."
     assert "tags:" in frontmatter, f"{relpath} missing tags key."
-    assert "okf_version: 0.2" in frontmatter, f"{relpath} must declare okf_version: 0.2."
+    assert "okf_version: 0.1" in frontmatter, f"{relpath} must declare okf_version: 0.1."
     assert "type: skill" in frontmatter, f"{relpath} should declare type: skill."
 
 
@@ -183,7 +191,7 @@ def test_manual_node_exists(relpath):
 def test_manual_node_has_okf_frontmatter(relpath):
     content = read(relpath)
     frontmatter, _ = split_frontmatter(content)
-    assert "okf_version: 0.2" in frontmatter
+    assert "okf_version: 0.1" in frontmatter
     assert "type: knowledge-node" in frontmatter
     assert "title:" in frontmatter
     assert 'timestamp: "2026-08-17T00:00:00Z"' in frontmatter
@@ -344,7 +352,7 @@ OPENWIKI_TOPIC_02 = "openwiki/topic-02-storage-and-virtualisation.md"
 def test_openwiki_topic02_exists_with_okf_frontmatter():
     content = read(OPENWIKI_TOPIC_02)
     frontmatter, _ = split_frontmatter(content)
-    assert "okf_version: 0.2" in frontmatter
+    assert "okf_version: 0.1" in frontmatter
     assert "type: documentation" in frontmatter
     assert 'timestamp: "2026-08-17T00:00:00Z"' in frontmatter
     assert "cu02" in frontmatter.lower()
@@ -475,6 +483,7 @@ SEARCH_INDEX_PATH = "html/search/search_index.json"
 
 @pytest.fixture(scope="module")
 def search_index():
+    """Fixture providing parsed JSON data for search_index.json."""
     with open(REPO_ROOT / SEARCH_INDEX_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 

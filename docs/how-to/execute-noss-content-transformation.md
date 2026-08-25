@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Panduan Operasi: Melaksanakan Transformasi Kandungan NOSS Linux (IPO)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -42,8 +42,8 @@ Semak dan kemas kini parameter berikut:
 3. **Penyulitan Mandatori:** Sertakan prosedur **LUKS2** bagi persekitaran pejabat/perusahaan.
 4. **Bahasa:** Pastikan teks penjelasan menggunakan Bahasa Melayu baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
 
-### Langkah 4: Lengkapkan YAML Frontmatter OKF v0.2 & Struktur Penutup
-Setiap fail MESTI mempunyai pengepala OKF v0.2 dan tiga seksyen penutup:
+### Langkah 4: Lengkapkan YAML Frontmatter OKF v0.1 & Struktur Penutup
+Setiap fail MESTI mempunyai pengepala OKF v0.1 dan tiga seksyen penutup:
 - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
 - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
 - `## 📚 Buku Boleh Dibeli (Syor Bacaan)`

@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Legal Notice: Privacy, Assumptions & Disclaimer"
 description: "Privacy policy, critical assumptions, and disclaimer of liability for the DSOM framework and NOSS Malaysia integration."

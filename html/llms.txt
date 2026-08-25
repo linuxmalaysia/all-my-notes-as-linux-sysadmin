@@ -1,6 +1,6 @@
 # DSOM AI Knowledge Base
 
-> DSOM-governed, OKF v0.2 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.
+> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.
 
 ## Root Documents
 - [AI Constitution: NOSS Linux Malaysia (DSOM v0.1)](AGENTS.md)

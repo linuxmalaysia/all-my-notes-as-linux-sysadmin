@@ -1,4 +1,4 @@
----
+﻿---
 title: "Ai Slash Commands Guide"
 description: "DSOM Concept document for Ai Slash Commands Guide."
 type: "concept"
@@ -28,7 +28,7 @@ This document serves as the authoritative reference for invoking Antigravity sla
 **Purpose:** Mandates the AI to execute exhaustive, multi-step operations autonomously without pausing for manual intervention at trivial hurdles.
 **Sovereign Workspace Use Case:** 
 - **Knowledge Ingestion:** "Execute the `dsom-knowledge-ingester` skill on the provided research PDF and don't stop until the synthesized summary is fully integrated and committed into the Sovereign Markdown Palace."
-- **Compliance Auditing:** "Audit the entire `.agents/brain` directory to ensure all markdown files contain valid OKF v0.2 frontmatter, and automatically inject any missing signatures."
+- **Compliance Auditing:** "Audit the entire `.agents/brain` directory to ensure all markdown files contain valid OKF v0.1 frontmatter, and automatically inject any missing signatures."
 **Impact:** Ideal for heavy-lifting cognitive tasks where persistence is required over immediate dialogue.
 
 ### `/schedule` (The Temporal Orchestration Protocol)

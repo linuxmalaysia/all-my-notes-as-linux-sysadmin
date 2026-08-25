@@ -31,6 +31,14 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
+    """Reads a file relative to repository root into string.
+
+    Args:
+        relative_path (str): Relative path from repo root.
+
+    Returns:
+        str: UTF-8 file content string.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 
@@ -47,6 +55,15 @@ def extract_frontmatter(content):
     return match.group(1)
 
 def frontmatter_field(content, field):
+    """Extracts a specific frontmatter field value.
+
+    Args:
+        content (str): Full file content string.
+        field (str): Field name to extract.
+
+    Returns:
+        str: Value of the frontmatter field.
+    """
     fm = extract_frontmatter(content)
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)
     assert match, f"Frontmatter field '{field}' not found"
@@ -54,9 +71,19 @@ def frontmatter_field(content, field):
 
 @pytest.fixture(scope="module")
 def search_index():
+    """Fixture providing parsed JSON data for search_index.json."""
     return json.loads(read("html/search/search_index.json"))
 
 def find_doc(search_index, location):
+    """Finds a search index document entry matching a specific location URL.
+
+    Args:
+        search_index (dict): Parsed search_index.json object.
+        location (str): Location URL path.
+
+    Returns:
+        dict: Matching document object.
+    """
     matches = [d for d in search_index["docs"] if d.get("location") == location]
     assert matches, f"No search_index.json doc entry found for location={location!r}"
     return matches[0]
@@ -167,7 +194,7 @@ MANUAL_MD_PATHS = {
 @pytest.mark.parametrize("key,rel_path", MANUAL_MD_PATHS.items())
 def test_manual_md_frontmatter_is_well_formed(key, rel_path):
     content = read(rel_path)
-    assert frontmatter_field(content, "okf_version") == "0.2"
+    assert frontmatter_field(content, "okf_version") == "0.1"
     assert frontmatter_field(content, "type") == "knowledge-node"
     timestamp = frontmatter_field(content, "timestamp")
     assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
@@ -290,7 +317,7 @@ def test_skill_md_no_leading_byte_order_mark(key, rel_path):
 @pytest.mark.parametrize("key,rel_path", SKILL_MD_PATHS.items())
 def test_skill_md_frontmatter_fields(key, rel_path):
     content = read(rel_path)
-    assert frontmatter_field(content, "okf_version") == "0.2"
+    assert frontmatter_field(content, "okf_version") == "0.1"
     assert frontmatter_field(content, "type") == "skill"
     assert frontmatter_field(content, "name") == SKILL_NAMES[key]
     # description should be a substantive sentence, not the old generic placeholder.

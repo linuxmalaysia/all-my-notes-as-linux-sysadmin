@@ -1472,7 +1472,7 @@
 <h2 id="2-semantic-compaction-token-distillation">2. Semantic Compaction (Token Distillation)<a class="headerlink" href="#2-semantic-compaction-token-distillation" title="Permanent link">&para;</a></h2>
 <p>DSOM applies a "distillation loop" using an automated GitHub Action. 
 When a Pull Request is merged, <code>.github/workflows/dsom-pr-sync.yml</code> triggers <code>.github/scripts/action_update_dsom.py</code>.
-This script calls an LLM (e.g. OpenAI) to review the PR diff and update <code>.agents/brain/current_state.dsom</code> strictly in OKF v0.2 format, eliminating redundant conversational fluff and appending only critical architectural decisions.</p>
+This script calls an LLM (e.g. OpenAI) to review the PR diff and update <code>.agents/brain/current_state.dsom</code> strictly in OKF v0.1 format, eliminating redundant conversational fluff and appending only critical architectural decisions.</p>
 <h2 id="3-configuration">3. Configuration<a class="headerlink" href="#3-configuration" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Ensure the <code>OPENAI_API_KEY</code> secret is available to the GitHub Action.</li>

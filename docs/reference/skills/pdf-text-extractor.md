@@ -1,4 +1,4 @@
----
+﻿---
 title: "Pdf Text Extractor"
 description: "DSOM Reference document for Pdf Text Extractor."
 type: "reference"
@@ -16,7 +16,7 @@ layout: "default"
 ---
 
 ﻿---
-okf_version: 0.2
+okf_version: 0.1
 type: agent_skill
 title: pdf-text-extractor
 name: pdf-text-extractor

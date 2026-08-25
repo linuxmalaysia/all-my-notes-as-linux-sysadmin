@@ -15,6 +15,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _load_ansible_module():
+    """Loads tests/unit/ansible.py dynamically for isolated testing.
+
+    Returns:
+        module: Loaded ansible test module instance.
+    """
     module_path = REPO_ROOT / "tests" / "unit" / "ansible.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_ansible", module_path)
     module = importlib.util.module_from_spec(spec)

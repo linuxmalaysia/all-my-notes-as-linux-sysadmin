@@ -10,6 +10,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _load_sitemaps_module():
+    """Loads tests/unit/sitemaps.py dynamically for isolated testing.
+
+    Returns:
+        module: Loaded sitemaps test module instance.
+    """
     module_path = REPO_ROOT / "tests" / "unit" / "sitemaps.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_sitemaps", module_path)
     module = importlib.util.module_from_spec(spec)
@@ -43,6 +48,11 @@ VALID_CONTEXT_XML = (
 
 
 def _setup_valid_sitemaps(tmp_path):
+    """Creates temporary mock sitemap files for unit testing.
+
+    Args:
+        tmp_path (Path): Temporary directory path.
+    """
     (tmp_path / "docs").mkdir(exist_ok=True)
     (tmp_path / "html" / "docs").mkdir(parents=True, exist_ok=True)
     (tmp_path / "docs" / "sitemap.xml").write_text(VALID_URLSET, encoding="utf-8")

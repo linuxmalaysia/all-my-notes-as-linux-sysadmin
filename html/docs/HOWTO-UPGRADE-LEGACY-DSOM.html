@@ -1449,7 +1449,7 @@
 <h2 id="the-5-step-modernization-path">The 5-Step Modernization Path<a class="headerlink" href="#the-5-step-modernization-path" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Adopt <code>llms.txt</code>:</strong> Create an <code>llms.txt</code> file at the root of your project to map your critical governance documents for external AI crawlers.</li>
-<li><strong>Inject OKF YAML Frontmatter:</strong> All existing <code>.md</code> files in your <code>brain/</code> and <code>docs/</code> directories must be retroactively updated to include OKF v0.2 YAML frontmatter (metadata routing).</li>
+<li><strong>Inject OKF YAML Frontmatter:</strong> All existing <code>.md</code> files in your <code>brain/</code> and <code>docs/</code> directories must be retroactively updated to include OKF v0.1 YAML frontmatter (metadata routing).</li>
 <li><strong>Mandate the Sovereign Signature:</strong> Pull the <code>dsom-signature-injector</code> skill from the master baseline and execute it across your legacy repository to ensure all scripts (<code>.sh</code>, <code>.ps1</code>) and playbooks (<code>.yml</code>) carry standard developer metadata headers and GPL v3.0 licenses.</li>
 <li><strong>Transition to <code>uv</code>:</strong> Audit your existing Python automation scripts. Adopt the <code>PYTHON-UV-ENVIRONMENT-GUIDE.md</code> and migrate away from global <code>pip</code> installations to isolated <code>uv</code> environments to prevent dependency conflicts.</li>
 <li><strong>Establish the Audit Ledger:</strong> Generate an <code>AUTOMATION-AUDIT-LIST.md</code> in your <code>docs/governance/</code> directory to catalog all legacy <code>.sh</code> and <code>.ps1</code> scripts for centralized human security auditing.</li>

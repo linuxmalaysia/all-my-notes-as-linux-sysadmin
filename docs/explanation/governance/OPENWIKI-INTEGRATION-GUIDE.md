@@ -1,4 +1,4 @@
----
+﻿---
 title: "Openwiki Integration Guide"
 description: "DSOM Concept document for Openwiki Integration Guide."
 type: "concept"
@@ -121,7 +121,7 @@ Requirements:
    - `openwiki/quickstart.md` (Topology map and task-routing table).
    - Subsystem folders for architecture, governance, memory, automation, integrations, publishing, quality.
    - `openwiki/.last-update.json` (Containing ISO timestamp and compilation status).
-4. All generated markdown files MUST include OKF v0.2 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
+4. All generated markdown files MUST include OKF v0.1 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
 5. The script MUST run non-interactively without Node.js binaries, npm packages, or external API keys."
 ================================================================================
 

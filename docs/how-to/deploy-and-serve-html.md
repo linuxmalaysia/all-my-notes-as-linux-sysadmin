@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: guide
 title: "Panduan Penggunaan & Pengemaskinian Tapak Web HTML Statik"
 timestamp: "2026-08-16T22:54:00Z"

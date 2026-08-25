@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Pengenalan Linux & Sejarah Pembangunannya"
 timestamp: "2026-08-16T10:29:00Z"

@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
 timestamp: "2026-08-17T00:00:00Z"

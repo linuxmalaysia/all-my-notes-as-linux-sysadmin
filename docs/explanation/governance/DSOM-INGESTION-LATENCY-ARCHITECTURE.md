@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Ingestion Latency Architecture"
 description: "DSOM Concept document for Dsom Ingestion Latency Architecture."
 type: "concept"
@@ -64,7 +64,7 @@ The AI looks exclusively for the OKF YAML header:
 
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: engineering_matrix
 title: "Target Room Architecture"
 ---
@@ -165,7 +165,7 @@ The symlink pattern proposed in earlier drafts is **not suitable for this projec
 
 ```markdown
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: active_context_manifest
 title: "Active Context — YYYY-MM-DD"
 description: "Declares the exact file paths the agent must load for the current task session."

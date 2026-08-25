@@ -1253,10 +1253,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#langkah-25-penyusunan-output-terstruktur-format-okf-v02-rule-8" class="md-nav__link">
+  <a href="#langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.2 (Rule 8)
+        Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
       
     </span>
   </a>
@@ -1689,10 +1689,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#langkah-25-penyusunan-output-terstruktur-format-okf-v02-rule-8" class="md-nav__link">
+  <a href="#langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.2 (Rule 8)
+        Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
       
     </span>
   </a>
@@ -1786,7 +1786,7 @@
     subgraph PROSES ["2. PROSES (Transformasi, Modenisasi &amp; Kualiti)"]
         P1["&lt;b&gt;Pembersihan &amp; Ekstraksi:&lt;/b&gt;&lt;br&gt;- Singkir teks berulang lapuk&lt;br&gt;- Pelihara arkib asal (Rule 17)"]
         P2["&lt;b&gt;Pemodenan Kanonik 2026:&lt;/b&gt;&lt;br&gt;- Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10&lt;br&gt;- Pengerasan LUKS2 &amp; ISO/IEC 27001 (Rule 15)&lt;br&gt;- Standard Bahasa Melayu Baku DBP (Rule 3)"]
-        P3["&lt;b&gt;Pemformatan OKF v0.2:&lt;/b&gt;&lt;br&gt;- YAML Frontmatter + Metadata + Trust Signals&lt;br&gt;- Sovereign Dual-License Footer (Rule 8)"]
+        P3["&lt;b&gt;Pemformatan OKF v0.1:&lt;/b&gt;&lt;br&gt;- YAML Frontmatter + Metadata&lt;br&gt;- Sovereign Dual-License Footer (Rule 8)"]
         P4["&lt;b&gt;100% Quality Gate:&lt;/b&gt;&lt;br&gt;- &lt;code&gt;uv run run_all_tests.py&lt;/code&gt;&lt;br&gt;- Pytest &amp; Jest (Rule 12)"]
     end
 
@@ -1872,12 +1872,12 @@ Fail-fail rujukan mentah di dalam <code>references/</code> <strong>TIDAK BOLEH D
   - Parameter Isirung (<em>Kernel sysctl</em>): Penalaan memori maya (<code>vm.swappiness</code>, <code>vm.dirty_ratio</code>), rangkaian (<code>net.core.somaxconn</code>), dan I/O cakera.
   - Pengurusan Profil Prestasi: Integrasi perkhidmatan <code>tuned</code> (cth. profil <code>throughput-performance</code>, <code>server-powersave</code>, <code>virtual-guest</code>).
   - Pemantauan &amp; Diagnostik Lanjut: Penggunaan alatan moden seperti <code>bpftrace</code>, <code>eBPF</code>, <code>htop</code>, <code>iotop</code>, <code>sar</code> (sysstat), dan <code>perf</code>.</p>
-<h3 id="langkah-25-penyusunan-output-terstruktur-format-okf-v02-rule-8">Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.2 (Rule 8)<a class="headerlink" href="#langkah-25-penyusunan-output-terstruktur-format-okf-v02-rule-8" title="Permanent link">&para;</a></h3>
+<h3 id="langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8">Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)<a class="headerlink" href="#langkah-25-penyusunan-output-terstruktur-format-okf-v01-rule-8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder <code>manual/cuXX/</code> dengan penamaan fail WA yang standard.</li>
-<li>Setiap nod Markdown baharu mesti mempunyai <strong>OKF v0.2 YAML Frontmatter</strong> berserta Isyarat Kepercayaan (<em>Trust Signals</em>):
+<li>Setiap nod Markdown baharu mesti mempunyai <strong>OKF v0.1 YAML Frontmatter</strong>:
   <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">knowledge-node</span><span class="w"> </span><span class="c1"># atau knowledge-index, documentation, skill</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Tajuk</span><span class="nv"> </span><span class="s">Modul"</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-08-17T00:00:00Z"</span>
@@ -1885,19 +1885,7 @@ Fail-fail rujukan mentah di dalam <code>references/</code> <strong>TIDAK BOLEH D
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"lvm"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"partisi"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"amali"</span><span class="p p-Indicator">]</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Penerangan</span><span class="nv"> </span><span class="s">ringkas</span><span class="nv"> </span><span class="s">dan</span><span class="nv"> </span><span class="s">padat."</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="s">"file:///manual/cu02/nama-fail.md"</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nt">generated</span><span class="p">:</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">by</span><span class="p">:</span><span class="w"> </span><span class="s">"human:harisfazillah</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">agent:jules"</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-08-17T00:00:00Z"</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nt">verified</span><span class="p">:</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">by</span><span class="p">:</span><span class="w"> </span><span class="s">"human:harisfazillah"</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-08-17T00:00:00Z"</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"stable"</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nt">stale_after</span><span class="p">:</span><span class="w"> </span><span class="s">"2027-12-31"</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nt">sources</span><span class="p">:</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">"noss-cu02-spec"</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="s">"file:///references/noss/cu02.pdf"</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Spesifikasi</span><span class="nv"> </span><span class="s">NOSS</span><span class="nv"> </span><span class="s">CU02"</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="nn">---</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nn">---</span>
 </span></code></pre></div></li>
 <li><strong>Struktur Penutup Wajib (Peraturan 16):</strong> Mengandungi seksyen <em>AI Prompts</em>, <em>Rujukan URL</em>, dan <em>Syor Buku Boleh Dibeli</em>.</li>
 <li><strong>Pengaki Berdaulat (Sovereign Dual-License Footer):</strong> Memuatkan atribusi rasmi, dwi-lesen (CC BY-SA 4.0 / MIT), dan pautan Notis Perundangan.</li>
@@ -1948,7 +1936,7 @@ Ujian merangkumi:
 <h3 id="b-matriks-kepelbagaian-format-output-multi-artifact-ecosystem">B. Matriks Kepelbagaian Format Output (Multi-Artifact Ecosystem)<a class="headerlink" href="#b-matriks-kepelbagaian-format-output-multi-artifact-ecosystem" title="Permanent link">&para;</a></h3>
 <p>Bagi memenuhi keperluan pelbagai lapisan pengguna (pelajar TVET, pensyarah, pentadbir sistem, dan ejen AI), output projek ini dijana ke dalam format-format berikut:</p>
 <pre class="mermaid"><code>graph LR
-    SRC[Pengetahuan Teras NOSS Linux] --&gt; MD[1. Nod Markdown OKF v0.2&lt;br&gt;manual/ &amp; openwiki/]
+    SRC[Pengetahuan Teras NOSS Linux] --&gt; MD[1. Nod Markdown OKF v0.1&lt;br&gt;manual/ &amp; openwiki/]
     SRC --&gt; HTML[2. Laman Web Statik Prabina&lt;br&gt;html/ &amp; MkDocs Material]
     SRC --&gt; DOCX[3. Dokumen Kurikulum NOSS&lt;br&gt;Format JPK / CoCU / TEM DOCX]
     SRC --&gt; SLIDES[4. Slaid Pembentangan TVET&lt;br&gt;PPTX / ODP 3-Column]
@@ -1956,7 +1944,7 @@ Ujian merangkumi:
     SRC --&gt; AI_FEED[6. Suapan Konteks Ejen AI&lt;br&gt;llms.txt, XML &amp; FastMCP Server]
     SRC --&gt; DEPLOY[7. Artifak Penyebaran Pengeluaran&lt;br&gt;Nginx, Apache, Podman, Ansible]</code></pre>
 <ol>
-<li><strong>Nod Markdown Berformat OKF v0.2 (<code>manual/</code>, <code>openwiki/</code>, <code>docs/</code>):</strong></li>
+<li><strong>Nod Markdown Berformat OKF v0.1 (<code>manual/</code>, <code>openwiki/</code>, <code>docs/</code>):</strong></li>
 <li>Rujukan berdaulat berasaskan fail teks tempatan (<em>offline-first</em>), bebas pautan putus, dan mesra pembacaan terus di IDE atau Git.</li>
 <li><strong>Tapak Web Statik Prabina (<code>html/</code>):</strong></li>
 <li>Tapak web dokumentasi lengkap dijana menggunakan MkDocs Material mod pautan berkait (<code>use_directory_urls: false</code>), sedia untuk GitHub Pages, GitLab Pages, dan pembukaan fail tempatan (<code>file:///</code>).</li>

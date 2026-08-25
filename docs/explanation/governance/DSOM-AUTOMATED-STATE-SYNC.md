@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dsom Automated State Sync"
 description: "DSOM Concept document for Dsom Automated State Sync."
 type: "concept"
@@ -28,7 +28,7 @@ Instead of pushing an entire project history into every prompt, DSOM categorizes
 
 DSOM applies a "distillation loop" using an automated GitHub Action. 
 When a Pull Request is merged, `.github/workflows/dsom-pr-sync.yml` triggers `.github/scripts/action_update_dsom.py`.
-This script calls an LLM (e.g. OpenAI) to review the PR diff and update `.agents/brain/current_state.dsom` strictly in OKF v0.2 format, eliminating redundant conversational fluff and appending only critical architectural decisions.
+This script calls an LLM (e.g. OpenAI) to review the PR diff and update `.agents/brain/current_state.dsom` strictly in OKF v0.1 format, eliminating redundant conversational fluff and appending only critical architectural decisions.
 
 ## 3. Configuration
 

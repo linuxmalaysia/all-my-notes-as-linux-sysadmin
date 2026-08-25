@@ -1,4 +1,4 @@
----
+﻿---
 title: "Byte Capped Execution Framework"
 description: "DSOM Concept document for Byte Capped Execution Framework."
 type: "concept"
@@ -42,7 +42,7 @@ With this specification, the agent is restricted from making blind context exten
 
 ```markdown
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: procedural_skill
 title: "Procedural Specification: DSOM Token Calculator"
 description: "Calculates token counts via tiktoken in isolated uv Python runspaces."
@@ -69,7 +69,7 @@ By configuring an isolated, on-demand execution runtime via Python `uv`, the scr
 # -*- coding: utf-8 -*-
 # ---
 
-# okf_version: 0.2
+# okf_version: 0.1
 # type: executable_script
 
 # title: "Core Token Counter Runtime"

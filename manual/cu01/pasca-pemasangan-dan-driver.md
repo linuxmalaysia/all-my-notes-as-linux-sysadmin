@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Tugasan Pasca-Pemasangan, Pemacu Peranti & Penegasan Keselamatan"
 timestamp: "2026-08-16T12:15:00Z"

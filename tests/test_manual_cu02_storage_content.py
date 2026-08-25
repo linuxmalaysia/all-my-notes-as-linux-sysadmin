@@ -13,6 +13,14 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
+    """Reads a file relative to repository root into string.
+
+    Args:
+        relative_path (str): Relative path from repo root.
+
+    Returns:
+        str: UTF-8 file content string.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 

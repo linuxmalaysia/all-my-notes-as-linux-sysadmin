@@ -52,6 +52,14 @@ CU_LABELS = [
 
 
 def read(relative_path):
+    """Reads a file relative to repository root into string.
+
+    Args:
+        relative_path (str): Relative path from repo root.
+
+    Returns:
+        str: UTF-8 file content string.
+    """
     return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
 
 

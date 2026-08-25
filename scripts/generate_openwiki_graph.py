@@ -22,7 +22,7 @@ footer = f"""
 """
 
 header = f"""---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "OpenWiki Master Graph"
 timestamp: "{timestamp}"

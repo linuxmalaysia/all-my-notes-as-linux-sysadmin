@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 4: Automasi Skrip, Sandaran Data & Pemulihan Sistem (CU04)"
 timestamp: "2026-08-17T00:00:00Z"

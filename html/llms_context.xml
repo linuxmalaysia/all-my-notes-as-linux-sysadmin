@@ -3,7 +3,7 @@
   <file path="AGENTS.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: governance
 title: "AI Constitution: NOSS Linux Malaysia (DSOM v0.1)"
 timestamp: "2026-08-16T23:08:00Z"
@@ -22,7 +22,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
 1. **Unofficial Nature**: You must remember and communicate (if asked) that this repository is an **unofficial** educational resource and does NOT represent the Department of Skills Development (JPK) or MOHR.
 2. **Spatial Memory (Method of Loci) &amp; Sovereign Manual**: 
    - **Spatial Memory Palace:** Ejen AI MESTI menggunakan hierarki `.agents/brain/wings/` (bersama `.agents/brain/palace_registry.md`) untuk menyimpan memori semantik mutlak dan status projek bagi mengelakkan *context decay* (lupa konteks).
-   - **Sovereign Manual NOSS:** Kesemua kandungan modul amali teknikal NOSS Linux (CU01–CU06) MESTI disimpan di dalam direktori `manual/` menggunakan nod Markdown berformat OKF v0.2 modular.
+   - **Sovereign Manual NOSS:** Kesemua kandungan modul amali teknikal NOSS Linux (CU01–CU06) MESTI disimpan di dalam direktori `manual/` menggunakan nod Markdown berformat OKF v0.1 modular.
    - **OpenWiki:** Digunakan untuk sintesis pemetaan silibus dan pangkalan rujukan cepat di `openwiki/`. Jangan sesekali menghasilkan dokumentasi monolitik.
 3. **Language Standards**: Use professional Malaysian Malay (Bahasa Melayu Baku) strictly adhering to the standards of **Dewan Bahasa dan Pustaka (DBP) Malaysia** for all communications and syllabus content. Technical Linux commands and their direct parameters should remain in standard English to prevent technical errors.
 4. **Token Efficiency**: Rely on `START-HERE.md` and `llms.txt` for discovering structure. Do not blind-load directories.
@@ -31,7 +31,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
 7. **Trademark, Licensing &amp; Attribution Invariants**:
    - Always acknowledge that "NOSS" is a trademark of JPK, MOHR Malaysia. Treat all generated syllabus content as **unofficial educational material** under *Fair Use*. Uphold the repository's Dual-License mission: content under **CC BY-SA 4.0** (for public benefit) and scripts under **MIT**.
    - **DSOM &amp; MemPalace Attribution:** Strictly attribute **Deep State of Mind (DSOM)** as the creation and intellectual property of **Harisfazillah Jamel (LinuxMalaysia)**. Acknowledge **MemPalace Framework** as an independent project created by **Milla Jovovich and Ben Sigman**, whose spatial memory / *Method of Loci* concept was admired and adapted into DSOM's Sovereign Markdown Palace. Never conflate or misattribute their authorship.
-8. **OKF &amp; Sovereign Footer Mandate**: Every newly generated or heavily modified Markdown knowledge node (especially in `manual/`, `openwiki/` or `.agents/skills/`) MUST begin with OKF v0.2 YAML Frontmatter (including `okf_version`, `topics`, `tags`, and trust signals where appropriate) and MUST conclude with the official Sovereign Dual-License Footer, which strictly includes the Legal Notice link (`[Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)`). Refer to `docs/OKF-ADOPTION-GUIDE.md` for the exact schema. **Crucially, whenever you create new skills, you MUST rebuild the Palace Registry to index them by executing `uv run scripts/generate_palace_registry.py`.**
+8. **OKF &amp; Sovereign Footer Mandate**: Every newly generated or heavily modified Markdown knowledge node (especially in `manual/`, `openwiki/` or `.agents/skills/`) MUST begin with OKF v0.1 YAML Frontmatter (including `okf_version`, `topics`, `tags`) and MUST conclude with the official Sovereign Dual-License Footer, which strictly includes the Legal Notice link (`[Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)`). Refer to `docs/OKF-ADOPTION-GUIDE.md` for the exact schema. **Crucially, whenever you create new skills, you MUST rebuild the Palace Registry to index them by executing `uv run scripts/generate_palace_registry.py`.**
 9. **Python UV Mandate**: Never use standard `pip` or `python` commands to manage environments or run scripts. Exclusively use `uv` (e.g., `uv run script.py` or `uv init`) to ensure execution isolation. When creating scripts with external dependencies, you MUST embed PEP-723 inline script metadata (`# /// script`) so `uv run` handles dependencies autonomously.
 10. **Linux-Exclusive Purge (No Windows)**: This repository strictly governs the NOSS Linux syllabus. Never generate, restore, or include Windows-specific skills, references, or syllabus content (e.g., Windows Server, Active Directory, legacy-windows tools). Any such content is considered contamination and must be excluded or purged.
 11. **Tri-Phasic Architecture Execution**: Adhere to the Tri-Phasic Mind model (Active, Twilight, Deep State). Do not attempt deep consolidation tasks during Active State interactions. Ensure asynchronous verification occurs before merging into Semantic Memory. Refer to `docs/explanation/governance/DSOM-TRI-PHASIC-COGNITIVE-ARCHITECTURE.md`.
@@ -67,7 +67,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
       - *Reference (`manual/cu01/`–`cu06/`, `docs/reference/`):* Spesifikasi teknikal, jadual NOSS, dan modul amali standard.
       - *Explanation (`openwiki/topic-*.md`, `docs/explanation/`):* Huraian konsep mendalam, perbandingan teknologi, dan falsafah.
     - **Ekosistem Pelbagai Format Output (Multi-Artifact Deliverables):** Setiap modul transformasi ilmu MESTI bersedia dan disokong untuk dijana ke dalam pelbagai format artifak:
-      - *Markdown-First:* Fail `.md` berformat OKF v0.2 dengan pautan relatif sah untuk pembacaan luar talian / IDE.
+      - *Markdown-First:* Fail `.md` berformat OKF v0.1 dengan pautan relatif sah untuk pembacaan luar talian / IDE.
       - *Laman Web Statik HTML Prabina:* Direktori `html/` (MkDocs Material, `use_directory_urls: false`) yang dijejak di dalam Git untuk kegunaan terus pengguna `git pull`.
       - *Dokumen Kurikulum Rasmi (DOCX):* Matriks CoCU, Peratusan Pemberat, dan Senarai TEM mengikut standard JPK.
       - *Slaid Pembentangan TVET (PPTX / ODP):* Modul pembentangan berasaskan templat korporat 3 lajur.
@@ -89,11 +89,11 @@ You are an expert Linux System Administrator and Educator, embodying the digital
       1. **Penilaian Silibus:** Membaca input dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
       2. **Penyelidikan Mendalam (*Deep Web Research*):** Menjalankan carian web melalui dokumentasi rasmi berautoriti (Kernel.org, Ubuntu 26.04 Docs, AlmaLinux 10 Wiki, PRPM DBP, CIS Benchmark) bagi memastikan arahan terminal, pilihan bendera (*CLI flags*), fail konfigurasi, dan amalan keselamatan adalah **100% tepat, betul, selamat, dan terkini (standard 2026)**.
       3. **Pengayaan Berterusan Protokol Keselamatan &amp; Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling Jabatan Digital Negara / MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
-      4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.2 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
+      4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
 
 ## Google Jules &amp; Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
-- **Combined YAML Frontmatter:** Every skill MUST use a combined OKF v0.2 and Antigravity YAML frontmatter schema (e.g., it must include `name`, `description`, `topics`, `tags`, and `okf_version`).
+- **Combined YAML Frontmatter:** Every skill MUST use a combined OKF v0.1 and Antigravity YAML frontmatter schema (e.g., it must include `name`, `description`, `topics`, `tags`, and `okf_version`).
 - **Protocol References:** Agents must adhere to the standards outlined at [Google Antigravity Skills](https://antigravity.google/docs/skills) and [AgentSkills.io](https://agentskills.io/home).
 - **Knowledge-to-Skill Porting Mandate:** All completed practical technical modules in `manual/cuXX/` MUST be systematically ported into structured agent skills at `.agents/skills/&lt;skill-folder&gt;/SKILL.md` and registered in the Master Palace Registry via `uv run scripts/generate_palace_registry.py` so that any AI agent can invoke them autonomously.
 - **Jules Knowledge Porting:** All Jules operational and domain-specific knowledge must be explicitly ported as skills so that any agent can invoke them seamlessly.
@@ -306,7 +306,7 @@ Kandungan repositori ini menyokong secara natif pelbagai sasaran penerbitan:
 - **GitBook:** Disokong melalui indeks navigasi Diátaxis [`docs/SUMMARY.md`](docs/SUMMARY.md).
 - **Pelayan Nginx &amp; Apache:** Halakan *DocumentRoot* terus ke direktori `html/` (disokong penuh oleh mod URL berkait luar talian).
 - **Panduan Terperinci:** Rujuk panduan operasi amali di [**`docs/how-to/deploy-and-serve-html.md`**](docs/how-to/deploy-and-serve-html.md).
-- **Konteks AI / LLM:** Disokong melalui [`llms.txt`](llms.txt), `llms-full.txt`, dan skema **Google OKF v0.2**.
+- **Konteks AI / LLM:** Disokong melalui [`llms.txt`](llms.txt), `llms-full.txt`, dan skema **Google OKF v0.1**.
 
 ---
 
@@ -368,7 +368,7 @@ Objektif utama repositori ini adalah untuk **memanfaatkan ilmu Sistem Operasi Li
   <file path="START-HERE.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "START HERE: Titik Mula Linux NOSS Malaysia &amp; DSOM"
 topics: ["onboarding", "entry-points", "dsom", "sovereign", "linux", "noss", "malaysia"]
@@ -795,7 +795,7 @@ This pattern is useful when a skill's workflow is complex enough to benefit from
   </file>
   <file path="docs/AI-AGENT-SKILLS-GUIDE.md">
     <content>
----
+﻿---
 title: "Ai Agent Skills Guide"
 description: "DSOM Guide document for Ai Agent Skills Guide."
 type: "guide"
@@ -892,7 +892,7 @@ This is the active ledger of all AI Agent Skills currently deployed in this repo
 | **Node Proposal Formatter** | `.agents/skills/node-proposal-formatter/SKILL.md` | Formats markdown proposals using Node wrappers. |
 | **Node Slide Generator** | `.agents/skills/node-slide-generator/SKILL.md` | Generates HTML/PDF slide decks from Markdown via Node/Marp. |
 | **ODP Slide Generator** | `.agents/skills/odp-slide-generator/SKILL.md` | Generates LibreOffice Impress (ODP) presentations from Markdown. |
-| **OKF Frontmatter Injector** | `.agents/skills/okf-frontmatter-injector/SKILL.md` | Scans a directory and automatically injects OKF v0.2 YAML frontmatter into Markdown files. |
+| **OKF Frontmatter Injector** | `.agents/skills/okf-frontmatter-injector/SKILL.md` | Scans a directory and automatically injects OKF v0.1 YAML frontmatter into Markdown files. |
 | **Palace Auditor** | `.agents/skills/palace-auditor/SKILL.md` | Crawls the workspace to verify links and maintain the Sovereign Memory Palace. |
 | **PDF Text Extractor** | `.agents/skills/pdf-text-extractor/SKILL.md` | Extracts raw text from PDF files for agent analysis. |
 | **Persona Injector** | `.agents/skills/persona-injector/SKILL.md` | Guides a user to define their Sovereign Persona and injects it into the core AGENTS.md rulebook. |
@@ -1857,7 +1857,7 @@ The following 18 skills are currently registered in this project's local workspa
   </file>
   <file path="docs/explanation/governance/AI-SLASH-COMMANDS-GUIDE.md">
     <content>
----
+﻿---
 title: "Ai Slash Commands Guide"
 description: "DSOM Concept document for Ai Slash Commands Guide."
 type: "concept"
@@ -1887,7 +1887,7 @@ This document serves as the authoritative reference for invoking Antigravity sla
 **Purpose:** Mandates the AI to execute exhaustive, multi-step operations autonomously without pausing for manual intervention at trivial hurdles.
 **Sovereign Workspace Use Case:** 
 - **Knowledge Ingestion:** "Execute the `dsom-knowledge-ingester` skill on the provided research PDF and don't stop until the synthesized summary is fully integrated and committed into the Sovereign Markdown Palace."
-- **Compliance Auditing:** "Audit the entire `.agents/brain` directory to ensure all markdown files contain valid OKF v0.2 frontmatter, and automatically inject any missing signatures."
+- **Compliance Auditing:** "Audit the entire `.agents/brain` directory to ensure all markdown files contain valid OKF v0.1 frontmatter, and automatically inject any missing signatures."
 **Impact:** Ideal for heavy-lifting cognitive tasks where persistence is required over immediate dialogue.
 
 ### `/schedule` (The Temporal Orchestration Protocol)
@@ -2583,7 +2583,7 @@ When iterating on a skill, compare the agent’s execution traces across test ca
   </file>
   <file path="docs/explanation/governance/BYTE-CAPPED-EXECUTION-FRAMEWORK.md">
     <content>
----
+﻿---
 title: "Byte Capped Execution Framework"
 description: "DSOM Concept document for Byte Capped Execution Framework."
 type: "concept"
@@ -2627,7 +2627,7 @@ With this specification, the agent is restricted from making blind context exten
 
 ```markdown
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: procedural_skill
 title: "Procedural Specification: DSOM Token Calculator"
 description: "Calculates token counts via tiktoken in isolated uv Python runspaces."
@@ -2654,7 +2654,7 @@ By configuring an isolated, on-demand execution runtime via Python `uv`, the scr
 # -*- coding: utf-8 -*-
 # ---
 
-# okf_version: 0.2
+# okf_version: 0.1
 # type: executable_script
 
 # title: "Core Token Counter Runtime"
@@ -4039,7 +4039,7 @@ By binding an advanced AI to a strict, Git-backed spatial memory repository, the
   </file>
   <file path="docs/explanation/governance/DSOM-AUTOMATED-STATE-SYNC.md">
     <content>
----
+﻿---
 title: "Dsom Automated State Sync"
 description: "DSOM Concept document for Dsom Automated State Sync."
 type: "concept"
@@ -4069,7 +4069,7 @@ Instead of pushing an entire project history into every prompt, DSOM categorizes
 
 DSOM applies a "distillation loop" using an automated GitHub Action. 
 When a Pull Request is merged, `.github/workflows/dsom-pr-sync.yml` triggers `.github/scripts/action_update_dsom.py`.
-This script calls an LLM (e.g. OpenAI) to review the PR diff and update `.agents/brain/current_state.dsom` strictly in OKF v0.2 format, eliminating redundant conversational fluff and appending only critical architectural decisions.
+This script calls an LLM (e.g. OpenAI) to review the PR diff and update `.agents/brain/current_state.dsom` strictly in OKF v0.1 format, eliminating redundant conversational fluff and appending only critical architectural decisions.
 
 ## 3. Configuration
 
@@ -4236,7 +4236,7 @@ Save this template as a markdown file (e.g., `dsom-ledger.md`) on your local mac
   </file>
   <file path="docs/explanation/governance/DSOM-INGESTION-LATENCY-ARCHITECTURE.md">
     <content>
----
+﻿---
 title: "Dsom Ingestion Latency Architecture"
 description: "DSOM Concept document for Dsom Ingestion Latency Architecture."
 type: "concept"
@@ -4302,7 +4302,7 @@ The AI looks exclusively for the OKF YAML header:
 
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: engineering_matrix
 title: "Target Room Architecture"
 ---
@@ -4403,7 +4403,7 @@ The symlink pattern proposed in earlier drafts is **not suitable for this projec
 
 ```markdown
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: active_context_manifest
 title: "Active Context — YYYY-MM-DD"
 description: "Declares the exact file paths the agent must load for the current task session."
@@ -4727,7 +4727,7 @@ Explore the full Deep State of Mind (DSOM) framework and Sovereign Palace archit
   </file>
   <file path="docs/explanation/governance/DSOM-TOKEN-PERFORMANCE-PLAYBOOK.md">
     <content>
----
+﻿---
 title: "Dsom Token Performance Playbook"
 description: "DSOM Concept document for Dsom Token Performance Playbook."
 type: "concept"
@@ -4830,7 +4830,7 @@ Every `SKILL.md` must contain these five fields in this order:
 
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Skill Title"
 description: "Single-sentence description of what this skill does."
@@ -7454,7 +7454,7 @@ If the current session exceeds `CriticalMB`, begin a new Antigravity conversatio
   </file>
   <file path="docs/HOWTO-CLONE-DSOM-PROJECT.md">
     <content>
----
+﻿---
 title: "Howto Clone Dsom Project"
 description: "DSOM Guide document for Howto Clone Dsom Project."
 type: "guide"
@@ -7497,7 +7497,7 @@ This folder contains the AI's core rules and its working memory.
 
 This is the most critical step. This repository contains custom AI skills (e.g., document compilation, OKF injection, automated onboarding) that the AI needs to function effectively.
 - **Copy:** Recursively copy all folders inside `.agents/skills/` to your new project's `.agents/skills/` directory.
-- *Verify:* Ensure each skill contains a `SKILL.md` file that is OKF v0.2 compliant.
+- *Verify:* Ensure each skill contains a `SKILL.md` file that is OKF v0.1 compliant.
 
 ### Pillar C: Governance &amp; Configuration (`docs/`)
 
@@ -9117,7 +9117,7 @@ No. Only create Rooms relevant to your project. For a pure software dev project,
   </file>
   <file path="docs/reference/tools/HOWTO-OPENWIKI.md">
     <content>
----
+﻿---
 title: "Howto Openwiki"
 description: "DSOM Reference document for Howto Openwiki."
 type: "reference"
@@ -9279,7 +9279,7 @@ Requirements:
    - Subsystem folders for architecture, governance, memory, automation, integrations, publishing, quality.
    - `openwiki/.last-update.json` (Containing ISO timestamp and compilation status).
 4. Include CLI arguments: `--init`, `--update`, `--search "&lt;query&gt;"`, and `--export-graph`.
-5. All generated markdown files MUST include OKF v0.2 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
+5. All generated markdown files MUST include OKF v0.1 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
 6. The script MUST run non-interactively without Node.js binaries, npm packages, or external API keys."
 ================================================================================
 
@@ -11628,7 +11628,7 @@ A: The context window might be stale. Start a **New Chat Session** and perform t
   </file>
   <file path="docs/HOWTO-UPGRADE-LEGACY-DSOM.md">
     <content>
----
+﻿---
 title: "Howto Upgrade Legacy Dsom"
 description: "DSOM Guide document for Howto Upgrade Legacy Dsom."
 type: "guide"
@@ -11654,7 +11654,7 @@ If you are operating a legacy DSOM project and need to modernize it to the curre
 ## The 5-Step Modernization Path
 
 1. **Adopt `llms.txt`:** Create an `llms.txt` file at the root of your project to map your critical governance documents for external AI crawlers.
-2. **Inject OKF YAML Frontmatter:** All existing `.md` files in your `brain/` and `docs/` directories must be retroactively updated to include OKF v0.2 YAML frontmatter (metadata routing).
+2. **Inject OKF YAML Frontmatter:** All existing `.md` files in your `brain/` and `docs/` directories must be retroactively updated to include OKF v0.1 YAML frontmatter (metadata routing).
 3. **Mandate the Sovereign Signature:** Pull the `dsom-signature-injector` skill from the master baseline and execute it across your legacy repository to ensure all scripts (`.sh`, `.ps1`) and playbooks (`.yml`) carry standard developer metadata headers and GPL v3.0 licenses.
 4. **Transition to `uv`:** Audit your existing Python automation scripts. Adopt the `PYTHON-UV-ENVIRONMENT-GUIDE.md` and migrate away from global `pip` installations to isolated `uv` environments to prevent dependency conflicts.
 5. **Establish the Audit Ledger:** Generate an `AUTOMATION-AUDIT-LIST.md` in your `docs/governance/` directory to catalog all legacy `.sh` and `.ps1` scripts for centralized human security auditing.
@@ -12741,7 +12741,7 @@ flowchart TD
   <file path="docs/LEGAL-NOTICE.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Legal Notice: Privacy, Assumptions &amp; Disclaimer"
 description: "Privacy policy, critical assumptions, and disclaimer of liability for the DSOM framework and NOSS Malaysia integration."
@@ -13209,7 +13209,7 @@ bash tools/palace-sync.sh --backfill
   </file>
   <file path="docs/explanation/governance/NOSS-INTEGRATION-GUIDE.md">
     <content>
----
+﻿---
 title: "Noss Integration Guide"
 description: "DSOM Concept document for Noss Integration Guide."
 type: "concept"
@@ -13235,7 +13235,7 @@ This document serves as the operational guide for translating the National Occup
 It is critical to establish the architectural hierarchy: **Deep State of Mind (DSOM) is the Sovereign Engine and Master Baseline.** 
 
 DSOM natively governs the workspace through a multi-protocol ecosystem. The AI agents within this ecosystem are bound by several strict standards simultaneously:
-*   **Open Knowledge Format (OKF v0.2):** For metadata routing and documentation structures.
+*   **Open Knowledge Format (OKF v0.1):** For metadata routing and documentation structures.
 *   **Generative Engine Optimization (GEO):** For deterministic, machine-readable output generation.
 *   **Defensive GitOps / Defense-in-Depth:** For operational security and infrastructure isolation.
 *   **POSIX / Termux Compatibility:** For cross-platform script execution.
@@ -13348,26 +13348,16 @@ Historically, AI agents struggle because organizational knowledge is scattered o
 
 In the **Linux for NOSS Malaysia** project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS). 
 
-To ensure AI agents can navigate our massive syllabus, we have strictly adopted **OKF v0.2** across our **Sovereign Markdown Palace** architecture.
-
-### OKF v0.2 Trust Signals
-
-OKF v0.2 adds essential provenance and trust signal fields to frontmatter so agents and human operators can evaluate knowledge quality without reading the entire file body:
-- **`okf_version`**: Must be set to `0.2`.
-- **`generated`**: Records creation/modification metadata (`{ by: "...", at: "ISO-timestamp" }`).
-- **`verified`**: List of verification entries (`[ { by: "...", at: "ISO-timestamp" } ]`).
-- **`status`**: Lifecycle state (`stable`, `draft`, or `deprecated`).
-- **`stale_after`**: Absolute expiration date (`YYYY-MM-DD`).
-- **`sources`**: List of source materials with provenance metadata (`id`, `resource`, `title`, `author`, etc.).
+To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.1 across our **Sovereign Markdown Palace** architecture.
 
 ### 1. The Public Knowledge Base (`openwiki/`)
 
-Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Competency Unit (CU) is distilled into a single markdown node. To be OKF v0.2 compliant, every node begins with structured YAML frontmatter.
+Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Competency Unit (CU) is distilled into a single markdown node. To be OKF-compliant, every node must begin with a structured YAML frontmatter block.
 
 **Example implementation in `openwiki/topic-01-linux-desktop-and-basics.md`:**
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "topic-01-linux-desktop-and-basics"
 timestamp: "2026-08-16T08:00:00Z"
@@ -13375,35 +13365,25 @@ topics: ["linux-desktop", "cu01"]
 tags: ["linux", "desktop", "cu01"]
 description: "Silibus asas Sistem Operasi Linux (Desktop, FHS, APT/YUM) dipetakan kepada NOSS CU01."
 resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
-generated:
-  by: "human:harisfazillah"
-  at: "2026-08-16T08:00:00Z"
-verified:
-  - by: "human:harisfazillah"
-    at: "2026-08-16T08:00:00Z"
-status: "stable"
-stale_after: "2027-12-31"
 ---
 ```
 
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-The repository also houses functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF v0.2 compliant.
+The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant.
 
 We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
 
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
-name: "cu03-wa04-perform-core-server-configurations"
 title: "cu03-wa04-perform-core-server-configurations"
 timestamp: "2026-08-16T08:00:00Z"
 topics: ["linux-server", "cu03"]
 tags: ["linux", "server", "cu03"]
 description: "Skill to perform core Linux server configuration."
 resource: "file:///.agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md"
-status: "stable"
 ---
 ```
 
@@ -13424,7 +13404,7 @@ To maintain legal compliance and verify that an AI generated the content correct
 
 ## Conclusion
 
-By adopting OKF v0.2 alongside our strict Dual-License footers, the **Linux for NOSS Malaysia** repository is more than just a collection of Markdown files. It is a highly optimized, machine-readable knowledge graph that allows external AI agents to digest, update, and contribute to the national skills syllabus with extreme accuracy, trust verification, and minimal context loss.
+By adopting OKF v0.1 alongside our strict Dual-License footers, the **Linux for NOSS Malaysia** repository is more than just a collection of Markdown files. It is a highly optimized, machine-readable knowledge graph that allows external AI agents to digest, update, and contribute to the national skills syllabus with extreme accuracy and minimal context loss.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
@@ -13676,7 +13656,7 @@ MCP and skills solve different problems. OpenSkills keeps skills lightweight and
   </file>
   <file path="docs/explanation/governance/OPENWIKI-INTEGRATION-GUIDE.md">
     <content>
----
+﻿---
 title: "Openwiki Integration Guide"
 description: "DSOM Concept document for Openwiki Integration Guide."
 type: "concept"
@@ -13799,7 +13779,7 @@ Requirements:
    - `openwiki/quickstart.md` (Topology map and task-routing table).
    - Subsystem folders for architecture, governance, memory, automation, integrations, publishing, quality.
    - `openwiki/.last-update.json` (Containing ISO timestamp and compilation status).
-4. All generated markdown files MUST include OKF v0.2 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
+4. All generated markdown files MUST include OKF v0.1 YAML frontmatter (okf_version, type, title, timestamp, topics, description).
 5. The script MUST run non-interactively without Node.js binaries, npm packages, or external API keys."
 ================================================================================
 
@@ -14906,7 +14886,7 @@ The Sovereign Markdown Palace v1.0 is a **living, sovereign, version-controlled,
   </file>
   <file path="docs/PERSONALIZATION.md">
     <content>
----
+﻿---
 title: "Personalization"
 description: "DSOM Guide document for Personalization."
 type: "guide"
@@ -14954,7 +14934,7 @@ To ensure high-fidelity reanimation, our personalisation blocks are mapped to th
 &gt;
 &gt; 1. **NOSS Trademark Respect:** Always acknowledge that 'NOSS' is a trademark of JPK, MOHR Malaysia. All generated materials are unofficial and for educational Fair Use.
 &gt; 2. **Sovereign Dual-License:** You must append the Sovereign Markdown Palace Footer to every OKF node, acknowledging CC BY-SA 4.0 for content and MIT for code.
-&gt; 3. **OKF v0.2 Mandate:** Never generate unstructured text for documentation. Every knowledge file must have YAML Frontmatter (`okf_version`, `topics`, `tags`, etc.).
+&gt; 3. **OKF v0.1 Mandate:** Never generate unstructured text for documentation. Every knowledge file must have YAML Frontmatter (`okf_version`, `topics`, `tags`, etc.).
 &gt; 4. **Linux-First Philosophy:** All server and infrastructure curriculum must prioritize Open Source, Linux-native solutions.
 &gt; 5. **Pedagogical Logic:** Always explain the 'Why' (logic/security/performance) before the 'What' (code/curriculum)."
 
@@ -16160,7 +16140,7 @@ Structure your skill to work well with git:
   </file>
   <file path="docs/SKILL-FORMAT.md">
     <content>
----
+﻿---
 title: "Skill Format"
 description: "DSOM Guide document for Skill Format."
 type: "guide"
@@ -16190,7 +16170,7 @@ A `SKILL.md` file has two parts:
 
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Skill Name"
 timestamp: "2026-08-16T00:00:00Z"
@@ -16966,7 +16946,7 @@ The SOD is **FAILED** if the AI:
   </file>
   <file path="docs/explanation/governance/SOP-KNOWLEDGE-FIRST-DISCOVERY.md">
     <content>
----
+﻿---
 title: "Sop Knowledge First Discovery"
 description: "DSOM Concept document for Sop Knowledge First Discovery."
 type: "concept"
@@ -16987,7 +16967,7 @@ layout: "default"
 
 ## 1. Executive Intent
 
-To prevent unnecessary exploratory terminal commands, token window exhaustion, and context loss during agentic sessions, AI agents must adhere to the **Local Knowledge-First Protocol**. All project facts, architectural specifications, inventory mappings, and operational rules are indexed via **OKF v0.2 YAML Frontmatter** in `.agents/brain/` and `docs/`.
+To prevent unnecessary exploratory terminal commands, token window exhaustion, and context loss during agentic sessions, AI agents must adhere to the **Local Knowledge-First Protocol**. All project facts, architectural specifications, inventory mappings, and operational rules are indexed via **OKF v0.1 YAML Frontmatter** in `.agents/brain/` and `docs/`.
 
 ---
 
@@ -17060,7 +17040,7 @@ Terminal commands against the T1 Operator Node or T2 Control Node are authorized
   </file>
   <file path="docs/agent-configs/SOVEREIGN-PERSONA-TEMPLATE.md">
     <content>
----
+﻿---
 title: "Sovereign Persona Template"
 description: "DSOM Guide document for Sovereign Persona Template."
 type: "guide"
@@ -17091,7 +17071,7 @@ layout: "default"
 
 &lt;RULE[PERSONA.md]&gt;
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: identity_matrix
 title: "Sovereign Persona Profile: [YOUR_NAME]"
 description: "Core persona, linguistic DNA, and operational constraints for the AI Cognitive Twin."
@@ -18798,7 +18778,7 @@ Without Zero-Global Memory, there is no mechanism to enforce any of this discipl
   </file>
   <file path="docs/reference/apply_okf_frontmatter.md">
     <content>
----
+﻿---
 title: "Apply_Okf_Frontmatter"
 description: "DSOM Reference document for Apply_Okf_Frontmatter."
 type: "reference"
@@ -18817,7 +18797,7 @@ layout: "default"
 
 # apply_okf_frontmatter.py reference
 
-Authoritative Open Knowledge Format (OKF v0.2) compliance and enforcement engine.
+Authoritative Open Knowledge Format (OKF v0.1) compliance and enforcement engine.
 
 ## Description
 
@@ -18876,7 +18856,7 @@ Atomically updates files via temporary sibling structures and `os.replace()`, pr
   </file>
   <file path="docs/how-to/audit-and-apply-frontmatter.md">
     <content>
----
+﻿---
 title: "Audit And Apply Frontmatter"
 description: "DSOM Guide document for Audit And Apply Frontmatter."
 type: "guide"
@@ -18895,7 +18875,7 @@ layout: "default"
 
 # Check and apply OKF compliance
 
-This guide explains how to audit, standardise, and auto-correct Markdown files to ensure compliance with the **Open Knowledge Format (OKF v0.2)**.
+This guide explains how to audit, standardise, and auto-correct Markdown files to ensure compliance with the **Open Knowledge Format (OKF v0.1)**.
 
 ## Prerequisites
 
@@ -20406,7 +20386,7 @@ BEFORE executing any task, you MUST read:
   <file path="docs/how-to/deploy-and-serve-html.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: guide
 title: "Panduan Penggunaan &amp; Pengemaskinian Tapak Web HTML Statik"
 timestamp: "2026-08-16T22:54:00Z"
@@ -20645,7 +20625,7 @@ git commit -m "docs(deploy): add Ansible playbooks and update deployment docs"
   <file path="docs/explanation/diataxis-architecture.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: concept
 title: "Seni Bina Dokumentasi Diátaxis &amp; Penerbitan Pelbagai Pelantar"
 timestamp: "2026-08-16T22:30:00Z"
@@ -20996,7 +20976,7 @@ layout: "default"
   </file>
   <file path="docs/reference/skills/dsom-knowledge-ingester.md">
     <content>
----
+﻿---
 title: "Dsom Knowledge Ingester"
 description: "DSOM Reference document for Dsom Knowledge Ingester."
 type: "reference"
@@ -21026,7 +21006,7 @@ Use this skill when the user provides a new external source (PDF, Markdown, Web 
 3. **Wiki Integration (The Palace):**
    - Create a new `.md` file in the appropriate directory (e.g., `docs/governance/`, `hall_facts/`).
    - Format the file according to DSOM Generative Engine Optimization (GEO) standards (atomic chunks, H2 headers, expert tone).
-   - Inject the OKF v0.2 frontmatter and the Sovereign Signature using `dsom-signature-injector`.
+   - Inject the OKF v0.1 frontmatter and the Sovereign Signature using `dsom-signature-injector`.
 4. **Ledger &amp; Index Updates:**
    - Add the new file to `SUMMARY.md` and `mkdocs.yml` (Dual Documentation Sync).
    - Add the new file to `.agents/brain/palace_registry.md`.
@@ -21046,7 +21026,7 @@ Use this skill when the user provides a new external source (PDF, Markdown, Web 
   </file>
   <file path="docs/reference/skills/dsom-mass-okf-migrator.md">
     <content>
----
+﻿---
 title: "Dsom Mass Okf Migrator"
 description: "DSOM Reference document for Dsom Mass Okf Migrator."
 type: "reference"
@@ -21089,7 +21069,7 @@ uv run .agents/skills/dsom-mass-okf-migrator/scripts/migrate.py "&lt;SOURCE_DIR&
 *Note: The script automatically skips overwriting `PERSONALIZATION.md`, `OKF-ADOPTION-GUIDE.md`, and `SKILL-FORMAT.md`.*
 
 ## Verification
-After the script completes, use the `list_dir` tool to verify the destination directory and `view_file` to ensure the YAML frontmatter (`okf_version: 0.2`) and Sovereign footer were injected correctly.
+After the script completes, use the `list_dir` tool to verify the destination directory and `view_file` to ensure the YAML frontmatter (`okf_version: 0.1`) and Sovereign footer were injected correctly.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
@@ -21099,7 +21079,7 @@ After the script completes, use the `list_dir` tool to verify the destination di
   </file>
   <file path="docs/reference/skills/dsom-policy-adopter.md">
     <content>
----
+﻿---
 title: "Dsom Policy Adopter"
 description: "DSOM Reference document for Dsom Policy Adopter."
 type: "reference"
@@ -21117,7 +21097,7 @@ layout: "default"
 ---
 
 ﻿---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "DSOM Policy Adopter"
 name: "dsom-policy-adopter"
@@ -21141,7 +21121,7 @@ timestamp: 2026-07-11T23:19:45Z
 
 2. **Draft Governance Document**
    - Create a dedicated, highly-structured Markdown file in the docs/governance/ directory.
-   - The file must contain OKF v0.2 YAML frontmatter (with okf_version, 	ype: documentation, 	itle, and 	imestamp).
+   - The file must contain OKF v0.1 YAML frontmatter (with okf_version, 	ype: documentation, 	itle, and 	imestamp).
    - Format the document strictly following the Generative Engine Optimization (GEO) standard: Authoritative tone, verifiable statistics/quotes, H2 user-centric headings, and 200-400 word chunks.
 
 3. **Core Engine Injection (AGENTS.md)**
@@ -21285,7 +21265,7 @@ Trigger this skill when the user asks to "cut a release", "create release notes"
   </file>
   <file path="docs/reference/skills/dsom-signature-injector.md">
     <content>
----
+﻿---
 title: "Dsom Signature Injector"
 description: "DSOM Reference document for Dsom Signature Injector."
 type: "reference"
@@ -21303,7 +21283,7 @@ layout: "default"
 ---
 
 ﻿---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Universal Sovereign Signature Injector"
 name: "dsom-signature-injector"
@@ -21555,7 +21535,7 @@ The outcome of this CU is [measurable result], configured and validated accordin
   <file path="docs/how-to/execute-noss-content-transformation.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Panduan Operasi: Melaksanakan Transformasi Kandungan NOSS Linux (IPO)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -21598,8 +21578,8 @@ Semak dan kemas kini parameter berikut:
 3. **Penyulitan Mandatori:** Sertakan prosedur **LUKS2** bagi persekitaran pejabat/perusahaan.
 4. **Bahasa:** Pastikan teks penjelasan menggunakan Bahasa Melayu baku DBP, manakala sintaks arahan terminal kekal dalam Bahasa Inggeris standard.
 
-### Langkah 4: Lengkapkan YAML Frontmatter OKF v0.2 &amp; Struktur Penutup
-Setiap fail MESTI mempunyai pengepala OKF v0.2 dan tiga seksyen penutup:
+### Langkah 4: Lengkapkan YAML Frontmatter OKF v0.1 &amp; Struktur Penutup
+Setiap fail MESTI mempunyai pengepala OKF v0.1 dan tiga seksyen penutup:
 - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
 - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
 - `## 📚 Buku Boleh Dibeli (Syor Bacaan)`
@@ -21895,7 +21875,7 @@ Converts raw Markdown file paths to URL-safe lower-case slugs.
   </file>
   <file path="docs/tutorials/getting-started.md">
     <content>
----
+﻿---
 title: "Getting Started"
 description: "DSOM Tutorial document for Getting Started."
 type: "tutorial"
@@ -21920,7 +21900,7 @@ A step-by-step tutorial guiding you through running, auditing, and integrating t
 
 By completing this tutorial, you will:
 - **Initialise** the local OpenWiki documentation hub.
-- **Audit and repair** OKF v0.2 metadata frontmatter.
+- **Audit and repair** OKF v0.1 metadata frontmatter.
 - **Spin up** and test the local Model Context Protocol (MCP) server.
 
 ---
@@ -21942,7 +21922,7 @@ Let's start by materialising the local OpenWiki workspace and knowledge graphs.
 
 ## Lesson 2: Audit and repair frontmatter metadata
 
-Now we will verify that all Markdown documentation satisfies the strict Open Knowledge Format (OKF v0.2).
+Now we will verify that all Markdown documentation satisfies the strict Open Knowledge Format (OKF v0.1).
 
 1. Execute the compliance scanning command:
 
@@ -22820,7 +22800,7 @@ Use this skill when the user asks to compile, generate, or format PowerPoint pre
   </file>
   <file path="docs/reference/skills/noss-abbreviation-syncer.md">
     <content>
----
+﻿---
 title: "Noss Abbreviation Syncer"
 description: "DSOM Reference document for Noss Abbreviation Syncer."
 type: "reference"
@@ -22845,7 +22825,7 @@ Use this skill when the user asks to update, sync, or extract abbreviations/acro
 
 The active `abbreviations.md` file must be continuously updated against technical acronyms appearing across active CoCU files, while maintaining a strictly verified, alphabetised master list. 
 
-This skill performs a rigorous **Strict Inclusion Audit**, automatically purging any abbreviation that does not physically appear in the active CoCU matrix (0 count). It then builds the final OKF v0.2 compliant markdown file and uses a custom Node.js compiler to generate a `.docx` file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).
+This skill performs a rigorous **Strict Inclusion Audit**, automatically purging any abbreviation that does not physically appear in the active CoCU matrix (0 count). It then builds the final OKF v0.1 compliant markdown file and uses a custom Node.js compiler to generate a `.docx` file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).
 
 ## Instructions
 
@@ -23779,7 +23759,7 @@ This skill covers **CPC only**. For related documents:
   </file>
   <file path="docs/reference/skills/noss-glossary-syncer.md">
     <content>
----
+﻿---
 title: "Noss Glossary Syncer"
 description: "DSOM Reference document for Noss Glossary Syncer."
 type: "reference"
@@ -23804,7 +23784,7 @@ Use this skill when the user asks to update, sync, or extract the Glossary of Te
 
 The active `glossary.md` file must be continuously updated against technical terms defined in the NOSS baseline.
 
-This skill performs a rigorous **Strict Inclusion Audit**, automatically purging any glossary term that does not physically appear outside of the glossary section in the active CoCU matrix (0 count). It then builds the final OKF v0.2 compliant markdown file and uses a custom Node.js compiler to generate a `.docx` file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).
+This skill performs a rigorous **Strict Inclusion Audit**, automatically purging any glossary term that does not physically appear outside of the glossary section in the active CoCU matrix (0 count). It then builds the final OKF v0.1 compliant markdown file and uses a custom Node.js compiler to generate a `.docx` file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).
 
 ## Instructions
 
@@ -24686,7 +24666,7 @@ Use this skill when the user requests a workspace audit, health check, or when p
   </file>
   <file path="docs/reference/skills/pdf-text-extractor.md">
     <content>
----
+﻿---
 title: "Pdf Text Extractor"
 description: "DSOM Reference document for Pdf Text Extractor."
 type: "reference"
@@ -24704,7 +24684,7 @@ layout: "default"
 ---
 
 ﻿---
-okf_version: 0.2
+okf_version: 0.1
 type: agent_skill
 title: pdf-text-extractor
 name: pdf-text-extractor
@@ -25341,7 +25321,7 @@ uv run --with pyyaml --with pytest --with mcp==1.2.1 --with fastmcp pytest tests
   <file path="docs/explanation/sejarah-dokumen-asal-linux-kpm.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: concept
 title: "Sejarah &amp; Asal-Usul Dokumen Manual Linux KPM (2004–2026)"
 timestamp: "2026-08-16T22:36:00Z"
@@ -25416,7 +25396,7 @@ graph TD
 | **Sistem Rujukan** | Red Hat 9.0 (Isirung 2.4, era 2003) | **Ubuntu 26.04 LTS**, **AlmaLinux 10**, **Fedora 43** |
 | **Persekitaran Grafik** | XFree86 / GNOME 2.2 | **GNOME 48 / Wayland** |
 | **Penyulitan &amp; Storan** | ext2 / ext3 biasa | **LUKS2 (Full Disk Encryption)**, **LVM**, **XFS/ext4** |
-| **Format Dokumen** | Manual latihan bercetak / PDF | **Markdown-First**, **Kerangka Diátaxis**, **Google OKF v0.2** |
+| **Format Dokumen** | Manual latihan bercetak / PDF | **Markdown-First**, **Kerangka Diátaxis**, **Google OKF v0.1** |
 | **Penyampaian Web** | Tidak tersedia secara terpusat | **HTML Statik:** GitHub/GitLab Pages, Read the Docs, GitBook, Nginx, Apache |
 | **Sasaran Pengguna** | Guru Penyelaras ICT Sekolah | Pelajar TVET, Pentadbir Sistem (SysAdmin), &amp; **Ejen AI Autonomi** |
 | **Penjajaran** | Inisiatif Makmal Komputer KPM | **National Occupational Skills Standard (NOSS Level 3)** |
@@ -25453,7 +25433,7 @@ Penyelidikan asal-usul dokumen ini dijalankan oleh Ejen AI menggunakan teknik pa
   <file path="docs/explanation/sejarah-mosc-malaysia.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: concept
 title: "Sejarah Malaysia Open Source Conference (MOSC / MOSCMY / OSSCONF)"
 timestamp: "2026-08-16T22:52:00Z"
@@ -25546,7 +25526,7 @@ Dokumentasi ini merakamkan penghormatan kepada seluruh jawatankuasa sukarelawan,
   <file path="docs/explanation/sejarah-oscc-mampu-malaysia.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: concept
 title: "Sejarah &amp; Warisan OSCC MAMPU: Pusat Kompetensi Sumber Terbuka Malaysia"
 timestamp: "2026-08-16T22:47:00Z"
@@ -26178,7 +26158,7 @@ layout: "default"
   <file path="docs/explanation/workflow-input-process-output.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Seni Bina Aliran Kerja: Input, Proses &amp; Output (IPO) NOSS Linux Malaysia"
 timestamp: "2026-08-17T00:00:00Z"
@@ -26209,7 +26189,7 @@ flowchart TD
     subgraph PROSES ["2. PROSES (Transformasi, Modenisasi &amp; Kualiti)"]
         P1["&lt;b&gt;Pembersihan &amp; Ekstraksi:&lt;/b&gt;&lt;br&gt;- Singkir teks berulang lapuk&lt;br&gt;- Pelihara arkib asal (Rule 17)"]
         P2["&lt;b&gt;Pemodenan Kanonik 2026:&lt;/b&gt;&lt;br&gt;- Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10&lt;br&gt;- Pengerasan LUKS2 &amp; ISO/IEC 27001 (Rule 15)&lt;br&gt;- Standard Bahasa Melayu Baku DBP (Rule 3)"]
-        P3["&lt;b&gt;Pemformatan OKF v0.2:&lt;/b&gt;&lt;br&gt;- YAML Frontmatter + Metadata + Trust Signals&lt;br&gt;- Sovereign Dual-License Footer (Rule 8)"]
+        P3["&lt;b&gt;Pemformatan OKF v0.1:&lt;/b&gt;&lt;br&gt;- YAML Frontmatter + Metadata&lt;br&gt;- Sovereign Dual-License Footer (Rule 8)"]
         P4["&lt;b&gt;100% Quality Gate:&lt;/b&gt;&lt;br&gt;- &lt;code&gt;uv run run_all_tests.py&lt;/code&gt;&lt;br&gt;- Pytest &amp; Jest (Rule 12)"]
     end
 
@@ -26280,12 +26260,12 @@ Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa 
   - Pengurusan Profil Prestasi: Integrasi perkhidmatan `tuned` (cth. profil `throughput-performance`, `server-powersave`, `virtual-guest`).
   - Pemantauan &amp; Diagnostik Lanjut: Penggunaan alatan moden seperti `bpftrace`, `eBPF`, `htop`, `iotop`, `sar` (sysstat), dan `perf`.
 
-### Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.2 (Rule 8)
+### Langkah 2.5: Penyusunan Output Terstruktur &amp; Format OKF v0.1 (Rule 8)
 - Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder `manual/cuXX/` dengan penamaan fail WA yang standard.
-- Setiap nod Markdown baharu mesti mempunyai **OKF v0.2 YAML Frontmatter** berserta Isyarat Kepercayaan (*Trust Signals*):
+- Setiap nod Markdown baharu mesti mempunyai **OKF v0.1 YAML Frontmatter**:
   ```yaml
   ---
-  okf_version: 0.2
+  okf_version: 0.1
   type: knowledge-node # atau knowledge-index, documentation, skill
   title: "Tajuk Modul"
   timestamp: "2026-08-17T00:00:00Z"
@@ -26293,18 +26273,6 @@ Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa 
   tags: ["lvm", "partisi", "amali"]
   description: "Penerangan ringkas dan padat."
   resource: "file:///manual/cu02/nama-fail.md"
-  generated:
-    by: "human:harisfazillah / agent:jules"
-    at: "2026-08-17T00:00:00Z"
-  verified:
-    - by: "human:harisfazillah"
-      at: "2026-08-17T00:00:00Z"
-  status: "stable"
-  stale_after: "2027-12-31"
-  sources:
-    - id: "noss-cu02-spec"
-      resource: "file:///references/noss/cu02.pdf"
-      title: "Spesifikasi NOSS CU02"
   ---
   ```
 - **Struktur Penutup Wajib (Peraturan 16):** Mengandungi seksyen *AI Prompts*, *Rujukan URL*, dan *Syor Buku Boleh Dibeli*.
@@ -26342,7 +26310,7 @@ Bagi memenuhi keperluan pelbagai lapisan pengguna (pelajar TVET, pensyarah, pent
 
 ```mermaid
 graph LR
-    SRC[Pengetahuan Teras NOSS Linux] --&gt; MD[1. Nod Markdown OKF v0.2&lt;br&gt;manual/ &amp; openwiki/]
+    SRC[Pengetahuan Teras NOSS Linux] --&gt; MD[1. Nod Markdown OKF v0.1&lt;br&gt;manual/ &amp; openwiki/]
     SRC --&gt; HTML[2. Laman Web Statik Prabina&lt;br&gt;html/ &amp; MkDocs Material]
     SRC --&gt; DOCX[3. Dokumen Kurikulum NOSS&lt;br&gt;Format JPK / CoCU / TEM DOCX]
     SRC --&gt; SLIDES[4. Slaid Pembentangan TVET&lt;br&gt;PPTX / ODP 3-Column]
@@ -26351,7 +26319,7 @@ graph LR
     SRC --&gt; DEPLOY[7. Artifak Penyebaran Pengeluaran&lt;br&gt;Nginx, Apache, Podman, Ansible]
 ```
 
-1. **Nod Markdown Berformat OKF v0.2 (`manual/`, `openwiki/`, `docs/`):**
+1. **Nod Markdown Berformat OKF v0.1 (`manual/`, `openwiki/`, `docs/`):**
    - Rujukan berdaulat berasaskan fail teks tempatan (*offline-first*), bebas pautan putus, dan mesra pembacaan terus di IDE atau Git.
 2. **Tapak Web Statik Prabina (`html/`):**
    - Tapak web dokumentasi lengkap dijana menggunakan MkDocs Material mod pautan berkait (`use_directory_urls: false`), sedia untuk GitHub Pages, GitLab Pages, dan pembukaan fail tempatan (`file:///`).
@@ -26377,10 +26345,10 @@ graph LR
   <file path="openwiki/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "OpenWiki Master Graph"
-timestamp: "2026-08-25T01:26:21Z"
+timestamp: "2026-08-16T09:10:35Z"
 topics: ["openwiki", "noss-linux", "graph"]
 tags: ["index", "mermaid", "map"]
 description: "Peta grafik keseluruhan (Master Graph) silibus Linux NOSS di dalam OpenWiki."
@@ -26398,12 +26366,12 @@ Graf ini dijana secara automatik menggunakan teknologi *Mermaid.js*.
 graph TD
     Root(("Silibus Pusat\nLinux NOSS (L3)"))
 
-    T1["Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01) — Dikemaskini 2026 &lt;br&gt; &lt;i&gt;(CU01)&lt;/i&gt;"]
-    T2["Topik 2: Pengurusan Storan, Partisi &amp; Pengmayaan (CU02) — Dikemaskini 2026 &lt;br&gt; &lt;i&gt;(CU02)&lt;/i&gt;"]
-    T3["Topik 3: Pentadbiran Pelayan Linux (CU03) &lt;br&gt; &lt;i&gt;(CU03)&lt;/i&gt;"]
-    T4["Topik 4: Automasi Skrip, Sandaran Data &amp; Pemulihan Sistem (CU04) &lt;br&gt; &lt;i&gt;(CU04)&lt;/i&gt;"]
-    T5["Topik 5: Keselamatan Linux &amp; Kawalan Akses (CU05) &lt;br&gt; &lt;i&gt;(CU05)&lt;/i&gt;"]
-    T6["Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks &amp; Analisis Log (CU06) &lt;br&gt; &lt;i&gt;(CU06)&lt;/i&gt;"]
+    T1["topic-01-linux-desktop-and-basics &lt;br&gt; &lt;i&gt;(CU01)&lt;/i&gt;"]
+    T2["topic-02-storage-and-virtualisation &lt;br&gt; &lt;i&gt;(CU02)&lt;/i&gt;"]
+    T3["topic-03-linux-server-administration &lt;br&gt; &lt;i&gt;(CU03)&lt;/i&gt;"]
+    T4["topic-04-automation-and-backup &lt;br&gt; &lt;i&gt;(CU04)&lt;/i&gt;"]
+    T5["topic-05-linux-security &lt;br&gt; &lt;i&gt;(CU05)&lt;/i&gt;"]
+    T6["topic-06-troubleshooting-and-logs &lt;br&gt; &lt;i&gt;(CU06)&lt;/i&gt;"]
     Root --&gt; T1
     Root --&gt; T2
     Root --&gt; T3
@@ -26412,19 +26380,28 @@ graph TD
     Root --&gt; T6
 ```
 
-## Perincian Modul
+## Perincian Modul Silibus &amp; Pemetaan Diátaxis
 
-| Topik | Kod CU | Penerangan |
-|---|---|---|
-| [Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01) — Dikemaskini 2026](topic-01-linux-desktop-and-basics.md) | CU01 | Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, konfigurasi $EDITOR/$VISUAL, dan prosedur pemasangan NOSS Level 3. |
-| [Topik 2: Pengurusan Storan, Partisi &amp; Pengmayaan (CU02) — Dikemaskini 2026](topic-02-storage-and-virtualisation.md) | CU02 | Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs, LUKS2) dan pengmayaan (KVM/QEMU/libvirt) Linux dipetakan kepada NOSS CU02. |
-| [Topik 3: Pentadbiran Pelayan Linux (CU03)](topic-03-linux-server-administration.md) | CU03 | Silibus pentadbiran pelayan Linux, pengurusan perkhidmatan systemd, konfigurasi teras pelayan, dan peranan servis pelayan dipetakan kepada NOSS CU03. |
-| [Topik 4: Automasi Skrip, Sandaran Data &amp; Pemulihan Sistem (CU04)](topic-04-automation-and-backup.md) | CU04 | Silibus automasi skrip Bash, pengarkiban dan pemampatan tar/zstd, penyegerakan rsync, automasi berkala cron/systemd-timer, dan pemulihan data dipetakan kepada NOSS CU04. |
-| [Topik 5: Keselamatan Linux &amp; Kawalan Akses (CU05)](topic-05-linux-security.md) | CU05 | Silibus keselamatan OS Linux komprehesif merangkumi Pentadbiran Pengguna &amp; Kumpulan, Kebenaran Fail &amp; POSIX ACL, Firewall, dan Kawalan Lockdowns. |
-| [Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks &amp; Analisis Log (CU06)](topic-06-troubleshooting-and-logs.md) | CU06 | Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis teks grep/sed/awk, penyunting teks Vim/Neovim/Nano, penyuntingan selamat sudoedit/visudo, pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06. |
+| Topik Silibus (Explanation) | Kod CU | Modul Amali NOSS (Reference) | Penerangan &amp; Skop |
+|---|---|---|---|
+| [**Topik 1: Desktop &amp; Asas**](topic-01-linux-desktop-and-basics.md) | CU01 | [manual/cu01/](../manual/cu01/index.md) | Silibus asas Sistem Operasi Linux (Desktop Ubuntu 26.04/AlmaLinux 10, FHS, APT/DNF, LUKS2). |
+| [**Topik 2: Storan &amp; Pemayaan**](topic-02-storage-and-virtualisation.md) | CU02 | [manual/cu02/](../manual/cu02/index.md) | Pengurusan storan cakera GPT, LVM2, sistem fail XFS/EXT4, dan hipervisor KVM/QEMU. |
+| [**Topik 3: Pentadbiran Pelayan**](topic-03-linux-server-administration.md) | CU03 | [manual/cu03/](../manual/cu03/index.md) | Pentadbiran pelayan Linux, SSH Hardening, servis Nginx/Apache, DNS BIND9, dan Samba/NFS. |
+| [**Topik 4: Skrip &amp; Automasi**](topic-04-automation-and-backup.md) | CU04 | [manual/cu04/](../manual/cu04/index.md) | Automasi skrip Bash, pengurusan jadual Cron/systemd timers, dan operasi sandaran RSync/Borg. |
+| [**Topik 5: Keselamatan Linux**](topic-05-linux-security.md) | CU05 | [manual/cu05/](../manual/cu05/index.md) | Kawalan keselamatan endpoint, audit akaun/sudo, ClamAV, UFW/Firewalld, dan tampalan automatik. |
+| [**Topik 6: Diagnostik &amp; Log**](topic-06-troubleshooting-and-logs.md) | CU06 | [manual/cu06/](../manual/cu06/index.md) | Diagnostik perkakasan, analisis log systemd journald, pengurusan SLA tiket, dan dokumentasi RCA. |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-25*
+
+## 🌐 Navigasi Pusat Mengikut Kuadran Diátaxis
+
+- 🎓 **[Tutorials (Pembelajaran Berpandu)](../docs/tutorials/index.md):** Sesuai untuk pemula memulakan langkah praktikal pertama.
+- 🛠️ **[How-To Guides (Panduan Operasi)](../docs/how-to/execute-noss-content-transformation.md):** Resipi penyelesaian masalah khusus pentadbir sistem.
+- 📖 **[Reference (Sovereign Manual NOSS)](../manual/index.md):** Modul amali standard CU01–CU06 dan spesifikasi teknikal.
+- 💡 **[Explanation (Seni Bina Diátaxis)](../docs/explanation/diataxis-architecture.md):** Analisis teori dan tatakelola sistem.
+
+---
+*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -26432,7 +26409,7 @@ graph TD
   <file path="openwiki/topic-01-linux-desktop-and-basics.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
 timestamp: "2026-08-17T00:00:00Z"
@@ -26604,7 +26581,7 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
   <file path="openwiki/topic-02-storage-and-virtualisation.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 2: Pengurusan Storan, Partisi &amp; Pengmayaan (CU02) — Dikemaskini 2026"
 timestamp: "2026-08-17T00:00:00Z"
@@ -26722,7 +26699,7 @@ Jika anda ingin membina pemahaman yang lebih mendalam, berikut adalah senarai bu
   <file path="openwiki/topic-03-linux-server-administration.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 3: Pentadbiran Pelayan Linux (CU03)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -26807,7 +26784,7 @@ Silibus ini memandu modul amali di `manual/cu03/` dan kemahiran AI di `.agents/s
   <file path="openwiki/topic-04-automation-and-backup.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 4: Automasi Skrip, Sandaran Data &amp; Pemulihan Sistem (CU04)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -26883,7 +26860,7 @@ Silibus ini memandu modul amali di `manual/cu04/` dan kemahiran AI di `.agents/s
   <file path="openwiki/topic-05-linux-security.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 5: Keselamatan Linux &amp; Kawalan Akses (CU05)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -26977,7 +26954,7 @@ Silibus ini memandu kemahiran Ejen AI berikut:
   <file path="openwiki/topic-06-troubleshooting-and-logs.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks &amp; Analisis Log (CU06)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27062,7 +27039,7 @@ Silibus ini memandu modul amali di `manual/cu06/` dan kemahiran AI di `.agents/s
   <file path="manual/cu01/cu01-wa00-memahami-ekosistem-linux.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Memahami Ekosistem Linux &amp; Sumber Terbuka"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27137,7 +27114,7 @@ systemctl status
   <file path="manual/cu01/cu01-wa01-persediaan-sistem-komputer.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Persediaan Pemasangan Sistem Komputer"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27212,7 +27189,7 @@ systemctl status
   <file path="manual/cu01/cu01-wa02-pemasangan-perkakasan-komputer.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemasangan Komponen Perkakasan Komputer"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27287,7 +27264,7 @@ systemctl status
   <file path="manual/cu01/cu01-wa03-pemasangan-komponen-komputer-riba.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Penyelenggaraan &amp; Pemasangan Komputer Riba"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27362,7 +27339,7 @@ systemctl status
   <file path="manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemasangan Sistem Operasi Desktop Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27437,7 +27414,7 @@ systemctl status
   <file path="manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi &amp; Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27788,7 +27765,7 @@ sudo apt install -y linux-firmware                   # Ubuntu
   <file path="manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "CU01-WA06: Konfigurasi Sambungan Rangkaian Endpoint Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -27963,7 +27940,7 @@ nslookup www.gov.my
   <file path="manual/cu01/cu01-wa07-penyediaan-rekod-pemasangan-sistem.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Penyediaan Laporan &amp; Rekod Pemasangan Sistem"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28038,7 +28015,7 @@ systemctl status
   <file path="manual/cu02/cu02-wa01-keperluan-infrastruktur-pemayaan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Mengenal Pasti Keperluan Infrastruktur Pemayaan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28113,7 +28090,7 @@ systemctl status
   <file path="manual/cu02/cu02-wa02-pemasangan-hipervisor-jenis-2.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemasangan &amp; Konfigurasi Platform Hipervisor"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28188,7 +28165,7 @@ systemctl status
   <file path="manual/cu02/cu02-wa03-penyebaran-mesin-maya-tetamu.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Penyebaran Mesin Maya Tetamu (Guest VMs)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28263,7 +28240,7 @@ systemctl status
   <file path="manual/cu02/cu02-wa04-rekod-konfigurasi-pemayaan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Penyediaan Rekod Konfigurasi Pemayaan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28338,7 +28315,7 @@ systemctl status
   <file path="manual/cu03/cu03-wa01-persediaan-pemasangan-pelayan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Persediaan Pemasangan Pelayan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28413,7 +28390,7 @@ systemctl status
   <file path="manual/cu03/cu03-wa02-pelaksanaan-pemasangan-fizikal-pelayan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pelaksanaan Pemasangan Fizikal Pelayan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28488,7 +28465,7 @@ systemctl status
   <file path="manual/cu03/cu03-wa03-pemasangan-sistem-operasi-pelayan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemasangan Sistem Operasi Pelayan Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28563,7 +28540,7 @@ systemctl status
   <file path="manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Konfigurasi Teras Pelayan Linux &amp; Pengurusan Perkhidmatan Systemd"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28900,7 +28877,7 @@ plocate chrony.conf
   <file path="manual/cu03/cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pelaksanaan Servis Pelayan (Web, DNS, DHCP, Perkongsian Fail)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -28975,7 +28952,7 @@ systemctl status
   <file path="manual/cu03/cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pengurusan Perkakasan &amp; Antaramuka Pengurusan Pelayan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29050,7 +29027,7 @@ systemctl status
   <file path="manual/cu04/cu04-wa01-persediaan-alatan-sandaran-dan-pemulihan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Persediaan Alatan Sandaran &amp; Pemulihan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29125,7 +29102,7 @@ systemctl status
   <file path="manual/cu04/cu04-wa02-operasi-sandaran-tempatan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pelaksanaan Operasi Sandaran Tempatan &amp; Pemampatan Data"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29309,7 +29286,7 @@ sudo systemctl list-timers
   <file path="manual/cu04/cu04-wa03-sandaran-berasaskan-rangkaian.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Operasi Sandaran Berasaskan Rangkaian &amp; Awan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29384,7 +29361,7 @@ systemctl status
   <file path="manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemulihan Data &amp; Verifikasi Integriti Sistem Fail"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29534,7 +29511,7 @@ Pemulihan bare-metal dilaksanakan apabila sistem mengalami kegagalan penuh peran
   <file path="manual/cu04/cu04-wa05-pemulihan-bare-metal-endpoint.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemulihan Menyeluruh Bare-Metal Endpoint"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29609,7 +29586,7 @@ systemctl status
   <file path="manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Audit Akaun Pengguna &amp; Kebenaran Akses Linux (CU05-WA01)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29723,7 +29700,7 @@ sudo faillock --user ahmad --reset
   <file path="manual/cu05/cu05-wa02-konfigurasi-pertahanan-antivirus-dan-antimalware.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Konfigurasi Pertahanan Antivirus &amp; Anti-Malware"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29798,7 +29775,7 @@ systemctl status
   <file path="manual/cu05/cu05-wa03-konfigurasi-profil-firewall-klien.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Konfigurasi Profil Firewall Linux (UFW &amp; Firewalld)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -29873,7 +29850,7 @@ systemctl status
   <file path="manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pengurusan Tampalan &amp; Kemas Kini Keselamatan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30005,7 +29982,7 @@ sudo dnf updateinfo info security
   <file path="manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Kawalan Keselamatan Fizikal &amp; Persekitaran Console Endpoint Linux (CU05-WA05)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30147,7 +30124,7 @@ sudo systemctl poweroff
   <file path="manual/cu06/cu06-wa01-keperluan-perkhidmatan-sokongan-pengguna.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Penyediaan Keperluan Perkhidmatan Sokongan IT"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30222,7 +30199,7 @@ systemctl status
   <file path="manual/cu06/cu06-wa02-pengendalian-aduan-dan-insiden-pengguna.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pengendalian Aduan &amp; Insiden Pengguna"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30297,7 +30274,7 @@ systemctl status
   <file path="manual/cu06/cu06-wa03-diagnostik-dan-troubleshooting-perkakasan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Diagnostik &amp; Penyelesaian Masalah Perkakasan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30372,7 +30349,7 @@ systemctl status
   <file path="manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Konfigurasi Pelekapan Storan, Peranti Luaran &amp; Pengoperasian Media"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30511,7 +30488,7 @@ findmnt /mnt/sec_storage
   <file path="manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pengoptimuman Prestasi Sistem, Pemantauan Proses &amp; Kawalan Sumber"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30762,7 +30739,7 @@ sudo systemctl restart myapp.service
   <file path="manual/cu06/cu06-wa06-pengurusan-tiket-sokongan-dan-sla.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pengurusan Tiket Sokongan &amp; Pematuhan SLA"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30837,7 +30814,7 @@ systemctl status
   <file path="manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pemprosesan Teks Aluran, Saluran Paip, Editor CLI &amp; Analisis Punca Utama (RCA)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30996,7 +30973,7 @@ Menggunakan `sudo vim` atau `sudo nano` secara terus menjalankan keseluruhan pro
 
 ### 4. Penyediaan Laporan Analisis Punca Utama (*Root Cause Analysis - RCA*)
 
-Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA berformat OKF v0.2:
+Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA berformat OKF v0.1:
 
 #### Format Laporan RCA Standard JDN/MAMPU:
 
@@ -31050,7 +31027,7 @@ Apabila anomali sistem diselesaikan, pentadbir wajib menyediakan dokumen RCA ber
   <file path="manual/cu01/direktori-sumber-rujukan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Direktori Ekosistem &amp; Perisian Alternatif"
 timestamp: "2026-08-16T22:19:51.123429Z"
@@ -31094,7 +31071,7 @@ Salah satu kegusaran utama bagi pengguna baharu adalah ketidakpastian mengenai k
   <file path="manual/cu01/hakcipta-dan-pelesenan.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Hakcipta dan Pelesenan Perisian Bebas"
 timestamp: "2026-08-16T22:19:51.122429Z"
@@ -31129,7 +31106,7 @@ Di Malaysia, sebarang pelanggaran terhadap pelesenan GPL boleh didakwa di bawah 
   <file path="manual/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "Pusat Rujukan Manual NOSS Linux Malaysia (Diátaxis Master Index)"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31206,7 +31183,7 @@ graph TD
   <file path="manual/cu02/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU02: Pengurusan Storan &amp; Infrastruktur Pemayaan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31259,7 +31236,7 @@ Modul NOSS Level 3 untuk pengurusan partisi cakera, sistem fail Linux, LVM, dan 
   <file path="manual/cu01/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU01: Persediaan Sistem Komputer &amp; Desktop Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31315,7 +31292,7 @@ Modul NOSS Level 3 untuk persediaan perkakasan komputer, pemasangan OS Linux des
   <file path="manual/cu04/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU04: Automasi, Sandaran &amp; Pemulihan Sistem"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31368,7 +31345,7 @@ Modul NOSS Level 3 merangkumi alatan sandaran, automasi skrip shell, cron jobs, 
   <file path="manual/cu03/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU03: Pentadbiran &amp; Perkhidmatan Pelayan Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31422,7 +31399,7 @@ Modul NOSS Level 3 bagi perancangan, pemasangan sistem operasi pelayan (AlmaLinu
   <file path="manual/cu06/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU06: Sokongan Pengguna, Troubleshooting &amp; Penyelenggaraan"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31477,7 +31454,7 @@ Modul NOSS Level 3 merangkumi analisis log systemd journald, diagnostik masalah 
   <file path="manual/cu05/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU05: Kawalan Keselamatan Endpoint &amp; Pengerasan Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -31530,7 +31507,7 @@ Modul NOSS Level 3 bagi pengurusan audit akaun, kawalan firewall, pengurusan tam
   <file path="manual/cu01/keperluan-perkakasan-dan-bios-uefi.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Keperluan Perkakasan &amp; Mod Penimbalan BIOS/UEFI"
 timestamp: "2026-08-16T12:00:00Z"
@@ -31640,7 +31617,7 @@ lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINTS
   <file path="manual/cu01/pasca-pemasangan-dan-driver.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Tugasan Pasca-Pemasangan, Pemacu Peranti &amp; Penegasan Keselamatan"
 timestamp: "2026-08-16T12:15:00Z"
@@ -31793,7 +31770,7 @@ sudo journalctl -p err..emerg -n 20
   <file path="manual/cu01/pecahan-linux-terkini.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Distribusi Linux Terkini 2024-2025"
 timestamp: "2026-08-16T10:30:00Z"
@@ -32008,7 +31985,7 @@ df -h
   <file path="manual/cu01/penegasan-keselamatan-sistem.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Penegasan Keselamatan Sistem Linux (Hardening)"
 timestamp: "2026-08-16T00:00:00Z"
@@ -32147,7 +32124,7 @@ sudo journalctl -p err..emerg -n 20
   <file path="manual/cu01/pengenalan-linux-dan-sejarah.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Pengenalan Linux &amp; Sejarah Pembangunannya"
 timestamp: "2026-08-16T10:29:00Z"
@@ -32272,7 +32249,7 @@ Linux mempunyai peranan yang signifikan dalam ekosistem teknologi Malaysia:
   <file path="manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "CU02: Pengurusan Storan, Partisi GPT, LVM2 &amp; Sistem Fail Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -32524,7 +32501,7 @@ df -h /mnt/storan_tersulit
   <file path="manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-node
 title: "Pentadbiran Pengguna, Kebenaran Fail &amp; Kawalan Akses Endpoint Linux"
 timestamp: "2026-08-17T00:00:00Z"
@@ -32791,7 +32768,7 @@ sudo systemctl reboot
   <file path="manual/cu01/penyulitan-cakera-luks2-pejabat.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Penyulitan Penuh Cakera LUKS2 Pejabat (ISO/IEC 27001 &amp; MAMPU)"
 timestamp: "2026-08-16T12:10:00Z"
@@ -32930,7 +32907,7 @@ crypt_root        UUID=a1b2c3d4-e5f6-7890  none            luks,discard
   <file path="manual/cu01/prosedur-pemasangan-ubuntu-almalinux.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Prosedur Pemasangan Ubuntu 26.04 LTS, AlmaLinux 10 &amp; Fedora 43"
 timestamp: "2026-08-16T12:05:00Z"
@@ -33055,7 +33032,7 @@ cat /etc/fstab
   <file path="manual/cu01/soal-jawab-linux.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Soal Jawab Asas Ekosistem Linux"
 timestamp: "2026-08-16T22:19:51.122429Z"
@@ -41836,10 +41813,10 @@ Row 6 (CU01 spacer):
   <file path=".agents/skills/index.md">
     <content>
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-25T01:24:19Z"
+timestamp: "2026-08-24T22:36:23Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -41979,7 +41956,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** &lt;br&gt; *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-25*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-24*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>

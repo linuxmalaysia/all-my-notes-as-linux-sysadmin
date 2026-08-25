@@ -1,4 +1,4 @@
----
+﻿---
 title: "Skill Format"
 description: "DSOM Guide document for Skill Format."
 type: "guide"
@@ -28,7 +28,7 @@ A `SKILL.md` file has two parts:
 
 ```yaml
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Skill Name"
 timestamp: "2026-08-16T00:00:00Z"

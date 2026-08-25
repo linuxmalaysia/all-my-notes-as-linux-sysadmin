@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: skill
 title: "Soal Jawab Asas Ekosistem Linux"
 timestamp: "2026-08-16T22:19:51.122429Z"

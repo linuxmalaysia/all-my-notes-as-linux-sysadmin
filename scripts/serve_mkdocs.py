@@ -9,6 +9,12 @@ from pathlib import Path
 
 
 def create_junction(src: Path, dest: Path):
+    """Creates a directory junction (Windows) or symlink (POSIX).
+
+    Args:
+        src (Path): Target source directory.
+        dest (Path): Destination link path.
+    """
     if dest.exists() or dest.is_symlink():
         if dest.is_symlink() or dest.is_file():
             dest.unlink()
@@ -24,6 +30,12 @@ def create_junction(src: Path, dest: Path):
         os.symlink(src.resolve(), dest)
 
 def create_hardlink(src: Path, dest: Path):
+    """Creates a file hardlink or fallback symlink across platforms.
+
+    Args:
+        src (Path): Target source file.
+        dest (Path): Destination link path.
+    """
     if dest.exists() or dest.is_symlink():
         dest.unlink()
     if sys.platform.startswith('win'):
@@ -35,6 +47,12 @@ def create_hardlink(src: Path, dest: Path):
             os.symlink(src.resolve(), dest)
 
 def prepare_docs_dir(root_dir: Path, build_dir: Path):
+    """Prepares the mkdocs_src staging directory by linking documentation folders.
+
+    Args:
+        root_dir (Path): Root directory of the repository.
+        build_dir (Path): Destination staging directory for MkDocs.
+    """
     if not build_dir.exists():
         build_dir.mkdir(parents=True)
         
@@ -66,6 +84,7 @@ def prepare_docs_dir(root_dir: Path, build_dir: Path):
             create_hardlink(src, dest)
 
 def main():
+    """Main execution function to orchestrate MkDocs Material serving or building."""
     root_dir = Path.cwd()
     build_dir = root_dir / 'mkdocs_src'
     

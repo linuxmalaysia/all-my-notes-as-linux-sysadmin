@@ -94,6 +94,14 @@ HTML_TEMPLATE = """
 """
 
 def parse_llms_txt(llms_txt_path: Path) -> list[str]:
+    """Parses the llms.txt index file and extracts relative Markdown file paths.
+
+    Args:
+        llms_txt_path (Path): Path to the llms.txt index file.
+
+    Returns:
+        list[str]: A list of relative file paths extracted from Markdown links.
+    """
     paths = []
     link_pattern = re.compile(r'\[.*?\]\((.*?\.md)\)')
     if not llms_txt_path.exists():
@@ -106,12 +114,27 @@ def parse_llms_txt(llms_txt_path: Path) -> list[str]:
     return paths
 
 def fix_internal_links(markdown_text: str) -> str:
-    # Menggantikan pautan .md kepada .html untuk navigasi dalam web
-    # match [text](path/to/file.md) or [text](path/to/file.md#anchor)
+    """Replaces internal Markdown (.md) link extensions with HTML (.html) extensions.
+
+    Args:
+        markdown_text (str): The raw or cleaned Markdown text.
+
+    Returns:
+        str: The updated Markdown text with .html link targets for web navigation.
+    """
     pattern = re.compile(r'(\[[^\]]+\]\([^)]+?)\.md([#)])')
     return pattern.sub(r'\1.html\2', markdown_text)
 
 def strip_frontmatter_and_get_title(markdown_text: str, filename: str) -> tuple[str, str, str]:
+    """Strips YAML frontmatter from raw Markdown text and determines the document title.
+
+    Args:
+        markdown_text (str): Raw string content of the Markdown file.
+        filename (str): The default filename fallback for the title.
+
+    Returns:
+        tuple[str, str, str]: A tuple of (title, cleaned_markdown, frontmatter_yaml).
+    """
     title = filename
     frontmatter_text = ""
     stripped_text = markdown_text.lstrip()
@@ -138,6 +161,7 @@ def strip_frontmatter_and_get_title(markdown_text: str, filename: str) -> tuple[
     return title, markdown_text, frontmatter_text
 
 def main():
+    """Main execution function to build the static HTML documentation site."""
     root_dir = Path.cwd()
     html_dir = root_dir / 'html'
     llms_txt = root_dir / 'llms.txt'

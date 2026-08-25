@@ -1,4 +1,4 @@
----
+﻿---
 title: "Sop Knowledge First Discovery"
 description: "DSOM Concept document for Sop Knowledge First Discovery."
 type: "concept"
@@ -19,7 +19,7 @@ layout: "default"
 
 ## 1. Executive Intent
 
-To prevent unnecessary exploratory terminal commands, token window exhaustion, and context loss during agentic sessions, AI agents must adhere to the **Local Knowledge-First Protocol**. All project facts, architectural specifications, inventory mappings, and operational rules are indexed via **OKF v0.2 YAML Frontmatter** in `.agents/brain/` and `docs/`.
+To prevent unnecessary exploratory terminal commands, token window exhaustion, and context loss during agentic sessions, AI agents must adhere to the **Local Knowledge-First Protocol**. All project facts, architectural specifications, inventory mappings, and operational rules are indexed via **OKF v0.1 YAML Frontmatter** in `.agents/brain/` and `docs/`.
 
 ---
 

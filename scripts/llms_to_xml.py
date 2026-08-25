@@ -55,6 +55,7 @@ def generate_xml_context(root_dir: Path, file_paths: list[str], output_path: Pat
         out.write('</context>\n')
 
 def main():
+    """Main execution function to parse llms.txt and generate an XML context file."""
     parser = argparse.ArgumentParser(description="Parse llms.txt and generate an XML context file.")
     parser.add_argument("--input", "-i", type=str, default="llms.txt", help="Path to llms.txt")
     parser.add_argument("--output", "-o", type=str, default="llms_context.xml", help="Output XML file path")

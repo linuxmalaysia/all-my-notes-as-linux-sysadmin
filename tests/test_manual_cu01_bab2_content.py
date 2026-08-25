@@ -29,6 +29,14 @@ TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 
 def read(relative_path):
+    """Reads a file relative to repository root into string.
+
+    Args:
+        relative_path (str): Relative path from repo root.
+
+    Returns:
+        str: UTF-8 file content string.
+    """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
 

@@ -19,6 +19,7 @@ def get_markdown_title(filepath: Path) -> str:
     return filepath.name
 
 def main():
+    """Generates llms.txt and llms-full.txt context files for AI agents."""
     root_dir = Path(__file__).parent.parent.resolve()
     target_dirs = ['docs', 'openwiki', 'manual', '.agents/skills', '.agents/brain/wings']
     root_files = ['README.md', 'START-HERE.md', 'AGENTS.md', 'CHANGELOG.md', 'NOTICE.md', 'LEGAL-NOTICE.md']
@@ -67,7 +68,7 @@ def main():
     print("Generating llms.txt...")
     with open(llms_txt_path, 'w', encoding='utf-8') as f:
         f.write("# DSOM AI Knowledge Base\n\n")
-        f.write("> DSOM-governed, OKF v0.2 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.\n\n")
+        f.write("> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.\n\n")
         
         for section_name, files in sections.items():
             if not files:

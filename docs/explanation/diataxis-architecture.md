@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: concept
 title: "Seni Bina Dokumentasi Diátaxis & Penerbitan Pelbagai Pelantar"
 timestamp: "2026-08-16T22:30:00Z"

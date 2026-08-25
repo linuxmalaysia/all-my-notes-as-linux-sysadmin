@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: documentation
 title: "Seni Bina Aliran Kerja: Input, Proses & Output (IPO) NOSS Linux Malaysia"
 timestamp: "2026-08-17T00:00:00Z"
@@ -30,7 +30,7 @@ flowchart TD
     subgraph PROSES ["2. PROSES (Transformasi, Modenisasi & Kualiti)"]
         P1["<b>Pembersihan & Ekstraksi:</b><br>- Singkir teks berulang lapuk<br>- Pelihara arkib asal (Rule 17)"]
         P2["<b>Pemodenan Kanonik 2026:</b><br>- Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10<br>- Pengerasan LUKS2 & ISO/IEC 27001 (Rule 15)<br>- Standard Bahasa Melayu Baku DBP (Rule 3)"]
-        P3["<b>Pemformatan OKF v0.2:</b><br>- YAML Frontmatter + Metadata + Trust Signals<br>- Sovereign Dual-License Footer (Rule 8)"]
+        P3["<b>Pemformatan OKF v0.1:</b><br>- YAML Frontmatter + Metadata<br>- Sovereign Dual-License Footer (Rule 8)"]
         P4["<b>100% Quality Gate:</b><br>- <code>uv run run_all_tests.py</code><br>- Pytest & Jest (Rule 12)"]
     end
 
@@ -101,12 +101,12 @@ Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa 
   - Pengurusan Profil Prestasi: Integrasi perkhidmatan `tuned` (cth. profil `throughput-performance`, `server-powersave`, `virtual-guest`).
   - Pemantauan & Diagnostik Lanjut: Penggunaan alatan moden seperti `bpftrace`, `eBPF`, `htop`, `iotop`, `sar` (sysstat), dan `perf`.
 
-### Langkah 2.5: Penyusunan Output Terstruktur & Format OKF v0.2 (Rule 8)
+### Langkah 2.5: Penyusunan Output Terstruktur & Format OKF v0.1 (Rule 8)
 - Menempatkan kandungan yang telah diselidik dan disusun ke dalam folder `manual/cuXX/` dengan penamaan fail WA yang standard.
-- Setiap nod Markdown baharu mesti mempunyai **OKF v0.2 YAML Frontmatter** berserta Isyarat Kepercayaan (*Trust Signals*):
+- Setiap nod Markdown baharu mesti mempunyai **OKF v0.1 YAML Frontmatter**:
   ```yaml
   ---
-  okf_version: 0.2
+  okf_version: 0.1
   type: knowledge-node # atau knowledge-index, documentation, skill
   title: "Tajuk Modul"
   timestamp: "2026-08-17T00:00:00Z"
@@ -114,18 +114,6 @@ Fasa proses ini direka bentuk secara dinamik dan sentiasa diperkaya dari semasa 
   tags: ["lvm", "partisi", "amali"]
   description: "Penerangan ringkas dan padat."
   resource: "file:///manual/cu02/nama-fail.md"
-  generated:
-    by: "human:harisfazillah / agent:jules"
-    at: "2026-08-17T00:00:00Z"
-  verified:
-    - by: "human:harisfazillah"
-      at: "2026-08-17T00:00:00Z"
-  status: "stable"
-  stale_after: "2027-12-31"
-  sources:
-    - id: "noss-cu02-spec"
-      resource: "file:///references/noss/cu02.pdf"
-      title: "Spesifikasi NOSS CU02"
   ---
   ```
 - **Struktur Penutup Wajib (Peraturan 16):** Mengandungi seksyen *AI Prompts*, *Rujukan URL*, dan *Syor Buku Boleh Dibeli*.
@@ -163,7 +151,7 @@ Bagi memenuhi keperluan pelbagai lapisan pengguna (pelajar TVET, pensyarah, pent
 
 ```mermaid
 graph LR
-    SRC[Pengetahuan Teras NOSS Linux] --> MD[1. Nod Markdown OKF v0.2<br>manual/ & openwiki/]
+    SRC[Pengetahuan Teras NOSS Linux] --> MD[1. Nod Markdown OKF v0.1<br>manual/ & openwiki/]
     SRC --> HTML[2. Laman Web Statik Prabina<br>html/ & MkDocs Material]
     SRC --> DOCX[3. Dokumen Kurikulum NOSS<br>Format JPK / CoCU / TEM DOCX]
     SRC --> SLIDES[4. Slaid Pembentangan TVET<br>PPTX / ODP 3-Column]
@@ -172,7 +160,7 @@ graph LR
     SRC --> DEPLOY[7. Artifak Penyebaran Pengeluaran<br>Nginx, Apache, Podman, Ansible]
 ```
 
-1. **Nod Markdown Berformat OKF v0.2 (`manual/`, `openwiki/`, `docs/`):**
+1. **Nod Markdown Berformat OKF v0.1 (`manual/`, `openwiki/`, `docs/`):**
    - Rujukan berdaulat berasaskan fail teks tempatan (*offline-first*), bebas pautan putus, dan mesra pembacaan terus di IDE atau Git.
 2. **Tapak Web Statik Prabina (`html/`):**
    - Tapak web dokumentasi lengkap dijana menggunakan MkDocs Material mod pautan berkait (`use_directory_urls: false`), sedia untuk GitHub Pages, GitLab Pages, dan pembukaan fail tempatan (`file:///`).

@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge_node
 title: "Distribusi Linux Terkini 2024-2025"
 timestamp: "2026-08-16T10:30:00Z"

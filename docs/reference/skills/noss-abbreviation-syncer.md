@@ -1,4 +1,4 @@
----
+﻿---
 title: "Noss Abbreviation Syncer"
 description: "DSOM Reference document for Noss Abbreviation Syncer."
 type: "reference"
@@ -23,7 +23,7 @@ Use this skill when the user asks to update, sync, or extract abbreviations/acro
 
 The active `abbreviations.md` file must be continuously updated against technical acronyms appearing across active CoCU files, while maintaining a strictly verified, alphabetised master list. 
 
-This skill performs a rigorous **Strict Inclusion Audit**, automatically purging any abbreviation that does not physically appear in the active CoCU matrix (0 count). It then builds the final OKF v0.2 compliant markdown file and uses a custom Node.js compiler to generate a `.docx` file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).
+This skill performs a rigorous **Strict Inclusion Audit**, automatically purging any abbreviation that does not physically appear in the active CoCU matrix (0 count). It then builds the final OKF v0.1 compliant markdown file and uses a custom Node.js compiler to generate a `.docx` file matching the official JPK visual template (Times New Roman, 3 columns, no headers, faint dotted borders).
 
 ## Instructions
 

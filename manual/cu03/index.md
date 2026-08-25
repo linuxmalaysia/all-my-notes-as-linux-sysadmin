@@ -1,5 +1,5 @@
 ---
-okf_version: 0.2
+okf_version: 0.1
 type: knowledge-index
 title: "CU03: Pentadbiran & Perkhidmatan Pelayan Linux"
 timestamp: "2026-08-17T00:00:00Z"

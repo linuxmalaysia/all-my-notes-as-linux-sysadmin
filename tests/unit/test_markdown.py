@@ -75,7 +75,7 @@ def test_get_markdown_files_returns_empty_list_when_nothing_matches(tmp_path, mo
 def test_okf_compliance_accepts_okf_version_and_title(tmp_path):
     md = tmp_path / "doc.md"
     md.write_text(
-        "---\nokf_version: 0.2\ntitle: Sample Document\n---\n\nBody content.\n",
+        "---\nokf_version: 0.1\ntitle: Sample Document\n---\n\nBody content.\n",
         encoding="utf-8",
     )
     markdown_mod.test_markdown_okf_compliance(str(md))
@@ -104,7 +104,7 @@ def test_okf_compliance_rejects_file_without_leading_frontmatter(tmp_path):
 
 def test_okf_compliance_rejects_malformed_frontmatter_closure(tmp_path):
     md = tmp_path / "doc.md"
-    md.write_text("---\nokf_version: 0.2\ntitle: X\n", encoding="utf-8")
+    md.write_text("---\nokf_version: 0.1\ntitle: X\n", encoding="utf-8")
     with pytest.raises(AssertionError, match=r"(malformed YAML closure|penutup YAML '---' yang tidak sah)"):
         markdown_mod.test_markdown_okf_compliance(str(md))
 
@@ -118,7 +118,7 @@ def test_okf_compliance_rejects_missing_okf_or_dsom_keys(tmp_path):
 
 def test_okf_compliance_rejects_missing_title_or_name(tmp_path):
     md = tmp_path / "doc.md"
-    md.write_text("---\nokf_version: 0.2\n---\n\nBody.\n", encoding="utf-8")
+    md.write_text("---\nokf_version: 0.1\n---\n\nBody.\n", encoding="utf-8")
     with pytest.raises(AssertionError) as excinfo:
         markdown_mod.test_markdown_okf_compliance(str(md))
     assert "title" in str(excinfo.value) and "name" in str(excinfo.value)
