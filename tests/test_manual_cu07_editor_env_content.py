@@ -17,13 +17,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
-    """Reads a file relative to repository root into string.
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
 
     Args:
-        relative_path (str): Relative path from repo root.
+        relative_path (str): Laluan relatif daripada punca repositori.
 
     Returns:
-        str: UTF-8 file content string.
+        str: Kandungan rentetan fail UTF-8.
     """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
@@ -35,14 +35,14 @@ def extract_frontmatter(content):
     return match.group(1)
 
 def frontmatter_field(content, field):
-    """Extracts a specific frontmatter field value.
+    """Ekstrak nilai medan frontmatter tertentu.
 
     Args:
-        content (str): Full file content string.
-        field (str): Field name to extract.
+        content (str): Rentetan kandungan penuh fail.
+        field (str): Nama medan yang ingin diekstrak.
 
     Returns:
-        str: Value of the frontmatter field.
+        str: Nilai medan frontmatter.
     """
     fm = extract_frontmatter(content)
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)

@@ -52,13 +52,13 @@ CU_LABELS = [
 
 
 def read(relative_path):
-    """Reads a file relative to repository root into string.
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
 
     Args:
-        relative_path (str): Relative path from repo root.
+        relative_path (str): Laluan relatif daripada punca repositori.
 
     Returns:
-        str: UTF-8 file content string.
+        str: Kandungan rentetan fail UTF-8.
     """
     return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
 

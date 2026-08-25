@@ -94,13 +94,13 @@ HTML_TEMPLATE = """
 """
 
 def parse_llms_txt(llms_txt_path: Path) -> list[str]:
-    """Parses the llms.txt index file and extracts relative Markdown file paths.
+    """Urai fail indeks llms.txt dan ekstrak laluan fail Markdown relatif.
 
     Args:
-        llms_txt_path (Path): Path to the llms.txt index file.
+        llms_txt_path (Path): Laluan ke fail indeks llms.txt.
 
     Returns:
-        list[str]: A list of relative file paths extracted from Markdown links.
+        list[str]: Senarai laluan fail relatif yang diekstrak daripada pautan Markdown.
     """
     paths = []
     link_pattern = re.compile(r'\[.*?\]\((.*?\.md)\)')
@@ -114,26 +114,26 @@ def parse_llms_txt(llms_txt_path: Path) -> list[str]:
     return paths
 
 def fix_internal_links(markdown_text: str) -> str:
-    """Replaces internal Markdown (.md) link extensions with HTML (.html) extensions.
+    """Gantikan penamat pautan dalaman Markdown (.md) kepada penamat HTML (.html).
 
     Args:
-        markdown_text (str): The raw or cleaned Markdown text.
+        markdown_text (str): Teks Markdown mentah atau yang telah dibersihkan.
 
     Returns:
-        str: The updated Markdown text with .html link targets for web navigation.
+        str: Teks Markdown yang dikemas kini dengan sasaran pautan .html untuk navigasi web.
     """
     pattern = re.compile(r'(\[[^\]]+\]\([^)]+?)\.md([#)])')
     return pattern.sub(r'\1.html\2', markdown_text)
 
 def strip_frontmatter_and_get_title(markdown_text: str, filename: str) -> tuple[str, str, str]:
-    """Strips YAML frontmatter from raw Markdown text and determines the document title.
+    """Saring YAML frontmatter daripada teks mentah Markdown dan tentukan tajuk dokumen.
 
     Args:
-        markdown_text (str): Raw string content of the Markdown file.
-        filename (str): The default filename fallback for the title.
+        markdown_text (str): Kandungan rentetan mentah fail Markdown.
+        filename (str): Nama fail lalai sebagai sandaran untuk tajuk.
 
     Returns:
-        tuple[str, str, str]: A tuple of (title, cleaned_markdown, frontmatter_yaml).
+        tuple[str, str, str]: Tigaan bagi (tajuk, markdown_bersih, yaml_frontmatter).
     """
     title = filename
     frontmatter_text = ""
@@ -161,7 +161,7 @@ def strip_frontmatter_and_get_title(markdown_text: str, filename: str) -> tuple[
     return title, markdown_text, frontmatter_text
 
 def main():
-    """Main execution function to build the static HTML documentation site."""
+    """Laksanakan fungsi utama untuk membina tapak web dokumentasi HTML statik."""
     root_dir = Path.cwd()
     html_dir = root_dir / 'html'
     llms_txt = root_dir / 'llms.txt'

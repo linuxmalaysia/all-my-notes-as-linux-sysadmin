@@ -18,10 +18,10 @@ PYTEST_INI = REPO_ROOT / "pytest.ini"
 
 
 def _read_pytest_ini() -> configparser.ConfigParser:
-    """Reads and parses the repository pytest.ini configuration file.
+    """Baca dan urai fail konfigurasi pytest.ini repositori.
 
     Returns:
-        configparser.ConfigParser: Parsed ConfigParser instance.
+        configparser.ConfigParser: Instans ConfigParser yang telah diurai.
     """
     config = configparser.ConfigParser()
     config.read(PYTEST_INI)

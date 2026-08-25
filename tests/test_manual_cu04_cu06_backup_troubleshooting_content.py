@@ -31,13 +31,13 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def read(relative_path):
-    """Reads a file relative to repository root into string.
+    """Baca fail relatif daripada punca repositori menjadi rentetan.
 
     Args:
-        relative_path (str): Relative path from repo root.
+        relative_path (str): Laluan relatif daripada punca repositori.
 
     Returns:
-        str: UTF-8 file content string.
+        str: Kandungan rentetan fail UTF-8.
     """
     path = REPO_ROOT / relative_path
     return path.read_text(encoding="utf-8-sig")
@@ -55,14 +55,14 @@ def extract_frontmatter(content):
     return match.group(1)
 
 def frontmatter_field(content, field):
-    """Extracts a specific frontmatter field value.
+    """Ekstrak nilai medan frontmatter tertentu.
 
     Args:
-        content (str): Full file content string.
-        field (str): Field name to extract.
+        content (str): Rentetan kandungan penuh fail.
+        field (str): Nama medan yang ingin diekstrak.
 
     Returns:
-        str: Value of the frontmatter field.
+        str: Nilai medan frontmatter.
     """
     fm = extract_frontmatter(content)
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)
@@ -71,18 +71,18 @@ def frontmatter_field(content, field):
 
 @pytest.fixture(scope="module")
 def search_index():
-    """Fixture providing parsed JSON data for search_index.json."""
+    """Fikstur yang menyediakan data JSON terurai untuk search_index.json."""
     return json.loads(read("html/search/search_index.json"))
 
 def find_doc(search_index, location):
-    """Finds a search index document entry matching a specific location URL.
+    """Cari entri dokumen indeks carian yang sepadan dengan URL lokasi tertentu.
 
     Args:
-        search_index (dict): Parsed search_index.json object.
-        location (str): Location URL path.
+        search_index (dict): Objek search_index.json terurai.
+        location (str): Laluan URL lokasi.
 
     Returns:
-        dict: Matching document object.
+        dict: Objek dokumen yang sepadan.
     """
     matches = [d for d in search_index["docs"] if d.get("location") == location]
     assert matches, f"No search_index.json doc entry found for location={location!r}"

@@ -9,11 +9,11 @@ from pathlib import Path
 
 
 def create_junction(src: Path, dest: Path):
-    """Creates a directory junction (Windows) or symlink (POSIX).
+    """Cipta pautan persimpangan direktori (junction) bagi Windows atau pautan simbolik (symlink) bagi POSIX.
 
     Args:
-        src (Path): Target source directory.
-        dest (Path): Destination link path.
+        src (Path): Direktori sumber sasaran.
+        dest (Path): Laluan pautan destinasi.
     """
     if dest.exists() or dest.is_symlink():
         if dest.is_symlink() or dest.is_file():
@@ -30,11 +30,11 @@ def create_junction(src: Path, dest: Path):
         os.symlink(src.resolve(), dest)
 
 def create_hardlink(src: Path, dest: Path):
-    """Creates a file hardlink or fallback symlink across platforms.
+    """Cipta pautan keras (hardlink) fail atau pautan simbolik sandaran merentas pelantar.
 
     Args:
-        src (Path): Target source file.
-        dest (Path): Destination link path.
+        src (Path): Fail sumber sasaran.
+        dest (Path): Laluan pautan destinasi.
     """
     if dest.exists() or dest.is_symlink():
         dest.unlink()
@@ -47,11 +47,11 @@ def create_hardlink(src: Path, dest: Path):
             os.symlink(src.resolve(), dest)
 
 def prepare_docs_dir(root_dir: Path, build_dir: Path):
-    """Prepares the mkdocs_src staging directory by linking documentation folders.
+    """Sediakan direktori persinggahan mkdocs_src dengan memautkan folder dokumentasi.
 
     Args:
-        root_dir (Path): Root directory of the repository.
-        build_dir (Path): Destination staging directory for MkDocs.
+        root_dir (Path): Direktori punca repositori.
+        build_dir (Path): Direktori persinggahan destinasi untuk MkDocs.
     """
     if not build_dir.exists():
         build_dir.mkdir(parents=True)
@@ -84,7 +84,7 @@ def prepare_docs_dir(root_dir: Path, build_dir: Path):
             create_hardlink(src, dest)
 
 def main():
-    """Main execution function to orchestrate MkDocs Material serving or building."""
+    """Laksanakan fungsi utama untuk menguruskan perkhidmatan atau pembinaan MkDocs Material."""
     root_dir = Path.cwd()
     build_dir = root_dir / 'mkdocs_src'
     

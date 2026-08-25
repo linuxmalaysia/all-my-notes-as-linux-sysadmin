@@ -19,7 +19,7 @@ def get_markdown_title(filepath: Path) -> str:
     return filepath.name
 
 def main():
-    """Generates llms.txt and llms-full.txt context files for AI agents."""
+    """Jana fail konteks llms.txt dan llms-full.txt untuk ejen AI."""
     root_dir = Path(__file__).parent.parent.resolve()
     target_dirs = ['docs', 'openwiki', 'manual', '.agents/skills', '.agents/brain/wings']
     root_files = ['README.md', 'START-HERE.md', 'AGENTS.md', 'CHANGELOG.md', 'NOTICE.md', 'LEGAL-NOTICE.md']

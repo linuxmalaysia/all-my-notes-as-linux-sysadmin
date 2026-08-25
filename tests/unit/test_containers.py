@@ -9,10 +9,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 def _load_containers_module():
-    """Loads tests/unit/containers.py dynamically for isolated testing.
+    """Muat naik modul tests/unit/containers.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Loaded containers test module instance.
+        module: Instans modul ujian kontena yang dimuatkan.
     """
     module_path = REPO_ROOT / "tests" / "unit" / "containers.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_containers", module_path)

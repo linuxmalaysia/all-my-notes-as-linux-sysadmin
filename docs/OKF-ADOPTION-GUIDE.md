@@ -51,7 +51,7 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant.
+Repositori ini turut menyimpan kemahiran AI berfungsi yang dipetakan kepada modul NOSS Tahap 3. Arahan yang mengawal cara AI melaksanakan tugasan (fail `SKILL.md`) juga adalah mematuhi standard OKF v0.2 secara ketat.
 
 We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
 

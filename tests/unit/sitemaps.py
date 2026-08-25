@@ -17,14 +17,14 @@ class CustomSafeLoader(yaml.SafeLoader):
 
 
 def _fence_code_format_constructor(loader, node):
-    """Custom YAML constructor for pymdownx.superfences code format functions.
+    """Pembina YAML tersuai untuk fungsi format kod pymdownx.superfences.
 
     Args:
-        loader (yaml.Loader): YAML loader instance.
-        node (yaml.Node): YAML node being constructed.
+        loader (yaml.Loader): Instans pemuat YAML.
+        node (yaml.Node): Nod YAML yang sedang dibina.
 
     Returns:
-        str: Constructed scalar string.
+        str: Rentetan skalar yang dibina.
     """
     return loader.construct_scalar(node)
 
