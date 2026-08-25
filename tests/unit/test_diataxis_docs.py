@@ -39,6 +39,7 @@ def test_get_yaml_template_generates_valid_frontmatter():
         doc_type="guide",
         file_id="docs/how-to/test.md",
     )
+    assert "okf_version: 0.2" in yaml_str
     assert 'title: "Ujian Tajuk"' in yaml_str
     assert 'type: "guide"' in yaml_str
     assert 'id: "docs/how-to/test.md"' in yaml_str

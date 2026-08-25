@@ -1,5 +1,5 @@
 
-"""Pelaksana Ujian Keseluruhan (Full Test Suite Orchestrator).
+"""Pelaksana Ujian Keseluruhan.
 
 Modul ini menjalankan ujian pematuhan Python (pytest) dan ujian integrasi
 JavaScript (Jest) bagi memastikan 100% pematuhan kualiti repositori.
@@ -20,7 +20,7 @@ RED = '\033[91m'
 RESET = '\033[0m'
 
 def print_banner(text):
-    """Cetak sepanduk formatted terminal dengan warna CYAN.
+    """Cetak sepanduk berformat terminal dengan warna CYAN.
 
     Args:
         text (str): Teks tajuk yang ingin dipaparkan.
@@ -33,7 +33,7 @@ import os
 
 
 def run_step(step_name, command, cwd):
-    """Laksanakan langkah ujian subproses dan sahkan status keluar (exit code 0).
+    """Laksanakan langkah ujian subproses dan sahkan status keluar (kod keluar 0).
 
     Args:
         step_name (str): Nama langkah ujian.

@@ -3,17 +3,18 @@
 import importlib.util
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from types import ModuleType
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _load_sitemaps_module():
+def _load_sitemaps_module() -> ModuleType:
     """Muatkan modul tests/unit/sitemaps.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Instans modul ujian sitemap yang dimuatkan.
+        ModuleType: Instans modul ujian sitemap yang dimuatkan.
     """
     module_path = REPO_ROOT / "tests" / "unit" / "sitemaps.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_sitemaps", module_path)

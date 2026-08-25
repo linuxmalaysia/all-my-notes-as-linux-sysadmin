@@ -2,17 +2,18 @@
 
 import importlib.util
 from pathlib import Path
+from types import ModuleType
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _load_containers_module():
+def _load_containers_module() -> ModuleType:
     """Muatkan modul tests/unit/containers.py secara dinamik untuk ujian terasing.
 
     Returns:
-        module: Instans modul ujian kontena yang dimuatkan.
+        ModuleType: Instans modul ujian kontena yang dimuatkan.
     """
     module_path = REPO_ROOT / "tests" / "unit" / "containers.py"
     spec = importlib.util.spec_from_file_location("unit_test_target_containers", module_path)

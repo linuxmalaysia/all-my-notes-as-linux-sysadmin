@@ -61,6 +61,7 @@ def get_yaml_template(title, description, doc_type, file_id, domain="AI", tier="
     """
     tags_str = "\n".join([f'  - "{t}"' for t in (tags or ["dsom-protocol", "diataxis-quadrant"])])
     return f"""---
+okf_version: 0.2
 title: "{title}"
 description: "{description}"
 type: "{doc_type}"
