@@ -3,9 +3,9 @@ okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2", "editor", "bashrc"]
-tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2", "editor", "bashrc"]
-description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, konfigurasi $EDITOR/$VISUAL, dan prosedur pemasangan NOSS Level 3."
+topics: ["linux-desktop", "gnome", "nautilus", "synaptic", "gnome-software", "tarball", "cu01", "pemasangan-linux", "luks2", "editor", "bashrc"]
+tags: ["linux", "desktop", "gnome", "nautilus", "synaptic", "gnome-software", "tarball", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2", "editor", "bashrc"]
+description: "Silibus komprehensif CU01 dikemaskini dengan Persekitaran Meja GNOME (GNOME 48/47), Pengurus Fail Nautilus, pengurusan pakej GUI (Synaptic, GNOME Software), pengompilan tarball, edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan konfigurasi $EDITOR/$VISUAL."
 resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 ---
 
@@ -13,10 +13,10 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ## Gambaran Keseluruhan (Overview)
 
-Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi & pemacu, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan**.
+Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), persekitaran meja grafik GNOME (GNOME 48/47), pengurus fail Nautilus, pengurusan perisian GUI & CLI (APT, DNF5, Synaptic, GNOME Software, Flatpak, Snap, pengompilan Tarball), penyulitan penuh cakera LUKS2 pejabat, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), serta penegasan keselamatan pasca-pemasangan**.
 
 > **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
-> Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
+> Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan serta persekitaran grafik selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
 
 ---
 
@@ -49,13 +49,17 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 **📖 Baca Lanjut:** [manual/cu01/pecahan-linux-terkini.md](../manual/cu01/pecahan-linux-terkini.md)
 
-### 4. Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI
+### 4. Keperluan Perkakasan, BIOS/UEFI & Persekitaran Meja GNOME (CU01-WA04)
 
 - Spesifikasi minimum & disyorkan (x86_64, ARM64)
 - Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
 - Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
+- **Persekitaran Meja GNOME (GNOME 48 / 47)**:
+  - Komponen Meja Kerja: Panel Atas (*Top Bar*), Menu Aktiviti (*Activities*), Aplet Sistem, dan Penukar Ruang Kerja (*Workspace Switcher*).
+  - **Pengurus Fail Nautilus (GNOME Files)**: Navigasi hierarki pepohon (*tree view*), kawalan prestasi gambaran kecil (*thumbnail*), dan operasi heret-dan-lepas (*drag-and-drop*).
 
-**📖 Baca Lanjut:** [manual/cu01/keperluan-perkakasan-dan-bios-uefi.md](../manual/cu01/keperluan-perkakasan-dan-bios-uefi.md)
+**📖 Baca Lanjut (BIOS/UEFI):** [manual/cu01/keperluan-perkakasan-dan-bios-uefi.md](../manual/cu01/keperluan-perkakasan-dan-bios-uefi.md)
+**📖 Baca Lanjut (OS & GNOME):** [manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md](../manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md)
 
 ### 5. Prosedur Pemasangan Sistem Operasi & Storan LVM
 
@@ -74,10 +78,11 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 ### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)
 
-- **Perbandingan Format Pembungkusan**:
-  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`.
+- **Perbandingan Format Pembungkusan & Utiliti GUI/CLI**:
+  - Pakej Binari Asli CLI: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`.
+  - Pakej Perisian Grafik GUI: **GNOME Software**, **Synaptic Package Manager**, **PackageKit**.
   - Pakej aplikasi universal dengan pengasingan: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
-  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, CMake, atau Meson).
+  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, `make`, `sudo make install`).
   - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild` selepas penyelesaian `BuildRequires`.
 - **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
 - **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**:
@@ -118,7 +123,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 | Kod | Nama | Status |
 |-----|------|--------|
 | **CU01-WA00** | Memahami Ekosistem Linux | [Lihat Skill](../.agents/skills/cu01-wa00-memahami-ekosistem-linux/SKILL.md) |
-| **CU01-WA04** | Pasang Sistem Operasi Desktop | [Lihat Skill](../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) |
+| **CU01-WA04** | Pasang OS Desktop & GNOME | [Lihat Skill](../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) |
 | **CU01-WA05** | Pasang Aplikasi & Pemacu | [Lihat Skill](../.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md) |
 | **CU01-WA06** | Konfigurasi Rangkaian Endpoint | [Lihat Skill](../.agents/skills/cu01-wa06-configure-endpoint-network-connectivity/SKILL.md) |
 
@@ -127,9 +132,9 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ## Eksplorasi Lanjut bersama AI (AI Prompts)
 
 Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk mendalami topik ini:
-1. > "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Sistem Operasi Linux (seperti Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
+1. > "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Persekitaran Meja GNOME (seperti GNOME 48 di Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
 2. > "Tuliskan skrip Bash ringkas untuk menyemak sama ada peranti but beroperasi dalam mod UEFI atau Legacy BIOS, dan paparkan ruang peranti storan dalam format jadual."
-3. > "Bagaimanakah penyulitan cakera penuh LUKS2 melindungi data pada komputer riba pejabat jika peranti tersebut hilang atau dicuri? Terangkan fungsi ruang kunci (key slots) LUKS2."
+3. > "Bagaimanakah pengurus fail Nautilus menguruskan paparan thumbnail dan struktur paparan pepohon (tree view) untuk mempercepatkan carian fail di stesen kerja enterprise?"
 4. > "Saya seorang pentadbir sistem di agensi kerajaan. Apakah senarai semak keselamatan pasca-pemasangan (hardening checklist) pertama yang wajib saya laksanakan pada AlmaLinux 10?"
 
 ---
@@ -139,6 +144,8 @@ Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk
 - [Dokumentasi Rasmi Ubuntu 26.04 LTS](https://help.ubuntu.com)
 - [Dokumentasi Rasmi AlmaLinux 10](https://wiki.almalinux.org)
 - [Dokumentasi Fedora Project](https://docs.fedoraproject.org)
+- [Dokumentasi Rasmi GNOME Desktop](https://help.gnome.org)
+- [Dokumentasi Synaptic Package Manager Guide](https://help.ubuntu.com/community/SynapticHowto)
 - [Sejarah Lengkap Linux (Wikipedia BM)](https://ms.wikipedia.org/wiki/Linux)
 - [Projek GNU dan Maksud Perisian Bebas](https://www.gnu.org/philosophy/free-sw.ms.html) — (Tersedia dalam Bahasa Melayu)
 - [DistroWatch.com](https://distrowatch.com) — Tangga & statistik distribusi Linux terkini dunia

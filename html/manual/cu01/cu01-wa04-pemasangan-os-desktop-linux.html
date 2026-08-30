@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Prosedur pemasangan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10 dengan penyulitan LUKS2.">
+        <meta name="description" content="Panduan amali NOSS CU01-WA04 bagi pemasangan OS desktop Linux (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan pengendalian Persekitaran Meja GNOME (Pengurus Fail Nautilus, aplet panel, penukar ruang kerja, dan penyesuaian desktop).">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Pemasangan Sistem Operasi Desktop Linux - NOSS Linux Malaysia (DSOM)</title>
+        <title>CU01-WA04: Pemasangan OS Desktop Linux & Persekitaran Meja GNOME - NOSS Linux Malaysia (DSOM)</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pemasangan-sistem-operasi-desktop-linux" class="md-skip">
+        <a href="#cu01-wa04-pemasangan-os-desktop-linux-persekitaran-meja-gnome" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pemasangan Sistem Operasi Desktop Linux
+              CU01-WA04: Pemasangan OS Desktop Linux & Persekitaran Meja GNOME
             
           </span>
         </div>
@@ -1425,42 +1425,131 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#garis-panduan-amali-prosedur" class="md-nav__link">
+  <a href="#garis-panduan-amali-prosedur-kerja" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Garis Panduan Amali &amp; Prosedur
+        🛠️ Garis Panduan Amali &amp; Prosedur Kerja
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur">
+    <nav class="md-nav" aria-label="🛠️ Garis Panduan Amali &amp; Prosedur Kerja">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-keperluan-awal-pra-syarat" class="md-nav__link">
+  <a href="#1-pemasangan-os-desktop-linux-penyulitan-cakera-luks2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Keperluan Awal &amp; Pra-Syarat
-      
+        1. Pemasangan OS Desktop Linux &amp; Penyulitan Cakera LUKS2
+
     </span>
   </a>
-  
-</li>
-        
+
+    <nav class="md-nav" aria-label="1. Pemasangan OS Desktop Linux &amp; Penyulitan Cakera LUKS2">
+      <ul class="md-nav__list">
+
           <li class="md-nav__item">
-  <a href="#2-langkah-langkah-operasi" class="md-nav__link">
+  <a href="#a-prosedur-pemasangan-ubuntu-2604-lts-almalinux-10" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        2. Langkah-Langkah Operasi
-      
+
+        A. Prosedur Pemasangan Ubuntu 26.04 LTS &amp; AlmaLinux 10
+
     </span>
   </a>
-  
+
 </li>
-        
+
+          <li class="md-nav__item">
+  <a href="#b-pengurusan-penyulitan-luks2-manual-slot-kunci-multi-pengguna" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Pengurusan Penyulitan LUKS2 Manual &amp; Slot Kunci Multi-Pengguna
+
+    </span>
+  </a>
+
+</li>
+
       </ul>
     </nav>
-  
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#2-pengendalian-persekitaran-meja-gnome-gnome-48-47" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. Pengendalian Persekitaran Meja GNOME (GNOME 48 / 47)
+
+    </span>
+  </a>
+
+    <nav class="md-nav" aria-label="2. Pengendalian Persekitaran Meja GNOME (GNOME 48 / 47)">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#a-komponen-utama-meja-kerja-gnome" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        A. Komponen Utama Meja Kerja GNOME
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#b-pengurus-fail-nautilus-gnome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        B. Pengurus Fail Nautilus (GNOME Files)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#c-kelebihan-desktop-linux-gnome-berbanding-windows-11-penggunaan-google-antigravity-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        C. Kelebihan Desktop Linux GNOME Berbanding Windows 11 &amp; Penggunaan Google Antigravity Desktop
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#d-penyesuaian-tetapan-gnome-tetapan-sistem-gnome-control-center-gsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        D. Penyesuaian Tetapan GNOME &amp; Tetapan Sistem (gnome-control-center / gsettings)
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001
+
+    </span>
+  </a>
+
 </li>
       
         <li class="md-nav__item">
@@ -1524,58 +1613,113 @@
 
 
 
-<h1 id="pemasangan-sistem-operasi-desktop-linux">Pemasangan Sistem Operasi Desktop Linux<a class="headerlink" href="#pemasangan-sistem-operasi-desktop-linux" title="Permanent link">&para;</a></h1>
+<h1 id="cu01-wa04-pemasangan-os-desktop-linux-persekitaran-meja-gnome">CU01-WA04: Pemasangan OS Desktop Linux &amp; Persekitaran Meja GNOME<a class="headerlink" href="#cu01-wa04-pemasangan-os-desktop-linux-persekitaran-meja-gnome" title="Permanent link">&para;</a></h1>
 <h2 id="objektif-pembelajaran">🎯 Objektif Pembelajaran<a class="headerlink" href="#objektif-pembelajaran" title="Permanent link">&para;</a></h2>
-<p>Prosedur pemasangan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10 dengan penyulitan LUKS2.</p>
-<blockquote>
-<p>[!NOTE]
-Modul ini adalah sebahagian daripada manual teknikal <strong>Linux for NOSS Malaysia (Tahap 3)</strong> bagi unit kompetensi <strong>CU01</strong>.</p>
-</blockquote>
-<hr />
-<h2 id="garis-panduan-amali-prosedur">🛠️ Garis Panduan Amali &amp; Prosedur<a class="headerlink" href="#garis-panduan-amali-prosedur" title="Permanent link">&para;</a></h2>
-<h3 id="1-keperluan-awal-pra-syarat">1. Keperluan Awal &amp; Pra-Syarat<a class="headerlink" href="#1-keperluan-awal-pra-syarat" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Persekitaran rujukan rasmi: <strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>, <strong>Fedora 43</strong>, atau <strong>AlmaLinux 10 "Purple Lion"</strong>.</li>
-<li>Hak akses pentadbir (<code>sudo</code>).</li>
-<li>Dokumentasi dan rekod inventori yang teratur.</li>
-</ul>
-<h3 id="2-langkah-langkah-operasi">2. Langkah-Langkah Operasi<a class="headerlink" href="#2-langkah-langkah-operasi" title="Permanent link">&para;</a></h3>
+<p>Menguasai prosedur amali pemasangan sistem operasi Linux desktop, penyulitan cakera LUKS2, serta navigasi dan penyesuaian <strong>Persekitaran Meja GNOME (GNOME 48 pada Ubuntu 26.04 LTS / GNOME 47 pada AlmaLinux 10)</strong> mengikut piawaian <strong>NOSS Tahap 3 (CU01-WA04)</strong>.</p>
+<p>Setelah menyempurnakan modul ini, pelatih akan dapat:</p>
 <ol>
-<li>Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.</li>
-<li>Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.</li>
-<li>Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.</li>
+<li>Melaksanakan pemasangan OS desktop Linux (<strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>, <strong>AlmaLinux 10 "Purple Lion"</strong>, dan <strong>Fedora 43</strong>) berserta penyulitan penuh cakera LUKS2.</li>
+<li>Mengendalikan komponen teras Persekitaran Meja GNOME: <strong>Pengurus Fail Nautilus</strong>, Panel Top/Dash, Aplet Sistem, dan Penukar Ruang Kerja (<em>Workspace Switcher</em>).</li>
+<li>Melaksanakan pengurusan fail moden di Nautilus: Navigasi paparan pepohon (<em>tree view</em>), kawalan gambaran kecil (<em>thumbnails</em>), carian fail, serta operasi heret-dan-lepas (<em>drag-and-drop</em>).</li>
+<li>Menyelaraskan tetapan desktop GNOME (paparan, latar belakang, pintasan papan kekunci, dan sambungan rangkaian) mengikut garis panduan kelestarian dan keselamatan Jabatan Digital Negara (JDN) / MAMPU.</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Contoh arahan verifikasi status sistem</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uname<span class="w"> </span>-r
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>systemctl<span class="w"> </span>status
+<hr />
+<h2 id="garis-panduan-amali-prosedur-kerja">🛠️ Garis Panduan Amali &amp; Prosedur Kerja<a class="headerlink" href="#garis-panduan-amali-prosedur-kerja" title="Permanent link">&para;</a></h2>
+<h3 id="1-pemasangan-os-desktop-linux-penyulitan-cakera-luks2">1. Pemasangan OS Desktop Linux &amp; Penyulitan Cakera LUKS2<a class="headerlink" href="#1-pemasangan-os-desktop-linux-penyulitan-cakera-luks2" title="Permanent link">&para;</a></h3>
+<h4 id="a-prosedur-pemasangan-ubuntu-2604-lts-almalinux-10">A. Prosedur Pemasangan Ubuntu 26.04 LTS &amp; AlmaLinux 10<a class="headerlink" href="#a-prosedur-pemasangan-ubuntu-2604-lts-almalinux-10" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Ubuntu 26.04 LTS "Resolute Raccoon"</strong>: Gunakan pemasang Subiquity dengan mod penyulitan TPM-backed FDE atau penyulitan manual LUKS2.</li>
+<li><strong>AlmaLinux 10 "Purple Lion"</strong>: Pilih kumpulan pakej <em>Workstation</em> (GNOME Desktop) dalam pemasang Anaconda dan aktifkan penyulitan LUKS2.</li>
+</ul>
+<h4 id="b-pengurusan-penyulitan-luks2-manual-slot-kunci-multi-pengguna">B. Pengurusan Penyulitan LUKS2 Manual &amp; Slot Kunci Multi-Pengguna<a class="headerlink" href="#b-pengurusan-penyulitan-luks2-manual-slot-kunci-multi-pengguna" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Semak status penyulitan LUKS2 pada partition cakera</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>cryptsetup<span class="w"> </span>luksDump<span class="w"> </span>/dev/nvme0n1p3
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Tambah kunci pemulihan pentadbir IT ke slot kunci 1</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>cryptsetup<span class="w"> </span>luksAddKey<span class="w"> </span>/dev/nvme0n1p3
 </span></code></pre></div>
+<hr />
+<h3 id="2-pengendalian-persekitaran-meja-gnome-gnome-48-47">2. Pengendalian Persekitaran Meja GNOME (GNOME 48 / 47)<a class="headerlink" href="#2-pengendalian-persekitaran-meja-gnome-gnome-48-47" title="Permanent link">&para;</a></h3>
+<p>GNOME menyediakan persekitaran grafik berasaskan Wayland / X11 yang fleksibel untuk kegunaan pengkomputeran pejabat dan enterprise.</p>
+<h4 id="a-komponen-utama-meja-kerja-gnome">A. Komponen Utama Meja Kerja GNOME<a class="headerlink" href="#a-komponen-utama-meja-kerja-gnome" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Panel Atas (Top Bar / Panel)</strong>: Menampilkan menu <em>Activities</em> (Aktiviti), jam/kalendar, status rangkaian, kelantangan suara, dan menu kawalan sesi (Log Out, Lock, Power Off).</li>
+<li><strong>Penukar Ruang Kerja (Workspace Switcher)</strong>: Membenarkan pengasingan tetingkap aplikasi ke dalam pelbagai meja kerja maya. Pintasan papan kekunci: <code>Ctrl + Alt + [Panah Atas/Bawah]</code> atau <code>Super + PageUp/PageDown</code>.</li>
+<li><strong>Aplet Panel &amp; Pelancar (Panel Applets &amp; Launchers)</strong>: Aplet pemberitahuan (seperti pengemas kini perisian, status VPN, kawalan media) yang berjalan di panel untuk pemantauan terus.</li>
+</ul>
+<h4 id="b-pengurus-fail-nautilus-gnome-files">B. Pengurus Fail Nautilus (GNOME Files)<a class="headerlink" href="#b-pengurus-fail-nautilus-gnome-files" title="Permanent link">&para;</a></h4>
+<p>Nautilus merupakan shell pengurusan fail visual bersepadu di bawah GNOME:</p>
+<ol>
+<li><strong>Pengeluaran &amp; Navigasi</strong>:</li>
+<li>Membuka Nautilus: Klik ikon <em>Files</em> pada panel/dock atau tekan <code>Super</code> lalu taip <code>Nautilus</code>.</li>
+<li>Mod Paparan: Paparan Ikon, Paparan Senarai (<em>List View</em>), dan Paparan Pepohon (<em>Tree View</em> - muat turun navigasi hierarki).</li>
+<li><strong>Ciri Gambaran Kecil (Thumbnails)</strong>:</li>
+<li>Paparan gambaran kecil automatik untuk imej dan dokumen teks.</li>
+<li>Penyesuaian prestasi: Dalam Tetapan Nautilus (<em>Preferences</em> ➔ <em>Performance</em>), tetapkan penciptaan thumbnail kepada <em>Local Files Only</em> atau <em>Never</em> bagi mengoptimumkan kelajuan pemprosesan cakera pada sistem enterprise.</li>
+<li><strong>Operasi Salin &amp; Pindah (Drag-and-Drop / Cut-Copy-Paste)</strong>:</li>
+<li>Gunakan tetikus untuk mengheret fail dari satu lokasi ke lokasi lain. Pegang kekunci <code>Ctrl</code> semasa mengheret untuk menyalin fail.</li>
+<li>Pintasan: <code>Ctrl + C</code> (Salin), <code>Ctrl + X</code> (Potong), <code>Ctrl + V</code> (Tampal), <code>Ctrl + N</code> (Buka Tetingkap Nautilus Baharu).</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Membuka Pengurus Fail Nautilus dari terminal</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nautilus<span class="w"> </span>~
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Membuka Nautilus sebagai pentadbir (jika disokong melalui admin://)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>nautilus<span class="w"> </span>admin:///etc/
+</span></code></pre></div>
+<h4 id="c-kelebihan-desktop-linux-gnome-berbanding-windows-11-penggunaan-google-antigravity-desktop">C. Kelebihan Desktop Linux GNOME Berbanding Windows 11 &amp; Penggunaan Google Antigravity Desktop<a class="headerlink" href="#c-kelebihan-desktop-linux-gnome-berbanding-windows-11-penggunaan-google-antigravity-desktop" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Kelebihan GNOME Desktop Berbanding Windows 11</strong>:</li>
+<li><strong>Kawalan Kedaulatan Data &amp; Bebas Telemetri</strong>: Dalam konfigurasi lalai Ubuntu 26.04 LTS dan AlmaLinux 10 Workstation, GNOME menyediakan persekitaran desktop tanpa keperluan akaun mandatori dalam talian serta kawalan privasi data selaras dengan panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan amalan ISO/IEC 27001.</li>
+<li><strong>Pengurusan Sumber Prestasi Tinggi</strong>: Sesi Wayland pada GNOME 48/47 memaparkan kecekapan pengurusan memori (sebagai contoh, saiz penggunaan memori <em>idle</em> am dianggarkan sekitar 1.1GB–1.5GB bergantung pada perkhidmatan latar belakang) berbanding sistem pengendalian komersial yang memuatkan pelbagai aplikasi terbina (<em>bloatware</em>).</li>
+<li><strong>Penyulitan &amp; Keselamatan Bersepadu</strong>: Penyulitan cakera LUKS2 menyediakan kawalan keselamatan data pegun (<em>data-at-rest encryption</em>) dan pengurusan slot kunci bertingkat untuk perlindungan peranti fizikal.</li>
+<li><strong>Penggunaan Google Antigravity Desktop pada Linux</strong>:
+  Persekitaran pembantu AI Google Antigravity menyokong alur kerja pembangunan pada persekitaran Linux GNOME Desktop melalui integrasi terminal CLI dan ejen autonomi berstruktur.</li>
+</ul>
+<h4 id="d-penyesuaian-tetapan-gnome-tetapan-sistem-gnome-control-center-gsettings">D. Penyesuaian Tetapan GNOME &amp; Tetapan Sistem (<code>gnome-control-center</code> / <code>gsettings</code>)<a class="headerlink" href="#d-penyesuaian-tetapan-gnome-tetapan-sistem-gnome-control-center-gsettings" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Membuka Pusat Kawalan Tetapan GNOME GUI</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>gnome-control-center
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Penyesuaian gsettings melalui CLI (contoh: aktifkan tema gelap)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>gsettings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>org.gnome.desktop.interface<span class="w"> </span>color-scheme<span class="w"> </span><span class="s1">'prefer-dark'</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>gsettings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>org.gnome.desktop.peripherals.touchpad<span class="w"> </span>tap-to-click<span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div>
+<hr />
+<h2 id="pematuhan-keselamatan-jdn-mampu-isoiec-27001">🔒 Pematuhan Keselamatan JDN / MAMPU &amp; ISO/IEC 27001<a class="headerlink" href="#pematuhan-keselamatan-jdn-mampu-isoiec-27001" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Kunci Skrin Automatik (Screen Lockout):</strong> Tetapkan pengunci skrin automatik selepas 5 minit tidak aktif menerusi <em>Settings</em> ➔ <em>Privacy &amp; Security</em> ➔ <em>Screen Lock</em>.</li>
+<li><strong>Pengasingan Akaun Pengguna (Unprivileged User):</strong> Elakkan daripada menjalankan sesi grafik GNOME terus sebagai pengguna <code>root</code>. Sentiasa log masuk sebagai pengguna biasa dan gunakan <code>sudo</code> bagi tugas pentadbiran.</li>
+<li><strong>Log Keluar &amp; Penutupan Selamat:</strong> Pengguna wajarkan menggunakan fungsi <em>Log Out</em> atau <em>Power Off</em> menerusi menu sistem GNOME sebelum meninggalkan stesen kerja pejabat.</li>
+</ol>
 <hr />
 <h2 id="senarai-semak-kompetensi-competency-checklist">📋 Senarai Semak Kompetensi (Competency Checklist)<a class="headerlink" href="#senarai-semak-kompetensi-competency-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Memahami teori dan konsep asas yang terlibat.</li>
-<li>[ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.</li>
-<li>[ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.</li>
+<li>[ ] Berjaya melaksanakan pemasangan OS desktop Linux berserta penyulitan LUKS2.</li>
+<li>[ ] Berjaya mengendalikan persekitaran GNOME (menu Aktiviti, Aplet Panel, dan Penukar Ruang Kerja).</li>
+<li>[ ] Berjaya menguruskan fail menggunakan Nautilus (paparan senarai/pepohon, thumbnail, heret-dan-lepas).</li>
+<li>[ ] Berjaya menyesuaikan tetapan GNOME menggunakan <code>gnome-control-center</code> dan <code>gsettings</code>.</li>
+<li>[ ] Mengaktifkan fungsi kunci skrin automatik demi keselamatan maklumat pejabat.</li>
 </ul>
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <ol>
-<li><em>"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemasangan Sistem Operasi Desktop Linux dalam persekitaran Linux perusahaan."</em></li>
-<li><em>"Bagaimanakah cara mengautomasikan konfigurasi Pemasangan Sistem Operasi Desktop Linux menggunakan Ansible Playbook?"</em></li>
-<li><em>"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."</em></li>
+<li><em>"Bagaimanakah cara mengkonfigurasi gsettings dalam skrip Bash untuk menetapkan kertas dinding dan kunci skrin secara automatik bagi semua pengguna GNOME di pejabat?"</em></li>
+<li><em>"Bandingkan kelebihan kecekapan ruang kerja (workspaces) GNOME 48 berbanding tetingkap aplikasi bertindih dari sudut produktiviti pentadbir sistem."</em></li>
+<li><em>"Apakah langkah-langkah untuk menyematkan pelancar aplikasi tersuai (.desktop file) pada panel Dash GNOME?"</em></li>
 </ol>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://ubuntu.com/server/docs">Dokumentasi Rasmi Ubuntu</a></li>
-<li><a href="https://wiki.almalinux.org/">Dokumentasi AlmaLinux Wiki</a></li>
-<li><a href="https://docs.fedoraproject.org/">Panduan Pentadbiran Fedora</a></li>
+<li><a href="https://help.gnome.org/">Dokumentasi Rasmi GNOME Desktop</a></li>
+<li><a href="https://wiki.gnome.org/Apps/Nautilus">Panduan Pengguna Pengurus Fail Nautilus</a></li>
+<li><a href="https://help.ubuntu.com/community/GraphicalUserInterface">Dokumentasi Ubuntu Desktop 26.04 LTS</a></li>
+<li><a href="https://wiki.almalinux.org/">AlmaLinux Workstation Desktop Guide</a></li>
 </ul>
 <hr />
 <h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)<a class="headerlink" href="#buku-boleh-dibeli-syor-bacaan" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Linux Administration Handbook (Edisi Terkini)</strong> oleh Evi Nemeth et al.</li>
-<li><strong>The Linux Command Line</strong> oleh William Shotts.</li>
-<li><strong>Panduan Praktikal Pentadbiran Sistem Linux</strong> oleh Harisfazillah Jamel.</li>
+<li><strong>GNOME Desktop Administration Guide</strong> oleh GNOME Documentation Team.</li>
+<li><strong>The Linux Command Line, 2nd Edition</strong> oleh William Shotts.</li>
+<li><strong>Nota Pentadbiran Sistem &amp; Desktop Linux Malaysia</strong> oleh Harisfazillah Jamel.</li>
 </ul>
 <hr />
 <p><em>Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17</em><br />

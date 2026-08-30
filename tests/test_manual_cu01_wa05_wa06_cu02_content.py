@@ -392,9 +392,9 @@ HTML_MANUAL_PAGES = {
     "html/manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.html": {
         "title": "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux - NOSS Linux Malaysia (DSOM)",
         "description": (
-            "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian "
-            "(APT, DNF, Flatpak, Snap), penyesuaian pemboleh ubah persekitaran "
-            "$EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
+            "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) "
+            "dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, "
+            "dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
         ),
         "h1_id": "cu01-wa05-pemasangan-aplikasi-pemacu-peranti-linux",
         "header_topic": "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux",

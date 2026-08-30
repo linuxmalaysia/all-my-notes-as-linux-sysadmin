@@ -1509,12 +1509,12 @@
 <hr />
 <h2 id="okf-in-linux-for-noss-malaysia">OKF in Linux for NOSS Malaysia<a class="headerlink" href="#okf-in-linux-for-noss-malaysia" title="Permanent link">&para;</a></h2>
 <p>In the <strong>Linux for NOSS Malaysia</strong> project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS). </p>
-<p>To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.1 across our <strong>Sovereign Markdown Palace</strong> architecture.</p>
+<p>To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.2 across our <strong>Sovereign Markdown Palace</strong> architecture.</p>
 <h3 id="1-the-public-knowledge-base-openwiki">1. The Public Knowledge Base (<code>openwiki/</code>)<a class="headerlink" href="#1-the-public-knowledge-base-openwiki" title="Permanent link">&para;</a></h3>
 <p>Our primary syllabus content lives in the <code>openwiki/</code> directory. Each NOSS Competency Unit (CU) is distilled into a single markdown node. To be OKF-compliant, every node must begin with a structured YAML frontmatter block.</p>
 <p><strong>Example implementation in <code>openwiki/topic-01-linux-desktop-and-basics.md</code>:</strong>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentation</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"topic-01-linux-desktop-and-basics"</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-08-16T08:00:00Z"</span>
@@ -1525,10 +1525,10 @@
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nn">---</span>
 </span></code></pre></div></p>
 <h3 id="2-ai-agent-skills-agentsskills">2. AI Agent Skills (<code>.agents/skills/</code>)<a class="headerlink" href="#2-ai-agent-skills-agentsskills" title="Permanent link">&para;</a></h3>
-<p>The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the <code>SKILL.md</code> files) are also strictly OKF-compliant. </p>
+<p>Repositori ini turut menyimpan kemahiran AI berfungsi yang dipetakan kepada modul NOSS Tahap 3. Arahan yang mengawal cara AI melaksanakan tugasan (fail <code>SKILL.md</code>) juga mematuhi standard OKF v0.2 secara ketat.</p>
 <p>We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nn">---</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">okf_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skill</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"cu03-wa04-perform-core-server-configurations"</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-08-16T08:00:00Z"</span>
