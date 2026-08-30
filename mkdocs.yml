@@ -75,6 +75,7 @@ nav:
   - "1. Pembelajaran (Tutorials)":
       - "Pengenalan & Onboarding": docs/tutorials/index.md
       - "Langkah Mula Linux": docs/tutorials/getting-started.md
+      - "Papan Kekunci Sumber Terbuka (QMK & OSHW)": docs/tutorials/opensource-keyboard-qmk.md
   - "2. Panduan Operasi (How-To Guides)":
       - "Transformasi Kandungan NOSS (IPO)": docs/how-to/execute-noss-content-transformation.md
       - "Penggunaan & Binaan HTML": docs/how-to/deploy-and-serve-html.md

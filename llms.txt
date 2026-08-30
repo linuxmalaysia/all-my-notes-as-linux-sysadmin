@@ -210,6 +210,7 @@
 - [NOSS Linguistic Auditor Skill](docs/reference/skills/noss-linguistic-auditor.md)
 - [odp-slide-generator](docs/reference/skills/odp-slide-generator.md)
 - [💉 OKF Frontmatter Injector](docs/reference/skills/okf-frontmatter-injector.md)
+- [Tutorial Interaktif: Eksplorasi Papan Kekunci Sumber Terbuka (QMK & OSHW)](docs/tutorials/opensource-keyboard-qmk.md)
 - [OpenWiki and FastMCP architecture](docs/explanation/openwiki-mcp-architecture.md)
 - [openwiki_emulator.py reference](docs/reference/openwiki_emulator.md)
 - [🕵️ Palace Auditor Skill](docs/reference/skills/palace-auditor.md)

@@ -24,6 +24,7 @@ Welcome to the **Deep State of Mind (DSOM) Tutorials** quadrant, structured acco
 Tutorials are **guided, step-by-step learning lessons** designed to help beginners explore the DSOM toolchain through hands-on execution.
 
 - **[Getting Started with DSOM Tools](getting-started.md):** A beginner-friendly, end-to-end tutorial on initializing the OpenWiki, validating frontmatter compliance, and starting the local FastMCP server.
+- **[Eksplorasi Papan Kekunci Sumber Terbuka (QMK & OSHW)](opensource-keyboard-qmk.md):** Panduan interaktif meneroka perkakasan sumber terbuka (OSHW), firmawer QMK, dan mereka bentuk susun atur kekunci menggunakan QMK Configurator di Linux.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
