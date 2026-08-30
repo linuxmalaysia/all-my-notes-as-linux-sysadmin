@@ -75,12 +75,13 @@ nautilus admin:///etc/
 ```
 
 #### C. Kelebihan Desktop Linux GNOME Berbanding Windows 11 & Penggunaan Google Antigravity Desktop
+
 - **Kelebihan GNOME Desktop Berbanding Windows 11**:
-  1. **Kawalan Kedaulatan Data & Bebas Telemetri**: Berbeza dengan Windows 11 yang memaksa akaun dalam talian dan pengumpulan telemetri, GNOME tidak menjejaki pengguna dan mematuhi standard privasi ISO/IEC 27001 serta JDN/MAMPU.
-  2. **Pengurusan Sumber Prestasi Tinggi**: GNOME berasaskan Wayland menggunakan kurang penggunaan RAM idle (sekitar 1.1GB - 1.5GB) berbanding Windows 11 (3GB - 4GB idle) dan bebas daripada iklan terbina (*bloatware*).
-  3. **Penyulitan & Keselamatan Bersepadu**: Integrasi penyulitan cakera LUKS2 dan pengurusan hak akses berasaskan Linux Kernel mengelakkan ancaman malim/malware secara asli.
+  1. **Kawalan Kedaulatan Data & Bebas Telemetri**: Dalam konfigurasi lalai Ubuntu 26.04 LTS dan AlmaLinux 10 Workstation, GNOME menyediakan persekitaran desktop tanpa keperluan akaun mandatori dalam talian serta kawalan privasi data selaras dengan panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan amalan ISO/IEC 27001.
+  2. **Pengurusan Sumber Prestasi Tinggi**: Sesi Wayland pada GNOME 48/47 memaparkan kecekapan pengurusan memori (sebagai contoh, saiz penggunaan memori *idle* am dianggarkan sekitar 1.1GB–1.5GB bergantung pada perkhidmatan latar belakang) berbanding sistem pengendalian komersial yang memuatkan pelbagai aplikasi terbina (*bloatware*).
+  3. **Penyulitan & Keselamatan Bersepadu**: Penyulitan cakera LUKS2 menyediakan kawalan keselamatan data pegun (*data-at-rest encryption*) dan pengurusan slot kunci bertingkat untuk perlindungan peranti fizikal.
 - **Penggunaan Google Antigravity Desktop pada Linux**:
-  Google Antigravity Agent/SDK dan persekitaran pembangunan berautonomi AI menyokong pengoperasian terus pada persekitaran Linux GNOME Desktop melalui sokongan asli CLI, ejen `.agents/skills/`, dan penyepaduan alat IDE/VS Code berasaskan Wayland secara lancar.
+  Persekitaran pembantu AI Google Antigravity menyokong alur kerja pembangunan pada persekitaran Linux GNOME Desktop melalui integrasi terminal CLI dan ejen autonomi berstruktur.
 
 #### D. Penyesuaian Tetapan GNOME & Tetapan Sistem (`gnome-control-center` / `gsettings`)
 

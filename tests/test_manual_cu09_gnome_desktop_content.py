@@ -37,6 +37,11 @@ def test_manual_cu01_wa04_gnome_desktop_concepts():
     assert "gnome-control-center" in content
     assert "Log Out" in content
     assert "Power Off" in content
+    assert "LUKS2" in content
+    assert "cryptsetup luksDump" in content
+    assert "cryptsetup luksAddKey" in content
+    assert "Screen Lock" in content or "kunci skrin" in content.lower()
+    assert "Unprivileged User" in content or "pengguna biasa" in content.lower()
 
 
 def test_manual_cu01_wa05_gui_package_tools_and_tarball():
