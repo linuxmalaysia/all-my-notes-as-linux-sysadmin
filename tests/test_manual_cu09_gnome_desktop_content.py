@@ -35,6 +35,8 @@ def test_manual_cu01_wa04_gnome_desktop_concepts():
     assert "Workspace Switcher" in content or "ruang kerja" in content
     assert "nautilus" in content
     assert "gnome-control-center" in content
+    assert "Log Out" in content
+    assert "Power Off" in content
 
 
 def test_manual_cu01_wa05_gui_package_tools_and_tarball():
