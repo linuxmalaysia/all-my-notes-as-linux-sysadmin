@@ -31,14 +31,16 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 **📖 Baca Lanjut:** [manual/cu01/pengenalan-linux-dan-sejarah.md](../manual/cu01/pengenalan-linux-dan-sejarah.md)
 
-### 2. Falsafah & Lesen GNU GPL
+### 2. Falsafah, Perkakasan Sumber Terbuka (OSHW) & Lesen GNU GPL
 
-- Perbezaan antara "perisian bebas" dan "sumber terbuka"
+- Perbezaan antara "perisian bebas" (*free software*) dan "sumber terbuka" (*open source*)
+- **Perkakasan Sumber Terbuka (Open-Source Hardware - OSHW)**: Skematik, CAD, dan BOM fizikal awam (contoh: Papan kekunci mekanikal QMK Firmware & QMK Configurator di [docs.qmk.fm](https://docs.qmk.fm/))
 - GNU GPL v2 (isirung Linux), MIT, Apache, CC BY-SA
-- Hak pengguna di bawah perisian terbuka
+- Hak pengguna di bawah perisian & perkakasan terbuka
 - Implikasi di Malaysia: Akta Hak Cipta 1987
 
-**📖 Baca Lanjut:** [manual/cu01/hakcipta-dan-pelesenan.md](../manual/cu01/hakcipta-dan-pelesenan.md)
+**📖 Baca Lanjut (Lesen):** [manual/cu01/hakcipta-dan-pelesenan.md](../manual/cu01/hakcipta-dan-pelesenan.md)
+**📖 Tutorial Amali OSHW & QMK:** [docs/tutorials/opensource-keyboard-qmk.md](../docs/tutorials/opensource-keyboard-qmk.md)
 
 ### 3. Ekosistem Distribusi Linux 2026 (Piawaian Kanonik)
 

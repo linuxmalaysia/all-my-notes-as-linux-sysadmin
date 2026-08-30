@@ -21,7 +21,13 @@ Pemasangan papan induk, CPU, memori RAM, pemacu storan NVMe/SSD, dan bekalan kua
 
 ## 🛠️ Garis Panduan Amali & Prosedur
 
-### 1. Keperluan Awal & Pra-Syarat
+### 1. Perkakasan Sumber Terbuka (OSHW) & Peranti Input Custom (QMK)
+Selain komponen stesen kerja standard, ekosistem Linux menyokong penuh **Perkakasan Sumber Terbuka (Open-Source Hardware - OSHW)** seperti papan kekunci mekanikal boleh ubah (*custom keyboard*) yang dikuasai **QMK Firmware**.
+- **OSHW Definition:** Reka bentuk fizikal (skematik PCB, CAD, BOM) yang terbuka untuk distudi, diubah suai, dan dibina.
+- **QMK Configurator & Rules:** Penggunaan [docs.qmk.fm](https://docs.qmk.fm/) untuk reka bentuk susun atur kekunci (*layout/layers*) dan persediaan peraturan `udev` di Linux untuk kebenaran peranti USB input.
+- **Rujukan Tutorial Amali:** [Tutorial Papan Kekunci QMK & OSHW](../../docs/tutorials/opensource-keyboard-qmk.md)
+
+### 2. Keperluan Awal & Pra-Syarat
 - Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
 - Hak akses pentadbir (`sudo`).
 - Dokumentasi dan rekod inventori yang teratur.
