@@ -3,9 +3,9 @@ okf_version: 0.1
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc"]
-tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc"]
-description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
+topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
+tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
+description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
 resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md"
 ---
 
@@ -13,25 +13,27 @@ resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.
 
 ## 🎯 Objektif Pembelajaran
 
-Menguasai prosedur amali pengurusan aplikasi, pakej perisian, penyesuaian persekitaran shell, serta pemasangan dan konfigurasi pemacu peranti (*device drivers*) pada sistem operasi Linux desktop mengikut piawaian **NOSS Tahap 3 (CU01-WA05)**.
+Menguasai prosedur amali pengurusan aplikasi, pakej perisian CLI & GUI, penyesuaian persekitaran shell, serta pemasangan dan konfigurasi pemacu peranti (*device drivers*) pada sistem operasi Linux desktop mengikut piawaian **NOSS Tahap 3 (CU01-WA05)**.
 
 Setelah menyempurnakan modul ini, pelajar akan dapat:
 
 1. Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (**APT** pada Ubuntu 26.04 LTS, **DNF5** pada AlmaLinux 10 dan Fedora 43).
-2. Memasang dan menguruskan aplikasi berasaskan kontena universal (**Flatpak** dan **Snap**).
-3. Menguruskan pemboleh ubah persekitaran shell pengguna dan sistem (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
-4. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).
-5. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (*GPG key verification*).
+2. Memasang dan menguruskan perisian melalui antara muka grafik GUI (**GNOME Software**, **Synaptic Package Manager**, **PackageKit**).
+3. Memasang dan menguruskan aplikasi berasaskan kontena universal (**Flatpak** dan **Snap**).
+4. Melaksanakan pengompilan manual perisian daripada arkib kod sumber Tarball (`.tar.gz` / `.tar.zst` via `./configure`, `make`, `sudo make install`).
+5. Menguruskan pemboleh ubah persekitaran shell pengguna dan sistem (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
+6. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).
+7. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (*GPG key verification*).
 
 ---
 
 ## 🛠️ Garis Panduan Amali & Prosedur Kerja
 
-### 1. Pengurusan Pakej Asli (APT & DNF5)
+### 1. Pengurusan Pakej Asli & Antara Muka GUI (APT, DNF5, Synaptic, GNOME Software)
 
 #### A. Debian/Ubuntu (APT - Advanced Package Tool)
 
-Pada **Ubuntu 26.04 LTS "Resolute Raccoon"**, pengurusan pakej dilakukan menggunakan arahan `apt`:
+Pada **Ubuntu 26.04 LTS "Resolute Raccoon"**, pengurusan pakej CLI dilakukan menggunakan arahan `apt`:
 
 ```bash
 # 1. Kemas kini indeks repositori dan senaraikan pakej yang boleh dinaik taraf
@@ -49,9 +51,27 @@ sudo apt purge -y vlc
 sudo apt autoremove -y
 ```
 
-#### B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)
+#### B. Pengurusan Pakej Grafik GUI (GNOME Software & Synaptic Package Manager)
 
-Pada **AlmaLinux 10 "Purple Lion"** dan **Fedora 43**, pengurus pakej generasi baharu **DNF5** digunakan:
+Bagi pengguna desktop pejabat dan TVET, pengurusan pakej grafik menyediakan kaedah carian dan pemasangan perisian secara visual:
+
+1. **GNOME Software (`gnome-software`)**:
+   - Pusat perisian bersepadu yang menyokong pakej APT/RPM, Flatpak, dan Snap.
+   - Pelancaran CLI: `gnome-software &`
+2. **Synaptic Package Manager (`synaptic`)**:
+   - Pengurus pakej GUI aras tinggi berasaskan APT. Synaptic membolehkan penapisan pakej mengikut status, kategori, atau repositori, pengurusan punca pangkalan data (`/etc/apt/sources.list`), serta semakan kebergantungan pakej secara visual.
+   - Pemasangan Synaptic melalui APT:
+     ```bash
+     sudo apt update && sudo apt install -y synaptic
+     ```
+   - Pelancaran Synaptic: Menu Utama ➔ System Settings ➔ Synaptic Package Manager, atau melalui terminal:
+     ```bash
+     sudo synaptic &
+     ```
+
+#### C. Red Hat/AlmaLinux/Fedora (DNF5 / DNF & PackageKit)
+
+Pada **AlmaLinux 10 "Purple Lion"** dan **Fedora 43**, pengurus pakej generasi baharu **DNF5** digunakan bersama alatan GUI berasaskan **PackageKit** / GNOME Software:
 
 ```bash
 # 1. Semak kemas kini pakej dan naik taraf sistem
@@ -67,7 +87,7 @@ sudo dnf install -y epel-release
 sudo dnf config-manager --enable epel
 ```
 
-#### C. Pengurusan Pakej RPM & Kompilasi Kod Sumber (Red Hat Package Manager & Tarball)
+#### D. Pengurusan Pakej RPM & Kompilasi Kod Sumber Tarball (`.tar.gz` / `.tar.zst`)
 
 Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu menguasai utiliti asas `rpm` dan kaedah pengompilan perisian daripada kod sumber:
 
@@ -143,8 +163,8 @@ Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu me
    gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256
    sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256 || exit 1
 
-   # 2. Ekstrak arkib kod sumber
-   tar -xvf sampel-aplikasi-1.0.tar.gz
+   # 2. Ekstrak arkib kod sumber tarball
+   tar -zxvf sampel-aplikasi-1.0.tar.gz
    cd sampel-aplikasi-1.0
 
    # 3. Semak dokumen README/INSTALL untuk mengenal pasti sistem binaan
@@ -311,6 +331,8 @@ sudo apt install -y linux-firmware                   # Ubuntu
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
 
 - [ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.
+- [ ] Berjaya memasang dan mengendalikan pakej perisian menggunakan antara muka grafik (GNOME Software & Synaptic).
+- [ ] Berjaya mengompil perisian daripada arkib kod sumber Tarball (`.tar.gz` - `./configure`, `make`, `make install`).
 - [ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.
 - [ ] Berjaya menetapkan pemboleh ubah persekitaran `$EDITOR` dan `$VISUAL` dalam `~/.bashrc` dan `/etc/environment`.
 - [ ] Berjaya mengenal pasti cip grafik dan kad Wi-Fi menggunakan `lspci` serta memasang pemacu peranti berkaitan.
@@ -329,6 +351,7 @@ sudo apt install -y linux-firmware                   # Ubuntu
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
 
 - [Dokumentasi Pengurusan Pakej Ubuntu](https://ubuntu.com/server/docs/package-management)
+- [Dokumentasi Synaptic Package Manager Guide](https://help.ubuntu.com/community/SynapticHowto)
 - [Dokumentasi Rasmi DNF5 Fedora / AlmaLinux](https://dnf5.readthedocs.io/)
 - [Panduan Pengurusan Flathub](https://flathub.org/)
 - [Garis Panduan Keselamatan Perisian MAMPU / JDN](https://www.jdn.gov.my/)

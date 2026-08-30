@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, konfigurasi $EDITOR/$VISUAL, dan prosedur pemasangan NOSS Level 3.">
+        <meta name="description" content="Silibus komprehensif CU01 dikemaskini dengan Persekitaran Meja GNOME (GNOME 48/47), Pengurus Fail Nautilus, pengurusan pakej GUI (Synaptic, GNOME Software), pengompilan tarball, edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan konfigurasi $EDITOR/$VISUAL.">
       
       
         <meta name="author" content="Harisfazillah Jamel">
@@ -1063,10 +1063,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-keperluan-perkakasan-mod-penimbalan-biosuefi" class="md-nav__link">
+  <a href="#4-keperluan-perkakasan-biosuefi-persekitaran-meja-gnome-cu01-wa04" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Keperluan Perkakasan &amp; Mod Penimbalan BIOS/UEFI
+        4. Keperluan Perkakasan, BIOS/UEFI &amp; Persekitaran Meja GNOME (CU01-WA04)
       
     </span>
   </a>
@@ -1705,10 +1705,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-keperluan-perkakasan-mod-penimbalan-biosuefi" class="md-nav__link">
+  <a href="#4-keperluan-perkakasan-biosuefi-persekitaran-meja-gnome-cu01-wa04" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Keperluan Perkakasan &amp; Mod Penimbalan BIOS/UEFI
+        4. Keperluan Perkakasan, BIOS/UEFI &amp; Persekitaran Meja GNOME (CU01-WA04)
       
     </span>
   </a>
@@ -1849,10 +1849,10 @@
 
 <h1 id="topik-1-pengenalan-asas-ekosistem-linux-cu01">Topik 1: Pengenalan &amp; Asas Ekosistem Linux (CU01)<a class="headerlink" href="#topik-1-pengenalan-asas-ekosistem-linux-cu01" title="Permanent link">&para;</a></h1>
 <h2 id="gambaran-keseluruhan-overview">Gambaran Keseluruhan (Overview)<a class="headerlink" href="#gambaran-keseluruhan-overview" title="Permanent link">&para;</a></h2>
-<p>Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian <strong>NOSS Level 3 (CU01)</strong>. Ia menggabungkan <strong>konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi &amp; pemacu, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan</strong>.</p>
+<p>Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian <strong>NOSS Level 3 (CU01)</strong>. Ia menggabungkan <strong>konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), persekitaran meja grafik GNOME (GNOME 48/47), pengurus fail Nautilus, pengurusan perisian GUI &amp; CLI (APT, DNF5, Synaptic, GNOME Software, Flatpak, Snap, pengompilan Tarball), penyulitan penuh cakera LUKS2 pejabat, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), serta penegasan keselamatan pasca-pemasangan</strong>.</p>
 <blockquote>
 <p><strong>💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:</strong>
-Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).</p>
+Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan serta persekitaran grafik selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).</p>
 </blockquote>
 <hr />
 <h2 id="silibus-utama">Silibus Utama<a class="headerlink" href="#silibus-utama" title="Permanent link">&para;</a></h2>
@@ -1880,13 +1880,17 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <li><strong>Distribusi Khusus</strong>: Kali Linux (keselamatan), Alpine Linux (kontena), Raspberry Pi OS (IoT)</li>
 </ul>
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/pecahan-linux-terkini.html">manual/cu01/pecahan-linux-terkini.md</a></p>
-<h3 id="4-keperluan-perkakasan-mod-penimbalan-biosuefi">4. Keperluan Perkakasan &amp; Mod Penimbalan BIOS/UEFI<a class="headerlink" href="#4-keperluan-perkakasan-mod-penimbalan-biosuefi" title="Permanent link">&para;</a></h3>
+<h3 id="4-keperluan-perkakasan-biosuefi-persekitaran-meja-gnome-cu01-wa04">4. Keperluan Perkakasan, BIOS/UEFI &amp; Persekitaran Meja GNOME (CU01-WA04)<a class="headerlink" href="#4-keperluan-perkakasan-biosuefi-persekitaran-meja-gnome-cu01-wa04" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Spesifikasi minimum &amp; disyorkan (x86_64, ARM64)</li>
 <li>Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)</li>
 <li>Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (<code>dd</code>, Ventoy)</li>
+<li><strong>Persekitaran Meja GNOME (GNOME 48 / 47)</strong>:</li>
+<li>Komponen Meja Kerja: Panel Atas (<em>Top Bar</em>), Menu Aktiviti (<em>Activities</em>), Aplet Sistem, dan Penukar Ruang Kerja (<em>Workspace Switcher</em>).</li>
+<li><strong>Pengurus Fail Nautilus (GNOME Files)</strong>: Navigasi hierarki pepohon (<em>tree view</em>), kawalan prestasi gambaran kecil (<em>thumbnail</em>), dan operasi heret-dan-lepas (<em>drag-and-drop</em>).</li>
 </ul>
-<p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/keperluan-perkakasan-dan-bios-uefi.html">manual/cu01/keperluan-perkakasan-dan-bios-uefi.md</a></p>
+<p><strong>📖 Baca Lanjut (BIOS/UEFI):</strong> <a href="../manual/cu01/keperluan-perkakasan-dan-bios-uefi.html">manual/cu01/keperluan-perkakasan-dan-bios-uefi.md</a>
+<strong>📖 Baca Lanjut (OS &amp; GNOME):</strong> <a href="../manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.html">manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md</a></p>
 <h3 id="5-prosedur-pemasangan-sistem-operasi-storan-lvm">5. Prosedur Pemasangan Sistem Operasi &amp; Storan LVM<a class="headerlink" href="#5-prosedur-pemasangan-sistem-operasi-storan-lvm" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Langkah demi langkah pemasangan Ubuntu 26.04 LTS, AlmaLinux 10, dan Fedora 43</li>
@@ -1902,10 +1906,11 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <p><strong>📖 Baca Lanjut:</strong> <a href="../manual/cu01/penyulitan-cakera-luks2-pejabat.html">manual/cu01/penyulitan-cakera-luks2-pejabat.md</a></p>
 <h3 id="7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05">7. Pemasangan Aplikasi, Pemacu Peranti &amp; Persekitaran Shell (CU01-WA05)<a class="headerlink" href="#7-pemasangan-aplikasi-pemacu-peranti-persekitaran-shell-cu01-wa05" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Perbandingan Format Pembungkusan</strong>:</li>
-<li>Pakej Binari Asli: Debian/Ubuntu (<code>.deb</code> / DEB via <code>apt</code>/<code>dpkg</code>), Red Hat/AlmaLinux/Fedora (<code>.rpm</code> / RPM via <code>dnf5</code>/<code>rpm</code>). Operasi asas <code>rpm</code>: <code>-ivh</code>, <code>-Uvh</code>, <code>-q</code>, <code>-V</code>, <code>-e</code>, <code>--rebuilddb</code>.</li>
+<li><strong>Perbandingan Format Pembungkusan &amp; Utiliti GUI/CLI</strong>:</li>
+<li>Pakej Binari Asli CLI: Debian/Ubuntu (<code>.deb</code> / DEB via <code>apt</code>/<code>dpkg</code>), Red Hat/AlmaLinux/Fedora (<code>.rpm</code> / RPM via <code>dnf5</code>/<code>rpm</code>). Operasi asas <code>rpm</code>: <code>-ivh</code>, <code>-Uvh</code>, <code>-q</code>, <code>-V</code>, <code>-e</code>, <code>--rebuilddb</code>.</li>
+<li>Pakej Perisian Grafik GUI: <strong>GNOME Software</strong>, <strong>Synaptic Package Manager</strong>, <strong>PackageKit</strong>.</li>
 <li>Pakej aplikasi universal dengan pengasingan: <code>Flatpak</code> (Flathub) dan <code>Snap</code> (Canonical) untuk pengasingan persekitaran pejabat.</li>
-<li>Kod Sumber Tarball: Arkib <code>.tar.gz</code> / <code>.tar.zst</code>. Semak README/INSTALL untuk sistem binaan (seperti Autotools <code>./configure</code>, CMake, atau Meson).</li>
+<li>Kod Sumber Tarball: Arkib <code>.tar.gz</code> / <code>.tar.zst</code>. Semak README/INSTALL untuk sistem binaan (seperti Autotools <code>./configure</code>, <code>make</code>, <code>sudo make install</code>).</li>
 <li>Pakej Sumber RPM (<code>.src.rpm</code>): Binaan semula <code>rpmbuild --rebuild</code> selepas penyelesaian <code>BuildRequires</code>.</li>
 <li><strong>Penyesuaian Pemboleh Ubah Persekitaran Shell</strong>: <code>$EDITOR</code> &amp; <code>$VISUAL</code> dalam <code>~/.bashrc</code>, <code>/etc/environment</code>, <code>/etc/profile.d/editor.sh</code>.</li>
 <li><strong>Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) &amp; Kad Peranti</strong>:</li>
@@ -1953,7 +1958,7 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 </tr>
 <tr>
 <td><strong>CU01-WA04</strong></td>
-<td>Pasang Sistem Operasi Desktop</td>
+<td>Pasang OS Desktop &amp; GNOME</td>
 <td><a href="../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.html">Lihat Skill</a></td>
 </tr>
 <tr>
@@ -1971,9 +1976,9 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <hr />
 <h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">Eksplorasi Lanjut bersama AI (AI Prompts)<a class="headerlink" href="#eksplorasi-lanjut-bersama-ai-ai-prompts" title="Permanent link">&para;</a></h2>
 <p>Gunakan <em>prompt</em> berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk mendalami topik ini:
-1. &gt; "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Sistem Operasi Linux (seperti Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
+1. &gt; "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Persekitaran Meja GNOME (seperti GNOME 48 di Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
 2. &gt; "Tuliskan skrip Bash ringkas untuk menyemak sama ada peranti but beroperasi dalam mod UEFI atau Legacy BIOS, dan paparkan ruang peranti storan dalam format jadual."
-3. &gt; "Bagaimanakah penyulitan cakera penuh LUKS2 melindungi data pada komputer riba pejabat jika peranti tersebut hilang atau dicuri? Terangkan fungsi ruang kunci (key slots) LUKS2."
+3. &gt; "Bagaimanakah pengurus fail Nautilus menguruskan paparan thumbnail dan struktur paparan pepohon (tree view) untuk mempercepatkan carian fail di stesen kerja enterprise?"
 4. &gt; "Saya seorang pentadbir sistem di agensi kerajaan. Apakah senarai semak keselamatan pasca-pemasangan (hardening checklist) pertama yang wajib saya laksanakan pada AlmaLinux 10?"</p>
 <hr />
 <h2 id="bahan-bacaan-lanjut-rujukan-url">Bahan Bacaan Lanjut (Rujukan URL)<a class="headerlink" href="#bahan-bacaan-lanjut-rujukan-url" title="Permanent link">&para;</a></h2>
@@ -1981,6 +1986,8 @@ Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa 
 <li><a href="https://help.ubuntu.com">Dokumentasi Rasmi Ubuntu 26.04 LTS</a></li>
 <li><a href="https://wiki.almalinux.org">Dokumentasi Rasmi AlmaLinux 10</a></li>
 <li><a href="https://docs.fedoraproject.org">Dokumentasi Fedora Project</a></li>
+<li><a href="https://help.gnome.org">Dokumentasi Rasmi GNOME Desktop</a></li>
+<li><a href="https://help.ubuntu.com/community/SynapticHowto">Dokumentasi Synaptic Package Manager Guide</a></li>
 <li><a href="https://ms.wikipedia.org/wiki/Linux">Sejarah Lengkap Linux (Wikipedia BM)</a></li>
 <li><a href="https://www.gnu.org/philosophy/free-sw.ms.html">Projek GNU dan Maksud Perisian Bebas</a> — (Tersedia dalam Bahasa Melayu)</li>
 <li><a href="https://distrowatch.com">DistroWatch.com</a> — Tangga &amp; statistik distribusi Linux terkini dunia</li>

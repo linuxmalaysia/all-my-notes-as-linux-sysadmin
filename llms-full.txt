@@ -13437,7 +13437,7 @@ Historically, AI agents struggle because organizational knowledge is scattered o
 
 In the **Linux for NOSS Malaysia** project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS). 
 
-To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.1 across our **Sovereign Markdown Palace** architecture.
+To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.2 across our **Sovereign Markdown Palace** architecture.
 
 ### 1. The Public Knowledge Base (`openwiki/`)
 
@@ -13446,7 +13446,7 @@ Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Compe
 **Example implementation in `openwiki/topic-01-linux-desktop-and-basics.md`:**
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: documentation
 title: "topic-01-linux-desktop-and-basics"
 timestamp: "2026-08-16T08:00:00Z"
@@ -13459,13 +13459,13 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-The repository also houses over 70 functional AI skills mapped to NOSS Level 3 modules. The instructions governing how AI executes tasks (the `SKILL.md` files) are also strictly OKF-compliant.
+Repositori ini turut menyimpan kemahiran AI berfungsi yang dipetakan kepada modul NOSS Tahap 3. Arahan yang mengawal cara AI melaksanakan tugasan (fail `SKILL.md`) juga mematuhi standard OKF v0.2 secara ketat.
 
 We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
 
 ```yaml
 ---
-okf_version: 0.1
+okf_version: 0.2
 type: skill
 title: "cu03-wa04-perform-core-server-configurations"
 timestamp: "2026-08-16T08:00:00Z"
@@ -26646,9 +26646,9 @@ okf_version: 0.1
 type: documentation
 title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["linux-desktop", "linux-history", "distribusi", "cu01", "pemasangan-linux", "luks2", "editor", "bashrc"]
-tags: ["linux", "desktop", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2", "editor", "bashrc"]
-description: "Silibus komprehensif CU01 dikemaskini dengan edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, konfigurasi $EDITOR/$VISUAL, dan prosedur pemasangan NOSS Level 3."
+topics: ["linux-desktop", "gnome", "nautilus", "synaptic", "gnome-software", "tarball", "cu01", "pemasangan-linux", "luks2", "editor", "bashrc"]
+tags: ["linux", "desktop", "gnome", "nautilus", "synaptic", "gnome-software", "tarball", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2", "editor", "bashrc"]
+description: "Silibus komprehensif CU01 dikemaskini dengan Persekitaran Meja GNOME (GNOME 48/47), Pengurus Fail Nautilus, pengurusan pakej GUI (Synaptic, GNOME Software), pengompilan tarball, edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan konfigurasi $EDITOR/$VISUAL."
 resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 ---
 
@@ -26656,10 +26656,10 @@ resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
 
 ## Gambaran Keseluruhan (Overview)
 
-Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), prosedur pemasangan sistem operasi, penyulitan penuh cakera LUKS2 pejabat, pengurusan aplikasi & pemacu, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), konfigurasi rangkaian endpoint, serta penegasan keselamatan pasca-pemasangan**.
+Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS Level 3 (CU01)**. Ia menggabungkan **konteks sejarah, falsafah perisian bebas, landskap distribusi rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), persekitaran meja grafik GNOME (GNOME 48/47), pengurus fail Nautilus, pengurusan perisian GUI & CLI (APT, DNF5, Synaptic, GNOME Software, Flatpak, Snap, pengompilan Tarball), penyulitan penuh cakera LUKS2 pejabat, penyesuaian pemboleh ubah persekitaran shell ($EDITOR/$VISUAL), serta penegasan keselamatan pasca-pemasangan**.
 
 > **💡 Kemahiran Kognitif - Peningkatan Tahap Pengabstrakan:**
-> Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
+> Daripada sekadar mempelajari "cara pasang Linux" (spesifik) → fahami "mengapa Linux wujud dan bagaimana struktur storan serta persekitaran grafik selamat direka" (corak) → hayati "apakah makna perisian bebas dan kedaulatan data untuk pengkomputeran enterprise" (prinsip universal).
 
 ---
 
@@ -26692,13 +26692,16 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 **📖 Baca Lanjut:** [manual/cu01/pecahan-linux-terkini.md](../manual/cu01/pecahan-linux-terkini.md)
 
-### 4. Keperluan Perkakasan & Mod Penimbalan BIOS/UEFI
+### 4. Keperluan Perkakasan, BIOS/UEFI & Persekitaran Meja GNOME (CU01-WA04)
 
 - Spesifikasi minimum & disyorkan (x86_64, ARM64)
 - Perbezaan Legacy BIOS (MBR) vs UEFI (GPT)
 - Konfigurasi Secure Boot, CSM, dan penyediaan Bootable Live USB (`dd`, Ventoy)
+- **Persekitaran Meja GNOME (GNOME 48 / 47)**:
+  - Komponen Meja Kerja: Panel Atas (*Top Bar*), Menu Aktiviti (*Activities*), Aplet Sistem, dan Penukar Ruang Kerja (*Workspace Switcher*).
+  - **Pengurus Fail Nautilus (GNOME Files)**: Navigasi hierarki pepohon (*tree view*), kawalan prestasi gambaran kecil (*thumbnail*), dan operasi heret-dan-lepas (*drag-and-drop*).
 
-**📖 Baca Lanjut:** [manual/cu01/keperluan-perkakasan-dan-bios-uefi.md](../manual/cu01/keperluan-perkakasan-dan-bios-uefi.md)
+**📖 Baca Lanjut:** [manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md](../manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md)
 
 ### 5. Prosedur Pemasangan Sistem Operasi & Storan LVM
 
@@ -26717,10 +26720,11 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 
 ### 7. Pemasangan Aplikasi, Pemacu Peranti & Persekitaran Shell (CU01-WA05)
 
-- **Perbandingan Format Pembungkusan**:
-  - Pakej Binari Asli: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`.
+- **Perbandingan Format Pembungkusan & Utiliti GUI/CLI**:
+  - Pakej Binari Asli CLI: Debian/Ubuntu (`.deb` / DEB via `apt`/`dpkg`), Red Hat/AlmaLinux/Fedora (`.rpm` / RPM via `dnf5`/`rpm`). Operasi asas `rpm`: `-ivh`, `-Uvh`, `-q`, `-V`, `-e`, `--rebuilddb`.
+  - Pakej Perisian Grafik GUI: **GNOME Software**, **Synaptic Package Manager**, **PackageKit**.
   - Pakej aplikasi universal dengan pengasingan: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
-  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, CMake, atau Meson).
+  - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, `make`, `sudo make install`).
   - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild` selepas penyelesaian `BuildRequires`.
 - **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
 - **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**:
@@ -26761,7 +26765,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 | Kod | Nama | Status |
 |-----|------|--------|
 | **CU01-WA00** | Memahami Ekosistem Linux | [Lihat Skill](../.agents/skills/cu01-wa00-memahami-ekosistem-linux/SKILL.md) |
-| **CU01-WA04** | Pasang Sistem Operasi Desktop | [Lihat Skill](../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) |
+| **CU01-WA04** | Pasang OS Desktop & GNOME | [Lihat Skill](../.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md) |
 | **CU01-WA05** | Pasang Aplikasi & Pemacu | [Lihat Skill](../.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md) |
 | **CU01-WA06** | Konfigurasi Rangkaian Endpoint | [Lihat Skill](../.agents/skills/cu01-wa06-configure-endpoint-network-connectivity/SKILL.md) |
 
@@ -26770,9 +26774,9 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
 ## Eksplorasi Lanjut bersama AI (AI Prompts)
 
 Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk mendalami topik ini:
-1. > "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Sistem Operasi Linux (seperti Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
+1. > "Bolehkah anda terangkan perbezaan antara Kernel Linux dan Persekitaran Meja GNOME (seperti GNOME 48 di Ubuntu 26.04 LTS) menggunakan analogi mudah yang boleh difahami oleh pelajar sekolah?"
 2. > "Tuliskan skrip Bash ringkas untuk menyemak sama ada peranti but beroperasi dalam mod UEFI atau Legacy BIOS, dan paparkan ruang peranti storan dalam format jadual."
-3. > "Bagaimanakah penyulitan cakera penuh LUKS2 melindungi data pada komputer riba pejabat jika peranti tersebut hilang atau dicuri? Terangkan fungsi ruang kunci (key slots) LUKS2."
+3. > "Bagaimanakah pengurus fail Nautilus menguruskan paparan thumbnail dan struktur paparan pepohon (tree view) untuk mempercepatkan carian fail di stesen kerja enterprise?"
 4. > "Saya seorang pentadbir sistem di agensi kerajaan. Apakah senarai semak keselamatan pasca-pemasangan (hardening checklist) pertama yang wajib saya laksanakan pada AlmaLinux 10?"
 
 ---
@@ -26782,6 +26786,8 @@ Gunakan *prompt* berikut bersama AI (seperti ChatGPT, Claude, atau Gemini) untuk
 - [Dokumentasi Rasmi Ubuntu 26.04 LTS](https://help.ubuntu.com)
 - [Dokumentasi Rasmi AlmaLinux 10](https://wiki.almalinux.org)
 - [Dokumentasi Fedora Project](https://docs.fedoraproject.org)
+- [Dokumentasi Rasmi GNOME Desktop](https://help.gnome.org)
+- [Dokumentasi Synaptic Package Manager Guide](https://help.ubuntu.com/community/SynapticHowto)
 - [Sejarah Lengkap Linux (Wikipedia BM)](https://ms.wikipedia.org/wiki/Linux)
 - [Projek GNU dan Maksud Perisian Bebas](https://www.gnu.org/philosophy/free-sw.ms.html) — (Tersedia dalam Bahasa Melayu)
 - [DistroWatch.com](https://distrowatch.com) — Tangga & statistik distribusi Linux terkini dunia
@@ -27584,69 +27590,132 @@ systemctl status
 ---
 okf_version: 0.1
 type: knowledge-node
-title: "Pemasangan Sistem Operasi Desktop Linux"
+title: "CU01-WA04: Pemasangan OS Desktop Linux & Persekitaran Meja GNOME"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu01", "panduan-amali", "manual-linux"]
-tags: ["cu01", "linux", "noss", "amali", "standard-malaysia"]
-description: "Prosedur pemasangan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10 dengan penyulitan LUKS2."
+topics: ["noss-linux", "cu01", "wa04", "gnome", "nautilus", "applet", "workspace", "luks2"]
+tags: ["cu01", "wa04", "gnome", "nautilus", "applet", "workspace", "ubuntu", "almalinux", "fedora", "luks2"]
+description: "Panduan amali NOSS CU01-WA04 bagi pemasangan OS desktop Linux (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan pengendalian Persekitaran Meja GNOME (Pengurus Fail Nautilus, aplet panel, penukar ruang kerja, dan penyesuaian desktop)."
 resource: "file:///manual/cu01/cu01-wa04-pemasangan-os-desktop-linux.md"
 ---
 
-# Pemasangan Sistem Operasi Desktop Linux
+# CU01-WA04: Pemasangan OS Desktop Linux & Persekitaran Meja GNOME
 
 ## 🎯 Objektif Pembelajaran
-Prosedur pemasangan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10 dengan penyulitan LUKS2.
 
-> [!NOTE]
-> Modul ini adalah sebahagian daripada manual teknikal **Linux for NOSS Malaysia (Tahap 3)** bagi unit kompetensi **CU01**.
+Menguasai prosedur amali pemasangan sistem operasi Linux desktop, penyulitan cakera LUKS2, serta navigasi dan penyesuaian **Persekitaran Meja GNOME (GNOME 48 pada Ubuntu 26.04 LTS / GNOME 47 pada AlmaLinux 10)** mengikut piawaian **NOSS Tahap 3 (CU01-WA04)**.
+
+Setelah menyempurnakan modul ini, pelatih akan dapat:
+
+1. Melaksanakan pemasangan OS desktop Linux (**Ubuntu 26.04 LTS "Resolute Raccoon"**, **AlmaLinux 10 "Purple Lion"**, dan **Fedora 43**) berserta penyulitan penuh cakera LUKS2.
+2. Mengendalikan komponen teras Persekitaran Meja GNOME: **Pengurus Fail Nautilus**, Panel Top/Dash, Aplet Sistem, dan Penukar Ruang Kerja (*Workspace Switcher*).
+3. Melaksanakan pengurusan fail moden di Nautilus: Navigasi paparan pepohon (*tree view*), kawalan gambaran kecil (*thumbnails*), carian fail, serta operasi heret-dan-lepas (*drag-and-drop*).
+4. Menyelaraskan tetapan desktop GNOME (paparan, latar belakang, pintasan papan kekunci, dan sambungan rangkaian) mengikut garis panduan kelestarian dan keselamatan Jabatan Digital Negara (JDN) / MAMPU.
 
 ---
 
-## 🛠️ Garis Panduan Amali & Prosedur
+## 🛠️ Garis Panduan Amali & Prosedur Kerja
 
-### 1. Keperluan Awal & Pra-Syarat
-- Persekitaran rujukan rasmi: **Ubuntu 26.04 LTS "Resolute Raccoon"**, **Fedora 43**, atau **AlmaLinux 10 "Purple Lion"**.
-- Hak akses pentadbir (`sudo`).
-- Dokumentasi dan rekod inventori yang teratur.
+### 1. Pemasangan OS Desktop Linux & Penyulitan Cakera LUKS2
 
-### 2. Langkah-Langkah Operasi
-1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
-2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
-3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+#### A. Prosedur Pemasangan Ubuntu 26.04 LTS & AlmaLinux 10
+- **Ubuntu 26.04 LTS "Resolute Raccoon"**: Gunakan pemasang Subiquity dengan mod penyulitan TPM-backed FDE atau penyulitan manual LUKS2.
+- **AlmaLinux 10 "Purple Lion"**: Pilih kumpulan pakej *Workstation* (GNOME Desktop) dalam pemasang Anaconda dan aktifkan penyulitan LUKS2.
 
+#### B. Pengurusan Penyulitan LUKS2 Manual & Slot Kunci Multi-Pengguna
 ```bash
-# Contoh arahan verifikasi status sistem
-uname -r
-systemctl status
+# Semak status penyulitan LUKS2 pada partition cakera
+sudo cryptsetup luksDump /dev/nvme0n1p3
+
+# Tambah kunci pemulihan pentadbir IT ke slot kunci 1
+sudo cryptsetup luksAddKey /dev/nvme0n1p3
 ```
 
 ---
 
+### 2. Pengendalian Persekitaran Meja GNOME (GNOME 48 / 47)
+
+GNOME menyediakan persekitaran grafik berasaskan Wayland / X11 yang fleksibel untuk kegunaan pengkomputeran pejabat dan enterprise.
+
+#### A. Komponen Utama Meja Kerja GNOME
+- **Panel Atas (Top Bar / Panel)**: Menampilkan menu *Activities* (Aktiviti), jam/kalendar, status rangkaian, kelantangan suara, dan menu kawalan sesi (Log Out, Lock, Power Off).
+- **Penukar Ruang Kerja (Workspace Switcher)**: Membenarkan pengasingan tetingkap aplikasi ke dalam pelbagai meja kerja maya. Pintasan papan kekunci: `Ctrl + Alt + [Panah Atas/Bawah]` atau `Super + PageUp/PageDown`.
+- **Aplet Panel & Pelancar (Panel Applets & Launchers)**: Aplet pemberitahuan (seperti pengemas kini perisian, status VPN, kawalan media) yang berjalan di panel untuk pemantauan terus.
+
+#### B. Pengurus Fail Nautilus (GNOME Files)
+
+Nautilus merupakan shell pengurusan fail visual bersepadu di bawah GNOME:
+
+1. **Pengeluaran & Navigasi**:
+   - Membuka Nautilus: Klik ikon *Files* pada panel/dock atau tekan `Super` lalu taip `Nautilus`.
+   - Mod Paparan: Paparan Ikon, Paparan Senarai (*List View*), dan Paparan Pepohon (*Tree View* - muat turun navigasi hierarki).
+2. **Ciri Gambaran Kecil (Thumbnails)**:
+   - Paparan gambaran kecil automatik untuk imej dan dokumen teks.
+   - Penyesuaian prestasi: Dalam Tetapan Nautilus (*Preferences* ➔ *Performance*), tetapkan penciptaan thumbnail kepada *Local Files Only* atau *Never* bagi mengoptimumkan kelajuan pemprosesan cakera pada sistem enterprise.
+3. **Operasi Salin & Pindah (Drag-and-Drop / Cut-Copy-Paste)**:
+   - Gunakan tetikus untuk mengheret fail dari satu lokasi ke lokasi lain. Pegang kekunci `Ctrl` semasa mengheret untuk menyalin fail.
+   - Pintasan: `Ctrl + C` (Salin), `Ctrl + X` (Potong), `Ctrl + V` (Tampal), `Ctrl + N` (Buka Tetingkap Nautilus Baharu).
+
+```bash
+# Membuka Pengurus Fail Nautilus dari terminal
+nautilus ~
+
+# Membuka Nautilus sebagai pentadbir (jika disokong melalui admin://)
+nautilus admin:///etc/
+```
+
+#### C. Penyesuaian Tetapan GNOME & Tetapan Sistem (`gnome-control-center` / `gsettings`)
+
+```bash
+# Membuka Pusat Kawalan Tetapan GNOME GUI
+gnome-control-center
+
+# Penyesuaian gsettings melalui CLI CLI (contoh: aktifkan nombor baris atau tema gelap)
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+```
+
+---
+
+## 🔒 Pematuhan Keselamatan JDN / MAMPU & ISO/IEC 27001
+
+1. **Kunci Skrin Automatik (Screen Lockout):** Tetapkan pengunci skrin automatik selepas 5 minit tidak aktif menerusi *Settings* ➔ *Privacy & Security* ➔ *Screen Lock*.
+2. **Pengasingan Akaun Pengguna (Unprivileged User):** Elakkan daripada menjalankan sesi grafik GNOME terus sebagai pengguna `root`. Sentiasa log masuk sebagai pengguna biasa dan gunakan `sudo` bagi tugas pentadbiran.
+3. **Log Keluar & Penutupan Selamat:** Pengguna wajarkan menggunakan fungsi *Log Out* atau *Power Off* menerusi menu sistem GNOME sebelum meninggalkan stesen kerja pejabat.
+
+---
+
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
-- [ ] Memahami teori dan konsep asas yang terlibat.
-- [ ] Berjaya melaksanakan prosedur kerja secara amali tanpa ralat.
-- [ ] Menyediakan rekod verifikasi atau dokumentasi penyerahan tugas.
+
+- [ ] Berjaya melaksanakan pemasangan OS desktop Linux berserta penyulitan LUKS2.
+- [ ] Berjaya mengendalikan persekitaran GNOME (menu Aktiviti, Aplet Panel, dan Penukar Ruang Kerja).
+- [ ] Berjaya menguruskan fail menggunakan Nautilus (paparan senarai/pepohon, thumbnail, heret-dan-lepas).
+- [ ] Berjaya menyesuaikan tetapan GNOME menggunakan `gnome-control-center` dan `gsettings`.
+- [ ] Mengaktifkan fungsi kunci skrin automatik demi keselamatan maklumat pejabat.
 
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
-1. *"Jelaskan langkah-langkah diagnostik keselamatan lanjut bagi modul Pemasangan Sistem Operasi Desktop Linux dalam persekitaran Linux perusahaan."*
-2. *"Bagaimanakah cara mengautomasikan konfigurasi Pemasangan Sistem Operasi Desktop Linux menggunakan Ansible Playbook?"*
-3. *"Berikan senarai semak pengerasan (hardening checklist) untuk perkhidmatan yang berkaitan dengan topik ini."*
+
+1. *"Bagaimanakah cara mengkonfigurasi gsettings dalam skrip Bash untuk menetapkan kertas dinding dan kunci skrin secara automatik bagi semua pengguna GNOME di pejabat?"*
+2. *"Bandingkan kelebihan kecekapan ruang kerja (workspaces) GNOME 48 berbanding tetingkap aplikasi bertindih dari sudut produktiviti pentadbir sistem."*
+3. *"Apakah langkah-langkah untuk menyematkan pelancar aplikasi tersuai (.desktop file) pada panel Dash GNOME?"*
 
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
-- [Dokumentasi Rasmi Ubuntu](https://ubuntu.com/server/docs)
-- [Dokumentasi AlmaLinux Wiki](https://wiki.almalinux.org/)
-- [Panduan Pentadbiran Fedora](https://docs.fedoraproject.org/)
+
+- [Dokumentasi Rasmi GNOME Desktop](https://help.gnome.org/)
+- [Panduan Pengguna Pengurus Fail Nautilus](https://wiki.gnome.org/Apps/Nautilus)
+- [Dokumentasi Ubuntu Desktop 26.04 LTS](https://help.ubuntu.com/community/GraphicalUserInterface)
+- [AlmaLinux Workstation Desktop Guide](https://wiki.almalinux.org/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
-- **Linux Administration Handbook (Edisi Terkini)** oleh Evi Nemeth et al.
-- **The Linux Command Line** oleh William Shotts.
-- **Panduan Praktikal Pentadbiran Sistem Linux** oleh Harisfazillah Jamel.
+
+- **GNOME Desktop Administration Guide** oleh GNOME Documentation Team.
+- **The Linux Command Line, 2nd Edition** oleh William Shotts.
+- **Nota Pentadbiran Sistem & Desktop Linux Malaysia** oleh Harisfazillah Jamel.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*  
@@ -27662,9 +27731,9 @@ okf_version: 0.1
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc"]
-tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc"]
-description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian (APT, DNF, Flatpak, Snap), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
+topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
+tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
+description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
 resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md"
 ---
 
@@ -27672,25 +27741,27 @@ resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.
 
 ## 🎯 Objektif Pembelajaran
 
-Menguasai prosedur amali pengurusan aplikasi, pakej perisian, penyesuaian persekitaran shell, serta pemasangan dan konfigurasi pemacu peranti (*device drivers*) pada sistem operasi Linux desktop mengikut piawaian **NOSS Tahap 3 (CU01-WA05)**.
+Menguasai prosedur amali pengurusan aplikasi, pakej perisian CLI & GUI, penyesuaian persekitaran shell, serta pemasangan dan konfigurasi pemacu peranti (*device drivers*) pada sistem operasi Linux desktop mengikut piawaian **NOSS Tahap 3 (CU01-WA05)**.
 
 Setelah menyempurnakan modul ini, pelajar akan dapat:
 
 1. Menguruskan repositori dan pakej perisian menggunakan pengurus pakej asli (**APT** pada Ubuntu 26.04 LTS, **DNF5** pada AlmaLinux 10 dan Fedora 43).
-2. Memasang dan menguruskan aplikasi berasaskan kontena universal (**Flatpak** dan **Snap**).
-3. Menguruskan pemboleh ubah persekitaran shell pengguna dan sistem (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
-4. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).
-5. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (*GPG key verification*).
+2. Memasang dan menguruskan perisian melalui antara muka grafik GUI (**GNOME Software**, **Synaptic Package Manager**, **PackageKit**).
+3. Memasang dan menguruskan aplikasi berasaskan kontena universal (**Flatpak** dan **Snap**).
+4. Melaksanakan pengompilan manual perisian daripada arkib kod sumber Tarball (`.tar.gz` / `.tar.zst` via `./configure`, `make`, `sudo make install`).
+5. Menguruskan pemboleh ubah persekitaran shell pengguna dan sistem (`$EDITOR`, `$VISUAL`, `/etc/environment`, `~/.bashrc`).
+6. Mengesan, memasang, dan mengesahkan pemacu peranti proprietari dan terbuka (GPU NVIDIA, AMD Radeon, serta kad peranti rangkaian tanpa wayar).
+7. Mematuhi garis panduan keselamatan Jabatan Digital Negara (JDN) / MAMPU dan ISO/IEC 27001 mengenai integriti perisian dan tandatangan digital (*GPG key verification*).
 
 ---
 
 ## 🛠️ Garis Panduan Amali & Prosedur Kerja
 
-### 1. Pengurusan Pakej Asli (APT & DNF5)
+### 1. Pengurusan Pakej Asli & Antara Muka GUI (APT, DNF5, Synaptic, GNOME Software)
 
 #### A. Debian/Ubuntu (APT - Advanced Package Tool)
 
-Pada **Ubuntu 26.04 LTS "Resolute Raccoon"**, pengurusan pakej dilakukan menggunakan arahan `apt`:
+Pada **Ubuntu 26.04 LTS "Resolute Raccoon"**, pengurusan pakej CLI dilakukan menggunakan arahan `apt`:
 
 ```bash
 # 1. Kemas kini indeks repositori dan senaraikan pakej yang boleh dinaik taraf
@@ -27708,9 +27779,27 @@ sudo apt purge -y vlc
 sudo apt autoremove -y
 ```
 
-#### B. Red Hat/AlmaLinux/Fedora (DNF5 / DNF)
+#### B. Pengurusan Pakej Grafik GUI (GNOME Software & Synaptic Package Manager)
 
-Pada **AlmaLinux 10 "Purple Lion"** dan **Fedora 43**, pengurus pakej generasi baharu **DNF5** digunakan:
+Bagi pengguna desktop pejabat dan TVET, pengurusan pakej grafik menyediakan kaedah carian dan pemasangan perisian secara visual:
+
+1. **GNOME Software (`gnome-software`)**:
+   - Pusat perisian bersepadu yang menyokong pakej APT/RPM, Flatpak, dan Snap.
+   - Pelancaran CLI: `gnome-software &`
+2. **Synaptic Package Manager (`synaptic`)**:
+   - Pengurus pakej GUI aras tinggi berasaskan APT. Synaptic membolehkan penapisan pakej mengikut status, kategori, atau repositori, pengurusan punca pangkalan data (`/etc/apt/sources.list`), serta semakan kebergantungan pakej secara visual.
+   - Pemasangan Synaptic melalui APT:
+     ```bash
+     sudo apt update && sudo apt install -y synaptic
+     ```
+   - Pelancaran Synaptic: Menu Utama ➔ System Settings ➔ Synaptic Package Manager, atau melalui terminal:
+     ```bash
+     sudo synaptic &
+     ```
+
+#### C. Red Hat/AlmaLinux/Fedora (DNF5 / DNF & PackageKit)
+
+Pada **AlmaLinux 10 "Purple Lion"** dan **Fedora 43**, pengurus pakej generasi baharu **DNF5** digunakan bersama alatan GUI berasaskan **PackageKit** / GNOME Software:
 
 ```bash
 # 1. Semak kemas kini pakej dan naik taraf sistem
@@ -27726,7 +27815,7 @@ sudo dnf install -y epel-release
 sudo dnf config-manager --enable epel
 ```
 
-#### C. Pengurusan Pakej RPM & Kompilasi Kod Sumber (Red Hat Package Manager & Tarball)
+#### D. Pengurusan Pakej RPM & Kompilasi Kod Sumber Tarball (`.tar.gz` / `.tar.zst`)
 
 Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu menguasai utiliti asas `rpm` dan kaedah pengompilan perisian daripada kod sumber:
 
@@ -27802,8 +27891,8 @@ Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu me
    gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256
    sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256 || exit 1
 
-   # 2. Ekstrak arkib kod sumber
-   tar -xvf sampel-aplikasi-1.0.tar.gz
+   # 2. Ekstrak arkib kod sumber tarball
+   tar -zxvf sampel-aplikasi-1.0.tar.gz
    cd sampel-aplikasi-1.0
 
    # 3. Semak dokumen README/INSTALL untuk mengenal pasti sistem binaan
@@ -27970,6 +28059,8 @@ sudo apt install -y linux-firmware                   # Ubuntu
 ## 📋 Senarai Semak Kompetensi (Competency Checklist)
 
 - [ ] Berjaya mengemaskini repositori dan menaik taraf pakej sistem menggunakan APT dan DNF.
+- [ ] Berjaya memasang dan mengendalikan pakej perisian menggunakan antara muka grafik (GNOME Software & Synaptic).
+- [ ] Berjaya mengompil perisian daripada arkib kod sumber Tarball (`.tar.gz` - `./configure`, `make`, `make install`).
 - [ ] Berjaya memasang aplikasi desktop menerusi Flatpak/Snap.
 - [ ] Berjaya menetapkan pemboleh ubah persekitaran `$EDITOR` dan `$VISUAL` dalam `~/.bashrc` dan `/etc/environment`.
 - [ ] Berjaya mengenal pasti cip grafik dan kad Wi-Fi menggunakan `lspci` serta memasang pemacu peranti berkaitan.
@@ -27988,6 +28079,7 @@ sudo apt install -y linux-firmware                   # Ubuntu
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
 
 - [Dokumentasi Pengurusan Pakej Ubuntu](https://ubuntu.com/server/docs/package-management)
+- [Dokumentasi Synaptic Package Manager Guide](https://help.ubuntu.com/community/SynapticHowto)
 - [Dokumentasi Rasmi DNF5 Fedora / AlmaLinux](https://dnf5.readthedocs.io/)
 - [Panduan Pengurusan Flathub](https://flathub.org/)
 - [Garis Panduan Keselamatan Perisian MAMPU / JDN](https://www.jdn.gov.my/)
@@ -35734,18 +35826,16 @@ type: procedural_skill
 ---
 okf_version: 0.1
 name: cu01-wa04-install-computer-desktop-operating-systems
-description: Kemahiran amali pemasangan sistem operasi Linux desktop — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10.
-topics: [noss, cu01, wa04, linux-install, ubuntu, fedora, almalinux]
-tags: [linux, pemasangan, desktop, ubuntu, almalinux, fedora, cu01, wa04]
+description: Kemahiran amali pemasangan sistem operasi Linux desktop & persekitaran Meja GNOME (Nautilus, applet, workspace switcher) — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10.
+topics: [noss, cu01, wa04, linux-install, gnome, nautilus, applet, workspace, ubuntu, fedora, almalinux]
+tags: [linux, pemasangan, desktop, gnome, nautilus, applet, workspace, ubuntu, almalinux, fedora, cu01, wa04]
 type: procedural_skill
 ---
 
-# CU01-WA04: Pemasangan Sistem Operasi Linux Desktop
+# CU01-WA04: Pemasangan Sistem Operasi Linux Desktop & Persekitaran Meja GNOME
 
 ## Tujuan Kemahiran
-Kemahiran ini melengkapkan pelajar dengan prosedur pemasangan sistem operasi Linux desktop secara lengkap — daripada menyediakan media pemasangan hinggalah sistem siap digunakan sepenuhnya.
-
-> **💡 Pemikiran Ke Belakang:** Matlamat akhir = sistem Linux fungsional untuk pengguna. Langkah terakhir = log masuk pertama. Maka kita mula dari pembinaan media USB → konfigurasi BIOS/UEFI → partition → pemasangan → but pertama.
+Kemahiran ini melengkapkan pelajar dengan prosedur pemasangan sistem operasi Linux desktop secara lengkap — daripada menyediakan media pemasangan, penyulitan LUKS2, hinggalah pengoperasian Persekitaran Meja GNOME (Pengurus Fail Nautilus, aplet panel, penukar ruang kerja, dan penyesuaian desktop).
 
 ---
 
@@ -35757,417 +35847,50 @@ Kemahiran ini melengkapkan pelajar dengan prosedur pemasangan sistem operasi Lin
 
 ---
 
-## Prosedur Pemasangan
+## Prosedur Pemasangan & Pentadbiran GNOME Desktop
 
-### Fasa 1: Penyediaan Media Pemasangan
+### 1. Penyediaan Media Pemasangan & Boot
+- **Ubuntu 26.04 LTS "Resolute Raccoon"** (GNOME 48, Kernel 6.14 LTS)
+- **AlmaLinux 10 "Purple Lion"** (GNOME 47, Kernel 6.12 LTS, RHEL 10 Compatible)
+- **Fedora Workstation 43** (Bleeding-edge GNOME)
 
-**Langkah 1: Muat turun fail ISO**
 ```bash
-# Pilihan distribusi yang disyorkan:
-
-# [1] Ubuntu 26.04 LTS "Resolute Raccoon" — DISYORKAN untuk latihan & pengguna umum
-# URL: https://ubuntu.com/download/desktop
-# SHA256: semak di https://ubuntu.com/download/desktop#verify
-# Isirung: Linux 6.14 LTS | Persekitaran Meja: GNOME 48
-# Sokongan: sehingga April 2031 (5 tahun)
-
-# [2] AlmaLinux 10 "Purple Lion" (GNOME Desktop) — DISYORKAN untuk pejabat & persekitaran enterprise
-# URL: https://almalinux.org/get-almalinux/#AlmaLinux_OS_10
-# Pilih: AlmaLinux-10-latest-x86_64-dvd.iso  (DVD ISO, termasuk GNOME penuh)
-# SHA256: semak di https://repo.almalinux.org/almalinux/10/isos/x86_64/
-# Isirung: Linux 6.12 LTS (RHEL 10-stable) | Persekitaran Meja: GNOME 47
-# Sokongan: sehingga 2035 (Enterprise Long-Term)
-# Kelebihan: Serasi penuh RHEL 10 / RPM, sijil enterprise, sesuai persekitaran mixed-OS
-
-# [3] Fedora Workstation 43 — Untuk teknologi terkini & pembangun
-# URL: https://fedoraproject.org/workstation/download
-
-# [4] Linux Mint 22.1 — Paling mesra pemula
-# URL: https://linuxmint.com/download.php
-```
-
-**Langkah 2: Tulis ISO ke USB menggunakan Balena Etcher**
-```
-1. Muat turun Balena Etcher dari https://etcher.balena.io
-2. Buka Etcher
-3. Pilih "Flash from file" → pilih fail .iso
-4. Pilih "Select target" → pilih pemacu USB anda
-5. Klik "Flash!" dan tunggu sehingga selesai
-```
-
-**Alternatif CLI (Linux/macOS):**
-```bash
-# Gantikan /dev/sdX dengan pemacu USB anda (semak dengan lsblk)
+# Tulis ISO ke USB (CLI):
 sudo dd if=ubuntu-26.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress sync
 ```
 
----
-
-### Fasa 2: Konfigurasi BIOS/UEFI
-
-**Langkah 3: Boot dari USB**
-```
-1. Masukkan USB ke komputer
-2. Hidupkan semula dan tekan kekunci BIOS:
-   - Dell: F2 atau F12
-   - HP: F9 atau F10
-   - Lenovo: F1 atau F12
-   - ASUS: F2 atau Del
-   - Acer: F2 atau Del
-3. Dalam menu BIOS/UEFI:
-   - Lumpuhkan Secure Boot (jika perlu)
-   - Tetapkan urutan but: USB dahulu
-4. Simpan dan keluar (F10)
-```
-
----
-
-### Fasa 3: Pemasangan Ubuntu 26.04 LTS "Resolute Raccoon"
-
-**Langkah 4: Mulakan pemasangan**
-```
-1. Pilih "Try or Install Ubuntu 26.04 LTS"
-2. Pilih bahasa: Bahasa Melayu (atau English)
-3. Pilih "Install Ubuntu"
-4. Sambungan WiFi (jika tersedia)
-5. Jenis pemasangan:
-   - ☑ Normal installation
-   - ☑ Download updates while installing
-   - ☑ Install third-party software (penting untuk pemacu!)
-
-Nota Ubuntu 26.04 LTS (Resolute Raccoon):
-  - Antara muka pemasang: Subiquity (versi terkini, lebih pantas)
-  - Sokongan TPM-based Full Disk Encryption diaktifkan secara lalai
-  - GNOME 48 dengan Wallpaper AI Generatif (opsional)
-  - Snap Firefox dan beberapa aplikasi teras sudah pra-pasang
-```
-
-**Langkah 5: Penyulitan Cakera Penuh (Full Disk Encryption) — WAJIB Untuk Pejabat**
-
-> **🔐 Dasar Keselamatan Pejabat:** Semua komputer pejabat yang menyimpan data kerajaan atau korporat MESTI menggunakan penyulitan cakera penuh (Full Disk Encryption / FDE) bagi mematuhi standard **ISO/IEC 27001** dan **Pekeliling Am Bil. 3 Tahun 2000 (MAMPU)**. Sekiranya komputer dicuri atau hilang, data tidak boleh diakses tanpa kata laluan penyulitan.
-
----
-
-#### 5A. Kaedah GUI — Pilihan Pemasang Ubuntu (Paling Mudah)
-
-Ubuntu 26.04 LTS menawarkan dua pilihan penyulitan melalui antara muka grafik pemasang:
-
-**Pilihan 1: TPM-backed Encryption (Baharu di Ubuntu 26.04)**
-```
-→ Pilih "Erase disk and install Ubuntu"
-→ Klik pilihan: "Advanced features..."
-→ Pilih: ☑ "Use TPM-backed Full Disk Encryption" (DIUTAMAKAN untuk pejabat)
-
-Kelebihan:
-  ✅ Penyulitan diurus secara automatik melalui cip TPM 2.0
-  ✅ Pengguna tidak perlu ingat frasa laluan (passphrase) tambahan
-  ✅ Boot automatik jika cip TPM hadir dan sistem tidak diusik
-  ✅ Selamat terhadap kecurian fizik
-
-Prasyarat:
-  - Komputer mesti mempunyai cip TPM 2.0 (hampir semua komputer pejabat 2020+)
-  - UEFI Secure Boot mestilah aktif
-```
-
-**Pilihan 2: LUKS dengan Frasa Laluan Manual (Paling Selamat, Disyorkan untuk Data Sangat Sensitif)**
-```
-→ Pilih "Erase disk and install Ubuntu"
-→ Klik: "Advanced features..."
-→ Pilih: ☑ "Use LVM with the new Ubuntu installation"
-→ TANDAKAN: ☑ "Encrypt the new Ubuntu installation for security"
-→ Masukkan Kunci Keselamatan (Security key / LUKS passphrase):
-  - Minimum 20 aksara
-  - Gabungkan huruf besar, kecil, nombor, dan simbol khas
-  - CONTOH FORMAT: PejabatKL-2026!Selamat#Linux
-→ ☑ "Overwrite empty disk space" (untuk data yang padam tidak boleh dipulihkan)
-```
-
----
-
-#### 5B. Kaedah Manual LUKS — Partition Tersuai (Pentadbir Sistem Mahir)
-
-Kaedah ini memberikan kawalan penuh dan fleksibiliti untuk senario penyebaran besar (mass deployment) di pejabat.
-
-**Struktur partition yang disyorkan untuk desktop pejabat:**
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                    CAKERA FIZIKAL (SSD/HDD)                       │
-├─────────┬──────────────────────────────────────────────────────────┤
-│ 1 GB    │ /boot/efi  → EFI (TIDAK disulitkan — diperlukan untuk but)│
-│ 1 GB    │ /boot      → ext4 (TIDAK disulitkan — kernel & initrd)    │
-│ Baki    │ LUKS Container (DISULITKAN sepenuhnya)                   │
-│         │   ├── LVM Volume Group                                   │
-│         │   │     ├── 60 GB → / (root) — ext4                     │
-│         │   │     ├── 2×RAM → swap (tersulit dalam LUKS)           │
-│         │   │     └── Baki  → /home — ext4                        │
-└─────────┴──────────────────────────────────────────────────────────┘
-```
-
-**Arahan terminal untuk setup LUKS manual:**
+### 2. Penyulitan Full Disk Encryption (LUKS2) Manual
 ```bash
-# ⚠️ AMARAN: Arahan berikut akan MEMADAMKAN semua data di cakera!
-# Gantikan /dev/nvme0n1 dengan nama cakera anda (semak dengan: lsblk)
-
-# 1. Buat partition menggunakan gdisk
-sudo gdisk /dev/nvme0n1
-
-# 2. Format dan aktifkan LUKS pada partition data utama
-sudo cryptsetup luksFormat --type luks2 \
-    --cipher aes-xts-plain64 \
-    --key-size 512 \
-    --hash sha512 \
-    --iter-time 5000 \
-    /dev/nvme0n1p3
-
-# 3. Buka kontena LUKS
+# Aktifkan LUKS2 pada partition sasaran
+sudo cryptsetup luksFormat --type luks2 /dev/nvme0n1p3
 sudo cryptsetup luksOpen /dev/nvme0n1p3 pejabat-disk
 
-# 4. Buat LVM di dalam kontena LUKS
-sudo pvcreate /dev/mapper/pejabat-disk
-sudo vgcreate vg-pejabat /dev/mapper/pejabat-disk
-sudo lvcreate -L 60G -n lv-root vg-pejabat
-sudo lvcreate -L 8G  -n lv-swap vg-pejabat
-sudo lvcreate -l 100%FREE -n lv-home vg-pejabat
-
-# 5. Format partition logik
-sudo mkfs.ext4 /dev/vg-pejabat/lv-root
-sudo mkfs.ext4 /dev/vg-pejabat/lv-home
-sudo mkswap /dev/vg-pejabat/lv-swap
-```
-
----
-
-#### 5C. Penambahan Kunci Penyulitan untuk Pengguna Lain (Multi-User LUKS)
-
-LUKS2 menyokong sehingga **32 slot kunci** — sesuai untuk persekitaran pejabat di mana lebih dari satu pentadbir perlu akses pemulihan.
-
-```bash
-# Lihat slot kunci sedia ada
-sudo cryptsetup luksDump /dev/nvme0n1p3
-
-# Tambah kunci pemulihan untuk Pentadbir IT (slot 1)
+# Penambahan slot kunci pemulihan pentadbir IT
 sudo cryptsetup luksAddKey /dev/nvme0n1p3
-# (masukkan kunci sedia ada dahulu, kemudian kunci baharu pentadbir)
-
-# Tambah fail kunci (keyfile) untuk pengguna tertentu — slot 2
-sudo dd if=/dev/urandom bs=512 count=4 of=/root/keyfile-it.bin
-sudo chmod 400 /root/keyfile-it.bin
-sudo cryptsetup luksAddKey /dev/nvme0n1p3 /root/keyfile-it.bin
-
-# Senarai semua slot kunci aktif
-sudo cryptsetup luksDump /dev/nvme0n1p3 | grep ENABLED
-
-# Cabut slot kunci jika pekerja berhenti (slot 2 sebagai contoh)
-sudo cryptsetup luksKillSlot /dev/nvme0n1p3 2
 ```
 
-> **⚠️ AMARAN PENTING:** Simpan sekurang-kurangnya satu kunci pemulihan (recovery key) dalam peti besi fizikal atau pengurus kata laluan berpusat seperti **Vault (HashiCorp)** atau **Bitwarden Enterprise**. Sekiranya semua kunci hilang, data TIDAK BOLEH dipulihkan.
+### 3. Pengendalian Persekitaran Meja GNOME & Nautilus File Manager
+- **Aplet Panel & Workspace Switcher**: Navigasi tetingkap berbilang meja kerja maya (`Ctrl+Alt+[Up/Down]`).
+- **Pengurus Fail Nautilus (`nautilus`)**:
+  - Pelancaran dari CLI: `nautilus ~ &`
+  - Mod paparan pepohon (*tree view*), kawalan prestasi gambaran kecil (*thumbnails*), dan operasi heret-dan-lepas (*drag-and-drop*).
+- **Pusat Kawalan Tetapan GNOME**:
+  ```bash
+  gnome-control-center
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  ```
 
 ---
 
-**Langkah 6: Maklumat pengguna**
-```
-- Nama anda: [Nama Penuh]
-- Nama komputer: [hostname-pejabat-ringkas]  # cth: ws-it-001-kl
-- Nama pengguna: [pengguna-kecil-tanpa-spasi] # cth: ali.hassan
-- Kata laluan: [minimum 16 aksara untuk akaun pejabat]
-- ☑ Require password to log in
-- ☑ Use Active Directory (jika domain pejabat tersedia)
+## Pengesahan Kejayaan
+
+```bash
+echo "=== Versi Sistem & Kernel ===" && hostnamectl && uname -r
+echo "=== Status LUKS ===" && lsblk -o NAME,FSTYPE | grep -i crypt
 ```
 
 ---
-
-### Fasa 4: Selepas Pemasangan
-
-**Langkah 7: Kemas kini sistem (kewajiban)**
-```bash
-# Kemas kini semua pakej
-sudo apt update && sudo apt upgrade -y
-
-# Pasang alatan asas
-sudo apt install -y \
-    curl wget git vim \
-    htop neofetch tree \
-    build-essential
-
-# Semak versi isirung
-uname -r
-
-# Semak maklumat sistem
-neofetch
-```
-
-**Langkah 8: Konfigurasi bahasa Melayu (opsional)**
-```bash
-# Pasang sokongan bahasa Melayu
-sudo apt install -y language-pack-ms language-pack-ms-base
-
-# Kemaskini setempat (locale)
-sudo update-locale LANG=ms_MY.UTF-8
-```
-
----
-
-### Fasa 5: Pemasangan AlmaLinux 10 "Purple Lion" Desktop (Pejabat & Enterprise)
-
-> **🏢 Konteks Penggunaan:** AlmaLinux 10 desktop sesuai untuk persekitaran pejabat yang memerlukan keserasian dengan ekosistem Red Hat Enterprise Linux (RHEL 10), pengurusan pakej `dnf`/`rpm`, atau penggunaan perisian enterprise seperti IBM, Oracle, dan SAP yang diperakui pada platform RHEL-compatible.
-
-**Ciri Khusus AlmaLinux 10 "Purple Lion" Desktop:**
-```
-✅ Serasi binari 1:1 dengan RHEL 10 (tanpa perlu langganan berbayar)
-✅ Sokongan sehingga 2035 (lebih panjang dari AlmaLinux 9)
-✅ SELinux diaktifkan secara lalai (keselamatan peringkat enterprise)
-✅ Isirung 6.12 LTS — sokongan perkakasan terkini (PCIe 6, NVMe 2.0, GPU AI)
-✅ Pengurus pakej DNF5 (lebih pantas dari DNF4 pada AlmaLinux 9)
-✅ GNOME 47 dengan antara muka moden
-✅ FIPS 140-3 compliance untuk agensi kerajaan
-✅ Sokongan Rust-based kernel modules (keselamatan memori)
-```
-
-**Langkah A: Pemasangan melalui pemasang Anaconda (GUI)**
-```
-1. But dari USB → Pilih "Install AlmaLinux 10"
-2. Pilih bahasa: English (United States) atau Malay
-3. Dalam "Installation Summary":
-
-   📦 SOFTWARE SELECTION:
-   → Pilih: "Workstation" (atau "Custom Operating System" untuk minimal)
-   → Tambahan: ☑ "GNOME Applications"
-                ☑ "Office Suite and Productivity"
-                ☑ "Development Tools" (jika diperlukan)
-
-   💾 INSTALLATION DESTINATION:
-   → Pilih cakera sasaran
-   → "Storage Configuration": Custom
-   → ☑ "Encrypt my data" (LUKS — WAJIB untuk pejabat)
-   → Masukkan frasa laluan LUKS (minimum 20 aksara)
-
-   🌐 NETWORK & HOSTNAME:
-   → Tetapkan hostname: ws-alma-[nombor]-[lokasi]  # cth: ws-alma-001-kl
-   → Aktifkan sambungan rangkaian
-
-4. Klik "Begin Installation"
-5. Tetapkan kata laluan root dan buat akaun pengguna pejabat
-```
-
-**Langkah B: Konfigurasi Selepas Pemasangan AlmaLinux 10**
-```bash
-# Kemas kini sistem
-sudo dnf update -y
-
-# DNF5 digunakan secara lalai pada AlmaLinux 10
-# (sintaks arahan kekal sama, tetapi prestasi lebih pantas)
-
-# Aktifkan repositori EPEL 10 (Extra Packages for Enterprise Linux)
-sudo dnf install -y epel-release
-sudo dnf update -y
-
-# Pasang alatan pejabat asas
-sudo dnf install -y \
-    libreoffice \
-    thunderbird \
-    firefox \
-    vlc \
-    htop \
-    neofetch \
-    git curl wget
-
-# Aktifkan Flatpak (untuk aplikasi yang tidak ada dalam repo)
-sudo dnf install -y flatpak
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-# Semak status SELinux (seharusnya "enforcing" untuk pejabat)
-getenforce
-sudo sestatus
-```
-
-**Langkah C: Penyulitan LUKS pada AlmaLinux (Jika Tiada Semasa Pasang)**
-```bash
-# Semak sama ada penyulitan sudah aktif
-lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT
-sudo dmsetup status
-
-# Semak maklumat LUKS pada partition (gantikan sda3 dengan partition anda)
-sudo cryptsetup luksDump /dev/sda3
-
-# Tambah kunci pemulihan untuk Pentadbir IT (multi-user slot)
-sudo cryptsetup luksAddKey /dev/sda3
-# Masukkan kunci sedia ada → masukkan kunci pentadbir baharu
-
-# Semak semua slot kunci aktif
-sudo cryptsetup luksDump /dev/sda3 | grep -A2 'Keyslot'
-```
-
-**Langkah D: Konfigurasi Bahasa Melayu pada AlmaLinux**
-```bash
-# Pasang sokongan locale Melayu
-sudo dnf install -y glibc-langpack-ms
-
-# Semak locale tersedia
-locale -a | grep ms
-
-# Tetapkan locale sistem ke Bahasa Melayu Malaysia
-sudo localectl set-locale LANG=ms_MY.UTF-8
-sudo localectl set-keymap ms  # papan kekunci standard Malaysia
-
-# Sahkan perubahan
-localectl status
-```
-
-**Langkah E: Senarai Semak Pengesahan AlmaLinux Desktop**
-```bash
-# Pengesahan lengkap selepas pemasangan
-echo "=== Maklumat Sistem ==="     && hostnamectl
-echo "=== Versi Isirung ==="       && uname -r
-echo "=== Versi AlmaLinux ==="     && cat /etc/almalinux-release
-echo "=== SELinux Status ==="      && getenforce
-echo "=== Status LUKS ==="         && lsblk -o NAME,FSTYPE | grep -i crypt
-echo "=== Ruang Storan ==="        && df -h /
-echo "=== Rangkaian ==="           && ip addr show
-echo "=== Repositori Aktif ==="    && sudo dnf repolist
-```
-
----
-
-## Pengesahan Kejayaan Pemasangan
-
-```bash
-# Senarai semak selepas pemasangan
-echo "=== Maklumat Sistem ==="     && hostnamectl
-echo "=== Versi Isirung ==="       && uname -r
-echo "=== Ruang Storan ==="        && df -h /
-echo "=== Memori ==="              && free -h
-echo "=== Rangkaian ==="           && ip addr show
-
-# Pengesahan LUKS (jika penyulitan diaktifkan)
-echo "=== Status Penyulitan LUKS ==="
-lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT | grep -E 'crypt|luks|dm-'
-sudo dmsetup status
-
-# Sahkan LUKS digunakan pada cakera sistem
-sudo cryptsetup status $(lsblk -o NAME,FSTYPE | grep crypto | awk '{print $1}') 2>/dev/null || \
-    echo "Semak secara manual: sudo cryptsetup luksDump /dev/<partition>"
-```
-
-Pemasangan dianggap berjaya apabila semua arahan di atas mengembalikan output yang sah.
-
----
-
-## Rujukan
-
-- [Panduan Rasmi Ubuntu 26.04 LTS](https://help.ubuntu.com)
-- [Nota Keluaran Ubuntu 26.04](https://discourse.ubuntu.com/c/release/18)
-- [Dokumentasi AlmaLinux 10](https://wiki.almalinux.org)
-- [Nota Keluaran AlmaLinux 10](https://wiki.almalinux.org/release-notes/10.0.html)
-- [Panduan Pemasangan AlmaLinux 10](https://wiki.almalinux.org/documentation/installation-guide.html)
-- [AlmaLinux EPEL 10 Setup](https://wiki.almalinux.org/repos/Extras.html)
-- [Dokumentasi Fedora 43](https://docs.fedoraproject.org)
-- [Balena Etcher](https://etcher.balena.io)
-- [Rufus (Windows)](https://rufus.ie) — Alternatif Etcher untuk Windows
-
----
-
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md -->
@@ -38002,9 +37725,9 @@ type: procedural_skill
 
 ---
 name: cu01-wa05-install-computer-applications-and-device-drivers
-description: "Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Flatpak, Snap, GPU Drivers)"
-topics: [noss, cu01, wa05, package-management, device-drivers]
-tags: [cu01, wa05, apt, dnf, flatpak, snap, nvidia, driver]
+description: "Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Synaptic, GNOME Software, Tarball compilation, Flatpak, Snap, GPU Drivers)"
+topics: [noss, cu01, wa05, package-management, synaptic, gnome-software, tarball, device-drivers]
+tags: [cu01, wa05, apt, dnf, synaptic, gnome-software, tarball, flatpak, snap, nvidia, driver]
 okf_version: 0.1
 type: skill
 ---
@@ -38015,21 +37738,21 @@ type: skill
 
 ## Overview
 
-This skill provides automated guidance and execution steps for managing Linux application packages (APT on Ubuntu 26.04 LTS "Resolute Raccoon", DNF5 on AlmaLinux 10 / Fedora 43, Flatpak, Snap) and installing proprietary device drivers (NVIDIA GPU, AMD Radeon, and wireless networking) in accordance with NOSS Level 3 standards.
+This skill provides automated guidance and execution steps for managing Linux application packages CLI & GUI (APT on Ubuntu 26.04 LTS "Resolute Raccoon", DNF5 on AlmaLinux 10 / Fedora 43, Synaptic Package Manager, GNOME Software, Flatpak, Snap, Tarball compilation) and installing proprietary device drivers (NVIDIA GPU, AMD Radeon, and wireless networking) in accordance with NOSS Level 3 standards.
 
 ## Procedure
 
-### 1. Native Package Management
+### 1. Native Package Management & GUI Package Tools
 
-- **Ubuntu 26.04 LTS "Resolute Raccoon" (APT):**
+- **Ubuntu 26.04 LTS "Resolute Raccoon" (APT & Synaptic / GNOME Software):**
 
   ```bash
   sudo apt update
   sudo apt upgrade -y
-  sudo apt install -y curl git vlc
+  sudo apt install -y curl git vlc synaptic gnome-software
   ```
 
-- **AlmaLinux 10 / Fedora 43 (DNF5):**
+- **AlmaLinux 10 / Fedora 43 (DNF5 & PackageKit):**
 
   ```bash
   sudo dnf check-upgrade || true
@@ -38037,7 +37760,7 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf install -y htop wget
   ```
 
-- **RPM Package Operations & Source Compilation:**
+- **RPM Package Operations & Source Tarball Compilation:**
 
   ```bash
   # 1. Verify GPG digital signature before installation
@@ -38055,9 +37778,8 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
-  # 4. Manual compilation from tarball (verify checksums first, inspect README/INSTALL)
-  sha256sum -c sample-app-1.0.tar.gz.sha256
-  tar -xvf sample-app-1.0.tar.gz
+  # 4. Manual compilation from tarball (.tar.gz / .tar.zst)
+  tar -zxvf sample-app-1.0.tar.gz
   cd sample-app-1.0
   cat README || cat INSTALL
   # For Autotools-based projects:
@@ -42237,7 +41959,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-24T22:36:23Z"
+timestamp: "2026-08-30T09:27:42Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -42267,8 +41989,8 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu01-wa01-prepare-computer-system-set-up`** <br> *cu01-wa01-prepare-computer-system-set-up* | No description provided. | N/A |
 | **`cu01-wa02-assemble-physical-computer-system-hardware`** <br> *cu01-wa02-assemble-physical-computer-system-hardware* | No description provided. | N/A |
 | **`cu01-wa03-assemble-laptop-hardware-components`** <br> *cu01-wa03-assemble-laptop-hardware-components* | No description provided. | N/A |
-| **`cu01-wa04-install-computer-desktop-operating-systems`** <br> *cu01-wa04-install-computer-desktop-operating-systems* | Kemahiran amali pemasangan sistem operasi Linux desktop — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10. | noss, cu01, wa04, linux-install, ubuntu, fedora, almalinux |
-| **`cu01-wa05-install-computer-applications-and-device-drivers`** <br> *cu01-wa05-install-computer-applications-and-device-drivers* | Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Flatpak, Snap, GPU Drivers) | noss, cu01, wa05, package-management, device-drivers |
+| **`cu01-wa04-install-computer-desktop-operating-systems`** <br> *cu01-wa04-install-computer-desktop-operating-systems* | Kemahiran amali pemasangan sistem operasi Linux desktop & persekitaran Meja GNOME (Nautilus, applet, workspace switcher) — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10. | noss, cu01, wa04, linux-install, gnome, nautilus, applet, workspace, ubuntu, fedora, almalinux |
+| **`cu01-wa05-install-computer-applications-and-device-drivers`** <br> *cu01-wa05-install-computer-applications-and-device-drivers* | Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Synaptic, GNOME Software, Tarball compilation, Flatpak, Snap, GPU Drivers) | noss, cu01, wa05, package-management, synaptic, gnome-software, tarball, device-drivers |
 | **`cu01-wa06-configure-endpoint-network-connectivity`** <br> *cu01-wa06-configure-endpoint-network-connectivity* | Executes NOSS Work Activity: Configure Endpoint Network Connectivity (NetworkManager, nmcli, iproute2, Static IP, DHCP, Wi-Fi, DNS) | noss, cu01, wa06, networking, networkmanager |
 | **`cu01-wa07-prepare-computer-system-installation-records`** <br> *cu01-wa07-prepare-computer-system-installation-records* | No description provided. | N/A |
 | **`cu02-wa01-identify-virtualisation-infrastructure-requirements`** <br> *cu02-wa01-identify-virtualisation-infrastructure-requirements* | Executes NOSS Work Activity: Identify Virtualisation Infrastructure & Storage Partitioning Requirements (GPT, LVM2, Filesystems) | noss, cu02, wa01, storage, virtualisation |
@@ -42377,7 +42099,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-24*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-30*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/index.md -->

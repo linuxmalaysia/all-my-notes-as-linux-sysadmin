@@ -1,8 +1,8 @@
 ---
 name: cu01-wa05-install-computer-applications-and-device-drivers
 description: "Executes NOSS Work Activity: Install Computer Applications And Device Drivers (APT, DNF5, Flatpak, Snap, GPU Drivers)"
-topics: [noss, cu01, wa05, package-management, device-drivers]
-tags: [cu01, wa05, apt, dnf, flatpak, snap, nvidia, driver]
+topics: [noss, cu01, wa05, package-management, synaptic, gnome-software, tarball, device-drivers]
+tags: [cu01, wa05, apt, dnf, synaptic, gnome-software, tarball, flatpak, snap, nvidia, driver]
 okf_version: 0.1
 type: skill
 ---
@@ -13,21 +13,21 @@ type: skill
 
 ## Overview
 
-This skill provides automated guidance and execution steps for managing Linux application packages (APT on Ubuntu 26.04 LTS "Resolute Raccoon", DNF5 on AlmaLinux 10 / Fedora 43, Flatpak, Snap) and installing proprietary device drivers (NVIDIA GPU, AMD Radeon, and wireless networking) in accordance with NOSS Level 3 standards.
+This skill provides automated guidance and execution steps for managing Linux application packages CLI & GUI (APT on Ubuntu 26.04 LTS "Resolute Raccoon", DNF5 on AlmaLinux 10 / Fedora 43, Synaptic Package Manager, GNOME Software, Flatpak, Snap, Tarball compilation) and installing proprietary device drivers (NVIDIA GPU, AMD Radeon, and wireless networking) in accordance with NOSS Level 3 standards.
 
 ## Procedure
 
-### 1. Native Package Management
+### 1. Native Package Management & GUI Package Tools
 
-- **Ubuntu 26.04 LTS "Resolute Raccoon" (APT):**
+- **Ubuntu 26.04 LTS "Resolute Raccoon" (APT & Synaptic / GNOME Software):**
 
   ```bash
   sudo apt update
   sudo apt upgrade -y
-  sudo apt install -y curl git vlc
+  sudo apt install -y curl git vlc synaptic gnome-software
   ```
 
-- **AlmaLinux 10 / Fedora 43 (DNF5):**
+- **AlmaLinux 10 / Fedora 43 (DNF5 & PackageKit):**
 
   ```bash
   sudo dnf check-upgrade || true
@@ -35,7 +35,7 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf install -y htop wget
   ```
 
-- **RPM Package Operations & Source Compilation:**
+- **RPM Package Operations & Source Tarball Compilation:**
 
   ```bash
   # 1. Verify GPG digital signature before installation
@@ -53,9 +53,8 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
-  # 4. Manual compilation from tarball (verify checksums first, inspect README/INSTALL)
-  sha256sum -c sample-app-1.0.tar.gz.sha256
-  tar -xvf sample-app-1.0.tar.gz
+  # 4. Manual compilation from tarball (.tar.gz / .tar.zst)
+  tar -zxvf sample-app-1.0.tar.gz
   cd sample-app-1.0
   cat README || cat INSTALL
   # For Autotools-based projects:
