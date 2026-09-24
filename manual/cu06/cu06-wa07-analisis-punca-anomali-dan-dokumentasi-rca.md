@@ -77,13 +77,14 @@ sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 
 ### 3. Penyuntingan Fail Konfigurasi Terminal CLI & Amalan Keselamatan
 
-Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI serta amalan keselamatan penyuntingan berhak milik `root`.
+Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI (Vim/Neovim, GNU Nano, GNU Emacs, dan Pico) serta amalan keselamatan penyuntingan berhak milik `root`.
 
-#### A. GNU Nano (Penyunting Teks Mudah & Pantas)
+#### A. Pico & GNU Nano (Penyunting Teks Mudah & Pantas)
 
-GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
+- **Latar Belakang Pico & Evolusi ke GNU Nano**:
+  Pico (*Pine Composer*) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (*GPL*) kepada Pico dengan mengekalkan semua 16 sintaks arahan utama Pico tetapi menambah ciri pemformatan termaju seperti penyerlahan sintaks (*syntax highlighting*) dan nombor baris.
 
-- **Pintasan Papan Kekunci Utama**:
+- **Pintasan Papan Kekunci Utama Nano / Pico**:
   - `Ctrl + O`: Menyimpan fail (*WriteOut*).
   - `Ctrl + X`: Keluar dari editor.
   - `Ctrl + W`: Carian teks (*Where Is*).
@@ -102,7 +103,30 @@ GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
   include "/usr/share/nano/*.nanorc"
   ```
 
-#### B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
+#### B. GNU Emacs (Editor Macros - Persekitaran Penyuntingan Lanjutan)
+
+GNU Emacs ialah penyunting teks serbaguna berkuasa tinggi yang menyokong pengaturcaraan, pengurusan fail, dan automasi Lisp. Dalam terminal CLI, Emacs dilancarkan menggunakan opsyen `-nw` (*no-window*).
+
+- **Pintasan Papan Kekunci Utama Emacs (`C-` = Ctrl, `M-` = Alt/Meta)**:
+  - `C-x C-f`: Buka fail (*Find file*).
+  - `C-x C-s`: Simpan fail (*Save file*).
+  - `C-x C-c`: Keluar dari Emacs.
+  - `C-g`: Batal operasi semasa (*Cancel/Abort*).
+  - `C-a` / `C-e`: Pergi ke awal / akhir baris.
+  - `C-k`: Potong baris hingga akhir (*Kill line*).
+  - `C-y`: Tampal teks (*Yank*).
+  - `C-x u` / `C-_`: Batal tindakan (*Undo*).
+  - `C-h t`: Pelajari tutorial interaktif Emacs.
+
+- **Konfigurasi `~/.emacs` / `~/.config/emacs/init.el`**:
+  ```lisp
+  ;; Tetapkan mod utama teks dan fungsi auto-fill dalam GNU Emacs / XEmacs
+  (setq default-major-mode 'text-mode)
+  (setq text-mode-hook 'turn-on-auto-fill)
+  (display-time)
+  ```
+
+#### C. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
 
 Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturcaraan dan pentadbiran sistem Linux.
 
@@ -133,7 +157,7 @@ Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturc
   - `@a`: Jalankan makro dalam daftar `a`.
   - `5@a`: Jalankan makro sebanyak 5 kali berturut-turut.
 
-#### C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (`sudoedit` & `visudo`)
+#### D. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (`sudoedit` & `visudo`)
 
 Menggunakan `sudo vim` atau `sudo nano` secara terus menjalankan keseluruhan proses penyunting teks sebagai pengguna `root`. Ini mendedahkan sistem kepada risiko keistimewaan editor berlebihan (*excessive editor privilege*), contohnya melalui keupayaan *shell escape* dalam Vim (`:sh` atau `:!bash`) yang membuka kelompang `root` tanpa kawalan audit log yang jelas.
 

@@ -26685,7 +26685,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
   - Pakej aplikasi universal dengan pengasingan: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
   - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, `make`, `sudo make install`).
   - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild` selepas penyelesaian `BuildRequires`.
-- **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` &amp; `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
+- **Penyunting Teks Terminal &amp; Penyesuaian Persekitaran Shell**: Pemilihan penyunting CLI (Vim/Neovim, GNU Nano, GNU Emacs, Pico) dan tetapan pemboleh ubah persekitaran `$EDITOR` &amp; `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile`, `/etc/profile.d/editor.sh`.
 - **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) &amp; Kad Peranti**:
   - Deteksi perkakasan: `lspci`.
   - Ubuntu/NVIDIA: `ubuntu-drivers` dan `nvidia-smi`.
@@ -27183,8 +27183,12 @@ Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshootin
 3. **Pemprosesan Teks Aluran, Penyunting CLI &amp; Amalan Keselamatan (Text Filters, CLI Editors &amp; Security)**:
     - Penapis teks: `grep` / `ripgrep`, `sed` (stream editor), `awk` (pattern scanning), `cut`, `sort`, `uniq`, `wc`, `tr`.
     - Operator pengalihan I/O (`&gt;`, `&gt;&gt;`, `&lt;`, `2&gt;&amp;1`, `|` piping, `tee`).
-    - Penyunting teks CLI pentadbiran: **Vim / Neovim** (mod Normal/Insert/Visual/Ex, regex search/replace `%s/old/new/g`, makro) dan **GNU Nano** (`.nanorc`).
-    - Penyuntingan selamat fail konfigurasi sistem: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
+    - **Penyunting Teks CLI Pentadbiran**:
+      - **Vim / Neovim**: Mod Normal/Insert/Visual/Ex, pergerakan `h,j,k,l`, `w,b,0,$`, carian/penggantian regex `%s/old/new/g`, pendaftaran makro `qa ... q` / `@a`.
+      - **GNU Nano / Pico**: Pintasan `Ctrl+O` (simpan), `Ctrl+X` (keluar), `Ctrl+W` (cari), `Ctrl+\` (ganti), `Ctrl+K`/`Ctrl+U` (potong/tampal), penyesuaian `~/.nanorc`. Pico ialah pendahulu bersejarah Nano daripada suite Pine.
+      - **GNU Emacs**: Mod `-nw` (tanpa tetingkap), pintasan `C-x C-f`, `C-x C-s`, `C-x C-c`, `C-g`, konfigurasi Lisp `~/.emacs` / `init.el`.
+    - **Pengurusan Pemboleh Ubah Persekitaran Shell**: Konfigurasi `$EDITOR`, `$VISUAL`, `$SYSTEMD_EDITOR`, `$SUDO_EDITOR` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile`, dan `/etc/profile.d/editor.sh`.
+    - **Penyuntingan Selamat Fail Konfigurasi Sistem**: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
 4. **Pembacaan Log Sistem &amp; Laporan RCA (Log Analysis &amp; Root Cause Analysis)**:
     - Audit log sistem terpusat menggunakan `journalctl` dan fail `/var/log/`.
     - Penyediaan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*) mengikut standard ISO/IEC 27001 dan JDN/MAMPU.
@@ -27921,9 +27925,9 @@ echo $EDITOR
 echo $VISUAL
 ```
 
-#### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` &amp; `/etc/profile.d/editor.sh`)
+#### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment`, `/etc/profile`, `/etc/profile.d/editor.sh`)
 
-Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:
+Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik (termasuk fail profil `/etc/profile` dan `/etc/environment`):
 
 1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash
@@ -29011,7 +29015,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export SYSTEMD_EDITOR=/usr/bin/vim
 
-# 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
+# 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh (atau /etc/profile):
 sudo tee /etc/profile.d/editor.sh &lt;&lt; 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
@@ -31191,13 +31195,14 @@ sudo systemctl status nginx 2&gt;&amp;1 | tee /tmp/nginx_error_audit.log
 
 ### 3. Penyuntingan Fail Konfigurasi Terminal CLI &amp; Amalan Keselamatan
 
-Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI serta amalan keselamatan penyuntingan berhak milik `root`.
+Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI (Vim/Neovim, GNU Nano, GNU Emacs, dan Pico) serta amalan keselamatan penyuntingan berhak milik `root`.
 
-#### A. GNU Nano (Penyunting Teks Mudah &amp; Pantas)
+#### A. Pico &amp; GNU Nano (Penyunting Teks Mudah &amp; Pantas)
 
-GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
+- **Latar Belakang Pico &amp; Evolusi ke GNU Nano**:
+  Pico (*Pine Composer*) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (*GPL*) kepada Pico dengan mengekalkan semua 16 sintaks arahan utama Pico tetapi menambah ciri pemformatan termaju seperti penyerlahan sintaks (*syntax highlighting*) dan nombor baris.
 
-- **Pintasan Papan Kekunci Utama**:
+- **Pintasan Papan Kekunci Utama Nano / Pico**:
   - `Ctrl + O`: Menyimpan fail (*WriteOut*).
   - `Ctrl + X`: Keluar dari editor.
   - `Ctrl + W`: Carian teks (*Where Is*).
@@ -31216,7 +31221,30 @@ GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.
   include "/usr/share/nano/*.nanorc"
   ```
 
-#### B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
+#### B. GNU Emacs (Editor Macros - Persekitaran Penyuntingan Lanjutan)
+
+GNU Emacs ialah penyunting teks serbaguna berkuasa tinggi yang menyokong pengaturcaraan, pengurusan fail, dan automasi Lisp. Dalam terminal CLI, Emacs dilancarkan menggunakan opsyen `-nw` (*no-window*).
+
+- **Pintasan Papan Kekunci Utama Emacs (`C-` = Ctrl, `M-` = Alt/Meta)**:
+  - `C-x C-f`: Buka fail (*Find file*).
+  - `C-x C-s`: Simpan fail (*Save file*).
+  - `C-x C-c`: Keluar dari Emacs.
+  - `C-g`: Batal operasi semasa (*Cancel/Abort*).
+  - `C-a` / `C-e`: Pergi ke awal / akhir baris.
+  - `C-k`: Potong baris hingga akhir (*Kill line*).
+  - `C-y`: Tampal teks (*Yank*).
+  - `C-x u` / `C-_`: Batal tindakan (*Undo*).
+  - `C-h t`: Pelajari tutorial interaktif Emacs.
+
+- **Konfigurasi `~/.emacs` / `~/.config/emacs/init.el`**:
+  ```lisp
+  ;; Tetapkan mod utama teks dan fungsi auto-fill dalam GNU Emacs / XEmacs
+  (setq default-major-mode 'text-mode)
+  (setq text-mode-hook 'turn-on-auto-fill)
+  (display-time)
+  ```
+
+#### C. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
 
 Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturcaraan dan pentadbiran sistem Linux.
 
@@ -31247,7 +31275,7 @@ Vim (*Vi Improved*) dan Neovim (`nvim`) adalah standard industri untuk pengaturc
   - `@a`: Jalankan makro dalam daftar `a`.
   - `5@a`: Jalankan makro sebanyak 5 kali berturut-turut.
 
-#### C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (`sudoedit` &amp; `visudo`)
+#### D. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (`sudoedit` &amp; `visudo`)
 
 Menggunakan `sudo vim` atau `sudo nano` secara terus menjalankan keseluruhan proses penyunting teks sebagai pengguna `root`. Ini mendedahkan sistem kepada risiko keistimewaan editor berlebihan (*excessive editor privilege*), contohnya melalui keupayaan *shell escape* dalam Vim (`:sh` atau `:!bash`) yang membuka kelompang `root` tanpa kawalan audit log yang jelas.
 
@@ -36197,12 +36225,12 @@ Use this skill when the user provides a new external source (PDF, Markdown, Web 
 ---
 okf_version: 0.1
 name: cu06-wa07-resolve-system-anomalies-and-document-rca
-description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal (regex Vim %s/asal/ganti/g, Nano), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
-topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca]
+description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal CLI (Vim/Neovim regex %s/asal/ganti/g &amp; makro @a, GNU Nano/Pico, GNU Emacs -nw), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
+topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, emacs, pico, sudoedit, visudo, editor, rca]
 type: skill
 title: "Resolve System Anomalies and Document RCA (CU06-WA07)"
 timestamp: "2026-08-17T00:00:00Z"
-tags: ["cu06", "wa07", "noss", "grep", "sed", "awk", "vim", "neovim", "nano", "sudoedit", "visudo", "editor", "rca"]
+tags: ["cu06", "wa07", "noss", "grep", "sed", "awk", "vim", "neovim", "nano", "emacs", "pico", "sudoedit", "visudo", "editor", "rca"]
 resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md"
 ---
 
@@ -36212,7 +36240,7 @@ resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-documen
 
 ## 🎯 Skill Overview
 
-This AI agent skill provides systematic techniques for processing log streams using text processing utilities (`grep`, `sed`, `awk`, `cut`, `sort`, `uniq`), executing I/O redirection and piping, managing terminal editors (**Vim / Neovim**, **GNU Nano**), configuring environment variables (`$EDITOR`/`$VISUAL`), executing secure file editing (`sudoedit`, `visudo`), and drafting Root Cause Analysis (RCA) reports.
+This AI agent skill provides systematic techniques for processing log streams using text processing utilities (`grep`, `sed`, `awk`, `cut`, `sort`, `uniq`), executing I/O redirection and piping, managing terminal editors (**Vim / Neovim**, **GNU Nano / Pico**, **GNU Emacs**), configuring environment variables (`$EDITOR`/`$VISUAL`), executing secure file editing (`sudoedit`, `visudo`), and drafting Root Cause Analysis (RCA) reports.
 
 ---
 
@@ -36244,15 +36272,27 @@ sudo systemctl status nginx 2&gt;&amp;1 | tee /tmp/nginx_error_audit.log
 ### 3. Terminal Text Editing &amp; Safe System Modifications
 
 ```bash
-# 1. Environment Variable Configuration (~/.bashrc or /etc/environment)
+# 1. Environment Variable Configuration (~/.bashrc, /etc/environment, or /etc/profile)
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
-# 2. Vim Regex Search &amp; Replace (%s/pattern/replace/g)
-# Open vim and run Ex mode command:
+# 2. Vim / Neovim Operations
+# Ex mode regex search &amp; replace:
 # :%s/temp/tmp/g
+# Macro recording &amp; execution:
+# Record macro into register 'a': qa ... q
+# Replay macro: @a or 5@a
 
-# 3. Safe system file editing using sudoedit (sudo -e) &amp; visudo
+# 3. GNU Nano &amp; Pico Shortcuts
+# Save: Ctrl+O | Exit: Ctrl+X | Search: Ctrl+W | Replace: Ctrl+\
+# Cut: Ctrl+K | Uncut: Ctrl+U | Syntax config: ~/.nanorc
+
+# 4. GNU Emacs Terminal Mode (-nw)
+# Open in terminal: emacs -nw filename.txt
+# Open: C-x C-f | Save: C-x C-s | Exit: C-x C-c | Abort: C-g
+# Config Lisp: ~/.emacs or ~/.config/emacs/init.el
+
+# 5. Safe system file editing using sudoedit (sudo -e) &amp; visudo
 sudoedit /etc/netplan/01-netcfg.yaml
 sudo visudo -c
 ```
@@ -41745,7 +41785,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-08-30T15:43:06Z"
+timestamp: "2026-09-24T11:22:11Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -41806,7 +41846,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu06-wa05-optimize-system-performance-and-storage`** &lt;br&gt; *CU06 WA05: Optimize System Performance and Storage* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Optimize System Performance and Storage including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa05-perform-system-optimisation-and-disk-management`** &lt;br&gt; *CU06 WA05: Perform System Optimisation and Disk Management* | Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls. | "noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups" |
 | **`cu06-wa06-manage-support-tickets-and-slas`** &lt;br&gt; *cu06-wa06-manage-support-tickets-and-slas* | No description provided. | N/A |
-| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** &lt;br&gt; *Resolve System Anomalies and Document RCA (CU06-WA07)* | Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal (regex Vim %s/asal/ganti/g, Nano), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca |
+| **`cu06-wa07-resolve-system-anomalies-and-document-rca`** &lt;br&gt; *Resolve System Anomalies and Document RCA (CU06-WA07)* | Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal CLI (Vim/Neovim regex %s/asal/ganti/g &amp; makro @a, GNU Nano/Pico, GNU Emacs -nw), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA. | noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, emacs, pico, sudoedit, visudo, editor, rca |
 | **`docx-highlight-extractor`** &lt;br&gt; *docx-highlight-extractor* | No description provided. | N/A |
 | **`dsom-bootstrap`** &lt;br&gt; *dsom-bootstrap* | No description provided. | N/A |
 | **`dsom-diataxis-pipeline`** &lt;br&gt; *dsom-diataxis-pipeline* | No description provided. | N/A |
@@ -41885,7 +41925,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** &lt;br&gt; *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-30*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-24*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>

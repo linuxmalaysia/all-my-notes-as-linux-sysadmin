@@ -1,12 +1,12 @@
 ---
 okf_version: 0.1
 name: cu06-wa07-resolve-system-anomalies-and-document-rca
-description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal (regex Vim %s/asal/ganti/g, Nano), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
-topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, sudoedit, visudo, editor, rca]
+description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal CLI (Vim/Neovim regex %s/asal/ganti/g & makro @a, GNU Nano/Pico, GNU Emacs -nw), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
+topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, emacs, pico, sudoedit, visudo, editor, rca]
 type: skill
 title: "Resolve System Anomalies and Document RCA (CU06-WA07)"
 timestamp: "2026-08-17T00:00:00Z"
-tags: ["cu06", "wa07", "noss", "grep", "sed", "awk", "vim", "neovim", "nano", "sudoedit", "visudo", "editor", "rca"]
+tags: ["cu06", "wa07", "noss", "grep", "sed", "awk", "vim", "neovim", "nano", "emacs", "pico", "sudoedit", "visudo", "editor", "rca"]
 resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md"
 ---
 
@@ -16,7 +16,7 @@ resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-documen
 
 ## 🎯 Skill Overview
 
-This AI agent skill provides systematic techniques for processing log streams using text processing utilities (`grep`, `sed`, `awk`, `cut`, `sort`, `uniq`), executing I/O redirection and piping, managing terminal editors (**Vim / Neovim**, **GNU Nano**), configuring environment variables (`$EDITOR`/`$VISUAL`), executing secure file editing (`sudoedit`, `visudo`), and drafting Root Cause Analysis (RCA) reports.
+This AI agent skill provides systematic techniques for processing log streams using text processing utilities (`grep`, `sed`, `awk`, `cut`, `sort`, `uniq`), executing I/O redirection and piping, managing terminal editors (**Vim / Neovim**, **GNU Nano / Pico**, **GNU Emacs**), configuring environment variables (`$EDITOR`/`$VISUAL`), executing secure file editing (`sudoedit`, `visudo`), and drafting Root Cause Analysis (RCA) reports.
 
 ---
 
@@ -48,15 +48,27 @@ sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 ### 3. Terminal Text Editing & Safe System Modifications
 
 ```bash
-# 1. Environment Variable Configuration (~/.bashrc or /etc/environment)
+# 1. Environment Variable Configuration (~/.bashrc, /etc/environment, or /etc/profile)
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
-# 2. Vim Regex Search & Replace (%s/pattern/replace/g)
-# Open vim and run Ex mode command:
+# 2. Vim / Neovim Operations
+# Ex mode regex search & replace:
 # :%s/temp/tmp/g
+# Macro recording & execution:
+# Record macro into register 'a': qa ... q
+# Replay macro: @a or 5@a
 
-# 3. Safe system file editing using sudoedit (sudo -e) & visudo
+# 3. GNU Nano & Pico Shortcuts
+# Save: Ctrl+O | Exit: Ctrl+X | Search: Ctrl+W | Replace: Ctrl+\
+# Cut: Ctrl+K | Uncut: Ctrl+U | Syntax config: ~/.nanorc
+
+# 4. GNU Emacs Terminal Mode (-nw)
+# Open in terminal: emacs -nw filename.txt
+# Open: C-x C-f | Save: C-x C-s | Exit: C-x C-c | Abort: C-g
+# Config Lisp: ~/.emacs or ~/.config/emacs/init.el
+
+# 5. Safe system file editing using sudoedit (sudo -e) & visudo
 sudoedit /etc/netplan/01-netcfg.yaml
 sudo visudo -c
 ```

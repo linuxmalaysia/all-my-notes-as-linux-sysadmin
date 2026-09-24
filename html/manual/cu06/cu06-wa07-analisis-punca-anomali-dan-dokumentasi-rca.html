@@ -1538,10 +1538,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-gnu-nano-penyunting-teks-mudah-pantas" class="md-nav__link">
+  <a href="#a-pico-gnu-nano-penyunting-teks-mudah-pantas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A. GNU Nano (Penyunting Teks Mudah &amp; Pantas)
+        A. Pico &amp; GNU Nano (Penyunting Teks Mudah &amp; Pantas)
       
     </span>
   </a>
@@ -1549,10 +1549,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem" class="md-nav__link">
+  <a href="#b-gnu-emacs-editor-macros-persekitaran-penyuntingan-lanjutan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
+        B. GNU Emacs (Editor Macros - Persekitaran Penyuntingan Lanjutan)
 
     </span>
   </a>
@@ -1560,10 +1560,21 @@
 </li>
 
           <li class="md-nav__item">
-  <a href="#c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" class="md-nav__link">
+  <a href="#c-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem" class="md-nav__link">
     <span class="md-ellipsis">
 
-        C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (sudoedit &amp; visudo)
+        C. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#d-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        D. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (sudoedit &amp; visudo)
       
     </span>
   </a>
@@ -1742,11 +1753,16 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 </span></code></pre></div>
 <hr />
 <h3 id="3-penyuntingan-fail-konfigurasi-terminal-cli-amalan-keselamatan">3. Penyuntingan Fail Konfigurasi Terminal CLI &amp; Amalan Keselamatan<a class="headerlink" href="#3-penyuntingan-fail-konfigurasi-terminal-cli-amalan-keselamatan" title="Permanent link">&para;</a></h3>
-<p>Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI serta amalan keselamatan penyuntingan berhak milik <code>root</code>.</p>
-<h4 id="a-gnu-nano-penyunting-teks-mudah-pantas">A. GNU Nano (Penyunting Teks Mudah &amp; Pantas)<a class="headerlink" href="#a-gnu-nano-penyunting-teks-mudah-pantas" title="Permanent link">&para;</a></h4>
-<p>GNU Nano merupakan penyunting teks CLI lalai bagi kebanyakan edaran Linux.</p>
+<p>Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod operasi editor CLI (Vim/Neovim, GNU Nano, GNU Emacs, dan Pico) serta amalan keselamatan penyuntingan berhak milik <code>root</code>.</p>
+<h4 id="a-pico-gnu-nano-penyunting-teks-mudah-pantas">A. Pico &amp; GNU Nano (Penyunting Teks Mudah &amp; Pantas)<a class="headerlink" href="#a-pico-gnu-nano-penyunting-teks-mudah-pantas" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Pintasan Papan Kekunci Utama</strong>:</li>
+<li>
+<p><strong>Latar Belakang Pico &amp; Evolusi ke GNU Nano</strong>:
+  Pico (<em>Pine Composer</em>) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (<em>GPL</em>) kepada Pico dengan mengekalkan semua 16 sintaks arahan utama Pico tetapi menambah ciri pemformatan termaju seperti penyerlahan sintaks (<em>syntax highlighting</em>) dan nombor baris.</p>
+</li>
+<li>
+<p><strong>Pintasan Papan Kekunci Utama Nano / Pico</strong>:</p>
+</li>
 <li><code>Ctrl + O</code>: Menyimpan fail (<em>WriteOut</em>).</li>
 <li><code>Ctrl + X</code>: Keluar dari editor.</li>
 <li><code>Ctrl + W</code>: Carian teks (<em>Where Is</em>).</li>
@@ -1767,7 +1783,31 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 </span></code></pre></div></p>
 </li>
 </ul>
-<h4 id="b-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem">B. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)<a class="headerlink" href="#b-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem" title="Permanent link">&para;</a></h4>
+<h4 id="b-gnu-emacs-editor-macros-persekitaran-penyuntingan-lanjutan">B. GNU Emacs (Editor Macros - Persekitaran Penyuntingan Lanjutan)<a class="headerlink" href="#b-gnu-emacs-editor-macros-persekitaran-penyuntingan-lanjutan" title="Permanent link">&para;</a></h4>
+<p>GNU Emacs ialah penyunting teks serbaguna berkuasa tinggi yang menyokong pengaturcaraan, pengurusan fail, dan automasi Lisp. Dalam terminal CLI, Emacs dilancarkan menggunakan opsyen <code>-nw</code> (<em>no-window</em>).</p>
+<ul>
+<li><strong>Pintasan Papan Kekunci Utama Emacs (<code>C-</code> = Ctrl, <code>M-</code> = Alt/Meta)</strong>:</li>
+<li><code>C-x C-f</code>: Buka fail (<em>Find file</em>).</li>
+<li><code>C-x C-s</code>: Simpan fail (<em>Save file</em>).</li>
+<li><code>C-x C-c</code>: Keluar dari Emacs.</li>
+<li><code>C-g</code>: Batal operasi semasa (<em>Cancel/Abort</em>).</li>
+<li><code>C-a</code> / <code>C-e</code>: Pergi ke awal / akhir baris.</li>
+<li><code>C-k</code>: Potong baris hingga akhir (<em>Kill line</em>).</li>
+<li><code>C-y</code>: Tampal teks (<em>Yank</em>).</li>
+<li><code>C-x u</code> / <code>C-_</code>: Batal tindakan (<em>Undo</em>).</li>
+<li>
+<p><code>C-h t</code>: Pelajari tutorial interaktif Emacs.</p>
+</li>
+<li>
+<p><strong>Konfigurasi <code>~/.emacs</code> / <code>~/.config/emacs/init.el</code></strong>:
+  <div class="language-lisp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">;; Tetapkan mod utama teks dan fungsi auto-fill dalam GNU Emacs / XEmacs</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">default-major-mode</span><span class="w"> </span><span class="ss">'text-mode</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">text-mode-hook</span><span class="w"> </span><span class="ss">'turn-on-auto-fill</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">(</span><span class="nv">display-time</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+</ul>
+<h4 id="c-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem">C. Vim / Neovim (Penyunting Teks Terminal Lanjutan Pentadbir Sistem)<a class="headerlink" href="#c-vim-neovim-penyunting-teks-terminal-lanjutan-pentadbir-sistem" title="Permanent link">&para;</a></h4>
 <p>Vim (<em>Vi Improved</em>) dan Neovim (<code>nvim</code>) adalah standard industri untuk pengaturcaraan dan pentadbiran sistem Linux.</p>
 <ul>
 <li><strong>4 Mod Operasi Utama Vim</strong>:</li>
@@ -1788,11 +1828,11 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <li>
 <p><strong>Carian &amp; Penggantian Expression Teratur (Regex Search &amp; Replace)</strong>:
   Dalam Mod Ex, gunakan sintaks <code>%s/corak_asal/teks_baharu/g</code>:
-  <div class="language-vim highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c">" Menggantikan semua perkataan 'temp' kepada 'tmp' dalam keseluruhan fail:</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">:</span>%s<span class="sr">/temp/</span>tmp/<span class="k">g</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c">" Menggantikan 'Port 22' kepada 'Port 2222' secara interaktif dengan pengesahan (c):</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">:</span>%s<span class="sr">/Port 22/</span>Port <span class="m">2222</span>/gc
+  <div class="language-vim highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c">" Menggantikan semua perkataan 'temp' kepada 'tmp' dalam keseluruhan fail:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">:</span>%s<span class="sr">/temp/</span>tmp/<span class="k">g</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c">" Menggantikan 'Port 22' kepada 'Port 2222' secara interaktif dengan pengesahan (c):</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">:</span>%s<span class="sr">/Port 22/</span>Port <span class="m">2222</span>/gc
 </span></code></pre></div></p>
 </li>
 <li>
@@ -1804,24 +1844,24 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <li><code>@a</code>: Jalankan makro dalam daftar <code>a</code>.</li>
 <li><code>5@a</code>: Jalankan makro sebanyak 5 kali berturut-turut.</li>
 </ul>
-<h4 id="c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo">C. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (<code>sudoedit</code> &amp; <code>visudo</code>)<a class="headerlink" href="#c-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" title="Permanent link">&para;</a></h4>
+<h4 id="d-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo">D. Amalan Keselamatan Penyuntingan Fail Konfigurasi Sistem (<code>sudoedit</code> &amp; <code>visudo</code>)<a class="headerlink" href="#d-amalan-keselamatan-penyuntingan-fail-konfigurasi-sistem-sudoedit-visudo" title="Permanent link">&para;</a></h4>
 <p>Menggunakan <code>sudo vim</code> atau <code>sudo nano</code> secara terus menjalankan keseluruhan proses penyunting teks sebagai pengguna <code>root</code>. Ini mendedahkan sistem kepada risiko keistimewaan editor berlebihan (<em>excessive editor privilege</em>), contohnya melalui keupayaan <em>shell escape</em> dalam Vim (<code>:sh</code> atau <code>:!bash</code>) yang membuka kelompang <code>root</code> tanpa kawalan audit log yang jelas.</p>
 <ul>
 <li>
 <p><strong>Menggunakan <code>sudoedit</code> (<code>sudo -e</code>)</strong>:
   <code>sudoedit</code> melancarkan persekitaran penyunting teks di bawah akaun pengguna biasa yang tidak berkeistimewaan (<em>unprivileged user</em>) untuk menyunting salinan sementara fail. Hanya komponen <code>sudo</code> yang berkeistimewaan akan menyalin semula fail sementara itu ke lokasi sistem sasaran selepas penyuntingan diselesaikan dan fail disimpan dengan selamat.
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Menyunting fail konfigurasi Rangkaian Netplan secara selamat</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudoedit<span class="w"> </span>/etc/netplan/01-netcfg.yaml
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Menyunting fail konfigurasi Rangkaian Netplan secara selamat</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudoedit<span class="w"> </span>/etc/netplan/01-netcfg.yaml
 </span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Menggunakan <code>visudo</code> untuk Pengurusan Sudoers</strong>:
   <code>visudo</code> mengunci fail <code>/etc/sudoers</code> secara eksklusif semasa penyuntingan dan mengesahkan sintaks secara automatik sebelum menyimpan perubahan bagi mengelakkan ralat sintaks yang boleh menyebabkan kebuntuan akses root sistem (<em>lockout</em>).
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Menyunting fail sudoers dengan semakan sintaks automatik</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>visudo
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Mengesahkan sintaks fail sudoers tanpa membuat perubahan</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>visudo<span class="w"> </span>-c
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Menyunting fail sudoers dengan semakan sintaks automatik</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>visudo
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Mengesahkan sintaks fail sudoers tanpa membuat perubahan</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>visudo<span class="w"> </span>-c
 </span></code></pre></div></p>
 </li>
 </ul>

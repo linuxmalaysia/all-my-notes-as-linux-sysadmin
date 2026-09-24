@@ -30,8 +30,12 @@ Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshootin
 3. **Pemprosesan Teks Aluran, Penyunting CLI & Amalan Keselamatan (Text Filters, CLI Editors & Security)**:
     - Penapis teks: `grep` / `ripgrep`, `sed` (stream editor), `awk` (pattern scanning), `cut`, `sort`, `uniq`, `wc`, `tr`.
     - Operator pengalihan I/O (`>`, `>>`, `<`, `2>&1`, `|` piping, `tee`).
-    - Penyunting teks CLI pentadbiran: **Vim / Neovim** (mod Normal/Insert/Visual/Ex, regex search/replace `%s/old/new/g`, makro) dan **GNU Nano** (`.nanorc`).
-    - Penyuntingan selamat fail konfigurasi sistem: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
+    - **Penyunting Teks CLI Pentadbiran**:
+      - **Vim / Neovim**: Mod Normal/Insert/Visual/Ex, pergerakan `h,j,k,l`, `w,b,0,$`, carian/penggantian regex `%s/old/new/g`, pendaftaran makro `qa ... q` / `@a`.
+      - **GNU Nano / Pico**: Pintasan `Ctrl+O` (simpan), `Ctrl+X` (keluar), `Ctrl+W` (cari), `Ctrl+\` (ganti), `Ctrl+K`/`Ctrl+U` (potong/tampal), penyesuaian `~/.nanorc`. Pico ialah pendahulu bersejarah Nano daripada suite Pine.
+      - **GNU Emacs**: Mod `-nw` (tanpa tetingkap), pintasan `C-x C-f`, `C-x C-s`, `C-x C-c`, `C-g`, konfigurasi Lisp `~/.emacs` / `init.el`.
+    - **Pengurusan Pemboleh Ubah Persekitaran Shell**: Konfigurasi `$EDITOR`, `$VISUAL`, `$SYSTEMD_EDITOR`, `$SUDO_EDITOR` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile`, dan `/etc/profile.d/editor.sh`.
+    - **Penyuntingan Selamat Fail Konfigurasi Sistem**: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
 4. **Pembacaan Log Sistem & Laporan RCA (Log Analysis & Root Cause Analysis)**:
     - Audit log sistem terpusat menggunakan `journalctl` dan fail `/var/log/`.
     - Penyediaan laporan Analisis Punca Utama (*Root Cause Analysis - RCA*) mengikut standard ISO/IEC 27001 dan JDN/MAMPU.

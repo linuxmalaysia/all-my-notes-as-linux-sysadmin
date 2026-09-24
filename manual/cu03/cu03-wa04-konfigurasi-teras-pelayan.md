@@ -171,7 +171,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export SYSTEMD_EDITOR=/usr/bin/vim
 
-# 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
+# 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh (atau /etc/profile):
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim

@@ -230,9 +230,9 @@ echo $EDITOR
 echo $VISUAL
 ```
 
-#### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` & `/etc/profile.d/editor.sh`)
+#### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment`, `/etc/profile`, `/etc/profile.d/editor.sh`)
 
-Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:
+Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik (termasuk fail profil `/etc/profile` dan `/etc/environment`):
 
 1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash
