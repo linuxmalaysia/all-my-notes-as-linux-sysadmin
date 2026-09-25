@@ -27422,7 +27422,11 @@ Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshootin
 3. **Pemprosesan Teks Aluran, Penyunting CLI & Amalan Keselamatan (Text Filters, CLI Editors & Security)**:
     - Penapis teks: `grep` / `ripgrep`, `sed` (stream editor), `awk` (pattern scanning), `cut`, `sort`, `uniq`, `wc`, `tr`.
     - Operator pengalihan I/O (`>`, `>>`, `<`, `2>&1`, `|` piping, `tee`).
-    - Penyunting teks CLI pentadbiran: **Vim / Neovim** (mod Normal/Insert/Visual/Ex, regex search/replace `%s/old/new/g`, makro) dan **GNU Nano** (`.nanorc`).
+    - **Penyunting Teks CLI Pentadbiran**:
+      - **Vim / Neovim**: Mod Normal/Insert/Visual/Ex, pergerakan `h,j,k,l`, `w,b,0,$`, carian/penggantian regex `%s/old/new/g`, pendaftaran makro `qa ... q` / `@a`.
+      - **GNU Nano / Pico**: Pintasan lalai dikongsi `Ctrl+O` (simpan), `Ctrl+X` (keluar), `Ctrl+W` (cari), `Ctrl+R` (sisip fail), `Ctrl+K`/`Ctrl+U` (potong/tampal). Dalam Pico, penggantian teks dibuat menerusi carian `Ctrl+W` diikuti `Ctrl+R`. Nano menambah keupayaan carian ganti interaktif `Ctrl+\`, penyerlahan sintaks, dan fail `.nanorc` (nota: bendera `--modernbindings` dalam Nano mengubah pemetaan pintasan lalai ini).
+      - **GNU Emacs**: Mod `-nw` (tanpa tetingkap), pintasan `C-x C-f`, `C-x C-s`, `C-x C-c`, `C-g`, konfigurasi Lisp `~/.emacs` / `init.el` (`(setq-default major-mode 'text-mode)` dan `(add-hook 'text-mode-hook 'auto-fill-mode)`).
+    - **Pengurusan Pemboleh Ubah Persekitaran Shell**: Konfigurasi `$EDITOR`, `$VISUAL`, `$SYSTEMD_EDITOR`, `$SUDO_EDITOR` dalam `~/.bashrc`, `/etc/environment` (pasangan `NAMA=NILAI` dibaca oleh `pam_env` semasa sesi PAM), `/etc/profile` (dibaca oleh Bash untuk *shell log masuk* sahaja), dan `/etc/profile.d/editor.sh`.
     - Penyuntingan selamat fail konfigurasi sistem: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
 4. **Pembacaan Log Sistem & Laporan RCA (Log Analysis & Root Cause Analysis)**:
     - Audit log sistem terpusat menggunakan `journalctl` dan fail `/var/log/`.
@@ -28168,7 +28172,7 @@ echo $VISUAL
 
 #### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` & `/etc/profile.d/editor.sh`)
 
-Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik. Perlu dicatat bahawa Bash membaca `/etc/profile` HANYA untuk shell log masuk (*login shells*), manakala shell interaktif bukan log masuk membaca `~/.bashrc`. Skrip di `/etc/profile.d/` dijalankan apabila disumberkan oleh fail permulaan shell, manakala `/etc/environment` dibaca terus oleh modul `pam_env` semasa persediaan sesi PAM sebagai fail pasangan `NAMA=NILAI` (tanpa kata kunci `export`).
+Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik. Perlu dicatat bahawa Bash membaca `/etc/profile` HANYA untuk shell log masuk (*login shells*), manakala shell interaktif bukan log masuk membaca `~/.bashrc`. Skrip di `/etc/profile.d/` dijalankan apabila disumberkan secara eksplisit oleh fail permulaan shell seperti `/etc/profile`, manakala `/etc/environment` dibaca oleh `pam_env` HANYA apabila modul `pam_env.so` dikonfigurasi dalam tindanan PAM perkhidmatan dan dipanggil menerusi `pam_open_session()` atau `pam_setcred()` sebagai fail pasangan `NAMA=NILAI` (tanpa kata kunci `export`).
 
 1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash
@@ -29267,7 +29271,7 @@ export VISUAL=/usr/bin/vim
 export SYSTEMD_EDITOR=/usr/bin/vim
 
 # 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
-# Nota: Bash membaca /etc/profile HANYA untuk shell log masuk (login shells). Skrip di /etc/profile.d/ dijalankan apabila disumberkan oleh fail permulaan shell, manakala /etc/environment dibaca secara automatik oleh pam_env semasa persediaan sesi PAM sebagai fail pasangan NAMA=NILAI tanpa export.
+# Nota: Bash membaca /etc/profile HANYA untuk shell log masuk (login shells). Skrip di /etc/profile.d/ dijalankan apabila disumberkan secara eksplisit oleh fail permulaan shell seperti /etc/profile, manakala /etc/environment dibaca oleh pam_env HANYA apabila modul pam_env.so dikonfigurasi dalam tindanan PAM dan dipanggil menerusi pam_open_session() atau pam_setcred().
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
@@ -31474,16 +31478,17 @@ Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod o
   Pico (*Pine Composer*) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (*GPL*) yang menawarkan ketersesuaian tinggi dengan perintah asas Pico, sambil menambah ciri pemformatan termaju seperti penyerlahan sintaks (*syntax highlighting*) dan carian/penggantian teks.
 
 - **Perbezaan Pintasan & Ciri Utama Nano vs Pico**:
-  - **Pintasan Asas Dikongsi (Nano & Pico)**:
+  - **Pintasan Papan Kekunci Lalai Dikongsi (Nano & Pico)**:
     - `Ctrl + O`: Menyimpan fail (*WriteOut*).
     - `Ctrl + X`: Keluar dari editor.
     - `Ctrl + W`: Carian teks (*Where Is*). Dalam Pico tradisional, penggantian teks dimulakan menerusi carian `Ctrl+W` diikuti `Ctrl+R`.
-    - `Ctrl + R`: Menyisip/membaca kandungan fail luar (*Read File* - nota: pemicu bendera `--modernbindings` dalam Nano boleh mengubah pemetaan ini).
+    - `Ctrl + R`: Menyisip/membaca kandungan fail luar (*Read File* - nota: pintasan ini merujuk kepada pemetaan lalai Nano/Pico; penggunaan bendera `--modernbindings` dalam Nano mengubah pemetaan ini kepada pintasan gaya moden).
     - `Ctrl + K`: Memotong (*cut*) baris semasa.
     - `Ctrl + U`: Menampal (*uncut*) baris.
   - **Ciri & Pintasan Khusus GNU Nano**:
     - `Ctrl + \`: Carian dan penggantian teks interaktif (*Replace* - khusus Nano).
-    - `Alt + G` / `Ctrl + _`: Lompat ke nombor baris tertentu.
+    - `Alt + G`: Pergi ke baris tertentu (*Go to line*).
+    - `Alt + N`: Togol paparan nombor baris (*Toggle line numbers*).
     - **Fail Konfigurasi Penyesuaian `~/.nanorc` (Khusus Nano)**:
       ```ini
       # Menandakan nombor baris dan mengaktifkan penyerlahan sintaks dalam Nano
@@ -36608,13 +36613,13 @@ sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 
 ```bash
 # 1. Konfigurasi Pemboleh Ubah Persekitaran
-# Untuk fail permulaan shell (contoh: ~/.bashrc atau /etc/profile.d/editor.sh - Bash membaca /etc/profile untuk shell log masuk, manakala shell interaktif bukan log masuk membaca ~/.bashrc):
+# Untuk fail permulaan shell (contoh: ~/.bashrc atau /etc/profile.d/editor.sh - Bash membaca /etc/profile untuk shell log masuk dan /etc/profile.d/editor.sh hanya dibaca apabila disumberkan oleh /etc/profile atau fail permulaan lain; manakala shell interaktif bukan log masuk membaca ~/.bashrc):
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
-# Untuk fail persekitaran sistem PAM (/etc/environment - gunakan pasangan NAMA=NILAI tanpa export):
-# EDITOR="/usr/bin/vim"
-# VISUAL="/usr/bin/vim"
+# Untuk fail persekitaran sistem PAM (/etc/environment - modul pam_env.so membaca fail ini hanya apabila dikonfigurasi dalam tindanan PAM dan dipanggil menerusi pam_open_session() atau pam_setcred(); gunakan pasangan NAMA=NILAI tanpa export):
+EDITOR="/usr/bin/vim"
+VISUAL="/usr/bin/vim"
 
 # 2. Operasi Vim / Neovim
 # Carian dan penggantian regex mod Ex:
@@ -36624,8 +36629,8 @@ export VISUAL=/usr/bin/vim
 # Jalankan semula makro: @a atau 5@a
 
 # 3. Pintasan GNU Nano dan Pico
-# Pintasan dikongsi (Nano dan Pico): Simpan: Ctrl+O | Keluar: Ctrl+X | Cari: Ctrl+W | Sisip fail: Ctrl+R | Potong: Ctrl+K | Tampal: Ctrl+U
-# Ciri khusus Nano: Carian ganti interaktif Ctrl+\ | Nombor baris Alt+G / Ctrl+_ | Fail konfigurasi: ~/.nanorc
+# Pintasan lalai dikongsi (Nano dan Pico): Simpan: Ctrl+O | Keluar: Ctrl+X | Cari: Ctrl+W | Sisip fail: Ctrl+R | Potong: Ctrl+K | Tampal: Ctrl+U
+# Ciri khusus Nano: Carian ganti interaktif Ctrl+\ | Pergi ke baris tertentu: Alt+G | Togol paparan nombor baris: Alt+N | Fail konfigurasi: ~/.nanorc (Nota: bendera --modernbindings mengubah pemetaan pintasan lalai Nano)
 
 # 4. Mod Terminal GNU Emacs (-nw)
 # Buka dalam terminal: emacs -nw fail.txt
@@ -42211,7 +42216,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-09-25T02:47:03Z"
+timestamp: "2026-09-25T12:03:49Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."

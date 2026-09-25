@@ -49,13 +49,13 @@ sudo systemctl status nginx 2>&1 | tee /tmp/nginx_error_audit.log
 
 ```bash
 # 1. Konfigurasi Pemboleh Ubah Persekitaran
-# Untuk fail permulaan shell (contoh: ~/.bashrc atau /etc/profile.d/editor.sh - Bash membaca /etc/profile untuk shell log masuk, manakala shell interaktif bukan log masuk membaca ~/.bashrc):
+# Untuk fail permulaan shell (contoh: ~/.bashrc atau /etc/profile.d/editor.sh - Bash membaca /etc/profile untuk shell log masuk dan /etc/profile.d/editor.sh hanya dibaca apabila disumberkan oleh /etc/profile atau fail permulaan lain; manakala shell interaktif bukan log masuk membaca ~/.bashrc):
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
-# Untuk fail persekitaran sistem PAM (/etc/environment - gunakan pasangan NAMA=NILAI tanpa export):
-# EDITOR="/usr/bin/vim"
-# VISUAL="/usr/bin/vim"
+# Untuk fail persekitaran sistem PAM (/etc/environment - modul pam_env.so membaca fail ini hanya apabila dikonfigurasi dalam tindanan PAM dan dipanggil menerusi pam_open_session() atau pam_setcred(); gunakan pasangan NAMA=NILAI tanpa export):
+EDITOR="/usr/bin/vim"
+VISUAL="/usr/bin/vim"
 
 # 2. Operasi Vim / Neovim
 # Carian dan penggantian regex mod Ex:
@@ -65,8 +65,8 @@ export VISUAL=/usr/bin/vim
 # Jalankan semula makro: @a atau 5@a
 
 # 3. Pintasan GNU Nano dan Pico
-# Pintasan dikongsi (Nano dan Pico): Simpan: Ctrl+O | Keluar: Ctrl+X | Cari: Ctrl+W | Sisip fail: Ctrl+R | Potong: Ctrl+K | Tampal: Ctrl+U
-# Ciri khusus Nano: Carian ganti interaktif Ctrl+\ | Nombor baris Alt+G / Ctrl+_ | Fail konfigurasi: ~/.nanorc
+# Pintasan lalai dikongsi (Nano dan Pico): Simpan: Ctrl+O | Keluar: Ctrl+X | Cari: Ctrl+W | Sisip fail: Ctrl+R | Potong: Ctrl+K | Tampal: Ctrl+U
+# Ciri khusus Nano: Carian ganti interaktif Ctrl+\ | Pergi ke baris tertentu: Alt+G | Togol paparan nombor baris: Alt+N | Fail konfigurasi: ~/.nanorc (Nota: bendera --modernbindings mengubah pemetaan pintasan lalai Nano)
 
 # 4. Mod Terminal GNU Emacs (-nw)
 # Buka dalam terminal: emacs -nw fail.txt

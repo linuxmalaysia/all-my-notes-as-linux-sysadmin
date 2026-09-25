@@ -85,16 +85,17 @@ Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod o
   Pico (*Pine Composer*) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (*GPL*) yang menawarkan ketersesuaian tinggi dengan perintah asas Pico, sambil menambah ciri pemformatan termaju seperti penyerlahan sintaks (*syntax highlighting*) dan carian/penggantian teks.
 
 - **Perbezaan Pintasan & Ciri Utama Nano vs Pico**:
-  - **Pintasan Asas Dikongsi (Nano & Pico)**:
+  - **Pintasan Papan Kekunci Lalai Dikongsi (Nano & Pico)**:
     - `Ctrl + O`: Menyimpan fail (*WriteOut*).
     - `Ctrl + X`: Keluar dari editor.
     - `Ctrl + W`: Carian teks (*Where Is*). Dalam Pico tradisional, penggantian teks dimulakan menerusi carian `Ctrl+W` diikuti `Ctrl+R`.
-    - `Ctrl + R`: Menyisip/membaca kandungan fail luar (*Read File* - nota: pemicu bendera `--modernbindings` dalam Nano boleh mengubah pemetaan ini).
+    - `Ctrl + R`: Menyisip/membaca kandungan fail luar (*Read File* - nota: pintasan ini merujuk kepada pemetaan lalai Nano/Pico; penggunaan bendera `--modernbindings` dalam Nano mengubah pemetaan ini kepada pintasan gaya moden).
     - `Ctrl + K`: Memotong (*cut*) baris semasa.
     - `Ctrl + U`: Menampal (*uncut*) baris.
   - **Ciri & Pintasan Khusus GNU Nano**:
     - `Ctrl + \`: Carian dan penggantian teks interaktif (*Replace* - khusus Nano).
-    - `Alt + G` / `Ctrl + _`: Lompat ke nombor baris tertentu.
+    - `Alt + G`: Pergi ke baris tertentu (*Go to line*).
+    - `Alt + N`: Togol paparan nombor baris (*Toggle line numbers*).
     - **Fail Konfigurasi Penyesuaian `~/.nanorc` (Khusus Nano)**:
       ```ini
       # Menandakan nombor baris dan mengaktifkan penyerlahan sintaks dalam Nano

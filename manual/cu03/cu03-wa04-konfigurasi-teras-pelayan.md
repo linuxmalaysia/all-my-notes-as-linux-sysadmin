@@ -172,7 +172,7 @@ export VISUAL=/usr/bin/vim
 export SYSTEMD_EDITOR=/usr/bin/vim
 
 # 2. Penetapan global untuk semua pentadbir pelayan dalam /etc/profile.d/editor.sh:
-# Nota: Bash membaca /etc/profile HANYA untuk shell log masuk (login shells). Skrip di /etc/profile.d/ dijalankan apabila disumberkan oleh fail permulaan shell, manakala /etc/environment dibaca secara automatik oleh pam_env semasa persediaan sesi PAM sebagai fail pasangan NAMA=NILAI tanpa export.
+# Nota: Bash membaca /etc/profile HANYA untuk shell log masuk (login shells). Skrip di /etc/profile.d/ dijalankan apabila disumberkan secara eksplisit oleh fail permulaan shell seperti /etc/profile, manakala /etc/environment dibaca oleh pam_env HANYA apabila modul pam_env.so dikonfigurasi dalam tindanan PAM dan dipanggil menerusi pam_open_session() atau pam_setcred().
 sudo tee /etc/profile.d/editor.sh << 'EOF'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
