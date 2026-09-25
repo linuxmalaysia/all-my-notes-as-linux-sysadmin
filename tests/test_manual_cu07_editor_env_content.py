@@ -57,10 +57,10 @@ def test_manual_cu06_wa07_editor_and_safe_editing_concepts():
     assert "Nano" in content or "nano" in content
     assert "Pico" in content or "pico" in content
     assert "Emacs" in content or "emacs" in content
-    assert "%s/" in content  # Regex search & replace
-    assert "@a" in content   # Vim macro
+    assert "%s/" in content  # Carian & penggantian regex
+    assert "@a" in content   # Pelaksanaan makro Vim
     assert ".nanorc" in content
-    assert "-nw" in content  # Emacs no-window terminal flag
+    assert "-nw" in content  # Bendera mod terminal tanpa tetingkap Emacs
     assert "sudoedit" in content
     assert "visudo" in content
     assert "visudo -c" in content
@@ -71,7 +71,6 @@ def test_manual_cu01_wa05_editor_env_vars():
     assert "export EDITOR=/usr/bin/vim" in content
     assert "export VISUAL=/usr/bin/vim" in content
     assert "/etc/environment" in content
-    assert "/etc/profile" in content
     assert "~/.bashrc" in content
 
 
@@ -79,7 +78,6 @@ def test_manual_cu03_wa04_editor_env_vars():
     content = read("manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md")
     assert "export EDITOR=/usr/bin/vim" in content
     assert "export VISUAL=/usr/bin/vim" in content
-    assert "/etc/profile" in content
     assert "/etc/profile.d/editor.sh" in content
 
 
@@ -87,13 +85,10 @@ def test_openwiki_topics_editor_mentions():
     content01 = read("openwiki/topic-01-linux-desktop-and-basics.md")
     assert "$EDITOR" in content01
     assert "$VISUAL" in content01
-    assert "Emacs" in content01 or "Pico" in content01
 
     content06 = read("openwiki/topic-06-troubleshooting-and-logs.md")
     assert "Vim" in content06
     assert "Nano" in content06
-    assert "Emacs" in content06
-    assert "Pico" in content06
     assert "sudoedit" in content06
     assert "visudo" in content06
 
@@ -105,5 +100,3 @@ def test_skill_cu06_wa07_editor_enhancements():
     assert "sudoedit" in content
     assert "visudo -c" in content
     assert "%s/" in content
-    assert "Emacs" in content
-    assert "Pico" in content

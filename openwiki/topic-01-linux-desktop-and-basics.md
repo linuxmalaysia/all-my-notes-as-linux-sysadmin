@@ -86,7 +86,7 @@ Topik ini membina asas konseptual dan amali yang kukuh mengikut piawaian **NOSS 
   - Pakej aplikasi universal dengan pengasingan: `Flatpak` (Flathub) dan `Snap` (Canonical) untuk pengasingan persekitaran pejabat.
   - Kod Sumber Tarball: Arkib `.tar.gz` / `.tar.zst`. Semak README/INSTALL untuk sistem binaan (seperti Autotools `./configure`, `make`, `sudo make install`).
   - Pakej Sumber RPM (`.src.rpm`): Binaan semula `rpmbuild --rebuild` selepas penyelesaian `BuildRequires`.
-- **Penyunting Teks Terminal & Penyesuaian Persekitaran Shell**: Pemilihan penyunting CLI (Vim/Neovim, GNU Nano, GNU Emacs, Pico) dan tetapan pemboleh ubah persekitaran `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile`, `/etc/profile.d/editor.sh`.
+- **Penyesuaian Pemboleh Ubah Persekitaran Shell**: `$EDITOR` & `$VISUAL` dalam `~/.bashrc`, `/etc/environment`, `/etc/profile.d/editor.sh`.
 - **Pengesahan dan Pemasangan Pemacu GPU (NVIDIA/AMD) & Kad Peranti**:
   - Deteksi perkakasan: `lspci`.
   - Ubuntu/NVIDIA: `ubuntu-drivers` dan `nvidia-smi`.

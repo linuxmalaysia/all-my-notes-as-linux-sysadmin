@@ -230,9 +230,9 @@ echo $EDITOR
 echo $VISUAL
 ```
 
-#### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment`, `/etc/profile`, `/etc/profile.d/editor.sh`)
+#### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` & `/etc/profile.d/editor.sh`)
 
-Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik (termasuk fail profil `/etc/profile` dan `/etc/environment`):
+Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik. Perlu dicatat bahawa Bash membaca `/etc/profile` HANYA untuk kelompang log masuk (*login shells*), manakala sesi interaktif bukan log masuk mungkin tidak menerima tetapan daripada `/etc/profile`. Oleh itu, penetapan global disyorkan menerusi `/etc/environment` atau skrip `/etc/profile.d/editor.sh`:
 
 1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash

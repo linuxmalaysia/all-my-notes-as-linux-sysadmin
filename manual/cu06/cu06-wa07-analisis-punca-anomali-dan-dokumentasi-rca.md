@@ -82,26 +82,28 @@ Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod o
 #### A. Pico & GNU Nano (Penyunting Teks Mudah & Pantas)
 
 - **Latar Belakang Pico & Evolusi ke GNU Nano**:
-  Pico (*Pine Composer*) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (*GPL*) kepada Pico dengan mengekalkan semua 16 sintaks arahan utama Pico tetapi menambah ciri pemformatan termaju seperti penyerlahan sintaks (*syntax highlighting*) dan nombor baris.
+  Pico (*Pine Composer*) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (*GPL*) yang menawarkan ketersesuaian tinggi dengan perintah asas Pico, sambil menambah ciri pemformatan termaju seperti penyerlahan sintaks (*syntax highlighting*) dan carian/penggantian teks.
 
-- **Pintasan Papan Kekunci Utama Nano / Pico**:
-  - `Ctrl + O`: Menyimpan fail (*WriteOut*).
-  - `Ctrl + X`: Keluar dari editor.
-  - `Ctrl + W`: Carian teks (*Where Is*).
-  - `Ctrl + \`: Carian dan penggantian teks (*Replace*).
-  - `Ctrl + K`: Memotong (*cut*) baris semasa.
-  - `Ctrl + U`: Menampal (*uncut*) baris.
-  - `Alt + G` / `Ctrl + _`: Lompat ke nombor baris tertentu.
-
-- **Konfigurasi Penyesuaian `~/.nanorc`**:
-  ```ini
-  # Menandakan nombor baris dan mengaktifkan penyerlahan sintaks
-  set linenumbers
-  set softwrap
-  set tabsize 4
-  set tabstospaces
-  include "/usr/share/nano/*.nanorc"
-  ```
+- **Perbezaan Pintasan & Ciri Utama Nano vs Pico**:
+  - **Pintasan Asas Dikongsi & Pico**:
+    - `Ctrl + O`: Menyimpan fail (*WriteOut*).
+    - `Ctrl + X`: Keluar dari editor.
+    - `Ctrl + W`: Carian teks (*Where Is*).
+    - `Ctrl + R`: Menyisip/membaca kandungan fail luar (*Read File* - khusus arahan tradisional Pico).
+    - `Ctrl + K`: Memotong (*cut*) baris semasa.
+    - `Ctrl + U`: Menampal (*uncut*) baris.
+  - **Ciri & Pintasan Khusus GNU Nano**:
+    - `Ctrl + \`: Carian dan penggantian teks termaju (*Replace* - khusus Nano).
+    - `Alt + G` / `Ctrl + _`: Lompat ke nombor baris tertentu.
+    - **Fail Konfigurasi Penyesuaian `~/.nanorc` (Khusus Nano)**:
+      ```ini
+      # Menandakan nombor baris dan mengaktifkan penyerlahan sintaks dalam Nano
+      set linenumbers
+      set softwrap
+      set tabsize 4
+      set tabstospaces
+      include "/usr/share/nano/*.nanorc"
+      ```
 
 #### B. GNU Emacs (Editor Macros - Persekitaran Penyuntingan Lanjutan)
 
@@ -120,9 +122,9 @@ GNU Emacs ialah penyunting teks serbaguna berkuasa tinggi yang menyokong pengatu
 
 - **Konfigurasi `~/.emacs` / `~/.config/emacs/init.el`**:
   ```lisp
-  ;; Tetapkan mod utama teks dan fungsi auto-fill dalam GNU Emacs / XEmacs
-  (setq default-major-mode 'text-mode)
-  (setq text-mode-hook 'turn-on-auto-fill)
+  ;; Tetapkan mod utama teks dan daftarkan auto-fill-mode secara selamat menerusi add-hook
+  (setq-default major-mode 'text-mode)
+  (add-hook 'text-mode-hook 'auto-fill-mode)
   (display-time)
   ```
 

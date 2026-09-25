@@ -1758,29 +1758,32 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 <ul>
 <li>
 <p><strong>Latar Belakang Pico &amp; Evolusi ke GNU Nano</strong>:
-  Pico (<em>Pine Composer</em>) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (<em>GPL</em>) kepada Pico dengan mengekalkan semua 16 sintaks arahan utama Pico tetapi menambah ciri pemformatan termaju seperti penyerlahan sintaks (<em>syntax highlighting</em>) dan nombor baris.</p>
+  Pico (<em>Pine Composer</em>) ialah penyunting teks terminal berorientasikan menu daripada pakej mel Pine/Alpine. GNU Nano dicipta sebagai pengganti sumber terbuka bebas (<em>GPL</em>) yang menawarkan ketersesuaian tinggi dengan perintah asas Pico, sambil menambah ciri pemformatan termaju seperti penyerlahan sintaks (<em>syntax highlighting</em>) dan carian/penggantian teks.</p>
 </li>
 <li>
-<p><strong>Pintasan Papan Kekunci Utama Nano / Pico</strong>:</p>
+<p><strong>Perbezaan Pintasan &amp; Ciri Utama Nano vs Pico</strong>:</p>
 </li>
+<li><strong>Pintasan Asas Dikongsi &amp; Pico</strong>:<ul>
 <li><code>Ctrl + O</code>: Menyimpan fail (<em>WriteOut</em>).</li>
 <li><code>Ctrl + X</code>: Keluar dari editor.</li>
 <li><code>Ctrl + W</code>: Carian teks (<em>Where Is</em>).</li>
-<li><code>Ctrl + \</code>: Carian dan penggantian teks (<em>Replace</em>).</li>
+<li><code>Ctrl + R</code>: Menyisip/membaca kandungan fail luar (<em>Read File</em> - khusus arahan tradisional Pico).</li>
 <li><code>Ctrl + K</code>: Memotong (<em>cut</em>) baris semasa.</li>
 <li><code>Ctrl + U</code>: Menampal (<em>uncut</em>) baris.</li>
-<li>
-<p><code>Alt + G</code> / <code>Ctrl + _</code>: Lompat ke nombor baris tertentu.</p>
+</ul>
 </li>
-<li>
-<p><strong>Konfigurasi Penyesuaian <code>~/.nanorc</code></strong>:
-  <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Menandakan nombor baris dan mengaktifkan penyerlahan sintaks</span>
+<li><strong>Ciri &amp; Pintasan Khusus GNU Nano</strong>:<ul>
+<li><code>Ctrl + \</code>: Carian dan penggantian teks termaju (<em>Replace</em> - khusus Nano).</li>
+<li><code>Alt + G</code> / <code>Ctrl + _</code>: Lompat ke nombor baris tertentu.</li>
+<li><strong>Fail Konfigurasi Penyesuaian <code>~/.nanorc</code> (Khusus Nano)</strong>:
+  <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Menandakan nombor baris dan mengaktifkan penyerlahan sintaks dalam Nano</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">set linenumbers</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">set softwrap</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">set tabsize 4</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">set tabstospaces</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="na">include "/usr/share/nano/*.nanorc"</span>
-</span></code></pre></div></p>
+</span></code></pre></div></li>
+</ul>
 </li>
 </ul>
 <h4 id="b-gnu-emacs-editor-macros-persekitaran-penyuntingan-lanjutan">B. GNU Emacs (Editor Macros - Persekitaran Penyuntingan Lanjutan)<a class="headerlink" href="#b-gnu-emacs-editor-macros-persekitaran-penyuntingan-lanjutan" title="Permanent link">&para;</a></h4>
@@ -1800,9 +1803,9 @@ Modul amali ini dipetakan kepada <strong>NOSS CU06 (End-User Support &amp; Syste
 </li>
 <li>
 <p><strong>Konfigurasi <code>~/.emacs</code> / <code>~/.config/emacs/init.el</code></strong>:
-  <div class="language-lisp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">;; Tetapkan mod utama teks dan fungsi auto-fill dalam GNU Emacs / XEmacs</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">default-major-mode</span><span class="w"> </span><span class="ss">'text-mode</span><span class="p">)</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">text-mode-hook</span><span class="w"> </span><span class="ss">'turn-on-auto-fill</span><span class="p">)</span>
+  <div class="language-lisp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">;; Tetapkan mod utama teks dan daftarkan auto-fill-mode secara selamat menerusi add-hook</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">(</span><span class="nv">setq-default</span><span class="w"> </span><span class="nv">major-mode</span><span class="w"> </span><span class="ss">'text-mode</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">(</span><span class="nv">add-hook</span><span class="w"> </span><span class="ss">'text-mode-hook</span><span class="w"> </span><span class="ss">'auto-fill-mode</span><span class="p">)</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">(</span><span class="nv">display-time</span><span class="p">)</span>
 </span></code></pre></div></p>
 </li>
