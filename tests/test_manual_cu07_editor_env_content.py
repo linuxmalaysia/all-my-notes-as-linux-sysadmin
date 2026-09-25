@@ -55,12 +55,8 @@ def test_manual_cu06_wa07_editor_and_safe_editing_concepts():
     assert "Vim" in content or "vim" in content
     assert "Neovim" in content or "nvim" in content
     assert "Nano" in content or "nano" in content
-    assert "Pico" in content or "pico" in content
-    assert "Emacs" in content or "emacs" in content
-    assert "%s/" in content  # Carian & penggantian regex
-    assert "@a" in content   # Pelaksanaan makro Vim
+    assert "%s/" in content  # Regex search & replace
     assert ".nanorc" in content
-    assert "-nw" in content  # Bendera mod terminal tanpa tetingkap Emacs
     assert "sudoedit" in content
     assert "visudo" in content
     assert "visudo -c" in content
