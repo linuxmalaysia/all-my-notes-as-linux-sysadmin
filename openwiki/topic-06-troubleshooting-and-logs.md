@@ -30,7 +30,11 @@ Topik ini memfokuskan kepada teknik merungkaikan masalah sistem (*troubleshootin
 3. **Pemprosesan Teks Aluran, Penyunting CLI & Amalan Keselamatan (Text Filters, CLI Editors & Security)**:
     - Penapis teks: `grep` / `ripgrep`, `sed` (stream editor), `awk` (pattern scanning), `cut`, `sort`, `uniq`, `wc`, `tr`.
     - Operator pengalihan I/O (`>`, `>>`, `<`, `2>&1`, `|` piping, `tee`).
-    - Penyunting teks CLI pentadbiran: **Vim / Neovim** (mod Normal/Insert/Visual/Ex, regex search/replace `%s/old/new/g`, makro) dan **GNU Nano** (`.nanorc`).
+    - **Penyunting Teks CLI Pentadbiran**:
+      - **Vim / Neovim**: Mod Normal/Insert/Visual/Ex, pergerakan `h,j,k,l`, `w,b,0,$`, carian/penggantian regex `%s/old/new/g`, pendaftaran makro `qa ... q` / `@a`.
+      - **GNU Nano / Pico**: Pintasan lalai dikongsi `Ctrl+O` (simpan), `Ctrl+X` (keluar), `Ctrl+W` (cari), `Ctrl+R` (sisip fail), `Ctrl+K`/`Ctrl+U` (potong/tampal). Dalam Pico tradisional, penggantian teks dibuat menerusi carian `Ctrl+W` diikuti `Ctrl+R` (menggunakan opsyen `-b` bagi versi lama yang memerlukan mod carian/ganti diaktifkan, manakala versi Pico/Alpine moden membolehkan penggantian secara asal). Nano menambah keupayaan carian ganti interaktif `Ctrl+\`, penyerlahan sintaks, dan fail `.nanorc` (nota: bendera `--modernbindings` dalam Nano mengubah pemetaan pintasan lalai ini).
+      - **GNU Emacs**: Mod `-nw` (tanpa tetingkap), pintasan `C-x C-f`, `C-x C-s`, `C-x C-c`, `C-g`, konfigurasi Lisp `~/.emacs` / `init.el` (`(setq-default major-mode 'text-mode)` dan `(add-hook 'text-mode-hook 'auto-fill-mode)`).
+    - **Pengurusan Pemboleh Ubah Persekitaran Shell**: Konfigurasi `$EDITOR`, `$VISUAL`, `$SYSTEMD_EDITOR`, `$SUDO_EDITOR` dalam `~/.bashrc` (terpakai untuk shell interaktif bukan log masuk), `/etc/profile` (terpakai untuk *shell log masuk* sahaja), `/etc/profile.d/editor.sh` (hanya dijalankan apabila disumberkan oleh fail permulaan shell), dan `/etc/environment` (pasangan `NAMA=NILAI` dibaca oleh `pam_env` apabila dikonfigurasi dan dipanggil dalam sesi PAM, melainkan dilumpuhkan dengan `readenv=0`).
     - Penyuntingan selamat fail konfigurasi sistem: `sudoedit` (`sudo -e`), `visudo`, dan semakan sintaks `visudo -c`.
 4. **Pembacaan Log Sistem & Laporan RCA (Log Analysis & Root Cause Analysis)**:
     - Audit log sistem terpusat menggunakan `journalctl` dan fail `/var/log/`.
