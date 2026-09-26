@@ -88,7 +88,7 @@ Penyuntingan fail konfigurasi sistem memerlukan pemahaman mendalam tentang mod o
   - **Pintasan Papan Kekunci Lalai Dikongsi (Nano & Pico)**:
     - `Ctrl + O`: Menyimpan fail (*WriteOut*).
     - `Ctrl + X`: Keluar dari editor.
-    - `Ctrl + W`: Carian teks (*Where Is*). Dalam Pico tradisional, penggantian teks dimulakan menerusi carian `Ctrl+W` diikuti `Ctrl+R`.
+    - `Ctrl + W`: Carian teks (*Where Is*). Dalam Pico tradisional, penggantian teks dimulakan menerusi carian `Ctrl+W` diikuti `Ctrl+R` (dengan opsyen `-b` bagi versi lama yang memerlukan mod carian/ganti diaktifkan, manakala versi Pico/Alpine moden membolehkan penggantian secara asal).
     - `Ctrl + R`: Menyisip/membaca kandungan fail luar (*Read File* - nota: pintasan ini merujuk kepada pemetaan lalai Nano/Pico; penggunaan bendera `--modernbindings` dalam Nano mengubah pemetaan ini kepada pintasan gaya moden).
     - `Ctrl + K`: Memotong (*cut*) baris semasa.
     - `Ctrl + U`: Menampal (*uncut*) baris.
