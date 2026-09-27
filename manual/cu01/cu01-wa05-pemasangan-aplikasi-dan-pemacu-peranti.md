@@ -232,14 +232,14 @@ echo $VISUAL
 
 #### B. Konfigurasi Persekitaran Sistem Global (`/etc/environment` & `/etc/profile.d/editor.sh`)
 
-Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam:
+Untuk menetapkan penyunting lalai bagi kesemua pengguna pelayan/desktop sektor awam secara sistemik. Perlu dicatat bahawa Bash membaca `/etc/profile` HANYA untuk shell log masuk (*login shells*), manakala shell interaktif bukan log masuk membaca `~/.bashrc`. Skrip di `/etc/profile.d/` dijalankan apabila disumberkan secara eksplisit oleh fail permulaan shell seperti `/etc/profile`, manakala `/etc/environment` dibaca oleh `pam_env` HANYA apabila modul `pam_env.so` dikonfigurasi dalam tindanan PAM perkhidmatan dan dipanggil menerusi `pam_open_session()` atau `pam_setcred()` sebagai fail pasangan `NAMA=NILAI` (tanpa kata kunci `export`).
 
 1. Gunakan `sudoedit` untuk membuka fail `/etc/environment` secara selamat:
 ```bash
 sudoedit /etc/environment
 ```
 
-2. Masukkan baris pemboleh ubah persekitaran berikut di dalam fail `/etc/environment` (format penetapan pasangan nama=nilai):
+2. Masukkan baris pemboleh ubah persekitaran berikut di dalam fail `/etc/environment` (format penetapan pasangan `NAMA=NILAI` tanpa `export`):
 ```ini
 EDITOR="/usr/bin/vim"
 VISUAL="/usr/bin/vim"
