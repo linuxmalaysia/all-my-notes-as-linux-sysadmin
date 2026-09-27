@@ -82,11 +82,24 @@
 
 ---
 
-## 🎯 Roadmap Seterusnya (Fasa 7: Migrasi & Pemodenan Bab 7 - Sedia untuk Google Jules 🎯)
-- [ ] **Fasa 7: Migrasi & Pemodenan Bab 7 (Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem - CU01, CU03, & CU06):**
-  - [ ] Ekstrak dan modenkan kandungan amali dari `references/manual/bab_07/` ke `manual/cu06/cu06-wa07`, `manual/cu01/cu01-wa05`, dan `manual/cu03/cu03-wa04` (Vim/Neovim, Nano, `$EDITOR`, `$VISUAL`, `~/.bashrc`, `/etc/environment`, `sudoedit`).
-  - [ ] Kemas kini kemahiran AI `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md`.
-  - [ ] Kemas kini `openwiki/topic-06-troubleshooting-and-logs.md` dan `openwiki/topic-01-linux-desktop-and-basics.md`.
-  - [ ] Tambah ujian unit pengesahan dan sahkan 100% Quality Gate (`run_all_tests.py`).
+## 🌟 Milestone Status: Fasa 7 (Migrasi & Pemodenan Bab 7 - Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem) - SELESAI ✅ (Google Jules PR #15)
+- [x] **Penyempurnaan Modul Amali `manual/cu06/`, `manual/cu01/` & `manual/cu03/`:**
+  - `manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md` (Vim/Neovim regex `%s/`, makro `@a`, GNU Nano/Pico pintasan lalai `Ctrl+O`, `Ctrl+X`, `Ctrl+W`, `Ctrl+R`, `Ctrl+\`, `Alt+G`, `Alt+N`, `--modernbindings`, GNU Emacs `-nw`, `init.el` Lisp setup, `sudoedit`, `visudo`).
+  - `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` & `manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md` (Penjelasan skop persekitaran `/etc/profile` untuk shell log masuk, `~/.bashrc` untuk shell interaktif bukan log masuk, `/etc/profile.d/`, dan `/etc/environment` pasangan `NAMA=NILAI` via `pam_env.so`).
+- [x] **Porting Kemahiran AI CU06 & OpenWiki (`.agents/skills/` & `openwiki/`):**
+  - Naik taraf `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md` ke format `type: skill` penuh berlaraskan DBP.
+  - Kemas kini `openwiki/topic-01-linux-desktop-and-basics.md` & `openwiki/topic-06-troubleshooting-and-logs.md`.
+- [x] **Jaminan Kualiti (100% Quality Gate):**
+  - **2,322 ujian Python pytest lulus** (termasuk `tests/test_manual_cu07_editor_env_content.py`, `tests/unit/test_ansible.py`, `tests/unit/test_containers.py`, `test_okf_compliance.py`, `tests/unit/test_markdown.py`).
+  - **38 ujian Node.js Jest lulus**.
+  - Laman web statik `html/` dibina semula dan disegerakkan.
+
+---
+
+## 🎯 Roadmap Seterusnya (Fasa 8: Migrasi & Pemodenan Bab 8 & Seterusnya)
+- [ ] **Fasa 8: Migrasi & Pemodenan Silibus Bab 8 (Pengurusan Pakej & Repositori Lanjutan):**
+  - Ekstrak dan modenkan kandungan amali dari `references/manual/bab_08/` ke modul amali NOSS berkaitan.
+  - Tambah/kemas kini kemahiran AI ejen dan topik OpenWiki.
+  - Sahkan 100% Quality Gate.
 - [ ] **Audit Keseluruhan Kurikulum NOSS Linux & Penjana Format Output Pelbagai (DOCX, PPTX, PDF, FastMCP Server)**
 - [ ] **Penyediaan Projek Arkib Khas OSCC MAMPU / MOSC (Dedicated Archive Project)**
