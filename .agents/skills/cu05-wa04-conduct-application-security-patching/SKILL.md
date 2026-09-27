@@ -1,4 +1,4 @@
-﻿---
+---
 name: cu05-wa04-conduct-application-security-patching
 description: "Melaksanakan Aktiviti Kerja NOSS: Pelaksanaan Tampalan Keselamatan Aplikasi (unattended-upgrades, dnf-automatic, rpm -V, dpkg --verify)"
 topics: [noss, cu05, wa04, security-patching, unattended-upgrades, dnf-automatic]

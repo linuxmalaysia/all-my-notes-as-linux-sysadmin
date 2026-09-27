@@ -54,6 +54,8 @@ This skill provides automated guidance and execution steps for managing Linux ap
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
   # 4. Manual compilation from tarball (.tar.gz / .tar.zst)
+  gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256
+  sha256sum -c sample-app-1.0.tar.gz.sha256
   tar -zxvf sample-app-1.0.tar.gz
   cd sample-app-1.0
   cat README || cat INSTALL
@@ -63,7 +65,28 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo make install
   ```
 
-### 2. Universal Containerized Packaging
+### 2. Environment Variables Configuration ($EDITOR & $VISUAL)
+
+- **User Environment (~/.bashrc):**
+  ```bash
+  export EDITOR=/usr/bin/vim
+  export VISUAL=/usr/bin/vim
+  source ~/.bashrc
+  echo $EDITOR
+  ```
+
+- **System-Wide Environment (/etc/environment & /etc/profile.d/editor.sh):**
+  ```bash
+  # In /etc/environment (NAME=VALUE pairs, read by pam_env):
+  EDITOR="/usr/bin/vim"
+  VISUAL="/usr/bin/vim"
+
+  # In /etc/profile.d/editor.sh (For interactive login shells):
+  export EDITOR=/usr/bin/vim
+  export VISUAL=/usr/bin/vim
+  ```
+
+### 3. Universal Containerized Packaging
 
 - **Flatpak (Flathub):**
 
@@ -78,7 +101,7 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo snap install code --classic
   ```
 
-### 3. GPU & Device Driver Installation
+### 4. GPU & Device Driver Installation
 
 - **Detect Hardware (GPU & Wireless):**
 

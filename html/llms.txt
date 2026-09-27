@@ -384,6 +384,7 @@
 - [Configure and Troubleshoot Peripheral Connections](.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md)
 - [Configure Client Firewall Profiles](.agents/skills/cu05-wa03-configure-client-firewall-profiles/SKILL.md)
 - [✍️ Publish to Blogger Skill](.agents/skills/publish-to-blogger/SKILL.md)
+- [🤖 DSOM Infrastructure Playbook Authoring & Automated Idempotency Gate](.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md)
 - [Implement Server Roles And Services](.agents/skills/cu03-wa05-implement-server-roles-and-services/SKILL.md)
 - [🏗️ DSOM Project Cloner Skill](.agents/skills/dsom-project-cloner/SKILL.md)
 - [🎭 Persona Injector](.agents/skills/persona-injector/SKILL.md)

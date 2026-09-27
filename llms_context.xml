@@ -90,6 +90,17 @@ You are an expert Linux System Administrator and Educator, embodying the digital
       2. **Penyelidikan Mendalam (*Deep Web Research*):** Menjalankan carian web melalui dokumentasi rasmi berautoriti (Kernel.org, Ubuntu 26.04 Docs, AlmaLinux 10 Wiki, PRPM DBP, CIS Benchmark) bagi memastikan arahan terminal, pilihan bendera (*CLI flags*), fail konfigurasi, dan amalan keselamatan adalah **100% tepat, betul, selamat, dan terkini (standard 2026)**.
       3. **Pengayaan Berterusan Protokol Keselamatan &amp; Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling Jabatan Digital Negara / MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
       4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
+22. **Rule 32.43: Automated Ansible Playbook Validation Ladder &amp; Idempotence Assertion Standard**:
+    Whenever the AI generates, refactors, or fixes Ansible playbooks, roles, or tasks, it must strictly adhere to the Declarative Validation Ladder:
+    - (a) **Deterministic Static Gates:** Enforce Fully Qualified Collection Names (FQCN, e.g. `ansible.builtin.package`), descriptive capitalized task names, and strictly prohibit bare `shell`/`command` tasks unless accompanied by explicit idempotency guards (`changed_when`, `creates`, or `removes`). Plaintext secrets are strictly banned, and tasks handling vaulted secrets must specify `no_log: true`.
+    - (b) **Tiered Validation Sequence:** Playbook code must pass: (1) Syntax validation (`ansible-playbook --syntax-check`); (2) Static standards validation (`ansible-lint --profile production`); (3) Dry-run verification (`ansible-playbook --check --diff`).
+    - (c) **Two-Pass Idempotence Assertion:** In testbeds and staging environments, true declarative compliance requires a two-pass execution: Run 1 must converge successfully; Run 2 must complete with `changed=0, failed=0`.
+    - (d) **Execution Blast Radius Isolation:** The AI is strictly prohibited from applying generated or unvalidated playbooks directly to production carrier inventories without prior syntax validation and operator review.
+23. **Rule 32.44: Ansible Community AI-Forge &amp; Red Hat CoP Automation Good Practices Standard**:
+    When authoring, refactoring, or auditing Ansible playbooks, roles, and inventories, the AI must enforce the Red Hat Communities of Practice (CoP) Automation Good Practices and the Zen of Ansible:
+    - (a) **The Zen of Ansible Philosophical Gate:** Playbooks are declarative specifications, not procedural programs. Prohibit Jinja2 Python abuse, deep YAML nesting, and excessive `when` conditional chains.
+    - (b) **Authoring Style Invariants:** 2-space indentation, `.yml` extension, structured YAML argument mapping (no `key=value` string syntax), lowercase `true`/`false` booleans, imperative capitalized task names, `snake_case` identifiers, `&lt;role_name&gt;_` variable prefixes, bracket fact notation (`ansible_facts['distribution']`), explicit `state:`, modern `loop:`, and mandatory `{{ ansible_managed | comment }}` header at the top of Jinja2 configuration templates.
+    - (c) **CoP 14-Category Review Checklist:** Code reviews of playbooks and roles must evaluate against the 14 standard categories (YAML Style, Naming, Module Usage, Task Structure, Handlers, Templates, Variables, Playbook Structure, Inventory, Error Handling, Idempotency, Argument Specs, Tags, Platform Support) and emit prioritized actionable recommendations.
 
 ## Google Jules &amp; Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
@@ -121,6 +132,10 @@ dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spe
 ## [Unreleased]
 
 ### Added (Penambahan)
+- **Fasa 8 Migrasi Silibus Bab 8**: Ekstraksi dan pemodenan kandungan amali `references/manual/bab_08/` ke dalam `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` dan `manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md`.
+- **Governance Rules**: Added **Rule 32.43** (*Automated Ansible Playbook Validation Ladder &amp; Idempotence Assertion Standard*) and **Rule 32.44** (*Ansible Community AI-Forge &amp; Red Hat CoP Automation Good Practices Standard*) to `AGENTS.md` and `.agents/AGENTS.md`.
+- **Skill Extensions**: Extended `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md` (Phases 4l &amp; 4m), `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md`, and `.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md`.
+- **OpenWiki**: Updated `openwiki/topic-01-linux-desktop-and-basics.md` and `openwiki/topic-05-linux-security.md` with package management and security audit synthesis.
 - **Governance**: Adopted the *Tri-Phasic Mind Cognitive Architecture* blueprint, injecting Tech Stack and Implementation Roadmap into `docs/explanation/governance/DSOM-TRI-PHASIC-COGNITIVE-ARCHITECTURE.md`.
 - **Rules**: Added Rule 11 to AI Constitution (`.agents/AGENTS.md`) governing Tri-Phasic execution state constraints.
 
@@ -33396,7 +33411,7 @@ Secara asasnya, binari `.exe` Windows tidak boleh dijalankan terus pada Linux. N
   </file>
   <file path=".agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md">
     <content>
-﻿---
+---
 name: cu05-wa04-conduct-application-security-patching
 description: "Melaksanakan Aktiviti Kerja NOSS: Pelaksanaan Tampalan Keselamatan Aplikasi (unattended-upgrades, dnf-automatic, rpm -V, dpkg --verify)"
 topics: [noss, cu05, wa04, security-patching, unattended-upgrades, dnf-automatic]
@@ -37675,6 +37690,8 @@ This skill provides automated guidance and execution steps for managing Linux ap
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
   # 4. Manual compilation from tarball (.tar.gz / .tar.zst)
+  gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256
+  sha256sum -c sample-app-1.0.tar.gz.sha256
   tar -zxvf sample-app-1.0.tar.gz
   cd sample-app-1.0
   cat README || cat INSTALL
@@ -37684,7 +37701,28 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo make install
   ```
 
-### 2. Universal Containerized Packaging
+### 2. Environment Variables Configuration ($EDITOR &amp; $VISUAL)
+
+- **User Environment (~/.bashrc):**
+  ```bash
+  export EDITOR=/usr/bin/vim
+  export VISUAL=/usr/bin/vim
+  source ~/.bashrc
+  echo $EDITOR
+  ```
+
+- **System-Wide Environment (/etc/environment &amp; /etc/profile.d/editor.sh):**
+  ```bash
+  # In /etc/environment (NAME=VALUE pairs, read by pam_env):
+  EDITOR="/usr/bin/vim"
+  VISUAL="/usr/bin/vim"
+
+  # In /etc/profile.d/editor.sh (For interactive login shells):
+  export EDITOR=/usr/bin/vim
+  export VISUAL=/usr/bin/vim
+  ```
+
+### 3. Universal Containerized Packaging
 
 - **Flatpak (Flathub):**
 
@@ -37699,7 +37737,7 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo snap install code --classic
   ```
 
-### 3. GPU &amp; Device Driver Installation
+### 4. GPU &amp; Device Driver Installation
 
 - **Detect Hardware (GPU &amp; Wireless):**
 
@@ -38623,6 +38661,94 @@ Trigger this skill whenever the user asks to "prepare a blog post", "publish to 
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
+
+    </content>
+  </file>
+  <file path=".agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md">
+    <content>
+---
+name: "dsom-infrastructure-playbook-documenter"
+okf_version: 0.1
+type: skill
+title: "DSOM Infrastructure Playbook Authoring &amp; Automated Idempotency Gate (Rule 32.43 &amp; Rule 32.44)"
+timestamp: "2026-08-17T00:00:00Z"
+topics: ["ansible", "playbook", "idempotency", "cop", "dsom", "ai-forge"]
+tags: ["ansible", "playbook", "validation", "idempotence", "redhat-cop", "zen-of-ansible"]
+description: "Garis panduan dan kemahiran AI bagi penulisan, penyesuaian, pengesahan, dan audit Ansible Playbook berteraskan 5-Tier Validation Ladder, Idempotence Assertion, serta Red Hat CoP Good Practices."
+resource: "file:///.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md"
+---
+
+# 🤖 DSOM Infrastructure Playbook Authoring &amp; Automated Idempotency Gate
+
+## 📌 Pengenalan &amp; Kerangka Tadbir Urus
+Kemahiran ini mentakrifkan piawaian penulisan, semakan, dan pautan automasi Ansible Playbook mengikut **Rule 32.43** (*Automated Ansible Playbook Validation Ladder &amp; Idempotence Assertion Standard*) dan **Rule 32.44** (*Ansible Community AI-Forge &amp; Red Hat CoP Automation Good Practices Standard*).
+
+---
+
+## 🪜 Fasa 4l: The 5-Tier Ascending Cost Validation Ladder (Rule 32.43)
+
+Apabila Ejen AI menjana atau mengemaskini Playbook/Role Ansible, kod MESTI melepasi 5 tingkat pengesahan:
+
+1. **Tier 1 (YAML Static Lint):** Semakan sintaks YAML asas (ms/sub-saat).
+2. **Tier 2 (Ansible Syntax Check):** Execution `ansible-playbook &lt;playbook.yml&gt; --syntax-check` untuk mengesahkan blok task, struktur YAML, dan rujukan pemboleh ubah.
+3. **Tier 3 (Ansible-Lint Production Profile):** Strict linting `ansible-lint --profile production` (penguatkuasaan Fully Qualified Collection Names `ansible.builtin.*`, nama tugas berhuruf besar, ketiadaan bare shell/command).
+4. **Tier 4 (Check Mode / Dry Run):** `ansible-playbook --check --diff` terhadap inventori ujian untuk mengesan sebarang ralat runtime dan variasi konfigurasi tanpa mengubah sistem.
+5. **Tier 5 (Two-Pass Execution &amp; Idempotence Assertion):**
+   - *Pass 1 (Converge):* Pelaksanaan pertama untuk mencapai keadaan yang diingini.
+   - *Pass 2 (Assert Idempotency):* Pelaksanaan kedua mesti menghasilkan `changed=0, failed=0`. Sebarang `changed &gt; 0` menandakan regresi prosedur yang mesti dibetulkan.
+
+---
+
+## 🛡️ Deterministic Pre-Execution Code Gates (Fast-Fail)
+- **Modul FQCN:** Wajib menggunakan nama koleksi penuh (contoh: `ansible.builtin.package`, `ansible.builtin.service`, `ansible.builtin.copy`).
+- **Garda Impotensi Task:** Prosedur bare `ansible.builtin.shell` atau `ansible.builtin.command` DILARANG sama sekali melainkan disertakan dengan penanda `creates`, `removes`, atau `changed_when`.
+- **Pengurusan Rahsia:** Dilarang menggunakan kata laluan/kunci teks biasa. Task yang mengendalikan rahsia wajib menggunakan `no_log: true`.
+
+---
+
+## 📜 Fasa 4m: Red Hat CoP Authoring &amp; Zen of Ansible Review Protocol (Rule 32.44)
+
+### 1. Falsafah Zen of Ansible
+- *Ansible bukan Python:* Elakkan pemprosesan gelung Jinja2 yang kompleks atau pemprosesan skrip dalam arahan task.
+- *Playbook bukan program:* Elakkan rantaian `when` yang terlalu dalam dan penyalahgunaan aliran kawalan.
+- *Isytihar (Declarative) melebihi Arahan (Imperative):* Utamakan modul khas berbanding `command`/`shell`/`raw`.
+
+### 2. Standard Gaya Penulisan Red Hat CoP (14-Point Invariants)
+1. Indentasi 2 ruang, sambungan fail `.yml` (bukan `.yaml`).
+2. Format kamus YAML bagi argumen modul (bukan format rentetan `key=value`).
+3. Nilai boolean `true`/`false` berhuruf kecil.
+4. Penggunaan FQCN `ansible.builtin.*` untuk semua modul.
+5. Nama task, play, dan block menggunakan ragam perintah berhuruf besar (*Imperative mood*, contoh: `Ensure nginx is installed`).
+6. Parameter `state:` dinyatakan secara eksplisit (`present`, `absent`, `started`, `restarted`).
+7. Penggunaan binaan moden `loop:` berbanding `with_*` yang telah lapuk.
+8. Penetapan `failed_when:` dengan syarat status spesifik berbanding `ignore_errors: true`.
+9. Awalan pemboleh ubah role (`&lt;role_name&gt;_...` bagi pemboleh ubah luaran, `__&lt;role_name&gt;_...` bagi pemstelar dalaman).
+10. Pengepala fail konfigurasi: `{{ ansible_managed | comment }}` pada bahagian atas fail templat Jinja2.
+11. Gaya `snake_case` untuk nama fail, pemboleh ubah, dan role.
+12. Notasi fakta moden: `ansible_facts['...']` menggunakan kurungan siku berbanding pemboleh ubah terus.
+
+---
+
+## 📊 Matriks Semakan 14-Kategori CoP (Review Checklist)
+Setiap penilaian kod Playbook mesti menilai 14 kategori berikut:
+1. **YAML Style** (Indentasi, format dictionary)
+2. **Naming Conventions** (Imperative, capitalized)
+3. **Module Usage** (FQCN, declarative over shell)
+4. **Task Structure** (Descriptive, minimal nesting)
+5. **Handlers** (Triggering logic)
+6. **Templates** (Jinja2 header `ansible_managed`)
+7. **Variables** (Role prefixing, snake_case)
+8. **Playbook Structure** (Imports/includes)
+9. **Inventory** (Group vars, host vars separation)
+10. **Error Handling** (failed_when, block/rescue)
+11. **Idempotency** (creates/removes/changed_when, changed=0 on run 2)
+12. **Argument Specs** (meta/argument_specs.yml)
+13. **Tags** (Granular execution tags)
+14. **Platform Support** (OS distribution branching via `ansible_facts['os_family']`)
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>
@@ -41794,7 +41920,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-09-26T23:52:52Z"
+timestamp: "2026-09-27T14:35:54Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -41805,7 +41931,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `123`
+**Total Modules Indexed:** `124`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -41846,7 +41972,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`cu05-wa01-perform-user-account-and-permission-audits`** &lt;br&gt; *Perform User Account and Permission Audits (CU05-WA01)* | Executes NOSS Work Activity CU05-WA01: Audit user accounts, group memberships, authentication files (/etc/passwd, /etc/shadow), sudoers configuration, file permissions, POSIX ACLs, and faillock. | "noss", "cu05", "wa01", "user-audit", "permissions", "visudo", "faillock" |
 | **`cu05-wa02-configure-endpoint-antivirus-anti-malware-defences`** &lt;br&gt; *cu05-wa02-configure-endpoint-antivirus-anti-malware-defences* | No description provided. | N/A |
 | **`cu05-wa03-configure-client-firewall-profiles`** &lt;br&gt; *cu05-wa03-configure-client-firewall-profiles* | No description provided. | N/A |
-| **`cu05-wa04-conduct-application-security-patching`** &lt;br&gt; *cu05-wa04-conduct-application-security-patching* | No description provided. | N/A |
+| **`cu05-wa04-conduct-application-security-patching`** &lt;br&gt; *Pelaksanaan Tampalan Keselamatan Aplikasi* | Melaksanakan Aktiviti Kerja NOSS: Pelaksanaan Tampalan Keselamatan Aplikasi (unattended-upgrades, dnf-automatic, rpm -V, dpkg --verify) | noss, cu05, wa04, security-patching, unattended-upgrades, dnf-automatic |
 | **`cu05-wa05-manage-physical-endpoint-security-lockdowns`** &lt;br&gt; *Manage Physical Endpoint Security Lockdowns (CU05-WA05)* | Executes NOSS Work Activity CU05-WA05: Manage physical endpoint lockdowns, bootloader GRUB2 password protection, session timeout (TMOUT), virtual terminal limits, and safe shutdown procedures. | "noss", "cu05", "wa05", "physical-security", "lockdown", "grub", "tmout", "systemd" |
 | **`cu06-wa01-prepare-end-user-support-service-requirements`** &lt;br&gt; *cu06-wa01-prepare-end-user-support-service-requirements* | No description provided. | N/A |
 | **`cu06-wa02-handle-end-user-requests-and-incidents`** &lt;br&gt; *cu06-wa02-handle-end-user-requests-and-incidents* | No description provided. | N/A |
@@ -41860,6 +41986,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`dsom-bootstrap`** &lt;br&gt; *dsom-bootstrap* | No description provided. | N/A |
 | **`dsom-diataxis-pipeline`** &lt;br&gt; *dsom-diataxis-pipeline* | No description provided. | N/A |
 | **`dsom-html-generator`** &lt;br&gt; *dsom-html-generator* | Skrip automasi untuk menjana tapak web statik HTML ke dalam direktori /html daripada keseluruhan struktur fail Markdown repositori (DSOM-Safe). | web, html, static-site, automation, scripts |
+| **`dsom-infrastructure-playbook-documenter`** &lt;br&gt; *DSOM Infrastructure Playbook Authoring &amp; Automated Idempotency Gate (Rule 32.43 &amp; Rule 32.44)* | Garis panduan dan kemahiran AI bagi penulisan, penyesuaian, pengesahan, dan audit Ansible Playbook berteraskan 5-Tier Validation Ladder, Idempotence Assertion, serta Red Hat CoP Good Practices. | "ansible", "playbook", "idempotency", "cop", "dsom", "ai-forge" |
 | **`dsom-knowledge-ingester`** &lt;br&gt; *dsom-knowledge-ingester* | No description provided. | N/A |
 | **`dsom-llms-indexer`** &lt;br&gt; *dsom-llms-indexer* | Skrip automasi untuk menjana dan mengemas kini indeks llms.txt, llms-full.txt, dan llms_context.xml berasaskan spesifikasi llmstxt.org. | llms, ai-context, automation, indexing, markdown |
 | **`dsom-mass-okf-migrator`** &lt;br&gt; *dsom-mass-okf-migrator* | No description provided. | N/A |
@@ -41934,7 +42061,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** &lt;br&gt; *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-26*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-27*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>

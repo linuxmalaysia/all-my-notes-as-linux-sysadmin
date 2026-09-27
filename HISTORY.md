@@ -1,5 +1,10 @@
 # Project History (Sovereign Markdown Palace)
 
+## [2026-08-17] Fasa 8: Migrasi Bab 8 & Penyerapan Rule 32.43 / Rule 32.44 Ansible Standards
+- **Peristiwa**: Memproses dan memodenkan kandungan amali Bab 8 (references/manual/bab_08/) mengenai Pengurusan Pakej RPM/Debian, CLI/GUI package managers, SRPM rebuilds, tarball compilation & checksum/GPG verification, serta penyesuaian $EDITOR/$VISUAL.
+- **Tadbir Urus AI**: Menyerapkan Rule 32.43 (Ansible Validation Ladder & Idempotence Assertion) dan Rule 32.44 (Ansible AI-Forge & Red Hat CoP Standards) ke dalam perlembagaan AI (`AGENTS.md` & `.agents/AGENTS.md`) dan `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md`.
+- **Modul Modified**: `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md`, `manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md`, `openwiki/topic-01-linux-desktop-and-basics.md`, `openwiki/topic-05-linux-security.md`.
+
 ## [2026-08-16] Pengarkiban Sejarah: Malaysia Open Source Conference (MOSC / MOSCMY)
 - **Peristiwa**: Mendokumentasikan sejarah dan impak penganjuran Malaysia Open Source Conference (MOSC / MOSCMY / OSSCONF) 2009–2019 sebagai acara persidangan komuniti sumber terbuka terbesar di Malaysia.
 - **Artifak Baharu**: `docs/explanation/sejarah-mosc-malaysia.md`

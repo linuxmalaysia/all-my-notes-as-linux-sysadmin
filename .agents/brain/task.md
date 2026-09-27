@@ -96,10 +96,25 @@
 
 ---
 
-## 🎯 Roadmap Seterusnya (Fasa 8: Migrasi & Pemodenan Bab 8 & Seterusnya)
-- [ ] **Fasa 8: Migrasi & Pemodenan Silibus Bab 8 (Pengurusan Pakej & Repositori Lanjutan):**
-  - Ekstrak dan modenkan kandungan amali dari `references/manual/bab_08/` ke modul amali NOSS berkaitan.
-  - Tambah/kemas kini kemahiran AI ejen dan topik OpenWiki.
+## 🌟 Milestone Status: Fasa 8 (Migrasi & Pemodenan Bab 8 - Pengurusan Pakej & Repositori Lanjutan, Rule 32.43 & Rule 32.44) - SELESAI ✅
+- [x] **Penambahan Rule 32.43 & Rule 32.44 Perlembagaan AI (`AGENTS.md` & `.agents/AGENTS.md`):**
+  - Rule 32.43: Automated Ansible Playbook Validation Ladder & Idempotence Assertion Standard.
+  - Rule 32.44: Ansible Community AI-Forge & Red Hat CoP Automation Good Practices Standard.
+- [x] **Penyempurnaan Modul Amali & Kemahiran AI (`manual/`, `openwiki/` & `.agents/skills/`):**
+  - `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` & `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md` (RPM CLI flags `-i`, `-U`, `-F`, `-q`, `-V`, `-e`, `--rebuilddb`, SRPM `rpmbuild --rebuild`, kompilasi tarball `./configure`, `make`, `make install` & `sha256sum`/`gpg` integrity verification, GUI package tools Synaptic & GNOME Software, serta penetapan `$EDITOR` dan `$VISUAL`).
+  - `manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md` & `.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md` (Automasi tampalan keselamatan, audit CVE, integriti `rpm -V` & `dpkg --verify`).
+  - `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md` (Fasa 4l & Fasa 4m Ansible Standards).
+  - `openwiki/topic-01-linux-desktop-and-basics.md` & `openwiki/topic-05-linux-security.md`.
+- [x] **Jaminan Kualiti (100% Quality Gate):**
+  - **2,322 ujian Python pytest lulus**.
+  - **38 ujian Node.js Jest lulus**.
+  - Laman web statik `html/` dibina semula dan disegerakkan.
+
+---
+
+## 🎯 Roadmap Seterusnya (Fasa 9 & Seterusnya)
+- [ ] **Fasa 9: Migrasi & Pemodenan Silibus Bab 9 & Seterusnya:**
+  - Ekstrak dan modenkan kandungan amali dari bab rujukan mentah seterusnya.
   - Sahkan 100% Quality Gate.
 - [ ] **Audit Keseluruhan Kurikulum NOSS Linux & Penjana Format Output Pelbagai (DOCX, PPTX, PDF, FastMCP Server)**
 - [ ] **Penyediaan Projek Arkib Khas OSCC MAMPU / MOSC (Dedicated Archive Project)**
