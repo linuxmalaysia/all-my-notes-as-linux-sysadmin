@@ -55,7 +55,7 @@ Apabila Ejen AI menjana atau mengemaskini Playbook/Role Ansible, kod MESTI melep
 7. Penggunaan binaan moden `loop:` berbanding `with_*` yang telah lapuk.
 8. Penetapan `failed_when:` dengan syarat status spesifik berbanding `ignore_errors: true`.
 9. Awalan pemboleh ubah role (`<role_name>_...` bagi pemboleh ubah luaran, `__<role_name>_...` bagi pemstelar dalaman).
-10. Pengepala fail konfigurasi: `{{ ansible_managed | comment }}` pada bahagian atas fail templat Jinja2.
+10. Pengepala fail konfigurasi: `{{ ansible_managed | comment }}` pada bahagian atas fail templat Jinja2 bagi format yang menyokong sintaks ulasan (dikecualikan untuk format tanpa sintaks ulasan seperti JSON untuk mengelakkan ralat sintaks).
 11. Gaya `snake_case` untuk nama fail, pemboleh ubah, dan role.
 12. Notasi fakta moden: `ansible_facts['...']` menggunakan kurungan siku berbanding pemboleh ubah terus.
 

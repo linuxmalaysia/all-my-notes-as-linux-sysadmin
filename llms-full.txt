@@ -28114,9 +28114,11 @@ Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu me
    - **Amaran:** Penggunaan `sudo make install` tidak dijejak oleh pangkalan data pakej sistem (`dpkg`/`rpm`). Adalah disyorkan untuk menguruskan inventori di `/usr/local` atau membina pakej binari rasmi.
 
    ```bash
-   # Sahkan tandatangan GPG, checksum, ekstrak, dan bina kod sumber secara berangkaian (berhenti jika sebarang semakan gagal)
-   gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 && \
-   sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256 && \
+   # Sahkan tandatangan GPG dengan cap jari vendor yang disahkan, semak entri spesifik checksum sha256sum, ekstrak, dan bina kod sumber secara berangkaian (berhenti jika sebarang semakan gagal)
+   # (Nota: Lokasi keyring: Debian/Ubuntu di `/etc/apt/trusted.gpg.d/vendor.gpg` atau `/etc/apt/keyrings/vendor.gpg`; AlmaLinux/Fedora di `/etc/pki/rpm-gpg/RPM-GPG-KEY-vendor` atau `/etc/pki/gpg/vendor.gpg`)
+   EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
+   gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --status-fd 1 --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 | grep -q "$EXPECTED_FPR" && \
+   grep "sampel-aplikasi-1.0.tar.gz" sampel-aplikasi-1.0.tar.gz.sha256 | sha256sum -c - && \
    tar -zxvf sampel-aplikasi-1.0.tar.gz && \
    cd sampel-aplikasi-1.0 && \
    ./configure --prefix=/usr/local && \
@@ -38042,8 +38044,10 @@ This skill provides automated guidance and execution steps for managing Linux ap
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
   # 4. Manual compilation from tarball (.tar.gz / .tar.zst) - chained execution stopping on failure
-  gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 && \
-  sha256sum -c sample-app-1.0.tar.gz.sha256 && \
+  # (Keyring path: Debian/Ubuntu uses /etc/apt/trusted.gpg.d/vendor.gpg or /etc/apt/keyrings/vendor.gpg; RPM/RHEL/AlmaLinux uses /etc/pki/rpm-gpg/RPM-GPG-KEY-vendor)
+  EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
+  gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 | grep -q "$EXPECTED_FPR" && \
+  grep "sample-app-1.0.tar.gz" sample-app-1.0.tar.gz.sha256 | sha256sum -c - && \
   tar -zxvf sample-app-1.0.tar.gz && \
   cd sample-app-1.0 && \
   ./configure --prefix=/usr/local && \
@@ -39088,7 +39092,7 @@ Apabila Ejen AI menjana atau mengemaskini Playbook/Role Ansible, kod MESTI melep
 7. Penggunaan binaan moden `loop:` berbanding `with_*` yang telah lapuk.
 8. Penetapan `failed_when:` dengan syarat status spesifik berbanding `ignore_errors: true`.
 9. Awalan pemboleh ubah role (`<role_name>_...` bagi pemboleh ubah luaran, `__<role_name>_...` bagi pemstelar dalaman).
-10. Pengepala fail konfigurasi: `{{ ansible_managed | comment }}` pada bahagian atas fail templat Jinja2.
+10. Pengepala fail konfigurasi: `{{ ansible_managed | comment }}` pada bahagian atas fail templat Jinja2 bagi format yang menyokong sintaks ulasan (dikecualikan untuk format tanpa sintaks ulasan seperti JSON untuk mengelakkan ralat sintaks).
 11. Gaya `snake_case` untuk nama fail, pemboleh ubah, dan role.
 12. Notasi fakta moden: `ansible_facts['...']` menggunakan kurungan siku berbanding pemboleh ubah terus.
 
@@ -42331,7 +42335,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-09-27T23:59:23Z"
+timestamp: "2026-09-28T02:51:09Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -42472,7 +42476,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-27*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-28*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/index.md -->

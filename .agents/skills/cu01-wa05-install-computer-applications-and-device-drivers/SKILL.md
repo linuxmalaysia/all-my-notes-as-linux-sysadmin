@@ -54,8 +54,10 @@ This skill provides automated guidance and execution steps for managing Linux ap
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
   # 4. Manual compilation from tarball (.tar.gz / .tar.zst) - chained execution stopping on failure
-  gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 && \
-  sha256sum -c sample-app-1.0.tar.gz.sha256 && \
+  # (Keyring path: Debian/Ubuntu uses /etc/apt/trusted.gpg.d/vendor.gpg or /etc/apt/keyrings/vendor.gpg; RPM/RHEL/AlmaLinux uses /etc/pki/rpm-gpg/RPM-GPG-KEY-vendor)
+  EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
+  gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 | grep -q "$EXPECTED_FPR" && \
+  grep "sample-app-1.0.tar.gz" sample-app-1.0.tar.gz.sha256 | sha256sum -c - && \
   tar -zxvf sample-app-1.0.tar.gz && \
   cd sample-app-1.0 && \
   ./configure --prefix=/usr/local && \

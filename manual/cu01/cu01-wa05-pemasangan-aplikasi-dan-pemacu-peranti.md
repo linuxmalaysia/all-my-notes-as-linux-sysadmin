@@ -159,9 +159,11 @@ Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu me
    - **Amaran:** Penggunaan `sudo make install` tidak dijejak oleh pangkalan data pakej sistem (`dpkg`/`rpm`). Adalah disyorkan untuk menguruskan inventori di `/usr/local` atau membina pakej binari rasmi.
 
    ```bash
-   # Sahkan tandatangan GPG, checksum, ekstrak, dan bina kod sumber secara berangkaian (berhenti jika sebarang semakan gagal)
-   gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 && \
-   sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256 && \
+   # Sahkan tandatangan GPG dengan cap jari vendor yang disahkan, semak entri spesifik checksum sha256sum, ekstrak, dan bina kod sumber secara berangkaian (berhenti jika sebarang semakan gagal)
+   # (Nota: Lokasi keyring: Debian/Ubuntu di `/etc/apt/trusted.gpg.d/vendor.gpg` atau `/etc/apt/keyrings/vendor.gpg`; AlmaLinux/Fedora di `/etc/pki/rpm-gpg/RPM-GPG-KEY-vendor` atau `/etc/pki/gpg/vendor.gpg`)
+   EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
+   gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --status-fd 1 --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 | grep -q "$EXPECTED_FPR" && \
+   grep "sampel-aplikasi-1.0.tar.gz" sampel-aplikasi-1.0.tar.gz.sha256 | sha256sum -c - && \
    tar -zxvf sampel-aplikasi-1.0.tar.gz && \
    cd sampel-aplikasi-1.0 && \
    ./configure --prefix=/usr/local && \
