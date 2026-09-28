@@ -23,8 +23,8 @@ Apabila Ejen AI menjana atau mengemaskini Playbook/Role Ansible, kod MESTI melep
 
 1. **Tier 1 (YAML Static Lint):** Semakan sintaks YAML asas (ms/sub-saat).
 2. **Tier 2 (Ansible Syntax Check):** Execution `ansible-playbook <playbook.yml> --syntax-check` untuk mengesahkan blok task, struktur YAML, dan rujukan pemboleh ubah.
-3. **Tier 3 (Ansible-Lint Production Profile):** Strict linting `ansible-lint --profile production` (penguatkuasaan Fully Qualified Collection Names `ansible.builtin.*`, nama tugas berhuruf besar, ketiadaan bare shell/command).
-4. **Tier 4 (Check Mode / Dry Run):** `ansible-playbook --check --diff` terhadap inventori ujian untuk mengesan sebarang ralat runtime dan variasi konfigurasi tanpa mengubah sistem.
+3. **Tier 3 (Ansible-Lint Production Profile):** Strict linting `ansible-lint --profile production` (penguatkuasaan Fully Qualified Collection Names `ansible.builtin.*` atau FQCN koleksi komuniti/vendor seperti `community.general.*`, nama tugas berhuruf besar, ketiadaan bare shell/command).
+4. **Tier 4 (Check Mode / Dry Run):** `ansible-playbook --check --diff` terhadap inventori ujian sebagai simulasi perubahan yang dijangka bagi tugas yang menyokong check mode (nota: tugas yang menetapkan `check_mode: false` akan dilaksanakan atau memerlukan isolasi persekitaran ujian).
 5. **Tier 5 (Two-Pass Execution & Idempotence Assertion):**
    - *Pass 1 (Converge):* Pelaksanaan pertama untuk mencapai keadaan yang diingini.
    - *Pass 2 (Assert Idempotency):* Pelaksanaan kedua mesti menghasilkan `changed=0, failed=0`. Sebarang `changed > 0` menandakan regresi prosedur yang mesti dibetulkan.
@@ -32,8 +32,8 @@ Apabila Ejen AI menjana atau mengemaskini Playbook/Role Ansible, kod MESTI melep
 ---
 
 ## 🛡️ Deterministic Pre-Execution Code Gates (Fast-Fail)
-- **Modul FQCN:** Wajib menggunakan nama koleksi penuh (contoh: `ansible.builtin.package`, `ansible.builtin.service`, `ansible.builtin.copy`).
-- **Garda Impotensi Task:** Prosedur bare `ansible.builtin.shell` atau `ansible.builtin.command` DILARANG sama sekali melainkan disertakan dengan penanda `creates`, `removes`, atau `changed_when`.
+- **Modul FQCN:** Wajib menggunakan nama koleksi penuh (contoh: `ansible.builtin.package`, `ansible.builtin.service`, `community.general.ufw`).
+- **Garda Impotensi Task:** Prosedur bare `ansible.builtin.shell` atau `ansible.builtin.command` DILARANG sama sekali melainkan disertakan dengan penanda `creates`, `removes`, atau semakan keadaan eksplisit yang menghalang pelaksanaan berulang (`changed_when` sahaja melaporkan status perubahan tetapi tidak menghalang re-execution tanpa guard).
 - **Pengurusan Rahsia:** Dilarang menggunakan kata laluan/kunci teks biasa. Task yang mengendalikan rahsia wajib menggunakan `no_log: true`.
 
 ---

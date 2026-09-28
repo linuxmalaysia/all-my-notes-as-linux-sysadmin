@@ -53,15 +53,13 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
-  # 4. Manual compilation from tarball (.tar.gz / .tar.zst)
-  gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256
-  sha256sum -c sample-app-1.0.tar.gz.sha256
-  tar -zxvf sample-app-1.0.tar.gz
-  cd sample-app-1.0
-  cat README || cat INSTALL
-  # For Autotools-based projects:
-  ./configure --prefix=/usr/local
-  make -j$(nproc)
+  # 4. Manual compilation from tarball (.tar.gz / .tar.zst) - chained execution stopping on failure
+  gpg --no-default-keyring --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 && \
+  sha256sum -c sample-app-1.0.tar.gz.sha256 && \
+  tar -zxvf sample-app-1.0.tar.gz && \
+  cd sample-app-1.0 && \
+  ./configure --prefix=/usr/local && \
+  make -j$(nproc) && \
   sudo make install
   ```
 
@@ -69,10 +67,9 @@ This skill provides automated guidance and execution steps for managing Linux ap
 
 - **User Environment (~/.bashrc):**
   ```bash
+  # Add exports to ~/.bashrc (Run 'source ~/.bashrc' in active terminal to load):
   export EDITOR=/usr/bin/vim
   export VISUAL=/usr/bin/vim
-  source ~/.bashrc
-  echo $EDITOR
   ```
 
 - **System-Wide Environment (/etc/environment & /etc/profile.d/editor.sh):**
