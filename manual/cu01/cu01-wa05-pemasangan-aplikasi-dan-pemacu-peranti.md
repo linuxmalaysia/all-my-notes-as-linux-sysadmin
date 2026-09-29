@@ -1,8 +1,15 @@
 ---
-okf_version: 0.1
+okf_version: "0.2"
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "references/manual/bab_08/part_01.md"
+  - "references/manual/bab_08/part_02.md"
 topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
 tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
 description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."

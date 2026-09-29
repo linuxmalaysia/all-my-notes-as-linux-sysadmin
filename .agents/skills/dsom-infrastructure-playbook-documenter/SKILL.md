@@ -1,9 +1,16 @@
 ---
 name: "dsom-infrastructure-playbook-documenter"
-okf_version: 0.1
+okf_version: "0.2"
 type: skill
 title: "DSOM Infrastructure Playbook Authoring & Automated Idempotency Gate (Rule 32.43 & Rule 32.44)"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "https://github.com/ansible-community/ai-forge/"
+  - "https://kodekloud.com/blog/building-an-ai-agent-that-writes-and-validates-ansible-playbooks/"
 topics: ["ansible", "playbook", "idempotency", "cop", "dsom", "ai-forge"]
 tags: ["ansible", "playbook", "validation", "idempotence", "redhat-cop", "zen-of-ansible"]
 description: "Garis panduan dan kemahiran AI bagi penulisan, penyesuaian, pengesahan, dan audit Ansible Playbook berteraskan 5-Tier Validation Ladder, Idempotence Assertion, serta Red Hat CoP Good Practices."

@@ -27954,10 +27954,17 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 ## File: manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md
 
 ---
-okf_version: 0.1
+okf_version: "0.2"
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "references/manual/bab_08/part_01.md"
+  - "references/manual/bab_08/part_02.md"
 topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
 tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
 description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
@@ -30431,10 +30438,17 @@ systemctl status
 ## File: manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md
 
 ---
-okf_version: 0.1
+okf_version: "0.2"
 type: knowledge-node
 title: "Pengurusan Tampalan & Kemas Kini Keselamatan"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "references/manual/bab_08/part_01.md"
+  - "references/manual/bab_08/part_02.md"
 topics: ["noss-linux", "cu05", "panduan-amali", "manual-linux"]
 tags: ["cu05", "linux", "noss", "amali", "standard-malaysia"]
 description: "Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE."
@@ -39043,10 +39057,17 @@ Trigger this skill whenever the user asks to "prepare a blog post", "publish to 
 
 ---
 name: "dsom-infrastructure-playbook-documenter"
-okf_version: 0.1
+okf_version: "0.2"
 type: skill
 title: "DSOM Infrastructure Playbook Authoring & Automated Idempotency Gate (Rule 32.43 & Rule 32.44)"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "https://github.com/ansible-community/ai-forge/"
+  - "https://kodekloud.com/blog/building-an-ai-agent-that-writes-and-validates-ansible-playbooks/"
 topics: ["ansible", "playbook", "idempotency", "cop", "dsom", "ai-forge"]
 tags: ["ansible", "playbook", "validation", "idempotence", "redhat-cop", "zen-of-ansible"]
 description: "Garis panduan dan kemahiran AI bagi penulisan, penyesuaian, pengesahan, dan audit Ansible Playbook berteraskan 5-Tier Validation Ladder, Idempotence Assertion, serta Red Hat CoP Good Practices."
@@ -42341,7 +42362,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-09-28T23:35:41Z"
+timestamp: "2026-09-29T16:04:16Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -42482,7 +42503,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *tvet-tem-auditor* | No description provided. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-28*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-29*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/index.md -->
