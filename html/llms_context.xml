@@ -27878,10 +27878,12 @@ Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu me
    ```bash
    # Sahkan tandatangan GPG dengan status VALIDSIG dan cap jari vendor yang tepat, semak satu entri tepat checksum sha256sum, ekstrak, dan bina kod sumber secara berangkaian (berhenti jika sebarang semakan gagal)
    # (Nota: Lokasi KEYRING mengikut edaran: Debian/Ubuntu di `/etc/apt/trusted.gpg.d/vendor.gpg` atau `/etc/apt/keyrings/vendor.gpg`; AlmaLinux/Fedora di `/etc/pki/rpm-gpg/RPM-GPG-KEY-vendor` atau `/etc/pki/gpg/vendor.gpg`)
+   GPG_STATUS=$(mktemp) &amp;&amp; \
+   trap 'rm -f "$GPG_STATUS"' EXIT &amp;&amp; \
    KEYRING="/etc/apt/trusted.gpg.d/vendor.gpg" &amp;&amp; \
    EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" &amp;&amp; \
-   gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 &gt; /tmp/gpg.status 2&gt;&amp;1 &amp;&amp; \
-   grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " /tmp/gpg.status &amp;&amp; \
+   gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 &gt; "$GPG_STATUS" 2&gt;&amp;1 &amp;&amp; \
+   grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " "$GPG_STATUS" &amp;&amp; \
    [ $(grep -E "  sampel-aplikasi-1\.0\.tar\.gz$" sampel-aplikasi-1.0.tar.gz.sha256 | wc -l) -eq 1 ] &amp;&amp; \
    grep -E "  sampel-aplikasi-1\.0\.tar\.gz$" sampel-aplikasi-1.0.tar.gz.sha256 | sha256sum -c - &amp;&amp; \
    tar -zxvf sampel-aplikasi-1.0.tar.gz &amp;&amp; \
@@ -37701,10 +37703,12 @@ This skill provides automated guidance and execution steps for managing Linux ap
 
   # 4. Manual compilation from tarball (.tar.gz / .tar.zst) - chained execution stopping on failure
   # Set KEYRING according to distro (Debian/Ubuntu: /etc/apt/trusted.gpg.d/vendor.gpg or /etc/apt/keyrings/vendor.gpg; AlmaLinux/Fedora: /etc/pki/rpm-gpg/RPM-GPG-KEY-vendor or /etc/pki/gpg/vendor.gpg)
+  GPG_STATUS=$(mktemp) &amp;&amp; \
+  trap 'rm -f "$GPG_STATUS"' EXIT &amp;&amp; \
   KEYRING="/etc/apt/trusted.gpg.d/vendor.gpg" &amp;&amp; \
   EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" &amp;&amp; \
-  gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 &gt; /tmp/gpg.status 2&gt;&amp;1 &amp;&amp; \
-  grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " /tmp/gpg.status &amp;&amp; \
+  gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 &gt; "$GPG_STATUS" 2&gt;&amp;1 &amp;&amp; \
+  grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " "$GPG_STATUS" &amp;&amp; \
   [ $(grep -E "  sample-app-1\.0\.tar\.gz$" sample-app-1.0.tar.gz.sha256 | wc -l) -eq 1 ] &amp;&amp; \
   grep -E "  sample-app-1\.0\.tar\.gz$" sample-app-1.0.tar.gz.sha256 | sha256sum -c - &amp;&amp; \
   tar -zxvf sample-app-1.0.tar.gz &amp;&amp; \
@@ -41939,7 +41943,7 @@ Row 6 (CU01 spacer):
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-09-29T16:04:16Z"
+timestamp: "2026-09-29T22:51:10Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."

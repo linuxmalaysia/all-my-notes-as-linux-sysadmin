@@ -55,10 +55,12 @@ This skill provides automated guidance and execution steps for managing Linux ap
 
   # 4. Manual compilation from tarball (.tar.gz / .tar.zst) - chained execution stopping on failure
   # Set KEYRING according to distro (Debian/Ubuntu: /etc/apt/trusted.gpg.d/vendor.gpg or /etc/apt/keyrings/vendor.gpg; AlmaLinux/Fedora: /etc/pki/rpm-gpg/RPM-GPG-KEY-vendor or /etc/pki/gpg/vendor.gpg)
+  GPG_STATUS=$(mktemp) && \
+  trap 'rm -f "$GPG_STATUS"' EXIT && \
   KEYRING="/etc/apt/trusted.gpg.d/vendor.gpg" && \
   EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
-  gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 > /tmp/gpg.status 2>&1 && \
-  grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " /tmp/gpg.status && \
+  gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 > "$GPG_STATUS" 2>&1 && \
+  grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " "$GPG_STATUS" && \
   [ $(grep -E "  sample-app-1\.0\.tar\.gz$" sample-app-1.0.tar.gz.sha256 | wc -l) -eq 1 ] && \
   grep -E "  sample-app-1\.0\.tar\.gz$" sample-app-1.0.tar.gz.sha256 | sha256sum -c - && \
   tar -zxvf sample-app-1.0.tar.gz && \
