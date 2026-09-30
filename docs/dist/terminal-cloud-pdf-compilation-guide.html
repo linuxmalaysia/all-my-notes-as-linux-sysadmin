@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Terminal &amp; Cloud PDF Compilation Master Prompt &amp; Reference Guide</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {  background-color: #f8f8f8; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ef2929; } /* Alert */
+    code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #204a87; } /* Attribute */
+    code span.bn { color: #0000cf; } /* BaseN */
+    code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4e9a06; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #8f5902; font-style: italic; } /* Comment */
+    code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+    code span.dt { color: #204a87; } /* DataType */
+    code span.dv { color: #0000cf; } /* DecVal */
+    code span.er { color: #a40000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #0000cf; } /* Float */
+    code span.fu { color: #204a87; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+    code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+    code span.ot { color: #8f5902; } /* Other */
+    code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+    code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+    code span.ss { color: #4e9a06; } /* SpecialString */
+    code span.st { color: #4e9a06; } /* String */
+    code span.va { color: #000000; } /* Variable */
+    code span.vs { color: #4e9a06; } /* VerbatimString */
+    code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Terminal &amp; Cloud PDF Compilation Master Prompt
+&amp; Reference Guide</h1>
+</header>
+<h1
+id="terminal-cloud-pdf-compilation-master-prompt-reference-guide">Terminal
+&amp; Cloud PDF Compilation Master Prompt &amp; Reference Guide</h1>
+<blockquote>
+<p><strong>Classification:</strong> DSOM Rule 11 &amp; Rule 11.16 —
+Technical Book Design &amp; Linux-Native PDF Compilation<br />
+<strong>Author:</strong> Harisfazillah Jamel (LinuxMalaysia)<br />
+<strong>Date:</strong> 30 September 2026<br />
+<strong>Purpose:</strong> Self-contained prompt to reproduce
+publication-grade PDFs from Markdown using the full Linux toolchain</p>
+</blockquote>
+<hr />
+<h2
+id="rule-11.16-linux-native-pdf-compilation-mandate-weasyprint-typst-engine">Rule
+11.16: Linux-Native PDF Compilation Mandate (WeasyPrint / Typst
+Engine)</h2>
+<p>When compiling technical documentation suites, forensic audit
+reports, or executive handbooks into publication-grade PDFs in Linux and
+WSL2 environments:</p>
+<ol type="1">
+<li><strong>Zero Windows Host Dependency:</strong>
+<ul>
+<li>The AI and compilation pipelines are strictly prohibited from
+depending on Windows host browser binaries (<code>chrome.exe</code>,
+<code>msedge.exe</code>) or Windows interop subprocesses
+(<code>cmd.exe /c start /wait</code>, <code>powershell.exe</code>) from
+within Linux/WSL2.</li>
+<li>Eliminates Windows profile lockouts, headless drawing stalls,
+interop command timeouts (code 124), and cross-filesystem path
+translation overhead.</li>
+</ul></li>
+<li><strong>Linux-Native Headless PDF Engines (WeasyPrint
+First):</strong>
+<ul>
+<li>The preferred, primary PDF compilation engine in Linux is native
+<strong>WeasyPrint</strong> executed via <code>uv</code>
+(<code>uv run --with weasyprint weasyprint &lt;input.html&gt; &lt;output.pdf&gt;</code>)
+or native headless Linux tools (<code>typst</code>,
+<code>xelatex</code>).</li>
+<li>The script must supply print-optimized CSS enforcing:
+<ul>
+<li>Pure white background (<code>#FFFFFF !important</code>).</li>
+<li>Crisp, embedded standalone vector SVG diagrams
+(<code>&lt;img src="*.svg"&gt;</code>).</li>
+<li>Continuous multi-page table flow with repeated table headers
+(<code>thead { display: table-header-group; }</code>,
+<code>tr { page-break-inside: avoid; }</code>).</li>
+<li>Standard A4 margins
+(<code>@page { size: A4 portrait; margin: 10mm 10mm 12mm 10mm; }</code>)
+and running footers (<code>Page X of Y</code>).</li>
+</ul></li>
+</ul></li>
+<li><strong>Deterministic Output &amp; Disk Verification:</strong>
+<ul>
+<li>The compiler script must synchronously assert that the output PDF
+exists on disk and has a non-zero byte size
+(<code>size &gt; 10 KB</code>).</li>
+<li>If visual inspection is needed, verify pages locally using native
+Linux tools
+(<code>pdftoppm -png -r 150 &lt;output.pdf&gt; build/page</code>)
+without touching Windows.</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="toolchain-overview">1. Toolchain Overview</h2>
+<pre><code>                    ┌──────────────────┐
+                    │  Source Markdown  │  (OKF v0.2 frontmatter + report content)
+                    │  docs/reports/   │
+                    └────────┬─────────┘
+                             │
+                    ┌────────▼─────────┐
+                    │  Python Compiler  │  Strip frontmatter, strip footers,
+                    │  tools/compile_*  │  stage SVG assets, write CSS
+                    └────────┬─────────┘
+                             │
+                    ┌────────▼─────────┐
+                    │     Pandoc        │  Markdown → Standalone HTML
+                    │  --standalone     │  Syntax highlighting: tango
+                    │  --css style.css  │  Table of contents (optional)
+                    └────────┬─────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+     ┌────────▼───────┐  ┌──▼──────────┐  ┌▼──────────────┐
+     │  WeasyPrint     │  │ Headless    │  │ Headless Edge  │
+     │  (PREFERRED)    │  │ Chromium    │  │ (Windows WSL)  │
+     │  uv run --with  │  │ --headless  │  │ --print-to-pdf │
+     │  weasyprint     │  │ --print-pdf │  │ via wslpath    │
+     └────────┬────────┘  └──────┬──────┘  └──────┬─────────┘
+              │                  │                │
+              └──────────────────┴────────────────┘
+                             │
+                    ┌────────▼─────────┐
+                    │   docs/dist/     │
+                    │  report.html     │  Standalone HTML (primary)
+                    │  report.pdf      │  Publication-grade PDF
+                    └──────────────────┘ </code></pre>
+<h3 id="required-software-linux-wsl2">Required Software (Linux /
+WSL2)</h3>
+<table>
+
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Install Command</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Pandoc</strong></td>
+<td style="text-align: left;"><code>sudo apt install pandoc</code></td>
+<td style="text-align: left;">Markdown → Standalone HTML conversion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>uv</strong></td>
+<td
+style="text-align: left;"><code>curl -LsSf https://astral.sh/uv/install.sh \| sh</code></td>
+<td style="text-align: left;">Python package runner (no virtualenv
+needed)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>WeasyPrint</strong></td>
+<td
+style="text-align: left;"><code>uv run --with weasyprint weasyprint</code></td>
+<td style="text-align: left;">HTML → PDF (CSS <code>@page</code>
+support, running headers/footers)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Python 3.10+</strong></td>
+<td style="text-align: left;">Pre-installed on most Linux</td>
+<td style="text-align: left;">Compiler script execution</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Chromium</strong> (optional)</td>
+<td
+style="text-align: left;"><code>sudo apt install chromium-browser</code></td>
+<td style="text-align: left;">Alternative headless PDF renderer</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-terminal-cloud-css-framework-pure-white-print-mode">2. The
+Terminal &amp; Cloud CSS Framework (Pure White Print Mode)</h2>
+<p>This is the <strong>complete, production-tested CSS</strong> used in
+all our reports:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ═══════════════════════════════════════════════════════════════════ </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">   Terminal &amp; Cloud Design Framework — Print-Optimized Pure White </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">   DSOM Rule 11 | Zero Ink Waste | A4 Portrait | 8mm Margins </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">   ═══════════════════════════════════════════════════════════════════ */</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Page Layout &amp; Running Footer ──── */</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">@page</span> { </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    size: A4 <span class="dv">portrait</span><span class="op">;</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">mm</span> <span class="dv">8</span><span class="dt">mm</span> <span class="dv">10</span><span class="dt">mm</span> <span class="dv">8</span><span class="dt">mm</span><span class="op">;</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="im">@bottom-right</span> { </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="st">&quot;Page &quot;</span> <span class="fu">counter(</span>page<span class="fu">)</span> <span class="st">&quot; of &quot;</span> <span class="fu">counter(</span>pages<span class="fu">)</span><span class="op">;</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-family</span>: <span class="st">&#39;Inter&#39;</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-size</span>: <span class="dv">8</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">#64748B</span><span class="op">;</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    } </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="im">@bottom-left</span> { </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="st">&quot;PRIVATE AND CONFIDENTIAL (P&amp;C) | Compile by: Harisfazillah Jamel&quot;</span><span class="op">;</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-family</span>: <span class="st">&#39;Inter&#39;</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span> </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-size</span>: <span class="dv">8</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">#64748B</span><span class="op">;</span> </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    } </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Body Typography ──── */</span> </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>body { </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: <span class="st">&#39;Inter&#39;</span><span class="op">,</span> -apple-system<span class="op">,</span> BlinkMacSystemFont<span class="op">,</span> <span class="st">&quot;Segoe UI&quot;</span><span class="op">,</span> </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                 Roboto<span class="op">,</span> Helvetica<span class="op">,</span> Arial<span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span> </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">8.8</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">line-height</span>: <span class="dv">1.5</span><span class="op">;</span> </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#0F172A</span><span class="op">;</span>                         <span class="co">/* Dark Slate for maximum legibility */</span> </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#FFFFFF</span> <span class="at">!important</span><span class="op">;</span>   <span class="co">/* Pure white — ZERO toner waste */</span> </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">/* Hide Pandoc&#39;s auto-generated title block (we use custom covers) */</span> </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="pp">#title-block-header</span> { </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: <span class="dv">none</span> <span class="at">!important</span><span class="op">;</span> </span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Heading Hierarchy ──── */</span> </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>h1 { </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">17</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-weight</span>: <span class="dv">800</span><span class="op">;</span> </span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#0F172A</span><span class="op">;</span> </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-bottom</span>: <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#0284C7</span><span class="op">;</span>       <span class="co">/* Sky Blue accent */</span> </span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding-bottom</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-top</span>: <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-bottom</span>: <span class="dv">12</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-after</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>h2 { </span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">12</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-weight</span>: <span class="dv">700</span><span class="op">;</span> </span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#1E3A8A</span><span class="op">;</span>                         <span class="co">/* Linux Blue */</span> </span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-bottom</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#E2E8F0</span><span class="op">;</span> </span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding-bottom</span>: <span class="dv">4</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-top</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-after</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>h3 { </span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">10</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-weight</span>: <span class="dv">600</span><span class="op">;</span> </span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#0F172A</span><span class="op">;</span> </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-top</span>: <span class="dv">14</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-bottom</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-after</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Paragraphs ──── */</span> </span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>p { </span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-top</span>: <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-bottom</span>: <span class="dv">8</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Blockquotes (Blue Info Callout) ──── */</span> </span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>blockquote { </span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-left</span>: <span class="dv">3.5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#0284C7</span><span class="op">;</span> </span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F8FAFC</span><span class="op">;</span> </span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#334155</span><span class="op">;</span> </span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">12</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">0</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">8.4</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Tables (Multi-Page Flow + Zebra Stripes) ──── */</span> </span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>table { </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span> </span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-collapse</span>: <span class="dv">collapse</span><span class="op">;</span> </span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">7.6</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="bu">auto</span><span class="op">;</span>               <span class="co">/* Allow tables to span pages */</span> </span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>thead { </span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: <span class="dv">table-header-group</span><span class="op">;</span>            <span class="co">/* REPEAT headers on every page */</span> </span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>tr { </span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="dv">avoid</span><span class="op">;</span>              <span class="co">/* Never split a row across pages */</span> </span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>th { </span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F1F5F9</span><span class="op">;</span> </span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#0F172A</span><span class="op">;</span> </span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-weight</span>: <span class="dv">700</span><span class="op">;</span> </span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-align</span>: <span class="dv">left</span><span class="op">;</span> </span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">7</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#CBD5E1</span><span class="op">;</span> </span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>td { </span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">7</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#E2E8F0</span><span class="op">;</span> </span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>    <span class="kw">vertical-align</span>: <span class="dv">top</span><span class="op">;</span> </span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>tbody tr<span class="in">:nth-child(even)</span> { </span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F8FAFC</span><span class="op">;</span>             <span class="co">/* Light zebra striping */</span> </span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Code (Light Terminal Container) ──── */</span> </span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>code { </span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: <span class="st">&#39;JetBrains Mono&#39;</span><span class="op">,</span> <span class="st">&#39;Fira Code&#39;</span><span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span> </span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">7.8</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F1F5F9</span><span class="op">;</span> </span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#0F172A</span><span class="op">;</span> </span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">1.5</span><span class="dt">px</span> <span class="dv">3.5</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">4</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#E2E8F0</span><span class="op">;</span> </span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>pre { </span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F8FAFC</span> <span class="at">!important</span><span class="op">;</span>  <span class="co">/* Light gray — NOT dark/black */</span> </span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#CBD5E1</span><span class="op">;</span> </span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-left</span>: <span class="dv">3.5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#1E3A8A</span><span class="op">;</span>      <span class="co">/* Linux Blue left accent */</span> </span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>    <span class="kw">overflow-x</span>: <span class="bu">auto</span><span class="op">;</span> </span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>pre code { </span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="dv">transparent</span> <span class="at">!important</span><span class="op">;</span> </span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">none</span><span class="op">;</span> </span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">7.4</span><span class="dt">pt</span><span class="op">;</span> </span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#0F172A</span><span class="op">;</span> </span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>    <span class="kw">line-height</span>: <span class="dv">1.4</span><span class="op">;</span> </span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>    <span class="kw">white-space</span>: <span class="dv">pre-wrap</span><span class="op">;</span>                 <span class="co">/* Wrap long lines in PDF */</span> </span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>    <span class="kw">word-break</span>: break-all<span class="op">;</span> </span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Images &amp; SVG Diagrams ──── */</span> </span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>img { </span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>    <span class="kw">max-width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span> </span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="bu">auto</span><span class="op">;</span> </span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: <span class="dv">block</span><span class="op">;</span> </span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="bu">auto</span><span class="op">;</span> </span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#CBD5E1</span><span class="op">;</span> </span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#FFFFFF</span><span class="op">;</span> </span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Horizontal Rules ──── */</span> </span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>hr { </span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">1</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="cn">#E2E8F0</span><span class="op">;</span> </span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">16</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Callout Boxes (Warning / Note / Tip) ──── */</span> </span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="fu">.callout-warning</span> { </span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#FEF2F2</span><span class="op">;</span>            <span class="co">/* Light red pastel */</span> </span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-left</span>: <span class="dv">4</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#EA580C</span><span class="op">;</span>        <span class="co">/* Orange accent */</span> </span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">12</span><span class="dt">px</span> <span class="dv">16</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">0</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a><span class="fu">.callout-note</span> { </span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F0F9FF</span><span class="op">;</span>            <span class="co">/* Light blue pastel */</span> </span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-left</span>: <span class="dv">4</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#0284C7</span><span class="op">;</span>        <span class="co">/* Blue accent */</span> </span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">12</span><span class="dt">px</span> <span class="dv">16</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">0</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a><span class="fu">.callout-tip</span> { </span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#F0FDF4</span><span class="op">;</span>            <span class="co">/* Light green pastel */</span> </span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-left</span>: <span class="dv">4</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#16A34A</span><span class="op">;</span>        <span class="co">/* Green accent */</span> </span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">12</span><span class="dt">px</span> <span class="dv">16</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">0</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>    <span class="kw">page-break-inside</span>: <span class="dv">avoid</span><span class="op">;</span> </span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Card Accent Left Border Standard ──── */</span> </span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a><span class="fu">.card-blue</span>   { <span class="kw">border-left</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#0284C7</span><span class="op">;</span> <span class="kw">background</span>: <span class="cn">#F8FAFC</span><span class="op">;</span> <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> } </span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="fu">.card-green</span>  { <span class="kw">border-left</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#16A34A</span><span class="op">;</span> <span class="kw">background</span>: <span class="cn">#F8FAFC</span><span class="op">;</span> <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> } </span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a><span class="fu">.card-amber</span>  { <span class="kw">border-left</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#CA8A04</span><span class="op">;</span> <span class="kw">background</span>: <span class="cn">#F8FAFC</span><span class="op">;</span> <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> } </span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a><span class="fu">.card-red</span>    { <span class="kw">border-left</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#DC2626</span><span class="op">;</span> <span class="kw">background</span>: <span class="cn">#F8FAFC</span><span class="op">;</span> <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> } </span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="fu">.card-purple</span> { <span class="kw">border-left</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#7C3AED</span><span class="op">;</span> <span class="kw">background</span>: <span class="cn">#F8FAFC</span><span class="op">;</span> <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">px</span> <span class="dv">0</span><span class="op">;</span> } </span></code></pre></div>
+<hr />
+<h2 id="checklist-before-every-compilation">3. Checklist Before Every
+Compilation</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Source Markdown has NO raw
+<code>---</code> frontmatter (stripped by compiler)</label></li>
+<li><label><input type="checkbox" />All SVG diagrams staged to both
+<code>build/</code> and <code>docs/dist/</code></label></li>
+<li><label><input type="checkbox" />CSS uses pure white
+<code>#FFFFFF</code> body background</label></li>
+<li><label><input type="checkbox" />CSS uses light code containers
+<code>#F8FAFC</code> (NOT dark/black)</label></li>
+<li><label><input type="checkbox" />Tables have
+<code>page-break-inside: auto</code> +
+<code>thead { display: table-header-group; }</code></label></li>
+<li><label><input type="checkbox" />No <code>&lt;colgroup&gt;</code>
+tags in HTML (strip them — they break table column widths)</label></li>
+<li><label><input type="checkbox" />Running footer shows “Page X of Y”
+and report title</label></li>
+<li><label><input type="checkbox" />Attribution: “Compile by:
+Harisfazillah Jamel”</label></li>
+<li><label><input type="checkbox" />PDF file size &gt; 10KB (assertion
+check)</label></li>
+<li><label><input type="checkbox" />Visual inspection: no blank pages,
+no orphaned headings, no clipped tables</label></li>
+</ul>
+</body>
+</html>
