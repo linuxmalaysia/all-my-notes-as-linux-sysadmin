@@ -62,10 +62,10 @@ When compiling technical documentation suites, forensic audit reports, or execut
               ┌──────────────┼──────────────┐
               │              │              │
      ┌────────▼───────┐  ┌──▼──────────┐  ┌▼──────────────┐
-     │  WeasyPrint     │  │ Headless    │  │ Headless Edge  │
-     │  (PREFERRED)    │  │ Chromium    │  │ (Windows WSL)  │
-     │  uv run --with  │  │ --headless  │  │ --print-to-pdf │
-     │  weasyprint     │  │ --print-pdf │  │ via wslpath    │
+     │  WeasyPrint     │  │ Headless    │  │ Typst /       │
+     │  (PREFERRED)    │  │ Chromium    │  │ XeLaTeX       │
+     │  uv run --with  │  │ (Linux)     │  │ (Linux Native)│
+     │  weasyprint     │  │             │  │               │
      └────────┬────────┘  └──────┬──────┘  └──────┬─────────┘
               │                  │                │
               └──────────────────┴────────────────┘
@@ -96,13 +96,13 @@ This is the **complete, production-tested CSS** used in all our reports:
 ```css
 /* ═══════════════════════════════════════════════════════════════════
    Terminal & Cloud Design Framework — Print-Optimized Pure White
-   DSOM Rule 11 | Zero Ink Waste | A4 Portrait | 8mm Margins
+   DSOM Rule 11 & Rule 11.16 | Zero Ink Waste | A4 Portrait | 10mm Margins
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ──── Page Layout & Running Footer ──── */
 @page {
     size: A4 portrait;
-    margin: 8mm 8mm 10mm 8mm;
+    margin: 10mm 10mm 12mm 10mm;
     @bottom-right {
         content: "Page " counter(page) " of " counter(pages);
         font-family: 'Inter', sans-serif;

@@ -25,7 +25,7 @@ When compiling technical documentation suites, forensic audit reports, or execut
      - Pure white background (`#FFFFFF !important`).
      - Crisp, embedded standalone vector SVG diagrams (`<img src="*.svg">`).
      - Continuous multi-page table flow with repeated table headers (`thead { display: table-header-group; }`, `tr { page-break-inside: avoid; }`).
-     - Standard A4 margins (`@page { size: A4 portrait; margin: 8mm 8mm 10mm 8mm; }`) and running footers (`Page X of Y`).
+     - Standard A4 margins (`@page { size: A4 portrait; margin: 10mm 10mm 12mm 10mm; }`) and running footers (`Page X of Y`).
 
 3. **Deterministic Output & Disk Verification:**
    - The compiler script must synchronously assert that the output PDF exists on disk and has a non-zero byte size (`size > 10 KB`).
@@ -35,10 +35,11 @@ When compiling technical documentation suites, forensic audit reports, or execut
 
 ### 1. Markdown → Standalone HTML Conversion
 ```bash
+cp build/style.css docs/dist/style.css
 pandoc build/report_clean.md \
   -o docs/dist/report.html \
   --standalone \
-  --css=build/style.css \
+  --css=style.css \
   --highlight-style=tango \
   --metadata title="Report Title"
 ```

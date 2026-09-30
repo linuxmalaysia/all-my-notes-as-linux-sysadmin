@@ -176,10 +176,10 @@ without touching Windows.</li>
               ┌──────────────┼──────────────┐
               │              │              │
      ┌────────▼───────┐  ┌──▼──────────┐  ┌▼──────────────┐
-     │  WeasyPrint     │  │ Headless    │  │ Headless Edge  │
-     │  (PREFERRED)    │  │ Chromium    │  │ (Windows WSL)  │
-     │  uv run --with  │  │ --headless  │  │ --print-to-pdf │
-     │  weasyprint     │  │ --print-pdf │  │ via wslpath    │
+     │  WeasyPrint     │  │ Headless    │  │ Typst /       │
+     │  (PREFERRED)    │  │ Chromium    │  │ XeLaTeX       │
+     │  uv run --with  │  │ (Linux)     │  │ (Linux Native)│
+     │  weasyprint     │  │             │  │               │
      └────────┬────────┘  └──────┬──────┘  └──────┬─────────┘
               │                  │                │
               └──────────────────┴────────────────┘
@@ -241,13 +241,13 @@ all our reports:</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ═══════════════════════════════════════════════════════════════════ </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">   Terminal &amp; Cloud Design Framework — Print-Optimized Pure White </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">   DSOM Rule 11 | Zero Ink Waste | A4 Portrait | 8mm Margins </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">   DSOM Rule 11 &amp; Rule 11.16 | Zero Ink Waste | A4 Portrait | 10mm Margins </span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">   ═══════════════════════════════════════════════════════════════════ */</span> </span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* ──── Page Layout &amp; Running Footer ──── */</span> </span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">@page</span> { </span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    size: A4 <span class="dv">portrait</span><span class="op">;</span> </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">8</span><span class="dt">mm</span> <span class="dv">8</span><span class="dt">mm</span> <span class="dv">10</span><span class="dt">mm</span> <span class="dv">8</span><span class="dt">mm</span><span class="op">;</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">mm</span> <span class="dv">10</span><span class="dt">mm</span> <span class="dv">12</span><span class="dt">mm</span> <span class="dv">10</span><span class="dt">mm</span><span class="op">;</span> </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="im">@bottom-right</span> { </span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">content</span>: <span class="st">&quot;Page &quot;</span> <span class="fu">counter(</span>page<span class="fu">)</span> <span class="st">&quot; of &quot;</span> <span class="fu">counter(</span>pages<span class="fu">)</span><span class="op">;</span> </span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-family</span>: <span class="st">&#39;Inter&#39;</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span> </span>

@@ -54,12 +54,12 @@ intermediate_md.write_text(content, encoding="utf-8")
 # Step 2: Write CSS file
 css_content = """/* ═══════════════════════════════════════════════════════════════════
    Terminal & Cloud Design Framework — Print-Optimized Pure White
-   DSOM Rule 11 & Rule 11.16 | Zero Ink Waste | A4 Portrait | 8mm Margins
+   DSOM Rule 11 & Rule 11.16 | Zero Ink Waste | A4 Portrait | 10mm Margins
    ═══════════════════════════════════════════════════════════════════ */
 
 @page {
     size: A4 portrait;
-    margin: 8mm 8mm 10mm 8mm;
+    margin: 10mm 10mm 12mm 10mm;
     @bottom-right {
         content: "Page " counter(page) " of " counter(pages);
         font-family: 'Inter', sans-serif;
