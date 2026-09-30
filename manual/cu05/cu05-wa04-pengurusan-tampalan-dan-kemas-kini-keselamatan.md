@@ -1,8 +1,15 @@
 ---
-okf_version: 0.1
+okf_version: "0.2"
 type: knowledge-node
 title: "Pengurusan Tampalan & Kemas Kini Keselamatan"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "references/manual/bab_08/part_01.md"
+  - "references/manual/bab_08/part_02.md"
 topics: ["noss-linux", "cu05", "panduan-amali", "manual-linux"]
 tags: ["cu05", "linux", "noss", "amali", "standard-malaysia"]
 description: "Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE."

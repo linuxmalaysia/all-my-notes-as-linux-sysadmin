@@ -1,8 +1,15 @@
 ---
-okf_version: 0.1
+okf_version: "0.2"
 type: knowledge-node
 title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
 timestamp: "2026-08-17T00:00:00Z"
+generated: "2026-08-17T00:00:00Z"
+verified: "2026-08-17T00:00:00Z"
+status: "verified"
+stale_after: "2027-08-17T00:00:00Z"
+sources:
+  - "references/manual/bab_08/part_01.md"
+  - "references/manual/bab_08/part_02.md"
 topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
 tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
 description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
@@ -159,22 +166,20 @@ Selain pengurus pakej peringkat tinggi (`dnf5`/`apt`), pentadbir sistem perlu me
    - **Amaran:** Penggunaan `sudo make install` tidak dijejak oleh pangkalan data pakej sistem (`dpkg`/`rpm`). Adalah disyorkan untuk menguruskan inventori di `/usr/local` atau membina pakej binari rasmi.
 
    ```bash
-   # 1. Sahkan kunci GPG rasmi vendor & integriti checksum sha256sum daripada saluran rasmi
-   gpg --keyring /etc/apt/trusted.gpg.d/vendor.gpg --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256
-   sha256sum -c sampel-aplikasi-1.0.tar.gz.sha256 || exit 1
-
-   # 2. Ekstrak arkib kod sumber tarball
-   tar -zxvf sampel-aplikasi-1.0.tar.gz
-   cd sampel-aplikasi-1.0
-
-   # 3. Semak dokumen README/INSTALL untuk mengenal pasti sistem binaan
-   cat README || cat INSTALL
-
-   # 4. Bagi projek Autotools, sediakan persekitaran dan kompilkan
-   ./configure --prefix=/usr/local
-   make -j$(nproc)
-
-   # 5. Pasang binari secara terurus ke /usr/local
+   # Sahkan tandatangan GPG dengan status VALIDSIG dan cap jari vendor yang tepat, semak satu entri tepat checksum sha256sum, ekstrak, dan bina kod sumber secara berangkaian (berhenti jika sebarang semakan gagal)
+   # (Nota: Lokasi KEYRING mengikut edaran: Debian/Ubuntu di `/etc/apt/trusted.gpg.d/vendor.gpg` atau `/etc/apt/keyrings/vendor.gpg`; AlmaLinux/Fedora di `/etc/pki/rpm-gpg/RPM-GPG-KEY-vendor` atau `/etc/pki/gpg/vendor.gpg`)
+   GPG_STATUS=$(mktemp) && \
+   trap 'rm -f "$GPG_STATUS"' EXIT && \
+   KEYRING="/etc/apt/trusted.gpg.d/vendor.gpg" && \
+   EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
+   gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sampel-aplikasi-1.0.tar.gz.sha256.asc sampel-aplikasi-1.0.tar.gz.sha256 > "$GPG_STATUS" 2>&1 && \
+   grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " "$GPG_STATUS" && \
+   [ $(grep -E "  sampel-aplikasi-1\.0\.tar\.gz$" sampel-aplikasi-1.0.tar.gz.sha256 | wc -l) -eq 1 ] && \
+   grep -E "  sampel-aplikasi-1\.0\.tar\.gz$" sampel-aplikasi-1.0.tar.gz.sha256 | sha256sum -c - && \
+   tar -zxvf sampel-aplikasi-1.0.tar.gz && \
+   cd sampel-aplikasi-1.0 && \
+   ./configure --prefix=/usr/local && \
+   make -j$(nproc) && \
    sudo make install
    ```
 

@@ -1689,6 +1689,21 @@
 <li><strong>Penyusunan Output Terstruktur:</strong> Menyusun dokumen ke dalam <code>manual/cuXX/</code> dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.</li>
 </ul>
 </li>
+<li><strong>Rule 32.43: Automated Ansible Playbook Validation Ladder &amp; Idempotence Assertion Standard</strong>:
+    Whenever the AI generates, refactors, or fixes Ansible playbooks, roles, or tasks, it must strictly adhere to the Declarative Validation Ladder:<ul>
+<li>(a) <strong>Deterministic Static Gates:</strong> Enforce Fully Qualified Collection Names (FQCN, e.g. <code>ansible.builtin.package</code>, <code>community.general.ufw</code>), descriptive capitalized task names, and strictly prohibit bare <code>shell</code>/<code>command</code> tasks unless accompanied by explicit idempotency guards (<code>creates</code>, <code>removes</code>, or explicit state checks preventing re-execution; <code>changed_when</code> alone reports change status but does not prevent re-execution unless guarded). Plaintext secrets are strictly banned, and tasks handling vaulted secrets must specify <code>no_log: true</code>.</li>
+<li>(b) <strong>Tiered Validation Sequence:</strong> Playbook code must pass: (1) Syntax validation (<code>ansible-playbook --syntax-check</code>); (2) Static standards validation (<code>ansible-lint --profile production</code>); (3) Dry-run verification (<code>ansible-playbook --check --diff</code> as a simulation of predicted changes for tasks supporting check mode).</li>
+<li>(c) <strong>Two-Pass Idempotence Assertion:</strong> In testbeds and staging environments, true declarative compliance requires a two-pass execution: Run 1 must converge successfully; Run 2 must complete with <code>changed=0, failed=0</code>.</li>
+<li>(d) <strong>Execution Blast Radius Isolation:</strong> The AI is strictly prohibited from applying generated or unvalidated playbooks directly to production carrier inventories without prior syntax validation and operator review.</li>
+</ul>
+</li>
+<li><strong>Rule 32.44: Ansible Community AI-Forge &amp; Red Hat CoP Automation Good Practices Standard</strong>:
+    When authoring, refactoring, or auditing Ansible playbooks, roles, and inventories, the AI must enforce the Red Hat Communities of Practice (CoP) Automation Good Practices and the Zen of Ansible:<ul>
+<li>(a) <strong>The Zen of Ansible Philosophical Gate:</strong> Playbooks are declarative specifications, not procedural programs. Prohibit Jinja2 Python abuse, deep YAML nesting, and excessive <code>when</code> conditional chains.</li>
+<li>(b) <strong>Authoring Style Invariants:</strong> 2-space indentation, <code>.yml</code> extension, structured YAML argument mapping (no <code>key=value</code> string syntax), lowercase <code>true</code>/<code>false</code> booleans, imperative capitalized task names, <code>snake_case</code> identifiers, <code>&lt;role_name&gt;_</code> variable prefixes, bracket fact notation (<code>ansible_facts['distribution']</code>), explicit <code>state:</code>, modern <code>loop:</code>, and mandatory <code>{{ ansible_managed | comment }}</code> header (or format-specific style such as <code>comment('xml')</code>) at the top of Jinja2 configuration templates using syntax valid for the rendered format (exempting formats that do not support comments, such as JSON).</li>
+<li>(c) <strong>CoP 14-Category Review Checklist:</strong> Code reviews of playbooks and roles must evaluate against the 14 standard categories (YAML Style, Naming, Module Usage, Task Structure, Handlers, Templates, Variables, Playbook Structure, Inventory, Error Handling, Idempotency, Argument Specs, Tags, Platform Support) and emit prioritized actionable recommendations.</li>
+</ul>
+</li>
 </ol>
 <h2 id="google-jules-antigravity-agentskills-protocol">Google Jules &amp; Antigravity AgentSkills Protocol<a class="headerlink" href="#google-jules-antigravity-agentskills-protocol" title="Permanent link">&para;</a></h2>
 <ul>

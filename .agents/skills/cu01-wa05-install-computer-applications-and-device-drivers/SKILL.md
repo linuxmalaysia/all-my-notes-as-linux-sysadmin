@@ -53,17 +53,44 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo dnf builddep -y openssh-9.8p1-1.src.rpm
   rpmbuild --rebuild openssh-9.8p1-1.src.rpm
 
-  # 4. Manual compilation from tarball (.tar.gz / .tar.zst)
-  tar -zxvf sample-app-1.0.tar.gz
-  cd sample-app-1.0
-  cat README || cat INSTALL
-  # For Autotools-based projects:
-  ./configure --prefix=/usr/local
-  make -j$(nproc)
+  # 4. Manual compilation from tarball (.tar.gz / .tar.zst) - chained execution stopping on failure
+  # Set KEYRING according to distro (Debian/Ubuntu: /etc/apt/trusted.gpg.d/vendor.gpg or /etc/apt/keyrings/vendor.gpg; AlmaLinux/Fedora: /etc/pki/rpm-gpg/RPM-GPG-KEY-vendor or /etc/pki/gpg/vendor.gpg)
+  GPG_STATUS=$(mktemp) && \
+  trap 'rm -f "$GPG_STATUS"' EXIT && \
+  KEYRING="/etc/apt/trusted.gpg.d/vendor.gpg" && \
+  EXPECTED_FPR="1234567890ABCDEF1234567890ABCDEF12345678" && \
+  gpg --no-default-keyring --keyring "$KEYRING" --status-fd 1 --verify sample-app-1.0.tar.gz.sha256.asc sample-app-1.0.tar.gz.sha256 > "$GPG_STATUS" 2>&1 && \
+  grep -q -E "^\[GNUPG:\] VALIDSIG $EXPECTED_FPR " "$GPG_STATUS" && \
+  [ $(grep -E "  sample-app-1\.0\.tar\.gz$" sample-app-1.0.tar.gz.sha256 | wc -l) -eq 1 ] && \
+  grep -E "  sample-app-1\.0\.tar\.gz$" sample-app-1.0.tar.gz.sha256 | sha256sum -c - && \
+  tar -zxvf sample-app-1.0.tar.gz && \
+  cd sample-app-1.0 && \
+  ./configure --prefix=/usr/local && \
+  make -j$(nproc) && \
   sudo make install
   ```
 
-### 2. Universal Containerized Packaging
+### 2. Environment Variables Configuration ($EDITOR & $VISUAL)
+
+- **User Environment (~/.bashrc):**
+  ```bash
+  # Add exports to ~/.bashrc (Run 'source ~/.bashrc' in active terminal to load):
+  export EDITOR=/usr/bin/vim
+  export VISUAL=/usr/bin/vim
+  ```
+
+- **System-Wide Environment (/etc/environment & /etc/profile.d/editor.sh):**
+  ```bash
+  # In /etc/environment (NAME=VALUE pairs, read by pam_env):
+  EDITOR="/usr/bin/vim"
+  VISUAL="/usr/bin/vim"
+
+  # In /etc/profile.d/editor.sh (For interactive login shells):
+  export EDITOR=/usr/bin/vim
+  export VISUAL=/usr/bin/vim
+  ```
+
+### 3. Universal Containerized Packaging
 
 - **Flatpak (Flathub):**
 
@@ -78,7 +105,7 @@ This skill provides automated guidance and execution steps for managing Linux ap
   sudo snap install code --classic
   ```
 
-### 3. GPU & Device Driver Installation
+### 4. GPU & Device Driver Installation
 
 - **Detect Hardware (GPU & Wireless):**
 

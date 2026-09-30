@@ -8,6 +8,10 @@ dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spe
 ## [Unreleased]
 
 ### Added (Penambahan)
+- **Fasa 8 Migrasi Silibus Bab 8**: Ekstraksi dan pemodenan kandungan amali `references/manual/bab_08/` ke dalam `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` dan `manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md`.
+- **Governance Rules**: Added **Rule 32.43** (*Automated Ansible Playbook Validation Ladder & Idempotence Assertion Standard*) and **Rule 32.44** (*Ansible Community AI-Forge & Red Hat CoP Automation Good Practices Standard*) to `AGENTS.md` and `.agents/AGENTS.md`.
+- **Skill Extensions**: Extended `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md` (Phases 4l & 4m), `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md`, and `.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md`.
+- **OpenWiki**: Updated `openwiki/topic-01-linux-desktop-and-basics.md` and `openwiki/topic-05-linux-security.md` with package management and security audit synthesis.
 - **Governance**: Adopted the *Tri-Phasic Mind Cognitive Architecture* blueprint, injecting Tech Stack and Implementation Roadmap into `docs/explanation/governance/DSOM-TRI-PHASIC-COGNITIVE-ARCHITECTURE.md`.
 - **Rules**: Added Rule 11 to AI Constitution (`.agents/AGENTS.md`) governing Tri-Phasic execution state constraints.
 
