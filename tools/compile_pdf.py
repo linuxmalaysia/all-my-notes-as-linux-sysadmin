@@ -248,7 +248,7 @@ print(f"HTML generated: {DIST_HTML} ({DIST_HTML.stat().st_size:,} bytes)")
 # Step 4: WeasyPrint — HTML → PDF
 try:
     wp_cmd = [
-        "uv", "run", "--with", "weasyprint", "weasyprint",
+        sys.executable, "-m", "weasyprint",
         str(DIST_HTML),
         str(DIST_PDF)
     ]
