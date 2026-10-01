@@ -112,6 +112,22 @@
 
 ---
 
+## 🌟 Milestone Status: Rule 11.16 Kodifikasi Mandat Pengompilan PDF Linux-Native & Ebook PDF - SELESAI ✅ (2026-09-30)
+- [x] **Kodifikasi Rule 11.16 (`AGENTS.md` & `.agents/AGENTS.md`):**
+  - Menetapkan Mandat Pengompilan PDF Linux-Native tanpa kebergantungan Windows (`chrome.exe`/`msedge.exe`/`cmd.exe /c start /wait`).
+  - Menguatkuasakan WeasyPrint melalui `uv run --with weasyprint`, CSS latar belakang putih `#FFFFFF !important`, tajuk jadual berulang (`thead { display: table-header-group; }`), margin `10mm 10mm 12mm 10mm`, dan asakan saiz fail PDF > 10KB.
+- [x] **Panduan Tatacara & Kemahiran AI (`docs/governance/` & `.agents/skills/`):**
+  - Cipta `docs/governance/TECHNICAL-BOOK-DESIGN-AND-PDF-COMPILER-PROMPT-GUIDE.md` dengan frontmatter OKF v0.2.
+  - Cipta `.agents/skills/dsom-technical-book-compiler/SKILL.md` dan pautan simbolik `skills/`.
+- [x] **Alat Pengompil PDF & Artifak Ebook (`tools/compile_pdf.py` & `docs/dist/`):**
+  - Cipta `tools/compile_pdf.py` dengan docstrings PEP-257 dan jenis anotasi Python 3.12+.
+  - Janakan HTML berdiri sendiri `docs/dist/terminal-cloud-pdf-compilation-guide.html` (52 KB) dan Ebook PDF `docs/dist/terminal-cloud-pdf-compilation-guide.pdf` (67.2 KB).
+- [x] **Pemasangan Ujian Unit & Quality Gate:**
+  - Cipta `tests/unit/test_pdf_compiler.py`.
+  - 2,340 ujian Python pytest dan 38 ujian Jest lulus (100% compliance).
+
+---
+
 ## 🎯 Roadmap Seterusnya (Fasa 9 & Seterusnya)
 - [ ] **Fasa 9: Migrasi & Pemodenan Silibus Bab 9 & Seterusnya:**
   - Ekstrak dan modenkan kandungan amali dari bab rujukan mentah seterusnya.

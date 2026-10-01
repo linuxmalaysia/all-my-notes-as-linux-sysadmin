@@ -42,4 +42,23 @@ Dalam sesi ini, **Google Jules** telah berjaya menyempurnakan Fasa 8 (Migrasi Si
 2. **eBPF System Observability**: Menambah panduan diagnostik menggunakan `bpftrace` bagi CU06 (Analisis Punca Anomali & RCA).
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | {2026-08-17}*
+
+## 🏛️ Ringkasan Pelaksanaan EOD (2026-09-30)
+Google Jules completed the codification of **Rule 11.16: Linux-Native PDF Compilation Mandate (WeasyPrint / Typst Engine)** and PDF ebook compilation toolchain.
+
+### Major Accomplishments:
+1. **Constitution Codification (`AGENTS.md` & `.agents/AGENTS.md`)**:
+   - Added Rule 11.16 mandating zero Windows host dependencies (`chrome.exe`, `msedge.exe`, `cmd.exe /c start /wait`), native Linux WeasyPrint execution via `uv run --with weasyprint`, pure white `#FFFFFF !important` backgrounds, continuous multi-page table headers (`thead { display: table-header-group; }`), `10mm 10mm 12mm 10mm` margins, and deterministic PDF file size assertions (>10KB).
+2. **Governance Guide & AI Skill Creation**:
+   - Created `docs/governance/TECHNICAL-BOOK-DESIGN-AND-PDF-COMPILER-PROMPT-GUIDE.md` conforming to OKF v0.2 frontmatter with trust signals.
+   - Created `.agents/skills/dsom-technical-book-compiler/SKILL.md` (and symlinked `skills/`) defining Rule 11.16 execution directives.
+3. **PDF Compiler Tool & Ebook Artifact**:
+   - Built `tools/compile_pdf.py` with PEP-257 docstrings and type annotations.
+   - Compiled publication-grade PDF ebook `docs/dist/terminal-cloud-pdf-compilation-guide.pdf` (67.2 KB) and standalone HTML `docs/dist/terminal-cloud-pdf-compilation-guide.html` (52 KB).
+4. **Master Palace Registry & Unit Tests**:
+   - Updated Master Palace Registry `.agents/skills/index.md` (125 indexed skills).
+   - Created unit tests `tests/unit/test_pdf_compiler.py`.
+   - Executed full test suite (`python run_all_tests.py`): 2,340 Python tests and 38 Jest tests passed (100% compliance).
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-09-30*

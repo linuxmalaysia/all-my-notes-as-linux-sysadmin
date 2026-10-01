@@ -2,7 +2,7 @@
 okf_version: 0.1
 type: documentation
 title: "Master Palace Registry"
-timestamp: "2026-09-30T00:16:52Z"
+timestamp: "2026-09-30T04:16:03Z"
 topics: ["registry", "dsom", "noss"]
 tags: ["index", "skills", "map"]
 description: "Master directory mapping all active Sovereign AI Skills within the repository."
@@ -13,7 +13,7 @@ resource: "file:///.agents/skills/index.md"
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `124`
+**Total Modules Indexed:** `125`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -76,6 +76,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`dsom-project-cloner`** <br> *dsom-project-cloner* | No description provided. | N/A |
 | **`dsom-release-manager`** <br> *dsom-release-manager* | No description provided. | N/A |
 | **`dsom-signature-injector`** <br> *dsom-signature-injector* | No description provided. | N/A |
+| **`dsom-technical-book-compiler`** <br> *dsom-technical-book-compiler* | Compiles technical books, executive reports, and handbooks into publication-grade PDFs and standalone HTML using Pandoc and native WeasyPrint under DSOM Rule 11 and Rule 11.16. | "pdf", "compilation", "weasyprint", "pandoc", "rule-11.16", "dsom" |
 | **`dsom-token-calculator`** <br> *dsom-token-calculator* | No description provided. | N/A |
 | **`eod-palace-sync`** <br> *eod-palace-sync* | No description provided. | N/A |
 | **`example-skill`** <br> *example-skill* | No description provided. | N/A |
