@@ -39,13 +39,13 @@ def clean_markdown(src_path: Path, build_dir: Path) -> Path:
 
     # Strip OKF YAML frontmatter
     if content.startswith("---"):
-        parts = content.split("---", 2)
+        parts = re.split(r"^---\s*$", content, maxsplit=2, flags=re.MULTILINE)
         if len(parts) >= 3:
             content = parts[2].strip()
 
     # Strip DSOM signature footers
     content = re.sub(
-        r"---\s*\n\*Linux for NOSS Malaysia[^\n]*\n(?:\*[^\n]*\n?)*",
+        r"---\s*\n\*Linux for NOSS Malaysia[^\n]*(?:\n\*[^\n]*)*",
         "",
         content,
     ).strip()

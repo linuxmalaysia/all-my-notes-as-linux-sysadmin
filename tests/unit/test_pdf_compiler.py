@@ -11,7 +11,7 @@ def test_clean_markdown_strips_frontmatter_and_footers(tmp_path):
     """Verify clean_markdown strips OKF frontmatter and DSOM footers."""
     src_file = tmp_path / "test.md"
     src_file.write_text(
-        "---\nokf_version: '0.2'\ntitle: Test\n---\n\n# Heading\nContent\n---\n*Linux for NOSS Malaysia*\n",
+        "---\nokf_version: '0.2'\ntitle: 'Title --- Subtitle'\n---\n\n# Heading\nContent\n---\n*Linux for NOSS Malaysia (Sovereign Manual)*\n*Standard: UK English*",
         encoding="utf-8",
     )
     cleaned = pdf_compiler.clean_markdown(src_file, tmp_path)
@@ -19,6 +19,8 @@ def test_clean_markdown_strips_frontmatter_and_footers(tmp_path):
     assert "okf_version" not in content
     assert "# Heading" in content
     assert "Content" in content
+    assert "Linux for NOSS Malaysia" not in content
+    assert "Standard: UK English" not in content
 
 
 def test_write_css_generates_pure_white_css(tmp_path):
