@@ -4,14 +4,16 @@
 #   "weasyprint",
 # ]
 # ///
-"""
-Compile Terminal & Cloud PDF Compilation Master Prompt & Reference Guide into publication-grade PDF.
-DSOM Rule 11 & Rule 11.16 (Terminal & Cloud Design, Pure White Print, 8mm Margins, WeasyPrint Native).
+"""Terminal & Cloud PDF Compilation Master Script (DSOM Rule 11 & Rule 11.16).
+
+This module compiles Markdown documents into publication-grade PDFs and standalone HTML
+using Pandoc and native WeasyPrint under DSOM Rule 11.16 guidelines.
 
 Outputs:
-  - docs/dist/terminal-cloud-pdf-compilation-guide.html (standalone HTML)
-  - docs/dist/terminal-cloud-pdf-compilation-guide.pdf  (print-optimized PDF)
+    - docs/dist/terminal-cloud-pdf-compilation-guide.html (standalone HTML)
+    - docs/dist/terminal-cloud-pdf-compilation-guide.pdf  (print-optimized PDF)
 """
+
 import os
 import re
 import shutil
@@ -19,40 +21,50 @@ import subprocess
 import sys
 from pathlib import Path
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DOC_SRC = PROJECT_ROOT / "docs" / "governance" / "TECHNICAL-BOOK-DESIGN-AND-PDF-COMPILER-PROMPT-GUIDE.md"
-BUILD_DIR = PROJECT_ROOT / "build" / "pdf_compilation_guide"
-DIST_DIR = PROJECT_ROOT / "docs" / "dist"
 
-DIST_HTML = DIST_DIR / "terminal-cloud-pdf-compilation-guide.html"
-DIST_PDF = DIST_DIR / "terminal-cloud-pdf-compilation-guide.pdf"
+def clean_markdown(src_path: Path, build_dir: Path) -> Path:
+    """Strips OKF YAML frontmatter and DSOM footers from source Markdown.
 
-BUILD_DIR.mkdir(parents=True, exist_ok=True)
-DIST_DIR.mkdir(parents=True, exist_ok=True)
+    Args:
+        src_path (Path): Path to the source Markdown document.
+        build_dir (Path): Path to the intermediate build directory.
 
-# Step 1: Read and clean source Markdown
-content = DOC_SRC.read_text(encoding="utf-8")
+    Returns:
+        Path: Path to the cleaned intermediate Markdown file.
+    """
+    content = src_path.read_text(encoding="utf-8")
 
-# Strip OKF YAML frontmatter
-if content.startswith("---"):
-    parts = content.split("---", 2)
-    if len(parts) >= 3:
-        content = parts[2].strip()
+    # Strip OKF YAML frontmatter
+    if content.startswith("---"):
+        parts = content.split("---", 2)
+        if len(parts) >= 3:
+            content = parts[2].strip()
 
-# Strip DSOM signature footers
-content = re.sub(
-    r'---\s*\n\*Linux for NOSS Malaysia[^\n]*\n(?:\*[^\n]*\n?)*',
-    '', content
-).strip()
+    # Strip DSOM signature footers
+    content = re.sub(
+        r"---\s*\n\*Linux for NOSS Malaysia[^\n]*\n(?:\*[^\n]*\n?)*",
+        "",
+        content,
+    ).strip()
 
-intermediate_md = BUILD_DIR / "guide_clean.md"
-intermediate_md.write_text(content, encoding="utf-8")
+    intermediate_md = build_dir / "guide_clean.md"
+    intermediate_md.write_text(content, encoding="utf-8")
+    return intermediate_md
 
-# Step 2: Write CSS file
-css_content = """/* ═══════════════════════════════════════════════════════════════════
+
+def write_css(build_dir: Path) -> Path:
+    """Writes print-optimized pure white CSS style for WeasyPrint rendering.
+
+    Args:
+        build_dir (Path): Path to the build directory.
+
+    Returns:
+        Path: Path to the generated CSS file.
+    """
+    css_content = """/* ═══════════════════════════════════════════════════════════════════
    Terminal & Cloud Design Framework — Print-Optimized Pure White
    DSOM Rule 11 & Rule 11.16 | Zero Ink Waste | A4 Portrait | 10mm Margins
    ═══════════════════════════════════════════════════════════════════ */
@@ -220,45 +232,104 @@ hr {
     margin: 16px 0;
 }
 """
+    css_file = build_dir / "style.css"
+    css_file.write_text(css_content, encoding="utf-8")
+    return css_file
 
-css_file = BUILD_DIR / "style.css"
-css_file.write_text(css_content, encoding="utf-8")
 
-# Step 3: Pandoc — Markdown → Standalone HTML
-pandoc_cmd = [
-    "pandoc",
-    str(intermediate_md),
-    "-o", str(BUILD_DIR / "report.html"),
-    "--standalone",
-    "--css", "style.css",
-    "--highlight-style=tango",
-    "--metadata", "title=Terminal & Cloud PDF Compilation Master Prompt & Reference Guide"
-]
-print("Running Pandoc...")
-subprocess.run(pandoc_cmd, check=True, cwd=BUILD_DIR)
+def compile_html(
+    md_path: Path, css_file: Path, build_dir: Path, dist_dir: Path, dist_html: Path
+) -> Path:
+    """Converts cleaned Markdown to standalone HTML using Pandoc.
 
-html_content = (BUILD_DIR / "report.html").read_text(encoding="utf-8")
-html_content = re.sub(r'<colgroup>.*?</colgroup>', '', html_content, flags=re.DOTALL)
-(BUILD_DIR / "report.html").write_text(html_content, encoding="utf-8")
+    Args:
+        md_path (Path): Path to intermediate cleaned Markdown file.
+        css_file (Path): Path to CSS file.
+        build_dir (Path): Path to build directory.
+        dist_dir (Path): Path to distribution directory.
+        dist_html (Path): Path to destination HTML file.
 
-shutil.copy(css_file, DIST_DIR / "style.css")
-shutil.copy(BUILD_DIR / "report.html", DIST_HTML)
-print(f"HTML generated: {DIST_HTML} ({DIST_HTML.stat().st_size:,} bytes)")
+    Returns:
+        Path: Path to the generated standalone HTML file.
+    """
+    pandoc_cmd = [
+        "pandoc",
+        str(md_path),
+        "-o",
+        str(build_dir / "report.html"),
+        "--standalone",
+        "--css",
+        "style.css",
+        "--highlight-style=tango",
+        "--metadata",
+        "title=Terminal & Cloud PDF Compilation Master Prompt & Reference Guide",
+    ]
+    print("Running Pandoc...")
+    subprocess.run(pandoc_cmd, check=True, cwd=build_dir)
 
-# Step 4: WeasyPrint — HTML → PDF
-try:
+    html_content = (build_dir / "report.html").read_text(encoding="utf-8")
+    html_content = re.sub(r"<colgroup>.*?</colgroup>", "", html_content, flags=re.DOTALL)
+    (build_dir / "report.html").write_text(html_content, encoding="utf-8")
+
+    shutil.copy(css_file, dist_dir / "style.css")
+    shutil.copy(build_dir / "report.html", dist_html)
+    print(f"HTML generated: {dist_html} ({dist_html.stat().st_size:,} bytes)")
+    return dist_html
+
+
+def compile_pdf(dist_html: Path, dist_pdf: Path) -> Path:
+    """Converts standalone HTML into a publication-grade PDF using WeasyPrint.
+
+    Args:
+        dist_html (Path): Path to input standalone HTML file.
+        dist_pdf (Path): Path to output PDF file.
+
+    Returns:
+        Path: Path to the generated PDF file.
+
+    Raises:
+        RuntimeError: If PDF generation fails or output file size is <= 10 KB.
+    """
     wp_cmd = [
-        sys.executable, "-m", "weasyprint",
-        str(DIST_HTML),
-        str(DIST_PDF)
+        sys.executable,
+        "-m",
+        "weasyprint",
+        str(dist_html),
+        str(dist_pdf),
     ]
     print("Running WeasyPrint...")
     subprocess.run(wp_cmd, check=True, timeout=120)
 
-    if DIST_PDF.exists() and DIST_PDF.stat().st_size > 10240:
-        print(f"PDF successfully generated: {DIST_PDF} ({DIST_PDF.stat().st_size:,} bytes)")
+    if dist_pdf.exists() and dist_pdf.stat().st_size > 10240:
+        print(f"PDF successfully generated: {dist_pdf} ({dist_pdf.stat().st_size:,} bytes)")
+        return dist_pdf
     else:
         raise RuntimeError("Output PDF does not exist or is under 10KB assertion limit.")
-except Exception as e:
-    print(f"PDF Compilation Error: {e}")
-    sys.exit(1)
+
+
+def main() -> None:
+    """Orchestrates the PDF compiler pipeline."""
+    project_root = Path(__file__).resolve().parent.parent
+    doc_src = (
+        project_root
+        / "docs"
+        / "governance"
+        / "TECHNICAL-BOOK-DESIGN-AND-PDF-COMPILER-PROMPT-GUIDE.md"
+    )
+    build_dir = project_root / "build" / "pdf_compilation_guide"
+    dist_dir = project_root / "docs" / "dist"
+
+    dist_html = dist_dir / "terminal-cloud-pdf-compilation-guide.html"
+    dist_pdf = dist_dir / "terminal-cloud-pdf-compilation-guide.pdf"
+
+    build_dir.mkdir(parents=True, exist_ok=True)
+    dist_dir.mkdir(parents=True, exist_ok=True)
+
+    cleaned_md = clean_markdown(doc_src, build_dir)
+    css_file = write_css(build_dir)
+    compiled_html = compile_html(cleaned_md, css_file, build_dir, dist_dir, dist_html)
+    compile_pdf(compiled_html, dist_pdf)
+
+
+if __name__ == "__main__":
+    main()

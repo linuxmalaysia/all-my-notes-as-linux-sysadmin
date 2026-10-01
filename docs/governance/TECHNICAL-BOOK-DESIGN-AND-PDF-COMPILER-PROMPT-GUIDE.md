@@ -1,8 +1,15 @@
 ---
-okf_version: 0.1
+okf_version: "0.2"
 type: governance
 title: "Terminal & Cloud PDF Compilation Master Prompt & Reference Guide"
 timestamp: "2026-09-30T00:00:00Z"
+generated: "2026-09-30T00:00:00Z"
+verified: "2026-09-30T00:00:00Z"
+status: "verified"
+stale_after: "2027-09-30T00:00:00Z"
+sources:
+  - "AGENTS.md"
+  - ".agents/AGENTS.md"
 topics: ["governance", "pdf-compilation", "weasyprint", "rule-11.16", "dsom"]
 tags: ["pdf", "weasyprint", "pandoc", "rule-11.16", "compilation", "ebook"]
 description: "Master prompt and reference guide for compiling publication-grade PDFs from Markdown using native Linux WeasyPrint and Pandoc toolchains under DSOM Rule 11.16."
