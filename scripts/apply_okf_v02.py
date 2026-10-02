@@ -69,6 +69,11 @@ EXCLUDED_DIRS: Set[str] = {'.git', 'node_modules', 'html', '.pytest_cache', 'scr
 def get_okf_type(rel_path: str, existing_type: Optional[str] = None) -> str:
     """Determine the functional OKF classification for a given file path.
 
+    Normalize existing 'Attested Computation' or 'attested_computation' types
+    to 'Attested Computation'.
+    Otherwise, classify by path, retaining a truthy existing type only when
+    no path rule matches; default to 'documentation'.
+
     Args:
         rel_path (str): Relative file path from the repository root.
         existing_type (Optional[str]): Existing 'type' field in the document's frontmatter.
@@ -121,15 +126,31 @@ def process_file(
     root_dir: str,
     generator_id: str = 'OKF v0.2 Adoption Tooling / Gemini 2.5 Pro'
 ) -> Tuple[bool, bool]:
-    """Process a single Markdown file to enforce OKF v0.2 frontmatter and Sovereign footer.
+    """Rewrite a UTF-8 Markdown file with OKF v0.2 metadata and footer text.
+
+    Retain existing metadata except for normalized fields, merge missing
+    mandatory sources, and supply missing attested-computation fields when
+    applicable. Recognized frontmatter that fails to parse or is not a mapping
+    is replaced. Strip surrounding body whitespace and append the footer
+    unless attribution, license, and legal-notice markers occur in the body.
+    Errors outside frontmatter parsing and file I/O handling propagate.
 
     Args:
         filepath (str): Path to the target Markdown file.
-        root_dir (str): Root directory of the scan operation.
-        generator_id (str): Identifier for the generator actor.
+        root_dir (str): Base for the relative path used in classification;
+            filepath is resolved independently, not relative to this directory.
+        generator_id (str): Actor recorded when existing 'generated' metadata
+            is missing or falsy.
 
     Returns:
-        Tuple[bool, bool]: (success_flag, changed_flag)
+        Tuple[bool, bool]: (True, True) after rewriting, (True, False) when the
+            formatted text matches the text read, or (False, False) on a UTF-8
+            decoding error or an OSError while reading or writing. A failed
+            write may leave the file truncated or partially written.
+
+    Raises:
+        ValueError: If filepath is empty.
+        TypeError: If a source's ID or selected URL/resource is unhashable.
     """
     rel_path = os.path.relpath(filepath, root_dir).replace('\\', '/')
 
@@ -236,13 +257,18 @@ def process_file(
     return True, True
 
 def main(target_dir: str = '.') -> int:
-    """Traverse target directory and process all Markdown files to OKF v0.2 standards.
+    """Recursively rewrite files ending in '.md' and print a result summary.
+
+    Skip subdirectories named in EXCLUDED_DIRS and do not follow directory
+    symlinks. Directory traversal errors are ignored. Exceptions raised by
+    process_file propagate; reported file failures do not stop the scan.
 
     Args:
         target_dir (str): Root directory to scan. Defaults to '.'.
 
     Returns:
-        int: Exit status code (0 for success, non-zero for failures).
+        int: 1 if any process_file call reports failure, otherwise 0, including
+            when no files are found or target_dir does not exist.
     """
     modified = 0
     errors = 0
