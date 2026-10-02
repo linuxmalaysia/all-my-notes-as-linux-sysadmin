@@ -1,12 +1,46 @@
 ---
-okf_version: 0.1
-type: memory-closet
-title: "Event Closet: Session Ledger & Milestones"
-timestamp: "2026-08-17T00:00:00Z"
-topics: ["dsom", "events", "ledger", "milestones"]
-tags: ["dsom-core", "ledger", "memory-closet"]
-description: "Lejar peristiwa, sejarah migrasi, dan pencapaian sesi pembangunan."
-resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/closet.md"
+okf_version: '0.2'
+type: architecture_concept
+title: 'Event Closet: Session Ledger & Milestones'
+timestamp: '2026-08-17T00:00:00Z'
+topics:
+- dsom
+- events
+- ledger
+- milestones
+tags:
+- dsom-core
+- ledger
+- memory-closet
+description: Lejar peristiwa, sejarah migrasi, dan pencapaian sesi pembangunan.
+resource: file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/closet.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:44Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # Event Closet: Session Ledger & Milestones
@@ -32,3 +66,6 @@ resource: "file:///.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/cl
 - **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #12 & PR #13 — Migrasi Silibus Bab 6 (Sandaran tar/rsync/zstd, Automasi systemd.timer/cron, Pemulihan Data sha256sum, Pelekapan Storan mount/umount/findmnt/fstab, Penapis Teks grep/sed/awk, dan RCA), Porting Kemahiran CU04/CU06, peningkatan kepada 982 ujian Python, dan penyempurnaan menyeluruh siri kurikulum Fasa 1–6.
 - **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 7 (Migrasi & Pemodenan Bab 7: Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem - CU01, CU03, & CU06).
 
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

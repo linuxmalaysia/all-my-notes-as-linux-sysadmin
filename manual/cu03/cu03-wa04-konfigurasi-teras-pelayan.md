@@ -1,12 +1,63 @@
 ---
-okf_version: 0.1
-type: knowledge-node
-title: "Konfigurasi Teras Pelayan Linux & Pengurusan Perkhidmatan Systemd"
-timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu03", "wa04", "systemd", "systemctl", "journalctl", "timedatectl", "chrony", "man", "editor", "bashrc"]
-tags: ["cu03", "systemd", "systemctl", "journalctl", "chrony", "timedatectl", "man", "editor", "bashrc", "noss", "amali"]
-description: "Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, penyesuaian $EDITOR/$VISUAL, dan sistem dokumentasi man."
-resource: "file:///manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md"
+okf_version: '0.2'
+type: reference
+title: Konfigurasi Teras Pelayan Linux & Pengurusan Perkhidmatan Systemd
+timestamp: '2026-08-17T00:00:00Z'
+topics:
+- noss-linux
+- cu03
+- wa04
+- systemd
+- systemctl
+- journalctl
+- timedatectl
+- chrony
+- man
+- editor
+- bashrc
+tags:
+- cu03
+- systemd
+- systemctl
+- journalctl
+- chrony
+- timedatectl
+- man
+- editor
+- bashrc
+- noss
+- amali
+description: Panduan amali konfigurasi teras pelayan Linux, pengurusan unit perkhidmatan
+  systemd, audit log journalctl, penyegerakan masa timedatectl/chrony, penyesuaian
+  $EDITOR/$VISUAL, dan sistem dokumentasi man.
+resource: file:///manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:45Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # Konfigurasi Teras Pelayan Linux & Pengurusan Perkhidmatan Systemd

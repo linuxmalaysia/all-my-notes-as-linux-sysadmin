@@ -1,3 +1,38 @@
+---
+spec_version: '0.2'
+okf_version: '0.2'
+type: architecture_concept
+title: '📋 Implementation Plan: Fasa 8 (Migrasi & Pemodenan Bab 8 - Pengurusan Pakej
+  & Repositori Lanjutan, Rule 32.43 & Rule 32.44)'
+description: Dokumentasi OKF v0.2 bagi implementation_plan.md.
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:44Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+---
+
 # 📋 Implementation Plan: Fasa 8 (Migrasi & Pemodenan Bab 8 - Pengurusan Pakej & Repositori Lanjutan, Rule 32.43 & Rule 32.44)
 
 ## 🎯 Objektif & Rasional
@@ -32,3 +67,7 @@ Di samping itu, menyerapkan dua peraturan tatatertib dan amalan terbaik Ansible 
 2. Kemas kini fail perlembagaan dan kemahiran AI ejen.
 3. Bina semula tapak web statik dengan `uv run scripts/serve_mkdocs.py --build-only`.
 4. Sahkan 100% Quality Gate dengan `uv run --with pytest --with pyyaml --with pytest-cov --with defusedxml python run_all_tests.py`.
+
+---
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

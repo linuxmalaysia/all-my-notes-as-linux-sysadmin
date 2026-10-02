@@ -1,10 +1,63 @@
 ---
-okf_version: 0.1
+okf_version: '0.2'
 name: cu01-wa04-install-computer-desktop-operating-systems
-description: Kemahiran amali pemasangan sistem operasi Linux desktop & persekitaran Meja GNOME (Nautilus, applet, workspace switcher) — dikemaskini dengan prosedur terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10.
-topics: [noss, cu01, wa04, linux-install, gnome, nautilus, applet, workspace, ubuntu, fedora, almalinux]
-tags: [linux, pemasangan, desktop, gnome, nautilus, applet, workspace, ubuntu, almalinux, fedora, cu01, wa04]
-type: procedural_skill
+description: Kemahiran amali pemasangan sistem operasi Linux desktop & persekitaran
+  Meja GNOME (Nautilus, applet, workspace switcher) — dikemaskini dengan prosedur
+  terkini 2026 menggunakan Ubuntu 26.04 LTS, Fedora 43, dan AlmaLinux 10.
+topics:
+- noss
+- cu01
+- wa04
+- linux-install
+- gnome
+- nautilus
+- applet
+- workspace
+- ubuntu
+- fedora
+- almalinux
+tags:
+- linux
+- pemasangan
+- desktop
+- gnome
+- nautilus
+- applet
+- workspace
+- ubuntu
+- almalinux
+- fedora
+- cu01
+- wa04
+type: agent_skill
+spec_version: '0.2'
+title: cu01-wa04-install-computer-desktop-operating-systems
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:44Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # CU01-WA04: Pemasangan Sistem Operasi Linux Desktop & Persekitaran Meja GNOME
