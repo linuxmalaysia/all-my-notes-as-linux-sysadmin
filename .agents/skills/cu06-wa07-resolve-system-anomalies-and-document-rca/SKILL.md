@@ -1,13 +1,77 @@
 ---
-okf_version: 0.1
+okf_version: '0.2'
 name: cu06-wa07-resolve-system-anomalies-and-document-rca
-description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq), pengalihan I/O, penyunting terminal CLI (Vim/Neovim regex %s/asal/ganti/g dan rakaman dan pelaksanaan makro @a, GNU Nano/Pico, GNU Emacs -nw), pemboleh ubah persekitaran ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
-topics: [noss, cu06, wa07, grep, sed, awk, cut, sort, uniq, vim, neovim, nano, emacs, pico, sudoedit, visudo, editor, rca]
-type: skill
-title: "Resolve System Anomalies and Document RCA (CU06-WA07)"
-timestamp: "2026-08-17T00:00:00Z"
-tags: ["cu06", "wa07", "noss", "grep", "sed", "awk", "vim", "neovim", "nano", "emacs", "pico", "sudoedit", "visudo", "editor", "rca"]
-resource: "file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md"
+description: Melaksanakan Aktiviti Kerja NOSS CU06-WA07 - Menyelesaikan Anomali Sistem
+  dan Mendokumentasikan RCA menggunakan penapis teks (grep, sed, awk, cut, sort, uniq),
+  pengalihan I/O, penyunting terminal CLI (Vim/Neovim regex %s/asal/ganti/g dan rakaman
+  dan pelaksanaan makro @a, GNU Nano/Pico, GNU Emacs -nw), pemboleh ubah persekitaran
+  ($EDITOR/$VISUAL), penyuntingan selamat (sudoedit/visudo), dan pelaporan RCA.
+topics:
+- noss
+- cu06
+- wa07
+- grep
+- sed
+- awk
+- cut
+- sort
+- uniq
+- vim
+- neovim
+- nano
+- emacs
+- pico
+- sudoedit
+- visudo
+- editor
+- rca
+type: agent_skill
+title: Resolve System Anomalies and Document RCA (CU06-WA07)
+timestamp: '2026-08-17T00:00:00Z'
+tags:
+- cu06
+- wa07
+- noss
+- grep
+- sed
+- awk
+- vim
+- neovim
+- nano
+- emacs
+- pico
+- sudoedit
+- visudo
+- editor
+- rca
+resource: file:///.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:44Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # Resolve System Anomalies and Document RCA

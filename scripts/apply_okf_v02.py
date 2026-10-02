@@ -19,10 +19,11 @@ Attributes:
     EXCLUDED_DIRS (set[str]): Directories ignored during scanning.
 """
 
+from datetime import datetime, timezone
 import os
 import re
 import sys
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 import yaml
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -115,35 +116,47 @@ def extract_title(content: str, filename: str) -> str:
         return match.group(1).strip()
     return os.path.splitext(filename)[0].replace('-', ' ').replace('_', ' ').title()
 
-def process_file(filepath: str, root_dir: str) -> str:
+def process_file(
+    filepath: str,
+    root_dir: str,
+    generator_id: str = 'OKF v0.2 Adoption Tooling / Gemini 2.5 Pro'
+) -> Tuple[bool, bool]:
     """Process a single Markdown file to enforce OKF v0.2 frontmatter and Sovereign footer.
 
     Args:
         filepath (str): Path to the target Markdown file.
         root_dir (str): Root directory of the scan operation.
+        generator_id (str): Identifier for the generator actor.
 
     Returns:
-        str: Relative path of the processed file.
+        Tuple[bool, bool]: (success_flag, changed_flag)
     """
     rel_path = os.path.relpath(filepath, root_dir).replace('\\', '/')
 
-    with open(filepath, 'r', encoding='utf-8-sig', errors='ignore') as f:
-        content = f.read()
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except UnicodeDecodeError:
+        print(f"[SKIP] Non-UTF-8 encoding in file: {rel_path}", file=sys.stderr)
+        return False, False
+    except OSError as err:
+        print(f"[ERROR] Cannot read file {rel_path}: {err}", file=sys.stderr)
+        return False, False
 
     frontmatter_dict: Dict[str, Any] = {}
     body = content
 
-    if content.startswith('---'):
-        parts = content.split('---', 2)
-        if len(parts) >= 3:
-            raw_fm = parts[1]
-            body = parts[2]
-            try:
-                data = yaml.safe_load(raw_fm)
-                if isinstance(data, dict):
-                    frontmatter_dict = data
-            except Exception:
-                pass
+    # Line-anchored frontmatter parsing
+    fm_match = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n?(.*)$", content, re.DOTALL)
+    if fm_match:
+        raw_fm = fm_match.group(1)
+        body = fm_match.group(2)
+        try:
+            parsed = yaml.safe_load(raw_fm)
+            if isinstance(parsed, dict):
+                frontmatter_dict = parsed
+        except Exception:
+            pass
 
     okf_type = get_okf_type(rel_path, frontmatter_dict.get('type'))
     title = frontmatter_dict.get('title') or frontmatter_dict.get('name') or extract_title(body, os.path.basename(filepath))
@@ -158,16 +171,15 @@ def process_file(filepath: str, root_dir: str) -> str:
     new_fm['status'] = frontmatter_dict.get('status', 'stable')
     new_fm['stale_after'] = frontmatter_dict.get('stale_after', '2027-12-31')
 
+    now_iso = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     new_fm['generated'] = frontmatter_dict.get('generated') or {
-        'by': 'OKF v0.2 Adoption Tooling / Gemini 2.5 Pro',
-        'at': '2026-08-16T00:00:00Z'
+        'by': generator_id,
+        'at': now_iso
     }
-    new_fm['verified'] = frontmatter_dict.get('verified') or [
-        {
-            'by': 'human:harisfazillah',
-            'at': '2026-08-16T00:00:00Z'
-        }
-    ]
+
+    # Only include verified if explicitly present in existing metadata
+    if 'verified' in frontmatter_dict and frontmatter_dict['verified']:
+        new_fm['verified'] = frontmatter_dict['verified']
 
     existing_sources = frontmatter_dict.get('sources', [])
     if not isinstance(existing_sources, list):
@@ -190,7 +202,7 @@ def process_file(filepath: str, root_dir: str) -> str:
             new_fm['parameters'] = [{'name': 'target_environment', 'type': 'string', 'required': True}]
         if 'executor' not in new_fm:
             new_fm['executor'] = {
-                'resource': 'scripts/run_all_tests.py',
+                'resource': 'run_all_tests.py',
                 'receipt': ['exit_code', 'stdout', 'stderr']
             }
         if 'attester' not in new_fm:
@@ -211,27 +223,42 @@ def process_file(filepath: str, root_dir: str) -> str:
     yaml_str = yaml.dump(new_fm, sort_keys=False, allow_unicode=True, default_flow_style=False).strip()
     formatted_content = f"---\n{yaml_str}\n---\n\n{clean_body}\n"
 
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(formatted_content)
+    if formatted_content == content:
+        return True, False
 
-    return rel_path
+    try:
+        with open(filepath, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(formatted_content)
+    except OSError as err:
+        print(f"[ERROR] Cannot write file {rel_path}: {err}", file=sys.stderr)
+        return False, False
 
-def main(target_dir: str = '.') -> None:
+    return True, True
+
+def main(target_dir: str = '.') -> int:
     """Traverse target directory and process all Markdown files to OKF v0.2 standards.
 
     Args:
         target_dir (str): Root directory to scan. Defaults to '.'.
+
+    Returns:
+        int: Exit status code (0 for success, non-zero for failures).
     """
     modified = 0
+    errors = 0
     for root, dirs, files in os.walk(target_dir):
         dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
         for file in files:
             if file.endswith('.md'):
                 filepath = os.path.join(root, file)
-                process_file(filepath, target_dir)
-                modified += 1
-    print(f"Successfully processed {modified} Markdown files to OKF v0.2 standard.")
+                success, changed = process_file(filepath, target_dir)
+                if not success:
+                    errors += 1
+                elif changed:
+                    modified += 1
+    print(f"Successfully processed Markdown files. Modified: {modified}, Errors: {errors}.")
+    return 1 if errors > 0 else 0
 
 if __name__ == '__main__':
     target = sys.argv[1] if len(sys.argv) > 1 else '.'
-    main(target)
+    sys.exit(main(target))

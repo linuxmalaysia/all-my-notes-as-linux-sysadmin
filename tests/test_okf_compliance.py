@@ -1,52 +1,80 @@
-"""Integration tests for OKF Markdown Compliance.
+"""Integration tests for OKF v0.2 Markdown Compliance.
 
 This test suite scans all markdown files across the repository to ensure
-strict compliance with the Google OKF v0.1 YAML Frontmatter standard and
-the mandatory Sovereign Markdown Palace dual-license footer.
+strict compliance with the Google OKF v0.2 YAML Frontmatter standard,
+trust signals, sources provenance (internal docs & public internet URLs),
+and the mandatory Sovereign Markdown Palace dual-license footer.
 """
 
-import glob
 import os
-
 import pytest
+import yaml
 
-# Directories to scan
-TARGET_DIRS = ["docs/**/*.md", "openwiki/**/*.md", "manual/**/*.md", ".agents/skills/*/SKILL.md"]
-EXCLUDED_FILES = ["README.md", "CHANGELOG.md", "HISTORY.md", "AGENTS.md", "SUMMARY.md"]
+EXCLUDED_DIRS = {"html", "node_modules", ".git", ".pytest_cache", "scratch"}
 
 def get_markdown_files():
-    """Retrieve all markdown files matching the target directories."""
+    """Retrieve all markdown files in the repository except excluded directories."""
     files = []
-    for pattern in TARGET_DIRS:
-        files.extend(glob.glob(pattern, recursive=True))
-        
-    # Filter out excluded files
-    return [f for f in files if os.path.basename(f) not in EXCLUDED_FILES]
+    for root, dirs, filenames in os.walk("."):
+        dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
+        for filename in filenames:
+            if filename.endswith(".md"):
+                files.append(os.path.join(root, filename))
+    return sorted(files)
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
-def test_okf_frontmatter(filepath):
-    """Verify that the markdown file begins with valid OKF YAML frontmatter."""
-    with open(filepath, 'r', encoding='utf-8-sig', errors='ignore') as f:
+def test_okf_v02_frontmatter(filepath):
+    """Verify that the markdown file begins with valid OKF v0.2 YAML frontmatter and trust signals."""
+    with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
         
-    assert content.startswith("---"), f"File {filepath} must start with YAML frontmatter."
+    assert content.startswith("---"), f"File {filepath} must start with YAML frontmatter '---'."
     
     parts = content.split("---", 2)
     assert len(parts) >= 3, f"File {filepath} has malformed or missing YAML closure '---'."
     
-    frontmatter = parts[1].strip()
-    
-    # Check for mandatory OKF keys (depending on the domain, either okf_version or dsom_governance)
-    has_okf = "okf_version:" in frontmatter or "dsom_governance:" in frontmatter
-    assert has_okf, f"File {filepath} must contain OKF or DSOM metadata keys."
-    assert "title:" in frontmatter or "name:" in frontmatter, f"File {filepath} is missing 'title' or 'name' in frontmatter."
+    raw_fm = parts[1].strip()
+    data = yaml.safe_load(raw_fm)
+    assert isinstance(data, dict), f"File {filepath} frontmatter must be a valid YAML object."
+
+    # Assert OKF v0.2 version indicators
+    version = str(data.get("okf_version") or data.get("spec_version") or "")
+    assert version == "0.2", f"File {filepath} must specify okf_version or spec_version as '0.2'."
+
+    # Assert basic metadata
+    assert "type" in data, f"File {filepath} missing 'type' functional classification."
+    assert "title" in data or "name" in data, f"File {filepath} missing 'title' or 'name'."
+    assert "description" in data, f"File {filepath} missing 'description'."
+
+    # Assert Trust Signals
+    assert "status" in data, f"File {filepath} missing 'status' lifecycle indicator."
+    assert "stale_after" in data, f"File {filepath} missing 'stale_after' freshness date."
+    assert "generated" in data, f"File {filepath} missing 'generated' provenance record."
+
+    # Assert Sources (Internal Document Reference & Public Internet URL)
+    assert "sources" in data and isinstance(data["sources"], list), f"File {filepath} must contain a list of 'sources'."
+    sources = data["sources"]
+    assert len(sources) >= 1, f"File {filepath} 'sources' must contain at least one source entry."
+
+    has_internal_ref = False
+    has_public_url = False
+
+    for src in sources:
+        if isinstance(src, dict):
+            res = str(src.get("url") or src.get("resource") or "")
+            if res.startswith("http://") or res.startswith("https://"):
+                has_public_url = True
+            elif res.endswith(".md") or "/" in res or res.startswith("file:"):
+                has_internal_ref = True
+
+    assert has_internal_ref, f"File {filepath} sources must include an internal document reference."
+    assert has_public_url, f"File {filepath} sources must include a public internet URL."
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
 def test_sovereign_footer(filepath):
     """Verify that the markdown file ends with the Sovereign dual-license footer."""
-    with open(filepath, 'r', encoding='utf-8-sig', errors='ignore') as f:
+    with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read().strip()
         
-    # The exact footer varies slightly depending on date, but must contain key phrases
     assert "Harisfazillah Jamel" in content or "LinuxMalaysia" in content, f"File {filepath} missing Author attribution in footer."
     assert "Dwi-Lesen" in content or "Dual-License" in content or "CC BY-SA 4.0" in content or "GNU" in content, f"File {filepath} missing Licensing standard in footer."

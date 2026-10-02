@@ -1,12 +1,70 @@
 ---
-okf_version: 0.1
-type: documentation
-title: "Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026"
-timestamp: "2026-08-17T00:00:00Z"
-topics: ["linux-desktop", "gnome", "nautilus", "synaptic", "gnome-software", "tarball", "cu01", "pemasangan-linux", "luks2", "editor", "bashrc"]
-tags: ["linux", "desktop", "gnome", "nautilus", "synaptic", "gnome-software", "tarball", "sejarah", "distribusi", "cu01", "gpl", "ubuntu", "fedora", "almalinux", "luks2", "editor", "bashrc"]
-description: "Silibus komprehensif CU01 dikemaskini dengan Persekitaran Meja GNOME (GNOME 48/47), Pengurus Fail Nautilus, pengurusan pakej GUI (Synaptic, GNOME Software), pengompilan tarball, edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux 10), penyulitan LUKS2, dan konfigurasi $EDITOR/$VISUAL."
-resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
+okf_version: '0.2'
+type: explanation
+title: 'Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026'
+timestamp: '2026-08-17T00:00:00Z'
+topics:
+- linux-desktop
+- gnome
+- nautilus
+- synaptic
+- gnome-software
+- tarball
+- cu01
+- pemasangan-linux
+- luks2
+- editor
+- bashrc
+tags:
+- linux
+- desktop
+- gnome
+- nautilus
+- synaptic
+- gnome-software
+- tarball
+- sejarah
+- distribusi
+- cu01
+- gpl
+- ubuntu
+- fedora
+- almalinux
+- luks2
+- editor
+- bashrc
+description: Silibus komprehensif CU01 dikemaskini dengan Persekitaran Meja GNOME
+  (GNOME 48/47), Pengurus Fail Nautilus, pengurusan pakej GUI (Synaptic, GNOME Software),
+  pengompilan tarball, edaran rujukan 2026 (Ubuntu 26.04 LTS, Fedora 43, AlmaLinux
+  10), penyulitan LUKS2, dan konfigurasi $EDITOR/$VISUAL.
+resource: file:///openwiki/topic-01-linux-desktop-and-basics.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:43Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # Topik 1: Pengenalan & Asas Ekosistem Linux (CU01)
