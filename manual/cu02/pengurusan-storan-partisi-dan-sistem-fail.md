@@ -1,12 +1,57 @@
 ---
-okf_version: 0.1
-type: knowledge-node
-title: "CU02: Pengurusan Storan, Partisi GPT, LVM2 & Sistem Fail Linux"
-timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss-linux", "cu02", "storan", "lvm2", "gpt", "sistem-fail"]
-tags: ["cu02", "linux", "noss", "partisi", "gdisk", "parted", "lvm", "ext4", "xfs", "btrfs"]
-description: "Panduan amali komprehesif bagi pengurusan storan fizikal dan logikal, jadual partisi GPT, LVM2 (PV/VG/LV), sistem fail EXT4/XFS/Btrfs, /etc/fstab, dan penyulitan LUKS2 mengikut NOSS CU02."
-resource: "file:///manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md"
+okf_version: '0.2'
+type: reference
+title: 'CU02: Pengurusan Storan, Partisi GPT, LVM2 & Sistem Fail Linux'
+timestamp: '2026-08-17T00:00:00Z'
+topics:
+- noss-linux
+- cu02
+- storan
+- lvm2
+- gpt
+- sistem-fail
+tags:
+- cu02
+- linux
+- noss
+- partisi
+- gdisk
+- parted
+- lvm
+- ext4
+- xfs
+- btrfs
+description: Panduan amali komprehesif bagi pengurusan storan fizikal dan logikal,
+  jadual partisi GPT, LVM2 (PV/VG/LV), sistem fail EXT4/XFS/Btrfs, /etc/fstab, dan
+  penyulitan LUKS2 mengikut NOSS CU02.
+resource: file:///manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:45Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # CU02: Pengurusan Storan, Partisi GPT, LVM2 & Sistem Fail Linux

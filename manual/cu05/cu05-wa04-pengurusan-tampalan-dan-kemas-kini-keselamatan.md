@@ -1,19 +1,50 @@
 ---
-okf_version: "0.2"
-type: knowledge-node
-title: "Pengurusan Tampalan & Kemas Kini Keselamatan"
-timestamp: "2026-08-17T00:00:00Z"
-generated: "2026-08-17T00:00:00Z"
-verified: "2026-08-17T00:00:00Z"
-status: "verified"
-stale_after: "2027-08-17T00:00:00Z"
+okf_version: '0.2'
+type: reference
+title: Pengurusan Tampalan & Kemas Kini Keselamatan
+timestamp: '2026-08-17T00:00:00Z'
+generated: '2026-08-17T00:00:00Z'
+verified: '2026-08-17T00:00:00Z'
+status: verified
+stale_after: '2027-08-17T00:00:00Z'
 sources:
-  - "references/manual/bab_08/part_01.md"
-  - "references/manual/bab_08/part_02.md"
-topics: ["noss-linux", "cu05", "panduan-amali", "manual-linux"]
-tags: ["cu05", "linux", "noss", "amali", "standard-malaysia"]
-description: "Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan audit CVE."
-resource: "file:///manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md"
+- references/manual/bab_08/part_01.md
+- references/manual/bab_08/part_02.md
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+topics:
+- noss-linux
+- cu05
+- panduan-amali
+- manual-linux
+tags:
+- cu05
+- linux
+- noss
+- amali
+- standard-malaysia
+description: Automasi keselamatan pakej (unattended-upgrades / dnf-automatic) dan
+  audit CVE.
+resource: file:///manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md
+spec_version: '0.2'
 ---
 
 # Pengurusan Tampalan & Kemas Kini Keselamatan

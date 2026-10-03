@@ -1,136 +1,32 @@
-# 📋 NOSS Linux Malaysia - Master Task Tracker
+# Task: OKF v0.2 Adoption & Repository Compliance Audit
 
-## 🌟 Milestone Status: Fasa 1 & Fasa 2 (Penstrukturan Semula Seni Bina DSOM & Silibus Manual) - SELESAI ✅
-- [x] **Penstrukturan Semula Direktori Punca `manual/`:**
-  - Pengasingan modul amali silibus NOSS (CU01–CU06) daripada Memori Ruang Ejen ke dalam folder `manual/`.
-  - Penjanaan rangka nod draf lengkap berformat OKF v0.1 untuk kesemua Aktiviti Kerja (WA01–WA07) bagi CU01 hingga CU06.
-- [x] **Pembinaan Semula DSOM Spatial Memory Palace (`.agents/brain/wings/`):**
-  - Penyusunan Sayap `wing_dsom_core` (`hall_facts`, `hall_events`, `hall_discoveries`) dan `wing_noss_linux` (`hall_curriculum`, `hall_governance`).
-  - Penjanaan Master Palace Registry di `.agents/brain/palace_registry.md`.
-- [x] **Penguatkuasaan 4 Kuadran Diátaxis & Hab Rujukan Setempat:**
-  - Pewujudan pusat rujukan sehenti di `manual/index.md` dan `openwiki/index.md`.
-  - Penstrukturan navigasi web `mkdocs.yml` mengikut 4 kuadran Diátaxis rasmi.
-  - Dokumentasi seni bina IPO (`docs/explanation/workflow-input-process-output.md`) dan panduan amali (`docs/how-to/execute-noss-content-transformation.md`).
-  - Kemahiran Ejen AI: `noss-content-transformation-pipeline` (`.agents/skills/noss-content-transformation-pipeline/SKILL.md`).
-- [x] **Pemaktuban Peraturan 21 Perlembagaan AI & Penjajaran JDN:**
-  - Penilaian & Pemetaan Silibus CU/WA.
-  - Penyelidikan Mendalam (*Deep Web Research*) untuk data terkini 2026.
-  - Pengayaan berterusan protokol keselamatan (**Jabatan Digital Negara (JDN) / MAMPU**, ISO/IEC 27001, CIS Benchmarks) dan penalaan prestasi (`sysctl`, `tuned`, eBPF).
+## Status
+Completed (OKF v0.2 Migration & EOD Palace Sync)
 
----
+## Objective
+Migrate all Markdown files in the repository to Open Knowledge Format (OKF) v0.2 specification with Trust Signals, Sources Provenance (internal document paths and public internet URLs), Attested Computations, PEP-257 docstrings, and 100% test compliance.
 
-## 🌟 Milestone Status: Fasa 3 (Audit Bab 1–2, Knowledge-to-Skill Porting, & Migrasi Bab 3 Storan) - SELESAI ✅ (Google Jules PR #4 Merged)
-- [x] **Audit & Semakan Semula Bab 1 & Bab 2 (`manual/cu01/`):**
-  - Penyempurnaan `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` (APT, DNF5, Flatpak, Snap, Pemacu NVIDIA/AMD).
-  - Penyempurnaan `manual/cu01/cu01-wa06-konfigurasi-sambungan-rangkaian-endpoint.md` (NetworkManager, `nmcli`, IP statik/DHCP, Wi-Fi, `systemd-resolved`).
-  - Penciptaan nod `manual/cu01/penegasan-keselamatan-sistem.md` (Pengerasan SSH, UFW, `firewalld`, audit log).
-  - Pengemaskinian `openwiki/topic-01-linux-desktop-and-basics.md` dengan silibus bernombor 10 seksyen.
-- [x] **Mandat Porting Pengetahuan ke Kemahiran AI (*Knowledge-to-Skill Porting*):**
-  - Naik taraf `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md` ke format `type: skill`.
-  - Naik taraf `.agents/skills/cu01-wa06-configure-endpoint-network-connectivity/SKILL.md` ke format `type: skill`.
-  - Naik taraf `.agents/skills/cu02-wa01-identify-virtualisation-infrastructure-requirements/SKILL.md` ke format `type: skill`.
-  - Pengemaskinian Master Palace Registry (`.agents/skills/index.md`).
-- [x] **Migrasi Silibus Bab 3: Storan, Partisi & Sistem Fail (`references/manual/bab_03/` ➔ `manual/cu02/`):**
-  - Penciptaan nod `manual/cu02/pengurusan-storan-partisi-dan-sistem-fail.md` (Partisi GPT `gdisk`/`parted`, LVM2 `pvcreate`/`vgcreate`/`lvcreate`, sistem fail EXT4/XFS/Btrfs, `/etc/fstab`, dan penyulitan LUKS2).
-  - Pengemaskinian `openwiki/topic-02-storage-and-virtualisation.md`.
+## Scope of Work Completed
+1. **OKF v0.2 Mass Migration**:
+   - Transformed all 498 Markdown documents in the repository to OKF v0.2 standard (`spec_version: "0.2"` and `okf_version: "0.2"`).
+   - Injected Five Trust & Freshness Pillars (`status`, `stale_after`, `generated`, `verified` when present, and `sources`).
+   - Standardized `sources` provenance to contain both internal document references (`docs/legal-notice.md`, relative `.md` paths) and public internet URLs (`https://cloud.google.com/...`, `https://blog.redlinesoft.net/...`, `https://deep-state-of-mind-for-my-ai.readthedocs.io/...`).
+   - Injected Attested Computation execution contracts (`runtime`, `parameters`, `executor`, `attester`) for executable playbooks and automation tools.
+   - Enforced Sovereign Dual-License Footer across all Markdown nodes.
+
+2. **Code Health & Scripting**:
+   - Created `scripts/apply_okf_v02.py` with strict UTF-8 decoding, line-anchored frontmatter regex parsing, `newline='\n'` LF preservation, diff-based modification tracking, error reporting, and PEP-257 Google-style docstrings.
+   - Updated `.agents/skills/okf-frontmatter-injector/scripts/apply_okf.py` and registered `.agents/skills/okf-v02-adoption-engineer/SKILL.md`.
+
+3. **Validation & Quality Gate**:
+   - Updated `tests/test_okf_compliance.py` to assert OKF v0.2 compliance, trust signals, and internal/public sources provenance.
+   - Verified 100% test pass rate (2,341 Python pytest + 38 JavaScript Jest tests passed).
+
+4. **Artifact Regeneration**:
+   - Rebuilt static HTML site in `html/` via `uv run python scripts/serve_mkdocs.py --build-only`.
+   - Regenerated `llms.txt`, `llms-full.txt`, and `llms_context.xml`.
+   - Rebuilt Master Palace Registry via `uv run python scripts/generate_palace_registry.py`.
 
 ---
-
-## 🌟 Milestone Status: Fasa 4 (Migrasi Silibus Bab 4: Pentadbiran Pengguna & Keselamatan Endpoint CU05) - SELESAI ✅ (Google Jules PR #6 Merged)
-- [x] **Penyempurnaan Modul Amali `manual/cu05/`:**
-  - Penciptaan nod `manual/cu05/pentadbiran-pengguna-kebenaran-dan-kawalan-akses.md` (Pengurusan Pengguna/Kumpulan, `/etc/shadow`, `visudo`, `pam_faillock`, `chmod`/`chown`, SUID/SGID/Sticky bit, POSIX ACL `getfacl`/`setfacl`, FHS, pencarian `plocate`/`find`, dan penutupan selamat).
-  - Kemas kini `manual/cu05/cu05-wa01-audit-akaun-pengguna-dan-kebenaran.md` & `manual/cu05/cu05-wa05-kawalan-keselamatan-fizikal-dan-bios-uefi.md`.
-  - Kemas kini `openwiki/topic-05-linux-security.md`.
-- [x] **Porting Kemahiran AI CU05 (`.agents/skills/`):**
-  - Naik taraf `.agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md` ke format `type: skill` penuh.
-  - Naik taraf `.agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md` ke format `type: skill` penuh.
-
----
-
-## 🌟 Milestone Status: Fasa 5 (Migrasi Silibus Bab 5: Konfigurasi Teras Pelayan CU03 & Pemantauan Prestasi CU06) - SELESAI ✅ (Google Jules PR #9 Merged)
-- [x] **Penyempurnaan Modul Amali `manual/cu03/` & `manual/cu06/`:**
-  - Penyempurnaan `manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md` (Pengurusan unit servis `systemd`, `systemctl`, `journalctl`, `timedatectl`/`chrony`, FHS, dan halaman `man`).
-  - Penyempurnaan `manual/cu06/cu06-wa05-pengoptimuman-prestasi-sistem-dan-cakera.md` (Pemantauan proses `ps`/`top`/`htop`/`vmstat`/`iostat`, penamatan isyarat SIGTERM/SIGKILL, penalaan keutamaan `nice`/`renice`, dan cgroups v2).
-  - Kemas kini `openwiki/topic-03-linux-server-administration.md` & `openwiki/topic-06-troubleshooting-and-logs.md`.
-- [x] **Porting Kemahiran AI CU03 & CU06 (`.agents/skills/`):**
-  - Naik taraf `.agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md` ke format `type: skill` penuh.
-  - Cipta `.agents/skills/cu06-wa05-optimize-system-performance-and-storage/SKILL.md` ke format `type: skill` penuh.
-  - Naik taraf `.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md` ke format `type: skill` penuh.
-- [x] **Jaminan Kualiti (100% Quality Gate):**
-  - **917 ujian Python pytest lulus** (penambahan `tests/test_manual_cu03_cu06_process_server_content.py`).
-  - **38 ujian Node.js Jest lulus**.
-  - Laman web statik `html/` dibina semula dan disegerakkan.
-
----
-
-## 🌟 Milestone Status: Fasa 6 (Migrasi Silibus Bab 6: Sandaran, Pemampatan, Pelekapan Storan & Troubleshooting CU04 & CU06 - Kemuncak Siri Manual) - SELESAI ✅ (Google Jules PR #12 & PR #13 Merged)
-- [x] **Penyempurnaan Modul Amali `manual/cu04/` & `manual/cu06/`:**
-  - Penyempurnaan `manual/cu04/cu04-wa02-operasi-sandaran-tempatan.md` (Arkib `tar` dengan pemampatan moden `zstd`/`gzip`, sinkronisasi penambahan `rsync -avz --delete`, automasi `systemd.timer` & `crontab`, penyulitan gpg).
-  - Penyempurnaan `manual/cu04/cu04-wa04-pemulihan-data-dan-sistem-fail.md` (Verifikasi integriti hash kriptografi `sha256sum`, pengekstrakan arkib terpilih, pemulihan atribut fail).
-  - Penyempurnaan `manual/cu06/cu06-wa04-konfigurasi-dan-troubleshooting-peranti-luaran.md` (Pengecaman pemacu blok `lsblk`/`blkid`, pelekapan storan `mount`/`umount`, pengesahan `findmnt`, pengerasan opsyen keselamatan `/etc/fstab` seperti `nosuid`, `nodev`, `noexec`).
-  - Penyempurnaan `manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md` (Penapisan teks teras `grep`/`sed`/`awk`/`cut`/`sort`/`uniq`, pengalihan I/O saluran paip `|`, `<`, `>`, `>>`, penyunting fail `vim`/`nano`, dan pelaporan punca masalah / RCA).
-  - Pengemaskinian `openwiki/topic-04-automation-and-backup.md` & `openwiki/topic-06-troubleshooting-and-logs.md`.
-- [x] **Porting Kemahiran AI CU04 & CU06 (`.agents/skills/`):**
-  - Naik taraf `.agents/skills/cu04-wa02-perform-local-backup-operations/SKILL.md` ke format `type: skill` penuh.
-  - Naik taraf `.agents/skills/cu04-wa04-restore-endpoint-data/SKILL.md` ke format `type: skill` penuh.
-  - Naik taraf `.agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md` ke format `type: skill` penuh.
-  - Naik taraf `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md` ke format `type: skill` penuh.
-- [x] **Jaminan Kualiti (100% Quality Gate):**
-  - **982 ujian Python pytest lulus** (penambahan `tests/test_manual_cu04_cu06_backup_troubleshooting_content.py` dengan 65 ujian baharu).
-  - **38 ujian Node.js Jest lulus**.
-  - Laman web statik `html/` dibina semula dan disegerakkan.
-
----
-
-## 🌟 Milestone Status: Fasa 7 (Migrasi & Pemodenan Bab 7 - Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem) - SELESAI ✅ (Google Jules PR #15)
-- [x] **Penyempurnaan Modul Amali `manual/cu06/`, `manual/cu01/` & `manual/cu03/`:**
-  - `manual/cu06/cu06-wa07-analisis-punca-anomali-dan-dokumentasi-rca.md` (Vim/Neovim regex `%s/`, makro `@a`, GNU Nano/Pico pintasan lalai `Ctrl+O`, `Ctrl+X`, `Ctrl+W`, `Ctrl+R`, `Ctrl+\`, `Alt+G`, `Alt+N`, `--modernbindings`, GNU Emacs `-nw`, `init.el` Lisp setup, `sudoedit`, `visudo`).
-  - `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` & `manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md` (Penjelasan skop persekitaran `/etc/profile` untuk shell log masuk, `~/.bashrc` untuk shell interaktif bukan log masuk, `/etc/profile.d/`, dan `/etc/environment` pasangan `NAMA=NILAI` via `pam_env.so`).
-- [x] **Porting Kemahiran AI CU06 & OpenWiki (`.agents/skills/` & `openwiki/`):**
-  - Naik taraf `.agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md` ke format `type: skill` penuh berlaraskan DBP.
-  - Kemas kini `openwiki/topic-01-linux-desktop-and-basics.md` & `openwiki/topic-06-troubleshooting-and-logs.md`.
-- [x] **Jaminan Kualiti (100% Quality Gate):**
-  - **2,322 ujian Python pytest lulus** (termasuk `tests/test_manual_cu07_editor_env_content.py`, `tests/unit/test_ansible.py`, `tests/unit/test_containers.py`, `test_okf_compliance.py`, `tests/unit/test_markdown.py`).
-  - **38 ujian Node.js Jest lulus**.
-  - Laman web statik `html/` dibina semula dan disegerakkan.
-
----
-
-## 🌟 Milestone Status: Fasa 8 (Migrasi & Pemodenan Bab 8 - Pengurusan Pakej & Repositori Lanjutan, Rule 32.43 & Rule 32.44) - SELESAI ✅
-- [x] **Penambahan Rule 32.43 & Rule 32.44 Perlembagaan AI (`AGENTS.md` & `.agents/AGENTS.md`):**
-  - Rule 32.43: Automated Ansible Playbook Validation Ladder & Idempotence Assertion Standard.
-  - Rule 32.44: Ansible Community AI-Forge & Red Hat CoP Automation Good Practices Standard.
-- [x] **Penyempurnaan Modul Amali & Kemahiran AI (`manual/`, `openwiki/` & `.agents/skills/`):**
-  - `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` & `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md` (RPM CLI flags `-i`, `-U`, `-F`, `-q`, `-V`, `-e`, `--rebuilddb`, SRPM `rpmbuild --rebuild`, kompilasi tarball `./configure`, `make`, `make install` & `sha256sum`/`gpg` integrity verification, GUI package tools Synaptic & GNOME Software, serta penetapan `$EDITOR` dan `$VISUAL`).
-  - `manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md` & `.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md` (Automasi tampalan keselamatan, audit CVE, integriti `rpm -V` & `dpkg --verify`).
-  - `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md` (Fasa 4l & Fasa 4m Ansible Standards).
-  - `openwiki/topic-01-linux-desktop-and-basics.md` & `openwiki/topic-05-linux-security.md`.
-- [x] **Jaminan Kualiti (100% Quality Gate):**
-  - **2,322 ujian Python pytest lulus**.
-  - **38 ujian Node.js Jest lulus**.
-  - Laman web statik `html/` dibina semula dan disegerakkan.
-
----
-
-## 🌟 Milestone Status: Rule 11.16 Kodifikasi Mandat Pengompilan PDF Linux-Native & Ebook PDF - SELESAI ✅ (2026-09-30)
-- [x] **Kodifikasi Rule 11.16 (`AGENTS.md` & `.agents/AGENTS.md`):**
-  - Menetapkan Mandat Pengompilan PDF Linux-Native tanpa kebergantungan Windows (`chrome.exe`/`msedge.exe`/`cmd.exe /c start /wait`).
-  - Menguatkuasakan WeasyPrint melalui `uv run --with weasyprint`, CSS latar belakang putih `#FFFFFF !important`, tajuk jadual berulang (`thead { display: table-header-group; }`), margin `10mm 10mm 12mm 10mm`, dan asakan saiz fail PDF > 10KB.
-- [x] **Panduan Tatacara & Kemahiran AI (`docs/governance/` & `.agents/skills/`):**
-  - Cipta `docs/governance/TECHNICAL-BOOK-DESIGN-AND-PDF-COMPILER-PROMPT-GUIDE.md` dengan frontmatter OKF v0.2.
-  - Cipta `.agents/skills/dsom-technical-book-compiler/SKILL.md` dan pautan simbolik `skills/`.
-- [x] **Alat Pengompil PDF & Artifak Ebook (`tools/compile_pdf.py` & `docs/dist/`):**
-  - Cipta `tools/compile_pdf.py` dengan docstrings PEP-257 dan jenis anotasi Python 3.12+.
-  - Janakan HTML berdiri sendiri `docs/dist/terminal-cloud-pdf-compilation-guide.html` (52 KB) dan Ebook PDF `docs/dist/terminal-cloud-pdf-compilation-guide.pdf` (67.2 KB).
-- [x] **Pemasangan Ujian Unit & Quality Gate:**
-  - Cipta `tests/unit/test_pdf_compiler.py`.
-  - 2,340 ujian Python pytest dan 38 ujian Jest lulus (100% compliance).
-
----
-
-## 🎯 Roadmap Seterusnya (Fasa 9 & Seterusnya)
-- [ ] **Fasa 9: Migrasi & Pemodenan Silibus Bab 9 & Seterusnya:**
-  - Ekstrak dan modenkan kandungan amali dari bab rujukan mentah seterusnya.
-  - Sahkan 100% Quality Gate.
-- [ ] **Audit Keseluruhan Kurikulum NOSS Linux & Penjana Format Output Pelbagai (DOCX, PPTX, PDF, FastMCP Server)**
-- [ ] **Penyediaan Projek Arkib Khas OSCC MAMPU / MOSC (Dedicated Archive Project)**
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -1,13 +1,66 @@
 ---
-okf_version: 0.1
-type: skill
+okf_version: '0.2'
+type: agent_skill
 name: cu06-wa05-perform-system-optimisation-and-disk-management
-title: "CU06 WA05: Perform System Optimisation and Disk Management"
-timestamp: "2026-08-17T00:00:00Z"
-topics: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
-tags: ["noss", "cu06", "wa05", "ps", "top", "htop", "vmstat", "iostat", "nice", "renice", "kill", "cgroups"]
-description: "Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics, POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls."
-resource: "file:///.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md"
+title: 'CU06 WA05: Perform System Optimisation and Disk Management'
+timestamp: '2026-08-17T00:00:00Z'
+topics:
+- noss
+- cu06
+- wa05
+- ps
+- top
+- htop
+- vmstat
+- iostat
+- nice
+- renice
+- kill
+- cgroups
+tags:
+- noss
+- cu06
+- wa05
+- ps
+- top
+- htop
+- vmstat
+- iostat
+- nice
+- renice
+- kill
+- cgroups
+description: 'Executes NOSS Work Activity K622-XXX-3:2026-C06 WA05: Perform System
+  Optimisation and Disk Management including process monitoring, CPU/Memory/IO diagnostics,
+  POSIX signal handling, nice/renice priority tuning, and cgroups v2 resource controls.'
+resource: file:///.agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:45Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # CU06 WA05: Perform System Optimisation and Disk Management

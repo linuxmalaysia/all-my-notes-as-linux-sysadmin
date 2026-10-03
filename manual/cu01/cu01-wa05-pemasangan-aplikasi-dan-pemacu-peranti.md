@@ -1,19 +1,66 @@
 ---
-okf_version: 0.1
-type: knowledge-node
-title: "CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux"
-timestamp: "2026-08-17T00:00:00Z"
-generated: "2026-08-17T00:00:00Z"
-verified: "2026-08-17T00:00:00Z"
-status: "verified"
-stale_after: "2027-08-17T00:00:00Z"
+okf_version: '0.2'
+type: reference
+title: 'CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux'
+timestamp: '2026-08-17T00:00:00Z'
+generated: '2026-08-17T00:00:00Z'
+verified: '2026-08-17T00:00:00Z'
+status: verified
+stale_after: '2027-08-17T00:00:00Z'
 sources:
-  - "references/manual/bab_08/part_01.md"
-  - "references/manual/bab_08/part_02.md"
-topics: ["noss-linux", "cu01", "wa05", "pengurusan-pakej", "pemacu-peranti", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
-tags: ["cu01", "wa05", "apt", "dnf", "flatpak", "snap", "nvidia", "driver", "editor", "bashrc", "synaptic", "gnome-software", "tarball"]
-description: "Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT, DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit), penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti GPU/pemacu proprietari di Linux."
-resource: "file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md"
+- references/manual/bab_08/part_01.md
+- references/manual/bab_08/part_02.md
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+topics:
+- noss-linux
+- cu01
+- wa05
+- pengurusan-pakej
+- pemacu-peranti
+- editor
+- bashrc
+- synaptic
+- gnome-software
+- tarball
+tags:
+- cu01
+- wa05
+- apt
+- dnf
+- flatpak
+- snap
+- nvidia
+- driver
+- editor
+- bashrc
+- synaptic
+- gnome-software
+- tarball
+description: Panduan amali NOSS CU01-WA05 bagi pengurusan pakej perisian CLI (APT,
+  DNF5, RPM, Tarball compilation) dan GUI (GNOME Software, Synaptic, PackageKit),
+  penyesuaian pemboleh ubah persekitaran $EDITOR/$VISUAL, dan pemasangan pemacu peranti
+  GPU/pemacu proprietari di Linux.
+resource: file:///manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md
+spec_version: '0.2'
 ---
 
 # CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux

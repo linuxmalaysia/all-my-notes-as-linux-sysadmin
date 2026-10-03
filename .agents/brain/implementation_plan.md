@@ -1,34 +1,24 @@
-# 📋 Implementation Plan: Fasa 8 (Migrasi & Pemodenan Bab 8 - Pengurusan Pakej & Repositori Lanjutan, Rule 32.43 & Rule 32.44)
+# Implementation Plan: OKF v0.2 Adoption & Compliance Standard
 
-## 🎯 Objektif & Rasional
-Memproses bahan mentah daripada `references/manual/bab_08/` (part_01.md & part_02.md) berkaitan pengurusan pakej RPM/Debian, utiliti CLI (`apt`, `dnf5`, `rpm`, `dpkg`), alat GUI (`gnome-software`, `synaptic`, `packagekit`), kompilasi kod sumber tarball (`.tar.gz`, `.tar.zst`, `.src.rpm`), serta pengukuhan pemboleh ubah persekitaran `$EDITOR` dan `$VISUAL`.
+## Completed Phases
 
-Di samping itu, menyerapkan dua peraturan tatatertib dan amalan terbaik Ansible AI terbaharu:
-- **Rule 32.43:** Automated Ansible Playbook Validation Ladder & Idempotence Assertion Standard (berasaskan rujukan KodeKloud 2026).
-- **Rule 32.44:** Ansible Community AI-Forge & Red Hat CoP Automation Good Practices Standard (berasaskan rujukan ansible-community/ai-forge & Red Hat CoP).
+### Phase 1: Migration Tooling & Standard Definition
+- Developed `scripts/apply_okf_v02.py` incorporating PEP-257 Google-style docstrings, type annotations, strict UTF-8 handling, line-anchored regex frontmatter parsing, and LF line ending preservation.
+- Created `.agents/skills/okf-v02-adoption-engineer/SKILL.md` to formalize the skill contract.
 
----
+### Phase 2: Mass Migration Execution
+- Executed `apply_okf_v02.py` across all repository Markdown files (498 files processed).
+- Enforced `spec_version: "0.2"`, trust signals, and internal/external source URLs.
+- Appended Sovereign Dual-License Footer where missing.
 
-## 🏛️ Pemetaan Silibus NOSS & Penstrukturan Modul
+### Phase 3: Integration Testing Suite
+- Refactored `tests/test_okf_compliance.py` to test OKF v0.2 frontmatter, trust signals, sources provenance, and footers across all repo Markdown files.
 
-1. **Tadbir Urus Perlembagaan AI (`AGENTS.md` & `.agents/AGENTS.md`):**
-   - Penambahan Rule 32.43 dan Rule 32.44 bagi garis panduan automasi Ansible AI.
-
-2. **Modul Amali Sovereign Manual (`manual/`):**
-   - **`manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md`**: Pengayaan pengurusan pakej CLI RPM (`-i`, `-U`, `-F`, `-q`, `-V`, `-e`, `--rebuilddb`), binaan SRPM `rpmbuild --rebuild`, kompilasi tarball `./configure`, `make`, `make install` & verifikasi `sha256sum`/`gpg`, alat GUI Synaptic & GNOME Software, serta penetapan `$EDITOR` dan `$VISUAL`.
-   - **`manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md`**: Automasi kemas kini keselamatan pakej, audit CVE, dan integriti `rpm -V` / `dpkg --verify`.
-
-3. **Pangkalan Rujukan OpenWiki (`openwiki/`):**
-   - **`openwiki/topic-01-linux-desktop-and-basics.md`** & **`openwiki/topic-05-linux-security.md`**: Sintesis pengurusan pakej, kompilasi kod sumber, dan audit keselamatan.
-
-4. **Kemahiran AI Ejen (`.agents/skills/`):**
-   - `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md` (Ansible Validation Ladder & Red Hat CoP Standards).
-   - `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md` & `.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md`.
+### Phase 4: Artifact Regeneration & Palace Sync
+- Rebuilt MkDocs Material static site into `html/`.
+- Regenerated LLM context files (`llms.txt`, `llms-full.txt`, `llms_context.xml`).
+- Updated Master Palace Registry via `scripts/generate_palace_registry.py`.
 
 ---
-
-## 🚀 Langkah Pelaksanaan Jules
-1. Kaji teks mentah di `references/manual/bab_08/part_01.md` dan `part_02.md`.
-2. Kemas kini fail perlembagaan dan kemahiran AI ejen.
-3. Bina semula tapak web statik dengan `uv run scripts/serve_mkdocs.py --build-only`.
-4. Sahkan 100% Quality Gate dengan `uv run --with pytest --with pyyaml --with pytest-cov --with defusedxml python run_all_tests.py`.
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

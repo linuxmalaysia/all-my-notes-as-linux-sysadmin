@@ -1,12 +1,59 @@
 ---
-okf_version: 0.1
+okf_version: '0.2'
 type: guide
-title: "Panduan Penggunaan & Pengemaskinian Tapak Web HTML Statik"
-timestamp: "2026-08-16T22:54:00Z"
-topics: ["html", "mkdocs", "deploy", "docker", "podman", "nginx", "apache", "github-pages", "offline", "how-to"]
-tags: ["how-to", "html", "panduan", "docker-compose", "podman", "pelayan-web", "offline-viewing", "okf"]
-description: "Panduan langkah demi langkah cara menggunakan direktori html/ prabina, melancarkan pelayan pengeluaran Nginx dan Apache menggunakan Docker Compose dan Podman Pod, serta prosedur binaan semula."
-resource: "file:///docs/how-to/deploy-and-serve-html.md"
+title: Panduan Penggunaan & Pengemaskinian Tapak Web HTML Statik
+timestamp: '2026-08-16T22:54:00Z'
+topics:
+- html
+- mkdocs
+- deploy
+- docker
+- podman
+- nginx
+- apache
+- github-pages
+- offline
+- how-to
+tags:
+- how-to
+- html
+- panduan
+- docker-compose
+- podman
+- pelayan-web
+- offline-viewing
+- okf
+description: Panduan langkah demi langkah cara menggunakan direktori html/ prabina,
+  melancarkan pelayan pengeluaran Nginx dan Apache menggunakan Docker Compose dan
+  Podman Pod, serta prosedur binaan semula.
+resource: file:///docs/how-to/deploy-and-serve-html.md
+spec_version: '0.2'
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  at: '2026-10-02T08:43:43Z'
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # Panduan Penggunaan, Kontena & Pengehosan Tapak Web HTML Statik
