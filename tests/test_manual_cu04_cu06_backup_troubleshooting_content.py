@@ -91,12 +91,10 @@ def format_iso_timestamp(val):
     Returns:
         str: ISO 8601 text representation ending in 'Z'.
     """
-    if isinstance(val, (datetime.datetime, datetime.date)):
-        if isinstance(val, datetime.datetime):
-            if val.tzinfo is not None:
-                val = val.astimezone(datetime.timezone.utc)
-            return val.strftime("%Y-%m-%dT%H:%M:%SZ")
-        return f"{val.isoformat()}T00:00:00Z"
+    if isinstance(val, datetime.datetime):
+        if val.tzinfo is not None:
+            val = val.astimezone(datetime.timezone.utc)
+        return val.strftime("%Y-%m-%dT%H:%M:%SZ")
     return str(val)
 
 def get_frontmatter_timestamp(content):
