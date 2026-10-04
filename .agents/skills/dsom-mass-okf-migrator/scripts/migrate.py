@@ -8,7 +8,7 @@ and the Sovereign dual-license footer, and writes the output to a destination di
 import os
 import shutil
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def migrate_docs(src_dir, dst_dir):
@@ -20,8 +20,8 @@ def migrate_docs(src_dir, dst_dir):
     """
     skip_files = ["PERSONALIZATION.md", "OKF-ADOPTION-GUIDE.md", "SKILL-FORMAT.md"]
 
-    timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-    date_str = datetime.utcnow().strftime("%Y-%m-%d")
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     footer = f"""
 ---
@@ -71,12 +71,10 @@ def migrate_docs(src_dir, dst_dir):
         content = strip_old_footer(content)
 
         parts = content.split("---", 2)
-        has_frontmatter = False
         body = content
         description = ""
         
         if len(parts) >= 3 and content.startswith("---"):
-            has_frontmatter = True
             fm_text = parts[1]
             body = parts[2]
             
@@ -86,19 +84,27 @@ def migrate_docs(src_dir, dst_dir):
                     break
 
         if not description:
-            description = f"OKF-compliant documentation for {os.path.basename(src_path)}."
+            description = f"OKF v0.2 documentation for {os.path.basename(src_path)}."
 
         title = os.path.basename(src_path).replace('.md', '')
         
         new_frontmatter = f"""---
-okf_version: 0.1
+spec_version: "0.2"
+okf_version: "0.2"
 type: documentation
 title: "{title}"
-timestamp: "{timestamp}"
+status: stable
+stale_after: "2027-12-31"
+generated:
+  by: "dsom_migrator/v0.2"
+  at: "{timestamp}"
 topics: ["dsom", "noss-linux"]
 tags: ["documentation", "noss"]
 description: "{description}"
-resource: "file:///docs/{rel_path.replace('\\\\', '/')}"
+resource: "docs/{rel_path.replace('\\\\', '/')}"
+sources:
+  - id: internal-legal-notice
+    resource: docs/legal-notice.md
 ---"""
 
         final_content = new_frontmatter + body

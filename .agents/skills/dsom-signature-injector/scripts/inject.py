@@ -10,7 +10,7 @@ from datetime import datetime
 
 def get_last_modified_date(filepath):
     timestamp = os.path.getmtime(filepath)
-    return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
+    return datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime('%Y-%m-%d')
 
 def get_sh_yml_header(date_str):
     return f"""# ==============================================================================

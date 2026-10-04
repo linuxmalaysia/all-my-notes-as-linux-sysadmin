@@ -39,14 +39,14 @@ title: "dsom-mass-okf-migrator"
 timestamp: "2026-08-16T08:57:00Z"
 topics: ["dsom", "okf", "migration"]
 tags: ["script", "automation", "python"]
-description: "Automatically migrates a directory of markdown files to the OKF v0.1 format, replacing obsolete URLs and injecting the Sovereign Dual-License Footer."
+description: "Automatically migrates a directory of markdown files to the OKF v0.2 format, replacing obsolete URLs and injecting the Sovereign Dual-License Footer."
 resource: "file:///.agents/skills/dsom-mass-okf-migrator/SKILL.md"
 ---
 
 # DSOM Mass OKF Migrator
 
 ## Overview
-This skill instructs the AI on how to perform a mass migration of legacy markdown documents into the highly-structured **Open Knowledge Format (OKF) v0.1** tailored for the Linux NOSS Malaysia project.
+This skill instructs the AI on how to perform a mass migration of legacy markdown documents into the highly-structured **Open Knowledge Format (OKF) v0.2** tailored for the Linux NOSS Malaysia project.
 
 It utilises a Python script to deeply copy a directory while rewriting the metadata, URLs, and appending the Sovereign Dual-License footer.
 
@@ -69,7 +69,7 @@ uv run .agents/skills/dsom-mass-okf-migrator/scripts/migrate.py "<SOURCE_DIR>" "
 *Note: The script automatically skips overwriting `PERSONALIZATION.md`, `OKF-ADOPTION-GUIDE.md`, and `SKILL-FORMAT.md`.*
 
 ## Verification
-After the script completes, use the `list_dir` tool to verify the destination directory and `view_file` to ensure the YAML frontmatter (`okf_version: 0.1`) and Sovereign footer were injected correctly.
+After the script completes, use the `list_dir` tool to verify the destination directory and `view_file` to ensure the YAML frontmatter (`okf_version: "0.2"`) and Sovereign footer were injected correctly.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
