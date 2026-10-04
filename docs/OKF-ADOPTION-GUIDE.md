@@ -121,7 +121,6 @@ status: stable
 runtime: python                    # e.g., python, ansible, bigquery, bash
 parameters:
   - { name: target_environment, type: string, required: true }
-computation: references/computations/install_packages.py
 executor:
   resource: references/skills/install_packages.py
   receipt: [exit_code, stdout, stderr]

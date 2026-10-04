@@ -101,10 +101,12 @@ generated:
 topics: ["dsom", "noss-linux"]
 tags: ["documentation", "noss"]
 description: "{description}"
-resource: "docs/{rel_path.replace('\\\\', '/')}"
+resource: "docs/{rel_path.replace('\\', '/')}"
 sources:
   - id: internal-legal-notice
     resource: docs/legal-notice.md
+  - id: google-okf-v02-spec
+    resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
 ---"""
 
         final_content = new_frontmatter + body

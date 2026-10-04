@@ -5,7 +5,7 @@ inject.py skill/script, adhering to the DSOM architecture.
 """
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def get_last_modified_date(filepath):
