@@ -11,8 +11,9 @@ their OKF v0.1 YAML frontmatter, and generates a comprehensive Markdown table
 """
 
 import os
-import yaml
 from datetime import datetime, timezone
+
+import yaml
 
 skills_dir = os.path.join(".agents", "skills")
 output_file = os.path.join(skills_dir, "index.md")

@@ -1,7 +1,7 @@
 """Unit tests for the PDF compiler script (tools/compile_pdf.py)."""
 
 from pathlib import Path
-import pytest
+
 import tools.compile_pdf as pdf_compiler
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent

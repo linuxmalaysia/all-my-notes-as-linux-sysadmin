@@ -8,7 +8,7 @@ status: stable
 stale_after: '2027-12-31'
 generated:
   by: generate_palace_registry.py / OKF v0.2
-  at: '2026-10-04T06:16:14Z'
+  at: '2026-10-04T07:57:19Z'
 resource: file:///.agents/skills/index.md
 topics:
 - registry

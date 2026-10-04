@@ -25,9 +25,9 @@ import html as html_module
 import json
 import re
 from pathlib import Path
-import yaml
 
 import pytest
+import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -349,7 +349,7 @@ def test_skill_md_frontmatter_fields(key, rel_path):
     assert frontmatter_field(content, "name") == SKILL_NAMES[key]
     # description should be a substantive sentence, not the old generic placeholder.
     description = frontmatter_field(content, "description")
-    assert description.startswith("Executes NOSS Work Activity") or description.startswith("Melaksanakan Aktiviti Kerja NOSS")
+    assert description.startswith(("Executes NOSS Work Activity", "Melaksanakan Aktiviti Kerja NOSS"))
     assert len(description) > 60
     timestamp = get_frontmatter_timestamp(content)
     assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp

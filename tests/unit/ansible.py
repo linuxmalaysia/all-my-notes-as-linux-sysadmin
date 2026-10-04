@@ -30,7 +30,7 @@ def get_playbook_files():
     files = []
     for pattern in patterns:
         files.extend(glob.glob(pattern, recursive=True))
-    return sorted(list(set(files)))
+    return sorted(set(files))
 
 
 @pytest.mark.parametrize("filepath", get_playbook_files())

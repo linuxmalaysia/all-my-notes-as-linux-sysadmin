@@ -10,7 +10,6 @@ Merangkumi:
   - .agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md
 """
 
-import re
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent

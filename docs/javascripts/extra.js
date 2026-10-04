@@ -7,7 +7,12 @@
  */
 
 (function () {
-  // Theme Toggle Logic
+  /**
+   * Initializes the theme mode segmented control toggle in the page header.
+   * Allows switching between LIGHT, DARK, and AUTO theme modes.
+   *
+   * @returns {void}
+   */
   function initThemeToggle() {
     const header = document.querySelector(".md-header__inner");
     if (!header || document.querySelector(".theme-mode-toggle-container")) return;
@@ -33,10 +38,21 @@
 
     const buttons = container.querySelectorAll(".theme-mode-btn");
 
+    /**
+     * Determines current system color scheme preference.
+     *
+     * @returns {string} 'slate' if dark mode preferred, otherwise 'default'.
+     */
     function getSystemScheme() {
       return window.matchMedia("(prefers-color-scheme: dark)").matches ? "slate" : "default";
     }
 
+    /**
+     * Applies the selected theme mode ('light', 'dark', or 'auto') to the page body attribute.
+     *
+     * @param {string} mode - The theme mode identifier ('light', 'dark', 'auto').
+     * @returns {void}
+     */
     function applyMode(mode) {
       let scheme = "default";
       if (mode === "dark") {
@@ -81,7 +97,12 @@
     });
   }
 
-  // Dynamic Table of Contents Card Logic
+  /**
+   * Generates a dynamic, interactive Table of Contents (TOC) sidebar card
+   * with heading deduplication, scroll spying, and active section highlighting.
+   *
+   * @returns {void}
+   */
   function initTOC() {
     // Identify the central content panel
     const contentPanel = document.querySelector('article.md-content__inner.md-typeset');
@@ -226,6 +247,11 @@
 
     // Cache heading offsets (document-relative top computed from bounding rect + scroll position)
     let cachedOffsets = [];
+    /**
+     * Recomputes document-relative vertical scroll positions for all TOC headings.
+     *
+     * @returns {void}
+     */
     function recomputeOffsets() {
       cachedOffsets = headingData.map((item) => {
         const rect = item.element.getBoundingClientRect();
@@ -248,6 +274,11 @@
     // Intersection scroll highlighting logic
     const tocLinks = tocCard.querySelectorAll('.custom-toc-link');
 
+    /**
+     * Updates active CSS class on TOC links based on current viewport scroll offset.
+     *
+     * @returns {void}
+     */
     function highlightActiveSection() {
       const scrollPosition = window.scrollY + scrollOffset;
       let activeItem = null;
@@ -294,7 +325,11 @@
     highlightActiveSection();
   }
 
-  // Initialize both systems on page ready
+  /**
+   * Orchestrates the initialization of both theme toggle and TOC components.
+   *
+   * @returns {void}
+   */
   function initAll() {
     initThemeToggle();
     initTOC();

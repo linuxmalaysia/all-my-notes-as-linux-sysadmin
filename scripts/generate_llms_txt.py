@@ -19,7 +19,7 @@ def get_markdown_title(filepath: Path) -> str:
             for line in f:
                 if line.startswith('# '):
                     return line[2:].strip()
-    except Exception:
+    except (OSError, UnicodeDecodeError):
         pass
     return filepath.name
 
@@ -105,7 +105,7 @@ def main():
                 try:
                     with open(fpath, 'r', encoding='utf-8') as src:
                         f.write(src.read())
-                except Exception as e:
+                except (OSError, UnicodeDecodeError) as e:
                     f.write(f"[Error reading file: {e}]\n")
                 f.write(f"\n<!-- END FILE: {rel_path} -->\n\n")
 
