@@ -5,13 +5,13 @@ type: agent_skill
 title: DSOM Infrastructure Playbook Authoring & Automated Idempotency Gate (Rule 32.43
   & Rule 32.44)
 timestamp: '2026-08-17T00:00:00Z'
-generated: '2026-08-17T00:00:00Z'
+generated:
+  by: okf_tooling/v0.2
+  at: '2026-10-04T21:42:08Z'
 verified: '2026-08-17T00:00:00Z'
 status: verified
 stale_after: '2027-08-17T00:00:00Z'
 sources:
-- https://github.com/ansible-community/ai-forge/
-- https://kodekloud.com/blog/building-an-ai-agent-that-writes-and-validates-ansible-playbooks/
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
   author: Harisfazillah Jamel (LinuxMalaysia)

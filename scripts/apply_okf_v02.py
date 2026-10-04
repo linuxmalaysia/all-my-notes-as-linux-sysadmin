@@ -169,25 +169,40 @@ def process_file(
     new_fm['stale_after'] = frontmatter_dict.get('stale_after', '2027-12-31')
 
     now_iso = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-    new_fm['generated'] = frontmatter_dict.get('generated') or {
-        'by': generator_id,
-        'at': now_iso
-    }
+    existing_gen = frontmatter_dict.get('generated')
+    if isinstance(existing_gen, dict) and 'by' in existing_gen and 'at' in existing_gen:
+        new_fm['generated'] = existing_gen
+    else:
+        new_fm['generated'] = {
+            'by': 'okf_tooling/v0.2',
+            'at': now_iso
+        }
 
-    # Only include verified if explicitly present in existing metadata
+    # Normalize verified if explicitly present in existing metadata
     if frontmatter_dict.get('verified'):
-        new_fm['verified'] = frontmatter_dict['verified']
+        v_data = frontmatter_dict['verified']
+        if isinstance(v_data, dict):
+            new_fm['verified'] = [v_data]
+        elif isinstance(v_data, list):
+            new_fm['verified'] = v_data
 
     existing_sources = frontmatter_dict.get('sources', [])
     if not isinstance(existing_sources, list):
         existing_sources = []
 
-    merged_sources = list(existing_sources)
-    existing_ids = {s.get('id') for s in merged_sources if isinstance(s, dict) and 'id' in s}
-    existing_urls = {s.get('url') or s.get('resource') for s in merged_sources if isinstance(s, dict)}
+    merged_sources = []
+    for s in existing_sources:
+        if isinstance(s, dict):
+            s_copy = dict(s)
+            if 'url' in s_copy and 'resource' not in s_copy:
+                s_copy['resource'] = s_copy['url']
+            merged_sources.append(s_copy)
+
+    existing_ids = {s.get('id') for s in merged_sources if 'id' in s}
+    existing_resources = {s.get('resource') or s.get('url') for s in merged_sources}
 
     for m_src in MANDATORY_SOURCES:
-        if m_src['id'] not in existing_ids and m_src['url'] not in existing_urls:
+        if m_src['id'] not in existing_ids and m_src['resource'] not in existing_resources:
             merged_sources.append(m_src)
 
     new_fm['sources'] = merged_sources

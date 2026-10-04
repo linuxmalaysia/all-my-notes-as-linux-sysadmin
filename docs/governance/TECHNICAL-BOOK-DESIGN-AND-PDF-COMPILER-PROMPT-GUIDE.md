@@ -3,13 +3,13 @@ okf_version: '0.2'
 type: governance_protocol
 title: Terminal & Cloud PDF Compilation Master Prompt & Reference Guide
 timestamp: '2026-09-30T00:00:00Z'
-generated: '2026-09-30T00:00:00Z'
+generated:
+  by: okf_tooling/v0.2
+  at: '2026-10-04T21:42:07Z'
 verified: '2026-09-30T00:00:00Z'
 status: verified
 stale_after: '2027-09-30T00:00:00Z'
 sources:
-- AGENTS.md
-- .agents/AGENTS.md
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
   author: Harisfazillah Jamel (LinuxMalaysia)
