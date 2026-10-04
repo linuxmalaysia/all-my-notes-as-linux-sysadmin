@@ -6,7 +6,7 @@
 """Generates the Master Palace Registry from SKILL.md files.
 
 This module scans the .agents/skills directory for SKILL.md files, extracts
-their OKF v0.1 YAML frontmatter, and generates a comprehensive Markdown table
+their OKF v0.2 YAML frontmatter, and generates a comprehensive Markdown table
 (index.md) mapping all active Sovereign AI Skills.
 """
 

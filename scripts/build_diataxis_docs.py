@@ -209,7 +209,7 @@ def generate_llmstxt():
     llmstxt_path = "llms.txt"
     content = """# Project Name - DSOM AI Knowledge Base
 
-> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs.
+> DSOM-governed, OKF v0.2 compliant documentation index for AI Agents and LLMs.
 
 ## Core Governance & Architecture
 - [DSOM Governance](docs/explanation/governance/DIGITAL-SOVEREIGNTY-MODEL.md): Metacognitive context management and protocol standards.
