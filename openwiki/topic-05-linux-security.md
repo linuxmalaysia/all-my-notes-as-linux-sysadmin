@@ -17,7 +17,8 @@ tags:
 - noss
 - faillock
 - visudo
-description: Silibus keselamatan OS Linux komprehensif merangkumi Pentadbiran Pengguna & Kumpulan, Kebenaran Fail & POSIX ACL, Firewall, dan Kawalan Lockdowns (CU05).
+description: Silibus keselamatan OS Linux komprehensif merangkumi Pentadbiran Pengguna
+  & Kumpulan, Kebenaran Fail & POSIX ACL, Firewall, dan Kawalan Lockdowns (CU05).
 resource: file:///openwiki/topic-05-linux-security.md
 spec_version: '0.2'
 status: stable
