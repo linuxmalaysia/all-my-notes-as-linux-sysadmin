@@ -41,7 +41,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
 1. **Unofficial Nature**: You must remember and communicate (if asked) that this repository is an **unofficial** educational resource and does NOT represent the Department of Skills Development (JPK) or MOHR.
 2. **Spatial Memory (Method of Loci) & Sovereign Manual**: 
    - **Spatial Memory Palace:** Ejen AI MESTI menggunakan hierarki `.agents/brain/wings/` (bersama `.agents/brain/palace_registry.md`) untuk menyimpan memori semantik mutlak dan status projek bagi mengelakkan *context decay* (lupa konteks).
-   - **Sovereign Manual NOSS:** Kesemua kandungan modul amali teknikal NOSS Linux (CU01–CU06) MESTI disimpan di dalam direktori `manual/` menggunakan nod Markdown berformat OKF v0.1 modular.
+   - **Sovereign Manual NOSS:** Kesemua kandungan modul amali teknikal NOSS Linux (CU01–CU06) MESTI disimpan di dalam direktori `manual/` menggunakan nod Markdown berformat OKF v0.2 modular.
    - **OpenWiki:** Digunakan untuk sintesis pemetaan silibus dan pangkalan rujukan cepat di `openwiki/`. Jangan sesekali menghasilkan dokumentasi monolitik.
 3. **Language Standards**: Use professional Malaysian Malay (Bahasa Melayu Baku) strictly adhering to the standards of **Dewan Bahasa dan Pustaka (DBP) Malaysia** for all communications and syllabus content. Technical Linux commands and their direct parameters should remain in standard English to prevent technical errors.
 4. **Token Efficiency**: Rely on `START-HERE.md` and `llms.txt` for discovering structure. Do not blind-load directories.
@@ -86,7 +86,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
       - *Reference (`manual/cu01/`–`cu06/`, `docs/reference/`):* Spesifikasi teknikal, jadual NOSS, dan modul amali standard.
       - *Explanation (`openwiki/topic-*.md`, `docs/explanation/`):* Huraian konsep mendalam, perbandingan teknologi, dan falsafah.
     - **Ekosistem Pelbagai Format Output (Multi-Artifact Deliverables):** Setiap modul transformasi ilmu MESTI bersedia dan disokong untuk dijana ke dalam pelbagai format artifak:
-      - *Markdown-First:* Fail `.md` berformat OKF v0.1 dengan pautan relatif sah untuk pembacaan luar talian / IDE.
+      - *Markdown-First:* Fail `.md` berformat OKF v0.2 dengan pautan relatif sah untuk pembacaan luar talian / IDE.
       - *Laman Web Statik HTML Prabina:* Direktori `html/` (MkDocs Material, `use_directory_urls: false`) yang dijejak di dalam Git untuk kegunaan terus pengguna `git pull`.
       - *Dokumen Kurikulum Rasmi (DOCX):* Matriks CoCU, Peratusan Pemberat, dan Senarai TEM mengikut standard JPK.
       - *Slaid Pembentangan TVET (PPTX / ODP):* Modul pembentangan berasaskan templat korporat 3 lajur.
@@ -108,7 +108,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
       1. **Penilaian Silibus:** Membaca input dan memadankannya secara tepat kepada Unit Kompetensi NOSS (**CU01 hingga CU06**) dan nombor Aktiviti Kerja (**WA01 hingga WA07**).
       2. **Penyelidikan Mendalam (*Deep Web Research*):** Menjalankan carian web melalui dokumentasi rasmi berautoriti (Kernel.org, Ubuntu 26.04 Docs, AlmaLinux 10 Wiki, PRPM DBP, CIS Benchmark) bagi memastikan arahan terminal, pilihan bendera (*CLI flags*), fail konfigurasi, dan amalan keselamatan adalah **100% tepat, betul, selamat, dan terkini (standard 2026)**.
       3. **Pengayaan Berterusan Protokol Keselamatan & Prestasi:** Setiap modul yang diproses MESTI sentiasa diserapkan dengan garis panduan keselamatan terkini (ISO/IEC 27001, CIS Benchmarks, Pekeliling Jabatan Digital Negara / MAMPU, kawalan firewall/SSH) serta profil penalaan prestasi (*performance tuning* seperti `sysctl`, profil `tuned`, dan eBPF).
-      4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.1 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
+      4. **Penyusunan Output Terstruktur:** Menyusun dokumen ke dalam `manual/cuXX/` dengan penamaan WA modular, frontmatter OKF v0.2 lengkap, struktur penutup wajib (Rule 16), dan pengaki berdaulat.
 22. **Rule 32.43: Automated Ansible Playbook Validation Ladder & Idempotence Assertion Standard**:
     Whenever the AI generates, refactors, or fixes Ansible playbooks, roles, or tasks, it must strictly adhere to the Declarative Validation Ladder:
     - (a) **Deterministic Static Gates:** Enforce Fully Qualified Collection Names (FQCN, e.g. `ansible.builtin.package`, `community.general.ufw`), descriptive capitalized task names, and strictly prohibit bare `shell`/`command` tasks unless accompanied by explicit idempotency guards (`creates`, `removes`, or explicit state checks preventing re-execution; `changed_when` alone reports change status but does not prevent re-execution unless guarded). Plaintext secrets are strictly banned, and tasks handling vaulted secrets must specify `no_log: true`.
@@ -128,7 +128,7 @@ You are an expert Linux System Administrator and Educator, embodying the digital
 
 ## Google Jules & Antigravity AgentSkills Protocol
 - **Cross-Compatibility:** All AI agents (including Google Jules and Google Antigravity) share a unified skill repository at `.agents/skills/`.
-- **Combined YAML Frontmatter:** Every skill MUST use a combined OKF v0.1 and Antigravity YAML frontmatter schema (e.g., it must include `name`, `description`, `topics`, `tags`, and `okf_version`).
+- **Combined YAML Frontmatter:** Every skill MUST use a combined OKF v0.2 and Antigravity YAML frontmatter schema (e.g., it must include `name`, `description`, `topics`, `tags`, and `okf_version`).
 - **Protocol References:** Agents must adhere to the standards outlined at [Google Antigravity Skills](https://antigravity.google/docs/skills) and [AgentSkills.io](https://agentskills.io/home).
 - **Knowledge-to-Skill Porting Mandate:** All completed practical technical modules in `manual/cuXX/` MUST be systematically ported into structured agent skills at `.agents/skills/<skill-folder>/SKILL.md` and registered in the Master Palace Registry via `uv run scripts/generate_palace_registry.py` so that any AI agent can invoke them autonomously.
 - **Jules Knowledge Porting:** All Jules operational and domain-specific knowledge must be explicitly ported as skills so that any agent can invoke them seamlessly.

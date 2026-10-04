@@ -6,7 +6,6 @@ timestamp: '2026-09-30T00:00:00Z'
 generated:
   by: okf_tooling/v0.2
   at: '2026-10-04T21:42:07Z'
-verified: '2026-09-30T00:00:00Z'
 status: verified
 stale_after: '2027-09-30T00:00:00Z'
 sources:

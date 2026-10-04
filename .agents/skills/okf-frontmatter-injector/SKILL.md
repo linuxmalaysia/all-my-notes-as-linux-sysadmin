@@ -53,7 +53,7 @@ Use this skill when the user asks to ensure documentation is OKF (Open Knowledge
    ```bash
    uv run --with pyyaml python scripts/apply_okf_v02.py <TARGET_DIRECTORY>
    ```
-4. The script will automatically skip files that already possess frontmatter. It categorizes files dynamically based on their folder structure (e.g. `agent_skill`, `governance_protocol`, etc.).
+4. The script parses existing frontmatter, updates or injects missing OKF v0.2 metadata fields (`spec_version`, `okf_version`, trust signals, and sources provenance), ensures the Sovereign Dual-License footer is present, and categorizes files dynamically based on their path structure.
 5. Inform the user of the total number of files modified based on the script's output.
 
 

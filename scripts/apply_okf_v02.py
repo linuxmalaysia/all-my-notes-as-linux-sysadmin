@@ -179,12 +179,24 @@ def process_file(
         }
 
     # Normalize verified if explicitly present in existing metadata
-    if frontmatter_dict.get('verified'):
+    if 'verified' in frontmatter_dict:
         v_data = frontmatter_dict['verified']
+        normalized_verified = []
         if isinstance(v_data, dict):
-            new_fm['verified'] = [v_data]
+            v_list = [v_data]
         elif isinstance(v_data, list):
-            new_fm['verified'] = v_data
+            v_list = v_data
+        else:
+            v_list = []
+
+        for item in v_list:
+            if isinstance(item, dict) and 'by' in item and 'at' in item:
+                normalized_verified.append(item)
+
+        if normalized_verified:
+            new_fm['verified'] = normalized_verified
+        else:
+            new_fm.pop('verified', None)
 
     existing_sources = frontmatter_dict.get('sources', [])
     if not isinstance(existing_sources, list):
@@ -192,14 +204,24 @@ def process_file(
 
     merged_sources = []
     for s in existing_sources:
-        if isinstance(s, dict):
+        if isinstance(s, str):
+            merged_sources.append({'resource': s})
+        elif isinstance(s, dict):
             s_copy = dict(s)
             if 'url' in s_copy and 'resource' not in s_copy:
                 s_copy['resource'] = s_copy['url']
             merged_sources.append(s_copy)
 
-    existing_ids = {s.get('id') for s in merged_sources if 'id' in s}
-    existing_resources = {s.get('resource') or s.get('url') for s in merged_sources}
+    existing_ids = set()
+    existing_resources = set()
+    for s in merged_sources:
+        if isinstance(s, dict):
+            s_id = s.get('id')
+            if isinstance(s_id, (str, int)):
+                existing_ids.add(str(s_id))
+            res = s.get('resource') or s.get('url')
+            if isinstance(res, (str, int)):
+                existing_resources.add(str(res))
 
     for m_src in MANDATORY_SOURCES:
         if m_src['id'] not in existing_ids and m_src['resource'] not in existing_resources:

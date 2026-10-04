@@ -66,7 +66,7 @@ OKF v0.2 addresses the key challenges of agent-maintained knowledge corpora:
 
 ## OKF v0.2 Core Frontmatter Specification
 
-Every OKF v0.2 document consists of YAML frontmatter delimited by `---` and a free-form Markdown body.
+Every non-reserved OKF v0.2 concept document consists of YAML frontmatter delimited by `---` and a free-form Markdown body. Note that reserved files `index.md` and `log.md` contain no frontmatter, with one exception: a bundle-root `index.md` MAY carry an `okf_version: "0.2"` key in frontmatter.
 
 ### Required & Recommended Fields
 
@@ -121,8 +121,9 @@ status: stable
 runtime: python                    # e.g., python, ansible, bigquery, bash
 parameters:
   - { name: target_environment, type: string, required: true }
+computation: references/computations/install_packages.py
 executor:
-  resource: run_all_tests.py
+  resource: references/skills/install_packages.py
   receipt: [exit_code, stdout, stderr]
 attester:
   resource: tests/test_okf_compliance.py
@@ -133,6 +134,12 @@ sources:
   - id: internal-legal-notice
     resource: docs/legal-notice.md
 ---
+
+# Computation
+
+```python
+import subprocess
+subprocess.run(["apt-get", "install", "-y", "curl"], check=True)
 ```
 
 ---
