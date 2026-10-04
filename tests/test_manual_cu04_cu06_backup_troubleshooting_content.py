@@ -242,7 +242,7 @@ def test_manual_md_frontmatter_is_well_formed(key, rel_path):
     assert frontmatter_field(content, "okf_version") in ["0.1", "0.2"]
     assert frontmatter_field(content, "type") in ["reference", "knowledge-node"]
     timestamp = get_frontmatter_timestamp(content)
-    assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
+    assert re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
     resource = frontmatter_field(content, "resource")
     assert resource == f"file:///{rel_path}"
     title = frontmatter_field(content, "title")

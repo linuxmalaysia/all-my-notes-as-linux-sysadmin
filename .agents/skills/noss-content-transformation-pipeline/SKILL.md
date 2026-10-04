@@ -92,8 +92,8 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
    - **Prestasi (*Performance Tuning*):** Penalaan parameter kernel `sysctl`, konfigurasi profil `tuned`, pemantauan eBPF/bpftrace, dan pengoptimuman I/O cakera serta rangkaian.
 5. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.
-6. **Pematuhan Format OKF v0.2 (Rule 8 & 16):**
-   - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: "0.2"`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
+6. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
+   - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: 0.1`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
    - Akhiri setiap nod dengan tiga seksyen penutup:
      - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
      - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
