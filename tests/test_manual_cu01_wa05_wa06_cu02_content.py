@@ -21,6 +21,7 @@ Covers:
 import json
 import re
 from pathlib import Path
+import yaml
 
 import pytest
 
@@ -166,7 +167,16 @@ def test_skills_index_contains_updated_descriptions(fragment):
 
 def test_skills_index_timestamp_updated_and_valid():
     frontmatter, _ = split_frontmatter(read(SKILLS_INDEX))
-    match = re.search(r'timestamp:\s*([^\n]+)', frontmatter) or re.search(r'at:\s*([^\n]+)', frontmatter)
+    try:
+        parsed = yaml.safe_load(frontmatter)
+        if isinstance(parsed, dict):
+            ts_val = str(parsed.get("timestamp") or (parsed.get("generated", {}).get("at") if isinstance(parsed.get("generated"), dict) else ""))
+            if ts_val and TIMESTAMP_RE.match(ts_val):
+                assert TIMESTAMP_RE.match(ts_val)
+                return
+    except yaml.YAMLError:
+        pass
+    match = re.search(r'^\s*timestamp:\s*([^\n]+)', frontmatter, re.MULTILINE) or re.search(r'^\s*at:\s*([^\n]+)', frontmatter, re.MULTILINE)
     assert match, "Master Palace Registry is missing a timestamp field."
     ts_val = match.group(1).strip().strip("'\"")
     assert TIMESTAMP_RE.match(ts_val)
@@ -192,11 +202,13 @@ def test_manual_node_exists(relpath):
 def test_manual_node_has_okf_frontmatter(relpath):
     content = read(relpath)
     frontmatter, _ = split_frontmatter(content)
-    assert "okf_version:" in frontmatter
-    assert "type: reference" in frontmatter or "type: knowledge-node" in frontmatter
-    assert "title:" in frontmatter
-    assert "timestamp:" in frontmatter or "generated:" in frontmatter
-    assert "resource:" in frontmatter
+    parsed = yaml.safe_load(frontmatter)
+    assert isinstance(parsed, dict)
+    assert str(parsed.get("okf_version")) == "0.2"
+    assert parsed.get("type") in ["reference", "knowledge-node", "knowledge_node"]
+    assert "title" in parsed
+    assert "timestamp" in parsed or "generated" in parsed
+    assert "resource" in parsed
 
 
 @pytest.mark.parametrize("relpath", MANUAL_NODES)

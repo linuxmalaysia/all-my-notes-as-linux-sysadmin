@@ -15,8 +15,7 @@ tags:
 - cu03
 - systemd
 - openwiki
-description: Silibus pentadbiran pelayan Linux, pengurusan perkhidmatan systemd, konfigurasi
-  teras pelayan, dan peranan servis pelayan dipetakan kepada NOSS CU03.
+description: Silibus pentadbiran pelayan Linux, pengurusan perkhidmatan systemd, konfigurasi teras sistem, dan penyelarasan masa (CU03).
 resource: file:///openwiki/topic-03-linux-server-administration.md
 spec_version: '0.2'
 status: stable

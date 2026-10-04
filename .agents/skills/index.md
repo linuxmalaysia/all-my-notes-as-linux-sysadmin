@@ -8,7 +8,7 @@ status: stable
 stale_after: '2027-12-31'
 generated:
   by: generate_palace_registry.py / OKF v0.2
-  at: '2026-10-03T23:56:51Z'
+  at: '2026-10-04T06:16:14Z'
 resource: file:///.agents/skills/index.md
 topics:
 - registry
@@ -156,7 +156,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`node-slide-generator`** <br> *node-slide-generator* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`noss-abbreviation-syncer`** <br> *NOSS Abbreviation Syncer* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`noss-cocu-docx-formatter`** <br> *NOSS COCU DOCX Formatter Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
-| **`noss-content-transformation-pipeline`** <br> *NOSS Linux Content Transformation Pipeline (IPO Protocol)* | Protokol automasi dan panduan operasi bagi ejen AI untuk memproses bahan rujukan mentah (references/), memodenkannya ke standard NOSS Linux 2026, menyuntik OKF v0.1, mengesahkan 100% Quality Gate, dan menerbitkan ke manual/, openwiki/, serta html/. | transformation, pipeline, noss-linux, dsom, ipo |
+| **`noss-content-transformation-pipeline`** <br> *NOSS Linux Content Transformation Pipeline (IPO Protocol)* | Protokol automasi dan panduan operasi bagi ejen AI untuk memproses bahan rujukan mentah (references/), memodenkannya ke standard NOSS Linux 2026, menyuntik OKF v0.2, mengesahkan 100% Quality Gate, dan menerbitkan ke manual/, openwiki/, serta html/. | transformation, pipeline, noss-linux, dsom, ipo |
 | **`noss-cp-docx-formatter`** <br> *NOSS CP DOCX Formatter Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`noss-cpc-docx-formatter`** <br> *NOSS CPC DOCX Formatter Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`noss-glossary-syncer`** <br> *NOSS Glossary Syncer* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
@@ -176,5 +176,5 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *TVET Tools, Equipment, and Materials (TEM) Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-03*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-04*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

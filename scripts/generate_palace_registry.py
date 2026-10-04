@@ -110,11 +110,11 @@ def parse_metadata(frontmatter):
             desc = parsed.get('description') or ""
             raw_topics = parsed.get('topics') or ""
             if isinstance(raw_topics, list):
-                topics_str = ", ".join(raw_topics)
+                topics_str = ", ".join(str(t) for t in raw_topics)
             else:
                 topics_str = str(raw_topics)
             return {"title": str(title), "description": str(desc), "topics": topics_str}
-    except Exception:
+    except yaml.YAMLError:
         pass
 
     metadata = {"title": "", "description": "", "topics": ""}

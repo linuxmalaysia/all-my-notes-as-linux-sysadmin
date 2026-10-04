@@ -73,10 +73,27 @@ def frontmatter_field(content, field):
             if isinstance(val, dict) and "at" in val:
                 return str(val["at"])
             return str(val)
-    except Exception:
+    except yaml.YAMLError:
         pass
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)
     assert match, f"Frontmatter field '{field}' not found"
+    return match.group(1).strip()
+
+def get_frontmatter_timestamp(content):
+    """Extract timestamp or generated.at ISO8601 string from parsed YAML frontmatter."""
+    fm = extract_frontmatter(content)
+    try:
+        parsed = yaml.safe_load(fm)
+        if isinstance(parsed, dict):
+            if "timestamp" in parsed:
+                return str(parsed["timestamp"])
+            gen = parsed.get("generated")
+            if isinstance(gen, dict) and "at" in gen:
+                return str(gen["at"])
+    except yaml.YAMLError:
+        pass
+    match = re.search(r'^\s*timestamp:\s*"?([^"\n]+)"?', fm, re.MULTILINE) or re.search(r'^\s*at:\s*"?([^"\n]+)"?', fm, re.MULTILINE)
+    assert match, "Timestamp field not found in frontmatter"
     return match.group(1).strip()
 
 @pytest.fixture(scope="module")
@@ -206,7 +223,7 @@ def test_manual_md_frontmatter_is_well_formed(key, rel_path):
     content = read(rel_path)
     assert frontmatter_field(content, "okf_version") in ["0.1", "0.2"]
     assert frontmatter_field(content, "type") in ["reference", "knowledge-node"]
-    timestamp = frontmatter_field(content, "timestamp") or frontmatter_field(content, "generated")
+    timestamp = get_frontmatter_timestamp(content)
     assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
     resource = frontmatter_field(content, "resource")
     assert resource == f"file:///{rel_path}"
@@ -334,7 +351,7 @@ def test_skill_md_frontmatter_fields(key, rel_path):
     description = frontmatter_field(content, "description")
     assert description.startswith("Executes NOSS Work Activity") or description.startswith("Melaksanakan Aktiviti Kerja NOSS")
     assert len(description) > 60
-    timestamp = frontmatter_field(content, "timestamp") or frontmatter_field(content, "generated")
+    timestamp = get_frontmatter_timestamp(content)
     assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
     resource = frontmatter_field(content, "resource")
     assert resource == f"file:///{rel_path}"
@@ -402,7 +419,7 @@ def test_skill_md_footer_signature_dated_2026_08_17():
 
 def test_skills_index_timestamp_updated():
     content = read(".agents/skills/index.md")
-    timestamp = frontmatter_field(content, "timestamp") if "timestamp:" in content else frontmatter_field(content, "generated")
+    timestamp = get_frontmatter_timestamp(content)
     assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp)
 
 
@@ -428,13 +445,12 @@ def test_skills_index_entries_no_longer_placeholder(skill_name, expected_snippet
 
 
 def test_skills_index_unrelated_rows_remain_untouched():
-    """Sanity check that unrelated, not-yet-documented skills in this PR's diff
-    scope are still present in registry."""
+    """Verifies that the registry table contains the entry row for cu04-wa01-prepare-backup-recovery-tools."""
     content = read(".agents/skills/index.md")
     untouched_row = re.search(
         r"^\|\s*\*\*`cu04-wa01-prepare-backup-recovery-tools`\*\*.*$", content, re.MULTILINE
     )
-    assert untouched_row
+    assert untouched_row, "Expected cu04-wa01-prepare-backup-recovery-tools row to be present in skills index"
 
 
 # ---------------------------------------------------------------------------

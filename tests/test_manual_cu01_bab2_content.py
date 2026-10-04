@@ -10,6 +10,7 @@ Covers:
 
 import re
 from pathlib import Path
+import yaml
 
 import pytest
 
@@ -73,7 +74,16 @@ def test_new_manual_node_has_okf_frontmatter(relpath):
 @pytest.mark.parametrize("relpath", NEW_MANUAL_NODES)
 def test_new_manual_node_timestamp_is_valid_iso8601(relpath):
     frontmatter, _ = split_frontmatter(read(relpath))
-    match = re.search(r'timestamp:\s*([^\n]+)', frontmatter) or re.search(r'at:\s*([^\n]+)', frontmatter)
+    try:
+        parsed = yaml.safe_load(frontmatter)
+        if isinstance(parsed, dict):
+            ts_val = str(parsed.get("timestamp") or (parsed.get("generated", {}).get("at") if isinstance(parsed.get("generated"), dict) else ""))
+            if ts_val and TIMESTAMP_RE.match(ts_val):
+                assert TIMESTAMP_RE.match(ts_val)
+                return
+    except yaml.YAMLError:
+        pass
+    match = re.search(r'^\s*timestamp:\s*([^\n]+)', frontmatter, re.MULTILINE) or re.search(r'^\s*at:\s*([^\n]+)', frontmatter, re.MULTILINE)
     assert match, f"{relpath} timestamp value must be an ISO8601 string."
     ts_val = match.group(1).strip().strip("'\"")
     assert TIMESTAMP_RE.match(ts_val), (
@@ -191,7 +201,16 @@ def test_openwiki_topic01_no_longer_references_stale_2024_distro_versions():
 
 def test_skills_index_timestamp_is_valid_iso8601():
     frontmatter, _ = split_frontmatter(read(SKILLS_INDEX))
-    match = re.search(r'timestamp:\s*([^\n]+)', frontmatter) or re.search(r'at:\s*([^\n]+)', frontmatter)
+    try:
+        parsed = yaml.safe_load(frontmatter)
+        if isinstance(parsed, dict):
+            ts_val = str(parsed.get("timestamp") or (parsed.get("generated", {}).get("at") if isinstance(parsed.get("generated"), dict) else ""))
+            if ts_val and TIMESTAMP_RE.match(ts_val):
+                assert TIMESTAMP_RE.match(ts_val)
+                return
+    except yaml.YAMLError:
+        pass
+    match = re.search(r'^\s*timestamp:\s*([^\n]+)', frontmatter, re.MULTILINE) or re.search(r'^\s*at:\s*([^\n]+)', frontmatter, re.MULTILINE)
     assert match, "Master Palace Registry is missing a timestamp field."
     ts_val = match.group(1).strip().strip("'\"")
     assert TIMESTAMP_RE.match(ts_val), (
@@ -201,4 +220,6 @@ def test_skills_index_timestamp_is_valid_iso8601():
 
 def test_skills_index_title_unchanged():
     frontmatter, _ = split_frontmatter(read(SKILLS_INDEX))
-    assert 'Master Palace Registry' in frontmatter
+    parsed = yaml.safe_load(frontmatter)
+    assert isinstance(parsed, dict)
+    assert parsed.get("title") == "Master Palace Registry"

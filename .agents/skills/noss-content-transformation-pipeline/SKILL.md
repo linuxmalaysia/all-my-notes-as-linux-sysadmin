@@ -18,7 +18,7 @@ tags:
 - ipo
 description: Protokol automasi dan panduan operasi bagi ejen AI untuk memproses bahan
   rujukan mentah (references/), memodenkannya ke standard NOSS Linux 2026, menyuntik
-  OKF v0.1, mengesahkan 100% Quality Gate, dan menerbitkan ke manual/, openwiki/,
+  OKF v0.2, mengesahkan 100% Quality Gate, dan menerbitkan ke manual/, openwiki/,
   serta html/.
 resource: file:///.agents/skills/noss-content-transformation-pipeline/SKILL.md
 spec_version: '0.2'
@@ -92,8 +92,8 @@ Ejen AI MESTI memproses maklumat melalui 3 langkah teras:
    - **Prestasi (*Performance Tuning*):** Penalaan parameter kernel `sysctl`, konfigurasi profil `tuned`, pemantauan eBPF/bpftrace, dan pengoptimuman I/O cakera serta rangkaian.
 5. **Piawaian Bahasa Melayu Baku DBP (Rule 3):**
    - Gunakan Bahasa Melayu profesional, istilah teknikal standard DBP, dan biarkan sintaks CLI dalam Bahasa Inggeris standard.
-6. **Pematuhan Format OKF v0.1 (Rule 8 & 16):**
-   - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: 0.1`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
+6. **Pematuhan Format OKF v0.2 (Rule 8 & 16):**
+   - Pastikan setiap nod bermula dengan YAML frontmatter lengkap (`okf_version: "0.2"`, `type`, `title`, `timestamp`, `topics`, `tags`, `description`, `resource`).
    - Akhiri setiap nod dengan tiga seksyen penutup:
      - `## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)`
      - `## 🔗 Bahan Bacaan Lanjut (Rujukan URL)`
