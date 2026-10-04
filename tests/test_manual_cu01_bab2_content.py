@@ -12,6 +12,7 @@ import re
 from pathlib import Path
 
 import pytest
+import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -64,26 +65,36 @@ def test_new_manual_node_has_okf_frontmatter(relpath):
     frontmatter, _ = split_frontmatter(content)
 
     assert "okf_version:" in frontmatter, f"{relpath} missing okf_version key."
-    assert "type: knowledge_node" in frontmatter or "type: knowledge-node" in frontmatter, f"{relpath} should be type: knowledge_node."
+    assert "type: reference" in frontmatter or "type: knowledge_node" in frontmatter or "type: knowledge-node" in frontmatter, f"{relpath} should have valid type."
     assert "title:" in frontmatter, f"{relpath} missing title key."
-    assert "timestamp:" in frontmatter, f"{relpath} missing timestamp key."
+    assert "timestamp:" in frontmatter or "generated:" in frontmatter, f"{relpath} missing timestamp key."
     assert "resource:" in frontmatter, f"{relpath} missing resource key."
 
 
 @pytest.mark.parametrize("relpath", NEW_MANUAL_NODES)
 def test_new_manual_node_timestamp_is_valid_iso8601(relpath):
     frontmatter, _ = split_frontmatter(read(relpath))
-    match = re.search(r'timestamp:\s*"([^"]+)"', frontmatter)
-    assert match, f"{relpath} timestamp value must be a quoted ISO8601 string."
-    assert TIMESTAMP_RE.match(match.group(1)), (
-        f"{relpath} timestamp '{match.group(1)}' is not in YYYY-MM-DDTHH:MM:SSZ format."
+    try:
+        parsed = yaml.safe_load(frontmatter)
+        if isinstance(parsed, dict):
+            ts_val = str(parsed.get("timestamp") or (parsed.get("generated", {}).get("at") if isinstance(parsed.get("generated"), dict) else ""))
+            if ts_val and TIMESTAMP_RE.match(ts_val):
+                assert TIMESTAMP_RE.match(ts_val)
+                return
+    except yaml.YAMLError:
+        pass
+    match = re.search(r'^\s*timestamp:\s*([^\n]+)', frontmatter, re.MULTILINE) or re.search(r'^\s*at:\s*([^\n]+)', frontmatter, re.MULTILINE)
+    assert match, f"{relpath} timestamp value must be an ISO8601 string."
+    ts_val = match.group(1).strip().strip("'\"")
+    assert TIMESTAMP_RE.match(ts_val), (
+        f"{relpath} timestamp '{ts_val}' is not in YYYY-MM-DDTHH:MM:SSZ format."
     )
 
 
 @pytest.mark.parametrize("relpath", NEW_MANUAL_NODES)
 def test_new_manual_node_resource_path_matches_file_location(relpath):
     frontmatter, _ = split_frontmatter(read(relpath))
-    match = re.search(r'resource:\s*"([^"]+)"', frontmatter)
+    match = re.search(r'^resource:\s*"?([^"\n]+)"?', frontmatter, re.MULTILINE)
     assert match, f"{relpath} is missing a resource: URI."
     expected = f"file:///{relpath}"
     assert match.group(1) == expected, (
@@ -190,13 +201,25 @@ def test_openwiki_topic01_no_longer_references_stale_2024_distro_versions():
 
 def test_skills_index_timestamp_is_valid_iso8601():
     frontmatter, _ = split_frontmatter(read(SKILLS_INDEX))
-    match = re.search(r'timestamp:\s*"([^"]+)"', frontmatter)
+    try:
+        parsed = yaml.safe_load(frontmatter)
+        if isinstance(parsed, dict):
+            ts_val = str(parsed.get("timestamp") or (parsed.get("generated", {}).get("at") if isinstance(parsed.get("generated"), dict) else ""))
+            if ts_val and TIMESTAMP_RE.match(ts_val):
+                assert TIMESTAMP_RE.match(ts_val)
+                return
+    except yaml.YAMLError:
+        pass
+    match = re.search(r'^\s*timestamp:\s*([^\n]+)', frontmatter, re.MULTILINE) or re.search(r'^\s*at:\s*([^\n]+)', frontmatter, re.MULTILINE)
     assert match, "Master Palace Registry is missing a timestamp field."
-    assert TIMESTAMP_RE.match(match.group(1)), (
-        f"Master Palace Registry timestamp '{match.group(1)}' is not valid ISO8601 UTC."
+    ts_val = match.group(1).strip().strip("'\"")
+    assert TIMESTAMP_RE.match(ts_val), (
+        f"Master Palace Registry timestamp '{ts_val}' is not valid ISO8601 UTC."
     )
 
 
 def test_skills_index_title_unchanged():
     frontmatter, _ = split_frontmatter(read(SKILLS_INDEX))
-    assert 'title: "Master Palace Registry"' in frontmatter
+    parsed = yaml.safe_load(frontmatter)
+    assert isinstance(parsed, dict)
+    assert parsed.get("title") == "Master Palace Registry"

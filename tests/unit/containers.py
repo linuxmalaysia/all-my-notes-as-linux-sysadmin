@@ -30,7 +30,7 @@ def get_container_files():
     for pattern in patterns:
         files.extend(glob.glob(pattern, recursive=True))
     files = [f for f in files if "node_modules" not in f and ".venv" not in f]
-    return sorted(list(set(files)))
+    return sorted(set(files))
 
 
 @pytest.mark.parametrize("filepath", get_container_files())
@@ -68,7 +68,7 @@ def test_containerfile_security_and_structure(filepath):
 
         assert has_from, f"Containerfile {filepath} mesti mengandungi arahan FROM."
 
-    elif filepath.endswith(".container") or filepath.endswith(".pod"):
+    elif filepath.endswith((".container", ".pod")):
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
 

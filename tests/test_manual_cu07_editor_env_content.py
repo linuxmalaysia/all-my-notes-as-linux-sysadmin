@@ -91,7 +91,7 @@ def test_openwiki_topics_editor_mentions():
 
 def test_skill_cu06_wa07_editor_enhancements():
     content = read(".agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md")
-    assert "type: skill" in content
+    assert "type: agent_skill" in content or "type: skill" in content
     assert "export EDITOR=/usr/bin/vim" in content
     assert "sudoedit" in content
     assert "visudo -c" in content

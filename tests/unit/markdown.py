@@ -19,7 +19,7 @@ def get_markdown_files():
     files = []
     for pattern in TARGET_DIRS:
         files.extend(glob.glob(pattern, recursive=True))
-    return sorted(list(set([f for f in files if os.path.basename(f) not in EXCLUDED_FILES])))
+    return sorted({f for f in files if os.path.basename(f) not in EXCLUDED_FILES})
 
 
 @pytest.mark.parametrize("filepath", get_markdown_files())
@@ -80,8 +80,7 @@ def test_uk_english_documentation_spellings(filepath):
 
     norm_path = filepath.replace("\\", "/")
     is_syllabus_or_test_doc = (
-        norm_path.startswith("manual/")
-        or norm_path.startswith("openwiki/")
+        norm_path.startswith(("manual/", "openwiki/"))
         or "pytest-" in norm_path
         or "tmp" in norm_path
         or norm_path.endswith("/doc.md")
@@ -104,7 +103,7 @@ def test_uk_english_documentation_spellings(filepath):
         if in_code_block:
             continue
 
-        if line_str.startswith("sudo ") or line_str.startswith("$ ") or line_str.startswith("# "):
+        if line_str.startswith(("sudo ", "$ ", "# ")):
             continue
 
         match_disallowed = re.search(r"(?:\be\.g\.|\bi\.e\.|\betc\.)", line_str, re.IGNORECASE)

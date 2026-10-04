@@ -22,8 +22,8 @@ tags:
 - gdisk
 - lvm
 - luks2
-description: Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs,
-  LUKS2) dan pengmayaan (KVM/QEMU/libvirt) Linux dipetakan kepada NOSS CU02.
+description: Silibus pengurusan storan fizikal dan logikal (GPT, LVM2, EXT4/XFS/Btrfs,
+  LUKS2) serta asas pengmayaan KVM/QEMU (CU02).
 resource: file:///openwiki/topic-02-storage-and-virtualisation.md
 spec_version: '0.2'
 status: stable

@@ -14,7 +14,6 @@ Outputs:
     - docs/dist/terminal-cloud-pdf-compilation-guide.pdf  (print-optimized PDF)
 """
 
-import os
 import re
 import shutil
 import subprocess

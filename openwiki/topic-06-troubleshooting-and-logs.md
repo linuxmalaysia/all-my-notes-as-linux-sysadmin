@@ -36,8 +36,7 @@ tags:
 - rca
 - cu06
 description: Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis
-  teks grep/sed/awk, penyunting teks Vim/Neovim/Nano, penyuntingan selamat sudoedit/visudo,
-  pemantauan prestasi, dan dokumentasi RCA dipetakan kepada NOSS CU06.
+  teks CLI, dan analisis punca anomali (CU06).
 resource: file:///openwiki/topic-06-troubleshooting-and-logs.md
 spec_version: '0.2'
 status: stable

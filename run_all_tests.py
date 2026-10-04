@@ -45,7 +45,7 @@ def run_step(step_name, command, cwd):
         # Use shell=True on Windows for npm since it's a cmd/bat wrapper
         is_shell = sys.platform.startswith('win') and command[0] == 'npm'
         env = {**os.environ, "CI": "true"}
-        result = subprocess.run(command, cwd=cwd, check=True, shell=is_shell, env=env, stdin=subprocess.DEVNULL)
+        subprocess.run(command, cwd=cwd, check=True, shell=is_shell, env=env, stdin=subprocess.DEVNULL)
         print(f"{GREEN}✔ {step_name} passed.{RESET}")
     except subprocess.CalledProcessError as e:
         print(f"{RED}✘ {step_name} failed! Check output above.{RESET}")

@@ -37,9 +37,7 @@ def _is_link_or_junction(path: Path) -> bool:
     """Helper to check if a path is a symlink or junction across Windows and POSIX."""
     if path.is_symlink():
         return True
-    if hasattr(path, "is_junction") and path.is_junction():
-        return True
-    return False
+    return bool(hasattr(path, "is_junction") and path.is_junction())
 
 
 # ---------------------------------------------------------------------------

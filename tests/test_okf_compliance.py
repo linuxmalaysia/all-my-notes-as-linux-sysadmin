@@ -7,6 +7,7 @@ and the mandatory Sovereign Markdown Palace dual-license footer.
 """
 
 import os
+
 import pytest
 import yaml
 
@@ -62,7 +63,7 @@ def test_okf_v02_frontmatter(filepath):
     for src in sources:
         if isinstance(src, dict):
             res = str(src.get("url") or src.get("resource") or "")
-            if res.startswith("http://") or res.startswith("https://"):
+            if res.startswith(("http://", "https://")):
                 has_public_url = True
             elif res.endswith(".md") or "/" in res or res.startswith("file:"):
                 has_internal_ref = True

@@ -52,7 +52,7 @@ def generate_xml_context(root_dir: Path, file_paths: list[str], output_path: Pat
                     out.write(content)
                     out.write('\n    </content>\n')
                     out.write('  </file>\n')
-                except Exception as e:
+                except (OSError, UnicodeDecodeError) as e:
                     print(f"Warning: Could not read {rel_path}: {e}")
             else:
                 print(f"Warning: File not found {rel_path}")

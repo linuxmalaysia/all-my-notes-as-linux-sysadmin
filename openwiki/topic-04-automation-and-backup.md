@@ -23,8 +23,7 @@ tags:
 - rsync
 - noss
 description: Silibus automasi skrip Bash, pengarkiban dan pemampatan tar/zstd, penyegerakan
-  rsync, automasi berkala cron/systemd-timer, dan pemulihan data dipetakan kepada
-  NOSS CU04.
+  rsync, dan penjadualan cron (CU04).
 resource: file:///openwiki/topic-04-automation-and-backup.md
 spec_version: '0.2'
 status: stable

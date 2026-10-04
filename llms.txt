@@ -1,6 +1,6 @@
 # DSOM AI Knowledge Base
 
-> DSOM-governed, OKF v0.1 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.
+> DSOM-governed, OKF v0.2 compliant documentation index for AI Agents and LLMs. This file lists all relevant markdown documentation in the repository.
 
 ## Root Documents
 - [AI Constitution: NOSS Linux Malaysia (DSOM v0.1)](AGENTS.md)
@@ -115,6 +115,7 @@
 - [Sovereign Persona Profile Template](docs/agent-configs/SOVEREIGN-PERSONA-TEMPLATE.md)
 - [START-HERE.md](docs/START-HERE.md)
 - [SUMMARY.md](docs/SUMMARY.md)
+- [Terminal & Cloud PDF Compilation Master Prompt & Reference Guide](docs/governance/TECHNICAL-BOOK-DESIGN-AND-PDF-COMPILER-PROMPT-GUIDE.md)
 - [Using Reference Files](docs/USING-REFERENCE-FILES.md)
 - [Using scripts in skills](docs/USING-SCRIPTS.md)
 - [What Are Claude Skills?](docs/WHAT-ARE-SKILLS.md)
@@ -333,6 +334,7 @@
 - [🌅 SOD Palace Sync (Reanimation)](.agents/skills/sod-palace-sync/SKILL.md)
 - [Assemble Physical Computer System Hardware](.agents/skills/cu01-wa02-assemble-physical-computer-system-hardware/SKILL.md)
 - [Prepare Computer System Set-Up](.agents/skills/cu01-wa01-prepare-computer-system-set-up/SKILL.md)
+- [📚 DSOM Technical Book & PDF Compiler](.agents/skills/dsom-technical-book-compiler/SKILL.md)
 - [Prepare Server Setup](.agents/skills/cu03-wa01-prepare-server-setup/SKILL.md)
 - [CU01-WA04: Pemasangan Sistem Operasi Linux Desktop & Persekitaran Meja GNOME](.agents/skills/cu01-wa04-install-computer-desktop-operating-systems/SKILL.md)
 - [DSOM Mass OKF Migrator](.agents/skills/dsom-mass-okf-migrator/SKILL.md)

@@ -19,17 +19,18 @@ Attributes:
     EXCLUDED_DIRS (set[str]): Directories ignored during scanning.
 """
 
-from datetime import datetime, timezone
 import os
 import re
 import sys
-from typing import Any, Dict, List, Optional, Set, Tuple
+from datetime import datetime, timezone
+from typing import Any
+
 import yaml
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-MANDATORY_SOURCES: List[Dict[str, str]] = [
+MANDATORY_SOURCES: list[dict[str, str]] = [
     {
         "id": "internal-legal-notice",
         "title": "Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice",
@@ -64,9 +65,9 @@ SOVEREIGN_FOOTER: str = """---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*"""
 
-EXCLUDED_DIRS: Set[str] = {'.git', 'node_modules', 'html', '.pytest_cache', 'scratch'}
+EXCLUDED_DIRS: set[str] = {'.git', 'node_modules', 'html', '.pytest_cache', 'scratch'}
 
-def get_okf_type(rel_path: str, existing_type: Optional[str] = None) -> str:
+def get_okf_type(rel_path: str, existing_type: str | None = None) -> str:
     """Determine the functional OKF classification for a given file path.
 
     Args:
@@ -83,17 +84,13 @@ def get_okf_type(rel_path: str, existing_type: Optional[str] = None) -> str:
         return 'Attested Computation'
     elif '.agents' in path_parts and 'skills' in path_parts:
         return 'agent_skill'
-    elif 'docs' in path_parts and 'governance' in path_parts:
-        return 'governance_protocol'
-    elif rel_path in ['AGENTS.md', 'LEGAL-NOTICE.md']:
+    elif 'docs' in path_parts and 'governance' in path_parts or rel_path in ['AGENTS.md', 'LEGAL-NOTICE.md']:
         return 'governance_protocol'
     elif '.agents' in path_parts and 'brain' in path_parts:
         return 'architecture_concept'
     elif 'tools' in path_parts or 'scripts' in path_parts:
         return 'automation_tool'
-    elif 'docs' in path_parts and ('how-to' in path_parts or 'tutorials' in path_parts):
-        return 'guide'
-    elif rel_path in ['START-HERE.md', 'README.md']:
+    elif 'docs' in path_parts and ('how-to' in path_parts or 'tutorials' in path_parts) or rel_path in ['START-HERE.md', 'README.md']:
         return 'guide'
     elif 'manual' in path_parts or ('docs' in path_parts and 'reference' in path_parts) or 'references' in path_parts:
         return 'reference'
@@ -120,7 +117,7 @@ def process_file(
     filepath: str,
     root_dir: str,
     generator_id: str = 'OKF v0.2 Adoption Tooling / Gemini 2.5 Pro'
-) -> Tuple[bool, bool]:
+) -> tuple[bool, bool]:
     """Process a single Markdown file to enforce OKF v0.2 frontmatter and Sovereign footer.
 
     Args:
@@ -143,7 +140,7 @@ def process_file(
         print(f"[ERROR] Cannot read file {rel_path}: {err}", file=sys.stderr)
         return False, False
 
-    frontmatter_dict: Dict[str, Any] = {}
+    frontmatter_dict: dict[str, Any] = {}
     body = content
 
     # Line-anchored frontmatter parsing
@@ -155,7 +152,7 @@ def process_file(
             parsed = yaml.safe_load(raw_fm)
             if isinstance(parsed, dict):
                 frontmatter_dict = parsed
-        except Exception:
+        except yaml.YAMLError:
             pass
 
     okf_type = get_okf_type(rel_path, frontmatter_dict.get('type'))
@@ -178,7 +175,7 @@ def process_file(
     }
 
     # Only include verified if explicitly present in existing metadata
-    if 'verified' in frontmatter_dict and frontmatter_dict['verified']:
+    if frontmatter_dict.get('verified'):
         new_fm['verified'] = frontmatter_dict['verified']
 
     existing_sources = frontmatter_dict.get('sources', [])
