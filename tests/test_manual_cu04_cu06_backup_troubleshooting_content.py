@@ -79,6 +79,26 @@ def frontmatter_field(content, field):
     assert match, f"Frontmatter field '{field}' not found"
     return match.group(1).strip()
 
+import datetime
+
+
+def format_iso_timestamp(val):
+    """Normalize a parsed timestamp or datetime object to an ISO 8601 string ending with Z.
+
+    Args:
+        val (Any): Raw timestamp string or datetime object.
+
+    Returns:
+        str: ISO 8601 text representation ending in 'Z'.
+    """
+    if isinstance(val, (datetime.datetime, datetime.date)):
+        if isinstance(val, datetime.datetime):
+            if val.tzinfo is not None:
+                val = val.astimezone(datetime.timezone.utc)
+            return val.strftime("%Y-%m-%dT%H:%M:%SZ")
+        return f"{val.isoformat()}T00:00:00Z"
+    return str(val)
+
 def get_frontmatter_timestamp(content):
     """Extract timestamp or generated.at ISO8601 string from parsed YAML frontmatter."""
     fm = extract_frontmatter(content)
@@ -86,10 +106,10 @@ def get_frontmatter_timestamp(content):
         parsed = yaml.safe_load(fm)
         if isinstance(parsed, dict):
             if "timestamp" in parsed:
-                return str(parsed["timestamp"])
+                return format_iso_timestamp(parsed["timestamp"])
             gen = parsed.get("generated")
             if isinstance(gen, dict) and "at" in gen:
-                return str(gen["at"])
+                return format_iso_timestamp(gen["at"])
     except yaml.YAMLError:
         pass
     match = re.search(r'^\s*timestamp:\s*"?([^"\n]+)"?', fm, re.MULTILINE) or re.search(r'^\s*at:\s*"?([^"\n]+)"?', fm, re.MULTILINE)

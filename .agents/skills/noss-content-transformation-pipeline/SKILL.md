@@ -113,7 +113,7 @@ Ejen AI MESTI memastikan setiap hasil transformasi menyokong **4 Kuadran Diátax
    - **Explanation (`openwiki/topic-XX-*.md` & `docs/explanation/`):** Huraian konsep mendalam, perbandingan teknologi, dan sejarah.
 
 2. **Sokongan Pelbagai Format Output (Multi-Artifact Deliverables):**
-   - **Markdown OKF v0.1:** Modul teks berdaulat di `manual/` dan `openwiki/`.
+   - **Markdown OKF v0.2:** Modul teks berdaulat di `manual/` dan `openwiki/`.
    - **Tapak Web Statik HTML:** Direktori `html/` dijana melalui `uv run scripts/serve_mkdocs.py --build-only`.
    - **Kurikulum Rasmi DOCX:** Menggunakan kemahiran `.agents/skills/noss-cocu-docx-formatter/` untuk menghasilkan matriks CoCU & TEM.
    - **Slaid Pembentangan PPTX/ODP:** Menggunakan `.agents/skills/odp-slide-generator/` untuk modul slaid TVET.

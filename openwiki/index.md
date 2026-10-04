@@ -3,12 +3,13 @@ spec_version: '0.2'
 okf_version: '0.2'
 type: explanation
 title: OpenWiki Master Graph
+timestamp: '2026-10-04T09:20:14Z'
 description: Peta grafik keseluruhan (Master Graph) silibus Linux NOSS di dalam OpenWiki.
 status: stable
 stale_after: '2027-12-31'
 generated:
   by: generate_openwiki_graph.py / OKF v0.2
-  at: '2026-10-04T06:16:13Z'
+  at: '2026-10-04T09:20:14Z'
 resource: file:///openwiki/index.md
 topics:
 - openwiki
