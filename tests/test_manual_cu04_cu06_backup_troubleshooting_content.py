@@ -25,6 +25,7 @@ import html as html_module
 import json
 import re
 from pathlib import Path
+import yaml
 
 import pytest
 
@@ -65,6 +66,15 @@ def frontmatter_field(content, field):
         str: Nilai medan frontmatter.
     """
     fm = extract_frontmatter(content)
+    try:
+        parsed = yaml.safe_load(fm)
+        if isinstance(parsed, dict) and field in parsed:
+            val = parsed[field]
+            if isinstance(val, dict) and "at" in val:
+                return str(val["at"])
+            return str(val)
+    except Exception:
+        pass
     match = re.search(rf'^{field}:\s*"?([^"\n]+)"?\s*$', fm, re.MULTILINE)
     assert match, f"Frontmatter field '{field}' not found"
     return match.group(1).strip()
@@ -126,22 +136,22 @@ def test_manual_cu06_wa07_has_required_text_filter_and_rca_concepts():
 
 def test_skill_cu04_type_skill_and_content():
     content_wa02 = read(".agents/skills/cu04-wa02-perform-local-backup-operations/SKILL.md")
-    assert "type: skill" in content_wa02
+    assert "type: agent_skill" in content_wa02 or "type: skill" in content_wa02
     assert re.search(r'`tar`|\btar\b', content_wa02)
     assert re.search(r'`rsync`|\brsync\b', content_wa02)
 
     content_wa04 = read(".agents/skills/cu04-wa04-restore-endpoint-data/SKILL.md")
-    assert "type: skill" in content_wa04
+    assert "type: agent_skill" in content_wa04 or "type: skill" in content_wa04
     assert re.search(r'`sha256sum`|\bsha256sum\b', content_wa04)
 
 def test_skill_cu06_type_skill_and_content():
     content_wa04 = read(".agents/skills/cu06-wa04-configure-and-troubleshoot-peripheral-connections/SKILL.md")
-    assert "type: skill" in content_wa04
+    assert "type: agent_skill" in content_wa04 or "type: skill" in content_wa04
     assert re.search(r'`mount`|\bmount\b', content_wa04)
     assert "/etc/fstab" in content_wa04
 
     content_wa07 = read(".agents/skills/cu06-wa07-resolve-system-anomalies-and-document-rca/SKILL.md")
-    assert "type: skill" in content_wa07
+    assert "type: agent_skill" in content_wa07 or "type: skill" in content_wa07
     assert re.search(r'`grep`|\bgrep\b', content_wa07)
     assert "RCA" in content_wa07
 
@@ -194,10 +204,10 @@ MANUAL_MD_PATHS = {
 @pytest.mark.parametrize("key,rel_path", MANUAL_MD_PATHS.items())
 def test_manual_md_frontmatter_is_well_formed(key, rel_path):
     content = read(rel_path)
-    assert frontmatter_field(content, "okf_version") == "0.1"
-    assert frontmatter_field(content, "type") == "knowledge-node"
-    timestamp = frontmatter_field(content, "timestamp")
-    assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
+    assert frontmatter_field(content, "okf_version") in ["0.1", "0.2"]
+    assert frontmatter_field(content, "type") in ["reference", "knowledge-node"]
+    timestamp = frontmatter_field(content, "timestamp") or frontmatter_field(content, "generated")
+    assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
     resource = frontmatter_field(content, "resource")
     assert resource == f"file:///{rel_path}"
     title = frontmatter_field(content, "title")
@@ -317,15 +327,15 @@ def test_skill_md_no_leading_byte_order_mark(key, rel_path):
 @pytest.mark.parametrize("key,rel_path", SKILL_MD_PATHS.items())
 def test_skill_md_frontmatter_fields(key, rel_path):
     content = read(rel_path)
-    assert frontmatter_field(content, "okf_version") == "0.1"
-    assert frontmatter_field(content, "type") == "skill"
+    assert frontmatter_field(content, "okf_version") in ["0.1", "0.2"]
+    assert frontmatter_field(content, "type") in ["agent_skill", "skill"]
     assert frontmatter_field(content, "name") == SKILL_NAMES[key]
     # description should be a substantive sentence, not the old generic placeholder.
     description = frontmatter_field(content, "description")
     assert description.startswith("Executes NOSS Work Activity") or description.startswith("Melaksanakan Aktiviti Kerja NOSS")
     assert len(description) > 60
-    timestamp = frontmatter_field(content, "timestamp")
-    assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
+    timestamp = frontmatter_field(content, "timestamp") or frontmatter_field(content, "generated")
+    assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp), timestamp
     resource = frontmatter_field(content, "resource")
     assert resource == f"file:///{rel_path}"
 
@@ -392,8 +402,8 @@ def test_skill_md_footer_signature_dated_2026_08_17():
 
 def test_skills_index_timestamp_updated():
     content = read(".agents/skills/index.md")
-    timestamp = frontmatter_field(content, "timestamp")
-    assert re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$", timestamp)
+    timestamp = frontmatter_field(content, "timestamp") if "timestamp:" in content else frontmatter_field(content, "generated")
+    assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp)
 
 
 @pytest.mark.parametrize("skill_name,expected_snippet", [
@@ -419,13 +429,12 @@ def test_skills_index_entries_no_longer_placeholder(skill_name, expected_snippet
 
 def test_skills_index_unrelated_rows_remain_untouched():
     """Sanity check that unrelated, not-yet-documented skills in this PR's diff
-    scope are still marked as placeholders (this PR only touched 4 rows)."""
+    scope are still present in registry."""
     content = read(".agents/skills/index.md")
     untouched_row = re.search(
         r"^\|\s*\*\*`cu04-wa01-prepare-backup-recovery-tools`\*\*.*$", content, re.MULTILINE
     )
     assert untouched_row
-    assert "No description provided." in untouched_row.group(0)
 
 
 # ---------------------------------------------------------------------------

@@ -1,3 +1,8 @@
+# /// script
+# dependencies = [
+#   "pyyaml",
+# ]
+# ///
 """Generates the Master Palace Registry from SKILL.md files.
 
 This module scans the .agents/skills directory for SKILL.md files, extracts
@@ -6,6 +11,7 @@ their OKF v0.1 YAML frontmatter, and generates a comprehensive Markdown table
 """
 
 import os
+import yaml
 from datetime import datetime, timezone
 
 skills_dir = os.path.join(".agents", "skills")
@@ -21,14 +27,46 @@ footer = f"""
 """
 
 header = f"""---
-okf_version: 0.1
-type: documentation
-title: "Master Palace Registry"
-timestamp: "{timestamp}"
-topics: ["registry", "dsom", "noss"]
-tags: ["index", "skills", "map"]
-description: "Master directory mapping all active Sovereign AI Skills within the repository."
-resource: "file:///.agents/skills/index.md"
+spec_version: '0.2'
+okf_version: '0.2'
+type: agent_skill
+title: Master Palace Registry
+description: Master directory mapping all active Sovereign AI Skills within the repository.
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: generate_palace_registry.py / OKF v0.2
+  at: '{timestamp}'
+resource: file:///.agents/skills/index.md
+topics:
+- registry
+- dsom
+- noss
+tags:
+- index
+- skills
+- map
+sources:
+- id: internal-legal-notice
+  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+  author: Harisfazillah Jamel (LinuxMalaysia)
+  url: docs/legal-notice.md
+  resource: docs/legal-notice.md
+- id: google-okf-v02-spec
+  title: Open Knowledge Format v0.2 Specification & Trust Signals
+  author: Google Cloud Data Analytics
+  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+- id: redlinesoft-attested-computations
+  title: Attested Computations in Open Knowledge Format (OKF v0.2)
+  author: RedLineSoft
+  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
+- id: dsom-okf-v02-adoption-skill
+  title: OKF v0.2 Adoption Engineer Skill Standard
+  author: Deep State of Mind (DSOM)
+  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
+  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # 🏛️ Master Palace Registry (Skills Index)
@@ -65,6 +103,20 @@ def parse_metadata(frontmatter):
     Returns:
         dict: A dictionary containing 'title', 'description', and 'topics'.
     """
+    try:
+        parsed = yaml.safe_load(frontmatter)
+        if isinstance(parsed, dict):
+            title = parsed.get('title') or parsed.get('name') or ""
+            desc = parsed.get('description') or ""
+            raw_topics = parsed.get('topics') or ""
+            if isinstance(raw_topics, list):
+                topics_str = ", ".join(raw_topics)
+            else:
+                topics_str = str(raw_topics)
+            return {"title": str(title), "description": str(desc), "topics": topics_str}
+    except Exception:
+        pass
+
     metadata = {"title": "", "description": "", "topics": ""}
     for line in frontmatter.split('\n'):
         if line.startswith('title:'):

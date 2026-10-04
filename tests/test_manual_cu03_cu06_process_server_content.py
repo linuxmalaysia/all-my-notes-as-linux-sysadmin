@@ -53,7 +53,7 @@ def test_manual_cu06_wa05_has_required_process_concepts():
 
 def test_skill_cu03_wa04_type_skill_and_content():
     content = read(".agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md")
-    assert "type: skill" in content
+    assert "type: agent_skill" in content or "type: skill" in content
     assert re.search(r'`systemctl`|\bsystemctl\b', content)
     assert re.search(r'`journalctl`|\bjournalctl\b', content)
     assert re.search(r'`timedatectl`|\btimedatectl\b', content)
@@ -61,13 +61,13 @@ def test_skill_cu03_wa04_type_skill_and_content():
 
 def test_skill_cu06_wa05_type_skill_and_content():
     content1 = read(".agents/skills/cu06-wa05-perform-system-optimisation-and-disk-management/SKILL.md")
-    assert "type: skill" in content1
+    assert "type: agent_skill" in content1 or "type: skill" in content1
     assert re.search(r'`ps aux`|\bps aux\b', content1)
     assert re.search(r'`vmstat`|\bvmstat\b', content1)
     assert "SIGTERM" in content1
 
     content2 = read(".agents/skills/cu06-wa05-optimize-system-performance-and-storage/SKILL.md")
-    assert "type: skill" in content2
+    assert "type: agent_skill" in content2 or "type: skill" in content2
     assert re.search(r'`ps aux`|\bps aux\b', content2)
     assert re.search(r'`vmstat`|\bvmstat\b', content2)
     assert "SIGTERM" in content2

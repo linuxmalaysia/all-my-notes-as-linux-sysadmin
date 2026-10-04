@@ -1,8 +1,15 @@
 ---
+spec_version: '0.2'
 okf_version: '0.2'
 type: explanation
 title: OpenWiki Master Graph
-timestamp: '2026-08-16T09:10:35Z'
+description: Peta grafik keseluruhan (Master Graph) silibus Linux NOSS di dalam OpenWiki.
+status: stable
+stale_after: '2027-12-31'
+generated:
+  by: generate_openwiki_graph.py / OKF v0.2
+  at: '2026-10-03T23:56:52Z'
+resource: file:///openwiki/index.md
 topics:
 - openwiki
 - noss-linux
@@ -11,14 +18,6 @@ tags:
 - index
 - mermaid
 - map
-description: Peta grafik keseluruhan (Master Graph) silibus Linux NOSS di dalam OpenWiki.
-resource: file:///openwiki/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:43Z'
 sources:
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
@@ -53,12 +52,12 @@ Graf ini dijana secara automatik menggunakan teknologi *Mermaid.js*.
 graph TD
     Root(("Silibus Pusat\nLinux NOSS (L3)"))
 
-    T1["topic-01-linux-desktop-and-basics <br> <i>(CU01)</i>"]
-    T2["topic-02-storage-and-virtualisation <br> <i>(CU02)</i>"]
-    T3["topic-03-linux-server-administration <br> <i>(CU03)</i>"]
-    T4["topic-04-automation-and-backup <br> <i>(CU04)</i>"]
-    T5["topic-05-linux-security <br> <i>(CU05)</i>"]
-    T6["topic-06-troubleshooting-and-logs <br> <i>(CU06)</i>"]
+    T1["Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026 <br> <i>(CU01)</i>"]
+    T2["Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026 <br> <i>(CU02)</i>"]
+    T3["Topik 3: Pentadbiran Pelayan Linux (CU03) <br> <i>(CU03)</i>"]
+    T4["Topik 4: Automasi Skrip, Sandaran Data & Pemulihan Sistem (CU04) <br> <i>(CU04)</i>"]
+    T5["Topik 5: Keselamatan Linux & Kawalan Akses (CU05) <br> <i>(CU01)</i>"]
+    T6["Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks & Analisis Log <br> <i>(CU06)</i>"]
     Root --> T1
     Root --> T2
     Root --> T3
@@ -67,26 +66,17 @@ graph TD
     Root --> T6
 ```
 
-## Perincian Modul Silibus & Pemetaan Diátaxis
+## Perincian Modul
 
-| Topik Silibus (Explanation) | Kod CU | Modul Amali NOSS (Reference) | Penerangan & Skop |
-|---|---|---|---|
-| [**Topik 1: Desktop & Asas**](topic-01-linux-desktop-and-basics.md) | CU01 | [manual/cu01/](../manual/cu01/index.md) | Silibus asas Sistem Operasi Linux (Desktop Ubuntu 26.04/AlmaLinux 10, FHS, APT/DNF, LUKS2). |
-| [**Topik 2: Storan & Pemayaan**](topic-02-storage-and-virtualisation.md) | CU02 | [manual/cu02/](../manual/cu02/index.md) | Pengurusan storan cakera GPT, LVM2, sistem fail XFS/EXT4, dan hipervisor KVM/QEMU. |
-| [**Topik 3: Pentadbiran Pelayan**](topic-03-linux-server-administration.md) | CU03 | [manual/cu03/](../manual/cu03/index.md) | Pentadbiran pelayan Linux, SSH Hardening, servis Nginx/Apache, DNS BIND9, dan Samba/NFS. |
-| [**Topik 4: Skrip & Automasi**](topic-04-automation-and-backup.md) | CU04 | [manual/cu04/](../manual/cu04/index.md) | Automasi skrip Bash, pengurusan jadual Cron/systemd timers, dan operasi sandaran RSync/Borg. |
-| [**Topik 5: Keselamatan Linux**](topic-05-linux-security.md) | CU05 | [manual/cu05/](../manual/cu05/index.md) | Kawalan keselamatan endpoint, audit akaun/sudo, ClamAV, UFW/Firewalld, dan tampalan automatik. |
-| [**Topik 6: Diagnostik & Log**](topic-06-troubleshooting-and-logs.md) | CU06 | [manual/cu06/](../manual/cu06/index.md) | Diagnostik perkakasan, analisis log systemd journald, pengurusan SLA tiket, dan dokumentasi RCA. |
-
----
-
-## 🌐 Navigasi Pusat Mengikut Kuadran Diátaxis
-
-- 🎓 **[Tutorials (Pembelajaran Berpandu)](../docs/tutorials/index.md):** Sesuai untuk pemula memulakan langkah praktikal pertama.
-- 🛠️ **[How-To Guides (Panduan Operasi)](../docs/how-to/execute-noss-content-transformation.md):** Resipi penyelesaian masalah khusus pentadbir sistem.
-- 📖 **[Reference (Sovereign Manual NOSS)](../manual/index.md):** Modul amali standard CU01–CU06 dan spesifikasi teknikal.
-- 💡 **[Explanation (Seni Bina Diátaxis)](../docs/explanation/diataxis-architecture.md):** Analisis teori dan tatakelola sistem.
+| Topik | Kod CU | Penerangan |
+|---|---|---|
+| [Topik 1: Pengenalan & Asas Ekosistem Linux (CU01) — Dikemaskini 2026](topic-01-linux-desktop-and-basics.md) | CU01 | Silibus komprehensif CU01 dikemaskini dengan Persekitaran Meja GNOME |
+| [Topik 2: Pengurusan Storan, Partisi & Pengmayaan (CU02) — Dikemaskini 2026](topic-02-storage-and-virtualisation.md) | CU02 | Silibus pengurusan storan fizikal/logikal (GPT, LVM2, EXT4/XFS/Btrfs, |
+| [Topik 3: Pentadbiran Pelayan Linux (CU03)](topic-03-linux-server-administration.md) | CU03 | Silibus pentadbiran pelayan Linux, pengurusan perkhidmatan systemd, konfigurasi |
+| [Topik 4: Automasi Skrip, Sandaran Data & Pemulihan Sistem (CU04)](topic-04-automation-and-backup.md) | CU04 | Silibus automasi skrip Bash, pengarkiban dan pemampatan tar/zstd, penyegerakan |
+| [Topik 5: Keselamatan Linux & Kawalan Akses (CU05)](topic-05-linux-security.md) | CU01 | Silibus keselamatan OS Linux komprehesif merangkumi Pentadbiran Pengguna |
+| [Topik 6: Penyelesaian Masalah, Pelekapan Storan, Penapis Teks & Analisis Log](topic-06-troubleshooting-and-logs.md) | CU06 | Silibus penyelesaian masalah sistem, pelekapan storan mount/fstab, penapis |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Manual) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-03*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -57,14 +57,14 @@ def test_manual_cu05_wa05_node_has_lockdown_commands():
 
 def test_skill_cu05_wa01_type_skill_and_content():
     content = read(".agents/skills/cu05-wa01-perform-user-account-and-permission-audits/SKILL.md")
-    assert "type: skill" in content
+    assert "type: agent_skill" in content or "type: skill" in content
     assert "pwck" in content
     assert "visudo -c" in content
     assert "faillock" in content
 
 def test_skill_cu05_wa05_type_skill_and_content():
     content = read(".agents/skills/cu05-wa05-manage-physical-endpoint-security-lockdowns/SKILL.md")
-    assert "type: skill" in content
+    assert "type: agent_skill" in content or "type: skill" in content
     assert "TMOUT" in content
     assert "limits.conf" in content
     assert "grub" in content.lower()
