@@ -156,8 +156,8 @@ def process_file(
             pass
 
     filename = os.path.basename(filepath)
-    if filename in ['index.md', 'log.md'] and rel_path != 'index.md' and not frontmatter_dict:
-        # Reserved subdirectory index.md / log.md without existing frontmatter: keep without frontmatter
+    if filename in ['index.md', 'log.md'] and rel_path != 'index.md':
+        # Reserved subdirectory index.md / log.md MUST NOT carry frontmatter per OKF v0.2 §3.1 & §8
         clean_body = body.strip()
         footer_phrases = ["Harisfazillah Jamel", "LinuxMalaysia"]
         has_footer = any(phrase in clean_body for phrase in footer_phrases) and ("Dwi-Lesen" in clean_body or "CC BY-SA" in clean_body)

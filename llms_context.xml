@@ -28986,23 +28986,6 @@ How-To Guides provide **practical, problem-oriented directions** for completing 
   </file>
   <file path="docs/reference/index.md">
     <content>
-﻿---
-title: "Index"
-description: "DSOM Reference document for Index."
-type: "reference"
-id: "docs/reference/index.md"
-dsom_governance:
-  domain: "AI"
-  context_tier: "L2-Operational"
-tags:
-  - "dsom-protocol"
-  - "diataxis-quadrant"
-related_links:
-  - "docs/reference/index.md"
-nav_order: 10
-layout: "default"
----
-
 # DSOM reference material
 
 Welcome to the **Deep State of Mind (DSOM) Reference Material** quadrant, structured according to the **Diátaxis Framework**.
@@ -29028,23 +29011,6 @@ Reference material provides **highly structured, key factual information** detai
   </file>
   <file path="docs/tutorials/index.md">
     <content>
-﻿---
-title: "Index"
-description: "DSOM Tutorial document for Index."
-type: "tutorial"
-id: "docs/tutorials/index.md"
-dsom_governance:
-  domain: "AI"
-  context_tier: "L2-Operational"
-tags:
-  - "dsom-protocol"
-  - "diataxis-quadrant"
-related_links:
-  - "docs/reference/index.md"
-nav_order: 10
-layout: "default"
----
-
 # DSOM tutorials
 
 Welcome to the **Deep State of Mind (DSOM) Tutorials** quadrant, structured according to the **Diátaxis Framework**.
@@ -56878,37 +56844,6 @@ sources:
   </file>
   <file path=".agents/skills/index.md">
     <content>
----
-spec_version: '0.2'
-okf_version: '0.2'
-type: agent_skill
-title: Master Palace Registry
-description: Master directory mapping all active Sovereign AI Skills within the repository.
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: generate_palace_registry.py / OKF v0.2
-  at: '2026-10-05T01:26:21Z'
-resource: file:///.agents/skills/index.md
-topics:
-- registry
-- dsom
-- noss
-tags:
-- index
-- skills
-- map
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi &amp; Penafian / Legal Notice
-  author: "human:harisfazillah"
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification &amp; Trust Signals
-  author: "team:google-cloud-data-analytics"
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
----
-
 # 🏛️ Master Palace Registry (Skills Index)
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 

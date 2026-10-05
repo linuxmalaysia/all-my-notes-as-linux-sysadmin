@@ -1,20 +1,3 @@
-﻿---
-title: "Index"
-description: "DSOM Tutorial document for Index."
-type: "tutorial"
-id: "docs/tutorials/index.md"
-dsom_governance:
-  domain: "AI"
-  context_tier: "L2-Operational"
-tags:
-  - "dsom-protocol"
-  - "diataxis-quadrant"
-related_links:
-  - "docs/reference/index.md"
-nav_order: 10
-layout: "default"
----
-
 # DSOM tutorials
 
 Welcome to the **Deep State of Mind (DSOM) Tutorials** quadrant, structured according to the **Diátaxis Framework**.

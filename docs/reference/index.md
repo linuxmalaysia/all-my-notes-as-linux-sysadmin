@@ -1,20 +1,3 @@
-﻿---
-title: "Index"
-description: "DSOM Reference document for Index."
-type: "reference"
-id: "docs/reference/index.md"
-dsom_governance:
-  domain: "AI"
-  context_tier: "L2-Operational"
-tags:
-  - "dsom-protocol"
-  - "diataxis-quadrant"
-related_links:
-  - "docs/reference/index.md"
-nav_order: 10
-layout: "default"
----
-
 # DSOM reference material
 
 Welcome to the **Deep State of Mind (DSOM) Reference Material** quadrant, structured according to the **Diátaxis Framework**.

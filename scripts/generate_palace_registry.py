@@ -27,38 +27,7 @@ footer = f"""
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 """
 
-header = f"""---
-spec_version: '0.2'
-okf_version: '0.2'
-type: agent_skill
-title: Master Palace Registry
-description: Master directory mapping all active Sovereign AI Skills within the repository.
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: generate_palace_registry.py / OKF v0.2
-  at: '{timestamp}'
-resource: file:///.agents/skills/index.md
-topics:
-- registry
-- dsom
-- noss
-tags:
-- index
-- skills
-- map
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: "human:harisfazillah"
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: "team:google-cloud-data-analytics"
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
----
-
-# 🏛️ Master Palace Registry (Skills Index)
+header = """# 🏛️ Master Palace Registry (Skills Index)
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
