@@ -202,3 +202,5 @@ def test_openwiki_topic01_no_longer_references_stale_2024_distro_versions():
 def test_skills_index_title_unchanged():
     content = read(SKILLS_INDEX)
     assert "Master Palace Registry" in content
+    match = re.search(r"Harisfazillah Jamel \(LinuxMalaysia\) \| (\d{4}-\d{2}-\d{2})", content)
+    assert match, "Master Palace Registry footer is missing a valid date string."
