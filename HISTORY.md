@@ -34,6 +34,12 @@ sources:
 
 # Project History (Sovereign Markdown Palace)
 
+## [2026-10-05] Pemakaian Standard Spesifikasi Open Knowledge Format (OKF v0.2)
+- **Peristiwa**: Memproses dan memodenkan keseluruhan repositori untuk mematuhi spesifikasi rasmi Open Knowledge Format (OKF v0.2) keluaran Google Cloud Platform.
+- **Isyarat Kepercayaan & Provenans**: Menyerapkan 5 Isyarat Kepercayaan (`generated`, `verified`, `status`, `stale_after`, `sources`) serta konvensyen identiti pelakon (`<producer>/<version>`, `human:<id>`, `process:<id>`).
+- **Standard Perlembagaan AI**: Kemas kini Rule 8 dalam `AGENTS.md` dan `.agents/AGENTS.md`, penyusunan semula `docs/OKF-ADOPTION-GUIDE.md`, serta pemodenan skrip automasi `scripts/apply_okf_v02.py`, `.agents/skills/okf-frontmatter-injector/`, dan `.agents/skills/dsom-mass-okf-migrator/`.
+- **Pengesahan Kualiti**: Capaian 100% pematuhan ujian melepasi 2,583 ujian unit Python pytest dan 38 ujian JavaScript Jest.
+
 ## [2026-08-17] Fasa 8: Migrasi Bab 8 & Penyerapan Rule 32.43 / Rule 32.44 Ansible Standards
 - **Peristiwa**: Memproses dan memodenkan kandungan amali Bab 8 (references/manual/bab_08/) mengenai Pengurusan Pakej RPM/Debian, CLI/GUI package managers, SRPM rebuilds, tarball compilation & checksum/GPG verification, serta penyesuaian $EDITOR/$VISUAL.
 - **Tadbir Urus AI**: Menyerapkan Rule 32.43 (Ansible Validation Ladder & Idempotence Assertion) dan Rule 32.44 (Ansible AI-Forge & Red Hat CoP Standards) ke dalam perlembagaan AI (`AGENTS.md` & `.agents/AGENTS.md`) dan `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md`.

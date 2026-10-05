@@ -42,6 +42,9 @@ dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spe
 ## [Unreleased]
 
 ### Added (Penambahan)
+- **Open Knowledge Format (OKF v0.2) Adoption**: Upgraded repository frontmatter schema across all Markdown files to OKF v0.2 (`spec_version: "0.2"`, `okf_version: "0.2"`, trust signals `generated`/`verified`/`status`/`stale_after`, and `sources` provenance listing `resource` paths and public URLs).
+- **Code Health & Tooling**: Enhanced `scripts/apply_okf_v02.py` with safe `verified` field normalization, string source conversion to resource dicts, and scalar string validation for `id` and `resource` fields.
+- **AI Constitution & Adoption Guide**: Updated Rule 8 in `AGENTS.md` and `.agents/AGENTS.md` and comprehensively updated `docs/OKF-ADOPTION-GUIDE.md` to reflect OKF v0.2 trust signals, actor conventions (`<producer>/<version>`, `human:<id>`, `process:<id>`), index/log reserved file rules, and Attested Computations.
 - **Fasa 8 Migrasi Silibus Bab 8**: Ekstraksi dan pemodenan kandungan amali `references/manual/bab_08/` ke dalam `manual/cu01/cu01-wa05-pemasangan-aplikasi-dan-pemacu-peranti.md` dan `manual/cu05/cu05-wa04-pengurusan-tampalan-dan-kemas-kini-keselamatan.md`.
 - **Governance Rules**: Added **Rule 32.43** (*Automated Ansible Playbook Validation Ladder & Idempotence Assertion Standard*) and **Rule 32.44** (*Ansible Community AI-Forge & Red Hat CoP Automation Good Practices Standard*) to `AGENTS.md` and `.agents/AGENTS.md`.
 - **Skill Extensions**: Extended `.agents/skills/dsom-infrastructure-playbook-documenter/SKILL.md` (Phases 4l & 4m), `.agents/skills/cu01-wa05-install-computer-applications-and-device-drivers/SKILL.md`, and `.agents/skills/cu05-wa04-conduct-application-security-patching/SKILL.md`.
