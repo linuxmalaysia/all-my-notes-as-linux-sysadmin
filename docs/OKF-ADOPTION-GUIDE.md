@@ -94,7 +94,7 @@ sources:
     resource: docs/legal-notice.md
   - id: google-okf-v02-spec
     title: Open Knowledge Format v0.2 Specification
-    author: GoogleCloudPlatform
+    author: "team:google-cloud-data-analytics"
     resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
 ---
 ```
@@ -137,7 +137,11 @@ sources:
 # Computation
 
 ```python
+import sys
 import subprocess
+
+target_env = sys.argv[1] if len(sys.argv) > 1 else "production"
+subprocess.run(["echo", f"Installing NOSS Linux packages into {target_env}"], check=True)
 subprocess.run(["apt-get", "install", "-y", "curl"], check=True)
 ```
 

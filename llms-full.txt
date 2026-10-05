@@ -16472,7 +16472,7 @@ sources:
     resource: docs/legal-notice.md
   - id: google-okf-v02-spec
     title: Open Knowledge Format v0.2 Specification
-    author: GoogleCloudPlatform
+    author: "team:google-cloud-data-analytics"
     resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
 ---
 ```
@@ -16515,7 +16515,11 @@ sources:
 # Computation
 
 ```python
+import sys
 import subprocess
+
+target_env = sys.argv[1] if len(sys.argv) > 1 else "production"
+subprocess.run(["echo", f"Installing NOSS Linux packages into {target_env}"], check=True)
 subprocess.run(["apt-get", "install", "-y", "curl"], check=True)
 ```
 
@@ -21141,7 +21145,7 @@ timestamp: '2026-09-30T00:00:00Z'
 generated:
   by: okf_tooling/v0.2
   at: '2026-10-04T21:42:07Z'
-status: verified
+status: stable
 stale_after: '2027-09-30T00:00:00Z'
 sources:
 - id: internal-legal-notice
@@ -29149,51 +29153,6 @@ layout: "default"
 <!-- BEGIN FILE: docs/how-to/index.md -->
 ## File: docs/how-to/index.md
 
----
-title: Index
-description: DSOM Guide document for Index.
-type: guide
-id: docs/how-to/index.md
-dsom_governance:
-  domain: AI
-  context_tier: L2-Operational
-tags:
-- dsom-protocol
-- diataxis-quadrant
-related_links:
-- docs/reference/index.md
-nav_order: 10
-layout: default
-spec_version: '0.2'
-okf_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:43Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # DSOM how-to guides
 
 Welcome to the **Deep State of Mind (DSOM) How-To Guides** quadrant, structured according to the **Diátaxis Framework**.
@@ -29216,40 +29175,6 @@ How-To Guides provide **practical, problem-oriented directions** for completing 
 
 <!-- BEGIN FILE: docs/reference/index.md -->
 ## File: docs/reference/index.md
-
----
-spec_version: '0.2'
-okf_version: '0.2'
-type: reference
-title: DSOM reference material
-description: Dokumentasi OKF v0.2 bagi index.md.
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:43Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
 
 ﻿---
 title: "Index"
@@ -29294,40 +29219,6 @@ Reference material provides **highly structured, key factual information** detai
 <!-- BEGIN FILE: docs/tutorials/index.md -->
 ## File: docs/tutorials/index.md
 
----
-spec_version: '0.2'
-okf_version: '0.2'
-type: guide
-title: DSOM tutorials
-description: Dokumentasi OKF v0.2 bagi index.md.
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:44Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 ﻿---
 title: "Index"
 description: "DSOM Tutorial document for Index."
@@ -29364,51 +29255,6 @@ Tutorials are **guided, step-by-step learning lessons** designed to help beginne
 
 <!-- BEGIN FILE: docs/explanation/index.md -->
 ## File: docs/explanation/index.md
-
----
-title: Index
-description: DSOM Concept document for Index.
-type: explanation
-id: docs/explanation/index.md
-dsom_governance:
-  domain: AI
-  context_tier: L2-Operational
-tags:
-- dsom-protocol
-- diataxis-quadrant
-related_links:
-- docs/reference/index.md
-nav_order: 10
-layout: default
-spec_version: '0.2'
-okf_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:44Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
 
 # DSOM explanation and architecture
 
@@ -35114,50 +34960,6 @@ graph LR
 <!-- BEGIN FILE: openwiki/index.md -->
 ## File: openwiki/index.md
 
----
-spec_version: '0.2'
-okf_version: '0.2'
-type: explanation
-title: OpenWiki Master Graph
-timestamp: '2026-10-04T09:20:14Z'
-description: Peta grafik keseluruhan (Master Graph) silibus Linux NOSS di dalam OpenWiki.
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: generate_openwiki_graph.py / OKF v0.2
-  at: '2026-10-04T09:20:14Z'
-resource: file:///openwiki/index.md
-topics:
-- openwiki
-- noss-linux
-- graph
-tags:
-- index
-- mermaid
-- map
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # 🧠 OpenWiki Master Graph (Linux NOSS Syllabus)
 
 Dokumen ini memaparkan gambaran visual dan hierarki bagi kesemua topik NOSS (Level 3) Linux yang sedia ada di dalam pangkalan data `openwiki/`. 
@@ -36797,7 +36599,7 @@ timestamp: '2026-08-17T00:00:00Z'
 generated:
   by: okf_tooling/v0.2
   at: '2026-10-04T21:42:08Z'
-status: verified
+status: stable
 stale_after: '2027-08-17T00:00:00Z'
 sources:
 - id: internal-legal-notice
@@ -40105,7 +39907,7 @@ timestamp: '2026-08-17T00:00:00Z'
 generated:
   by: okf_tooling/v0.2
   at: '2026-10-04T21:42:09Z'
-status: verified
+status: stable
 stale_after: '2027-08-17T00:00:00Z'
 sources:
 - id: internal-legal-notice
@@ -41848,55 +41650,6 @@ Di Malaysia, sebarang pelanggaran terhadap pelesenan GPL boleh didakwa di bawah 
 <!-- BEGIN FILE: manual/index.md -->
 ## File: manual/index.md
 
----
-okf_version: '0.2'
-type: reference
-title: Pusat Rujukan Manual NOSS Linux Malaysia (Diátaxis Master Index)
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- manual
-- noss-linux
-- diataxis
-- kurikulum
-- rujukan-setempat
-tags:
-- manual
-- noss
-- diataxis
-- indeks
-- rujukan-setempat
-description: Pusat rujukan bersepadu silibus amali NOSS Linux Malaysia mengikut Kerangka
-  Diátaxis merangkumi CU01 hingga CU06.
-resource: file:///manual/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # 📚 Pusat Rujukan Manual NOSS Linux Malaysia (Diátaxis Master Index)
 
 Selamat datang ke **Sovereign Manual NOSS Linux Malaysia**. Halaman ini berfungsi sebagai **pusat rujukan sehenti (*centralised local reference portal*)** bagi pengendali manusia dan ejen AI. 
@@ -41964,54 +41717,6 @@ graph TD
 <!-- BEGIN FILE: manual/cu02/index.md -->
 ## File: manual/cu02/index.md
 
----
-okf_version: '0.2'
-type: reference
-title: 'CU02: Pengurusan Storan & Infrastruktur Pemayaan'
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- noss-linux
-- cu02
-- kurikulum-tvet
-- manual-linux
-tags:
-- cu02
-- linux
-- noss
-- modul-amali
-- standard-malaysia
-description: Modul NOSS Level 3 untuk pengurusan partisi cakera, sistem fail Linux,
-  LVM, dan pelaksanaan pemayaan Jenis 2 (KVM / QEMU / VirtualBox).
-resource: file:///manual/cu02/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # CU02: Pengurusan Storan & Infrastruktur Pemayaan
 
 ## 📖 Pengenalan Unit Kompetensi
@@ -42054,54 +41759,6 @@ Modul NOSS Level 3 untuk pengurusan partisi cakera, sistem fail Linux, LVM, dan 
 
 <!-- BEGIN FILE: manual/cu01/index.md -->
 ## File: manual/cu01/index.md
-
----
-okf_version: '0.2'
-type: reference
-title: 'CU01: Persediaan Sistem Komputer & Desktop Linux'
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- noss-linux
-- cu01
-- kurikulum-tvet
-- manual-linux
-tags:
-- cu01
-- linux
-- noss
-- modul-amali
-- standard-malaysia
-description: Modul NOSS Level 3 untuk persediaan perkakasan komputer, pemasangan OS
-  Linux desktop, konfigurasi peranti dan rangkaian endpoint.
-resource: file:///manual/cu01/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
 
 # CU01: Persediaan Sistem Komputer & Desktop Linux
 
@@ -42149,54 +41806,6 @@ Modul NOSS Level 3 untuk persediaan perkakasan komputer, pemasangan OS Linux des
 <!-- BEGIN FILE: manual/cu04/index.md -->
 ## File: manual/cu04/index.md
 
----
-okf_version: '0.2'
-type: reference
-title: 'CU04: Automasi, Sandaran & Pemulihan Sistem'
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- noss-linux
-- cu04
-- kurikulum-tvet
-- manual-linux
-tags:
-- cu04
-- linux
-- noss
-- modul-amali
-- standard-malaysia
-description: Modul NOSS Level 3 merangkumi alatan sandaran, automasi skrip shell,
-  cron jobs, dan prosedur pemulihan bencana (Disaster Recovery).
-resource: file:///manual/cu04/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # CU04: Automasi, Sandaran & Pemulihan Sistem
 
 ## 📖 Pengenalan Unit Kompetensi
@@ -42239,54 +41848,6 @@ Modul NOSS Level 3 merangkumi alatan sandaran, automasi skrip shell, cron jobs, 
 
 <!-- BEGIN FILE: manual/cu03/index.md -->
 ## File: manual/cu03/index.md
-
----
-okf_version: '0.2'
-type: reference
-title: 'CU03: Pentadbiran & Perkhidmatan Pelayan Linux'
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- noss-linux
-- cu03
-- kurikulum-tvet
-- manual-linux
-tags:
-- cu03
-- linux
-- noss
-- modul-amali
-- standard-malaysia
-description: Modul NOSS Level 3 bagi perancangan, pemasangan sistem operasi pelayan
-  (AlmaLinux 10 / Ubuntu Server), konfigurasi teras dan servis pelayan.
-resource: file:///manual/cu03/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
 
 # CU03: Pentadbiran & Perkhidmatan Pelayan Linux
 
@@ -42332,54 +41893,6 @@ Modul NOSS Level 3 bagi perancangan, pemasangan sistem operasi pelayan (AlmaLinu
 <!-- BEGIN FILE: manual/cu06/index.md -->
 ## File: manual/cu06/index.md
 
----
-okf_version: '0.2'
-type: reference
-title: 'CU06: Sokongan Pengguna, Troubleshooting & Penyelenggaraan'
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- noss-linux
-- cu06
-- kurikulum-tvet
-- manual-linux
-tags:
-- cu06
-- linux
-- noss
-- modul-amali
-- standard-malaysia
-description: Modul NOSS Level 3 merangkumi analisis log systemd journald, diagnostik
-  masalah perkakasan/perisian, dan penyelesaian insiden teknikal.
-resource: file:///manual/cu06/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # CU06: Sokongan Pengguna, Troubleshooting & Penyelenggaraan
 
 ## 📖 Pengenalan Unit Kompetensi
@@ -42424,54 +41937,6 @@ Modul NOSS Level 3 merangkumi analisis log systemd journald, diagnostik masalah 
 
 <!-- BEGIN FILE: manual/cu05/index.md -->
 ## File: manual/cu05/index.md
-
----
-okf_version: '0.2'
-type: reference
-title: 'CU05: Kawalan Keselamatan Endpoint & Pengerasan Linux'
-timestamp: '2026-08-17T00:00:00Z'
-topics:
-- noss-linux
-- cu05
-- kurikulum-tvet
-- manual-linux
-tags:
-- cu05
-- linux
-- noss
-- modul-amali
-- standard-malaysia
-description: Modul NOSS Level 3 bagi pengurusan audit akaun, kawalan firewall, pengurusan
-  tampalan keselamatan, dan dasar keselamatan ISO/IEC 27001.
-resource: file:///manual/cu05/index.md
-spec_version: '0.2'
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-02T08:43:45Z'
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
 
 # CU05: Kawalan Keselamatan Endpoint & Pengerasan Linux
 
@@ -49714,23 +49179,33 @@ Use this skill when the user asks to extract comments, feedback, or highlighted 
 spec_version: '0.2'
 okf_version: '0.2'
 type: agent_skill
-title: 💉 OKF Frontmatter Injector
-description: Dokumentasi OKF v0.2 bagi SKILL.md.
+title: okf-frontmatter-injector
+description: Scans a target directory and automatically injects OKF v0.2 YAML frontmatter
+  into Markdown files.
 status: stable
 stale_after: '2027-12-31'
 generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  by: okf_tooling/v0.2
   at: '2026-10-02T08:43:44Z'
+topics:
+- okf
+- frontmatter
+- yaml
+- compliance
+- markdown
+tags:
+- okf
+- frontmatter
+- yaml
+- compliance
 sources:
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
+  author: human:harisfazillah
   resource: docs/legal-notice.md
 - id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  title: Open Knowledge Format v0.2 Specification
+  author: team:google-cloud-data-analytics
   resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
 - id: redlinesoft-attested-computations
   title: Attested Computations in Open Knowledge Format (OKF v0.2)
@@ -49742,15 +49217,6 @@ sources:
   author: Deep State of Mind (DSOM)
   url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
   resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
-﻿---
-okf_version: 0.1
-type: agent_skill
-title: okf-frontmatter-injector
-description: Scans a target directory and automatically injects OKF v0.2 YAML frontmatter into Markdown files.
-topics: [okf, frontmatter, yaml, compliance, markdown]
-timestamp: 2026-07-04T10:00:00Z
 ---
 
 # 💉 OKF Frontmatter Injector
@@ -52945,7 +52411,7 @@ timestamp: '2026-08-17T00:00:00Z'
 generated:
   by: okf_tooling/v0.2
   at: '2026-10-04T21:42:08Z'
-status: verified
+status: stable
 stale_after: '2027-08-17T00:00:00Z'
 sources:
 - id: internal-legal-notice
@@ -57847,7 +57313,7 @@ status: stable
 stale_after: '2027-12-31'
 generated:
   by: generate_palace_registry.py / OKF v0.2
-  at: '2026-10-04T23:03:22Z'
+  at: '2026-10-05T01:26:21Z'
 resource: file:///.agents/skills/index.md
 topics:
 - registry
@@ -57860,24 +57326,12 @@ tags:
 sources:
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
+  author: "human:harisfazillah"
   resource: docs/legal-notice.md
 - id: google-okf-v02-spec
   title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  author: "team:google-cloud-data-analytics"
   resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
 # 🏛️ Master Palace Registry (Skills Index)
@@ -58001,7 +57455,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`noss-glossary-syncer`** <br> *NOSS Glossary Syncer* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`noss-linguistic-auditor`** <br> *NOSS Linguistic Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`odp-slide-generator`** <br> *odp-slide-generator* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
-| **`okf-frontmatter-injector`** <br> *💉 OKF Frontmatter Injector* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
+| **`okf-frontmatter-injector`** <br> *okf-frontmatter-injector* | Scans a target directory and automatically injects OKF v0.2 YAML frontmatter into Markdown files. | okf, frontmatter, yaml, compliance, markdown |
 | **`openwiki-graph-generator`** <br> *OpenWiki Graph Generator* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`palace-auditor`** <br> *🕵️ Palace Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`pdf-text-extractor`** <br> *PDF Text Extractor Workflow* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
@@ -58015,7 +57469,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *TVET Tools, Equipment, and Materials (TEM) Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-04*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-05*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
 
 <!-- END FILE: .agents/skills/index.md -->

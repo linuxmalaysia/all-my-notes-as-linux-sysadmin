@@ -26,6 +26,12 @@ def get_markdown_files():
 @pytest.mark.parametrize("filepath", get_markdown_files())
 def test_okf_v02_frontmatter(filepath):
     """Verify that the markdown file begins with valid OKF v0.2 YAML frontmatter and trust signals."""
+    norm_path = filepath.replace("\\", "/")
+    filename = os.path.basename(norm_path)
+    if filename in ["index.md", "log.md"] and norm_path not in ["./index.md", "index.md"]:
+        # Reserved files in subdirectories do not carry frontmatter per OKF v0.2 §3.1 & §8
+        return
+
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
         

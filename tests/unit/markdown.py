@@ -27,6 +27,12 @@ def test_markdown_okf_compliance(filepath):
     """Mengesahkan fail markdown bermula dengan 'frontmatter' YAML OKF v0.1 yang sah."""
     assert os.path.exists(filepath), f"Fail Markdown tidak wujud: {filepath}"
 
+    norm_path = filepath.replace("\\", "/")
+    filename = os.path.basename(norm_path)
+    if filename in ["index.md", "log.md"] and norm_path not in ["./index.md", "index.md"]:
+        # Reserved subdirectory index.md / log.md carry no frontmatter per OKF v0.2 §3.1 & §8
+        return
+
     with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:
         content = f.read()
 

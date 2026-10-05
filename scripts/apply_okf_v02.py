@@ -155,6 +155,32 @@ def process_file(
         except yaml.YAMLError:
             pass
 
+    filename = os.path.basename(filepath)
+    if filename in ['index.md', 'log.md'] and rel_path != 'index.md' and not frontmatter_dict:
+        # Reserved subdirectory index.md / log.md without existing frontmatter: keep without frontmatter
+        clean_body = body.strip()
+        footer_phrases = ["Harisfazillah Jamel", "LinuxMalaysia"]
+        has_footer = any(phrase in clean_body for phrase in footer_phrases) and ("Dwi-Lesen" in clean_body or "CC BY-SA" in clean_body)
+
+        if not has_footer:
+            clean_body = clean_body + "\n\n" + SOVEREIGN_FOOTER
+        else:
+            if "[Notis Perundangan" not in clean_body and "/docs/legal-notice.md" not in clean_body:
+                clean_body = clean_body + "\n\n" + SOVEREIGN_FOOTER
+
+        formatted_content = f"{clean_body}\n"
+        if formatted_content == content:
+            return True, False
+
+        try:
+            with open(filepath, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(formatted_content)
+        except OSError as err:
+            print(f"[ERROR] Cannot write reserved file {rel_path}: {err}", file=sys.stderr)
+            return False, False
+
+        return True, True
+
     okf_type = get_okf_type(rel_path, frontmatter_dict.get('type'))
     title = frontmatter_dict.get('title') or frontmatter_dict.get('name') or extract_title(body, os.path.basename(filepath))
     description = frontmatter_dict.get('description') or f"Dokumentasi OKF v0.2 bagi {os.path.basename(filepath)}."

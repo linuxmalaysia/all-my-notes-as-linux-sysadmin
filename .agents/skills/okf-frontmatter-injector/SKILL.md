@@ -2,23 +2,33 @@
 spec_version: '0.2'
 okf_version: '0.2'
 type: agent_skill
-title: 💉 OKF Frontmatter Injector
-description: Dokumentasi OKF v0.2 bagi SKILL.md.
+title: okf-frontmatter-injector
+description: Scans a target directory and automatically injects OKF v0.2 YAML frontmatter
+  into Markdown files.
 status: stable
 stale_after: '2027-12-31'
 generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
+  by: okf_tooling/v0.2
   at: '2026-10-02T08:43:44Z'
+topics:
+- okf
+- frontmatter
+- yaml
+- compliance
+- markdown
+tags:
+- okf
+- frontmatter
+- yaml
+- compliance
 sources:
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
+  author: human:harisfazillah
   resource: docs/legal-notice.md
 - id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
+  title: Open Knowledge Format v0.2 Specification
+  author: team:google-cloud-data-analytics
   resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
 - id: redlinesoft-attested-computations
   title: Attested Computations in Open Knowledge Format (OKF v0.2)
@@ -30,15 +40,6 @@ sources:
   author: Deep State of Mind (DSOM)
   url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
   resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
-﻿---
-okf_version: 0.1
-type: agent_skill
-title: okf-frontmatter-injector
-description: Scans a target directory and automatically injects OKF v0.2 YAML frontmatter into Markdown files.
-topics: [okf, frontmatter, yaml, compliance, markdown]
-timestamp: 2026-07-04T10:00:00Z
 ---
 
 # 💉 OKF Frontmatter Injector
