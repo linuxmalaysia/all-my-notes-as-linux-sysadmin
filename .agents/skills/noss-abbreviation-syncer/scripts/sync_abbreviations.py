@@ -34,9 +34,8 @@ def run_sync():
         for m in matches:
             full = m[0].strip()
             acronym = m[1].strip()
-            if len(full.split()) <= 6 and acronym.isupper():
-                if acronym not in merged:
-                    merged[acronym] = full
+            if len(full.split()) <= 6 and acronym.isupper() and acronym not in merged:
+                merged[acronym] = full
     else:
         print("Warning: extracted_noss.md not found.")
         noss_content = ""
@@ -65,16 +64,26 @@ def run_sync():
     with open(JSON_DUMP_PATH, 'w', encoding='utf-8') as f:
         json.dump(json_data, f, indent=2)
     
-    timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # Build the new OKF compliant Markdown
     markdown_output = f"""---
-okf_version: 0.1
+spec_version: "0.2"
+okf_version: "0.2"
 type: documentation
 title: "ICT Abbreviations & Standard Definitions"
 description: "Standard ICT acronyms and definitions to support NOSS framework learning."
-timestamp: {timestamp}
+status: stable
+stale_after: "2027-12-31"
+generated:
+  by: "noss_syncer/v0.2"
+  at: "{timestamp}"
 topics: [abbreviations, definitions, ict, noss]
+sources:
+  - id: internal-legal-notice
+    resource: docs/legal-notice.md
+  - id: google-okf-v02-spec
+    resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
 ---
 
 # Unified Abbreviations Reference Matrix

@@ -437,8 +437,9 @@ def test_skill_md_footer_signature_dated_2026_08_17():
 
 def test_skills_index_timestamp_updated():
     content = read(".agents/skills/index.md")
-    timestamp = get_frontmatter_timestamp(content)
-    assert re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", timestamp)
+    assert "Master Palace Registry" in content
+    match = re.search(r"Harisfazillah Jamel \(LinuxMalaysia\) \| (\d{4}-\d{2}-\d{2})", content)
+    assert match, "Master Palace Registry footer is missing a valid date string."
 
 
 @pytest.mark.parametrize("skill_name,expected_snippet", [

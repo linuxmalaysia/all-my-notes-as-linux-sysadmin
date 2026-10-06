@@ -53,15 +53,103 @@ layout: "default"
 
 ## What is the Open Knowledge Format (OKF)?
 
-Introduced by Google Cloud on June 12, 2026, the **Open Knowledge Format (OKF)** is a vendor-neutral, open specification designed to solve the "context decay" problem in AI-driven development. 
+Introduced by Google Cloud Platform, the **Open Knowledge Format (OKF v0.2)** is an open, vendor-neutral specification designed for representing *knowledge*: the metadata, context, trust signals, and curated insight surrounding data and systems.
 
-Historically, AI agents struggle because organizational knowledge is scattered or formatted poorly. OKF creates a standardised "common language" by structuring knowledge so that it is equally readable by human engineers and autonomous AI agents. By enforcing YAML frontmatter and strict architectural placement, OKF allows AI to map out knowledge domains without reading entire files blindly.
+OKF v0.2 addresses the key challenges of agent-maintained knowledge corpora:
+1. **Provenance:** What was this created from, and how was it verified? (`sources`)
+2. **Trust:** How much should I trust it? (`generated`, `verified`, trust tiers)
+3. **Freshness:** Is it still true? (`stale_after`)
+4. **Lifecycle:** Is it current? (`status`)
+5. **Attestation:** Was this value/computation produced the sanctioned way? (`Attested Computation`)
+
+---
+
+## OKF v0.2 Core Frontmatter Specification
+
+Every non-reserved OKF v0.2 concept document consists of YAML frontmatter delimited by `---` and a free-form Markdown body. Note that reserved files `index.md` and `log.md` contain no frontmatter, with one exception: a bundle-root `index.md` MAY carry an `okf_version: "0.2"` key in frontmatter.
+
+### Required & Recommended Fields
+
+```yaml
+---
+spec_version: "0.2"
+okf_version: "0.2"
+type: explanation                  # REQUIRED: Concept type (e.g. guide, reference, explanation, agent_skill, Attested Computation)
+title: "Topik 01: Desktop Linux"   # Display name
+description: "Silibus asas Sistem Operasi Linux dipetakan kepada NOSS CU01."
+resource: "openwiki/topic-01-linux-desktop-and-basics.md"  # URI or bundle-relative path
+tags: [linux, desktop, cu01]
+status: stable                     # draft | stable | deprecated
+stale_after: "2027-12-31T00:00:00Z"
+generated:
+  by: okf_tooling/v0.2
+  at: "2026-10-02T08:43:43Z"
+verified:
+  - by: "human:harisfazillah"
+    at: "2026-10-02T09:00:00Z"
+sources:
+  - id: internal-legal-notice
+    title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
+    author: "human:harisfazillah"
+    resource: docs/legal-notice.md
+  - id: google-okf-v02-spec
+    title: Open Knowledge Format v0.2 Specification
+    author: "team:google-cloud-data-analytics"
+    resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
+---
+```
+
+### Actor Identification Convention (§7)
+
+Identity strings in `generated.by` and `verified[].by` follow standard prefixes:
+- `<producer>/<version>` for agents/tools (e.g., `okf_tooling/v0.2`, `jules_agent/v1.0`).
+- `human:<id>` for people (e.g., `human:harisfazillah`).
+- `process:<id>` for automated CI/CD processes (e.g., `process:nightly-audit`).
+
+### Attested Computation Concepts (§10)
+
+For executable playbooks, automation tools, or calculations, use `type: Attested Computation`:
+
+```yaml
+---
+spec_version: "0.2"
+okf_version: "0.2"
+type: Attested Computation
+title: "Pemasangan Pakej Linux Automated"
+description: "Skrip automasi bagi pemasangan pakej Linux NOSS."
+status: stable
+runtime: python                    # e.g., python, ansible, bigquery, bash
+parameters:
+  - { name: target_environment, type: string, required: true }
+executor:
+  resource: references/skills/install_packages.py
+  receipt: [exit_code, stdout, stderr]
+attester:
+  resource: tests/test_okf_compliance.py
+generated:
+  by: okf_tooling/v0.2
+  at: "2026-10-02T08:43:43Z"
+sources:
+  - id: internal-legal-notice
+    resource: docs/legal-notice.md
+---
+
+# Computation
+
+```python
+import sys
+import subprocess
+
+target_env = sys.argv[1] if len(sys.argv) > 1 else "production"
+subprocess.run(["echo", f"Installing NOSS Linux packages into {target_env}"], check=True)
+subprocess.run(["apt-get", "install", "-y", "curl"], check=True)
+```
 
 ---
 
 ## OKF in Linux for NOSS Malaysia
 
-In the **Linux for NOSS Malaysia** project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS). 
+In the **Linux for NOSS Malaysia** project, our goal is to build an open-source, AI-ready repository mapping Linux skills to the Malaysian National Occupational Skills Standard (NOSS).
 
 To ensure AI agents can navigate our massive syllabus, we have strictly adopted OKF v0.2 across our **Sovereign Markdown Palace** architecture.
 
@@ -69,38 +157,9 @@ To ensure AI agents can navigate our massive syllabus, we have strictly adopted 
 
 Our primary syllabus content lives in the `openwiki/` directory. Each NOSS Competency Unit (CU) is distilled into a single markdown node. To be OKF-compliant, every node must begin with a structured YAML frontmatter block.
 
-**Example implementation in `openwiki/topic-01-linux-desktop-and-basics.md`:**
-```yaml
----
-okf_version: 0.2
-type: documentation
-title: "topic-01-linux-desktop-and-basics"
-timestamp: "2026-08-16T08:00:00Z"
-topics: ["linux-desktop", "cu01"]
-tags: ["linux", "desktop", "cu01"]
-description: "Silibus asas Sistem Operasi Linux (Desktop, FHS, APT/YUM) dipetakan kepada NOSS CU01."
-resource: "file:///openwiki/topic-01-linux-desktop-and-basics.md"
----
-```
-
 ### 2. AI Agent Skills (`.agents/skills/`)
 
-Repositori ini turut menyimpan kemahiran AI berfungsi yang dipetakan kepada modul NOSS Tahap 3. Arahan yang mengawal cara AI melaksanakan tugasan (fail `SKILL.md`) juga mematuhi standard OKF v0.2 secara ketat.
-
-We maintain the exact same schema for our skills to ensure the AI knows it is reading an executable skill rather than static documentation:
-
-```yaml
----
-okf_version: 0.2
-type: skill
-title: "cu03-wa04-perform-core-server-configurations"
-timestamp: "2026-08-16T08:00:00Z"
-topics: ["linux-server", "cu03"]
-tags: ["linux", "server", "cu03"]
-description: "Skill to perform core Linux server configuration."
-resource: "file:///.agents/skills/cu03-wa04-perform-core-server-configurations/SKILL.md"
----
-```
+Repositori ini turut menyimpan kemahiran AI berfungsi yang dipetakan kepada modul NOSS Tahap 3. Arahan yang mengawal cara AI melaksanakan tugasan (fail `SKILL.md`) juga mematuhi standard OKF v0.2 secara ketat (`type: agent_skill`).
 
 ---
 
@@ -119,7 +178,7 @@ To maintain legal compliance and verify that an AI generated the content correct
 
 ## Conclusion
 
-By adopting OKF v0.1 alongside our strict Dual-License footers, the **Linux for NOSS Malaysia** repository is more than just a collection of Markdown files. It is a highly optimized, machine-readable knowledge graph that allows external AI agents to digest, update, and contribute to the national skills syllabus with extreme accuracy and minimal context loss.
+By adopting OKF v0.2 alongside our strict Dual-License footers, the **Linux for NOSS Malaysia** repository is a highly optimized, machine-readable knowledge graph that allows external AI agents to digest, update, and contribute to the national skills syllabus with extreme accuracy, proven trust signals, and minimal context loss.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

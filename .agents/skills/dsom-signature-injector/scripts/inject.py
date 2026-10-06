@@ -5,12 +5,12 @@ inject.py skill/script, adhering to the DSOM architecture.
 """
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def get_last_modified_date(filepath):
     timestamp = os.path.getmtime(filepath)
-    return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
+    return datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime('%Y-%m-%d')
 
 def get_sh_yml_header(date_str):
     return f"""# ==============================================================================

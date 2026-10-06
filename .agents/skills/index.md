@@ -1,46 +1,3 @@
----
-spec_version: '0.2'
-okf_version: '0.2'
-type: agent_skill
-title: Master Palace Registry
-description: Master directory mapping all active Sovereign AI Skills within the repository.
-status: stable
-stale_after: '2027-12-31'
-generated:
-  by: generate_palace_registry.py / OKF v0.2
-  at: '2026-10-04T16:13:46Z'
-resource: file:///.agents/skills/index.md
-topics:
-- registry
-- dsom
-- noss
-tags:
-- index
-- skills
-- map
-sources:
-- id: internal-legal-notice
-  title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
-  author: Harisfazillah Jamel (LinuxMalaysia)
-  url: docs/legal-notice.md
-  resource: docs/legal-notice.md
-- id: google-okf-v02-spec
-  title: Open Knowledge Format v0.2 Specification & Trust Signals
-  author: Google Cloud Data Analytics
-  url: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-  resource: https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals
-- id: redlinesoft-attested-computations
-  title: Attested Computations in Open Knowledge Format (OKF v0.2)
-  author: RedLineSoft
-  url: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-  resource: https://blog.redlinesoft.net/posts/attested-computations-in-open-knowledge-format/
-- id: dsom-okf-v02-adoption-skill
-  title: OKF v0.2 Adoption Engineer Skill Standard
-  author: Deep State of Mind (DSOM)
-  url: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
-  resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
----
-
 # 🏛️ Master Palace Registry (Skills Index)
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
@@ -162,7 +119,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`noss-glossary-syncer`** <br> *NOSS Glossary Syncer* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`noss-linguistic-auditor`** <br> *NOSS Linguistic Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`odp-slide-generator`** <br> *odp-slide-generator* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
-| **`okf-frontmatter-injector`** <br> *💉 OKF Frontmatter Injector* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
+| **`okf-frontmatter-injector`** <br> *okf-frontmatter-injector* | Scans a target directory and automatically injects OKF v0.2 YAML frontmatter into Markdown files. | okf, frontmatter, yaml, compliance, markdown |
 | **`openwiki-graph-generator`** <br> *OpenWiki Graph Generator* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`palace-auditor`** <br> *🕵️ Palace Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`pdf-text-extractor`** <br> *PDF Text Extractor Workflow* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
@@ -176,5 +133,5 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** <br> *TVET Tools, Equipment, and Materials (TEM) Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-04*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-05*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

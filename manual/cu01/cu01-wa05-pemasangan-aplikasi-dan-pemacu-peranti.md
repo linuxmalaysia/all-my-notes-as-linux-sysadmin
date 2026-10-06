@@ -3,13 +3,12 @@ okf_version: '0.2'
 type: reference
 title: 'CU01-WA05: Pemasangan Aplikasi & Pemacu Peranti Linux'
 timestamp: '2026-08-17T00:00:00Z'
-generated: '2026-08-17T00:00:00Z'
-verified: '2026-08-17T00:00:00Z'
-status: verified
+generated:
+  by: okf_tooling/v0.2
+  at: '2026-10-04T21:42:08Z'
+status: stable
 stale_after: '2027-08-17T00:00:00Z'
 sources:
-- references/manual/bab_08/part_01.md
-- references/manual/bab_08/part_02.md
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
   author: Harisfazillah Jamel (LinuxMalaysia)

@@ -155,6 +155,32 @@ def process_file(
         except yaml.YAMLError:
             pass
 
+    filename = os.path.basename(filepath)
+    if filename in ['index.md', 'log.md'] and rel_path != 'index.md':
+        # Reserved subdirectory index.md / log.md MUST NOT carry frontmatter per OKF v0.2 §3.1 & §8
+        clean_body = body.strip()
+        footer_phrases = ["Harisfazillah Jamel", "LinuxMalaysia"]
+        has_footer = any(phrase in clean_body for phrase in footer_phrases) and ("Dwi-Lesen" in clean_body or "CC BY-SA" in clean_body)
+
+        if not has_footer:
+            clean_body = clean_body + "\n\n" + SOVEREIGN_FOOTER
+        else:
+            if "[Notis Perundangan" not in clean_body and "/docs/legal-notice.md" not in clean_body:
+                clean_body = clean_body + "\n\n" + SOVEREIGN_FOOTER
+
+        formatted_content = f"{clean_body}\n"
+        if formatted_content == content:
+            return True, False
+
+        try:
+            with open(filepath, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(formatted_content)
+        except OSError as err:
+            print(f"[ERROR] Cannot write reserved file {rel_path}: {err}", file=sys.stderr)
+            return False, False
+
+        return True, True
+
     okf_type = get_okf_type(rel_path, frontmatter_dict.get('type'))
     title = frontmatter_dict.get('title') or frontmatter_dict.get('name') or extract_title(body, os.path.basename(filepath))
     description = frontmatter_dict.get('description') or f"Dokumentasi OKF v0.2 bagi {os.path.basename(filepath)}."
@@ -169,25 +195,62 @@ def process_file(
     new_fm['stale_after'] = frontmatter_dict.get('stale_after', '2027-12-31')
 
     now_iso = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-    new_fm['generated'] = frontmatter_dict.get('generated') or {
-        'by': generator_id,
-        'at': now_iso
-    }
+    existing_gen = frontmatter_dict.get('generated')
+    if isinstance(existing_gen, dict) and 'by' in existing_gen and 'at' in existing_gen:
+        new_fm['generated'] = existing_gen
+    else:
+        new_fm['generated'] = {
+            'by': 'okf_tooling/v0.2',
+            'at': now_iso
+        }
 
-    # Only include verified if explicitly present in existing metadata
-    if frontmatter_dict.get('verified'):
-        new_fm['verified'] = frontmatter_dict['verified']
+    # Normalize verified if explicitly present in existing metadata
+    if 'verified' in frontmatter_dict:
+        v_data = frontmatter_dict['verified']
+        normalized_verified = []
+        if isinstance(v_data, dict):
+            v_list = [v_data]
+        elif isinstance(v_data, list):
+            v_list = v_data
+        else:
+            v_list = []
+
+        for item in v_list:
+            if isinstance(item, dict) and 'by' in item and 'at' in item:
+                normalized_verified.append(item)
+
+        if normalized_verified:
+            new_fm['verified'] = normalized_verified
+        else:
+            new_fm.pop('verified', None)
 
     existing_sources = frontmatter_dict.get('sources', [])
     if not isinstance(existing_sources, list):
         existing_sources = []
 
-    merged_sources = list(existing_sources)
-    existing_ids = {s.get('id') for s in merged_sources if isinstance(s, dict) and 'id' in s}
-    existing_urls = {s.get('url') or s.get('resource') for s in merged_sources if isinstance(s, dict)}
+    merged_sources = []
+    for s in existing_sources:
+        if isinstance(s, str):
+            merged_sources.append({'resource': s})
+        elif isinstance(s, dict):
+            s_copy = dict(s)
+            if 'url' in s_copy and 'resource' not in s_copy:
+                s_copy['resource'] = s_copy['url']
+            merged_sources.append(s_copy)
+
+    existing_ids = set()
+    existing_resources = set()
+    for s in merged_sources:
+        if isinstance(s, dict):
+            s_id = s.get('id')
+            if isinstance(s_id, (str, int)):
+                existing_ids.add(str(s_id))
+            res = s.get('resource') or s.get('url')
+            if isinstance(res, (str, int)):
+                existing_resources.add(str(res))
 
     for m_src in MANDATORY_SOURCES:
-        if m_src['id'] not in existing_ids and m_src['url'] not in existing_urls:
+        if m_src['id'] not in existing_ids and m_src['resource'] not in existing_resources:
             merged_sources.append(m_src)
 
     new_fm['sources'] = merged_sources
