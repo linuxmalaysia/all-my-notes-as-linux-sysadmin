@@ -12,6 +12,7 @@ Modul NOSS Level 3 bagi perancangan, pemasangan sistem operasi pelayan (AlmaLinu
 - [**Pemasangan Sistem Operasi Pelayan Linux**](cu03-wa03-pemasangan-sistem-operasi-pelayan.md) — *Pemasangan mod pelayan minimum (AlmaLinux 10 Server / Ubuntu Server 26.04 LTS).*
 - [**Konfigurasi Teras Pelayan Linux**](cu03-wa04-konfigurasi-teras-pelayan.md) — *Konfigurasi systemd, hostname, zon masa (Chrony NTP), SSH hardening, dan repositori.*
 - [**Pelaksanaan Servis Pelayan (Web, DNS, DHCP, Perkongsian Fail)**](cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md) — *Konfigurasi Nginx/Apache, BIND9 DNS, Kea DHCP, dan Samba/NFS file server.*
+- [**Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise**](cu03-wa05-solusi-pangkalan-data-kebolehseediaan-tinggi.md) — *MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II.*
 - [**Pengurusan Perkakasan & Antaramuka Pengurusan Pelayan**](cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md) — *Pemantauan kesihatan IPMI/iDRAC/iLO, penderia suhu, dan log perkakasan menerusi OpenIPMI.*
 
 ---

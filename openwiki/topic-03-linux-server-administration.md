@@ -86,6 +86,7 @@ Silibus ini memandu modul amali di `manual/cu03/` dan kemahiran AI di `.agents/s
 - `manual/cu03/cu03-wa03-pemasangan-sistem-operasi-pelayan.md` ➔ `.agents/skills/cu03-wa03-install-server-operating-system/`
 - `manual/cu03/cu03-wa04-konfigurasi-teras-pelayan.md` ➔ `.agents/skills/cu03-wa04-perform-core-server-configurations/`
 - `manual/cu03/cu03-wa05-pelaksanaan-peranan-dan-servis-pelayan.md` ➔ `.agents/skills/cu03-wa05-implement-server-roles-and-services/`
+- `manual/cu03/cu03-wa05-solusi-pangkalan-data-kebolehseediaan-tinggi.md` ➔ `.agents/skills/solusi-pangkalan-data-ha/`
 - `manual/cu03/cu03-wa06-pengurusan-perkakasan-dan-antaramuka-pelayan.md` ➔ `.agents/skills/cu03-wa06-manage-server-hardware/`
 
 ---
