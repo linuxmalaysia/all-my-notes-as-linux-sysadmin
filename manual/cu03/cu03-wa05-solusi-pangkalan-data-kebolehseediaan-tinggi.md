@@ -347,7 +347,7 @@ other_wd_port0 = 9000
 #### C. Skrip Failover Pgpool (`/etc/pgpool-II/failover.sh`)
 
 Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.
-*Nota Keselamatan & Laluan:* Kunci SSH hendaklah diprekonfigurasi di dalam `~postgres/.ssh/known_hosts` dengan syarat `command="..."` terhad (restricted key). Laluan `PGHOME` dan `PGDATA` dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.
+*Nota Keselamatan & Laluan:* Kunci hos pelayan (*server host-key pins*) hendaklah disimpan di dalam `~postgres/.ssh/known_hosts` pada hos Pgpool-II. Kunci awam pelanggan yang terhad (*restricted client public key*) bersama pilihan arahan dipaksa (*forced-command option*) dipasang di dalam `~postgres/.ssh/authorized_keys` pada akaun pelayan sasaran. Laluan `PGHOME` dan `PGDATA` dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.
 
 ```bash
 #!/usr/bin/env bash
@@ -396,6 +396,8 @@ Dikeksekusi oleh Pgpool-II selepas pemajuan nod Utama baharu untuk melaras semul
 
 ```bash
 #!/usr/bin/env bash
+set -e
+
 # Parameter %d = ID nod terjejas, %h = hos terjejas, %m = ID master baharu, %H = hos master baharu, %P = ID utama lama
 DETACHED_NODE_ID="$1"
 DETACHED_HOST="$2"
@@ -409,22 +411,43 @@ PGDATA="${PGDATA:-/var/lib/postgresql/15/main}"
 
 echo "[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}..." >> "$LOGFILE"
 
-# Sekiranya nod terjejas ialah Primary lama, hentikan perkhidmatannya untuk mengelakkan split-brain
+# Sekiranya nod terjejas ialah Primary lama, hentikan perkhidmatannya sebelum penyesuaian semula
 if [ "$DETACHED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
     echo "[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula..." >> "$LOGFILE"
-    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}" || true
+    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}"; then
+        echo "[$(date)] RALT: Gagal menghentikan perkhidmatan pada ${DETACHED_HOST}" >> "$LOGFILE"
+        exit 1
+    fi
 fi
 
-# Eksekusi penyelarasan penyalinan semula ke Utama baharu
-ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-    "${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'" || true
+# Eksekusi pg_rewind bersama konfigurasi mod pemulihan penantian (--write-recovery-conf)
+echo "[$(date)] Eksekusi pg_rewind pada ${DETACHED_HOST}..." >> "$LOGFILE"
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'"; then
+    echo "[$(date)] RALT: pg_rewind gagal pada ${DETACHED_HOST}" >> "$LOGFILE"
+    exit 1
+fi
 
 # Mulakan semula perkhidmatan PostgreSQL sebagai Standby
-ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-    "${PGHOME}/bin/pg_ctl start -D ${PGDATA}"
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_ctl start -D ${PGDATA}"; then
+    echo "[$(date)] RALT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}" >> "$LOGFILE"
+    exit 1
+fi
 
-echo "[$(date)] Selesai penyelarasan semula nod ${DETACHED_HOST}." >> "$LOGFILE"
+# Sahkan nod beroperasi dan memulakan semula penyiaran penyalinan sebelum melekatkan semula ke Pgpool
+sleep 3
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_isready -h localhost -p 5432"; then
+    echo "[$(date)] RALT: Nod ${DETACHED_HOST} belum sedia untuk sambungan" >> "$LOGFILE"
+    exit 1
+fi
+
+# Melekatkan semula nod penantian ke dalam peta Pgpool-II
+pcp_attach_node -w -h localhost -p 9898 -U pgpool "${DETACHED_NODE_ID}"
+
+echo "[$(date)] Selesai penyelarasan semula dan penempelan nod ${DETACHED_HOST} ke Pgpool-II." >> "$LOGFILE"
 exit 0
 ```
 

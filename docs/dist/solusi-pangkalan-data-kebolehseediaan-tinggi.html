@@ -265,7 +265,7 @@ other_wd_port0 = 9000
 
 <h4 id="c-skrip-failover-pgpool-etcpgpool-iifailoversh">C. Skrip Failover Pgpool (<code>/etc/pgpool-II/failover.sh</code>)</h4>
 <p>Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.<br />
-<em>Nota Keselamatan &amp; Laluan:</em> Kunci SSH hendaklah diprekonfigurasi di dalam <code>~postgres/.ssh/known_hosts</code> dengan syarat <code>command="..."</code> terhad (restricted key). Laluan <code>PGHOME</code> dan <code>PGDATA</code> dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.</p>
+<em>Nota Keselamatan &amp; Laluan:</em> Kunci hos pelayan (<em>server host-key pins</em>) hendaklah disimpan di dalam <code>~postgres/.ssh/known_hosts</code> pada hos Pgpool-II. Kunci awam pelanggan yang terhad (<em>restricted client public key</em>) bersama pilihan arahan dipaksa (<em>forced-command option</em>) dipasang di dalam <code>~postgres/.ssh/authorized_keys</code> pada akaun pelayan sasaran. Laluan <code>PGHOME</code> dan <code>PGDATA</code> dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.</p>
 <pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
 # Parameter yang dihantar oleh Pgpool-II:
 # %d = ID nod gagal, %h = hos gagal, %p = port gagal, %D = direktori data gagal
@@ -309,6 +309,8 @@ fi
 <h4 id="d-skrip-penyelarasan-semula-standby-etcpgpool-iifollow_primarysh">D. Skrip Penyelarasan Semula Standby (<code>/etc/pgpool-II/follow_primary.sh</code>)</h4>
 <p>Dikeksekusi oleh Pgpool-II selepas pemajuan nod Utama baharu untuk melaras semula nod-nod penantian lain di dalam kluster 3-nod.</p>
 <pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
+set -e
+
 # Parameter %d = ID nod terjejas, %h = hos terjejas, %m = ID master baharu, %H = hos master baharu, %P = ID utama lama
 DETACHED_NODE_ID=&quot;$1&quot;
 DETACHED_HOST=&quot;$2&quot;
@@ -322,22 +324,43 @@ PGDATA=&quot;${PGDATA:-/var/lib/postgresql/15/main}&quot;
 
 echo &quot;[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-# Sekiranya nod terjejas ialah Primary lama, hentikan perkhidmatannya untuk mengelakkan split-brain
+# Sekiranya nod terjejas ialah Primary lama, hentikan perkhidmatannya sebelum penyesuaian semula
 if [ &quot;$DETACHED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
     echo &quot;[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula...&quot; &gt;&gt; &quot;$LOGFILE&quot;
-    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-        &quot;${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}&quot; || true
+    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}&quot;; then
+        echo &quot;[$(date)] RALT: Gagal menghentikan perkhidmatan pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        exit 1
+    fi
 fi
 
-# Eksekusi penyelarasan penyalinan semula ke Utama baharu
-ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot; || true
+# Eksekusi pg_rewind bersama konfigurasi mod pemulihan penantian (--write-recovery-conf)
+echo &quot;[$(date)] Eksekusi pg_rewind pada ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot;; then
+    echo &quot;[$(date)] RALT: pg_rewind gagal pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
 
 # Mulakan semula perkhidmatan PostgreSQL sebagai Standby
-ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_ctl start -D ${PGDATA}&quot;
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_ctl start -D ${PGDATA}&quot;; then
+    echo &quot;[$(date)] RALT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
 
-echo &quot;[$(date)] Selesai penyelarasan semula nod ${DETACHED_HOST}.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+# Sahkan nod beroperasi dan memulakan semula penyiaran penyalinan sebelum melekatkan semula ke Pgpool
+sleep 3
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_isready -h localhost -p 5432&quot;; then
+    echo &quot;[$(date)] RALT: Nod ${DETACHED_HOST} belum sedia untuk sambungan&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+
+# Melekatkan semula nod penantian ke dalam peta Pgpool-II
+pcp_attach_node -w -h localhost -p 9898 -U pgpool &quot;${DETACHED_NODE_ID}&quot;
+
+echo &quot;[$(date)] Selesai penyelarasan semula dan penempelan nod ${DETACHED_HOST} ke Pgpool-II.&quot; &gt;&gt; &quot;$LOGFILE&quot;
 exit 0
 </code></pre>
 

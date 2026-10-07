@@ -223,6 +223,8 @@ fi
 
 ```bash
 #!/usr/bin/env bash
+set -e
+
 DETACHED_NODE_ID="$1"
 DETACHED_HOST="$2"
 NEW_MASTER_ID="$5"
@@ -237,17 +239,36 @@ echo "[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETAC
 
 if [ "$DETACHED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
     echo "[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula..." >> "$LOGFILE"
-    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}" || true
+    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}"; then
+        echo "[$(date)] RALT: Gagal menghentikan perkhidmatan pada ${DETACHED_HOST}" >> "$LOGFILE"
+        exit 1
+    fi
 fi
 
-ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-    "${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'" || true
+echo "[$(date)] Eksekusi pg_rewind pada ${DETACHED_HOST}..." >> "$LOGFILE"
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'"; then
+    echo "[$(date)] RALT: pg_rewind gagal pada ${DETACHED_HOST}" >> "$LOGFILE"
+    exit 1
+fi
 
-ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-    "${PGHOME}/bin/pg_ctl start -D ${PGDATA}"
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_ctl start -D ${PGDATA}"; then
+    echo "[$(date)] RALT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}" >> "$LOGFILE"
+    exit 1
+fi
 
-echo "[$(date)] Selesai penyelarasan semula nod ${DETACHED_HOST}." >> "$LOGFILE"
+sleep 3
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_isready -h localhost -p 5432"; then
+    echo "[$(date)] RALT: Nod ${DETACHED_HOST} belum sedia untuk sambungan" >> "$LOGFILE"
+    exit 1
+fi
+
+pcp_attach_node -w -h localhost -p 9898 -U pgpool "${DETACHED_NODE_ID}"
+
+echo "[$(date)] Selesai penyelarasan semula dan penempelan nod ${DETACHED_HOST} ke Pgpool-II." >> "$LOGFILE"
 exit 0
 ```
 
