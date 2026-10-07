@@ -37,17 +37,18 @@ def clean_markdown(src_path: Path, build_dir: Path) -> Path:
     """
     content = src_path.read_text(encoding="utf-8")
 
-    # Strip OKF YAML frontmatter
+    # Strip OKF YAML frontmatter only when both opening and closing delimiters exist
     if content.startswith("---"):
         parts = re.split(r"^---\s*$", content, maxsplit=2, flags=re.MULTILINE)
         if len(parts) >= 3:
-            content = parts[2].strip()
+            content = parts[2].lstrip()
 
-    # Strip DSOM signature footers
+    # Strip DSOM signature footer only when anchored at the end of the document
     content = re.sub(
-        r"---\s*\n\*Linux for NOSS Malaysia[^\n]*(?:\n\*[^\n]*)*",
+        r"---\s*\n\*Linux for NOSS Malaysia[^\n]*(?:\n\*[^\n]*)*\s*\Z",
         "",
         content,
+        flags=re.MULTILINE,
     ).strip()
 
     intermediate_md = build_dir / "ha_db_clean.md"
@@ -238,7 +239,7 @@ hr {
 
 
 def compile_html(
-    md_path: Path, css_file: Path, build_dir: Path, dist_dir: Path, dist_html: Path
+    md_path: Path, css_file: Path, build_dir: Path, dist_html: Path
 ) -> Path:
     """Converts cleaned Markdown to standalone HTML using Pandoc or Python markdown fallback.
 
@@ -246,7 +247,6 @@ def compile_html(
         md_path (Path): Path to intermediate cleaned Markdown file.
         css_file (Path): Path to CSS file.
         build_dir (Path): Path to build directory.
-        dist_dir (Path): Path to distribution directory.
         dist_html (Path): Path to destination HTML file.
 
     Returns:
@@ -302,7 +302,7 @@ def compile_html(
     html_content = re.sub(r"<colgroup>.*?</colgroup>", "", html_content, flags=re.DOTALL)
     (build_dir / "report.html").write_text(html_content, encoding="utf-8")
 
-    shutil.copy(css_file, dist_dir / "style.css")
+    shutil.copy(css_file, dist_html.parent / "style.css")
     shutil.copy(build_dir / "report.html", dist_html)
     print(f"HTML generated: {dist_html} ({dist_html.stat().st_size:,} bytes)")
     return dist_html
@@ -331,11 +331,15 @@ def compile_pdf(dist_html: Path, dist_pdf: Path) -> Path:
     print("Running WeasyPrint...")
     subprocess.run(wp_cmd, check=True, timeout=120)
 
-    if dist_pdf.exists() and dist_pdf.stat().st_size > 10240:
-        print(f"PDF successfully generated: {dist_pdf} ({dist_pdf.stat().st_size:,} bytes)")
-        return dist_pdf
-    else:
-        raise RuntimeError("Output PDF does not exist or is under 10KB assertion limit.")
+    if not dist_pdf.exists():
+        raise RuntimeError("Output PDF file does not exist.")
+
+    pdf_size = dist_pdf.stat().st_size
+    if pdf_size <= 10240:
+        raise RuntimeError(f"Output PDF size ({pdf_size:,} bytes) is at or below the 10KB limit.")
+
+    print(f"PDF successfully generated: {dist_pdf} ({pdf_size:,} bytes)")
+    return dist_pdf
 
 
 def main() -> None:
@@ -358,7 +362,7 @@ def main() -> None:
 
     cleaned_md = clean_markdown(doc_src, build_dir)
     css_file = write_css(build_dir)
-    compiled_html = compile_html(cleaned_md, css_file, build_dir, dist_dir, dist_html)
+    compiled_html = compile_html(cleaned_md, css_file, build_dir, dist_html)
     compile_pdf(compiled_html, dist_pdf)
 
 

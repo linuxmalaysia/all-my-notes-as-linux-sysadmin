@@ -54,6 +54,7 @@ title: solusi-pangkalan-data-ha
 # Kemahiran AI: Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise (MariaDB Galera + MaxScale vs PostgreSQL HA + Pgpool-II)
 
 ## 📌 Gambaran Keseluruhan
+
 Kemahiran ini membimbing ejen AI dalam mereka bentuk, mengkonfigurasi, dan menyebarkan seni bina pangkalan data kebolehseediaan tinggi (High Availability - HA) gred enterprise menggunakan proksi Lapisan 7 (L7 SQL-aware proxies) berasaskan **NOSS CU03 WA05**.
 
 ---
@@ -61,12 +62,15 @@ Kemahiran ini membimbing ejen AI dalam mereka bentuk, mengkonfigurasi, dan menye
 ## 🛠️ Modul 1: MariaDB Galera Cluster + MaxScale
 
 ### 1.1 Konfigurasi WSREP Galera (`/etc/my.cnf.d/galera.cnf`)
+
 ```ini
 [mysqld]
 binlog_format=ROW
 default_storage_engine=InnoDB
 innodb_autoinc_lock_mode=2
-innodb_flush_log_at_trx_commit=0
+
+# Tetapan asas ketahanan data ACID (1 = flushed on commit)
+innodb_flush_log_at_trx_commit=1
 
 # WSREP Provider Settings
 wsrep_on=ON
@@ -78,10 +82,11 @@ wsrep_cluster_address="gcomm://10.0.1.11,10.0.1.12,10.0.1.13"
 wsrep_node_address="10.0.1.11"
 wsrep_node_name="db-node-01"
 wsrep_sst_method=mariabackup
-wsrep_sst_auth="sstuser:SecurePassword123!"
+wsrep_sst_auth="sstuser:<SECURE_SST_PASSWORD>"
 ```
 
 ### 1.2 Konfigurasi MaxScale (`/etc/maxscale.cnf`)
+
 ```ini
 [maxscale]
 threads=auto
@@ -109,7 +114,7 @@ type=monitor
 module=galeramon
 servers=db-node-1, db-node-2, db-node-3
 user=maxscale
-password=MaxScalePassword123!
+password=<MAXSCALE_PASSWORD>
 monitor_interval=2000ms
 disable_master_failback=1
 
@@ -118,7 +123,7 @@ type=service
 router=readwritesplit
 servers=db-node-1, db-node-2, db-node-3
 user=maxscale
-password=MaxScalePassword123!
+password=<MAXSCALE_PASSWORD>
 
 [Read-Write-Listener]
 type=listener
@@ -132,6 +137,7 @@ port=3306
 ## 🛠️ Modul 2: PostgreSQL Streaming Replication + Pgpool-II Watchdog
 
 ### 2.1 Konfigurasi Pgpool-II (`/etc/pgpool-II/pgpool.conf`)
+
 ```ini
 listen_addresses = '*'
 port = 9999
@@ -165,10 +171,11 @@ health_check_period = 5
 health_check_timeout = 5
 health_check_max_retries = 3
 health_check_user = 'pgpool'
-health_check_password = 'PgpoolPassword123!'
+health_check_password = '<PGPOOL_PASSWORD>'
 health_check_database = 'postgres'
 
 failover_command = '/etc/pgpool-II/failover.sh %d %h %p %D %m %H %M %P'
+follow_primary_command = '/etc/pgpool-II/follow_primary.sh %d %h %p %D %m %H %M %P'
 
 use_watchdog = on
 wd_hostname = '10.0.2.21'
@@ -176,10 +183,11 @@ wd_port = 9000
 delegate_IP = '10.0.2.100'
 wd_lifecheck_method = 'heartbeat'
 wd_interval = 2
-wd_auth_key = 'WatchdogSecretKey'
+wd_auth_key = '<WATCHDOG_SECRET_KEY>'
 ```
 
 ### 2.2 Skrip Failover Automatik (`/etc/pgpool-II/failover.sh`)
+
 ```bash
 #!/usr/bin/env bash
 FAILED_NODE_ID="$1"
@@ -189,13 +197,15 @@ NEW_MASTER_HOST="$6"
 OLD_PRIMARY_ID="$8"
 
 LOGFILE="/var/log/pgpool/failover.log"
+PGHOME="${PGHOME:-/usr/lib/postgresql/15}"
+PGDATA="${PGDATA:-/var/lib/postgresql/15/main}"
 
 echo "[$(date)] Cetusan kegagalan beralih. Nod Gagal: ${FAILED_NODE_ID} (${FAILED_HOST}). Utama Lama: ${OLD_PRIMARY_ID}" >> "$LOGFILE"
 
 if [ "$FAILED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
     echo "[$(date)] Memajukan nod Penantian ${NEW_MASTER_ID} (${NEW_MASTER_HOST}) kepada Utama..." >> "$LOGFILE"
-    ssh -o StrictHostKeyChecking=no -i /var/lib/postgresql/.ssh/id_rsa postgres@"${NEW_MASTER_HOST}" \
-        "/usr/lib/postgresql/15/bin/pg_ctl promote -D /var/lib/postgresql/15/main"
+    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${NEW_MASTER_HOST}" \
+        "${PGHOME}/bin/pg_ctl promote -D ${PGDATA}"
     if [ $? -eq 0 ]; then
         echo "[$(date)] Berjaya memajukan nod ${NEW_MASTER_HOST} kepada Utama." >> "$LOGFILE"
         exit 0
@@ -209,9 +219,42 @@ else
 fi
 ```
 
+### 2.3 Skrip Penyelarasan Semula Standby (`/etc/pgpool-II/follow_primary.sh`)
+
+```bash
+#!/usr/bin/env bash
+DETACHED_NODE_ID="$1"
+DETACHED_HOST="$2"
+NEW_MASTER_ID="$5"
+NEW_MASTER_HOST="$6"
+OLD_PRIMARY_ID="$8"
+
+LOGFILE="/var/log/pgpool/follow_primary.log"
+PGHOME="${PGHOME:-/usr/lib/postgresql/15}"
+PGDATA="${PGDATA:-/var/lib/postgresql/15/main}"
+
+echo "[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}..." >> "$LOGFILE"
+
+if [ "$DETACHED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
+    echo "[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula..." >> "$LOGFILE"
+    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}" || true
+fi
+
+ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'" || true
+
+ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_ctl start -D ${PGDATA}"
+
+echo "[$(date)] Selesai penyelarasan semula nod ${DETACHED_HOST}." >> "$LOGFILE"
+exit 0
+```
+
 ---
 
 ## 💡 Eksplorasi Lanjut bersama AI (AI Prompts)
+
 1. *"Bagaimanakah cara mengkonfigurasikan SSL/TLS pada komunikasi backend antara Pgpool-II dan PostgreSQL?"*
 2. *"Jelaskan kaedah menguji beban (load testing) menggunakan pgbench melalui VIP Pgpool-II."*
 3. *"Apakah langkah-langkah menangani split-brain pada Galera Cluster jika 2 nod terpisah daripada rangkaian?"*
@@ -219,12 +262,14 @@ fi
 ---
 
 ## 🔗 Bahan Bacaan Lanjut (Rujukan URL)
+
 - [Dokumentasi MariaDB MaxScale](https://mariadb.com/kb/en/maxscale/)
 - [Dokumentasi Pgpool-II](https://www.pgpool.net/)
 
 ---
 
 ## 📚 Buku Boleh Dibeli (Syor Bacaan)
+
 - **High Availability MySQL & MariaDB** oleh Charles Bell.
 - **PostgreSQL High Performance** oleh Gregory Smith.
 
