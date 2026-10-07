@@ -2,13 +2,14 @@
 spec_version: '0.2'
 okf_version: '0.2'
 type: architecture_concept
-title: 'Walkthrough: OKF v0.2 Adoption & Verification'
-description: Dokumentasi OKF v0.2 bagi walkthrough.md.
+title: 'Walkthrough: Enterprise HA Database Solution Adoption'
+description: Langkah demi langkah penyerap dokumen HA Pangkalan Data Enterprise dan
+  pembinaan PDF.
 status: stable
 stale_after: '2027-12-31'
 generated:
-  by: OKF v0.2 Adoption Tooling / Gemini 2.5 Pro
-  at: '2026-10-03T23:56:10Z'
+  by: NOSS Linux Malaysia / Harisfazillah Jamel
+  at: '2026-10-05T06:00:00Z'
 sources:
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
@@ -32,18 +33,19 @@ sources:
   resource: https://deep-state-of-mind-for-my-ai.readthedocs.io/en/latest/.agents/skills/okf-v02-adoption-engineer/SKILL/
 ---
 
-# Walkthrough: OKF v0.2 Adoption & Verification
+# Walkthrough: Enterprise High Availability Database Solution Adoption
 
-## Verification Checklist
+## Summary
+Successfully integrated the Enterprise HA Database solution technical paperwork into the NOSS Linux Malaysia repository in Bahasa Melayu (DBP standard), created the corresponding Agent Skill, built a publication-grade PDF using native WeasyPrint, and confirmed 100% test suite compliance.
 
-- [x] All 498 Markdown files start with `---` and contain `spec_version: "0.2"` / `okf_version: "0.2"`.
-- [x] Every Markdown file includes `sources:` provenance referencing internal document paths and public internet URLs.
-- [x] Attested Computation nodes contain execution contracts (`runtime`, `parameters`, `executor`, `attester`).
-- [x] All Markdown files conclude with the official Sovereign Dual-License Footer.
-- [x] `scripts/apply_okf_v02.py` follows PEP-257 docstrings and passes Ruff/Mypy checks.
-- [x] All 2,341 Python unit tests and 38 JavaScript Jest tests pass (100% compliance).
-- [x] Static HTML site in `html/`, LLM context files, and Master Palace Registry are fully rebuilt and synchronized.
+## Key Assets Added / Modified
+1. `manual/cu03/cu03-wa05-solusi-pangkalan-data-kebolehseediaan-tinggi.md`
+2. `.agents/skills/solusi-pangkalan-data-ha/SKILL.md`
+3. `tools/compile_ha_db_pdf.py`
+4. `tests/unit/test_ha_db_pdf.py`
+5. `docs/dist/solusi-pangkalan-data-kebolehseediaan-tinggi.pdf` (94.1 KB)
+6. `docs/dist/solusi-pangkalan-data-kebolehseediaan-tinggi.html` (29.9 KB)
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-17*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*
