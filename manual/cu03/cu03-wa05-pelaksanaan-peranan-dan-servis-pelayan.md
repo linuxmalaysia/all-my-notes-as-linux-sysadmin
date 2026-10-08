@@ -66,6 +66,7 @@ Konfigurasi Nginx/Apache, BIND9 DNS, Kea DHCP, dan Samba/NFS file server.
 1. Melakukan semakan status dan kesediaan perkakasan atau perkhidmatan.
 2. Melaksanakan konfigurasi mengikut piawaian industri dan tadbir urus keselamatan.
 3. Mengesahkan hasil kerja menggunakan ujian diagnostik dan verifikasi sistem.
+4. Rujuk cetak biru khusus [**Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise (MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II)**](cu03-wa05-solusi-pangkalan-data-kebolehseediaan-tinggi.md) untuk konfigurasi Kluster Pangkalan Data HA L7.
 
 ```bash
 # Contoh arahan verifikasi status sistem

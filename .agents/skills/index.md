@@ -2,7 +2,7 @@
 
 This registry dynamically maps all functional AI skills available in the Sovereign Markdown Palace. 
 
-**Total Modules Indexed:** `125`
+**Total Modules Indexed:** `126`
 
 | Skill Name / Folder | Description | Topics / Scope |
 |---|---|---|
@@ -127,11 +127,12 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`proposal-docx-formatter`** <br> *Proposal DOCX Formatter* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`publish-to-blogger`** <br> *✍️ Publish to Blogger Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`sod-palace-sync`** <br> *🌅 SOD Palace Sync (Reanimation)* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
+| **`solusi-pangkalan-data-ha`** <br> *solusi-pangkalan-data-ha* | Kemahiran mereka bentuk dan menyebarkan Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise (MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II) mengikut standard NOSS CU03 / WA05. | noss-linux, cu03, wa05, mariadb-galera, maxscale, postgresql-ha, pgpool-ii |
 | **`ssh-passwordless-setup`** <br> *ssh-passwordless-setup* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`tvet-competency-weightage-auditor`** <br> *TVET Competency Weightage Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`tvet-element-weightage-auditor`** <br> *TVET Element Content Weightage Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 | **`tvet-tem-auditor`** <br> *TVET Tools, Equipment, and Materials (TEM) Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-05*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-10-06*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi & Penafian](/docs/legal-notice.md)*

@@ -11,7 +11,7 @@ import os
 import pytest
 import yaml
 
-EXCLUDED_DIRS = {"html", "node_modules", ".git", ".pytest_cache", "scratch"}
+EXCLUDED_DIRS = {"build", "html", "node_modules", ".git", ".pytest_cache", "scratch"}
 
 def get_markdown_files():
     """Retrieve all markdown files in the repository except excluded directories."""

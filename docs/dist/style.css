@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Terminal & Cloud Design Framework — Print-Optimized Pure White
+   Enterprise High Availability Database Blueprint — Print-Optimized Pure White
    DSOM Rule 11 & Rule 11.16 | Zero Ink Waste | A4 Portrait | 10mm Margins
    ═══════════════════════════════════════════════════════════════════ */
 
@@ -7,13 +7,13 @@
     size: A4 portrait;
     margin: 10mm 10mm 12mm 10mm;
     @bottom-right {
-        content: "Page " counter(page) " of " counter(pages);
+        content: "Muka Surat " counter(page) " dari " counter(pages);
         font-family: 'Inter', sans-serif;
         font-size: 8pt;
         color: #64748B;
     }
     @bottom-left {
-        content: "PRIVATE AND CONFIDENTIAL (P&C) | Compile by: Harisfazillah Jamel";
+        content: "DOKUMEN REKA BENTUK TEKNIKAL HA DB | Harisfazillah Jamel (LinuxMalaysia)";
         font-family: 'Inter', sans-serif;
         font-size: 8pt;
         color: #64748B;
@@ -36,7 +36,7 @@ body {
 }
 
 h1 {
-    font-size: 17pt;
+    font-size: 16pt;
     font-weight: 800;
     color: #0F172A;
     border-bottom: 2px solid #0284C7;

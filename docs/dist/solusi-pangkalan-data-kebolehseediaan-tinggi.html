@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8">
+    <title>Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="solusi-pangkalan-data-kebolehseediaan-tinggi-enterprise-mariadb-galera-maxscale-lwn-postgresql-ha-pgpool-ii">Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise: MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II</h1>
+<blockquote>
+<p><strong>Tajuk Dokumen:</strong> Cetak Biru Reka Bentuk Teknikal &amp; Penyebaran Perbandingan: Kluster MariaDB Galera + MaxScale lwn. Kebolehseediaan Tinggi (HA) PostgreSQL (Penyalinan Penyiaran Fizikal Tempatan) + Pgpool-II<br />
+<strong>Versi Dokumen:</strong> 3.0<br />
+<strong>Audiens Sasaran:</strong> Arkitek Sistem, Pentadbir Pangkalan Data (DBA), Jurutera DevOps, Ketua Infrastruktur<br />
+<strong>Unit Kompetensi NOSS:</strong> CU03 (Pentadbiran &amp; Perkhidmatan Pelayan Linux) — WA05 (Pelaksanaan Peranan dan Servis Pelayan)</p>
+</blockquote>
+<hr />
+<h2 id="1-ringkasan-eksekutif">1. Ringkasan Eksekutif</h2>
+<p>Dokumen ini menyajikan cetak biru teknikal komprehensif bagi dua seni bina pangkalan data sumber terbuka gred enterprise berpengecasan Kebolehseediaan Tinggi (High Availability - HA) yang memanfaatkan proksi sedar-SQL Lapisan 7 (Layer 7):</p>
+<ol>
+<li><strong>Kluster MariaDB Galera bersama MaxScale</strong> (Proksi pangkalan data Lapisan 7 sedar-SQL).</li>
+<li><strong>Kebolehseediaan Tinggi PostgreSQL (Penyalinan Penyiaran Fizikal Tempatan / Native Physical Streaming Replication)</strong> bersama <strong>Pgpool-II</strong> (Proksi pangkalan data Lapisan 7 sedar-SQL, pengumpul sambungan / connection pooler, dan pengatur kegagalan beralih / failover orchestrator dengan Watchdog HA).</li>
+</ol>
+<p>Kedua-dua seni bina menyediakan toleransi kelemahan (fault tolerance), keupayaan kegagalan beralih automatik dengan gangguan masa terhad (bounded failover interruption RTO), kebolehskalaan bacaan, pengumpulan sambungan, serta pemisahan baca-tulis telus pada satu port pangkalan data tunggal. Apabila nod Utama (Primary) mengalami kegagalan, sesi aktif yang sedang berjalan mungkin terganggu secara singkat sebelum proksi mengalihkan pautan ke nod baharu; gangguan ini terikat kepada ambang semakan kesihatan (<em>health check timeouts</em>) dan masa eksekusi skrip pemajuan (<em>promotion script RTO</em>). Reka bentuk ini memanfaatkan Pgpool-II untuk mengurus sambungan pelanggan PostgreSQL, penghalaan pertanyaan, pemantauan kesihatan, dan pemajuan nod tanpa memerlukan enjin konsensus pihak ketiga seperti <code>etcd</code> atau proksi TCP berasingan seperti HAProxy.</p>
+<hr />
+<h2 id="2-seni-bina-1-kluster-mariadb-galera-bersama-maxscale">2. Seni Bina 1: Kluster MariaDB Galera bersama MaxScale</h2>
+<h3 id="21-gambaran-keseluruhan-seni-bina">2.1 Gambaran Keseluruhan Seni Bina</h3>
+<p>Kluster MariaDB Galera ialah kluster penyalinan berasaskan multi-master dan terseganti (synchronous replication) berasaskan API <em>Write-Set Replication</em> (WSREP). MaxScale bertindak sebagai proksi pintar Lapisan 7 yang sedar-SQL untuk mengagihkan trafik berdasarkan konteks pertanyaan (memisahkan operasi baca dan tulis), melaksanakan semakan kesihatan pelayan, dan mengendalikan kegagalan beralih secara telus.</p>
+<pre class="codehilite"><code>                     +-------------------+
+                     |  Lapisan Aplikasi |
+                     +---------+---------+
+                               |
+                               | (Protokol MySQL)
+                               v
+                     +-------------------+
+                     | MariaDB MaxScale  |
+                     | (Proksi SQL L7)   |
+                     +----+---------+----+
+                          |         |
+         +----------------+         +----------------+
+         | (Tulis / Baca)           | (Baca)         |
+         v                          v                v
++-----------------+        +-----------------+  +-----------------+
+|  Nod MariaDB 1  |&lt;======&gt;|  Nod MariaDB 2  |&lt;=|  Nod MariaDB 3  |
+| (Galera Master) |  wsrep | (Galera Master) |  | (Galera Master) |
++-----------------+        +-----------------+  +-----------------+
+</code></pre>
+
+<h3 id="22-komponen-teras-tanggungjawab">2.2 Komponen Teras &amp; Tanggungjawab</h3>
+<ul>
+<li><strong>Pelayan MariaDB (bersama Pustaka Galera):</strong> Menyediakan penyalinan terseganti multi-master, memastikan kesemua nod mengandungi keadaan data yang identikal sebaik sahaja komit transaksi berlaku.</li>
+<li><strong>Enjin Galera WSREP:</strong> Mengendalikan penyalinan berasaskan pensijilan (certification-based replication), komunikasi kumpulan (melalui protokol EVS), serta pemindahan keadaan data (SST/IST).</li>
+<li><strong>MariaDB MaxScale:</strong></li>
+<li><strong>Modul ReadWriteSplit:</strong> Menganalisis penyataan SQL yang masuk, menghantar arahan <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> dan transaksi eksplisit ke sasaran penulisan utama sambil mengimbangkan beban pertanyaan <code>SELECT</code> merentas semua nod bacaan yang sedia ada.</li>
+<li><strong>Pemantau Galera (<code>galeramon</code>):</strong> Memantau topologi kluster, status penyelarasan nod (<code>wsrep_local_state_comment</code>), dan status komponen utama secara berterusan.</li>
+</ul>
+<h3 id="23-logik-penghalaan-trafik-kegagalan-beralih-failover">2.3 Logik Penghalaan Trafik &amp; Kegagalan Beralih (Failover)</h3>
+<ul>
+<li><strong>Komit Terseganti (Synchronous Commit):</strong> Transaksi disahkan berasaskan pensijilan di kesemua nod kluster sebelum proses komit diselesaikan.</li>
+<li><strong>Pemisahan Baca-Tulis:</strong> MaxScale menganalisis sintaks SQL. Transaksi eksplisit (<code>BEGIN...COMMIT</code>) dan penyataan penulisan diarahkan secara khusus ke satu nod penulisan utama yang ditetapkan (bagi mengelakkan kebuntuan Galera / konflik pensijilan di bawah beban konkurensi tinggi).</li>
+<li><strong>Kegagalan Beralih (Failover):</strong> Jika nod penulisan utama mengalami kegagalan, MaxScale mengalihkan pertanyaan penulisan secara automatik ke nod Galera lain yang terselaras. Sesi transaksi aktif semasa kegagalan mungkin terganggu dan perlu diulang oleh aplikasi, tetapi penghalaan pertanyaan penulisan baharu dipulihkan secara automatik dengan RTO $&lt; 5$ saat.</li>
+</ul>
+<h3 id="24-konfigurasi-garis-panduan-asas">2.4 Konfigurasi Garis Panduan Asas</h3>
+<h4 id="a-konfigurasi-mariadb-galera-etcmycnfdgaleracnf">A. Konfigurasi MariaDB Galera (<code>/etc/my.cnf.d/galera.cnf</code>)</h4>
+<pre class="codehilite"><code class="language-ini">[mysqld]
+binlog_format=ROW
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+
+# Tetapan asas ketahanan data ACID (1 = flushed on commit untuk integriti terjamin).
+# Nota Prestasi: Nilai 0 atau 2 meningkatkan prestasi I/O penulisan tetapi mempunyai
+# risiko kehilangan data sehingga 1 saat sekiranya berlaku kegagalan bekalan kuasa / kegagalan OS.
+innodb_flush_log_at_trx_commit=1
+
+# WSREP Provider Settings
+wsrep_on=ON
+wsrep_provider=/usr/lib64/galera-4/libgalera_smm.so
+wsrep_cluster_name=&quot;mariadb_ha_cluster&quot;
+wsrep_cluster_address=&quot;gcomm://10.0.1.11,10.0.1.12,10.0.1.13&quot;
+
+# Node Configuration
+wsrep_node_address=&quot;10.0.1.11&quot;
+wsrep_node_name=&quot;db-node-01&quot;
+wsrep_sst_method=mariabackup
+wsrep_sst_auth=&quot;sstuser:&lt;SECURE_SST_PASSWORD&gt;&quot;
+</code></pre>
+
+<h4 id="b-konfigurasi-maxscale-etcmaxscalecnf">B. Konfigurasi MaxScale (<code>/etc/maxscale.cnf</code>)</h4>
+<pre class="codehilite"><code class="language-ini">[maxscale]
+threads=auto
+
+# Server Definitions
+[db-node-1]
+type=server
+address=10.0.1.11
+port=3306
+protocol=MariaDBBackend
+
+[db-node-2]
+type=server
+address=10.0.1.12
+port=3306
+protocol=MariaDBBackend
+
+[db-node-3]
+type=server
+address=10.0.1.13
+port=3306
+protocol=MariaDBBackend
+
+# Galera Monitor
+[Galera-Monitor]
+type=monitor
+module=galeramon
+servers=db-node-1, db-node-2, db-node-3
+user=maxscale
+password=&lt;MAXSCALE_PASSWORD&gt;
+monitor_interval=2000ms
+disable_master_failback=1
+
+# Read-Write Split Router Service
+[Read-Write-Service]
+type=service
+router=readwritesplit
+servers=db-node-1, db-node-2, db-node-3
+user=maxscale
+password=&lt;MAXSCALE_PASSWORD&gt;
+
+# Listener
+[Read-Write-Listener]
+type=listener
+service=Read-Write-Service
+protocol=MariaDBClient
+port=3306
+</code></pre>
+
+<hr />
+<h2 id="3-seni-bina-2-kebolehseediaan-tinggi-postgresql-penyalinan-penyiaran-tempatan-bersama-pgpool-ii">3. Seni Bina 2: Kebolehseediaan Tinggi PostgreSQL (Penyalinan Penyiaran Tempatan) bersama Pgpool-II</h2>
+<h3 id="31-gambaran-keseluruhan-seni-bina">3.1 Gambaran Keseluruhan Seni Bina</h3>
+<p>Seni bina ini mengguna pakai Penyalinan Penyiaran Fizikal Tempatan (Physical Streaming Replication - Utama-Penantian / Primary-Standby) PostgreSQL yang diintegrasikan bersama Pgpool-II sebagai proksi Lapisan 7 sedar-SQL. Pgpool-II beroperasi dalam mod <code>master_slave_mode</code> dengan sub-mod <code>stream</code>, menyediakan pengumpulan sambungan pelanggan, pemisahan pertanyaan baca-tulis automatik pada port hadapan tunggal (9999 atau 5432), semakan kesihatan automatik, dan pengatur kegagalan beralih kluster aktif.</p>
+<p>Bagi menghapuskan titik kegagalan tunggal (SPOF) pada lapisan proksi, nod-nod Pgpool-II menjejaskan protokol Watchdog, mengekalkan IP Maya (Virtual IP - VIP) yang dikongsi merentas berbilang instans Pgpool-II.</p>
+<pre class="codehilite"><code>                      +--------------------+
+                      |  Lapisan Aplikasi  |
+                      +---------+----------+
+                                |
+                                | (Protokol PgSQL - VIP: 10.0.2.100:9999)
+                                v
+                     +----------------------+
+                     |  Pgpool-II (Aktif)   | &lt;--- Watchdog Heartbeat ---&gt; Pgpool-II (Penantian)
+                     | (Proksi L7 / Pooler) |
+                     +---+--------------+---+
+                         |              |
+         +---------------+              +---------------+
+         | (Tulis / Baca)                               | (Baca)
+         v                                              v
++-------------------+   Physical Streaming     +-------------------+
+|  Nod PostgreSQL 1 |&lt;========================&gt;|  Nod PostgreSQL 2 |
+|  (Utama / Tulis)  |   (WAL Sender / Slot)    |  (Replika Standby)|
++-------------------+                          +-------------------+
+</code></pre>
+
+<h3 id="32-komponen-teras-tanggungjawab">3.2 Komponen Teras &amp; Tanggungjawab</h3>
+<ul>
+<li><strong>Enjin PostgreSQL:</strong> Menjalankan Penyalinan Penyiaran Fizikal tempatan (menggunakan slot penyalinan utama dan penyalinan WAL).</li>
+<li><strong>Pelayan Proksi Pgpool-II:</strong></li>
+<li><strong>Penganalisis Pertanyaan L7 &amp; Pengimbang Beban:</strong> Memintas pertanyaan PostgreSQL. Menghala penyataan <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, DDL, dan transaksi eksplisit (<code>BEGIN...COMMIT</code>) ke bahagian belakang Primary PostgreSQL. Mengimbangkan beban pertanyaan <code>SELECT</code> baca sahaja merentas kesemua nod bahagian belakang yang sihat.</li>
+<li><strong>Pengumpulan Sambungan (Connection Pooling):</strong> Mengekalkan kolam sambungan berterusan di sebelah pelayan untuk mengelakkan beban lebihan sambungan PostgreSQL.</li>
+<li><strong>Semakan Kesihatan &amp; Kegagalan Beralih Automatik:</strong> Memantau nod bahagian belakang secara berterusan. Mencetuskan skrip kegagalan beralih tersuai (<code>failover.sh</code>) apabila nod Utama mengalami kegagalan untuk memajukan nod pangkalan data penantian (Standby).</li>
+<li><strong>Pgpool Watchdog:</strong> Menyelaras keadaan nod dalaman merentas berbilang instans Pgpool-II dan mengurus IP Maya (VIP) terapung menggunakan mekanisme <code>arping</code> / <code>keepalived</code>.</li>
+</ul>
+<h3 id="33-logik-penghalaan-trafik-kegagalan-beralih-failover">3.3 Logik Penghalaan Trafik &amp; Kegagalan Beralih (Failover)</h3>
+<ul>
+<li><strong>Titik Hujung Aplikasi Teragih:</strong> Aplikasi terhubung ke Pgpool-II melalui satu port tunggal (contohnya, 9999 atau 5432).</li>
+<li><strong>Pemprosesan Pertanyaan:</strong></li>
+<li>Penyataan penulisan $\rightarrow$ Diarah terus ke Backend 0 (Utama / Primary).</li>
+<li>Penyataan baca sahaja $\rightarrow$ Diagihkan antara Backend 0 (Utama) dan Backend 1/2 (Replika Penantian) mengikut pemberat beban yang dikonfigurasikan.</li>
+<li><strong>Kitaran Kegagalan Beralih Automatik:</strong></li>
+<li>Jika Pgpool-II mengesan nod Utama tidak dapat dicapai (selepas melebihi <code>health_check_max_retries</code>), ia mengeksekusi <code>failover_command</code>.</li>
+<li>Skrip terhubung ke nod Penantian (Standby) yang ditetapkan dan mengeksekusi <code>pg_ctl promote</code> (atau mencipta fail pemicu).</li>
+<li>Pgpool-II mengemas kini jadual status nod dalamannya, menandakan nod Utama lama sebagai terhenti (<em>down</em>), memajukan nod Penantian kepada status Utama dalam peta bahagian belakang Pgpool, dan mengeksekusi <code>follow_primary_command</code> untuk melaras dan menyelaraskan semula nod-nod penantian lain yang tinggal.</li>
+<li>Gangguan pautan penulisan semasa fasa pengesahan kegagalan dan pemajuan nod terikat secara terbilang (RTO sekitar 10–15 saat), di mana pautan penulisan dipulihkan sebaik sahaja nod Penantian berjaya dipromosikan.</li>
+</ul>
+<h3 id="34-konfigurasi-garis-panduan-asas">3.4 Konfigurasi Garis Panduan Asas</h3>
+<h4 id="a-konfigurasi-utama-postgresql-postgresqlconf">A. Konfigurasi Utama PostgreSQL (<code>postgresql.conf</code>)</h4>
+<pre class="codehilite"><code class="language-ini"># Network &amp; Connections
+listen_addresses = '*'
+port = 5432
+max_connections = 250
+shared_buffers = 4GB
+
+# Replication Parameters
+wal_level = replica
+max_wal_senders = 10
+max_replication_slots = 10
+hot_standby = on
+hot_standby_feedback = on
+
+# Archive Parameters
+archive_mode = on
+archive_command = 'test ! -f /var/lib/postgresql/wal_archive/%f &amp;&amp; cp %p /var/lib/postgresql/wal_archive/%f'
+</code></pre>
+
+<h4 id="b-konfigurasi-pgpool-ii-etcpgpool-iipgpoolconf">B. Konfigurasi Pgpool-II (<code>/etc/pgpool-II/pgpool.conf</code>)</h4>
+<pre class="codehilite"><code class="language-ini"># Network Settings
+listen_addresses = '*'
+port = 9999
+pcp_port = 9898
+
+# Operating Mode
+backend_clustering_mode = 'streaming_replication'
+master_slave_mode = on
+master_slave_sub_mode = 'stream'
+
+# Backend Database Nodes
+backend_hostname0 = '10.0.2.11'
+backend_port0 = 5432
+backend_weight0 = 1
+backend_flag0 = 'ALLOW_TO_FAILOVER'
+
+backend_hostname1 = '10.0.2.12'
+backend_port1 = 5432
+backend_weight1 = 1
+backend_flag1 = 'ALLOW_TO_FAILOVER'
+
+backend_hostname2 = '10.0.2.13'
+backend_port2 = 5432
+backend_weight2 = 1
+backend_flag2 = 'ALLOW_TO_FAILOVER'
+
+# Connection Pooling Settings
+num_init_children = 32
+max_pool = 4
+connection_cache = on
+
+# Load Balancing (Read-Write Splitting)
+load_balance_mode = on
+ignore_leading_white_space = on
+white_function_list = ''
+black_function_list = 'nextval,currval,lastval,setval'
+
+# Health Check Settings
+health_check_period = 5
+health_check_timeout = 5
+health_check_max_retries = 3
+health_check_user = 'pgpool'
+health_check_password = '&lt;PGPOOL_PASSWORD&gt;'
+health_check_database = 'postgres'
+
+# Failover &amp; Recovery Script Commands
+failover_command = '/etc/pgpool-II/failover.sh %d %h %p %D %m %H %M %P'
+follow_primary_command = '/etc/pgpool-II/follow_primary.sh %d %h %p %D %m %H %M %P'
+
+# Watchdog Settings (High Availability for Pgpool itself)
+use_watchdog = on
+wd_hostname = '10.0.2.21'
+wd_port = 9000
+delegate_IP = '10.0.2.100'
+wd_lifecheck_method = 'heartbeat'
+wd_interval = 2
+wd_auth_key = '&lt;WATCHDOG_SECRET_KEY&gt;'
+
+other_pgpool_hostname0 = '10.0.2.22'
+other_pgpool_port0 = 9000
+other_wd_port0 = 9000
+</code></pre>
+
+<h4 id="c-skrip-failover-pgpool-etcpgpool-iifailoversh">C. Skrip Failover Pgpool (<code>/etc/pgpool-II/failover.sh</code>)</h4>
+<p>Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.<br />
+<em>Nota Keselamatan &amp; Laluan:</em> Kunci hos pelayan (<em>server host-key pins</em>) hendaklah disimpan di dalam <code>~postgres/.ssh/known_hosts</code> pada hos Pgpool-II. Kunci awam pelanggan yang terhad (<em>restricted client public key</em>) bersama pilihan arahan dipaksa (<em>forced-command option</em>) dipasang di dalam <code>~postgres/.ssh/authorized_keys</code> pada akaun pelayan sasaran. Laluan <code>PGHOME</code> dan <code>PGDATA</code> dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.</p>
+<pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
+# Parameter yang dihantar oleh Pgpool-II:
+# %d = ID nod gagal, %h = hos gagal, %p = port gagal, %D = direktori data gagal
+# %m = ID nod master baharu, %H = hos master baharu, %M = ID nod master lama, %P = ID nod utama lama
+
+FAILED_NODE_ID=&quot;$1&quot;
+FAILED_HOST=&quot;$2&quot;
+NEW_MASTER_ID=&quot;$5&quot;
+NEW_MASTER_HOST=&quot;$6&quot;
+OLD_PRIMARY_ID=&quot;$8&quot;
+
+LOGFILE=&quot;/var/log/pgpool/failover.log&quot;
+
+# Pemboleh ubah persekitaran laluan PostgreSQL yang boleh dikonfigurasikan
+PGHOME=&quot;${PGHOME:-/usr/lib/postgresql/15}&quot;
+PGDATA=&quot;${PGDATA:-/var/lib/postgresql/15/main}&quot;
+
+echo &quot;[$(date)] Cetusan kegagalan beralih. Nod Gagal: ${FAILED_NODE_ID} (${FAILED_HOST}). Utama Lama: ${OLD_PRIMARY_ID}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+
+# Hanya lakukan pemajuan (promotion) jika nod yang gagal merupakan nod Utama
+if [ &quot;$FAILED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
+    echo &quot;[$(date)] Memajukan nod Penantian ${NEW_MASTER_ID} (${NEW_MASTER_HOST}) kepada Utama...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+
+    # Eksekusi arahan pemajuan melalui SSH berautentikasi kunci terurus pada sasaran master baharu
+    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_ctl promote -D ${PGDATA}&quot;
+
+    if [ $? -eq 0 ]; then
+        echo &quot;[$(date)] Berjaya memajukan nod ${NEW_MASTER_HOST} kepada Utama.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        exit 0
+    else
+        echo &quot;[$(date)] RALT: Gagal memajukan nod ${NEW_MASTER_HOST}!&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        exit 1
+    fi
+else
+    echo &quot;[$(date)] Nod gagal ${FAILED_NODE_ID} ialah nod Penantian (Standby). Tiada pemajuan diperlukan.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 0
+fi
+</code></pre>
+
+<h4 id="d-skrip-penyelarasan-semula-standby-etcpgpool-iifollow_primarysh">D. Skrip Penyelarasan Semula Standby (<code>/etc/pgpool-II/follow_primary.sh</code>)</h4>
+<p>Dikeksekusi oleh Pgpool-II selepas pemajuan nod Utama baharu untuk melaras semula nod-nod penantian lain di dalam kluster 3-nod.</p>
+<pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
+set -e
+
+# Parameter %d = ID nod terjejas, %h = hos terjejas, %m = ID master baharu, %H = hos master baharu, %P = ID utama lama
+DETACHED_NODE_ID=&quot;$1&quot;
+DETACHED_HOST=&quot;$2&quot;
+NEW_MASTER_ID=&quot;$5&quot;
+NEW_MASTER_HOST=&quot;$6&quot;
+OLD_PRIMARY_ID=&quot;$8&quot;
+
+LOGFILE=&quot;/var/log/pgpool/follow_primary.log&quot;
+PGHOME=&quot;${PGHOME:-/usr/lib/postgresql/15}&quot;
+PGDATA=&quot;${PGDATA:-/var/lib/postgresql/15/main}&quot;
+
+echo &quot;[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+
+# Sekiranya nod terjejas ialah Primary lama, hentikan perkhidmatannya sebelum penyesuaian semula
+if [ &quot;$DETACHED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
+    echo &quot;[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}&quot;; then
+        echo &quot;[$(date)] RALT: Gagal menghentikan perkhidmatan pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        exit 1
+    fi
+fi
+
+# Eksekusi pg_rewind bersama konfigurasi mod pemulihan penantian (--write-recovery-conf)
+echo &quot;[$(date)] Eksekusi pg_rewind pada ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot;; then
+    echo &quot;[$(date)] RALT: pg_rewind gagal pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+
+# Mulakan semula perkhidmatan PostgreSQL sebagai Standby
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_ctl start -D ${PGDATA}&quot;; then
+    echo &quot;[$(date)] RALT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+
+# Sahkan nod beroperasi dan memulakan semula penyiaran penyalinan sebelum melekatkan semula ke Pgpool
+sleep 3
+if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_isready -h localhost -p 5432&quot;; then
+    echo &quot;[$(date)] RALT: Nod ${DETACHED_HOST} belum sedia untuk sambungan&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+
+# Melekatkan semula nod penantian ke dalam peta Pgpool-II
+pcp_attach_node -w -h localhost -p 9898 -U pgpool &quot;${DETACHED_NODE_ID}&quot;
+
+echo &quot;[$(date)] Selesai penyelarasan semula dan penempelan nod ${DETACHED_HOST} ke Pgpool-II.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+exit 0
+</code></pre>
+
+<hr />
+<h2 id="4-matriks-perbandingan-seni-bina-komprehensif">4. Matriks Perbandingan Seni Bina Komprehensif</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dimensi</th>
+<th style="text-align: left;">Kluster MariaDB + MaxScale</th>
+<th style="text-align: left;">PostgreSQL HA (Streaming Repl.) + Pgpool-II</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Jenis Penyalinan</strong></td>
+<td style="text-align: left;">Terseganti / Synchronous (WSREP berasaskan pensijilan)</td>
+<td style="text-align: left;">Penyalinan Penyiaran Fizikal Asinkronus atau Terseganti</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Keupayaan Multi-Master</strong></td>
+<td style="text-align: left;">Aktif-Aktif (Keupayaan penulisan Multi-Master)</td>
+<td style="text-align: left;">Aktif-Pasif (Satu Utama / Primary, Berbilang Replika Standby)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Peringkat Proksi</strong></td>
+<td style="text-align: left;">Lapisan 7 / Layer 7 (Sedar Protokol SQL)</td>
+<td style="text-align: left;">Lapisan 7 / Layer 7 (Sedar Protokol SQL)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Penghalaan Baca-Tulis</strong></td>
+<td style="text-align: left;">Analisis penyataan SQL tempatan pada port tunggal (3306)</td>
+<td style="text-align: left;">Analisis penyataan SQL tempatan pada port tunggal (9999 / 5432)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pengumpulan Sambungan Binaan Dalam</strong></td>
+<td style="text-align: left;">Ya (penapis <code>connection_pool</code>)</td>
+<td style="text-align: left;">Ya (Pengurus kolam sambungan anak tempatan)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pengaturan Kegagalan Beralih (Failover)</strong></td>
+<td style="text-align: left;">Modul <code>galeramon</code> MaxScale</td>
+<td style="text-align: left;">Skrip eksekusi <code>failover_command</code> &amp; <code>follow_primary_command</code> Pgpool-II</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kebolehseediaan Tinggi Proksi</strong></td>
+<td style="text-align: left;">Redundansi MaxScale (Keepalived / Corosync)</td>
+<td style="text-align: left;">Protokol Watchdog Pgpool-II Tempatan bersama VIP Terapung</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kebergantungan Luaran</strong></td>
+<td style="text-align: left;">Tiada (Protokol WSREP binaan dalam)</td>
+<td style="text-align: left;">Tiada (Tiada enjin DCS seperti <code>etcd</code> atau Consul diperlukan)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Potensi Kehilangan Data (RPO)</strong></td>
+<td style="text-align: left;">Hampir Sifar ($RPO = 0$)</td>
+<td style="text-align: left;">$RPO &gt; 0$ (Satu-arah asinkronus lalai) / $RPO = 0$ (Jika <code>synchronous_commit = on</code> diaktifkan)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Masa Pemulihan (RTO)</strong></td>
+<td style="text-align: left;">Terikat ($&lt; 5$ saat)</td>
+<td style="text-align: left;">Terikat ($&lt; 10 - 15$ saat - Masa henti semakan kesihatan + pemajuan skrip)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Risiko Kebuntuan (Deadlock)</strong></td>
+<td style="text-align: left;">Sederhana jika penulisan mengenai berbilang nod serentak</td>
+<td style="text-align: left;">Sifar (Kesemua penulisan diarahkan secara tegar ke nod Utama tunggal)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-pertimbangan-operasi-amalan-terbaik">5. Pertimbangan Operasi &amp; Amalan Terbaik</h2>
+<h3 id="51-mencegah-senario-otak-terpisah-split-brain">5.1 Mencegah Senario Otak-Terpisah (Split-Brain)</h3>
+<ul>
+<li><strong>MariaDB Galera:</strong> Memerlukan penyebaran minimum 3 nod. Galera menggunakan pengundian kuorum berpemberat EVS; nod terpencil secara automatik memasuki keadaan bukan-utama (non-primary) bagi mengelakkan penulisan otak-terpisah.</li>
+<li><strong>PostgreSQL + Pgpool-II Watchdog:</strong> Sebarkan bilangan nod Pgpool-II ganjil (minimum 3 instans) yang menjalankan Watchdog. Watchdog memerlukan undian majoriti ($N/2 + 1$) sebelum menetapkan IP Maya (VIP) atau mencetuskan arahan kegagalan beralih, memastikan pembahagian rangkaian tidak menghasilkan pemajuan utama otak-terpisah.</li>
+</ul>
+<h3 id="52-strategi-sandaran-pemulihan-bencana">5.2 Strategi Sandaran &amp; Pemulihan Bencana</h3>
+<ul>
+<li><strong>Kluster MariaDB:</strong> Gunakan <code>mariabackup</code> untuk sandaran fizikal tanpa sekat (<em>non-blocking</em>) yang dieksekusi pada nod bacaan penantian. Tetapkan <code>wsrep_desync=ON</code> pada nod sandaran semasa eksekusi untuk mengasingkan I/O sandaran daripada trafik penyalinan Galera.</li>
+<li><strong>PostgreSQL HA:</strong> Sebarkan <code>pgBackRest</code> atau <code>WAL-G</code> digabungkan dengan pengarkiban WAL berterusan. Eksekusi sandaran fizikal secara terus terhadap nod pangkalan data penantian bagi mengelakkan impak CPU dan I/O cakera pada nod Utama.</li>
+</ul>
+<h3 id="53-pengoptimuman-pengurusan-sambungan">5.3 Pengoptimuman Pengurusan Sambungan</h3>
+<ul>
+<li><strong>MariaDB / MaxScale:</strong> Laraskan penapis kolam sambungan MaxScale dan tetapkan had pelayan belakang (<code>maxconn</code>) supaya sejajar dengan parameter <code>max_connections</code> MariaDB.</li>
+<li><strong>PostgreSQL / Pgpool-II:</strong> Penalaan parameter <code>num_init_children</code> dan <code>max_pool</code> Pgpool secara teliti. Jumlah sambungan hadapan dari Pgpool ke PostgreSQL adalah bersamaan dengan:
+  $$\text{Jumlah Sambungan} = \text{num_init_children} \times \text{max_pool}$$
+  Pastikan hasil darab ini tidak melebihi parameter <code>max_connections</code> yang dikonfigurasikan pada PostgreSQL.</li>
+</ul>
+<hr />
+<h2 id="6-syor-kerangka-kerja-keputusan">6. Syor &amp; Kerangka Kerja Keputusan</h2>
+<h3 id="pilih-kluster-mariadb-galera-maxscale-jika">Pilih Kluster MariaDB Galera + MaxScale jika:</h3>
+<ul>
+<li>Anda memerlukan seni bina Aktif-Aktif di mana mana-mana nod pangkalan data boleh menerima penulisan semasa tetingkap penyelenggaraan bergilir (<em>rolling maintenance</em>).</li>
+<li>Beban kerja anda memerlukan penyalinan pensijilan terseganti merentas kesemua enjin storan nod secara terus dari kotak (<em>out-of-the-box</em>).</li>
+<li>Anda lebih gemar enjin penghalaan SQL MaxScale yang ringan dan modular.</li>
+</ul>
+<h3 id="pilih-postgresql-penyalinan-penyiaran-pgpool-ii-jika">Pilih PostgreSQL (Penyalinan Penyiaran) + Pgpool-II jika:</h3>
+<ul>
+<li>Anda mahukan solusi Lapisan 7 serba-boleh yang menyediakan Pemisahan Baca-Tulis, Pengumpulan Sambungan, dan Kegagalan Beralih HA dalam satu lapisan proksi tunggal.</li>
+<li>Anda memerlukan ciri-ciri canggih PostgreSQL (<code>JSONB</code>, <code>PostGIS</code>, sambungan/extensions) tanpa keperluan infrastruktur konsensus luaran (<code>etcd</code>, <code>Consul</code>).</li>
+<li>Anda mahukan redundansi proksi tempatan melalui Pgpool-II Watchdog tanpa perlu mengkonfigurasi perisian pengklusteran peringkat OS tambahan.</li>
+</ul>
+<hr />
+<h2 id="eksplorasi-lanjut-bersama-ai-ai-prompts">💡 Eksplorasi Lanjut bersama AI (AI Prompts)</h2>
+<ol>
+<li><em>"Berikan panduan langkah demi langkah untuk menguji senario failover automatik pada Pgpool-II Watchdog menggunakan arahan pcp_watchdog_info."</em></li>
+<li><em>"Tunjukkan contoh Playbook Ansible untuk mengautomasikan penyebaran 3-nod MariaDB Galera Cluster bersama MaxScale pada AlmaLinux 10."</em></li>
+<li><em>"Apakah langkah penalaan prestasi kernel Linux (sysctl) terbaik untuk mengendalikan beban pangkalan data PostgreSQL berprestasi tinggi?"</em></li>
+</ol>
+<hr />
+<h2 id="bahan-bacaan-lanjut-rujukan-url">🔗 Bahan Bacaan Lanjut (Rujukan URL)</h2>
+<ul>
+<li><a href="https://mariadb.com/kb/en/maxscale/">Dokumentasi Rasmi MariaDB MaxScale</a></li>
+<li><a href="https://www.pgpool.net/mediawiki/index.php/Main_Page">Dokumentasi Rasmi Pgpool-II Wiki</a></li>
+<li><a href="https://www.postgresql.org/docs/current/warm-standby.html">Panduan Penyalinan Penyiaran PostgreSQL</a></li>
+</ul>
+<hr />
+<h2 id="buku-boleh-dibeli-syor-bacaan">📚 Buku Boleh Dibeli (Syor Bacaan)</h2>
+<ul>
+<li><strong>High Availability MySQL &amp; MariaDB</strong> oleh Charles Bell, Sveta Smirnova, dan Patrick Galbraith.</li>
+<li><strong>PostgreSQL High Performance</strong> oleh Gregory Smith.</li>
+<li><strong>Panduan Praktikal Kebolehseediaan Tinggi Pelayan Linux</strong> oleh Harisfazillah Jamel.</li>
+</ul>
+</body>
+</html>
