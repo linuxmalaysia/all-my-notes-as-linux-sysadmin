@@ -8,9 +8,9 @@
 <body>
 <h1 id="solusi-pangkalan-data-kebolehseediaan-tinggi-enterprise-mariadb-galera-maxscale-lwn-postgresql-ha-pgpool-ii">Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise: MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II</h1>
 <blockquote>
-<p><strong>Tajuk Dokumen:</strong> Cetak Biru Reka Bentuk Teknikal &amp; Penyebaran Perbandingan: Kluster MariaDB Galera + MaxScale lwn. Kebolehseediaan Tinggi (HA) PostgreSQL (Penyalinan Penyiaran Fizikal Tempatan) + Pgpool-II<br />
-<strong>Versi Dokumen:</strong> 3.0<br />
-<strong>Audiens Sasaran:</strong> Arkitek Sistem, Pentadbir Pangkalan Data (DBA), Jurutera DevOps, Ketua Infrastruktur<br />
+<p><strong>Tajuk Dokumen:</strong> Cetak Biru Reka Bentuk Teknikal &amp; Penyebaran Perbandingan: Kluster MariaDB Galera + MaxScale lwn. Kebolehseediaan Tinggi (HA) PostgreSQL (Penyalinan Penyiaran Fizikal Tempatan) + Pgpool-II
+<strong>Versi Dokumen:</strong> 3.0
+<strong>Audiens Sasaran:</strong> Arkitek Sistem, Pentadbir Pangkalan Data (DBA), Jurutera DevOps, Ketua Infrastruktur
 <strong>Unit Kompetensi NOSS:</strong> CU03 (Pentadbiran &amp; Perkhidmatan Pelayan Linux) — WA05 (Pelaksanaan Peranan dan Servis Pelayan)</p>
 </blockquote>
 <hr />
@@ -264,7 +264,7 @@ other_wd_port0 = 9000
 </code></pre>
 
 <h4 id="c-skrip-failover-pgpool-etcpgpool-iifailoversh">C. Skrip Failover Pgpool (<code>/etc/pgpool-II/failover.sh</code>)</h4>
-<p>Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.<br />
+<p>Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.
 <em>Nota Keselamatan &amp; Laluan:</em> Kunci hos pelayan (<em>server host-key pins</em>) hendaklah disimpan di dalam <code>~postgres/.ssh/known_hosts</code> pada hos Pgpool-II. Kunci awam pelanggan yang terhad (<em>restricted client public key</em>) bersama pilihan arahan dipaksa (<em>forced-command option</em>) dipasang di dalam <code>~postgres/.ssh/authorized_keys</code> pada akaun pelayan sasaran. Laluan <code>PGHOME</code> dan <code>PGDATA</code> dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.</p>
 <pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
 # Parameter yang dihantar oleh Pgpool-II:

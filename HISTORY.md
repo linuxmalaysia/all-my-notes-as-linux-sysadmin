@@ -34,6 +34,11 @@ sources:
 
 # Project History (Sovereign Markdown Palace)
 
+## [2026-10-31] Pengarkiban Sesi Google Jules & Migrasi ke Google Antigravity
+- **Peristiwa**: Pengumuman penutupan Google Jules (Turndown Dec 31, 2026 / Mod Baca-Sahaja Nov 11, 2026) dan penyerahan operasi agentic coding kepada Google Antigravity.
+- **Eksport & Handover**: Mengeksport lejar sesi, konfigurasi, skrip persekitaran, tatacara ujian, dan memori jangka panjang ke `.agents/brain/jules_export/` serta merumuskan sejarah operasi di `.agents/brain/jules_history.md`.
+- **Sovereign Handover**: Mengemas kini `.agents/brain/handover_to_antigravity.md` dan `.agents/brain/wings/wing_dsom_core/hall_events/room_ledger/closet.md` bagi memastikan kesinambungan kedaulatan digital NOSS Linux Malaysia di bawah arahan Harisfazillah Jamel.
+
 ## [2026-10-05] Pemakaian Standard Spesifikasi Open Knowledge Format (OKF v0.2)
 - **Peristiwa**: Memproses dan memodenkan keseluruhan repositori untuk mematuhi spesifikasi rasmi Open Knowledge Format (OKF v0.2) keluaran Google Cloud Platform.
 - **Isyarat Kepercayaan & Provenans**: Menyerapkan 5 Isyarat Kepercayaan (`generated`, `verified`, `status`, `stale_after`, `sources`) serta konvensyen identiti pelakon (`<producer>/<version>`, `human:<id>`, `process:<id>`).

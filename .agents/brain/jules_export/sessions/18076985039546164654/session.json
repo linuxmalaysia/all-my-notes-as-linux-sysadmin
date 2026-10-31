@@ -1,0 +1,37 @@
+{
+  "id": "18076985039546164654",
+  "suggestedTitle": "Jules Turndown & Antigravity Migration",
+  "title": "Google Jules Wind Down & Migration to Google Antigravity",
+  "taskStatus": "IN_PROGRESS",
+  "createdAt": "2026-10-31T16:53:00Z",
+  "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+  "description": "Export all Jules knowledge, configuration, sessions, and history to .agents/brain for Google Antigravity handover.",
+  "latestPlan": {
+    "steps": [
+      {
+        "index": 0,
+        "title": "Initialize Jules migration export structure in .agents/brain"
+      },
+      {
+        "index": 1,
+        "title": "Create .agents/brain/jules_history.md and verify contents"
+      },
+      {
+        "index": 2,
+        "title": "Update handover documentation and spatial memory palace ledger"
+      },
+      {
+        "index": 3,
+        "title": "Update repository changelog and history files"
+      },
+      {
+        "index": 4,
+        "title": "Enforce OKF v0.2 compliance and rebuild palace registry"
+      },
+      {
+        "index": 5,
+        "title": "Run verification and test suite"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "sources/github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "displayName": "linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "provider": "GITHUB",
+    "repository": "linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "defaultBranch": "main",
+    "status": "ACTIVE"
+  }
+]

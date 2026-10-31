@@ -1,0 +1,11 @@
+{
+  "id": "4606799749431317953",
+  "suggestedTitle": "Adopt Google Open Knowledge Format (OKF) v0.2 Specification",
+  "title": "OKF v0.2 Specification Adoption & Mass Validation",
+  "taskStatus": "COMPLETED",
+  "createdAt": "2026-10-02T08:00:00Z",
+  "completedAt": "2026-10-02T10:15:00Z",
+  "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+  "description": "Upgrade repository Markdown files to OKF v0.2 standard with trust signals and provenance verification.",
+  "gitBranchName": "feat/adopt-okf-v02-spec-4606799749431317953"
+}

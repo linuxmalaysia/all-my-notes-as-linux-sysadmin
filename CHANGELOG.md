@@ -42,6 +42,8 @@ dan projek ini mematuhi spesifikasi [Semantic Versioning](https://semver.org/spe
 ## [Unreleased]
 
 ### Added (Penambahan)
+- **Google Jules Turndown & Migration to Google Antigravity**: Exported complete Jules agent history, memories, configuration, and session activity logs to `.agents/brain/jules_export/` and `.agents/brain/jules_history.md`. Updated `.agents/brain/handover_to_antigravity.md` ahead of Jules's December 31, 2026 turndown schedule.
+- **Enterprise High Availability Database Solution Adoption**: Merged NOSS CU03/WA05 documentation on MariaDB Galera + MaxScale vs. PostgreSQL HA + Pgpool-II, ported agent skill `.agents/skills/solusi-pangkalan-data-ha/`, and codified Rule 11.16 Linux-native PDF compilation via WeasyPrint.
 - **Open Knowledge Format (OKF v0.2) Adoption**: Upgraded repository frontmatter schema across all Markdown files to OKF v0.2 (`spec_version: "0.2"`, `okf_version: "0.2"`, trust signals `generated`/`verified`/`status`/`stale_after`, and `sources` provenance listing `resource` paths and public URLs).
 - **Code Health & Tooling**: Enhanced `scripts/apply_okf_v02.py` with safe `verified` field normalization, string source conversion to resource dicts, and scalar string validation for `id` and `resource` fields.
 - **AI Constitution & Adoption Guide**: Updated Rule 8 in `AGENTS.md` and `.agents/AGENTS.md` and comprehensively updated `docs/OKF-ADOPTION-GUIDE.md` to reflect OKF v0.2 trust signals, actor conventions (`<producer>/<version>`, `human:<id>`, `process:<id>`), index/log reserved file rules, and Attested Computations.
