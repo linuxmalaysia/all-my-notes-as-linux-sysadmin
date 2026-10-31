@@ -143,9 +143,8 @@ listen_addresses = '*'
 port = 9999
 pcp_port = 9898
 
+# Pgpool-II 4.2+ Mode
 backend_clustering_mode = 'streaming_replication'
-master_slave_mode = on
-master_slave_sub_mode = 'stream'
 
 backend_hostname0 = '10.0.2.11'
 backend_port0 = 5432
@@ -177,6 +176,7 @@ health_check_database = 'postgres'
 failover_command = '/etc/pgpool-II/failover.sh %d %h %p %D %m %H %M %P'
 follow_primary_command = '/etc/pgpool-II/follow_primary.sh %d %h %p %D %m %H %M %P'
 
+# Watchdog Settings (Minimum 3 Nodes for Quorum)
 use_watchdog = on
 wd_hostname = '10.0.2.21'
 wd_port = 9000
@@ -184,6 +184,19 @@ delegate_IP = '10.0.2.100'
 wd_lifecheck_method = 'heartbeat'
 wd_interval = 2
 wd_auth_key = '<WATCHDOG_SECRET_KEY>'
+
+heartbeat_destination0 = '10.0.2.22'
+heartbeat_destination_port0 = 9694
+heartbeat_destination1 = '10.0.2.23'
+heartbeat_destination_port1 = 9694
+
+other_pgpool_hostname0 = '10.0.2.22'
+other_pgpool_port0 = 9000
+other_wd_port0 = 9000
+
+other_pgpool_hostname1 = '10.0.2.23'
+other_pgpool_port1 = 9000
+other_wd_port1 = 9000
 ```
 
 ### 2.2 Skrip Failover Automatik (`/etc/pgpool-II/failover.sh`)
@@ -203,14 +216,17 @@ PGDATA="${PGDATA:-/var/lib/postgresql/15/main}"
 echo "[$(date)] Cetusan kegagalan beralih. Nod Gagal: ${FAILED_NODE_ID} (${FAILED_HOST}). Utama Lama: ${OLD_PRIMARY_ID}" >> "$LOGFILE"
 
 if [ "$FAILED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
+    echo "[$(date)] Nod Utama gagal dikesan. Memulakan fencing pada ${FAILED_HOST}..." >> "$LOGFILE"
+    ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@"${FAILED_HOST}" \
+        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA} || pkill -9 -u postgres postgres" 2>/dev/null || true
+
     echo "[$(date)] Memajukan nod Penantian ${NEW_MASTER_ID} (${NEW_MASTER_HOST}) kepada Utama..." >> "$LOGFILE"
-    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${NEW_MASTER_HOST}" \
-        "${PGHOME}/bin/pg_ctl promote -D ${PGDATA}"
-    if [ $? -eq 0 ]; then
+    if ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${NEW_MASTER_HOST}" \
+        "${PGHOME}/bin/pg_ctl promote -D ${PGDATA}"; then
         echo "[$(date)] Berjaya memajukan nod ${NEW_MASTER_HOST} kepada Utama." >> "$LOGFILE"
         exit 0
     else
-        echo "[$(date)] RALT: Gagal memajukan nod ${NEW_MASTER_HOST}!" >> "$LOGFILE"
+        echo "[$(date)] RALAT: Gagal memajukan nod ${NEW_MASTER_HOST}!" >> "$LOGFILE"
         exit 1
     fi
 else
@@ -237,33 +253,40 @@ PGDATA="${PGDATA:-/var/lib/postgresql/15/main}"
 
 echo "[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}..." >> "$LOGFILE"
 
-if [ "$DETACHED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
-    echo "[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula..." >> "$LOGFILE"
-    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
-        "${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}"; then
-        echo "[$(date)] RALT: Gagal menghentikan perkhidmatan pada ${DETACHED_HOST}" >> "$LOGFILE"
-        exit 1
-    fi
-fi
+echo "[$(date)] Memastikan sasaran ${DETACHED_HOST} dihentikan secara bersih..." >> "$LOGFILE"
+ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+    "${PGHOME}/bin/pg_ctl stop -m fast -D ${PGDATA}" || true
 
 echo "[$(date)] Eksekusi pg_rewind pada ${DETACHED_HOST}..." >> "$LOGFILE"
 if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
     "${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'"; then
-    echo "[$(date)] RALT: pg_rewind gagal pada ${DETACHED_HOST}" >> "$LOGFILE"
-    exit 1
+    echo "[$(date)] AMARAN: pg_rewind gagal pada ${DETACHED_HOST}. Menggunakan fallback pg_basebackup..." >> "$LOGFILE"
+    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
+        "rm -rf ${PGDATA}/* && ${PGHOME}/bin/pg_basebackup -h ${NEW_MASTER_HOST} -p 5432 -U postgres -D ${PGDATA} -Fp -Xs -R"; then
+        echo "[$(date)] RALAT: pg_basebackup gagal pada ${DETACHED_HOST}!" >> "$LOGFILE"
+        exit 1
+    fi
 fi
 
 if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
     "${PGHOME}/bin/pg_ctl start -D ${PGDATA}"; then
-    echo "[$(date)] RALT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}" >> "$LOGFILE"
+    echo "[$(date)] RALAT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}" >> "$LOGFILE"
     exit 1
 fi
 
 sleep 3
 if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${DETACHED_HOST}" \
     "${PGHOME}/bin/pg_isready -h localhost -p 5432"; then
-    echo "[$(date)] RALT: Nod ${DETACHED_HOST} belum sedia untuk sambungan" >> "$LOGFILE"
+    echo "[$(date)] RALAT: Nod ${DETACHED_HOST} belum sedia untuk sambungan" >> "$LOGFILE"
     exit 1
+fi
+
+IS_STREAMING=$(ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@"${NEW_MASTER_HOST}" \
+    "psql -tA -U postgres -c \"SELECT count(*) FROM pg_stat_replication WHERE client_addr = '${DETACHED_HOST}' AND state = 'streaming';\"" 2>/dev/null || echo "0")
+
+if [ "$IS_STREAMING" -lt 1 ]; then
+    echo "[$(date)] AMARAN: Replikasi streaming pada ${DETACHED_HOST} belum sedia. Menunggu..." >> "$LOGFILE"
+    sleep 5
 fi
 
 pcp_attach_node -w -h localhost -p 9898 -U pgpool "${DETACHED_NODE_ID}"

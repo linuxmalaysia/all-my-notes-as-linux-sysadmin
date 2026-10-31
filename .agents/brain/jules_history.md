@@ -24,8 +24,8 @@ sources:
 - id: google-antigravity-platform
   title: Google Antigravity Agent-First Platform Documentation
   author: Google Cloud & AI Labs
-  url: https://cloud.google.com/antigravity
-  resource: https://cloud.google.com/antigravity
+  url: https://cloud.google.com/blog/products/application-development/google-antigravity
+  resource: https://cloud.google.com/blog/products/application-development/google-antigravity
 - id: dsom-sovereign-constitution
   title: Deep State of Mind (DSOM v0.1) AI Agent Constitution
   author: Harisfazillah Jamel (LinuxMalaysia)

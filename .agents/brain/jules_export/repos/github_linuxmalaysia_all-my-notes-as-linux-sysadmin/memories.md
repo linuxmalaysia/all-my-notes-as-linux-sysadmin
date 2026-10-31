@@ -1,7 +1,7 @@
 ---
 spec_version: '0.2'
 okf_version: '0.2'
-type: documentation
+type: architecture_concept
 title: Memories
 description: Dokumentasi OKF v0.2 bagi memories.md.
 status: stable

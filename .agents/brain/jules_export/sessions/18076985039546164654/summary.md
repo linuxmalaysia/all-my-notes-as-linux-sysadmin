@@ -1,14 +1,14 @@
 ---
 spec_version: '0.2'
 okf_version: '0.2'
-type: documentation
+type: architecture_concept
 title: Google Jules Wind Down & Migration to Google Antigravity
 description: Dokumentasi OKF v0.2 bagi summary.md.
 status: stable
 stale_after: '2027-12-31'
 generated:
   by: okf_tooling/v0.2
-  at: '2026-10-31T17:14:09Z'
+  at: '2026-10-31T23:40:17Z'
 sources:
 - id: internal-legal-notice
   title: Dokumen Notis Perundangan, Privasi & Penafian / Legal Notice
@@ -36,14 +36,15 @@ sources:
 
 - **ID:** 18076985039546164654
 - **Repo:** github/linuxmalaysia/all-my-notes-as-linux-sysadmin
-- **Status:** IN_PROGRESS
+- **Status:** COMPLETED
 - **Created:** 2026-10-31T16:53:00Z
-- **Completed:** N/A
+- **Completed:** 2026-10-31T17:35:00Z
 
 ## Prompt
 Export all Jules knowledge, configuration, sessions, and history to .agents/brain for Google Antigravity handover.
 
 ## Branch
+`feat/jules-turndown-antigravity-migration-18076985039546164654`
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*

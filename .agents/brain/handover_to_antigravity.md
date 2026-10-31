@@ -30,8 +30,8 @@ sources:
 - id: google-antigravity-platform
   title: Google Antigravity Agent-First Platform Documentation
   author: Google Cloud & AI Labs
-  url: https://cloud.google.com/antigravity
-  resource: https://cloud.google.com/antigravity
+  url: https://cloud.google.com/blog/products/application-development/google-antigravity
+  resource: https://cloud.google.com/blog/products/application-development/google-antigravity
 - id: redlinesoft-attested-computations
   title: Attested Computations in Open Knowledge Format (OKF v0.2)
   author: RedLineSoft

@@ -1,7 +1,7 @@
 ---
 spec_version: '0.2'
 okf_version: '0.2'
-type: documentation
+type: architecture_concept
 title: 'Fasa 6: Backup, Text Processing & Storage Mounting'
 description: Dokumentasi OKF v0.2 bagi summary.md.
 status: stable
