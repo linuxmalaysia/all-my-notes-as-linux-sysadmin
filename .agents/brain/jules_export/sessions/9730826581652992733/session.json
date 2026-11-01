@@ -1,0 +1,11 @@
+{
+  "id": "9730826581652992733",
+  "suggestedTitle": "feat(manual): migrate Bab 6 backup, text processing, and storage mounting",
+  "title": "Fasa 6: Backup, Text Processing & Storage Mounting",
+  "taskStatus": "COMPLETED",
+  "createdAt": "2026-08-17T09:00:00Z",
+  "completedAt": "2026-08-17T11:45:00Z",
+  "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+  "description": "Migrate Bab 6 backup tools, text manipulation, and storage mounting to manual/cu04 and manual/cu06.",
+  "gitBranchName": "jules-9730826581652992733-c4872b9e"
+}

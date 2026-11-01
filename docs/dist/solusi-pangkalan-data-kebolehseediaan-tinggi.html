@@ -8,9 +8,9 @@
 <body>
 <h1 id="solusi-pangkalan-data-kebolehseediaan-tinggi-enterprise-mariadb-galera-maxscale-lwn-postgresql-ha-pgpool-ii">Solusi Pangkalan Data Kebolehseediaan Tinggi Enterprise: MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II</h1>
 <blockquote>
-<p><strong>Tajuk Dokumen:</strong> Cetak Biru Reka Bentuk Teknikal &amp; Penyebaran Perbandingan: Kluster MariaDB Galera + MaxScale lwn. Kebolehseediaan Tinggi (HA) PostgreSQL (Penyalinan Penyiaran Fizikal Tempatan) + Pgpool-II<br />
-<strong>Versi Dokumen:</strong> 3.0<br />
-<strong>Audiens Sasaran:</strong> Arkitek Sistem, Pentadbir Pangkalan Data (DBA), Jurutera DevOps, Ketua Infrastruktur<br />
+<p><strong>Tajuk Dokumen:</strong> Cetak Biru Reka Bentuk Teknikal &amp; Penyebaran Perbandingan: Kluster MariaDB Galera + MaxScale lwn. Kebolehseediaan Tinggi (HA) PostgreSQL (Penyalinan Penyiaran Fizikal Tempatan) + Pgpool-II
+<strong>Versi Dokumen:</strong> 3.0
+<strong>Audiens Sasaran:</strong> Arkitek Sistem, Pentadbir Pangkalan Data (DBA), Jurutera DevOps, Ketua Infrastruktur
 <strong>Unit Kompetensi NOSS:</strong> CU03 (Pentadbiran &amp; Perkhidmatan Pelayan Linux) — WA05 (Pelaksanaan Peranan dan Servis Pelayan)</p>
 </blockquote>
 <hr />
@@ -136,8 +136,8 @@ port=3306
 <hr />
 <h2 id="3-seni-bina-2-kebolehseediaan-tinggi-postgresql-penyalinan-penyiaran-tempatan-bersama-pgpool-ii">3. Seni Bina 2: Kebolehseediaan Tinggi PostgreSQL (Penyalinan Penyiaran Tempatan) bersama Pgpool-II</h2>
 <h3 id="31-gambaran-keseluruhan-seni-bina">3.1 Gambaran Keseluruhan Seni Bina</h3>
-<p>Seni bina ini mengguna pakai Penyalinan Penyiaran Fizikal Tempatan (Physical Streaming Replication - Utama-Penantian / Primary-Standby) PostgreSQL yang diintegrasikan bersama Pgpool-II sebagai proksi Lapisan 7 sedar-SQL. Pgpool-II beroperasi dalam mod <code>master_slave_mode</code> dengan sub-mod <code>stream</code>, menyediakan pengumpulan sambungan pelanggan, pemisahan pertanyaan baca-tulis automatik pada port hadapan tunggal (9999 atau 5432), semakan kesihatan automatik, dan pengatur kegagalan beralih kluster aktif.</p>
-<p>Bagi menghapuskan titik kegagalan tunggal (SPOF) pada lapisan proksi, nod-nod Pgpool-II menjejaskan protokol Watchdog, mengekalkan IP Maya (Virtual IP - VIP) yang dikongsi merentas berbilang instans Pgpool-II.</p>
+<p>Seni bina ini mengguna pakai Penyalinan Penyiaran Fizikal Tempatan (Physical Streaming Replication - Utama-Penantian / Primary-Standby) PostgreSQL yang diintegrasikan bersama Pgpool-II sebagai proksi Lapisan 7 sedar-SQL. Dalam Pgpool-II 4.2+, mod kluster dikonfigurasikan secara seragam menerusi <code>backend_clustering_mode = 'streaming_replication'</code>, menyediakan pengumpulan sambungan pelanggan, pemisahan pertanyaan baca-tulis automatik pada port hadapan tunggal (9999 atau 5432), semakan kesihatan automatik, dan pengatur kegagalan beralih kluster aktif tanpa memerlukan mod lapuk <em>master-slave</em>.</p>
+<p>Bagi menghapuskan titik kegagalan tunggal (SPOF) pada lapisan proksi, nod-nod Pgpool-II menjalankan protokol Watchdog, mengekalkan IP Maya (Virtual IP - VIP) yang dikongsi merentas berbilang instans Pgpool-II.</p>
 <pre class="codehilite"><code>                      +--------------------+
                       |  Lapisan Aplikasi  |
                       +---------+----------+
@@ -189,6 +189,7 @@ shared_buffers = 4GB
 
 # Replication Parameters
 wal_level = replica
+wal_log_hints = on
 max_wal_senders = 10
 max_replication_slots = 10
 hot_standby = on
@@ -205,10 +206,8 @@ listen_addresses = '*'
 port = 9999
 pcp_port = 9898
 
-# Operating Mode
+# Operating Mode (Pgpool-II 4.2+)
 backend_clustering_mode = 'streaming_replication'
-master_slave_mode = on
-master_slave_sub_mode = 'stream'
 
 # Backend Database Nodes
 backend_hostname0 = '10.0.2.11'
@@ -249,22 +248,40 @@ health_check_database = 'postgres'
 failover_command = '/etc/pgpool-II/failover.sh %d %h %p %D %m %H %M %P'
 follow_primary_command = '/etc/pgpool-II/follow_primary.sh %d %h %p %D %m %H %M %P'
 
-# Watchdog Settings (High Availability for Pgpool itself)
+# Watchdog Settings (High Availability for Pgpool itself - Minimum 3 Nodes for Quorum in Pgpool-II 4.2+)
 use_watchdog = on
-wd_hostname = '10.0.2.21'
-wd_port = 9000
+wd_authkey = '&lt;WATCHDOG_SECRET_KEY&gt;'
 delegate_IP = '10.0.2.100'
 wd_lifecheck_method = 'heartbeat'
 wd_interval = 2
-wd_auth_key = '&lt;WATCHDOG_SECRET_KEY&gt;'
 
-other_pgpool_hostname0 = '10.0.2.22'
-other_pgpool_port0 = 9000
-other_wd_port0 = 9000
+# Local Node Identity (Hos tempatan memerlukan fail pgpool_node_id yang sepadan, cth: 0)
+pgpool_node_id = 0
+
+# Node 0 (Local Pgpool Instance)
+hostname0 = '10.0.2.21'
+wd_port0 = 9000
+pgpool_port0 = 9999
+heartbeat_hostname0 = '10.0.2.21'
+heartbeat_port0 = 9694
+
+# Node 1 (Peer Pgpool Instance)
+hostname1 = '10.0.2.22'
+wd_port1 = 9000
+pgpool_port1 = 9999
+heartbeat_hostname1 = '10.0.2.22'
+heartbeat_port1 = 9694
+
+# Node 2 (Peer Pgpool Instance)
+hostname2 = '10.0.2.23'
+wd_port2 = 9000
+pgpool_port2 = 9999
+heartbeat_hostname2 = '10.0.2.23'
+heartbeat_port2 = 9694
 </code></pre>
 
 <h4 id="c-skrip-failover-pgpool-etcpgpool-iifailoversh">C. Skrip Failover Pgpool (<code>/etc/pgpool-II/failover.sh</code>)</h4>
-<p>Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.<br />
+<p>Dikeksekusi secara automatik oleh Pgpool-II apabila nod bahagian belakang mengalami kegagalan.
 <em>Nota Keselamatan &amp; Laluan:</em> Kunci hos pelayan (<em>server host-key pins</em>) hendaklah disimpan di dalam <code>~postgres/.ssh/known_hosts</code> pada hos Pgpool-II. Kunci awam pelanggan yang terhad (<em>restricted client public key</em>) bersama pilihan arahan dipaksa (<em>forced-command option</em>) dipasang di dalam <code>~postgres/.ssh/authorized_keys</code> pada akaun pelayan sasaran. Laluan <code>PGHOME</code> dan <code>PGDATA</code> dibina menggunakan pemboleh ubah persekitaran boleh-laras bagi menyokong pelbagai susun atur persekitaran Linux.</p>
 <pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
 # Parameter yang dihantar oleh Pgpool-II:
@@ -287,17 +304,28 @@ echo &quot;[$(date)] Cetusan kegagalan beralih. Nod Gagal: ${FAILED_NODE_ID} (${
 
 # Hanya lakukan pemajuan (promotion) jika nod yang gagal merupakan nod Utama
 if [ &quot;$FAILED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
+    echo &quot;[$(date)] Nod Utama gagal dikesan. Memulakan pemagaran nod (fencing/STONITH) pada ${FAILED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+
+    # Fencing / STONITH bekas nod utama untuk mencegah split-brain
+    FENCE_STATUS=0
+    ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${FAILED_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA} || pkill -9 -u postgres postgres&quot; 2&gt;/dev/null || FENCE_STATUS=$?
+
+    if [ &quot;$FENCE_STATUS&quot; -ne 0 ]; then
+        echo &quot;[$(date)] RALAT FATAL: Pemagaran nod (fencing) gagal atau tidak disahkan pada ${FAILED_HOST}! Menghentikan proses failover untuk mencegah split-brain.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        exit 1
+    fi
+    echo &quot;[$(date)] Fencing berjaya disahkan pada ${FAILED_HOST}.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+
     echo &quot;[$(date)] Memajukan nod Penantian ${NEW_MASTER_ID} (${NEW_MASTER_HOST}) kepada Utama...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-    # Eksekusi arahan pemajuan melalui SSH berautentikasi kunci terurus pada sasaran master baharu
-    ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
-        &quot;${PGHOME}/bin/pg_ctl promote -D ${PGDATA}&quot;
-
-    if [ $? -eq 0 ]; then
+    # Eksekusi arahan pemajuan melalui SSH berautentikasi kunci bukan-interaktif pada sasaran master baharu
+    if ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_ctl promote -D ${PGDATA}&quot;; then
         echo &quot;[$(date)] Berjaya memajukan nod ${NEW_MASTER_HOST} kepada Utama.&quot; &gt;&gt; &quot;$LOGFILE&quot;
         exit 0
     else
-        echo &quot;[$(date)] RALT: Gagal memajukan nod ${NEW_MASTER_HOST}!&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        echo &quot;[$(date)] RALAT: Gagal memajukan nod ${NEW_MASTER_HOST}!&quot; &gt;&gt; &quot;$LOGFILE&quot;
         exit 1
     fi
 else
@@ -324,36 +352,79 @@ PGDATA=&quot;${PGDATA:-/var/lib/postgresql/15/main}&quot;
 
 echo &quot;[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-# Sekiranya nod terjejas ialah Primary lama, hentikan perkhidmatannya sebelum penyesuaian semula
-if [ &quot;$DETACHED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
-    echo &quot;[$(date)] Menghentikan bekas Utama ${DETACHED_HOST} sebelum penyelarasan semula...&quot; &gt;&gt; &quot;$LOGFILE&quot;
-    if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-        &quot;${PGHOME}/bin/pg_ctl stop -m immediate -D ${PGDATA}&quot;; then
-        echo &quot;[$(date)] RALT: Gagal menghentikan perkhidmatan pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+# Pengesahan keselamatan laluan PGDATA (mencegah traversal, root filesystem, atau aksara tidak selamat)
+if [[ -z &quot;$PGDATA&quot; || &quot;$PGDATA&quot; == &quot;/&quot; || &quot;$PGDATA&quot; == &quot;/root&quot; || &quot;$PGDATA&quot; == &quot;/bin&quot; || &quot;$PGDATA&quot; == *..* || &quot;$PGDATA&quot; =~ [^a-zA-Z0-9/_.-] ]]; then
+    echo &quot;[$(date)] RALAT FATAL: Laluan PGDATA tidak sah atau berbahaya: '${PGDATA}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+
+# Hentikan perkhidmatan PostgreSQL secara bersih pada nod sasaran sebelum penyelarasan semula
+echo &quot;[$(date)] Memastikan perkhidmatan PostgreSQL pada ${DETACHED_HOST} dihentikan secara bersih...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_ctl stop -m fast -D ${PGDATA}&quot;; then
+    echo &quot;[$(date)] AMARAN: pg_ctl stop gagal, menguji sama ada instans sudah terhenti...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+fi
+
+# Sahkan kluster PostgreSQL benar-benar telah berhenti sebelum pemulihan atau fallback
+if ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_isready -h localhost -p 5432&quot; &gt;/dev/null 2&gt;&amp;1; then
+    echo &quot;[$(date)] RALAT FATAL: Perkhidmatan PostgreSQL pada ${DETACHED_HOST} masih beroperasi! Menghentikan proses pemulihan.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+
+# Eksekusi pg_rewind; sekiranya gagal, guna sandaran pg_basebackup sebagai sandaran pemulihan
+echo &quot;[$(date)] Menjalankan pg_rewind pada ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot;; then
+    echo &quot;[$(date)] AMARAN: pg_rewind gagal pada ${DETACHED_HOST}. Menggunakan kaedah fallback pg_basebackup...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        bash -s -- &quot;$PGDATA&quot; &lt;&lt; 'EOF'
+        TARGET_DIR=&quot;$1&quot;
+        rm -rf &quot;${TARGET_DIR:?}&quot;/*
+EOF
+    then
+        echo &quot;[$(date)] RALAT: Gagal membersihkan direktori sasaran pada ${DETACHED_HOST}!&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        exit 1
+    fi
+
+    if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_basebackup -h ${NEW_MASTER_HOST} -p 5432 -U postgres -D ${PGDATA} -Fp -Xs -R&quot;; then
+        echo &quot;[$(date)] RALAT: Fallback pg_basebackup juga gagal pada ${DETACHED_HOST}!&quot; &gt;&gt; &quot;$LOGFILE&quot;
         exit 1
     fi
 fi
 
-# Eksekusi pg_rewind bersama konfigurasi mod pemulihan penantian (--write-recovery-conf)
-echo &quot;[$(date)] Eksekusi pg_rewind pada ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
-if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot;; then
-    echo &quot;[$(date)] RALT: pg_rewind gagal pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
-    exit 1
-fi
-
 # Mulakan semula perkhidmatan PostgreSQL sebagai Standby
-if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
     &quot;${PGHOME}/bin/pg_ctl start -D ${PGDATA}&quot;; then
-    echo &quot;[$(date)] RALT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    echo &quot;[$(date)] RALAT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
 
-# Sahkan nod beroperasi dan memulakan semula penyiaran penyalinan sebelum melekatkan semula ke Pgpool
-sleep 3
-if ! ssh -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_isready -h localhost -p 5432&quot;; then
-    echo &quot;[$(date)] RALT: Nod ${DETACHED_HOST} belum sedia untuk sambungan&quot; &gt;&gt; &quot;$LOGFILE&quot;
+# Pengesahan kesediaan penyiaran replikasi dan had senggang (replication lag) dengan batas masa (deadline)
+echo &quot;[$(date)] Mengesahkan status penyiaran replikasi dan had latensi bagi ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+READY=0
+MAX_RETRIES=10
+MAX_LAG_BYTES=16777216 # 16 MB had latensi dibenarkan
+
+for ((i=1; i&lt;=MAX_RETRIES; i++)); do
+    if ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_isready -h localhost -p 5432&quot; &gt;/dev/null 2&gt;&amp;1; then
+
+        LAG_CHECK=$(ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
+            &quot;psql -tA -U postgres -c \&quot;SELECT CASE WHEN state = 'streaming' AND COALESCE(pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn), 0) &lt;= ${MAX_LAG_BYTES} THEN 1 ELSE 0 END FROM pg_stat_replication WHERE client_addr = '${DETACHED_HOST}';\&quot;&quot; 2&gt;/dev/null || echo &quot;0&quot;)
+
+        if [ &quot;$LAG_CHECK&quot; = &quot;1&quot; ]; then
+            READY=1
+            break
+        fi
+    fi
+    echo &quot;[$(date)] Percubaan $i/$MAX_RETRIES: Menunggu replikasi streaming dan penyelarasan WAL pada ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    sleep 3
+done
+
+if [ &quot;$READY&quot; -ne 1 ]; then
+    echo &quot;[$(date)] RALAT FATAL: Nod ${DETACHED_HOST} tidak mencapai fasa streaming atau latensi replikasi melebihi had dalam tempoh masa ditetapkan! Lampiran dibatalkan.&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
 
@@ -397,7 +468,7 @@ exit 0
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Pengumpulan Sambungan Binaan Dalam</strong></td>
-<td style="text-align: left;">Ya (penapis <code>connection_pool</code>)</td>
+<td style="text-align: left;">Ya (Parameter <code>persistpoolmax</code> dan <code>persistmaxtime</code>)</td>
 <td style="text-align: left;">Ya (Pengurus kolam sambungan anak tempatan)</td>
 </tr>
 <tr>
@@ -418,7 +489,7 @@ exit 0
 <tr>
 <td style="text-align: left;"><strong>Potensi Kehilangan Data (RPO)</strong></td>
 <td style="text-align: left;">Hampir Sifar ($RPO = 0$)</td>
-<td style="text-align: left;">$RPO &gt; 0$ (Satu-arah asinkronus lalai) / $RPO = 0$ (Jika <code>synchronous_commit = on</code> diaktifkan)</td>
+<td style="text-align: left;">$RPO &gt; 0$ (Konfigurasi asinkronus; mod penulisan terseganti memerlukan <code>synchronous_standby_names</code> berkuorum)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Masa Pemulihan (RTO)</strong></td>
@@ -428,7 +499,7 @@ exit 0
 <tr>
 <td style="text-align: left;"><strong>Risiko Kebuntuan (Deadlock)</strong></td>
 <td style="text-align: left;">Sederhana jika penulisan mengenai berbilang nod serentak</td>
-<td style="text-align: left;">Sifar (Kesemua penulisan diarahkan secara tegar ke nod Utama tunggal)</td>
+<td style="text-align: left;">Kebuntuan transaksi serentak pada nod Utama masih boleh berlaku, namun konflik penulisan silang nod dihapuskan melalui penghalaan tunggal</td>
 </tr>
 </tbody>
 </table>
