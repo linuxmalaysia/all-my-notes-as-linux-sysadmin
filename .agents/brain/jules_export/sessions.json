@@ -3,8 +3,9 @@
     "id": "18076985039546164654",
     "suggestedTitle": "Jules Turndown & Antigravity Migration",
     "title": "Google Jules Wind Down & Migration to Google Antigravity",
-    "taskStatus": "IN_PROGRESS",
+    "taskStatus": "COMPLETED",
     "createdAt": "2026-10-31T16:53:00Z",
+    "completedAt": "2026-10-31T17:35:00Z",
     "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
     "description": "Export all Jules knowledge, configuration, sessions, and history to .agents/brain for Google Antigravity handover.",
     "latestPlan": {
