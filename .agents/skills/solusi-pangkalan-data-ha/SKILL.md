@@ -239,8 +239,18 @@ if [ "$FAILED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
         PGHOME="$1"
         PGDATA="$2"
         "${PGHOME}/bin/pg_ctl" stop -m immediate -D "${PGDATA}" >/dev/null 2>&1 || true
-        pkill -9 -u postgres postgres >/dev/null 2>&1 || true
-        if pgrep -u postgres postgres >/dev/null 2>&1; then
+        pkill -9 -x -u postgres postgres >/dev/null 2>&1 || true
+
+        # Bounded polling loop: tunggu sehingga 5 saat untuk memastikan proses terhenti sepenuhnya
+        for ((retry=1; retry<=5; retry++)); do
+            if ! pgrep -x -u postgres postgres >/dev/null 2>&1; then
+                exit 0
+            fi
+            sleep 1
+        done
+
+        # Sekiranya proses postgres masih dikesan selepas tempoh tamat
+        if pgrep -x -u postgres postgres >/dev/null 2>&1; then
             exit 1
         fi
         exit 0

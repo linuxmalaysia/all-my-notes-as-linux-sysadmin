@@ -38752,15 +38752,25 @@ fi
 if [ "$FAILED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
     echo "[$(date)] Nod Utama gagal dikesan. Memulakan pemagaran nod (fencing/STONITH) pada ${FAILED_HOST}..." &gt;&gt; "$LOGFILE"
 
-    # Fencing / STONITH bekas nod utama: pastikan tiada proses postgres kekal aktif
+    # Fencing / STONITH bekas nod utama: pastikan tiada proses postgres kekal aktif menggunakan padanan tepat nama proses
     FENCE_STATUS=0
     ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@"${FAILED_HOST}" \
         bash -s -- "$PGHOME" "$PGDATA" &lt;&lt; 'EOF' || FENCE_STATUS=$?
         PGHOME="$1"
         PGDATA="$2"
         "${PGHOME}/bin/pg_ctl" stop -m immediate -D "${PGDATA}" &gt;/dev/null 2&gt;&amp;1 || true
-        pkill -9 -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
-        if pgrep -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+        pkill -9 -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
+
+        # Bounded polling loop: tunggu sehingga 5 saat untuk memastikan proses terhenti sepenuhnya
+        for ((retry=1; retry&lt;=5; retry++)); do
+            if ! pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+                exit 0
+            fi
+            sleep 1
+        done
+
+        # Sekiranya proses postgres masih dikesan selepas tempoh tamat
+        if pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
             exit 1
         fi
         exit 0
@@ -50680,8 +50690,18 @@ if [ "$FAILED_NODE_ID" -eq "$OLD_PRIMARY_ID" ]; then
         PGHOME="$1"
         PGDATA="$2"
         "${PGHOME}/bin/pg_ctl" stop -m immediate -D "${PGDATA}" &gt;/dev/null 2&gt;&amp;1 || true
-        pkill -9 -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
-        if pgrep -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+        pkill -9 -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
+
+        # Bounded polling loop: tunggu sehingga 5 saat untuk memastikan proses terhenti sepenuhnya
+        for ((retry=1; retry&lt;=5; retry++)); do
+            if ! pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+                exit 0
+            fi
+            sleep 1
+        done
+
+        # Sekiranya proses postgres masih dikesan selepas tempoh tamat
+        if pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
             exit 1
         fi
         exit 0
@@ -58040,7 +58060,7 @@ This registry dynamically maps all functional AI skills available in the Soverei
 | **`tvet-tem-auditor`** &lt;br&gt; *TVET Tools, Equipment, and Materials (TEM) Auditor Skill* | Dokumentasi OKF v0.2 bagi SKILL.md. | N/A |
 
 ---
-*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-11-02*
+*Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-11-05*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | Dwi-Lesen: CC BY-SA 4.0 (Kandungan) / MIT (Skrip) | [Notis Perundangan, Privasi &amp; Penafian](/docs/legal-notice.md)*
 
     </content>

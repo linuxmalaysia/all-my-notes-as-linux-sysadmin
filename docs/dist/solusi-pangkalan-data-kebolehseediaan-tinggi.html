@@ -314,15 +314,25 @@ fi
 if [ &quot;$FAILED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
     echo &quot;[$(date)] Nod Utama gagal dikesan. Memulakan pemagaran nod (fencing/STONITH) pada ${FAILED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-    # Fencing / STONITH bekas nod utama: pastikan tiada proses postgres kekal aktif
+    # Fencing / STONITH bekas nod utama: pastikan tiada proses postgres kekal aktif menggunakan padanan tepat nama proses
     FENCE_STATUS=0
     ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${FAILED_HOST}&quot; \
         bash -s -- &quot;$PGHOME&quot; &quot;$PGDATA&quot; &lt;&lt; 'EOF' || FENCE_STATUS=$?
         PGHOME=&quot;$1&quot;
         PGDATA=&quot;$2&quot;
         &quot;${PGHOME}/bin/pg_ctl&quot; stop -m immediate -D &quot;${PGDATA}&quot; &gt;/dev/null 2&gt;&amp;1 || true
-        pkill -9 -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
-        if pgrep -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+        pkill -9 -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
+
+        # Bounded polling loop: tunggu sehingga 5 saat untuk memastikan proses terhenti sepenuhnya
+        for ((retry=1; retry&lt;=5; retry++)); do
+            if ! pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+                exit 0
+            fi
+            sleep 1
+        done
+
+        # Sekiranya proses postgres masih dikesan selepas tempoh tamat
+        if pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
             exit 1
         fi
         exit 0
