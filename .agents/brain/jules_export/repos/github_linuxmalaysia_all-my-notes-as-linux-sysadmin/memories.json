@@ -1,0 +1,37 @@
+[
+  {
+    "id": "mem-001",
+    "fact": "Repository is an unofficial educational resource mapping Linux knowledge to Malaysian National Occupational Skills Standard (NOSS) under the Deep State of Mind (DSOM v0.1) framework.",
+    "archived": false
+  },
+  {
+    "id": "mem-002",
+    "fact": "Agent log output must use Standard UK English with strict ASCII prefixes ([INFO], [WARN], [SUCCESS]) and strictly avoid emojis.",
+    "archived": false
+  },
+  {
+    "id": "mem-003",
+    "fact": "Raw manual archives in references/manual/ must never be deleted.",
+    "archived": false
+  },
+  {
+    "id": "mem-004",
+    "fact": "PDF ebook and technical document compilation follows Rule 11.16 using native Linux WeasyPrint via uv run --with weasyprint with pure white (#FFFFFF !important) CSS styling.",
+    "archived": false
+  },
+  {
+    "id": "mem-005",
+    "fact": "Ansible playbook generation and auditing must follow Rule 32.43 (5-tier validation ladder) and Rule 32.44 (Zen of Ansible & Red Hat CoP good practices).",
+    "archived": false
+  },
+  {
+    "id": "mem-006",
+    "fact": "Markdown documentation nodes must follow OKF v0.2 YAML frontmatter schema and include the Sovereign Dual-License Footer.",
+    "archived": false
+  },
+  {
+    "id": "mem-007",
+    "fact": "Canonical Linux distribution references for 2026 are Ubuntu 26.04 LTS, Fedora 43, and AlmaLinux 10.",
+    "archived": false
+  }
+]

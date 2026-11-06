@@ -1,0 +1,20 @@
+[
+  {
+    "agent": {
+      "action": "initialize_session",
+      "timestamp": "2026-10-02T08:00:00Z"
+    }
+  },
+  {
+    "agent": {
+      "action": "execute_plan",
+      "steps": 0
+    }
+  },
+  {
+    "agent": {
+      "action": "complete_session",
+      "timestamp": "2026-10-02T10:15:00Z"
+    }
+  }
+]

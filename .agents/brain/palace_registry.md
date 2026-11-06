@@ -67,10 +67,13 @@ sources:
 - **Dewan: `hall_curriculum` (Unit Kompetensi Silibus di `manual/`)**
   - Bilik: `room_cu01_desktop` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu01_desktop/closet.md) — Pemasangan Desktop, Perkakasan & LUKS2 (`manual/cu01/`).
   - Bilik: `room_cu02_storage_virtualisation` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu02_storage_virtualisation/closet.md) — Storan, LVM, dan Pemayaan (`manual/cu02/`).
-  - Bilik: `room_cu03_server` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu03_server/closet.md) — Pentadbiran Pelayan & Servis Teras (`manual/cu03/`).
+  - Bilik: `room_cu03_server` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu03_server/closet.md) — Pentadbiran Pelayan, Servis Teras & Solusi HA Pangkalan Data Enterprise (`manual/cu03/` & `.agents/skills/solusi-pangkalan-data-ha/`).
   - Bilik: `room_cu04_backup_automation` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu04_backup_automation/closet.md) — Sandaran, Skrip Shell & Pemulihan (`manual/cu04/`).
   - Bilik: `room_cu05_security` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu05_security/closet.md) — Kawalan Keselamatan Endpoint & Pengerasan (`manual/cu05/`).
   - Bilik: `room_cu06_troubleshooting` ➔ [`closet.md`](wings/wing_noss_linux/hall_curriculum/room_cu06_troubleshooting/closet.md) — Diagnostik, Log & Analisis RCA (`manual/cu06/`).
+- **Dewan: `hall_agentic_migration` (Peralihan Google Jules ➔ Antigravity)**
+  - Pengarkiban Sesi & Konfigurasi: `.agents/brain/jules_export/` & `.agents/brain/jules_history.md`.
+  - Taklimat Penyerahan Antigravity: `.agents/brain/handover_to_antigravity.md`.
 - **Dewan: `hall_governance` (Tadbir Urus & Perlembagaan)**
   - Bilik: `room_constitution` ➔ [`closet.md`](wings/wing_noss_linux/hall_governance/room_constitution/closet.md) — Perlembagaan AI & 20 Peraturan Operasi.
 

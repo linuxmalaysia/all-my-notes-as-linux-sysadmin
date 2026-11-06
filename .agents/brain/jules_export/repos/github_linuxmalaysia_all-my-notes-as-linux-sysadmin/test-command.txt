@@ -1,0 +1,1 @@
+uv run --with pytest --with pyyaml --with pytest-cov --with defusedxml python run_all_tests.py && npm test

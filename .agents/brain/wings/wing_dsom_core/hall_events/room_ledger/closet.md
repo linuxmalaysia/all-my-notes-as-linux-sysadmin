@@ -65,6 +65,9 @@ sources:
 - **2026-08-17:** Pembetulan kod nama kanonik rasmi Ubuntu 26.04 LTS "Resolute Raccoon" di seluruh dokumen sumber, kemahiran AI, perlembagaan, dan janaan semula manual web statik HTML.
 - **2026-08-17:** Penyempurnaan & Penggabungan (Merge) Google Jules PR #12 & PR #13 — Migrasi Silibus Bab 6 (Sandaran tar/rsync/zstd, Automasi systemd.timer/cron, Pemulihan Data sha256sum, Pelekapan Storan mount/umount/findmnt/fstab, Penapis Teks grep/sed/awk, dan RCA), Porting Kemahiran CU04/CU06, peningkatan kepada 982 ujian Python, dan penyempurnaan menyeluruh siri kurikulum Fasa 1–6.
 - **2026-08-17:** Penyediaan pelan pelaksanaan & taklimat penyerahan sesi Google Jules untuk Fasa 7 (Migrasi & Pemodenan Bab 7: Penyunting Teks Terminal, Persekitaran Shell & Konfigurasi Sistem - CU01, CU03, & CU06).
+- **2026-10-02:** Pemakaian Standard Spesifikasi Open Knowledge Format (OKF v0.2) ke atas seluruh nod repositori (498 fail markdown), penyusunan semula skema frontmatter dan isyarat kepercayaan.
+- **2026-10-05:** Pengintegrasian Kertas Cadangan Solusi Pangkalan Data Enterprise High Availability (MariaDB Galera + MaxScale lwn. PostgreSQL HA + Pgpool-II) di bawah NOSS CU03 / WA05 dan penjanaan PDF WeasyPrint mengikut Rule 11.16.
+- **2026-10-31:** Eksport Data Sesi, Konfigurasi & Sejarah Pengendalian Google Jules ke `.agents/brain/jules_export/` serta pembentukan lejar `.agents/brain/jules_history.md` berikutan taklimat penutupan Google Jules (Turndown Dec 31, 2026) dan penyerahan tugas rasmi kepada Google Antigravity.
 
 ---
 *Linux for NOSS Malaysia (Sovereign Markdown Palace) | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-16*
