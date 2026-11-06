@@ -187,9 +187,10 @@ port = 5432
 max_connections = 250
 shared_buffers = 4GB
 
-# Replication Parameters
+# Replication Parameters &amp; Prasyarat pg_rewind
 wal_level = replica
 wal_log_hints = on
+full_page_writes = on
 max_wal_senders = 10
 max_replication_slots = 10
 hot_standby = on
@@ -244,9 +245,9 @@ health_check_user = 'pgpool'
 health_check_password = '&lt;PGPOOL_PASSWORD&gt;'
 health_check_database = 'postgres'
 
-# Failover &amp; Recovery Script Commands
-failover_command = '/etc/pgpool-II/failover.sh %d %h %p %D %m %H %M %P'
-follow_primary_command = '/etc/pgpool-II/follow_primary.sh %d %h %p %D %m %H %M %P'
+# Failover &amp; Recovery Script Commands (Bind parameter khusus nod: %D direktori gagal, %R direktori master baharu)
+failover_command = '/etc/pgpool-II/failover.sh %d %h %p %D %m %H %M %P %R'
+follow_primary_command = '/etc/pgpool-II/follow_primary.sh %d %h %p %D %m %H %M %P %R'
 
 # Watchdog Settings (High Availability for Pgpool itself - Minimum 3 Nodes for Quorum in Pgpool-II 4.2+)
 # Nota: Nilai ID nod tempatan (0, 1, atau 2) ditetapkan menerusi fail /etc/pgpool-II/pgpool_node_id pada setiap hos.
@@ -284,73 +285,92 @@ heartbeat_port2 = 9694
 <pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
 # Parameter yang dihantar oleh Pgpool-II:
 # %d = ID nod gagal, %h = hos gagal, %p = port gagal, %D = direktori data gagal
-# %m = ID nod master baharu, %H = hos master baharu, %M = ID nod master lama, %P = ID nod utama lama
+# %m = ID nod master baharu, %H = hos master baharu, %M = ID nod master lama, %P = ID nod utama lama, %R = direktori master baharu
 
 FAILED_NODE_ID=&quot;$1&quot;
 FAILED_HOST=&quot;$2&quot;
+FAILED_DATA_DIR=&quot;$4&quot;
 NEW_MASTER_ID=&quot;$5&quot;
 NEW_MASTER_HOST=&quot;$6&quot;
 OLD_PRIMARY_ID=&quot;$8&quot;
+NEW_MASTER_DATA_DIR=&quot;${9:-$FAILED_DATA_DIR}&quot;
 
 LOGFILE=&quot;/var/log/pgpool/failover.log&quot;
-
-# Pemboleh ubah persekitaran laluan PostgreSQL yang boleh dikonfigurasikan
 PGHOME=&quot;${PGHOME:-/usr/lib/postgresql/15}&quot;
-PGDATA=&quot;${PGDATA:-/var/lib/postgresql/15/main}&quot;
 
 echo &quot;[$(date)] Cetusan kegagalan beralih. Nod Gagal: ${FAILED_NODE_ID} (${FAILED_HOST}). Utama Lama: ${OLD_PRIMARY_ID}&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-# Pengesahan laluan PGHOME dan PGDATA secara ketat
-if [[ -z &quot;$PGHOME&quot; || &quot;$PGHOME&quot; =~ [^a-zA-Z0-9/_.-] || &quot;$PGHOME&quot; == *..* ]]; then
+# Pengesahan laluan kanonikal mutlak PGHOME dan direktori kluster
+if [[ -z &quot;$PGHOME&quot; || ! &quot;$PGHOME&quot; =~ ^/[a-zA-Z0-9/_.-]+$ || &quot;$PGHOME&quot; == *..* ]]; then
     echo &quot;[$(date)] RALAT: PGHOME tidak sah: '${PGHOME}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
-if [[ -z &quot;$PGDATA&quot; || &quot;$PGDATA&quot; =~ [^a-zA-Z0-9/_.-] || &quot;$PGDATA&quot; == *..* ]]; then
-    echo &quot;[$(date)] RALAT: PGDATA tidak sah: '${PGDATA}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if [[ -z &quot;$FAILED_DATA_DIR&quot; || ! &quot;$FAILED_DATA_DIR&quot; =~ ^/[a-zA-Z0-9/_.-]+$ || &quot;$FAILED_DATA_DIR&quot; == *..* ]]; then
+    echo &quot;[$(date)] RALAT: FAILED_DATA_DIR tidak sah: '${FAILED_DATA_DIR}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    exit 1
+fi
+if [[ -z &quot;$NEW_MASTER_DATA_DIR&quot; || ! &quot;$NEW_MASTER_DATA_DIR&quot; =~ ^/[a-zA-Z0-9/_.-]+$ || &quot;$NEW_MASTER_DATA_DIR&quot; == *..* ]]; then
+    echo &quot;[$(date)] RALAT: NEW_MASTER_DATA_DIR tidak sah: '${NEW_MASTER_DATA_DIR}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
 
 # Hanya lakukan pemajuan (promotion) jika nod yang gagal merupakan nod Utama
 if [ &quot;$FAILED_NODE_ID&quot; -eq &quot;$OLD_PRIMARY_ID&quot; ]; then
-    echo &quot;[$(date)] Nod Utama gagal dikesan. Memulakan pemagaran nod (fencing/STONITH) pada ${FAILED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    echo &quot;[$(date)] Nod Utama gagal dikesan. Memulakan pemagaran tahan-lama (durable fencing/STONITH) pada ${FAILED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-    # Fencing / STONITH bekas nod utama: pastikan tiada proses postgres kekal aktif menggunakan padanan tepat nama proses
+    # Fencing tahan-lama: Hentikan servis, sekat pembukaan semula, dan bunuh proses dengan semakan pgrep ketat
     FENCE_STATUS=0
     ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${FAILED_HOST}&quot; \
-        bash -s -- &quot;$PGHOME&quot; &quot;$PGDATA&quot; &lt;&lt; 'EOF' || FENCE_STATUS=$?
+        bash -s -- &quot;$PGHOME&quot; &quot;$FAILED_DATA_DIR&quot; &lt;&lt; 'EOF' || FENCE_STATUS=$?
         PGHOME=&quot;$1&quot;
         PGDATA=&quot;$2&quot;
+
+        # Tolak jika direktori merupakan pautan simbolik (symlink)
+        if [ -L &quot;$PGDATA&quot; ]; then
+            exit 4
+        fi
+
         &quot;${PGHOME}/bin/pg_ctl&quot; stop -m immediate -D &quot;${PGDATA}&quot; &gt;/dev/null 2&gt;&amp;1 || true
         pkill -9 -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1 || true
 
-        # Bounded polling loop: tunggu sehingga 5 saat untuk memastikan proses terhenti sepenuhnya
+        # Bounded polling loop: semakan ketat kod status pgrep
         for ((retry=1; retry&lt;=5; retry++)); do
-            if ! pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+            pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1
+            RC=$?
+            if [ &quot;$RC&quot; -eq 1 ]; then
+                # Kod 1 = Tiada proses ditemui (berjaya dihentikan sepenuhnya)
                 exit 0
+            elif [ &quot;$RC&quot; -ne 0 ]; then
+                # Kod &gt;= 2 = Ralat tidak dijangka pada pgrep
+                exit 2
             fi
             sleep 1
         done
 
-        # Sekiranya proses postgres masih dikesan selepas tempoh tamat
-        if pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1; then
+        # Selepas tempoh tamat, uji sekali lagi; jika masih berjalan (RC=0), gagalkan fencing
+        pgrep -x -u postgres postgres &gt;/dev/null 2&gt;&amp;1
+        if [ $? -eq 0 ]; then
             exit 1
         fi
         exit 0
 EOF
 
     if [ &quot;$FENCE_STATUS&quot; -ne 0 ]; then
-        echo &quot;[$(date)] RALAT FATAL: Pemagaran nod (fencing) pada ${FAILED_HOST} gagal disahkan atau hos tidak dapat dihubungi melalui SSH! Pemagaran luar jalur (out-of-band STONITH) diperlukan. Menghentikan failover untuk mencegah split-brain.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        echo &quot;[$(date)] RALAT FATAL: Pemagaran nod (fencing) pada ${FAILED_HOST} gagal disahkan (kod: ${FENCE_STATUS}) atau hos tidak dapat dihubungi melalui SSH! Pemagaran luar jalur (out-of-band STONITH / IPMI) diperlukan. Menghentikan failover untuk mencegah split-brain.&quot; &gt;&gt; &quot;$LOGFILE&quot;
         exit 1
     fi
-    echo &quot;[$(date)] Fencing nod ${FAILED_HOST} berjaya: tiada proses PostgreSQL beroperasi.&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    echo &quot;[$(date)] Pemagaran nod ${FAILED_HOST} berjaya: tiada proses PostgreSQL beroperasi.&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
     echo &quot;[$(date)] Memajukan nod Penantian ${NEW_MASTER_ID} (${NEW_MASTER_HOST}) kepada Utama...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
     # Eksekusi arahan pemajuan melalui SSH berautentikasi kunci bukan-interaktif pada sasaran master baharu
     if ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
-        bash -s -- &quot;$PGHOME&quot; &quot;$PGDATA&quot; &lt;&lt; 'EOF'
+        bash -s -- &quot;$PGHOME&quot; &quot;$NEW_MASTER_DATA_DIR&quot; &lt;&lt; 'EOF'
         PGHOME=&quot;$1&quot;
         PGDATA=&quot;$2&quot;
+        if [ -L &quot;$PGDATA&quot; ] || [ ! -f &quot;${PGDATA}/PG_VERSION&quot; ]; then
+            exit 3
+        fi
         exec &quot;${PGHOME}/bin/pg_ctl&quot; promote -D &quot;${PGDATA}&quot;
 EOF
     then
@@ -371,43 +391,43 @@ fi
 <pre class="codehilite"><code class="language-bash">#!/usr/bin/env bash
 set -e
 
-# Parameter %d = ID nod terjejas, %h = hos terjejas, %m = ID master baharu, %H = hos master baharu, %P = ID utama lama
+# Parameter: %d = ID nod terjejas, %h = hos terjejas, %p = port terjejas, %D = direktori terjejas, %m = ID master baharu, %H = hos master baharu, %M = ID master lama, %P = ID utama lama, %R = direktori master baharu
 DETACHED_NODE_ID=&quot;$1&quot;
 DETACHED_HOST=&quot;$2&quot;
+DETACHED_DATA_DIR=&quot;$4&quot;
 NEW_MASTER_ID=&quot;$5&quot;
 NEW_MASTER_HOST=&quot;$6&quot;
 OLD_PRIMARY_ID=&quot;$8&quot;
+NEW_MASTER_DATA_DIR=&quot;${9:-$DETACHED_DATA_DIR}&quot;
 
 LOGFILE=&quot;/var/log/pgpool/follow_primary.log&quot;
 PGHOME=&quot;${PGHOME:-/usr/lib/postgresql/15}&quot;
-PGDATA=&quot;${PGDATA:-/var/lib/postgresql/15/main}&quot;
 
 echo &quot;[$(date)] Menjalankan follow_primary bagi nod ${DETACHED_NODE_ID} (${DETACHED_HOST}) menyertai ${NEW_MASTER_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-# Pengesahan keselamatan laluan kanonikal mutlak PGHOME dan PGDATA
+# Pengesahan keselamatan laluan kanonikal mutlak PGHOME dan DETACHED_DATA_DIR
 if [[ -z &quot;$PGHOME&quot; || ! &quot;$PGHOME&quot; =~ ^/[a-zA-Z0-9/_.-]+$ || &quot;$PGHOME&quot; == *..* ]]; then
-    echo &quot;[$(date)] RALAT FATAL: Laluan PGHOME tidak sah atau tidak mutlak: '${PGHOME}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
+    echo &quot;[$(date)] RALAT FATAL: Laluan PGHOME tidak sah: '${PGHOME}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
 
-if [[ -z &quot;$PGDATA&quot; || ! &quot;$PGDATA&quot; =~ ^/[a-zA-Z0-9/_.-]+$ || &quot;$PGDATA&quot; == *..* || \
-      &quot;$PGDATA&quot; == &quot;/&quot; || &quot;$PGDATA&quot; == &quot;/var&quot; || &quot;$PGDATA&quot; == &quot;/etc&quot; || &quot;$PGDATA&quot; == &quot;/usr&quot; || \
-      &quot;$PGDATA&quot; == &quot;/root&quot; || &quot;$PGDATA&quot; == &quot;/bin&quot; || &quot;$PGDATA&quot; == &quot;/tmp&quot; ]]; then
-    echo &quot;[$(date)] RALAT FATAL: Laluan PGDATA tidak sah atau berbahaya: '${PGDATA}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if [[ -z &quot;$DETACHED_DATA_DIR&quot; || ! &quot;$DETACHED_DATA_DIR&quot; =~ ^/[a-zA-Z0-9/_.-]+$ || &quot;$DETACHED_DATA_DIR&quot; == *..* || \
+      &quot;$DETACHED_DATA_DIR&quot; == &quot;/&quot; || &quot;$DETACHED_DATA_DIR&quot; == &quot;/var&quot; || &quot;$DETACHED_DATA_DIR&quot; == &quot;/etc&quot; || &quot;$DETACHED_DATA_DIR&quot; == &quot;/usr&quot; || \
+      &quot;$DETACHED_DATA_DIR&quot; == &quot;/root&quot; || &quot;$DETACHED_DATA_DIR&quot; == &quot;/bin&quot; || &quot;$DETACHED_DATA_DIR&quot; == &quot;/tmp&quot; ]]; then
+    echo &quot;[$(date)] RALAT FATAL: Laluan DETACHED_DATA_DIR tidak sah atau berbahaya: '${DETACHED_DATA_DIR}'&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
 
 # Hentikan perkhidmatan PostgreSQL secara bersih pada nod sasaran sebelum penyelarasan semula
 echo &quot;[$(date)] Memastikan perkhidmatan PostgreSQL pada ${DETACHED_HOST} dihentikan secara bersih...&quot; &gt;&gt; &quot;$LOGFILE&quot;
-ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_ctl stop -m fast -D ${PGDATA}&quot; &gt;/dev/null 2&gt;&amp;1 || true
+timeout 10s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_ctl stop -m fast -D ${DETACHED_DATA_DIR}&quot; &gt;/dev/null 2&gt;&amp;1 || true
 
 # Sahkan status proses PostgreSQL benar-benar terhenti menerusi pg_ctl status
 STATUS_OUT=0
-ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_ctl status -D ${PGDATA}&quot; &gt;/dev/null 2&gt;&amp;1 || STATUS_OUT=$?
+timeout 10s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_ctl status -D ${DETACHED_DATA_DIR}&quot; &gt;/dev/null 2&gt;&amp;1 || STATUS_OUT=$?
 
-# pg_ctl status memulangkan kod 3 apabila tiada proses pelayan aktif (server is not running)
 if [ &quot;$STATUS_OUT&quot; -ne 3 ]; then
     echo &quot;[$(date)] RALAT FATAL: PostgreSQL pada ${DETACHED_HOST} tidak disahkan berhenti secara selamat (kod pulangan: ${STATUS_OUT})! Menghentikan pemulihan.&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
@@ -415,35 +435,44 @@ fi
 
 # Eksekusi pg_rewind; sekiranya gagal, guna sandaran pg_basebackup sebagai sandaran pemulihan
 echo &quot;[$(date)] Menjalankan pg_rewind pada ${DETACHED_HOST}...&quot; &gt;&gt; &quot;$LOGFILE&quot;
-if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${PGDATA} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot;; then
-    echo &quot;[$(date)] AMARAN: pg_rewind gagal pada ${DETACHED_HOST}. Mengesahkan direktori kluster sebelum pembersihan fallback...&quot; &gt;&gt; &quot;$LOGFILE&quot;
+if ! timeout 60s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_rewind --target-pgdata=${DETACHED_DATA_DIR} --write-recovery-conf --source-server='host=${NEW_MASTER_HOST} port=5432 user=postgres'&quot;; then
+    echo &quot;[$(date)] AMARAN: pg_rewind gagal pada ${DETACHED_HOST}. Mengesahkan pemilikan dan struktur kluster sebelum pembersihan fallback...&quot; &gt;&gt; &quot;$LOGFILE&quot;
 
-    # Pengesahan direktori PostgreSQL yang sah sebelum pembersihan destruktif
-    if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-        bash -s -- &quot;$PGDATA&quot; &lt;&lt; 'EOF'
+    # Pengesahan direktori PostgreSQL yang sah, bukan symlink, dan dimiliki postgres sebelum pembersihan destruktif
+    if ! timeout 20s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        bash -s -- &quot;$DETACHED_DATA_DIR&quot; &lt;&lt; 'EOF'
         TARGET_DIR=&quot;$1&quot;
+        if [ -L &quot;$TARGET_DIR&quot; ]; then
+            echo &quot;Laluan merupakan symlink!&quot;
+            exit 4
+        fi
         if [ ! -f &quot;${TARGET_DIR}/PG_VERSION&quot; ] || [ ! -d &quot;${TARGET_DIR}/base&quot; ] || [ ! -d &quot;${TARGET_DIR}/global&quot; ]; then
             echo &quot;Direktori bukan kluster PostgreSQL yang sah!&quot;
             exit 2
         fi
+        OWNER=$(stat -c '%U' &quot;$TARGET_DIR&quot; 2&gt;/dev/null || stat -f '%Su' &quot;$TARGET_DIR&quot; 2&gt;/dev/null || echo &quot;unknown&quot;)
+        if [ &quot;$OWNER&quot; != &quot;postgres&quot; ]; then
+            echo &quot;Pemilikan direktori bukan postgres!&quot;
+            exit 3
+        fi
         rm -rf &quot;${TARGET_DIR:?}&quot;/*
 EOF
     then
-        echo &quot;[$(date)] RALAT: Direktori pada ${DETACHED_HOST} bukan kluster PostgreSQL yang sah atau pembersihan gagal!&quot; &gt;&gt; &quot;$LOGFILE&quot;
+        echo &quot;[$(date)] RALAT: Direktori pada ${DETACHED_HOST} gagal disahkan atau pembersihan fallback dibatalkan demi keselamatan!&quot; &gt;&gt; &quot;$LOGFILE&quot;
         exit 1
     fi
 
-    if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-        &quot;${PGHOME}/bin/pg_basebackup -h ${NEW_MASTER_HOST} -p 5432 -U postgres -D ${PGDATA} -Fp -Xs -R&quot;; then
+    if ! timeout 120s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+        &quot;${PGHOME}/bin/pg_basebackup -h ${NEW_MASTER_HOST} -p 5432 -U postgres -D ${DETACHED_DATA_DIR} -Fp -Xs -R&quot;; then
         echo &quot;[$(date)] RALAT: Fallback pg_basebackup juga gagal pada ${DETACHED_HOST}!&quot; &gt;&gt; &quot;$LOGFILE&quot;
         exit 1
     fi
 fi
 
 # Mulakan semula perkhidmatan PostgreSQL sebagai Standby
-if ! ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
-    &quot;${PGHOME}/bin/pg_ctl start -D ${PGDATA}&quot;; then
+if ! timeout 20s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    &quot;${PGHOME}/bin/pg_ctl start -D ${DETACHED_DATA_DIR}&quot;; then
     echo &quot;[$(date)] RALAT: Gagal memulakan semula PostgreSQL pada ${DETACHED_HOST}&quot; &gt;&gt; &quot;$LOGFILE&quot;
     exit 1
 fi
@@ -455,11 +484,13 @@ MAX_RETRIES=10
 MAX_LAG_BYTES=16777216 # 16 MB had latensi dibenarkan
 
 for ((i=1; i&lt;=MAX_RETRIES; i++)); do
-    if ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
+    # Bounded command checking readiness
+    if timeout 5s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${DETACHED_HOST}&quot; \
         &quot;${PGHOME}/bin/pg_isready -h localhost -p 5432&quot; &gt;/dev/null 2&gt;&amp;1; then
 
-        LAG_CHECK=$(ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
-            &quot;psql -tA -U postgres -c \&quot;SELECT CASE WHEN state = 'streaming' AND COALESCE(pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn), 0) &lt;= ${MAX_LAG_BYTES} THEN 1 ELSE 0 END FROM pg_stat_replication WHERE client_addr = '${DETACHED_HOST}';\&quot;&quot; 2&gt;/dev/null || echo &quot;0&quot;)
+        # Pertanyaan replikasi dengan had masa sambungan dan kenyataan (connection &amp; statement timeout)
+        LAG_CHECK=$(timeout 10s ssh -o ConnectTimeout=5 -o BatchMode=yes -i /var/lib/postgresql/.ssh/id_rsa postgres@&quot;${NEW_MASTER_HOST}&quot; \
+            &quot;PGCONNECT_TIMEOUT=5 psql -tA -U postgres -v ON_ERROR_STOP=1 -c \&quot;SET statement_timeout = '4000ms'; SELECT CASE WHEN state = 'streaming' AND COALESCE(pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn), 0) &lt;= ${MAX_LAG_BYTES} THEN 1 ELSE 0 END FROM pg_stat_replication WHERE (client_addr = inet '${DETACHED_HOST}' OR application_name = 'node_${DETACHED_NODE_ID}');\&quot;&quot; 2&gt;/dev/null || echo &quot;0&quot;)
 
         if [ &quot;$LAG_CHECK&quot; = &quot;1&quot; ]; then
             READY=1
@@ -475,7 +506,7 @@ if [ &quot;$READY&quot; -ne 1 ]; then
     exit 1
 fi
 
-# Melekatkan semula nod penantian ke dalam peta Pgpool-II
+# Melekatkan semula nod penantian ke dalam peta Pgpool-II menerusi PCP berautentikasi selamat (~/.pcppass keizinan 0600)
 pcp_attach_node -w -h localhost -p 9898 -U pgpool &quot;${DETACHED_NODE_ID}&quot;
 
 echo &quot;[$(date)] Selesai penyelarasan semula dan penempelan nod ${DETACHED_HOST} ke Pgpool-II.&quot; &gt;&gt; &quot;$LOGFILE&quot;
@@ -536,12 +567,12 @@ exit 0
 <tr>
 <td style="text-align: left;"><strong>Potensi Kehilangan Data (RPO)</strong></td>
 <td style="text-align: left;">Hampir Sifar ($RPO = 0$)</td>
-<td style="text-align: left;">$RPO &gt; 0$ (Konfigurasi asinkronus; mod penulisan terseganti memerlukan <code>synchronous_standby_names</code> berkuorum)</td>
+<td style="text-align: left;">$RPO &gt; 0$ untuk replikasi asinkronus atau transaksi yang tidak menunggu nod penantian terseganti; replikasi terseganti menyokong konfigurasi keutamaan (priority) dan kuorum menerusi <code>synchronous_standby_names</code> dengan ketahanan bergantung pada <code>synchronous_commit</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Masa Pemulihan (RTO)</strong></td>
 <td style="text-align: left;">Terikat ($&lt; 5$ saat)</td>
-<td style="text-align: left;">Terikat ($&lt; 10 - 15$ saat - Masa henti semakan kesihatan + pemajuan skrip)</td>
+<td style="text-align: left;">Terikat (10–15 saat - Masa henti semakan kesihatan + pemajuan skrip)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Risiko Kebuntuan (Deadlock)</strong></td>

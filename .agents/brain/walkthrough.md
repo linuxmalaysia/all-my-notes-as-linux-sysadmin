@@ -43,8 +43,8 @@ Successfully integrated the Enterprise HA Database solution technical paperwork 
 2. `.agents/skills/solusi-pangkalan-data-ha/SKILL.md`
 3. `tools/compile_ha_db_pdf.py`
 4. `tests/unit/test_ha_db_pdf.py`
-5. `docs/dist/solusi-pangkalan-data-kebolehseediaan-tinggi.pdf` (99.1 KB)
-6. `docs/dist/solusi-pangkalan-data-kebolehseediaan-tinggi.html` (34.6 KB)
+5. `docs/dist/solusi-pangkalan-data-kebolehseediaan-tinggi.pdf` (103.8 KB)
+6. `docs/dist/solusi-pangkalan-data-kebolehseediaan-tinggi.html` (39.3 KB)
 7. `.agents/brain/jules_export/` (Full export of Jules sessions, configurations, and repository memories)
 8. `.agents/brain/jules_history.md` (Operational history & Antigravity handover summary)
 9. `.agents/brain/handover_to_antigravity.md` (EOD spatial handover to Google Antigravity)
