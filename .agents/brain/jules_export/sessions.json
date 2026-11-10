@@ -1,0 +1,95 @@
+[
+  {
+    "id": "18076985039546164654",
+    "suggestedTitle": "Jules Turndown & Antigravity Migration",
+    "title": "Google Jules Wind Down & Migration to Google Antigravity",
+    "taskStatus": "COMPLETED",
+    "createdAt": "2026-10-31T16:53:00Z",
+    "completedAt": "2026-10-31T17:35:00Z",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "description": "Export all Jules knowledge, configuration, sessions, and history to .agents/brain for Google Antigravity handover.",
+    "latestPlan": {
+      "steps": [
+        {
+          "index": 0,
+          "title": "Initialize Jules migration export structure in .agents/brain"
+        },
+        {
+          "index": 1,
+          "title": "Create .agents/brain/jules_history.md and verify contents"
+        },
+        {
+          "index": 2,
+          "title": "Update handover documentation and spatial memory palace ledger"
+        },
+        {
+          "index": 3,
+          "title": "Update repository changelog and history files"
+        },
+        {
+          "index": 4,
+          "title": "Enforce OKF v0.2 compliance and rebuild palace registry"
+        },
+        {
+          "index": 5,
+          "title": "Run verification and test suite"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5863220230231118589",
+    "suggestedTitle": "Adoption of Enterprise High Availability Database Solution Paperwork and PDF Generation",
+    "title": "Enterprise HA Database Solution Adoption & PDF Compiler",
+    "taskStatus": "COMPLETED",
+    "createdAt": "2026-10-05T06:00:00Z",
+    "completedAt": "2026-10-05T07:30:00Z",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "description": "Adopt Enterprise HA Database paperwork (MariaDB Galera + MaxScale vs PostgreSQL HA + Pgpool-II) into NOSS CU03/WA05 with WeasyPrint PDF compiler.",
+    "gitBranchName": "feature/enterprise-ha-db-solution-5863220230231118589"
+  },
+  {
+    "id": "4606799749431317953",
+    "suggestedTitle": "Adopt Google Open Knowledge Format (OKF) v0.2 Specification",
+    "title": "OKF v0.2 Specification Adoption & Mass Validation",
+    "taskStatus": "COMPLETED",
+    "createdAt": "2026-10-02T08:00:00Z",
+    "completedAt": "2026-10-02T10:15:00Z",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "description": "Upgrade repository Markdown files to OKF v0.2 standard with trust signals and provenance verification.",
+    "gitBranchName": "feat/adopt-okf-v02-spec-4606799749431317953"
+  },
+  {
+    "id": "6259803039481435610",
+    "suggestedTitle": "Migrasi & Pemodenan Silibus Bab 8 (Pengurusan Pakej & Tampalan Keselamatan)",
+    "title": "Fasa 8: Package Management Modernisation & Ansible Rules",
+    "taskStatus": "COMPLETED",
+    "createdAt": "2026-08-17T14:00:00Z",
+    "completedAt": "2026-08-17T16:20:00Z",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "description": "Migrate Bab 8 package management, enforce Ansible Rule 32.43 & 32.44, and update CU01/CU05.",
+    "gitBranchName": "jules-fasa8-package-management-migration-6259803039481435610"
+  },
+  {
+    "id": "9730826581652992733",
+    "suggestedTitle": "feat(manual): migrate Bab 6 backup, text processing, and storage mounting",
+    "title": "Fasa 6: Backup, Text Processing & Storage Mounting",
+    "taskStatus": "COMPLETED",
+    "createdAt": "2026-08-17T09:00:00Z",
+    "completedAt": "2026-08-17T11:45:00Z",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "description": "Migrate Bab 6 backup tools, text manipulation, and storage mounting to manual/cu04 and manual/cu06.",
+    "gitBranchName": "jules-9730826581652992733-c4872b9e"
+  },
+  {
+    "id": "3511571504530315516",
+    "suggestedTitle": "feat(manual): migrate Bab 5 core server services and process management",
+    "title": "Fasa 5: Core Server Services & Process Management",
+    "taskStatus": "COMPLETED",
+    "createdAt": "2026-08-17T04:00:00Z",
+    "completedAt": "2026-08-17T06:30:00Z",
+    "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+    "description": "Migrate Bab 5 systemd services, logging, and process performance management to manual/cu03 and manual/cu06.",
+    "gitBranchName": "jules-3511571504530315516-ca0b73b6"
+  }
+]

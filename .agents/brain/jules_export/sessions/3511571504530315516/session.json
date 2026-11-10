@@ -1,0 +1,11 @@
+{
+  "id": "3511571504530315516",
+  "suggestedTitle": "feat(manual): migrate Bab 5 core server services and process management",
+  "title": "Fasa 5: Core Server Services & Process Management",
+  "taskStatus": "COMPLETED",
+  "createdAt": "2026-08-17T04:00:00Z",
+  "completedAt": "2026-08-17T06:30:00Z",
+  "sourceId": "github/linuxmalaysia/all-my-notes-as-linux-sysadmin",
+  "description": "Migrate Bab 5 systemd services, logging, and process performance management to manual/cu03 and manual/cu06.",
+  "gitBranchName": "jules-3511571504530315516-ca0b73b6"
+}

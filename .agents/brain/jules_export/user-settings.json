@@ -1,0 +1,9 @@
+{
+  "notificationPreferences": {
+    "email": true
+  },
+  "theme": "dark",
+  "editorPreferences": {
+    "vimMode": false
+  }
+}
